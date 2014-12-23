@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>80F8F454-F9BC-4EEF-AE1B-3C95F199ACC6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Measurement</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D0E9F9253A410B03A29F31E2809DF4AED584E82E</key>
+		<string>https://coding.net/SeongBrave/Measurement.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Measurement.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D0E9F9253A410B03A29F31E2809DF4AED584E82E</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://coding.net/SeongBrave/Measurement.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D0E9F9253A410B03A29F31E2809DF4AED584E82E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D0E9F9253A410B03A29F31E2809DF4AED584E82E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Measurement</string>
+		</dict>
+	</array>
+</dict>
+</plist>
