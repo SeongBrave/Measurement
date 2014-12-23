@@ -7,9 +7,12 @@
 //
 
 #import "CommonLogicViewController.h"
+#import "CommonLogicCell.h"
 
 @interface CommonLogicViewController ()
-
+{
+     CommonLogicCell *oldCell;
+}
 @end
 
 @implementation CommonLogicViewController
@@ -54,11 +57,49 @@
 //TODO: 添加视图
 -(void)layoutMainCustomView
 {
+    UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setSectionInset:UIEdgeInsetsMake(10, 10, 10, 10)];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    [flowLayout setMinimumLineSpacing:10];
+    [flowLayout setMinimumInteritemSpacing:10];
+    [flowLayout setItemSize:CGSizeMake(220.0f, 220.0f)];
+    [flowLayout setHeaderReferenceSize:CGSizeMake([self.view bounds].size.width, 30.0f)];
+    self.m_CollectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
+    self.m_CollectionView.backgroundColor = [UIColor whiteColor];
+    self.m_CollectionView.delegate = self;
+    self.m_CollectionView.dataSource = self;
     
+    
+    [self.view addSubview:self.m_CollectionView];
+    
+    [self.m_CollectionView registerClass:[CommonLogicCell class]
+              forCellWithReuseIdentifier:@"CommonLogicCell"];
+    
+    
+    /**
+     *  m_companyNameL
+     *
+     *  @param make
+     *
+     *  @return
+     */
+    [ self.m_CollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        
+        make.top.equalTo(@0);
+        make.leading.equalTo(@0);
+        make.bottom.equalTo(@0);
+          make.trailing.equalTo(@0);
+        
+    }];
+    
+    self.view.backgroundColor = [UIColor redColor];
 }
 
 -(void)SetUpData
 {
+    
+    
     [self layoutMainCustomView];
     [self AddNavgationBarItem];
     
@@ -87,5 +128,147 @@
 }
 
 #pragma mark - 代理协议方法*
+#pragma mark - UIPopoverControllerDelegate
+
+//- (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController
+//{
+//    return YES;
+//}
+//
+//- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+//{
+//    //    [dictPopoverTVC.searchDisplayController setActive:NO animated:YES];
+//    //    [dictPopoverTVC.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];//CGRectMake(0, 0, 1, 1)
+//    //    dictPopoverTVC.selectedObject = nil;
+//}
+
+
+#pragma mark - UICollectionViewDataSource
+// TODO:定义展示的UICollectionViewCell的个数
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    
+    return 31;
+    
+}
+//TODO:定义展示的Section的个数
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+    
+}
+
+//TODO:每个UICollectionView展示的内容
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    //设置cell多选功能
+    //  collectionView.allowsMultipleSelection = YES;
+    static NSString * CellIdentifier = @"CommonLogicCell";
+    
+    CommonLogicCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    
+
+    [cell updateOldCollectionCell];
+    
+    
+    //     cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"a.jpg"]];
+    //cell.backgroundColor = [UIColor colorWithRed:((10 * indexPath.row) / 255.0) green:((20 * indexPath.row)/255.0) blue:((30 * indexPath.row)/255.0) alpha:1.0f];
+    
+    return cell;
+    
+}
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+//TODO:定义每个UICollectionView 的大小
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    return CGSizeMake(230, 230);
+
+}
+//TODO:定义每个UICollectionView 的 margin
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+
+{
+    return UIEdgeInsetsMake(10, 10, 10,10);
+    
+}
+
+
+
+#pragma mark - UICollectionViewDelegate
+
+//TODO: UICollectionView被选中时调用的方法
+
+//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+//
+//{
+//
+//    UICollectionViewCell * cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+//    cell.selected = YES;
+//
+//
+//}
+
+//返回这个UICollectionView是否可以被选择
+//-(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//
+//    return YES;
+//
+//}
+
+//
+//- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return YES;
+//}
+//- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+//
+//    cell.backgroundColor = [UIColor colorWithRed:121/255.0 green:180/255.0 blue:221/255.0 alpha:1];
+//
+//    [collectionView reloadData];
+//
+//}
+#pragma mark --UICollectionViewDelegate
+//UICollectionView被选中时调用的方法
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (oldCell == nil) {
+        CommonLogicCell * cell = (CommonLogicCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        oldCell = cell;
+        // cell.contentView.layer.cornerRadius = 10.0;
+        cell.contentView.layer.borderWidth = 5.0f;
+        cell.contentView.layer.borderColor = [UIColor colorWithRed:121/255.0 green:180/255.0 blue:221/255.0 alpha:1].CGColor;
+        
+        
+    }else
+    {
+        [oldCell updateOldCollectionCell];
+        CommonLogicCell * cell = (CommonLogicCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        // cell.contentView.layer.cornerRadius = 10.0;
+        cell.contentView.layer.borderWidth = 5.0f;
+        cell.contentView.layer.borderColor = [UIColor colorWithRed:121/255.0 green:180/255.0 blue:221/255.0 alpha:1].CGColor;
+        oldCell = cell;
+        
+        
+    }
+    
+    
+    
+}
+//返回这个UICollectionView是否可以被选择
+
+-(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    return YES;
+    
+}
 
 @end

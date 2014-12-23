@@ -43,6 +43,7 @@
 		C9903BFF1A46E9FE0006FD99 /* DockItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903BFE1A46E9FE0006FD99 /* DockItem.m */; };
 		C9903C021A46EA0C0006FD99 /* CellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903C011A46EA0C0006FD99 /* CellItem.m */; };
 		C9903C1E1A470BDB0006FD99 /* UIImage+Fit.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903C1D1A470BDB0006FD99 /* UIImage+Fit.m */; };
+		C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */; };
 		C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AE087E1A450FE200DA39BF /* LoginViewController.m */; };
 		C9BFA9F41A487BB000C887B4 /* AuditNotPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9E11A487BB000C887B4 /* AuditNotPassViewController.m */; };
 		C9BFA9F51A487BB000C887B4 /* CommonLogicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9E31A487BB000C887B4 /* CommonLogicViewController.m */; };
@@ -168,6 +169,8 @@
 		C9903C011A46EA0C0006FD99 /* CellItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellItem.m; sourceTree = "<group>"; };
 		C9903C1C1A470BDB0006FD99 /* UIImage+Fit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Fit.h"; sourceTree = "<group>"; };
 		C9903C1D1A470BDB0006FD99 /* UIImage+Fit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Fit.m"; sourceTree = "<group>"; };
+		C9A8B6091A490728008E94B7 /* CommonLogicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLogicCell.h; sourceTree = "<group>"; };
+		C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonLogicCell.m; sourceTree = "<group>"; };
 		C9AE087D1A450FE200DA39BF /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C9AE087E1A450FE200DA39BF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		C9BFA9E01A487BB000C887B4 /* AuditNotPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuditNotPassViewController.h; sourceTree = "<group>"; };
@@ -367,9 +370,8 @@
 		C9651F511A43B25F00B770BB /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				C9A8B6021A490682008E94B7 /* CustomCell */,
 				C9651F521A43B25F00B770BB /* CommonView */,
-				C9651F7C1A43B25F00B770BB /* CustomCell */,
-				C9651F861A43B25F00B770BB /* CustomView */,
 				C9651F931A43B25F00B770BB /* ViewCtrl */,
 			);
 			path = Sections;
@@ -502,36 +504,6 @@
 				C9651F781A43B25F00B770BB /* CYRadioButton.m */,
 			);
 			path = RadioButton;
-			sourceTree = "<group>";
-		};
-		C9651F7C1A43B25F00B770BB /* CustomCell */ = {
-			isa = PBXGroup;
-			children = (
-				C9651F7D1A43B25F00B770BB /* CollectionCell */,
-				C9651F7E1A43B25F00B770BB /* TableViewCell */,
-			);
-			path = CustomCell;
-			sourceTree = "<group>";
-		};
-		C9651F7D1A43B25F00B770BB /* CollectionCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CollectionCell;
-			sourceTree = "<group>";
-		};
-		C9651F7E1A43B25F00B770BB /* TableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TableViewCell;
-			sourceTree = "<group>";
-		};
-		C9651F861A43B25F00B770BB /* CustomView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomView;
 			sourceTree = "<group>";
 		};
 		C9651F931A43B25F00B770BB /* ViewCtrl */ = {
@@ -781,6 +753,39 @@
 			path = category;
 			sourceTree = "<group>";
 		};
+		C9A8B6021A490682008E94B7 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				C9A8B6031A490682008E94B7 /* CollectionCell */,
+				C9A8B6041A490682008E94B7 /* TableViewCell */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		C9A8B6031A490682008E94B7 /* CollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				C9A8B6051A4906D3008E94B7 /* CommonLogicCell */,
+			);
+			path = CollectionCell;
+			sourceTree = "<group>";
+		};
+		C9A8B6041A490682008E94B7 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		C9A8B6051A4906D3008E94B7 /* CommonLogicCell */ = {
+			isa = PBXGroup;
+			children = (
+				C9A8B6091A490728008E94B7 /* CommonLogicCell.h */,
+				C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */,
+			);
+			path = CommonLogicCell;
+			sourceTree = "<group>";
+		};
 		D53BBB8B0D9FFE63C65BE2D4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -938,6 +943,7 @@
 				C9BFA9F81A487BB000C887B4 /* HomeViewController.m in Sources */,
 				C9BFAA101A487BF400C887B4 /* HeaderView.m in Sources */,
 				C9651FC31A43B25F00B770BB /* BaseNetWork.m in Sources */,
+				C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */,
 				C9903BFF1A46E9FE0006FD99 /* DockItem.m in Sources */,
 				C9BFA9F51A487BB000C887B4 /* CommonLogicViewController.m in Sources */,
 				C9BFAA151A487BF400C887B4 /* SettingCell.m in Sources */,
@@ -1097,8 +1103,8 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: jia li (RS5JKD7E43)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jia li (RS5JKD7E43)";
 				GCC_PREFIX_HEADER = Measurement/Measurement.pch;
 				INFOPLIST_FILE = Measurement/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -1110,7 +1116,7 @@
 					"$(PROJECT_DIR)/Measurement/Library/ToolsLib/Views",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6049498f-2732-4389-b150-b3ac94c12b74";
+				PROVISIONING_PROFILE = "d6318b5d-921d-4fbd-9e73-b8d54f65b185";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s";
 			};
@@ -1122,8 +1128,8 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: jia li (RS5JKD7E43)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jia li (RS5JKD7E43)";
 				GCC_PREFIX_HEADER = Measurement/Measurement.pch;
 				INFOPLIST_FILE = Measurement/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -1135,7 +1141,7 @@
 					"$(PROJECT_DIR)/Measurement/Library/ToolsLib/Views",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6049498f-2732-4389-b150-b3ac94c12b74";
+				PROVISIONING_PROFILE = "d6318b5d-921d-4fbd-9e73-b8d54f65b185";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;

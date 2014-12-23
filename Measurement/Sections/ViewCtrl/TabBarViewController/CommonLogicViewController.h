@@ -8,8 +8,11 @@
 
 #import "BaseViewController.h"
 
-@interface CommonLogicViewController : BaseViewController
+@interface CommonLogicViewController : BaseViewController<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
+@property(nonatomic , strong) UICollectionView *m_CollectionView;
+
+@property(nonatomic , strong) NSMutableArray *m_DataSourceArr;  //患者信息
 
 #pragma mark - 自定义方法
 
