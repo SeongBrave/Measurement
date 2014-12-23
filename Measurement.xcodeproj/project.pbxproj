@@ -43,17 +43,23 @@
 		C9903BFF1A46E9FE0006FD99 /* DockItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903BFE1A46E9FE0006FD99 /* DockItem.m */; };
 		C9903C021A46EA0C0006FD99 /* CellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903C011A46EA0C0006FD99 /* CellItem.m */; };
 		C9903C1E1A470BDB0006FD99 /* UIImage+Fit.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903C1D1A470BDB0006FD99 /* UIImage+Fit.m */; };
+		C9A3376F1A499B8F004560D1 /* AuditNotPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337621A499B8F004560D1 /* AuditNotPassViewController.m */; };
+		C9A337701A499B8F004560D1 /* DetectionTaskQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337641A499B8F004560D1 /* DetectionTaskQueryViewController.m */; };
+		C9A337711A499B8F004560D1 /* FactoryTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337661A499B8F004560D1 /* FactoryTaskViewController.m */; };
+		C9A337721A499B8F004560D1 /* InspectionTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337681A499B8F004560D1 /* InspectionTasksViewController.m */; };
+		C9A337731A499B8F004560D1 /* MyPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3376A1A499B8F004560D1 /* MyPlanViewController.m */; };
+		C9A337741A499B8F004560D1 /* PlanningDepartmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3376C1A499B8F004560D1 /* PlanningDepartmentViewController.m */; };
+		C9A337751A499B8F004560D1 /* ProgramOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3376E1A499B8F004560D1 /* ProgramOverviewViewController.m */; };
+		C9A337781A499C79004560D1 /* CheckTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337771A499C79004560D1 /* CheckTaskViewController.m */; };
+		C9A3377B1A499CC0004560D1 /* ApprovalTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3377A1A499CC0004560D1 /* ApprovalTaskViewController.m */; };
+		C9A3377E1A499CF4004560D1 /* CertificateGuaranteeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3377D1A499CF4004560D1 /* CertificateGuaranteeViewController.m */; };
+		C9A337811A499D1A004560D1 /* BidManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337801A499D1A004560D1 /* BidManagementViewController.m */; };
+		C9A337841A499D42004560D1 /* ChargeManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337831A499D42004560D1 /* ChargeManagementViewController.m */; };
+		C9A337871A499D6B004560D1 /* SystemSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337861A499D6B004560D1 /* SystemSettingsViewController.m */; };
 		C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */; };
 		C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AE087E1A450FE200DA39BF /* LoginViewController.m */; };
-		C9BFA9F41A487BB000C887B4 /* AuditNotPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9E11A487BB000C887B4 /* AuditNotPassViewController.m */; };
 		C9BFA9F51A487BB000C887B4 /* CommonLogicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9E31A487BB000C887B4 /* CommonLogicViewController.m */; };
-		C9BFA9F61A487BB000C887B4 /* DetectionTaskQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9E51A487BB000C887B4 /* DetectionTaskQueryViewController.m */; };
-		C9BFA9F71A487BB000C887B4 /* FactoryTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9E71A487BB000C887B4 /* FactoryTaskViewController.m */; };
 		C9BFA9F81A487BB000C887B4 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9E91A487BB000C887B4 /* HomeViewController.m */; };
-		C9BFA9F91A487BB000C887B4 /* InspectionTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9EB1A487BB000C887B4 /* InspectionTasksViewController.m */; };
-		C9BFA9FA1A487BB000C887B4 /* MyPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9ED1A487BB000C887B4 /* MyPlanViewController.m */; };
-		C9BFA9FB1A487BB000C887B4 /* PlanningDepartmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9EF1A487BB000C887B4 /* PlanningDepartmentViewController.m */; };
-		C9BFA9FC1A487BB000C887B4 /* ProgramOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9F11A487BB000C887B4 /* ProgramOverviewViewController.m */; };
 		C9BFA9FD1A487BB000C887B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9F31A487BB000C887B4 /* ViewController.m */; };
 		C9BFAA0F1A487BF400C887B4 /* Dock.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFAA011A487BF400C887B4 /* Dock.m */; };
 		C9BFAA101A487BF400C887B4 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFAA031A487BF400C887B4 /* HeaderView.m */; };
@@ -169,28 +175,40 @@
 		C9903C011A46EA0C0006FD99 /* CellItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellItem.m; sourceTree = "<group>"; };
 		C9903C1C1A470BDB0006FD99 /* UIImage+Fit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Fit.h"; sourceTree = "<group>"; };
 		C9903C1D1A470BDB0006FD99 /* UIImage+Fit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Fit.m"; sourceTree = "<group>"; };
+		C9A337611A499B8F004560D1 /* AuditNotPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuditNotPassViewController.h; sourceTree = "<group>"; };
+		C9A337621A499B8F004560D1 /* AuditNotPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuditNotPassViewController.m; sourceTree = "<group>"; };
+		C9A337631A499B8F004560D1 /* DetectionTaskQueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetectionTaskQueryViewController.h; sourceTree = "<group>"; };
+		C9A337641A499B8F004560D1 /* DetectionTaskQueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetectionTaskQueryViewController.m; sourceTree = "<group>"; };
+		C9A337651A499B8F004560D1 /* FactoryTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryTaskViewController.h; sourceTree = "<group>"; };
+		C9A337661A499B8F004560D1 /* FactoryTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryTaskViewController.m; sourceTree = "<group>"; };
+		C9A337671A499B8F004560D1 /* InspectionTasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectionTasksViewController.h; sourceTree = "<group>"; };
+		C9A337681A499B8F004560D1 /* InspectionTasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectionTasksViewController.m; sourceTree = "<group>"; };
+		C9A337691A499B8F004560D1 /* MyPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlanViewController.h; sourceTree = "<group>"; };
+		C9A3376A1A499B8F004560D1 /* MyPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlanViewController.m; sourceTree = "<group>"; };
+		C9A3376B1A499B8F004560D1 /* PlanningDepartmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningDepartmentViewController.h; sourceTree = "<group>"; };
+		C9A3376C1A499B8F004560D1 /* PlanningDepartmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanningDepartmentViewController.m; sourceTree = "<group>"; };
+		C9A3376D1A499B8F004560D1 /* ProgramOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramOverviewViewController.h; sourceTree = "<group>"; };
+		C9A3376E1A499B8F004560D1 /* ProgramOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramOverviewViewController.m; sourceTree = "<group>"; };
+		C9A337761A499C79004560D1 /* CheckTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckTaskViewController.h; sourceTree = "<group>"; };
+		C9A337771A499C79004560D1 /* CheckTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckTaskViewController.m; sourceTree = "<group>"; };
+		C9A337791A499CC0004560D1 /* ApprovalTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApprovalTaskViewController.h; sourceTree = "<group>"; };
+		C9A3377A1A499CC0004560D1 /* ApprovalTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApprovalTaskViewController.m; sourceTree = "<group>"; };
+		C9A3377C1A499CF4004560D1 /* CertificateGuaranteeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateGuaranteeViewController.h; sourceTree = "<group>"; };
+		C9A3377D1A499CF4004560D1 /* CertificateGuaranteeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateGuaranteeViewController.m; sourceTree = "<group>"; };
+		C9A3377F1A499D1A004560D1 /* BidManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidManagementViewController.h; sourceTree = "<group>"; };
+		C9A337801A499D1A004560D1 /* BidManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidManagementViewController.m; sourceTree = "<group>"; };
+		C9A337821A499D42004560D1 /* ChargeManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeManagementViewController.h; sourceTree = "<group>"; };
+		C9A337831A499D42004560D1 /* ChargeManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeManagementViewController.m; sourceTree = "<group>"; };
+		C9A337851A499D6B004560D1 /* SystemSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSettingsViewController.h; sourceTree = "<group>"; };
+		C9A337861A499D6B004560D1 /* SystemSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSettingsViewController.m; sourceTree = "<group>"; };
 		C9A8B6091A490728008E94B7 /* CommonLogicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLogicCell.h; sourceTree = "<group>"; };
 		C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonLogicCell.m; sourceTree = "<group>"; };
 		C9AE087D1A450FE200DA39BF /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C9AE087E1A450FE200DA39BF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		C9BFA9E01A487BB000C887B4 /* AuditNotPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuditNotPassViewController.h; sourceTree = "<group>"; };
-		C9BFA9E11A487BB000C887B4 /* AuditNotPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuditNotPassViewController.m; sourceTree = "<group>"; };
 		C9BFA9E21A487BB000C887B4 /* CommonLogicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLogicViewController.h; sourceTree = "<group>"; };
 		C9BFA9E31A487BB000C887B4 /* CommonLogicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonLogicViewController.m; sourceTree = "<group>"; };
-		C9BFA9E41A487BB000C887B4 /* DetectionTaskQueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetectionTaskQueryViewController.h; sourceTree = "<group>"; };
-		C9BFA9E51A487BB000C887B4 /* DetectionTaskQueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetectionTaskQueryViewController.m; sourceTree = "<group>"; };
-		C9BFA9E61A487BB000C887B4 /* FactoryTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryTaskViewController.h; sourceTree = "<group>"; };
-		C9BFA9E71A487BB000C887B4 /* FactoryTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryTaskViewController.m; sourceTree = "<group>"; };
 		C9BFA9E81A487BB000C887B4 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		C9BFA9E91A487BB000C887B4 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		C9BFA9EA1A487BB000C887B4 /* InspectionTasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectionTasksViewController.h; sourceTree = "<group>"; };
-		C9BFA9EB1A487BB000C887B4 /* InspectionTasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectionTasksViewController.m; sourceTree = "<group>"; };
-		C9BFA9EC1A487BB000C887B4 /* MyPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlanViewController.h; sourceTree = "<group>"; };
-		C9BFA9ED1A487BB000C887B4 /* MyPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlanViewController.m; sourceTree = "<group>"; };
-		C9BFA9EE1A487BB000C887B4 /* PlanningDepartmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningDepartmentViewController.h; sourceTree = "<group>"; };
-		C9BFA9EF1A487BB000C887B4 /* PlanningDepartmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanningDepartmentViewController.m; sourceTree = "<group>"; };
-		C9BFA9F01A487BB000C887B4 /* ProgramOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramOverviewViewController.h; sourceTree = "<group>"; };
-		C9BFA9F11A487BB000C887B4 /* ProgramOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramOverviewViewController.m; sourceTree = "<group>"; };
 		C9BFA9F21A487BB000C887B4 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C9BFA9F31A487BB000C887B4 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C9BFAA001A487BF400C887B4 /* Dock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dock.h; sourceTree = "<group>"; };
@@ -509,9 +527,9 @@
 		C9651F931A43B25F00B770BB /* ViewCtrl */ = {
 			isa = PBXGroup;
 			children = (
+				C9A337601A499B8F004560D1 /* OtherView */,
 				C9651F941A43B25F00B770BB /* BaseClass */,
 				C9651F991A43B25F00B770BB /* MenuView */,
-				C9651F9A1A43B25F00B770BB /* OtherView */,
 				C9651F9B1A43B25F00B770BB /* TabBarViewController */,
 			);
 			path = ViewCtrl;
@@ -537,34 +555,13 @@
 			path = MenuView;
 			sourceTree = "<group>";
 		};
-		C9651F9A1A43B25F00B770BB /* OtherView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = OtherView;
-			sourceTree = "<group>";
-		};
 		C9651F9B1A43B25F00B770BB /* TabBarViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C9BFA9E01A487BB000C887B4 /* AuditNotPassViewController.h */,
-				C9BFA9E11A487BB000C887B4 /* AuditNotPassViewController.m */,
-				C9BFA9E21A487BB000C887B4 /* CommonLogicViewController.h */,
-				C9BFA9E31A487BB000C887B4 /* CommonLogicViewController.m */,
-				C9BFA9E41A487BB000C887B4 /* DetectionTaskQueryViewController.h */,
-				C9BFA9E51A487BB000C887B4 /* DetectionTaskQueryViewController.m */,
-				C9BFA9E61A487BB000C887B4 /* FactoryTaskViewController.h */,
-				C9BFA9E71A487BB000C887B4 /* FactoryTaskViewController.m */,
 				C9BFA9E81A487BB000C887B4 /* HomeViewController.h */,
 				C9BFA9E91A487BB000C887B4 /* HomeViewController.m */,
-				C9BFA9EA1A487BB000C887B4 /* InspectionTasksViewController.h */,
-				C9BFA9EB1A487BB000C887B4 /* InspectionTasksViewController.m */,
-				C9BFA9EC1A487BB000C887B4 /* MyPlanViewController.h */,
-				C9BFA9ED1A487BB000C887B4 /* MyPlanViewController.m */,
-				C9BFA9EE1A487BB000C887B4 /* PlanningDepartmentViewController.h */,
-				C9BFA9EF1A487BB000C887B4 /* PlanningDepartmentViewController.m */,
-				C9BFA9F01A487BB000C887B4 /* ProgramOverviewViewController.h */,
-				C9BFA9F11A487BB000C887B4 /* ProgramOverviewViewController.m */,
+				C9BFA9E21A487BB000C887B4 /* CommonLogicViewController.h */,
+				C9BFA9E31A487BB000C887B4 /* CommonLogicViewController.m */,
 				C9BFA9F21A487BB000C887B4 /* ViewController.h */,
 				C9BFA9F31A487BB000C887B4 /* ViewController.m */,
 			);
@@ -753,6 +750,39 @@
 			path = category;
 			sourceTree = "<group>";
 		};
+		C9A337601A499B8F004560D1 /* OtherView */ = {
+			isa = PBXGroup;
+			children = (
+				C9A3376D1A499B8F004560D1 /* ProgramOverviewViewController.h */,
+				C9A3376E1A499B8F004560D1 /* ProgramOverviewViewController.m */,
+				C9A3376B1A499B8F004560D1 /* PlanningDepartmentViewController.h */,
+				C9A3376C1A499B8F004560D1 /* PlanningDepartmentViewController.m */,
+				C9A337691A499B8F004560D1 /* MyPlanViewController.h */,
+				C9A3376A1A499B8F004560D1 /* MyPlanViewController.m */,
+				C9A337651A499B8F004560D1 /* FactoryTaskViewController.h */,
+				C9A337661A499B8F004560D1 /* FactoryTaskViewController.m */,
+				C9A337631A499B8F004560D1 /* DetectionTaskQueryViewController.h */,
+				C9A337641A499B8F004560D1 /* DetectionTaskQueryViewController.m */,
+				C9A337611A499B8F004560D1 /* AuditNotPassViewController.h */,
+				C9A337621A499B8F004560D1 /* AuditNotPassViewController.m */,
+				C9A337761A499C79004560D1 /* CheckTaskViewController.h */,
+				C9A337771A499C79004560D1 /* CheckTaskViewController.m */,
+				C9A337791A499CC0004560D1 /* ApprovalTaskViewController.h */,
+				C9A3377A1A499CC0004560D1 /* ApprovalTaskViewController.m */,
+				C9A3377C1A499CF4004560D1 /* CertificateGuaranteeViewController.h */,
+				C9A3377D1A499CF4004560D1 /* CertificateGuaranteeViewController.m */,
+				C9A3377F1A499D1A004560D1 /* BidManagementViewController.h */,
+				C9A337801A499D1A004560D1 /* BidManagementViewController.m */,
+				C9A337821A499D42004560D1 /* ChargeManagementViewController.h */,
+				C9A337831A499D42004560D1 /* ChargeManagementViewController.m */,
+				C9A337851A499D6B004560D1 /* SystemSettingsViewController.h */,
+				C9A337861A499D6B004560D1 /* SystemSettingsViewController.m */,
+				C9A337671A499B8F004560D1 /* InspectionTasksViewController.h */,
+				C9A337681A499B8F004560D1 /* InspectionTasksViewController.m */,
+			);
+			path = OtherView;
+			sourceTree = "<group>";
+		};
 		C9A8B6021A490682008E94B7 /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -937,8 +967,10 @@
 				C9651FD41A43B26000B770BB /* CustomStepper.m in Sources */,
 				C9903C021A46EA0C0006FD99 /* CellItem.m in Sources */,
 				C9651FE51A43B26000B770BB /* BaseViewController.m in Sources */,
-				C9BFA9FB1A487BB000C887B4 /* PlanningDepartmentViewController.m in Sources */,
+				C9A337781A499C79004560D1 /* CheckTaskViewController.m in Sources */,
 				C9651FC21A43B25F00B770BB /* TableViewBindingHelper.m in Sources */,
+				C9A3376F1A499B8F004560D1 /* AuditNotPassViewController.m in Sources */,
+				C9A3377B1A499CC0004560D1 /* ApprovalTaskViewController.m in Sources */,
 				C9651ECF1A43AD8F00B770BB /* AppDelegate.m in Sources */,
 				C9BFA9F81A487BB000C887B4 /* HomeViewController.m in Sources */,
 				C9BFAA101A487BF400C887B4 /* HeaderView.m in Sources */,
@@ -947,37 +979,41 @@
 				C9903BFF1A46E9FE0006FD99 /* DockItem.m in Sources */,
 				C9BFA9F51A487BB000C887B4 /* CommonLogicViewController.m in Sources */,
 				C9BFAA151A487BF400C887B4 /* SettingCell.m in Sources */,
+				C9A337751A499B8F004560D1 /* ProgramOverviewViewController.m in Sources */,
 				C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */,
-				C9BFA9FA1A487BB000C887B4 /* MyPlanViewController.m in Sources */,
 				C9651FD51A43B26000B770BB /* StepperModel.m in Sources */,
-				C9BFA9F91A487BB000C887B4 /* InspectionTasksViewController.m in Sources */,
 				C9651FE41A43B26000B770BB /* BaseTableViewController.m in Sources */,
 				C9651FD11A43B26000B770BB /* CYTextFieldAutoFillInputView.m in Sources */,
 				C9651FD61A43B26000B770BB /* StepperViewModel.m in Sources */,
+				C9A337721A499B8F004560D1 /* InspectionTasksViewController.m in Sources */,
 				C9651FEA1A43B26000B770BB /* CustomBadge.m in Sources */,
+				C9A337811A499D1A004560D1 /* BidManagementViewController.m in Sources */,
 				C9651FD91A43B26000B770BB /* CustomVitalSignsView.m in Sources */,
-				C9BFA9F41A487BB000C887B4 /* AuditNotPassViewController.m in Sources */,
 				C9651FD81A43B26000B770BB /* CustomBodyTempView.m in Sources */,
 				C9651FD21A43B26000B770BB /* CustomButton.m in Sources */,
-				C9BFA9FC1A487BB000C887B4 /* ProgramOverviewViewController.m in Sources */,
+				C9A337841A499D42004560D1 /* ChargeManagementViewController.m in Sources */,
 				C9651FEB1A43B26000B770BB /* Localisator.m in Sources */,
 				C9651FEC1A43B26000B770BB /* CustomTabBarViewController.m in Sources */,
 				C9651FF71A43BE3100B770BB /* YTKKeyValueStore.m in Sources */,
+				C9A337741A499B8F004560D1 /* PlanningDepartmentViewController.m in Sources */,
 				C9651FEF1A43B26000B770BB /* DropDownListView.m in Sources */,
 				C9BFAA131A487BF400C887B4 /* MenuView.m in Sources */,
-				C9BFA9F61A487BB000C887B4 /* DetectionTaskQueryViewController.m in Sources */,
+				C9A337701A499B8F004560D1 /* DetectionTaskQueryViewController.m in Sources */,
 				C9BFA9FD1A487BB000C887B4 /* ViewController.m in Sources */,
+				C9A337871A499D6B004560D1 /* SystemSettingsViewController.m in Sources */,
 				C9651FD01A43B26000B770BB /* CYTextField.m in Sources */,
 				C9651FED1A43B26000B770BB /* TabBarHeaderView.m in Sources */,
 				C9651FD71A43B26000B770BB /* MyGestureRecognizerView.m in Sources */,
+				C9A337731A499B8F004560D1 /* MyPlanViewController.m in Sources */,
 				C9651FCF1A43B26000B770BB /* CommonTextField.m in Sources */,
 				C9651FDA1A43B26000B770BB /* HomeIconButton.m in Sources */,
 				C9651FD31A43B26000B770BB /* FlagButton.m in Sources */,
 				C9651FDB1A43B26000B770BB /* CYRadioButton.m in Sources */,
 				C9903C1E1A470BDB0006FD99 /* UIImage+Fit.m in Sources */,
 				C9BFAA0F1A487BF400C887B4 /* Dock.m in Sources */,
+				C9A3377E1A499CF4004560D1 /* CertificateGuaranteeViewController.m in Sources */,
 				C9651ECC1A43AD8F00B770BB /* main.m in Sources */,
-				C9BFA9F71A487BB000C887B4 /* FactoryTaskViewController.m in Sources */,
+				C9A337711A499B8F004560D1 /* FactoryTaskViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

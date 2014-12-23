@@ -21,13 +21,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // 1.设置内容模式
-
-
-//        self.imageView.contentMode = UIViewContentModeCenter;
-//        self.adjustsImageWhenHighlighted = NO;
-        
-
 
     }
     return self;
