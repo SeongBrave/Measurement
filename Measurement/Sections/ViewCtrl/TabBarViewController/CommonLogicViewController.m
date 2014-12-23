@@ -8,10 +8,12 @@
 
 #import "CommonLogicViewController.h"
 #import "CommonLogicCell.h"
+#import "BaseNetWork.h"
 
 @interface CommonLogicViewController ()
 {
      CommonLogicCell *oldCell;
+
 }
 @end
 
@@ -62,10 +64,10 @@
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     [flowLayout setMinimumLineSpacing:10];
     [flowLayout setMinimumInteritemSpacing:10];
-    [flowLayout setItemSize:CGSizeMake(220.0f, 220.0f)];
-    [flowLayout setHeaderReferenceSize:CGSizeMake([self.view bounds].size.width, 30.0f)];
+    [flowLayout setItemSize:CGSizeMake(220.0f, 200.0f)];
+    [flowLayout setHeaderReferenceSize:CGSizeMake([self.view bounds].size.width, 20.0f)];
     self.m_CollectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
-    self.m_CollectionView.backgroundColor = [UIColor whiteColor];
+    self.m_CollectionView.backgroundColor = [UIColor lightGrayColor];
     self.m_CollectionView.delegate = self;
     self.m_CollectionView.dataSource = self;
     
@@ -102,6 +104,41 @@
     
     [self layoutMainCustomView];
     [self AddNavgationBarItem];
+    
+    self.m_tableName = @"CommonLogicViewController";
+    
+    self.m_store = [[YTKKeyValueStore alloc] initDBWithName:@"Measurement.db"];
+    
+    [self loadNetData];
+    
+}
+-(void)loadNetData
+{
+    NSDictionary *dict = [[NSDictionary alloc]init];
+    [[[[BaseNetWork getInstance] rac_getPath:@"http://192.168.10.169:8080/mbs/convey/findJhzl.do" parameters:dict]map:^(id responseData)
+    {
+          NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+        
+ 
+        return [dict valueForKeyPath:@"page.result"];
+    }]subscribeNext:^(NSArray *arr){
+        
+        [self.m_store createTableWithName:self.m_tableName];
+        [self.m_store putObject:arr withId:@"page.result" intoTable:self.m_tableName];
+        self.m_DataSourceArr = arr;
+        
+        [self.m_CollectionView reloadData];
+        
+        
+    }error:^(NSError *error){
+        
+        NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
+        self.m_DataSourceArr = arr;
+        
+        [self.m_CollectionView reloadData];
+    
+    
+    }];
     
 }
 -(void)AddNavgationBarItem
@@ -148,7 +185,7 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     
-    return 31;
+    return self.m_DataSourceArr.count;
     
 }
 //TODO:定义展示的Section的个数
@@ -167,10 +204,8 @@
     static NSString * CellIdentifier = @"CommonLogicCell";
     
     CommonLogicCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    
 
-    [cell updateOldCollectionCell];
+    [cell updateCommonLogicCellWith:self.m_DataSourceArr[indexPath.row]];
     
     
     //     cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"a.jpg"]];
@@ -186,7 +221,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    return CGSizeMake(230, 230);
+    return CGSizeMake(230, 190);
 
 }
 //TODO:定义每个UICollectionView 的 margin

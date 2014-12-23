@@ -12,7 +12,17 @@
 
 @property(nonatomic , strong) UICollectionView *m_CollectionView;
 
-@property(nonatomic , strong) NSMutableArray *m_DataSourceArr;  //患者信息
+@property(nonatomic , strong) NSArray *m_DataSourceArr;  //患者信息
+
+/**
+ *  本地数据库
+ */
+@property(nonatomic , strong)YTKKeyValueStore *m_store;
+
+/**
+ *  保存数据的表名
+ */
+@property(nonatomic , strong)NSString *m_tableName;
 
 #pragma mark - 自定义方法
 
@@ -21,4 +31,6 @@
 
 //TODO: 添加视图
 -(void)layoutMainCustomView;
+
+-(void)loadNetData;
 @end

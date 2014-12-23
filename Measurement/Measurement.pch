@@ -23,6 +23,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "Dialog.h"
 #import "FileHelpers.h"
+#import "YTKKeyValueStore.h"
 
 
 #endif

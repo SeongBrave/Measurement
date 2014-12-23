@@ -23,6 +23,8 @@ typedef enum{
 
 @interface BaseNetWork : NSObject
 
+@property(nonatomic, strong)Dialog *m_show;
+
 +(BaseNetWork *)getInstance;
 
 //- (RACSignal *)rac_enqueueHTTPRequestOperation:(AFHTTPRequestOperation *)requestOperation;

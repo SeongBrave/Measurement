@@ -6,6 +6,9 @@
 //  Copyright (c) 2014年 成勇. All rights reserved.
 //
 
+#define COMMONLOGICCELL_COMMONSHOWLABEL_FONT [UIFont fontWithName:@"Helvetica" size:14]
+#define COMMONLOGICCELL_COMPANYNAMEL_FONT [UIFont fontWithName:@"Helvetica-Bold" size:20]
+
 #import "CommonLogicCell.h"
 
 @implementation CommonLogicCell
@@ -31,9 +34,9 @@
          m_companyNameL
          */
         self.m_companyNameL = [[UILabel alloc]init];
-        self.m_companyNameL.numberOfLines = 1;
+        self.m_companyNameL.numberOfLines = 0;
         self.m_companyNameL.textColor = [UIColor blackColor];
-        self.m_companyNameL.font = [UIFont fontWithName:@"Helvetica-Bold" size:24];
+        self.m_companyNameL.font =COMMONLOGICCELL_COMPANYNAMEL_FONT;
         [self.contentView addSubview:_m_companyNameL];
         
         
@@ -43,7 +46,7 @@
         self.m_companyAddrL = [[UILabel alloc]init];
         self.m_companyAddrL.numberOfLines = 1;
         self.m_companyAddrL.textColor = [UIColor blackColor];
-        self.m_companyAddrL.font = [UIFont systemFontOfSize:18];
+        self.m_companyAddrL.font = COMMONLOGICCELL_COMMONSHOWLABEL_FONT;
         [self.contentView addSubview:_m_companyAddrL];
         
         /**
@@ -52,14 +55,14 @@
         self.m_contactNameL = [[UILabel alloc]init];
         self.m_contactNameL.numberOfLines = 1;
         self.m_contactNameL.textColor = [UIColor blackColor];
-        self.m_contactNameL.font = [UIFont systemFontOfSize:18];
+        self.m_contactNameL.font = COMMONLOGICCELL_COMMONSHOWLABEL_FONT;
         [self.contentView addSubview:_m_contactNameL];
         
         UILabel *contactNameL = [[UILabel alloc]init];
         contactNameL.numberOfLines = 1;
         contactNameL.text = @"联系人";
         contactNameL.textColor = [UIColor blackColor];
-        contactNameL.font = [UIFont systemFontOfSize:18];
+        contactNameL.font = COMMONLOGICCELL_COMMONSHOWLABEL_FONT;
         [self.contentView addSubview:contactNameL];
         
         /**
@@ -68,14 +71,14 @@
         self.m_contactTelL = [[UILabel alloc]init];
         self.m_contactTelL.numberOfLines = 1;
         self.m_contactTelL.textColor = [UIColor blackColor];
-        self.m_contactTelL.font = [UIFont systemFontOfSize:18];
+        self.m_contactTelL.font = COMMONLOGICCELL_COMMONSHOWLABEL_FONT;
         [self.contentView addSubview:_m_contactTelL];
         
         UILabel *contactTelL = [[UILabel alloc]init];
         contactTelL.numberOfLines = 1;
         contactTelL.text = @"联系电话";
         contactTelL.textColor = [UIColor blackColor];
-        contactTelL.font = [UIFont systemFontOfSize:18];
+        contactTelL.font = COMMONLOGICCELL_COMMONSHOWLABEL_FONT;
         [self.contentView addSubview:contactTelL];
         
         
@@ -85,14 +88,14 @@
         self.m_inFactoryTimeL = [[UILabel alloc]init];
         self.m_inFactoryTimeL.numberOfLines = 1;
         self.m_inFactoryTimeL.textColor = [UIColor blackColor];
-        self.m_inFactoryTimeL.font = [UIFont systemFontOfSize:18];
+        self.m_inFactoryTimeL.font = COMMONLOGICCELL_COMMONSHOWLABEL_FONT;
         [self.contentView addSubview:_m_inFactoryTimeL];
         
         UILabel *inFactoryTimeL = [[UILabel alloc]init];
         inFactoryTimeL.numberOfLines = 1;
         inFactoryTimeL.text = @"下厂时间";
         inFactoryTimeL.textColor = [UIColor blackColor];
-        inFactoryTimeL.font = [UIFont systemFontOfSize:18];
+        inFactoryTimeL.font = COMMONLOGICCELL_COMMONSHOWLABEL_FONT;
         [self.contentView addSubview:inFactoryTimeL];
         
         
@@ -102,14 +105,14 @@
         self.m_headManNameL = [[UILabel alloc]init];
         self.m_headManNameL.numberOfLines = 1;
         self.m_headManNameL.textColor = [UIColor blackColor];
-        self.m_headManNameL.font = [UIFont systemFontOfSize:18];
+        self.m_headManNameL.font = COMMONLOGICCELL_COMMONSHOWLABEL_FONT;
         [self.contentView addSubview:_m_headManNameL];
         
         UILabel *headManNameL = [[UILabel alloc]init];
         headManNameL.numberOfLines = 1;
         headManNameL.text = @"负责人";
         headManNameL.textColor = [UIColor blackColor];
-        headManNameL.font = [UIFont systemFontOfSize:18];
+        headManNameL.font = COMMONLOGICCELL_COMMONSHOWLABEL_FONT;
         [self.contentView addSubview:headManNameL];
         
         
@@ -119,14 +122,14 @@
         self.m_inFactoryMansL = [[UILabel alloc]init];
         self.m_inFactoryMansL.numberOfLines = 1;
         self.m_inFactoryMansL.textColor = [UIColor blackColor];
-        self.m_inFactoryMansL.font = [UIFont systemFontOfSize:18];
+        self.m_inFactoryMansL.font = COMMONLOGICCELL_COMMONSHOWLABEL_FONT;
         [self.contentView addSubview:_m_inFactoryMansL];
         
         UILabel *inFactoryMansL = [[UILabel alloc]init];
         inFactoryMansL.numberOfLines = 1;
         inFactoryMansL.text = @"下厂人员";
         inFactoryMansL.textColor = [UIColor blackColor];
-        inFactoryMansL.font = [UIFont systemFontOfSize:18];
+        inFactoryMansL.font = COMMONLOGICCELL_COMMONSHOWLABEL_FONT;
         [self.contentView addSubview:inFactoryMansL];
         
         
@@ -136,14 +139,14 @@
         self.m_noteL = [[UILabel alloc]init];
         self.m_noteL.numberOfLines = 1;
         self.m_noteL.textColor = [UIColor blackColor];
-        self.m_noteL.font = [UIFont systemFontOfSize:18];
+        self.m_noteL.font = COMMONLOGICCELL_COMMONSHOWLABEL_FONT;
         [self.contentView addSubview:_m_noteL];
         
         UILabel *noteL = [[UILabel alloc]init];
         noteL.numberOfLines = 1;
         noteL.text = @"备注";
         noteL.textColor = [UIColor blackColor];
-        noteL.font = [UIFont systemFontOfSize:18];
+        noteL.font = COMMONLOGICCELL_COMMONSHOWLABEL_FONT;
         [self.contentView addSubview:noteL];
         
         
@@ -156,7 +159,7 @@
          */
         [ self.m_dateL mas_makeConstraints:^(MASConstraintMaker *make) {
             
-            make.leading.equalTo(@0);
+            make.leading.equalTo(@5);
             make.top.equalTo(@0);
         }];
         
@@ -172,6 +175,7 @@
             
             make.top.equalTo(self.m_dateL.mas_bottom).offset(2);
             make.leading.equalTo(@5);
+            make.trailing.equalTo(@-5);
         }];
         
         /**
@@ -347,7 +351,7 @@
          m_companyNameL
          */
         self.m_companyNameL = [[UILabel alloc]init];
-        self.m_companyNameL.numberOfLines = 1;
+        self.m_companyNameL.numberOfLines = 0;
         self.m_companyNameL.textColor = [UIColor blackColor];
         self.m_companyNameL.font = [UIFont systemFontOfSize:18];
         [self.contentView addSubview:_m_companyNameL];
@@ -488,6 +492,7 @@
 
             make.top.equalTo(self.m_dateL.mas_bottom).offset(2);
             make.leading.equalTo(@5);
+            make.trailing.equalTo(@-5);
         }];
         
         /**
@@ -645,14 +650,14 @@
 -(void)updateCommonLogicCellWith:(NSDictionary*) commonLogicDict
 {
     self.m_dateL.text = [NSString stringWithFormat:@"今天"];
-    self.m_companyNameL.text = [NSString stringWithFormat:@"长春美味食品有限公司"];
-    self.m_companyAddrL.text = [NSString stringWithFormat:@"产新区建华西路北街108号"];
+    self.m_companyNameL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"WTDWMC"]];
+    self.m_companyAddrL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"SZDQ"]];
     self.m_contactNameL.text = [NSString stringWithFormat:@"张科长"];
-    self.m_contactTelL.text = [NSString stringWithFormat:@"186123456"];
-    self.m_inFactoryTimeL.text = [NSString stringWithFormat:@"2014-10-25 09：30"];
-    self.m_headManNameL.text = [NSString stringWithFormat:@"李莉"];
+    self.m_contactTelL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"LXDH"]];
+    self.m_inFactoryTimeL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"CJSJ"]];
+    self.m_headManNameL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"YWFZR"]];
     self.m_inFactoryMansL.text = [NSString stringWithFormat:@"刘淑敏、蔡小凡"];
-    self.m_noteL.text = [NSString stringWithFormat:@"无"];
+    self.m_noteL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"BZ"]];
     
 }
 

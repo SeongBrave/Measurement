@@ -104,9 +104,7 @@
  */
 - (IBAction)loginBtnClick:(id)sender {
     
-    [Dialog progressToast:@"正在加载.."];
-    
-    
+
        [self performSegueWithIdentifier:@"ToLoginSuccess" sender:nil];
     //ToLoginSuccess
 }

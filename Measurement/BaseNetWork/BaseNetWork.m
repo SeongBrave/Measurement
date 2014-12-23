@@ -18,6 +18,7 @@ static BaseNetWork *instance =nil;
     @synchronized(self) {
         if (instance==nil) {
             instance=[[BaseNetWork alloc] init];
+            instance.m_show = [[Dialog alloc]init];
         }
     }
     return instance;
@@ -121,6 +122,8 @@ static BaseNetWork *instance =nil;
     return [RACSignal
             createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
                 
+                [self.m_show showCenterProgressWithLabel:@"正在加载..."];
+                
                 AFHTTPRequestOperationManager *manager = [self getRequestOperationManager];
                 
                 AFHTTPRequestOperation *opation;
@@ -130,12 +133,12 @@ static BaseNetWork *instance =nil;
                     {
                         
                         opation = [manager POST:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            
+                            [self.m_show hideProgress];
                             [subscriber sendNext:responseObject];
                             [subscriber sendCompleted];
                             
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            
+                            [self.m_show hideProgress];
                             [subscriber sendError:error];
                             
                         }];
@@ -147,14 +150,13 @@ static BaseNetWork *instance =nil;
                         
                         opation = [manager GET:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             
-                            
-                            NSLog(@"151RequestGet");
+                            [self.m_show hideProgress];
                             [subscriber sendNext:responseObject];
                             [subscriber sendCompleted];
                             
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                             
-                             NSLog(@"156RequestGet%@",error);
+                           [self.m_show hideProgress];
                             [subscriber sendError:error];
                             
                         }];
@@ -165,12 +167,12 @@ static BaseNetWork *instance =nil;
                     {
                         
                         opation = [manager PUT:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            
+                            [self.m_show hideProgress];
                             [subscriber sendNext:responseObject];
                             [subscriber sendCompleted];
                             
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            
+                            [self.m_show hideProgress];
                             [subscriber sendError:error];
                             
                         }];
@@ -181,12 +183,12 @@ static BaseNetWork *instance =nil;
                     {
                         
                         opation = [manager PATCH:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            
+                            [self.m_show hideProgress];
                             [subscriber sendNext:responseObject];
                             [subscriber sendCompleted];
                             
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            
+                            [self.m_show hideProgress];
                             [subscriber sendError:error];
                             
                         }];
@@ -197,12 +199,12 @@ static BaseNetWork *instance =nil;
                     {
                         
                         opation = [manager DELETE:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            
+                            [self.m_show hideProgress];
                             [subscriber sendNext:responseObject];
                             [subscriber sendCompleted];
                             
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            
+                            [self.m_show hideProgress];
                             [subscriber sendError:error];
                             
                         }];
@@ -213,7 +215,7 @@ static BaseNetWork *instance =nil;
                         break;
                 }
                 return [RACDisposable disposableWithBlock:^{
-                    
+                    [self.m_show hideProgress];
                     [opation cancel];
                     
                 }];
