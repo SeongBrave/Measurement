@@ -9,12 +9,17 @@
 #import "CommonLogicViewController.h"
 #import "CommonLogicCell.h"
 #import "BaseNetWork.h"
+#import "MJRefresh.h"
+#import "CompanyCollectionViewCell.h"
 
-@interface CommonLogicViewController ()
+@interface CommonLogicViewController ()<MJRefreshBaseViewDelegate,SwipeCellDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
 {
      CommonLogicCell *oldCell;
+    MJRefreshHeaderView *_header;
+    MJRefreshFooterView *_footer;
 
 }
+@property (weak, nonatomic) IBOutlet UICollectionView *m_CollectionView;
 @end
 
 @implementation CommonLogicViewController
@@ -38,6 +43,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self loadNetData];
 }
 
 // TODO: 使用autolayout 布局界面
@@ -59,43 +65,8 @@
 //TODO: 添加视图
 -(void)layoutMainCustomView
 {
-    UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
-    [flowLayout setSectionInset:UIEdgeInsetsMake(10, 10, 10, 10)];
-    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    [flowLayout setMinimumLineSpacing:10];
-    [flowLayout setMinimumInteritemSpacing:10];
-    [flowLayout setItemSize:CGSizeMake(220.0f, 200.0f)];
-    [flowLayout setHeaderReferenceSize:CGSizeMake([self.view bounds].size.width, 20.0f)];
-    self.m_CollectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
-    self.m_CollectionView.backgroundColor = [UIColor lightGrayColor];
-    self.m_CollectionView.delegate = self;
-    self.m_CollectionView.dataSource = self;
-    
-    
-    [self.view addSubview:self.m_CollectionView];
-    
-    [self.m_CollectionView registerClass:[CommonLogicCell class]
-              forCellWithReuseIdentifier:@"CommonLogicCell"];
-    
-    
-    /**
-     *  m_companyNameL
-     *
-     *  @param make
-     *
-     *  @return
-     */
-    [ self.m_CollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        
-        make.top.equalTo(@0);
-        make.leading.equalTo(@0);
-        make.bottom.equalTo(@0);
-          make.trailing.equalTo(@0);
-        
-    }];
-    
-    self.view.backgroundColor = [UIColor redColor];
+
+
 }
 
 -(void)SetUpData
@@ -105,11 +76,26 @@
     [self layoutMainCustomView];
     [self AddNavgationBarItem];
     
+    // 3.集成刷新控件
+    // 3.1.下拉刷新
+    MJRefreshHeaderView *header = [MJRefreshHeaderView header];
+    header.scrollView = self.m_CollectionView;
+    header.delegate = self;
+    // 自动刷新
+    [header beginRefreshing];
+    _header = header;
+    
+    // 3.2.上拉加载更多
+    MJRefreshFooterView *footer = [MJRefreshFooterView footer];
+    footer.scrollView = self.m_CollectionView;
+    footer.delegate = self;
+    _footer = footer;
+    
     self.m_tableName = @"CommonLogicViewController";
     
     self.m_store = [[YTKKeyValueStore alloc] initDBWithName:@"Measurement.db"];
     
-    [self loadNetData];
+//    [self loadNetData];
     
 }
 -(void)loadNetData
@@ -182,57 +168,23 @@
 
 #pragma mark - UICollectionViewDataSource
 // TODO:定义展示的UICollectionViewCell的个数
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    
-    return self.m_DataSourceArr.count;
-    
-}
-//TODO:定义展示的Section的个数
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
+#pragma mark - UICollectionView Delegate Method
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
-    
 }
 
-//TODO:每个UICollectionView展示的内容
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    //设置cell多选功能
-    //  collectionView.allowsMultipleSelection = YES;
-    static NSString * CellIdentifier = @"CommonLogicCell";
-    
-    CommonLogicCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return self.m_DataSourceArr.count;
+}
 
-    [cell updateCommonLogicCellWith:self.m_DataSourceArr[indexPath.row]];
-    
-    
-    //     cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"a.jpg"]];
-    //cell.backgroundColor = [UIColor colorWithRed:((10 * indexPath.row) / 255.0) green:((20 * indexPath.row)/255.0) blue:((30 * indexPath.row)/255.0) alpha:1.0f];
-    
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellIdentifier = @"CompanyCell";
+    CompanyCollectionViewCell *cell = (CompanyCollectionViewCell  *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    [cell configureCellWithItem:self.m_DataSourceArr[indexPath.row]];
+    cell.delegate = self;
     return cell;
-    
 }
-
-#pragma mark - UICollectionViewDelegateFlowLayout
-
-//TODO:定义每个UICollectionView 的大小
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-
-    return CGSizeMake(230, 190);
-
-}
-//TODO:定义每个UICollectionView 的 margin
--(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-
-{
-    return UIEdgeInsetsMake(10, 10, 10,10);
-    
-}
-
-
 
 #pragma mark - UICollectionViewDelegate
 
@@ -274,25 +226,25 @@
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (oldCell == nil) {
-        CommonLogicCell * cell = (CommonLogicCell *)[collectionView cellForItemAtIndexPath:indexPath];
-        oldCell = cell;
-        // cell.contentView.layer.cornerRadius = 10.0;
-        cell.contentView.layer.borderWidth = 5.0f;
-        cell.contentView.layer.borderColor = [UIColor colorWithRed:121/255.0 green:180/255.0 blue:221/255.0 alpha:1].CGColor;
-        
-        
-    }else
-    {
-        [oldCell updateOldCollectionCell];
-        CommonLogicCell * cell = (CommonLogicCell *)[collectionView cellForItemAtIndexPath:indexPath];
-        // cell.contentView.layer.cornerRadius = 10.0;
-        cell.contentView.layer.borderWidth = 5.0f;
-        cell.contentView.layer.borderColor = [UIColor colorWithRed:121/255.0 green:180/255.0 blue:221/255.0 alpha:1].CGColor;
-        oldCell = cell;
-        
-        
-    }
+//    if (oldCell == nil) {
+//        CommonLogicCell * cell = (CommonLogicCell *)[collectionView cellForItemAtIndexPath:indexPath];
+//        oldCell = cell;
+//        // cell.contentView.layer.cornerRadius = 10.0;
+//        cell.contentView.layer.borderWidth = 5.0f;
+//        cell.contentView.layer.borderColor = [UIColor colorWithRed:121/255.0 green:180/255.0 blue:221/255.0 alpha:1].CGColor;
+//        
+//        
+//    }else
+//    {
+//        [oldCell updateOldCollectionCell];
+//        CommonLogicCell * cell = (CommonLogicCell *)[collectionView cellForItemAtIndexPath:indexPath];
+//        // cell.contentView.layer.cornerRadius = 10.0;
+//        cell.contentView.layer.borderWidth = 5.0f;
+//        cell.contentView.layer.borderColor = [UIColor colorWithRed:121/255.0 green:180/255.0 blue:221/255.0 alpha:1].CGColor;
+//        oldCell = cell;
+//        
+//        
+//    }
     
     
     
@@ -304,6 +256,36 @@
     
     return YES;
     
+}
+
+// 开始进入刷新状态就会调用
+- (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView
+{
+    
+}
+// 刷新完毕就会调用
+- (void)refreshViewEndRefreshing:(MJRefreshBaseView *)refreshView
+{
+    NSLog(@"%@----刷新完毕", refreshView.class);
+}
+// 刷新状态变更就会调用
+- (void)refreshView:(MJRefreshBaseView *)refreshView stateChange:(MJRefreshState)state
+{
+    switch (state) {
+        case MJRefreshStateNormal:
+            NSLog(@"%@----切换到：普通状态", refreshView.class);
+            break;
+            
+        case MJRefreshStatePulling:
+            NSLog(@"%@----切换到：松开即可刷新的状态", refreshView.class);
+            break;
+            
+        case MJRefreshStateRefreshing:
+            NSLog(@"%@----切换到：正在刷新状态", refreshView.class);
+            break;
+        default:
+            break;
+    }
 }
 
 @end

@@ -72,7 +72,20 @@ static CGFloat BUTTONWIDTH = 90.0f;
 @implementation CompanyCollectionViewCell
 
 
-- (void)configureCellWithItem:(id )product{
+- (void)configureCellWithItem:(id )product
+{
+    
+    NSDictionary * commonLogicDict = (NSDictionary *)product;
+    
+    self.m_dateL.text = [NSString stringWithFormat:@"今天"];
+    self.m_companyNameL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"WTDWMC"]];
+    self.m_companyAddrL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"SZDQ"]];
+    self.m_contactNameL.text = [NSString stringWithFormat:@"张科长"];
+    self.m_contactTelL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"LXDH"]];
+    self.m_inFactoryTimeL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"CJSJ"]];
+    self.m_headManNameL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"YWFZR"]];
+    self.m_inFactoryMansL.text = [NSString stringWithFormat:@"刘淑敏、蔡小凡"];
+    self.m_noteL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"BZ"]];
     
 }
 

@@ -127,8 +127,10 @@
     // 1.从字典中取出即将要显示的子控制器
     UIViewController *nav = _allChilds[item.className];
     if (nav == nil) {
-        Class c = NSClassFromString(item.className);
-        UIViewController *vc = [[c alloc] init];
+        
+        UIStoryboard * mstoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        UIViewController *vc = [mstoryboard instantiateViewControllerWithIdentifier:@"CommonLogicViewController"];;
         nav = vc;
         // 不要自动伸缩
         nav.view.autoresizingMask = UIViewAutoresizingNone;

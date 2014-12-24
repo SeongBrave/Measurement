@@ -34,7 +34,7 @@
          m_companyNameL
          */
         self.m_companyNameL = [[UILabel alloc]init];
-        self.m_companyNameL.numberOfLines = 0;
+        self.m_companyNameL.numberOfLines = 1;
         self.m_companyNameL.textColor = [UIColor blackColor];
         self.m_companyNameL.font =COMMONLOGICCELL_COMPANYNAMEL_FONT;
         [self.contentView addSubview:_m_companyNameL];
