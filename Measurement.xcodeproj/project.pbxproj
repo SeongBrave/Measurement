@@ -45,6 +45,7 @@
 		C9903C1E1A470BDB0006FD99 /* UIImage+Fit.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903C1D1A470BDB0006FD99 /* UIImage+Fit.m */; };
 		C99F47BE1A4B0B83007C68AB /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F47BD1A4B0B83007C68AB /* FirstViewController.m */; };
 		C99F47C11A4B0BAF007C68AB /* CompanyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F47C01A4B0BAF007C68AB /* CompanyCollectionViewCell.m */; };
+		C99FD92A1A4C4F2F000AB1A6 /* ProgramOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C99FD9291A4C4F2F000AB1A6 /* ProgramOverviewCell.m */; };
 		C9A3376F1A499B8F004560D1 /* AuditNotPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337621A499B8F004560D1 /* AuditNotPassViewController.m */; };
 		C9A337701A499B8F004560D1 /* DetectionTaskQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337641A499B8F004560D1 /* DetectionTaskQueryViewController.m */; };
 		C9A337711A499B8F004560D1 /* FactoryTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337661A499B8F004560D1 /* FactoryTaskViewController.m */; };
@@ -186,6 +187,8 @@
 		C99F47BD1A4B0B83007C68AB /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		C99F47BF1A4B0BAF007C68AB /* CompanyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyCollectionViewCell.h; sourceTree = "<group>"; };
 		C99F47C01A4B0BAF007C68AB /* CompanyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyCollectionViewCell.m; sourceTree = "<group>"; };
+		C99FD9281A4C4F2F000AB1A6 /* ProgramOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramOverviewCell.h; sourceTree = "<group>"; };
+		C99FD9291A4C4F2F000AB1A6 /* ProgramOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramOverviewCell.m; sourceTree = "<group>"; };
 		C9A337611A499B8F004560D1 /* AuditNotPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuditNotPassViewController.h; sourceTree = "<group>"; };
 		C9A337621A499B8F004560D1 /* AuditNotPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuditNotPassViewController.m; sourceTree = "<group>"; };
 		C9A337631A499B8F004560D1 /* DetectionTaskQueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetectionTaskQueryViewController.h; sourceTree = "<group>"; };
@@ -772,6 +775,15 @@
 			path = category;
 			sourceTree = "<group>";
 		};
+		C99FD9271A4C4F0A000AB1A6 /* ProgramOverviewCell */ = {
+			isa = PBXGroup;
+			children = (
+				C99FD9281A4C4F2F000AB1A6 /* ProgramOverviewCell.h */,
+				C99FD9291A4C4F2F000AB1A6 /* ProgramOverviewCell.m */,
+			);
+			path = ProgramOverviewCell;
+			sourceTree = "<group>";
+		};
 		C9A337601A499B8F004560D1 /* OtherView */ = {
 			isa = PBXGroup;
 			children = (
@@ -819,6 +831,7 @@
 		C9A8B6031A490682008E94B7 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				C99FD9271A4C4F0A000AB1A6 /* ProgramOverviewCell */,
 				C9A8B6051A4906D3008E94B7 /* CommonLogicCell */,
 			);
 			path = CollectionCell;
@@ -1028,6 +1041,7 @@
 				C9A337751A499B8F004560D1 /* ProgramOverviewViewController.m in Sources */,
 				C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */,
 				C9651FD51A43B26000B770BB /* StepperModel.m in Sources */,
+				C99FD92A1A4C4F2F000AB1A6 /* ProgramOverviewCell.m in Sources */,
 				C9651FE41A43B26000B770BB /* BaseTableViewController.m in Sources */,
 				C9651FD11A43B26000B770BB /* CYTextFieldAutoFillInputView.m in Sources */,
 				C99F47BE1A4B0B83007C68AB /* FirstViewController.m in Sources */,

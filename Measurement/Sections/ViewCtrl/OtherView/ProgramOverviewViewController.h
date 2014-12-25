@@ -14,7 +14,17 @@
 #import "CommonLogicViewController.h"
 
 
-@interface ProgramOverviewViewController : CommonLogicViewController
+@interface ProgramOverviewViewController : UIViewController
 
+@property(nonatomic , strong)NSArray * m_DataSourceArr;
 
+/**
+ *  本地数据库
+ */
+@property(nonatomic , strong)YTKKeyValueStore *m_store;
+
+/**
+ *  保存数据的表名
+ */
+@property(nonatomic , strong)NSString *m_tableName;
 @end

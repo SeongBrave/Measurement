@@ -27,10 +27,9 @@
 {
     self = [super init];
     if (self) {
-        
         // 1.头像IconView
         _headerView = [[HeaderView alloc] initWithHeaderView];
-        _headerView.backgroundColor = [UIColor colorWithRed:0.468 green:0.000 blue:0.005 alpha:1.000];
+        _headerView.backgroundColor = UIColorFromRGB(185, 17, 57);
         [self addSubview:_headerView];
         
         // 2.菜单MenuView
@@ -54,7 +53,7 @@
             make.leading.equalTo(@0);
             make.top.equalTo(@0);
             make.trailing.equalTo(@0);
-            make.height.equalTo(@140);
+            make.height.equalTo(@85);
             
             
         }];

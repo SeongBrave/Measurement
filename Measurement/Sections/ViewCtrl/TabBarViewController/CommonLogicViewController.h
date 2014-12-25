@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 
-@interface CommonLogicViewController : BaseViewController
+@interface CommonLogicViewController : BaseViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 
 
 @property(nonatomic , strong) NSArray *m_DataSourceArr;  //患者信息

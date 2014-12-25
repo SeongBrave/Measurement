@@ -81,7 +81,7 @@
         
         make.leading.equalTo(@0);
         make.top.equalTo(@0);
-        make.width.equalTo(@240);
+        make.width.equalTo(@144);
         make.bottom.equalTo(@0);
         
         
@@ -130,7 +130,7 @@
         
         UIStoryboard * mstoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
-        UIViewController *vc = [mstoryboard instantiateViewControllerWithIdentifier:@"CommonLogicViewController"];;
+        UIViewController *vc = [mstoryboard instantiateViewControllerWithIdentifier:@"ProgramOverviewViewController"];;
         nav = vc;
         // 不要自动伸缩
         nav.view.autoresizingMask = UIViewAutoresizingNone;
@@ -148,7 +148,7 @@
         }
         
         // 添加手势监听器
-        [nav.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragNavView:)]];
+//        [nav.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragNavView:)]];
         
         // 建立控制器之间的父子关系
         // 建议：两个控制器互为父子关系，那么它们的view也应该互为父子关系

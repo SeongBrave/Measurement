@@ -78,6 +78,6 @@
 
 
 
-#define kIconMaxWidth 100
-#define kIconMaxHeight 45
+#define kIconMaxWidth 144
+#define kIconMaxHeight 41
 #endif

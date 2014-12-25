@@ -17,12 +17,13 @@
     self = [super init];
     if (self) {
         
+        
         self.m_usrNameLabel = [[UILabel alloc]init];
 
         self.m_usrNameLabel.text = @"核验员Aris";
         self.m_usrNameLabel.textAlignment = NSTextAlignmentCenter;
-        self.m_usrNameLabel.textColor = [UIColor whiteColor];
-        self.m_usrNameLabel.font = [UIFont systemFontOfSize:24];
+        self.m_usrNameLabel.textColor = UIColorFromRGB(255,255,255);
+        self.m_usrNameLabel.font = [UIFont systemFontOfSize:12];
 
         self.m_usrNameLabel.lineBreakMode = NSLineBreakByWordWrapping;
         self.m_usrNameLabel.numberOfLines = 1;
@@ -32,9 +33,9 @@
         //欢迎你!
         UILabel * showLabel = [[UILabel alloc]init];
         showLabel.text = @"欢迎你!";
-        showLabel.textColor = [UIColor whiteColor];
+        showLabel.textColor = UIColorFromRGB(255,255,255);
         showLabel.textAlignment = NSTextAlignmentCenter;
-        showLabel.font = [UIFont systemFontOfSize:18];
+        showLabel.font = [UIFont systemFontOfSize:9];
         showLabel.lineBreakMode = NSLineBreakByWordWrapping;
         showLabel.numberOfLines = 1;
         showLabel.backgroundColor = [UIColor clearColor];
@@ -45,7 +46,7 @@
         self.m_imgV.backgroundColor = [UIColor clearColor];
         [self addSubview:_m_imgV];
 
-        
+         @weakify(self)
         /**
          *  showLabel
          *
@@ -55,10 +56,9 @@
          */
         [ showLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             
-     
-
-            make.leading.equalTo(self.m_imgV.mas_trailing).offset(0);
-            make.top.equalTo(self.m_imgV.mas_top).offset(0);
+            @strongify(self)
+            make.leading.equalTo(self.m_imgV.mas_right).offset(7);
+            make.bottom.equalTo(self.m_usrNameLabel.mas_top).offset(0);
             
             
         }];
@@ -72,10 +72,9 @@
          */
         [ self.m_usrNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             
-            make.top.equalTo(@30);
 
-            make.leading.equalTo(self.m_imgV.mas_trailing).offset(2);
-            make.bottom.equalTo(@-10);
+            make.leading.equalTo(showLabel.mas_leading).offset(0);
+            make.bottom.equalTo(@-20);
 
             
             
@@ -91,10 +90,10 @@
          */
         [ self.m_imgV mas_makeConstraints:^(MASConstraintMaker *make) {
             
-      
-            make.leading.equalTo(@10);
-
-            make.bottom.equalTo(@-20);
+            make.leading.equalTo(@11);
+            make.bottom.equalTo(@-13);
+            make.width.equalTo(@40);
+            make.height.equalTo(@40);
 
         }];
         
