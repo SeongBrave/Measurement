@@ -9,14 +9,10 @@
 #import "ProgramOverviewViewController.h"
 #import "ProgramOverviewCell.h"
 #import "BaseNetWork.h"
-#import "MJRefresh.h"
 
-@interface ProgramOverviewViewController ()<MJRefreshBaseViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
-{
-    MJRefreshHeaderView *_header;
-    MJRefreshFooterView *_footer;
-    
-}
+
+@interface ProgramOverviewViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+
 
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *m_flowLayout;
 @property (weak, nonatomic) IBOutlet UICollectionView *m_collectionView;
@@ -116,17 +112,17 @@
 -(void)loadNetData
 {
     
-     [_header beginRefreshing];
     
     NSDictionary *dict = [[NSDictionary alloc]init];
-    [[[[BaseNetWork getInstance] rac_getPath:@"http://192.168.10.169:8080/mbs/convey/findJhzl.do" parameters:dict]map:^(id responseData)
+    @weakify(self)
+    [[[[BaseNetWork getInstance] rac_getPath:@"findJhzl.do" parameters:dict]map:^(id responseData)
       {
           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
           
           
           return [dict valueForKeyPath:@"page.result"];
       }]subscribeNext:^(NSArray *arr){
-          
+          @strongify(self)
           [self.m_store createTableWithName:self.m_tableName];
           [self.m_store putObject:arr withId:@"page.result" intoTable:self.m_tableName];
           self.m_DataSourceArr = arr;
@@ -136,7 +132,7 @@
           
           
       }error:^(NSError *error){
-          
+          @strongify(self)
           NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
           self.m_DataSourceArr = arr;
           [_header endRefreshing];

@@ -20,9 +20,10 @@
 #define WEBCLASSNAME @"Transfusion.asmx"
 
 
+
 //webservice配置
-#define defaultWebServiceUrl @"http://60.251.51.217/ElandMDC.admin/MDC.asmx"
-#define defaultWebServiceNameSpace @"http://tempuri.org/"
+#define defaultWebServiceUrl @"http://192.168.10.169:8080/mbs/convey/"
+
 
 
 //DaoTongHttpManager

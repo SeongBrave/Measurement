@@ -25,6 +25,7 @@ typedef enum{
 
 @property(nonatomic, strong)Dialog *m_show;
 
+-(void)showDialog;
 +(BaseNetWork *)getInstance;
 
 //- (RACSignal *)rac_enqueueHTTPRequestOperation:(AFHTTPRequestOperation *)requestOperation;

@@ -9,8 +9,8 @@
 /**
  *  我的创建计划
  */
-#import "CommonLogicViewController.h"
+#import "BaseViewController.h"
 
-@interface MyPlanViewController : CommonLogicViewController
+@interface MyPlanViewController : BaseViewController
 
 @end

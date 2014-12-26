@@ -10,6 +10,11 @@
 
 static BaseNetWork *instance =nil;
 
+@interface BaseNetWork ()
+@property(nonatomic , assign)BOOL isShow;
+
+
+@end
 @implementation BaseNetWork
 
 
@@ -19,11 +24,16 @@ static BaseNetWork *instance =nil;
         if (instance==nil) {
             instance=[[BaseNetWork alloc] init];
             instance.m_show = [[Dialog alloc]init];
+            instance.isShow = NO;
         }
     }
     return instance;
 }
 
+-(void)showDialog
+{
+    self.isShow = YES;
+}
 -(AFHTTPRequestOperationManager*)getRequestOperationManager
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -119,10 +129,19 @@ static BaseNetWork *instance =nil;
  */
 - (RACSignal *)rac_RequestPath:(NSString *)path parameters:(NSDictionary *)parameters andType:(RequestType ) requestType
 {
+    
+    if (![path hasPrefix:@"http://"]) {
+       path = [NSString stringWithFormat:@"%@%@",defaultWebServiceUrl,path];
+    }
+    
+    @weakify(self)
     return [RACSignal
             createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
                 
-                [self.m_show showCenterProgressWithLabel:@"正在加载..."];
+                @strongify(self)
+                if (self.isShow) {
+                    [self.m_show showCenterProgressWithLabel:@"正在加载..."];
+                }
                 
                 AFHTTPRequestOperationManager *manager = [self getRequestOperationManager];
                 
@@ -133,12 +152,19 @@ static BaseNetWork *instance =nil;
                     {
                         
                         opation = [manager POST:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            [self.m_show hideProgress];
+                            
+                            @strongify(self)
+                            if (self.isShow) {
+                               [self.m_show hideProgress];
+                            }
                             [subscriber sendNext:responseObject];
                             [subscriber sendCompleted];
                             
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            [self.m_show hideProgress];
+                            @strongify(self)
+                            if (self.isShow) {
+                                [self.m_show hideProgress];
+                            }
                             [subscriber sendError:error];
                             
                         }];
@@ -150,13 +176,19 @@ static BaseNetWork *instance =nil;
                         
                         opation = [manager GET:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             
-                            [self.m_show hideProgress];
+                            @strongify(self)
+                            if (self.isShow) {
+                                [self.m_show hideProgress];
+                            }
                             [subscriber sendNext:responseObject];
                             [subscriber sendCompleted];
                             
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                             
-                           [self.m_show hideProgress];
+                            @strongify(self)
+                            if (self.isShow) {
+                                [self.m_show hideProgress];
+                            }
                             [subscriber sendError:error];
                             
                         }];
@@ -167,12 +199,18 @@ static BaseNetWork *instance =nil;
                     {
                         
                         opation = [manager PUT:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            [self.m_show hideProgress];
+                            @strongify(self)
+                            if (self.isShow) {
+                                [self.m_show hideProgress];
+                            }
                             [subscriber sendNext:responseObject];
                             [subscriber sendCompleted];
                             
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            [self.m_show hideProgress];
+                            @strongify(self)
+                            if (self.isShow) {
+                                [self.m_show hideProgress];
+                            }
                             [subscriber sendError:error];
                             
                         }];
@@ -183,12 +221,18 @@ static BaseNetWork *instance =nil;
                     {
                         
                         opation = [manager PATCH:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            [self.m_show hideProgress];
+                            @strongify(self)
+                            if (self.isShow) {
+                                [self.m_show hideProgress];
+                            }
                             [subscriber sendNext:responseObject];
                             [subscriber sendCompleted];
                             
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            [self.m_show hideProgress];
+                            @strongify(self)
+                            if (self.isShow) {
+                                [self.m_show hideProgress];
+                            }
                             [subscriber sendError:error];
                             
                         }];
@@ -199,12 +243,18 @@ static BaseNetWork *instance =nil;
                     {
                         
                         opation = [manager DELETE:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            [self.m_show hideProgress];
+                            @strongify(self)
+                            if (self.isShow) {
+                                [self.m_show hideProgress];
+                            }
                             [subscriber sendNext:responseObject];
                             [subscriber sendCompleted];
                             
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            [self.m_show hideProgress];
+                            @strongify(self)
+                            if (self.isShow) {
+                                [self.m_show hideProgress];
+                            }
                             [subscriber sendError:error];
                             
                         }];
@@ -215,7 +265,10 @@ static BaseNetWork *instance =nil;
                         break;
                 }
                 return [RACDisposable disposableWithBlock:^{
-                    [self.m_show hideProgress];
+                    @strongify(self)
+                    if (self.isShow) {
+                        [self.m_show hideProgress];
+                    }
                     [opation cancel];
                     
                 }];

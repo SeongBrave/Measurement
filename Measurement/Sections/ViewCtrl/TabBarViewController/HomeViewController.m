@@ -130,7 +130,7 @@
         
         UIStoryboard * mstoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
-        UIViewController *vc = [mstoryboard instantiateViewControllerWithIdentifier:@"ProgramOverviewViewController"];;
+        UIViewController *vc = [mstoryboard instantiateViewControllerWithIdentifier:item.className];;
         nav = vc;
         // 不要自动伸缩
         nav.view.autoresizingMask = UIViewAutoresizingNone;

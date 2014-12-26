@@ -10,7 +10,7 @@
 /// 登录
 #import "BaseViewController.h"
 
-@interface LoginViewController : BaseViewController
+@interface LoginViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *loginView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 @property (weak, nonatomic) IBOutlet UITextField *m_uNameTextField;
