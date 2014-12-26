@@ -3,11 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "login-checkbox-selected.png"
+      "filename" : "login-logo.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "login-logo-1.png"
     },
     {
       "idiom" : "universal",

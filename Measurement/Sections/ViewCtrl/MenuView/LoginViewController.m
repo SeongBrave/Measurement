@@ -65,6 +65,38 @@
      _m_uNameTextField.text = [lofinInfo objectForKey:@"cStaffCode"];
      _m_uPwdTextField.text = [lofinInfo objectForKey:@"cStaffCode"];
     
+    UIImage *leftImage = [UIImage imageNamed:@"login-user"];
+    UIImageView *usernameIconImage = [[UIImageView alloc] initWithFrame:CGRectMake(9, 9, 15, 15)];
+    usernameIconImage.backgroundColor =[UIColor clearColor];
+    usernameIconImage.image = leftImage;
+    UIView *usernameIconContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+
+    [usernameIconContainer addSubview:usernameIconImage];
+    _m_uNameTextField.leftViewMode = UITextFieldViewModeAlways;
+    _m_uNameTextField.leftView = usernameIconContainer;
+    
+    
+    UIImage *PwdleftImage = [UIImage imageNamed:@"login-pass"];
+    UIImageView *PwdusernameIconImage = [[UIImageView alloc] initWithFrame:CGRectMake(9, 9, 15, 15)];
+    PwdusernameIconImage.backgroundColor =[UIColor clearColor];
+    PwdusernameIconImage.image = PwdleftImage;
+    UIView *PwdusernameIconContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+    
+    [PwdusernameIconContainer addSubview:PwdusernameIconImage];
+    _m_uPwdTextField.leftViewMode = UITextFieldViewModeAlways;
+    _m_uPwdTextField.leftView = PwdusernameIconContainer;
+    
+//    UIImage *PwdleftImage = [UIImage imageNamed:@"login-pass"];
+//    UIImageView *PwdusernameIconImage = [[UIImageView alloc] initWithFrame:CGRectMake(9, 9, 20, 20)];
+//    PwdusernameIconImage.backgroundColor =[UIColor clearColor];
+//    PwdusernameIconImage.image = PwdleftImage;
+//    UIView *PwdusernameIconContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+//    
+//    [usernameIconContainer addSubview:PwdusernameIconContainer];
+//    _m_uPwdTextField.leftViewMode = UITextFieldViewModeAlways;
+//    _m_uPwdTextField.leftView = usernameIconContainer;
+    
+    
 }
 
 -(void)SetUpData
