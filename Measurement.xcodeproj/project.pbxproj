@@ -61,7 +61,7 @@
 		C9A337871A499D6B004560D1 /* SystemSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337861A499D6B004560D1 /* SystemSettingsViewController.m */; };
 		C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */; };
 		C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AE087E1A450FE200DA39BF /* LoginViewController.m */; };
-		C9BFA9F51A487BB000C887B4 /* CommonLogicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9E31A487BB000C887B4 /* CommonLogicViewController.m */; };
+		C9B3A2AE1A4D9C7100CE276B /* CommonLogicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B3A2AD1A4D9C7100CE276B /* CommonLogicViewController.m */; };
 		C9BFA9F81A487BB000C887B4 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9E91A487BB000C887B4 /* HomeViewController.m */; };
 		C9BFA9FD1A487BB000C887B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9F31A487BB000C887B4 /* ViewController.m */; };
 		C9BFAA0F1A487BF400C887B4 /* Dock.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFAA011A487BF400C887B4 /* Dock.m */; };
@@ -219,8 +219,8 @@
 		C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonLogicCell.m; sourceTree = "<group>"; };
 		C9AE087D1A450FE200DA39BF /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C9AE087E1A450FE200DA39BF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		C9BFA9E21A487BB000C887B4 /* CommonLogicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLogicViewController.h; sourceTree = "<group>"; };
-		C9BFA9E31A487BB000C887B4 /* CommonLogicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonLogicViewController.m; sourceTree = "<group>"; };
+		C9B3A2AC1A4D9C7100CE276B /* CommonLogicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLogicViewController.h; sourceTree = "<group>"; };
+		C9B3A2AD1A4D9C7100CE276B /* CommonLogicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonLogicViewController.m; sourceTree = "<group>"; };
 		C9BFA9E81A487BB000C887B4 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		C9BFA9E91A487BB000C887B4 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		C9BFA9F21A487BB000C887B4 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -563,6 +563,8 @@
 		C9651F941A43B25F00B770BB /* BaseClass */ = {
 			isa = PBXGroup;
 			children = (
+				C9B3A2AC1A4D9C7100CE276B /* CommonLogicViewController.h */,
+				C9B3A2AD1A4D9C7100CE276B /* CommonLogicViewController.m */,
 				C9651F951A43B25F00B770BB /* BaseTableViewController.h */,
 				C9651F961A43B25F00B770BB /* BaseTableViewController.m */,
 				C9651F971A43B25F00B770BB /* BaseViewController.h */,
@@ -585,8 +587,6 @@
 			children = (
 				C9BFA9E81A487BB000C887B4 /* HomeViewController.h */,
 				C9BFA9E91A487BB000C887B4 /* HomeViewController.m */,
-				C9BFA9E21A487BB000C887B4 /* CommonLogicViewController.h */,
-				C9BFA9E31A487BB000C887B4 /* CommonLogicViewController.m */,
 				C9BFA9F21A487BB000C887B4 /* ViewController.h */,
 				C9BFA9F31A487BB000C887B4 /* ViewController.m */,
 			);
@@ -1030,13 +1030,13 @@
 				C9A3376F1A499B8F004560D1 /* AuditNotPassViewController.m in Sources */,
 				C9A3377B1A499CC0004560D1 /* ApprovalTaskViewController.m in Sources */,
 				C9651ECF1A43AD8F00B770BB /* AppDelegate.m in Sources */,
+				C9B3A2AE1A4D9C7100CE276B /* CommonLogicViewController.m in Sources */,
 				C9BFA9F81A487BB000C887B4 /* HomeViewController.m in Sources */,
 				C9BFAA101A487BF400C887B4 /* HeaderView.m in Sources */,
 				C9E94DCD1A4A669100E8CC83 /* MJRefreshFooterView.m in Sources */,
 				C9651FC31A43B25F00B770BB /* BaseNetWork.m in Sources */,
 				C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */,
 				C9903BFF1A46E9FE0006FD99 /* DockItem.m in Sources */,
-				C9BFA9F51A487BB000C887B4 /* CommonLogicViewController.m in Sources */,
 				C9BFAA151A487BF400C887B4 /* SettingCell.m in Sources */,
 				C9A337751A499B8F004560D1 /* ProgramOverviewViewController.m in Sources */,
 				C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */,

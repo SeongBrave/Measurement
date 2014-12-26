@@ -11,10 +11,10 @@
  *  计划总览
  */
 
-#import "BaseViewController.h"
+#import "CommonLogicViewController.h"
 
 
-@interface ProgramOverviewViewController : BaseViewController
+@interface ProgramOverviewViewController : CommonLogicViewController
 
 
 @end

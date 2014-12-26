@@ -9,8 +9,8 @@
 /**
  *  科室计划
  */
-#import "BaseViewController.h"
+#import "CommonLogicViewController.h"
 
-@interface PlanningDepartmentViewController : BaseViewController
+@interface PlanningDepartmentViewController : CommonLogicViewController
 
 @end

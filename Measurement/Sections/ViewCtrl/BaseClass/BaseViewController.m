@@ -31,7 +31,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self loadNetData];
+   
 }
 
 // TODO: 使用autolayout 布局界面
@@ -60,127 +60,9 @@
 -(void)SetUpData
 {
     
-    self.m_tableName = @"CommonLogicViewController";
-    
-    self.m_store = [[YTKKeyValueStore alloc] initDBWithName:@"Measurement.db"];
-    
     [self layoutMainCustomView];
-
-    // 3.集成刷新控件
-    // 3.1.下拉刷新
-    MJRefreshHeaderView *header = [MJRefreshHeaderView header];
-   
-    header.delegate = self;
-    // 自动刷新
-    [header beginRefreshing];
-    _header = header;
-    
-    // 3.2.上拉加载更多
-    MJRefreshFooterView *footer = [MJRefreshFooterView footer];
-    
-    footer.delegate = self;
-    _footer = footer;
-    
-    [self setCollectionToRefreshDelegate];
-    
-}
-
-#pragma mark --必须被重载
-
-/**
- *  设置为collection的加载
- */
--(void)setCollectionToRefreshDelegate
-{
-    
-}
-
-/**
- *  设置请求网络的参数
- */
--(void)setBaseNetWorkParameters
-{
-    
-}
-
-/**
- *  请求成功后调用的方法
- *
- *  @param responseData
- */
--(void)successGetDataWithResponseData:(id)responseData
-{
-    
-}
-
-/**
- *  请求成功后调用的方法
- *
- *  @param responseData
- */
--(void)failedGetDataWithResponseData:(id)responseData
-{
-    
-}
--(void)loadNetData
-{
-    
-    /**
-     *  设置加载时显示提示
-     */
-    [[BaseNetWork getInstance] showDialog];
-    @weakify(self)
-    [[[[BaseNetWork getInstance] rac_getPath:self.m_netFunctionStr parameters:self.m_netParamDict]map:^(id responseData)
-      {
-          NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-          
-          return [dict valueForKeyPath:@"page.result"];
-      }]subscribeNext:^(NSArray *arr){
-          @strongify(self)
-          [self.m_store createTableWithName:self.m_tableName];
-          [self.m_store putObject:arr withId:@"page.result" intoTable:self.m_tableName];
-          self.m_DataSourceArr = arr;
-          [_header endRefreshing];
-          [_footer endRefreshing];
-          
-          [self successGetDataWithResponseData:arr];
-//          [self.m_collectionView reloadData];
-          
-          
-      }error:^(NSError *error){
-          @strongify(self)
-          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
-          self.m_DataSourceArr = arr;
-          [_header endRefreshing];
-          [_footer endRefreshing];
-          
-          [self failedGetDataWithResponseData:arr];
-//          [self.m_collectionView reloadData];
-          
-          
-      }];
-
-    
 }
 
 
-
-#pragma mark - MJRefreshBaseViewDelegate
-
-// 开始进入刷新状态就会调用
-- (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView
-{
-    
-}
-// 刷新完毕就会调用
-- (void)refreshViewEndRefreshing:(MJRefreshBaseView *)refreshView
-{
-    [refreshView endRefreshing];
-}
-// 刷新状态变更就会调用
-- (void)refreshView:(MJRefreshBaseView *)refreshView stateChange:(MJRefreshState)state
-{
-    
-}
 
 @end
