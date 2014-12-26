@@ -128,9 +128,7 @@
     UIViewController *nav = _allChilds[item.className];
     if (nav == nil) {
         
-        UIStoryboard * mstoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
-        UIViewController *vc = [mstoryboard instantiateViewControllerWithIdentifier:item.className];;
+        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"MyPlanViewController"];;
         nav = vc;
         // 不要自动伸缩
         nav.view.autoresizingMask = UIViewAutoresizingNone;

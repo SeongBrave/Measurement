@@ -7,7 +7,7 @@
 //
 
 #import "MyPlanViewController.h"
-
+#import "ProgramOverviewCell.h"
 @interface MyPlanViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 
 
@@ -31,7 +31,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self loadNetData];
+    
 }
 
 #pragma mark - 自定义方法
@@ -127,15 +127,18 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 10;
+    
+    
+    
+    return self.m_DataSourceArr.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-//    static NSString *cellIdentifier = @"ProgramOverview";
-//    ProgramOverviewCell *cell = (ProgramOverviewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-//    [cell configureCellWithItem:self.m_DataSourceArr[indexPath.row]];
-//    //    cell.delegate = self;
-    return nil;
+    static NSString *cellIdentifier = @"ProgramOverview";
+    ProgramOverviewCell *cell = (ProgramOverviewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    [cell configureCellWithItem:self.m_DataSourceArr[indexPath.row]];
+    //    cell.delegate = self;
+    return cell;
 }
 
 @end
