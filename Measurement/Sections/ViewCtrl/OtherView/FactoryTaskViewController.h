@@ -11,6 +11,6 @@
  */
 #import "CommonLogicViewController.h"
 
-@interface FactoryTaskViewController : CommonLogicViewController
+@interface FactoryTaskViewController : UIViewController
 
 @end
