@@ -20,12 +20,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="byb-aQ-Dls" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-584" y="488"/>
+            <point key="canvasLocation" x="-964" y="535"/>
         </scene>
         <!--Factory Task View Controller-->
         <scene sceneID="zA4-fk-iKY">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="0SO-0J-iD4" customClass="FactoryTaskViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FactoryTaskViewController" automaticallyAdjustsScrollViewInsets="NO" id="0SO-0J-iD4" customClass="FactoryTaskViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1NQ-mw-9wy"/>
                         <viewControllerLayoutGuide type="bottom" id="XrY-Z4-YL8"/>
@@ -200,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VSL-pA-gCd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="716" y="483"/>
+            <point key="canvasLocation" x="793" y="395"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

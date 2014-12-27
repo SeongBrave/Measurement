@@ -128,7 +128,22 @@
     UIViewController *nav = _allChilds[item.className];
     if (nav == nil) {
         
-        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"MyPlanViewController"];;
+        
+        UIViewController *vc =nil;
+        if([item.className isEqualToString:@"FactoryTaskViewController"])
+        {
+            
+            UIStoryboard *story = [UIStoryboard storyboardWithName:@"Other" bundle:nil];
+            vc = [story instantiateViewControllerWithIdentifier:@"FactoryTaskViewController"];;
+            
+        }else
+        {
+            
+            
+            
+            vc = [self.storyboard  instantiateViewControllerWithIdentifier:item.className];;
+        }
+        
         nav = vc;
         // 不要自动伸缩
         nav.view.autoresizingMask = UIViewAutoresizingNone;

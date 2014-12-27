@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C9431FBD1A4DAF7B0017FED0 /* MyPlanViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */; };
 		C9651ECC1A43AD8F00B770BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651ECB1A43AD8F00B770BB /* main.m */; };
 		C9651ECF1A43AD8F00B770BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651ECE1A43AD8F00B770BB /* AppDelegate.m */; };
 		C9651ED51A43AD8F00B770BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9651ED31A43AD8F00B770BB /* Main.storyboard */; };
@@ -62,6 +63,8 @@
 		C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */; };
 		C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AE087E1A450FE200DA39BF /* LoginViewController.m */; };
 		C9B3A2AE1A4D9C7100CE276B /* CommonLogicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B3A2AD1A4D9C7100CE276B /* CommonLogicViewController.m */; };
+		C9B625F21A4E8E1C00AE9251 /* Other.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B625F01A4E8E1C00AE9251 /* Other.storyboard */; };
+		C9B625F51A4E903D00AE9251 /* FactoryTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B625F41A4E903D00AE9251 /* FactoryTaskCell.m */; };
 		C9BFA9F81A487BB000C887B4 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9E91A487BB000C887B4 /* HomeViewController.m */; };
 		C9BFA9FD1A487BB000C887B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9F31A487BB000C887B4 /* ViewController.m */; };
 		C9BFAA0F1A487BF400C887B4 /* Dock.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFAA011A487BF400C887B4 /* Dock.m */; };
@@ -90,6 +93,8 @@
 /* Begin PBXFileReference section */
 		70EB99E52CC50C5CE31D45B6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B42B534DE9B630AB14C37B76 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C9431FBB1A4DAF7B0017FED0 /* MyPlanViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlanViewCell.h; sourceTree = "<group>"; };
+		C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlanViewCell.m; sourceTree = "<group>"; };
 		C9651EC61A43AD8F00B770BB /* Measurement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Measurement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9651ECA1A43AD8F00B770BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9651ECB1A43AD8F00B770BB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -221,6 +226,9 @@
 		C9AE087E1A450FE200DA39BF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		C9B3A2AC1A4D9C7100CE276B /* CommonLogicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLogicViewController.h; sourceTree = "<group>"; };
 		C9B3A2AD1A4D9C7100CE276B /* CommonLogicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonLogicViewController.m; sourceTree = "<group>"; };
+		C9B625F11A4E8E1C00AE9251 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Other.storyboard; sourceTree = "<group>"; };
+		C9B625F31A4E903D00AE9251 /* FactoryTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryTaskCell.h; sourceTree = "<group>"; };
+		C9B625F41A4E903D00AE9251 /* FactoryTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryTaskCell.m; sourceTree = "<group>"; };
 		C9BFA9E81A487BB000C887B4 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		C9BFA9E91A487BB000C887B4 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		C9BFA9F21A487BB000C887B4 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -275,6 +283,15 @@
 				DA5F62FAAA8BD23C06EFF46D /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9431FBA1A4DAF640017FED0 /* MyPlanViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				C9431FBB1A4DAF7B0017FED0 /* MyPlanViewCell.h */,
+				C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */,
+			);
+			path = MyPlanViewCell;
 			sourceTree = "<group>";
 		};
 		C9651EBD1A43AD8F00B770BB = {
@@ -352,6 +369,7 @@
 		C9651EF21A43B0BC00B770BB /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
+				C9B625F01A4E8E1C00AE9251 /* Other.storyboard */,
 				C9651ED31A43AD8F00B770BB /* Main.storyboard */,
 				C9651ED61A43AD8F00B770BB /* Images.xcassets */,
 				C9651ED81A43AD9000B770BB /* LaunchScreen.xib */,
@@ -831,6 +849,7 @@
 		C9A8B6031A490682008E94B7 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				C9431FBA1A4DAF640017FED0 /* MyPlanViewCell */,
 				C99FD9271A4C4F0A000AB1A6 /* ProgramOverviewCell */,
 				C9A8B6051A4906D3008E94B7 /* CommonLogicCell */,
 			);
@@ -840,6 +859,8 @@
 		C9A8B6041A490682008E94B7 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				C9B625F31A4E903D00AE9251 /* FactoryTaskCell.h */,
+				C9B625F41A4E903D00AE9251 /* FactoryTaskCell.m */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -968,6 +989,7 @@
 				C9651EF11A43AFBB00B770BB /* 计量Ipad项目版本说明.xlsx in Resources */,
 				C9E94DCA1A4A669100E8CC83 /* MJRefresh.bundle in Resources */,
 				C9651EDA1A43AD9000B770BB /* LaunchScreen.xib in Resources */,
+				C9B625F21A4E8E1C00AE9251 /* Other.storyboard in Resources */,
 				C9651ED71A43AD8F00B770BB /* Images.xcassets in Resources */,
 				C9651FEE1A43B26000B770BB /* down_dark.png in Resources */,
 			);
@@ -1036,6 +1058,7 @@
 				C9E94DCD1A4A669100E8CC83 /* MJRefreshFooterView.m in Sources */,
 				C9651FC31A43B25F00B770BB /* BaseNetWork.m in Sources */,
 				C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */,
+				C9431FBD1A4DAF7B0017FED0 /* MyPlanViewCell.m in Sources */,
 				C9903BFF1A46E9FE0006FD99 /* DockItem.m in Sources */,
 				C9BFAA151A487BF400C887B4 /* SettingCell.m in Sources */,
 				C9A337751A499B8F004560D1 /* ProgramOverviewViewController.m in Sources */,
@@ -1058,6 +1081,7 @@
 				C9651FEC1A43B26000B770BB /* CustomTabBarViewController.m in Sources */,
 				C9651FF71A43BE3100B770BB /* YTKKeyValueStore.m in Sources */,
 				C9A337741A499B8F004560D1 /* PlanningDepartmentViewController.m in Sources */,
+				C9B625F51A4E903D00AE9251 /* FactoryTaskCell.m in Sources */,
 				C9651FEF1A43B26000B770BB /* DropDownListView.m in Sources */,
 				C9BFAA131A487BF400C887B4 /* MenuView.m in Sources */,
 				C99F47C11A4B0BAF007C68AB /* CompanyCollectionViewCell.m in Sources */,
@@ -1114,6 +1138,14 @@
 				C9651ED91A43AD9000B770BB /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		C9B625F01A4E8E1C00AE9251 /* Other.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9B625F11A4E8E1C00AE9251 /* Base */,
+			);
+			name = Other.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

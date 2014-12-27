@@ -26,7 +26,7 @@
 
 @end
 
-extern NSString *const TLSwipeForOptionsCellShouldHideMenuNotification;
+
 
 @interface CompanyCollectionViewCell : UICollectionViewCell
 

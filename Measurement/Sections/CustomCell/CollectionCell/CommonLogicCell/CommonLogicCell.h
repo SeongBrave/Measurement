@@ -8,53 +8,34 @@
 
 #import <UIKit/UIKit.h>
 
+@class CommonLogicCell;
+
+@protocol SwipeCellDelegate <NSObject>
+
+- (void)cell:(CommonLogicCell *)cell didShowMenu:(BOOL)isShowingMenu;
+
+- (void)cellDidEndScrolling:(CommonLogicCell *)cell;
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
+
+
+- (void)cellSharePress:(CommonLogicCell *)cell;
+
+- (void)cellTopPress:(CommonLogicCell *)cell;
+
+@end
+
+
+
 @interface CommonLogicCell : UICollectionViewCell
 
-/**
- *  日期 ：今天
- */
-@property(nonatomic , strong) UILabel *m_dateL;
+@property (nonatomic, weak) id<SwipeCellDelegate> delegate;
+@property (nonatomic, strong) IBOutlet UIButton *topToButton;
 
-/**
- *  公司姓名： ***有限公司
- */
-@property(nonatomic , strong) UILabel *m_companyNameL;
+- (void)configureCellWithItem:(id )product;
 
-/**
- *  公司地址
- */
-@property(nonatomic , strong) UILabel *m_companyAddrL;
+- (void)hideUtilityButtonsAnimated:(BOOL)animated;
 
-/*
- *  联系人姓名
- */
-@property(nonatomic , strong) UILabel *m_contactNameL;
-
-
-/**
- *  联系电话
- */
-@property(nonatomic , strong) UILabel *m_contactTelL;
-
-/**
- *  下厂时间
- */
-@property(nonatomic , strong) UILabel *m_inFactoryTimeL;
-
-/**
- *  负责人
- */
-@property(nonatomic , strong) UILabel *m_headManNameL;
-
-/**
- *  下厂人员
- */
-@property(nonatomic , strong) UILabel *m_inFactoryMansL;
-
-/**
- *  备注
- */
-@property(nonatomic , strong) UILabel *m_noteL;
 
 
 -(void)updateCommonLogicCellWith:(NSDictionary*) commonLogicDict;
