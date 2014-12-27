@@ -31,7 +31,6 @@
 @interface CompanyCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, weak) id<SwipeCellDelegate> delegate;
-@property (nonatomic, strong) IBOutlet UIButton *topToButton;
 
 - (void)configureCellWithItem:(id )product;
 

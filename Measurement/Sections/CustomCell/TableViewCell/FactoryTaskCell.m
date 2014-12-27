@@ -54,6 +54,16 @@
 
 - (void)configureCellWithItem:(id )item andIndex:(NSUInteger)index{
     self.numberLabel.text = [@(index) stringValue];
+    
+    NSDictionary * commonLogicDict = (NSDictionary *)item;
+    
+    self.m_companyNameL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"WTDWMC"]];
+    self.m_companyAddrL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"SZDQ"]];
+    self.m_contactNameL.text = [NSString stringWithFormat:@"张科长"];
+    self.m_contactTelL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"LXDH"]];
+    self.m_inFactoryTimeL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"CJSJ"]];
+    self.m_headManNameL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"YWFZR"]];
+    
 }
 
 - (void)awakeFromNib {

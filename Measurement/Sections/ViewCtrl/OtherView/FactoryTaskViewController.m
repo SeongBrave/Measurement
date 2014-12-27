@@ -9,11 +9,18 @@
 #import "FactoryTaskViewController.h"
 #import "FactoryTaskCell.h"
 #import <UIColor+HexString.h>
+#import "CompanyCollectionViewCell.h"
 
-@interface FactoryTaskViewController ()<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate>
+
+@interface FactoryTaskViewController ()<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, SwipeCellDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) IBOutlet UIView *menuView;
 @property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) NSIndexPath *lastIndex;
+@property (nonatomic, strong) NSIndexPath *currentIndex;
+
 
 @end
 
@@ -23,7 +30,55 @@
     [super viewDidLoad];
     
     
-    // Do any additional setup after loading the view.
+    [[BaseNetWork getInstance] showDialog];
+    @weakify(self)
+    [[[[BaseNetWork getInstance] rac_getPath:@"http://192.168.10.169:8080/mbs/convey/loadcDuty.do" parameters:nil]map:^(id responseData)
+      {
+          NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+          
+          return [dict valueForKeyPath:@"page.result"];
+      }]subscribeNext:^(NSArray *arr){
+          @strongify(self)
+          
+//          [self.m_store createTableWithName:self.m_tableName];
+//          [self.m_store putObject:arr withId:@"page.result" intoTable:self.m_tableName];
+//          self.m_DataSourceArr = arr;
+//          [_header endRefreshing];
+//          [_footer endRefreshing];
+//          
+//          [self successGetDataWithResponseData:arr];
+//          //          [self.m_collectionView reloadData];
+          
+          self.dataArray = arr;
+          [self.tableView reloadData];
+          [self.collectionView reloadData];
+          
+          
+      }error:^(NSError *error){
+          @strongify(self)
+//          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
+//          self.m_DataSourceArr = arr;
+//          [_header endRefreshing];
+//          [_footer endRefreshing];
+//          
+//          [self failedGetDataWithResponseData:arr];
+          //          [self.m_collectionView reloadData];
+          
+          
+      }];
+}
+
+- (IBAction)optionsButtonPress:(id)sender{
+    if (self.tableView.hidden) {
+        self.collectionView.hidden = YES;
+        self.tableView.hidden = NO;
+        self.menuView.hidden = NO;
+    }
+    else{
+        self.collectionView.hidden = NO;
+        self.tableView.hidden = YES;
+        self.menuView.hidden = YES;
+    }
 }
 
 //-(void)SetUpData
@@ -69,7 +124,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return _dataArray.count;
 }
 
 
@@ -77,7 +132,7 @@
     static NSString *cellIdentifier = @"FactoryTaskCell";
     FactoryTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.rightUtilityButtons = [self rightButtons];
-    [cell configureCellWithItem:nil andIndex:indexPath.row + 1];
+    [cell configureCellWithItem:_dataArray[indexPath.row] andIndex:indexPath.row + 1];
     cell.delegate = self;
     return cell;
     
@@ -104,6 +159,38 @@
 }
 
 
+#pragma mark - UICollectionViewDataSource
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return _dataArray.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellIdentifier = @"FactoryTaskCell";
+    CompanyCollectionViewCell *cell = (CompanyCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    cell.delegate = self;
+    [cell configureCellWithItem:_dataArray[indexPath.row]];
+    return cell;
+}
+
+
+#pragma mark - SwipeForOptionsCellDelegate Methods
+
+- (void)cell:(CompanyCollectionViewCell *)cell didShowMenu:(BOOL)isShowingMenu {
+    if (isShowingMenu) {
+        self.lastIndex = [self.collectionView indexPathForCell:cell];
+    }
+}
+
+- (void)cellDidEndScrolling:(CompanyCollectionViewCell *)cell{
+    if (_lastIndex && _lastIndex.row != [self.collectionView indexPathForCell:cell].row) {
+        cell = (CompanyCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:_lastIndex];
+        [cell hideUtilityButtonsAnimated:YES];
+    }
+}
 
 
 /*

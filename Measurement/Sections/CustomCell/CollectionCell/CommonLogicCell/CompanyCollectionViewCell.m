@@ -8,7 +8,7 @@
 
 #import "CompanyCollectionViewCell.h"
 
-static CGFloat BUTTONWIDTH = 90.0f;
+static CGFloat BUTTONWIDTH = 70.0f;
 
 @interface CompanyCollectionViewCell ()<UIScrollViewDelegate>
 
@@ -64,6 +64,8 @@ static CGFloat BUTTONWIDTH = 90.0f;
  */
 @property(nonatomic , strong) IBOutlet UILabel *m_noteL;
 
+@property (nonatomic, strong) IBOutletCollection(UIView) NSArray *lineViews;
+
 @property (nonatomic, assign) BOOL isShowingMenu;
 
 
@@ -93,6 +95,10 @@ static CGFloat BUTTONWIDTH = 90.0f;
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapped:)];
     [self.scrollViewContentView addGestureRecognizer:tapRecognizer];
+    
+    for (UIView *view  in _lineViews) {
+        view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collectionLabelLine"]];
+    }
     
 }
 
