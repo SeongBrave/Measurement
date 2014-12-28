@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C91ACE171A4FA06E0037757A /* OptionMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91ACE161A4FA06E0037757A /* OptionMenuTableViewController.m */; };
+		C91ACE1A1A50563F0037757A /* SelectValueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91ACE191A50563F0037757A /* SelectValueTableViewController.m */; };
 		C9431FBD1A4DAF7B0017FED0 /* MyPlanViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */; };
 		C9651ECC1A43AD8F00B770BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651ECB1A43AD8F00B770BB /* main.m */; };
 		C9651ECF1A43AD8F00B770BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651ECE1A43AD8F00B770BB /* AppDelegate.m */; };
@@ -93,6 +95,10 @@
 /* Begin PBXFileReference section */
 		70EB99E52CC50C5CE31D45B6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B42B534DE9B630AB14C37B76 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C91ACE151A4FA06E0037757A /* OptionMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionMenuTableViewController.h; sourceTree = "<group>"; };
+		C91ACE161A4FA06E0037757A /* OptionMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionMenuTableViewController.m; sourceTree = "<group>"; };
+		C91ACE181A50563F0037757A /* SelectValueTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectValueTableViewController.h; sourceTree = "<group>"; };
+		C91ACE191A50563F0037757A /* SelectValueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectValueTableViewController.m; sourceTree = "<group>"; };
 		C9431FBB1A4DAF7B0017FED0 /* MyPlanViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlanViewCell.h; sourceTree = "<group>"; };
 		C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlanViewCell.m; sourceTree = "<group>"; };
 		C9651EC61A43AD8F00B770BB /* Measurement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Measurement.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -283,6 +289,17 @@
 				DA5F62FAAA8BD23C06EFF46D /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C91ACE141A4FA01D0037757A /* TooLsVC */ = {
+			isa = PBXGroup;
+			children = (
+				C91ACE151A4FA06E0037757A /* OptionMenuTableViewController.h */,
+				C91ACE161A4FA06E0037757A /* OptionMenuTableViewController.m */,
+				C91ACE181A50563F0037757A /* SelectValueTableViewController.h */,
+				C91ACE191A50563F0037757A /* SelectValueTableViewController.m */,
+			);
+			path = TooLsVC;
 			sourceTree = "<group>";
 		};
 		C9431FBA1A4DAF640017FED0 /* MyPlanViewCell */ = {
@@ -570,6 +587,7 @@
 		C9651F931A43B25F00B770BB /* ViewCtrl */ = {
 			isa = PBXGroup;
 			children = (
+				C91ACE141A4FA01D0037757A /* TooLsVC */,
 				C9A337601A499B8F004560D1 /* OtherView */,
 				C9651F941A43B25F00B770BB /* BaseClass */,
 				C9651F991A43B25F00B770BB /* MenuView */,
@@ -1055,6 +1073,7 @@
 				C9B3A2AE1A4D9C7100CE276B /* CommonLogicViewController.m in Sources */,
 				C9BFA9F81A487BB000C887B4 /* HomeViewController.m in Sources */,
 				C9BFAA101A487BF400C887B4 /* HeaderView.m in Sources */,
+				C91ACE171A4FA06E0037757A /* OptionMenuTableViewController.m in Sources */,
 				C9E94DCD1A4A669100E8CC83 /* MJRefreshFooterView.m in Sources */,
 				C9651FC31A43B25F00B770BB /* BaseNetWork.m in Sources */,
 				C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */,
@@ -1071,6 +1090,7 @@
 				C9651FD61A43B26000B770BB /* StepperViewModel.m in Sources */,
 				C9A337721A499B8F004560D1 /* InspectionTasksViewController.m in Sources */,
 				C9651FEA1A43B26000B770BB /* CustomBadge.m in Sources */,
+				C91ACE1A1A50563F0037757A /* SelectValueTableViewController.m in Sources */,
 				C9A337811A499D1A004560D1 /* BidManagementViewController.m in Sources */,
 				C9651FD91A43B26000B770BB /* CustomVitalSignsView.m in Sources */,
 				C9651FD81A43B26000B770BB /* CustomBodyTempView.m in Sources */,
@@ -1235,8 +1255,8 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: jia li (RS5JKD7E43)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jia li (RS5JKD7E43)";
 				GCC_PREFIX_HEADER = Measurement/Measurement.pch;
 				INFOPLIST_FILE = Measurement/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -1248,7 +1268,7 @@
 					"$(PROJECT_DIR)/Measurement/Library/ToolsLib/Views",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6049498f-2732-4389-b150-b3ac94c12b74";
+				PROVISIONING_PROFILE = "d6318b5d-921d-4fbd-9e73-b8d54f65b185";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s";
 			};
@@ -1260,8 +1280,8 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: jia li (RS5JKD7E43)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jia li (RS5JKD7E43)";
 				GCC_PREFIX_HEADER = Measurement/Measurement.pch;
 				INFOPLIST_FILE = Measurement/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -1273,7 +1293,7 @@
 					"$(PROJECT_DIR)/Measurement/Library/ToolsLib/Views",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6049498f-2732-4389-b150-b3ac94c12b74";
+				PROVISIONING_PROFILE = "d6318b5d-921d-4fbd-9e73-b8d54f65b185";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
