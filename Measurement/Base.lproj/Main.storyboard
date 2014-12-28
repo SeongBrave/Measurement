@@ -68,7 +68,7 @@
                                         <rect key="frame" x="0.0" y="166" width="106" height="44"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="记住密码" image="login_checkbox_normal.png">
+                                        <state key="normal" title="记住密码" image="right-card-add">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="selected" image="login_checkbox_checked.png"/>
@@ -679,7 +679,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HVA-xX-OGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-587" y="-1826"/>
+            <point key="canvasLocation" x="-1115" y="-1266"/>
         </scene>
         <!--My Plan View Controller-->
         <scene sceneID="2K4-BV-Q0y">
@@ -925,6 +925,27 @@
                                             <outlet property="noteLineImgV" destination="JjY-be-baV" id="OAn-Zt-HAA"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OpenCell" id="fU6-hC-LME">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="256" height="194"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right-card-add-defauit" highlightedImage="right-card-add- selected" translatesAutoresizingMaskIntoConstraints="NO" id="pAt-Qs-FqD">
+                                                    <rect key="frame" x="0.0" y="0.0" width="256" height="194"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="pAt-Qs-FqD" firstAttribute="top" secondItem="fU6-hC-LME" secondAttribute="top" id="3Pe-uv-D1c"/>
+                                            <constraint firstAttribute="bottom" secondItem="pAt-Qs-FqD" secondAttribute="bottom" id="GPv-Of-XW9"/>
+                                            <constraint firstAttribute="trailing" secondItem="pAt-Qs-FqD" secondAttribute="trailing" id="ZoN-JH-wWb"/>
+                                            <constraint firstItem="pAt-Qs-FqD" firstAttribute="leading" secondItem="fU6-hC-LME" secondAttribute="leading" id="nd2-Oi-4A3"/>
+                                        </constraints>
+                                    </collectionViewCell>
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="rhv-xJ-CwV" id="A6y-ev-5lA"/>
@@ -953,7 +974,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JU4-Tv-cRA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-500" y="-2328"/>
+            <point key="canvasLocation" x="-1277" y="-2827"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="FqP-Si-8ol">
@@ -1159,8 +1180,10 @@
     <resources>
         <image name="login-logo" width="420" height="96"/>
         <image name="login_checkbox_checked.png" width="214" height="214"/>
-        <image name="login_checkbox_normal.png" width="214" height="214"/>
         <image name="right-button-xx" width="140" height="52"/>
+        <image name="right-card-add" width="214" height="214"/>
+        <image name="right-card-add- selected" width="580" height="388"/>
+        <image name="right-card-add-defauit" width="580" height="388"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

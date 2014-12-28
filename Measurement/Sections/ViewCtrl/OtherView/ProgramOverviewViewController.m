@@ -137,10 +137,22 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
         static NSString *cellIdentifier = @"ProgramOverview";
-    ProgramOverviewCell *cell = (ProgramOverviewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+
+    if (indexPath.row == self.m_DataSourceArr.count) {
+        
+        UICollectionViewCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"OpenCell" forIndexPath:indexPath];
+        //        [cell configureCellWithItem:self.m_DataSourceArr[indexPath.row]];
+        //    cell.delegate = self;
+        return cell;
+        
+    }else
+    {
+        ProgramOverviewCell *cell = (ProgramOverviewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
         [cell configureCellWithItem:self.m_DataSourceArr[indexPath.row]];
         //    cell.delegate = self;
-    return cell;
+        return cell;
+        
+    }
 }
 
 

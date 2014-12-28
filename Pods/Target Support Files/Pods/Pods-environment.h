@@ -102,6 +102,12 @@
 #define COCOAPODS_VERSION_MINOR_Masonry 5
 #define COCOAPODS_VERSION_PATCH_Masonry 3
 
+// RBStoryboardLink
+#define COCOAPODS_POD_AVAILABLE_RBStoryboardLink
+#define COCOAPODS_VERSION_MAJOR_RBStoryboardLink 0
+#define COCOAPODS_VERSION_MINOR_RBStoryboardLink 1
+#define COCOAPODS_VERSION_PATCH_RBStoryboardLink 0
+
 // ReactiveCocoa
 #define COCOAPODS_POD_AVAILABLE_ReactiveCocoa
 #define COCOAPODS_VERSION_MAJOR_ReactiveCocoa 2
