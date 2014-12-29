@@ -1,22 +1,22 @@
 //
-//  SelectValueTableViewController.m
+//  SelectValue_XCRY_TableViewController.m
 //  Measurement
 //
-//  Created by DTSoft on 14/12/28.
+//  Created by DTSoft on 14/12/29.
 //  Copyright (c) 2014年 成勇. All rights reserved.
 //
 
-#import "SelectValueTableViewController.h"
+#import "SelectValue_XCRY_TableViewController.h"
 #import "NSDictionary+LinqExtensions.h"
 #import <LinqToObjectiveC/NSArray+LinqExtensions.h>
-@interface SelectValueTableViewController ()
+@interface SelectValue_XCRY_TableViewController ()
 {
     NSIndexPath  *lastIndexPath;
 }
 
 @end
 
-@implementation SelectValueTableViewController
+@implementation SelectValue_XCRY_TableViewController
 
 #pragma mark - 系统方法
 - (void)viewDidLoad {
@@ -32,7 +32,10 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
- 
+    if (_isLoadData) {
+        [self loadNetData];
+    }
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -66,23 +69,55 @@
 {
     [self layoutMainCustomView];
     [self AddNavgationBarItem];
-//    隐藏多余行的分割线
+    //    隐藏多余行的分割线
     self.tableView.tableFooterView = [[UIView alloc] init];
     lastIndexPath = nil;
     
-//     [self setExtraCellLineHidden:self.tableView];
+    //     [self setExtraCellLineHidden:self.tableView];
+}
+
+-(void)loadNetData
+{
+    
+    /**
+     *  设置加载时显示提示
+     */
+    [[BaseNetWork getInstance] showDialog];
+    @weakify(self)
+    [[[[BaseNetWork getInstance] rac_getPath:@"getKsryjhn.do" parameters:nil]map:^(id responseData)
+      {
+          NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+          
+          return [dict valueForKeyPath:@"ksry"];
+          
+      }]subscribeNext:^(NSArray *arr)
+     {
+         
+         //comcname
+         @strongify(self)
+         self.m_dataSourceArr = arr;
+         
+         [self.tableView reloadData];
+     }error:^(NSError *error){
+         
+         //          [self.m_collectionView reloadData];
+         
+         
+     }];
+    
+    
 }
 
 -(void)AddNavgationBarItem
 {
     
-//    UIBarButtonItem *leftBtn =[[UIBarButtonItem alloc] initWithTitle:@"群组" style:UIBarButtonItemStyleBordered target:self action:@selector(leftBtnClick:)];
-//    [leftBtn setImage:[UIImage imageNamed:@"nav_Call"]];
-//    self.navigationItem.leftBarButtonItem=leftBtn;
+    //    UIBarButtonItem *leftBtn =[[UIBarButtonItem alloc] initWithTitle:@"群组" style:UIBarButtonItemStyleBordered target:self action:@selector(leftBtnClick:)];
+    //    [leftBtn setImage:[UIImage imageNamed:@"nav_Call"]];
+    //    self.navigationItem.leftBarButtonItem=leftBtn;
     
-//    UIBarButtonItem *rightBtn =[[UIBarButtonItem alloc] initWithTitle:@"群组" style:UIBarButtonItemStyleBordered target:self action:@selector(rightBtnClick:)];
-//    [rightBtn setImage:[UIImage imageNamed:@"nav_MultipartyCalls"]];
-//    self.navigationItem.rightBarButtonItem = rightBtn;
+    //    UIBarButtonItem *rightBtn =[[UIBarButtonItem alloc] initWithTitle:@"群组" style:UIBarButtonItemStyleBordered target:self action:@selector(rightBtnClick:)];
+    //    [rightBtn setImage:[UIImage imageNamed:@"nav_MultipartyCalls"]];
+    //    self.navigationItem.rightBarButtonItem = rightBtn;
     
     
 }
@@ -151,17 +186,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-//    /selectValueTableViewCell
+    //    /selectValueTableViewCell
     
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"selectValueTableViewCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"selectValue_XCRY_TableViewCell" forIndexPath:indexPath];
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, 5, 200, 40)];
     [cell.contentView addSubview:label];
     label.font = [UIFont systemFontOfSize:18];
     label.textColor = UIColorFromRGB(76, 93, 111);
-
     
-    label.text =self.m_dataSourceArr[indexPath.row][@"text"];
+    
+    label.text =self.m_dataSourceArr[indexPath.row][@"username"];
     return cell;
     
 }
@@ -169,7 +204,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-   
+    
     if (lastIndexPath == nil) {
         
         UITableViewCell *newCell = [tableView cellForRowAtIndexPath:
@@ -205,8 +240,8 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if ([self.selectedDelegate respondsToSelector:@selector(SelectValueTVC:DidSelectedValue:)]) {
-        [self.selectedDelegate SelectValueTVC:self DidSelectedValue:self.m_dataSourceArr[indexPath.row]];
+    if ([self.selectedDelegate respondsToSelector:@selector(SelectValue_XCRY_TVC:DidSelectedValue:)]) {
+        [self.selectedDelegate SelectValue_XCRY_TVC:self DidSelectedValue:self.m_dataSourceArr[indexPath.row]];
     }
 }
 /*

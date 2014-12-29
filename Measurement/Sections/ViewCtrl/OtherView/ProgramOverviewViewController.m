@@ -102,6 +102,7 @@
     self.m_netParamDict = [[NSDictionary alloc]init];
     
     self.m_netFunctionStr = @"findJhzl.do";
+    self.m_netParamDict = @{@"userCode":@"1257",@"pageNo":@"2"};
     
 }
 

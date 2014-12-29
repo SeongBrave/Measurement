@@ -127,7 +127,7 @@
 }
 -(void)loadNetData
 {
-    
+    [self setBaseNetWorkParameters];
     /**
      *  设置加载时显示提示
      */

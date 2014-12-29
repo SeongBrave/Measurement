@@ -8,7 +8,8 @@
 
 #import "MyPlanViewController.h"
 #import "ProgramOverviewCell.h"
-@interface MyPlanViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+#import "OptionMenuTableViewController.h"
+@interface MyPlanViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *m_flowLayout;
@@ -34,6 +35,20 @@
     
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    if ([segue.identifier isEqualToString:@"ToOptionMenuVC"] )
+    {
+        UINavigationController *nav = (UINavigationController*)[segue destinationViewController];
+    
+        OptionMenuTableViewController *OptionMenuTVC = (OptionMenuTableViewController*)[nav topViewController];
+        OptionMenuTVC.m_optionMenuDelegate = self;
+    
+    }
+    
+    
+    
+}
 #pragma mark - 自定义方法
 
 
@@ -94,9 +109,9 @@
  */
 -(void)setBaseNetWorkParameters
 {
-    self.m_netParamDict = [[NSDictionary alloc]init];
-    
+    //@"id":@"FFAEBA928FE2462EA3FBE3864A5EA6D9"
     self.m_netFunctionStr = @"findJhzl.do";
+//    self.m_netParamDict = @{@"userCode":@"1257"};
     
 }
 
@@ -151,6 +166,16 @@
         return cell;
         
     }
+    
+}
+
+#pragma mark -  DidOptionMenuDelegate
+
+-(void)OptionMenu:(OptionMenuTableViewController*) selectValueTVC DidsaveValue:(id)saveValue{
+    
+    self.m_netParamDict = saveValue;
+    
+    [self loadNetData];
     
 }
 

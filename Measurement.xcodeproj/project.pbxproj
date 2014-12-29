@@ -67,6 +67,8 @@
 		C9B3A2AE1A4D9C7100CE276B /* CommonLogicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B3A2AD1A4D9C7100CE276B /* CommonLogicViewController.m */; };
 		C9B625F21A4E8E1C00AE9251 /* Other.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B625F01A4E8E1C00AE9251 /* Other.storyboard */; };
 		C9B625F51A4E903D00AE9251 /* FactoryTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B625F41A4E903D00AE9251 /* FactoryTaskCell.m */; };
+		C9BBC63D1A519E5E00C0C862 /* SelectValue_XCRY_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BBC63C1A519E5E00C0C862 /* SelectValue_XCRY_TableViewController.m */; };
+		C9BBC6401A519ED300C0C862 /* SelectValue_XCKS_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BBC63F1A519ED300C0C862 /* SelectValue_XCKS_TableViewController.m */; };
 		C9BFA9F81A487BB000C887B4 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9E91A487BB000C887B4 /* HomeViewController.m */; };
 		C9BFA9FD1A487BB000C887B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9F31A487BB000C887B4 /* ViewController.m */; };
 		C9BFAA0F1A487BF400C887B4 /* Dock.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFAA011A487BF400C887B4 /* Dock.m */; };
@@ -235,6 +237,10 @@
 		C9B625F11A4E8E1C00AE9251 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Other.storyboard; sourceTree = "<group>"; };
 		C9B625F31A4E903D00AE9251 /* FactoryTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryTaskCell.h; sourceTree = "<group>"; };
 		C9B625F41A4E903D00AE9251 /* FactoryTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryTaskCell.m; sourceTree = "<group>"; };
+		C9BBC63B1A519E5E00C0C862 /* SelectValue_XCRY_TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectValue_XCRY_TableViewController.h; sourceTree = "<group>"; };
+		C9BBC63C1A519E5E00C0C862 /* SelectValue_XCRY_TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectValue_XCRY_TableViewController.m; sourceTree = "<group>"; };
+		C9BBC63E1A519ED300C0C862 /* SelectValue_XCKS_TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectValue_XCKS_TableViewController.h; sourceTree = "<group>"; };
+		C9BBC63F1A519ED300C0C862 /* SelectValue_XCKS_TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectValue_XCKS_TableViewController.m; sourceTree = "<group>"; };
 		C9BFA9E81A487BB000C887B4 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		C9BFA9E91A487BB000C887B4 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		C9BFA9F21A487BB000C887B4 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -298,6 +304,10 @@
 				C91ACE161A4FA06E0037757A /* OptionMenuTableViewController.m */,
 				C91ACE181A50563F0037757A /* SelectValueTableViewController.h */,
 				C91ACE191A50563F0037757A /* SelectValueTableViewController.m */,
+				C9BBC63B1A519E5E00C0C862 /* SelectValue_XCRY_TableViewController.h */,
+				C9BBC63C1A519E5E00C0C862 /* SelectValue_XCRY_TableViewController.m */,
+				C9BBC63E1A519ED300C0C862 /* SelectValue_XCKS_TableViewController.h */,
+				C9BBC63F1A519ED300C0C862 /* SelectValue_XCKS_TableViewController.m */,
 			);
 			path = TooLsVC;
 			sourceTree = "<group>";
@@ -1068,6 +1078,7 @@
 				C9651FC21A43B25F00B770BB /* TableViewBindingHelper.m in Sources */,
 				C9E94DCB1A4A669100E8CC83 /* MJRefreshBaseView.m in Sources */,
 				C9A3376F1A499B8F004560D1 /* AuditNotPassViewController.m in Sources */,
+				C9BBC63D1A519E5E00C0C862 /* SelectValue_XCRY_TableViewController.m in Sources */,
 				C9A3377B1A499CC0004560D1 /* ApprovalTaskViewController.m in Sources */,
 				C9651ECF1A43AD8F00B770BB /* AppDelegate.m in Sources */,
 				C9B3A2AE1A4D9C7100CE276B /* CommonLogicViewController.m in Sources */,
@@ -1119,6 +1130,7 @@
 				C9651FDB1A43B26000B770BB /* CYRadioButton.m in Sources */,
 				C9903C1E1A470BDB0006FD99 /* UIImage+Fit.m in Sources */,
 				C9BFAA0F1A487BF400C887B4 /* Dock.m in Sources */,
+				C9BBC6401A519ED300C0C862 /* SelectValue_XCKS_TableViewController.m in Sources */,
 				C9A3377E1A499CF4004560D1 /* CertificateGuaranteeViewController.m in Sources */,
 				C9651ECC1A43AD8F00B770BB /* main.m in Sources */,
 				C9A337711A499B8F004560D1 /* FactoryTaskViewController.m in Sources */,
@@ -1255,8 +1267,8 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: jia li (RS5JKD7E43)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jia li (RS5JKD7E43)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
 				GCC_PREFIX_HEADER = Measurement/Measurement.pch;
 				INFOPLIST_FILE = Measurement/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -1268,7 +1280,7 @@
 					"$(PROJECT_DIR)/Measurement/Library/ToolsLib/Views",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d6318b5d-921d-4fbd-9e73-b8d54f65b185";
+				PROVISIONING_PROFILE = "6049498f-2732-4389-b150-b3ac94c12b74";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s";
 			};
@@ -1280,8 +1292,8 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: jia li (RS5JKD7E43)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jia li (RS5JKD7E43)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
 				GCC_PREFIX_HEADER = Measurement/Measurement.pch;
 				INFOPLIST_FILE = Measurement/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -1293,7 +1305,7 @@
 					"$(PROJECT_DIR)/Measurement/Library/ToolsLib/Views",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d6318b5d-921d-4fbd-9e73-b8d54f65b185";
+				PROVISIONING_PROFILE = "6049498f-2732-4389-b150-b3ac94c12b74";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;

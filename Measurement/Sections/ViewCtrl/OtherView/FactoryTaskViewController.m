@@ -30,9 +30,10 @@
     [super viewDidLoad];
     
     
+    NSDictionary *dict = @{@"userCode":@"1257",@"ID":@"0EFCC23105C84A85AC97588889386397"};
     [[BaseNetWork getInstance] showDialog];
     @weakify(self)
-    [[[[BaseNetWork getInstance] rac_getPath:@"http://192.168.10.169:8080/mbs/convey/loadcDuty.do" parameters:nil]map:^(id responseData)
+    [[[[BaseNetWork getInstance] rac_getPath:@"http://192.168.10.169:8080/mbs/convey/findXcrw.do" parameters:dict]map:^(id responseData)
       {
           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
           
@@ -40,14 +41,6 @@
       }]subscribeNext:^(NSArray *arr){
           @strongify(self)
           
-//          [self.m_store createTableWithName:self.m_tableName];
-//          [self.m_store putObject:arr withId:@"page.result" intoTable:self.m_tableName];
-//          self.m_DataSourceArr = arr;
-//          [_header endRefreshing];
-//          [_footer endRefreshing];
-//          
-//          [self successGetDataWithResponseData:arr];
-//          //          [self.m_collectionView reloadData];
           
           self.dataArray = arr;
           [self.tableView reloadData];
@@ -55,14 +48,14 @@
           
           
       }error:^(NSError *error){
-          @strongify(self)
-//          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
-//          self.m_DataSourceArr = arr;
-//          [_header endRefreshing];
-//          [_footer endRefreshing];
-//          
-//          [self failedGetDataWithResponseData:arr];
-          //          [self.m_collectionView reloadData];
+//          @strongify(self)
+////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
+////          self.m_DataSourceArr = arr;
+////          [_header endRefreshing];
+////          [_footer endRefreshing];
+////          
+////          [self failedGetDataWithResponseData:arr];
+//          //          [self.m_collectionView reloadData];
           
           
       }];
