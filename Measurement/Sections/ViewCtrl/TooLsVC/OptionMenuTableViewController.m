@@ -10,7 +10,9 @@
 #import "SelectValueTableViewController.h"
 #import "SelectValue_XCRY_TableViewController.h"
 #import "SelectValue_XCKS_TableViewController.h"
-@interface OptionMenuTableViewController ()<DidSelectedValueDelegate,DidSelectedValue_XCRY_Delegate,DidSelectedValue_XCKS_Delegate>
+#import "DatePickerViewController.h"
+
+@interface OptionMenuTableViewController ()<DidSelectedValueDelegate,DidSelectedValue_XCRY_Delegate,DidSelectedValue_XCKS_Delegate,DatePickerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *m_companyTF;
 
@@ -19,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *m_factoryCommissionerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *m_sortingWayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *m_sortingFieldLabel;
+@property (weak, nonatomic) IBOutlet UIButton *fromDateBtn;
+@property (weak, nonatomic) IBOutlet UIButton *toDateBtn;
 
 @end
 
@@ -105,7 +109,21 @@
         SelectValue_XCKS_TableViewController *selectedValueTVC = (SelectValue_XCKS_TableViewController*)[segue destinationViewController];
         selectedValueTVC.selectedDelegate = self;
         
+    }else if ([segue.identifier isEqualToString:@"FromDatePicker"] )
+    {
+        DatePickerViewController *pickerVC = (DatePickerViewController*)[segue destinationViewController];
+        pickerVC.m_clickBtn = self.fromDateBtn;
+        pickerVC.dateDelegate = self;
+        
+    }else if ([segue.identifier isEqualToString:@"ToDatePicker"] )
+    {
+        DatePickerViewController *pickerVC = (DatePickerViewController*)[segue destinationViewController];
+         pickerVC.m_clickBtn = self.toDateBtn;
+        pickerVC.dateDelegate = self;
+        
     }
+    
+    
 
 }
 
@@ -352,6 +370,24 @@
     self.m_factoryCommissionerLabel.text = [NSString stringWithFormat:@"%@",relDict[@"username"]];
     
     [self.m_relValue setObject:relDict[@"usercode"] forKey:@"xcrybh"];
+}
+#pragma mark -DatePickerDelegate
+-(void)DatePickerVC:(DatePickerViewController*)datePickerVC DidseletedDate:(NSDate*) date
+{
+    // 将NSDate格式装换成NSString类型
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    
+    // 设置日历显示格式
+    
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    // 把日历时间传给字符串
+    
+    NSString *strDate = [dateFormatter stringFromDate:date];
+
+    [datePickerVC.m_clickBtn setTitle:strDate forState:UIControlStateNormal];
+    
 }
 
 

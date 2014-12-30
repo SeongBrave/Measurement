@@ -9,9 +9,9 @@
 #import "ProgramOverviewViewController.h"
 #import "ProgramOverviewCell.h"
 #import "BaseNetWork.h"
+#import "OptionMenuTableViewController.h"
 
-
-@interface ProgramOverviewViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface ProgramOverviewViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *m_flowLayout;
@@ -37,6 +37,21 @@
 {
     [super viewDidAppear:animated];
 
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"ToOptionMenuVC"] )
+    {
+        UINavigationController *nav = (UINavigationController*)[segue destinationViewController];
+        
+        OptionMenuTableViewController *OptionMenuTVC = (OptionMenuTableViewController*)[nav topViewController];
+        OptionMenuTVC.m_optionMenuDelegate = self;
+        
+    }
+    
+    
+    
 }
 
 #pragma mark - 自定义方法
@@ -102,7 +117,7 @@
     self.m_netParamDict = [[NSDictionary alloc]init];
     
     self.m_netFunctionStr = @"findJhzl.do";
-    self.m_netParamDict = @{@"userCode":@"1257",@"pageNo":@"2"};
+    self.m_netParamDict = @{@"userCode":@"1257",@"pageNo":[NSString stringWithFormat:@"%d",pageNo],@"pageSize":[NSString stringWithFormat:@"%d",pageSize]};
     
 }
 
@@ -141,7 +156,7 @@
 
     if (indexPath.row == self.m_DataSourceArr.count) {
         
-        UICollectionViewCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"OpenCell" forIndexPath:indexPath];
+        UICollectionViewCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"OpenMyPlanViewCell" forIndexPath:indexPath];
         //        [cell configureCellWithItem:self.m_DataSourceArr[indexPath.row]];
         //    cell.delegate = self;
         return cell;
@@ -156,5 +171,13 @@
     }
 }
 
+#pragma mark -  DidOptionMenuDelegate
 
+-(void)OptionMenu:(OptionMenuTableViewController*) selectValueTVC DidsaveValue:(id)saveValue{
+    
+    self.m_netParamDict = saveValue;
+    
+    [self loadNetData];
+    
+}
 @end

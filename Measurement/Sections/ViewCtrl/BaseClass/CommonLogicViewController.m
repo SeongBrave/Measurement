@@ -10,6 +10,9 @@
 
 
 @interface CommonLogicViewController ()
+{
+
+}
 @end
 
 @implementation CommonLogicViewController
@@ -33,7 +36,6 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self loadNetData];
 }
 
 // TODO: 使用autolayout 布局界面
@@ -85,6 +87,9 @@
     _footer = footer;
     
     [self setCollectionToRefreshDelegate];
+    
+    pageNo = 1;
+    pageSize = 10;
     
 }
 
@@ -173,6 +178,19 @@
 // 开始进入刷新状态就会调用
 - (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView
 {
+    //下拉加载更多
+    if(refreshView == _footer)
+    {
+        pageSize+=5;
+        [self loadNetData];
+        
+    }else if(refreshView == _header) //刷新
+    {
+        pageSize = 10;
+        [self loadNetData];
+        
+    }
+    
     
 }
 // 刷新完毕就会调用

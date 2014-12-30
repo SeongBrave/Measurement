@@ -14,6 +14,15 @@
     MJRefreshHeaderView *_header;
     MJRefreshFooterView *_footer;
     
+    /**
+     *  当前页码
+     */
+    int pageNo;  
+    /**
+     *  每页显示数
+     */
+    int pageSize;
+    
 }
 
 /**

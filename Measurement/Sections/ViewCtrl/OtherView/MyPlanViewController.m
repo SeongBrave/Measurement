@@ -7,7 +7,7 @@
 //
 
 #import "MyPlanViewController.h"
-#import "ProgramOverviewCell.h"
+#import "MyPlanViewCell.h"
 #import "OptionMenuTableViewController.h"
 @interface MyPlanViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate>
 
@@ -149,18 +149,18 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIdentifier = @"ProgramOverview";
+    static NSString *cellIdentifier = @"MyPlanViewCell";
     
     if (indexPath.row == self.m_DataSourceArr.count) {
         
-        UICollectionViewCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"OpenCell" forIndexPath:indexPath];
+        UICollectionViewCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"OpenMyPlanViewCell" forIndexPath:indexPath];
 //        [cell configureCellWithItem:self.m_DataSourceArr[indexPath.row]];
         //    cell.delegate = self;
         return cell;
         
     }else
     {
-        ProgramOverviewCell *cell = (ProgramOverviewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+        MyPlanViewCell *cell = (MyPlanViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
         [cell configureCellWithItem:self.m_DataSourceArr[indexPath.row]];
         //    cell.delegate = self;
         return cell;
