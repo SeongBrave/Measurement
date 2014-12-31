@@ -33,11 +33,11 @@
 /**
  *  表示请求网络的参数
  */
-@property(nonatomic , strong)NSDictionary *m_netParamDict;
+@property(nonatomic , strong)NSMutableDictionary *m_netParamDict;
 
 
 
-@property(nonatomic , strong)NSArray * m_DataSourceArr;
+@property(nonatomic , strong)NSMutableArray * m_DataSourceArr;
 
 /**
  *  本地数据库

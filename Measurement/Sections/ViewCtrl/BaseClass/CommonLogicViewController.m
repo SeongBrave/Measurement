@@ -147,7 +147,7 @@
           @strongify(self)
           [self.m_store createTableWithName:self.m_tableName];
           [self.m_store putObject:arr withId:@"page.result" intoTable:self.m_tableName];
-          self.m_DataSourceArr = arr;
+            self.m_DataSourceArr = [[NSMutableArray alloc]initWithArray:arr];
           [_header endRefreshing];
           [_footer endRefreshing];
           
@@ -158,7 +158,7 @@
       }error:^(NSError *error){
           @strongify(self)
           NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
-          self.m_DataSourceArr = arr;
+          self.m_DataSourceArr = [[NSMutableArray alloc]initWithArray:arr];
           [_header endRefreshing];
           [_footer endRefreshing];
           
@@ -181,12 +181,12 @@
     //下拉加载更多
     if(refreshView == _footer)
     {
-        pageSize+=5;
+        pageSize+=9;
         [self loadNetData];
         
     }else if(refreshView == _header) //刷新
     {
-        pageSize = 10;
+        pageSize = 9;
         [self loadNetData];
         
     }

@@ -9,7 +9,7 @@
 #import "MyPlanViewController.h"
 #import "MyPlanViewCell.h"
 #import "OptionMenuTableViewController.h"
-@interface MyPlanViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate>
+@interface MyPlanViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,SwipeMyPlanViewCellDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *m_flowLayout;
@@ -74,6 +74,10 @@
     
     [self.m_flowLayout setSectionInset:UIEdgeInsetsMake(10, 40, 10, 40)];
     
+    /**
+     *  UICollectionView如果在数据不够一屏时上下滚动
+     */
+    self.m_collectionView.alwaysBounceVertical = YES;
 }
 
 /**
@@ -109,9 +113,12 @@
  */
 -(void)setBaseNetWorkParameters
 {
-    //@"id":@"FFAEBA928FE2462EA3FBE3864A5EA6D9"
-    self.m_netFunctionStr = @"findJhzl.do";
-//    self.m_netParamDict = @{@"userCode":@"1257"};
+    
+    self.m_netFunctionStr = @"loadcDuty.do";
+    
+    [self.m_netParamDict setObject:@"1257" forKey:@"userCode"];
+    [self.m_netParamDict setObject:[NSString stringWithFormat:@"%d",pageNo] forKey:@"pageNo"];
+    [self.m_netParamDict setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"pageSize"];
     
 }
 
@@ -162,21 +169,100 @@
     {
         MyPlanViewCell *cell = (MyPlanViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
         [cell configureCellWithItem:self.m_DataSourceArr[indexPath.row]];
-        //    cell.delegate = self;
+        cell.delegate = self;
         return cell;
         
     }
     
 }
 
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+//    int row = [indexPath row];
+//    [self.photoImages removeObjectAtIndex:row];
+//    NSArray *deleteItems = @[indexPath];
+//    [self.collectionView deleteItemsAtIndexPaths:deleteItems];
+//}
 #pragma mark -  DidOptionMenuDelegate
 
 -(void)OptionMenu:(OptionMenuTableViewController*) selectValueTVC DidsaveValue:(id)saveValue{
     
-    self.m_netParamDict = saveValue;
+    debug_object(self.m_netParamDict);
+    NSDictionary *dict = (NSDictionary *)saveValue;
+    for(NSString *key in [dict allKeys])
+    {
+        [self.m_netParamDict setObject:dict[key] forKey:key];
+    }
+  debug_object(self.m_netParamDict);
     
     [self loadNetData];
     
+}
+
+- (void)MyPlanViewCell:(MyPlanViewCell *)cell didShowMenu:(BOOL)isShowingMenu
+{
+    
+}
+
+- (void)MyPlanViewCellDidEndScrolling:(MyPlanViewCell *)cell
+{
+    
+}
+
+- (void)MyPlanViewcollectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+/**
+ *  删除
+ *
+ *  @param cell
+ */
+- (void)deletePress:(MyPlanViewCell *)cell
+{
+    
+    
+     NSIndexPath *indexPath = [self.m_collectionView indexPathForCell:cell];
+
+    
+    [self.m_DataSourceArr removeObjectAtIndex:indexPath.row];
+//    /**
+//     *  第一种办法 删除cell
+//     */
+//    [self.m_collectionView deleteItemsAtIndexPaths:@[indexPath]];
+    
+    /**
+     *   第二种办法 删除cell
+     */
+    [self.m_collectionView performBatchUpdates:^{
+        [self.m_collectionView deleteItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
+        
+    } completion:nil];
+//    [self.photoImages removeObjectAtIndex:row];
+//    NSArray *deleteItems = @[indexPath];
+//    [self.m_collectionView moveItemAtIndexPath:indexPath toIndexPath];
+//    
+//    - (void)moveItemAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath;
+}
+
+/**
+ *  编辑
+ *
+ *  @param cell
+ */
+- (void)editorPress:(MyPlanViewCell *)cell
+{
+     [Dialog toast:@"editorPress"];
+}
+
+/**
+ *  标记完成
+ *
+ *  @param cell
+ */
+- (void)markCompletedPress:(MyPlanViewCell *)cell
+{
+     [Dialog toast:@"markCompletedPress"];
 }
 
 @end

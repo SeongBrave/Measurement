@@ -78,6 +78,9 @@ static CGFloat BUTTONWIDTH = 70.0f;
     
     NSDictionary * commonLogicDict = (NSDictionary *)product;
     
+    
+    self.dataDict = commonLogicDict;
+    
     self.m_dateL.text = [NSString stringWithFormat:@"今天"];
     self.m_companyNameL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"WTDWMC"]];
     self.m_companyAddrL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"SZDQ"]];
@@ -171,16 +174,24 @@ static CGFloat BUTTONWIDTH = 70.0f;
     }
 }
 
-
-- (IBAction)didShareButtonPress:(id)sender{
-    if (_delegate && [self.delegate respondsToSelector:@selector(MyPlanViewCellSharePress:)]) {
-        [self.delegate MyPlanViewCellSharePress:self];
+- (IBAction)editorPress:(id)sender {
+    
+    if (_delegate && [self.delegate respondsToSelector:@selector(editorPress:)]) {
+        [self.delegate editorPress:self];
     }
 }
 
-- (IBAction)didTopButtonPress:(id)sender{
-    if (_delegate && [self.delegate respondsToSelector:@selector(MyPlanViewCellTopPress:)]) {
-        [self.delegate MyPlanViewCellTopPress:self];
+- (IBAction)deletePress:(id)sender {
+    
+    if (_delegate && [self.delegate respondsToSelector:@selector(deletePress:)]) {
+        [self.delegate deletePress:self];
+    }
+}
+
+- (IBAction)markCompletedPress:(id)sender {
+    
+    if (_delegate && [self.delegate respondsToSelector:@selector(deletePress:)]) {
+        [self.delegate deletePress:self];
     }
 }
 

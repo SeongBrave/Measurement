@@ -25,6 +25,8 @@
 #pragma mark - 系统方法
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.m_netParamDict = [[NSMutableDictionary alloc]init];
     // Do any additional setup after loading the view.
 }
 
@@ -79,6 +81,12 @@
     
     [self.m_flowLayout setSectionInset:UIEdgeInsetsMake(10, 40, 10, 40)];
     
+    /**
+     *  UICollectionView如果在数据不够一屏时上下滚动
+     */
+    self.m_collectionView.alwaysBounceVertical = YES;
+    
+    
 }
 
 /**
@@ -114,10 +122,13 @@
  */
 -(void)setBaseNetWorkParameters
 {
-    self.m_netParamDict = [[NSDictionary alloc]init];
+   
     
     self.m_netFunctionStr = @"findJhzl.do";
-    self.m_netParamDict = @{@"userCode":@"1257",@"pageNo":[NSString stringWithFormat:@"%d",pageNo],@"pageSize":[NSString stringWithFormat:@"%d",pageSize]};
+    
+    [self.m_netParamDict setObject:@"1257" forKey:@"userCode"];
+    [self.m_netParamDict setObject:[NSString stringWithFormat:@"%d",pageNo] forKey:@"pageNo"];
+    [self.m_netParamDict setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"pageSize"];
     
 }
 
@@ -175,7 +186,11 @@
 
 -(void)OptionMenu:(OptionMenuTableViewController*) selectValueTVC DidsaveValue:(id)saveValue{
     
-    self.m_netParamDict = saveValue;
+
+    NSDictionary *dict = (NSDictionary *)saveValue;
+
+    [self.m_netParamDict setValuesForKeysWithDictionary:dict];
+
     
     [self loadNetData];
     

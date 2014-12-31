@@ -786,7 +786,7 @@
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="didShareButtonPress:" destination="Pp6-Xn-uOv" eventType="touchUpInside" id="kx3-fM-DQl"/>
+                                                                <action selector="editorPress:" destination="Pp6-Xn-uOv" eventType="touchUpInside" id="PJx-iQ-bFm"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyd-nq-WwQ">
@@ -799,7 +799,7 @@
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="didTopButtonPress:" destination="Pp6-Xn-uOv" eventType="touchUpInside" id="Ypg-jM-Pat"/>
+                                                                <action selector="deletePress:" destination="Pp6-Xn-uOv" eventType="touchUpInside" id="BD6-bX-TOA"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="huD-Pg-mOb">
@@ -811,6 +811,9 @@
                                                             <state key="normal" title="标记完成">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="markCompletedPress:" destination="Pp6-Xn-uOv" eventType="touchUpInside" id="uV7-bO-vma"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.59999999999999998" green="0.58431372550000005" blue="0.54117647059999996" alpha="1" colorSpace="deviceRGB"/>

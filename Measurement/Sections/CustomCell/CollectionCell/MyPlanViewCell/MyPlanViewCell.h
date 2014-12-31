@@ -20,13 +20,38 @@
 - (void)MyPlanViewcollectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 
 
-- (void)MyPlanViewCellSharePress:(MyPlanViewCell *)cell;
 
-- (void)MyPlanViewCellTopPress:(MyPlanViewCell *)cell;
+
+/**
+ *  删除
+ *
+ *  @param cell 
+ */
+- (void)deletePress:(MyPlanViewCell *)cell;
+
+/**
+ *  编辑
+ *
+ *  @param cell
+ */
+- (void)editorPress:(MyPlanViewCell *)cell;
+
+/**
+ *  标记完成
+ *
+ *  @param cell
+ */
+- (void)markCompletedPress:(MyPlanViewCell *)cell;
 
 @end
 
 @interface MyPlanViewCell : UICollectionViewCell
+
+
+/**
+ *  保存数据
+ */
+@property(nonatomic , strong)NSDictionary * dataDict;
 
 @property (nonatomic, weak) id<SwipeMyPlanViewCellDelegate> delegate;
 

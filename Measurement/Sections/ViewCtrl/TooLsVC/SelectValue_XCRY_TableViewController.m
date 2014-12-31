@@ -72,7 +72,7 @@
     //    隐藏多余行的分割线
     self.tableView.tableFooterView = [[UIView alloc] init];
     lastIndexPath = nil;
-    
+        self.tableView.tintColor = UIColorFromRGB(9, 187, 143);
     //     [self setExtraCellLineHidden:self.tableView];
 }
 

@@ -68,6 +68,8 @@
     [self AddNavgationBarItem];
 //    隐藏多余行的分割线
     self.tableView.tableFooterView = [[UIView alloc] init];
+    
+    self.tableView.tintColor = UIColorFromRGB(9, 187, 143);
     lastIndexPath = nil;
     
 //     [self setExtraCellLineHidden:self.tableView];

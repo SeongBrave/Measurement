@@ -81,7 +81,7 @@
             /**
              *  显示的数据格式为:@{@"text":@"显示的数据",@"data":@"保存的值"}
              */
-            selectedValueTVC.m_dataSourceArr =@[@{@"text":@"全部",@"data":@""},@{@"text":@"已完成",@"data":@""},@{@"text":@"未完成",@"data":@""}];
+            selectedValueTVC.m_dataSourceArr =@[@{@"text":@"创建时间",@"data":@"CJSJ"},@{@"text":@"下厂时间",@"data":@"XCSJQ"}];
              selectedValueTVC.m_selectValueTVCType = selectValueSortingfield;
             
             
@@ -331,12 +331,13 @@
         case selectValueSortingfield:
         {
             self.m_sortingFieldLabel.text = [NSString stringWithFormat:@"%@",relDict[@"text"]];
+            [self.m_relValue setObject:relDict[@"data"] forKey:@"pxzd"];
         }
             break;
         case selectValueSortingWay:
         {
             self.m_sortingWayLabel.text = [NSString stringWithFormat:@"%@",relDict[@"text"]];
-            [self.m_relValue setObject:relDict[@"data"] forKey:@"rwwcqk"];
+            [self.m_relValue setObject:relDict[@"data"] forKey:@"pxfs"];
         }
             break;
             
