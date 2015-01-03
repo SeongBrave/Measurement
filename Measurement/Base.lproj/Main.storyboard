@@ -705,7 +705,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HVA-xX-OGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1852" y="-3128"/>
+            <point key="canvasLocation" x="-1917" y="-2826"/>
         </scene>
         <!--My Plan View Controller-->
         <scene sceneID="WMs-kX-IV6">
@@ -1126,7 +1126,49 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o0D-9L-cB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1619" y="-3573"/>
+            <point key="canvasLocation" x="-2322" y="-3771"/>
+        </scene>
+        <!--My Plan PopVC-->
+        <scene sceneID="Byy-ox-N4E">
+            <objects>
+                <viewController storyboardIdentifier="popVC" id="3TU-a3-8tX" customClass="MyPlanPopVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ebp-27-RvH"/>
+                        <viewControllerLayoutGuide type="bottom" id="cV8-A5-vbt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lpQ-gH-sTF">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="900"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXs-Fc-IEp">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="68"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Df4-SR-qhx">
+                                        <rect key="frame" x="20" y="26" width="45" height="15"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="Kkw-rE-TpC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="fXs-Fc-IEp" firstAttribute="leading" secondItem="lpQ-gH-sTF" secondAttribute="leading" id="FMs-kH-A8X"/>
+                            <constraint firstItem="fXs-Fc-IEp" firstAttribute="top" secondItem="lpQ-gH-sTF" secondAttribute="top" id="jiR-cz-lYY"/>
+                            <constraint firstAttribute="trailing" secondItem="fXs-Fc-IEp" secondAttribute="trailing" id="nh1-LB-JxA"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="768" height="900"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ald-M1-XDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1127" y="-3989"/>
         </scene>
         <!--Option Menu Table View Controller-->
         <scene sceneID="FqP-Si-8ol">

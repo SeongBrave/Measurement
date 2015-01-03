@@ -9,7 +9,9 @@
 #import "MyPlanViewController.h"
 #import "MyPlanViewCell.h"
 #import "OptionMenuTableViewController.h"
-@interface MyPlanViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,SwipeMyPlanViewCellDelegate>
+#import "MyPlanPopVC.h"
+#import "backgroundV.h"
+@interface MyPlanViewController ()<UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,SwipeMyPlanViewCellDelegate,PopViewDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *m_flowLayout;
@@ -78,6 +80,9 @@
      *  UICollectionView如果在数据不够一屏时上下滚动
      */
     self.m_collectionView.alwaysBounceVertical = YES;
+    
+    self.m_collectionView.delegate = self;
+    self.m_collectionView.dataSource = self;
 }
 
 /**
@@ -152,7 +157,7 @@
     
     
     
-    return self.m_DataSourceArr.count +1;
+    return self.m_DataSourceArr.count ;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -176,12 +181,27 @@
     
 }
 
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    int row = [indexPath row];
-//    [self.photoImages removeObjectAtIndex:row];
-//    NSArray *deleteItems = @[indexPath];
-//    [self.collectionView deleteItemsAtIndexPaths:deleteItems];
-//}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+  
+    MyPlanPopVC *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"popVC"];;
+    popVc.m_popDelegate = self;
+    self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
+    self.m_popVC.delegate = self;
+    
+    //TODO:popoverLayoutMargins是指你的popover相对于整个window上下左右的margin
+    self.m_popVC.popoverLayoutMargins = UIEdgeInsetsMake(20,0,0,0);
+    
+    self.m_popVC.popoverBackgroundViewClass = [backgroundV class];
+    // 设定展示区域的大小
+    // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
+    //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
+    [self.m_popVC presentPopoverFromRect:collectionView.bounds
+                                inView:collectionView
+              permittedArrowDirections:0
+                              animated:YES];
+
+
+}
 #pragma mark -  DidOptionMenuDelegate
 
 -(void)OptionMenu:(OptionMenuTableViewController*) selectValueTVC DidsaveValue:(id)saveValue{
@@ -263,6 +283,13 @@
 - (void)markCompletedPress:(MyPlanViewCell *)cell
 {
      [Dialog toast:@"markCompletedPress"];
+}
+
+
+#pragma mark - PopViewDelegate
+-(void)dismissPopoverSelected
+{
+
 }
 
 @end

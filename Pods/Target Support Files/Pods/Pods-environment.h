@@ -72,6 +72,13 @@
 #define COCOAPODS_VERSION_MINOR_HexColors 2
 #define COCOAPODS_VERSION_PATCH_HexColors 1
 
+// IQKeyboardManager
+#define COCOAPODS_POD_AVAILABLE_IQKeyboardManager
+// This library does not follow semantic-versioning,
+// so we were not able to define version macros.
+// Please contact the author.
+// Version: 3.2.0.3.
+
 // LinqToObjectiveC
 #define COCOAPODS_POD_AVAILABLE_LinqToObjectiveC
 #define COCOAPODS_VERSION_MAJOR_LinqToObjectiveC 2
@@ -84,23 +91,41 @@
 #define COCOAPODS_VERSION_MINOR_MBProgressHUD 9
 #define COCOAPODS_VERSION_PATCH_MBProgressHUD 0
 
+// MLPAutoCompleteTextField
+#define COCOAPODS_POD_AVAILABLE_MLPAutoCompleteTextField
+#define COCOAPODS_VERSION_MAJOR_MLPAutoCompleteTextField 1
+#define COCOAPODS_VERSION_MINOR_MLPAutoCompleteTextField 5
+#define COCOAPODS_VERSION_PATCH_MLPAutoCompleteTextField 0
+
+// MMPlaceHolder
+#define COCOAPODS_POD_AVAILABLE_MMPlaceHolder
+#define COCOAPODS_VERSION_MAJOR_MMPlaceHolder 1
+#define COCOAPODS_VERSION_MINOR_MMPlaceHolder 6
+#define COCOAPODS_VERSION_PATCH_MMPlaceHolder 0
+
 // Mantle
 #define COCOAPODS_POD_AVAILABLE_Mantle
 #define COCOAPODS_VERSION_MAJOR_Mantle 1
 #define COCOAPODS_VERSION_MINOR_Mantle 5
-#define COCOAPODS_VERSION_PATCH_Mantle 1
+#define COCOAPODS_VERSION_PATCH_Mantle 3
 
 // Mantle/extobjc
 #define COCOAPODS_POD_AVAILABLE_Mantle_extobjc
 #define COCOAPODS_VERSION_MAJOR_Mantle_extobjc 1
 #define COCOAPODS_VERSION_MINOR_Mantle_extobjc 5
-#define COCOAPODS_VERSION_PATCH_Mantle_extobjc 1
+#define COCOAPODS_VERSION_PATCH_Mantle_extobjc 3
 
 // Masonry
 #define COCOAPODS_POD_AVAILABLE_Masonry
 #define COCOAPODS_VERSION_MAJOR_Masonry 0
 #define COCOAPODS_VERSION_MINOR_Masonry 5
 #define COCOAPODS_VERSION_PATCH_Masonry 3
+
+// PPSSignatureView
+#define COCOAPODS_POD_AVAILABLE_PPSSignatureView
+#define COCOAPODS_VERSION_MAJOR_PPSSignatureView 0
+#define COCOAPODS_VERSION_MINOR_PPSSignatureView 1
+#define COCOAPODS_VERSION_PATCH_PPSSignatureView 2
 
 // RBStoryboardLink
 #define COCOAPODS_POD_AVAILABLE_RBStoryboardLink
@@ -148,7 +173,7 @@
 #define COCOAPODS_POD_AVAILABLE_SWTableViewCell
 #define COCOAPODS_VERSION_MAJOR_SWTableViewCell 0
 #define COCOAPODS_VERSION_MINOR_SWTableViewCell 3
-#define COCOAPODS_VERSION_PATCH_SWTableViewCell 6
+#define COCOAPODS_VERSION_PATCH_SWTableViewCell 7
 
 // TSMessages
 #define COCOAPODS_POD_AVAILABLE_TSMessages

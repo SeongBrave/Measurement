@@ -26,12 +26,16 @@ PODS:
   - FMDB/standard (2.4):
     - FMDB/common
   - HexColors (2.2.1)
+  - IQKeyboardManager (3.2.0.3)
   - LinqToObjectiveC (2.0.0)
-  - Mantle (1.5.1):
-    - Mantle/extobjc (= 1.5.1)
-  - Mantle/extobjc (1.5.1)
+  - Mantle (1.5.3):
+    - Mantle/extobjc (= 1.5.3)
+  - Mantle/extobjc (1.5.3)
   - Masonry (0.5.3)
   - MBProgressHUD (0.9)
+  - MLPAutoCompleteTextField (1.5)
+  - MMPlaceHolder (1.6)
+  - PPSSignatureView (0.1.2)
   - RBStoryboardLink (0.1.0)
   - ReactiveCocoa (2.3.1):
     - ReactiveCocoa/UI (= 2.3.1)
@@ -43,7 +47,7 @@ PODS:
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
-  - SWTableViewCell (0.3.6)
+  - SWTableViewCell (0.3.7)
   - TSMessages (0.9.11):
     - HexColors
   - UIColor-HexString (1.1.0)
@@ -51,10 +55,14 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.4.1)
   - FMDB
+  - IQKeyboardManager
   - LinqToObjectiveC (~> 2.0.0)
   - Mantle
   - Masonry (~> 0.5.2)
   - MBProgressHUD
+  - MLPAutoCompleteTextField
+  - MMPlaceHolder
+  - PPSSignatureView
   - RBStoryboardLink
   - ReactiveCocoa (~> 2.3.1)
   - SDWebImage (~> 3.6)
@@ -66,14 +74,18 @@ SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   FMDB: 0b2fa25e5264ef177973c0cb8c02c711107979aa
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
+  IQKeyboardManager: e0b33a5d821ab36ec47ce8ca9dc520030d6aac52
   LinqToObjectiveC: db2ceec81d45192ffe971bbd8e73ef0de614723c
-  Mantle: d7c5ac734579ec751c58fecbf56189853056c58c
+  Mantle: 8d84cacd6c2a69ff6fbce985a2b51298a5495de3
   Masonry: 35368c2ca9577ca87722c12fc52c4bad9b1c1516
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
+  MLPAutoCompleteTextField: 5e440aa7b139258f779db3375dd486421959be15
+  MMPlaceHolder: 8fe70118604dfd117155ff3f6e8492965e338443
+  PPSSignatureView: 961f6168b88c0334007f1d49a17e3ebb2f1462a9
   RBStoryboardLink: 2abe4697a7dd6137482590b044f6e4f1c2b05837
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
-  SWTableViewCell: f5cbe30c49c4e5b97231c076f17331caaf3f6244
+  SWTableViewCell: 25de71898e3fcd11cf75707ef90245acf990ec03
   TSMessages: e21ef5b1c7518cc590a4826c8b05b16b79b10c2c
   UIColor-HexString: a9eabf02c1a2f9036ed6ac9cb2a3ea086f3b39e4
 

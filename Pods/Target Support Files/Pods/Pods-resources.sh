@@ -47,7 +47,8 @@ install_resource()
       ;;
   esac
 }
-          install_resource "TSMessages/Pod/Assets/NotificationBackgroundError.png"
+          install_resource "IQKeyboardManager/IQKeyBoardManager/Resources/IQKeyboardManager.bundle"
+                    install_resource "TSMessages/Pod/Assets/NotificationBackgroundError.png"
                     install_resource "TSMessages/Pod/Assets/NotificationBackgroundError@2x.png"
                     install_resource "TSMessages/Pod/Assets/NotificationBackgroundErrorIcon.png"
                     install_resource "TSMessages/Pod/Assets/NotificationBackgroundErrorIcon@2x.png"

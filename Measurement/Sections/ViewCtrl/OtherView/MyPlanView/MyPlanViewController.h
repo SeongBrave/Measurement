@@ -10,7 +10,10 @@
  *  我的创建计划
  */
 #import "CommonLogicViewController.h"
+#import "PopViewDelegate.h"
 
 @interface MyPlanViewController : CommonLogicViewController
+
+@property(nonatomic , strong)UIPopoverController *m_popVC;
 
 @end
