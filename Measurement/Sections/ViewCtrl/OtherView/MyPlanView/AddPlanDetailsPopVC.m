@@ -79,6 +79,9 @@
  *  特殊要求
  */
 @property (weak, nonatomic) IBOutlet UITextField *specialReqTF;
+@property (weak, nonatomic) IBOutlet UIView *fromDateView;
+
+@property (weak, nonatomic) IBOutlet UIView *toDateView;
 
 @end
 
@@ -139,14 +142,22 @@
 
     self.noteTF.layer.borderWidth = 2.0;
     self.noteTF.layer.borderColor = UIColorFromRGB(217, 217, 217).CGColor;
+    
+    
+    self.toDateView.layer.borderWidth = 2.0;
+    self.toDateView.layer.borderColor = UIColorFromRGB(217, 217, 217).CGColor;
+    
+    self.fromDateView.layer.borderWidth = 2.0;
+    self.fromDateView.layer.borderColor = UIColorFromRGB(217, 217, 217).CGColor;
+    
 
     /**
      *  ios7以后需要专门设置下分割线要不然不是从每行的开始绘制的
      *
      */
-    [self.headTableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [self.mansTableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-    
+//    [self.headTableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+//    [self.mansTableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+//    
 }
 
 -(void)SetUpData
@@ -176,7 +187,107 @@
     
 }
 
-#pragma mark - 代理协议方法*
+#pragma mark - 代理协议方法
+
+#pragma mark Table view data source
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 1;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+/*
+ -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+ {
+ 
+ return nil;
+ }
+ 
+ -(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+ {
+ 
+ return nil;
+ }
+ -(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+ {
+ return 0;
+ }
+ */
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return UITableViewCellEditingStyleDelete | UITableViewCellEditingStyleInsert;
+    
+}
+
+#pragma mark - UITableView Delegate
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *cellIdentifier;
+    if (tableView == self.headTableView) {
+        cellIdentifier = @"headTableViewCell";
+          UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+//        radio-defauit
+        
+        if(indexPath.row == 0)
+        {
+            cell.imageView.image = [UIImage imageNamed:@"radio-selected"];
+        }else
+        {
+            cell.imageView.image = [UIImage imageNamed:@"radio-defauit"];
+        }
+        
+        
+        cell.textLabel.text = @"检验科室A组";
+        return cell;
+    }else
+    {
+        cellIdentifier = @"mansTableView";
+          UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        cell.imageView.image = [UIImage imageNamed:@"checkbox-selected"];
+        
+        cell.textLabel.text = @"检验科室A组";
+        return cell;
+        
+    }
+ 
+    
+  
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+/*
+ //设置cell的行高
+ - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ return 70;
+ }
+ 
+ //设置cell的隔行换色
+ - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if ([indexPath row] % 2 == 0) {
+ cell.backgroundColor = [UIColor blueColor];
+ } else {
+ cell.backgroundColor = [UIColor greenColor];
+ }
+ }
+ //滑动选择的行后删除
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ NSLog(@"执行删除操作");
+ }
+ 
+ */
 
 
 
