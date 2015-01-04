@@ -16,5 +16,5 @@
 
 @interface ProgramOverviewViewController : CommonLogicViewController
 
-
+@property(nonatomic , strong)UIPopoverController *m_popVC;
 @end

@@ -10,4 +10,10 @@
 
 @implementation MyPlanPopVC
 
+- (IBAction)dismissClick:(id)sender {
+    
+    if ([self.m_popDelegate respondsToSelector:@selector(dismissPopoverSelected)]) {
+        [self.m_popDelegate dismissPopoverSelected];
+    }
+}
 @end

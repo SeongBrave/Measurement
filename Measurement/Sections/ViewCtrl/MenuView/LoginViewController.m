@@ -136,8 +136,45 @@
  */
 - (IBAction)loginBtnClick:(id)sender {
     
+    NSString *uNameStr = self.m_uNameTextField.text;
+    NSString *uPwdStr = self.m_uPwdTextField.text;
+    
+    if (uNameStr.length == 0) {
+        [Dialog toast:@"用户名不能为空!"];
+        return;
+    }
+    
+    if (uPwdStr.length == 0) {
+        [Dialog toast:@"密码不能为空!"];
+        return;
+    }
 
-       [self performSegueWithIdentifier:@"ToLoginSuccess" sender:nil];
+    
+//    NSDictionary *dict = @{@"usercode":uNameStr,@"password":uPwdStr};
+//    [[BaseNetWork getInstance] showDialog];
+//    @weakify(self)
+//    [[[[BaseNetWork getInstance] rac_getPath:@"login.do" parameters:dict]map:^(id responseData)
+//      {
+//          NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+//          
+//          return [dict valueForKeyPath:@"page.result"];
+//      }]subscribeNext:^(NSArray *arr){
+//          @strongify(self)
+//          
+//          [self performSegueWithIdentifier:@"ToLoginSuccess" sender:nil];
+//          
+//          
+//      }error:^(NSError *error){
+//
+//          
+//          
+//      }];
+
+    
+    [self performSegueWithIdentifier:@"ToLoginSuccess" sender:nil];
+
+
+    
     //ToLoginSuccess
 }
 

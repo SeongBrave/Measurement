@@ -81,8 +81,6 @@
      */
     self.m_collectionView.alwaysBounceVertical = YES;
     
-    self.m_collectionView.delegate = self;
-    self.m_collectionView.dataSource = self;
 }
 
 /**
@@ -157,7 +155,7 @@
     
     
     
-    return self.m_DataSourceArr.count ;
+    return self.m_DataSourceArr.count +1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -290,6 +288,7 @@
 -(void)dismissPopoverSelected
 {
 
+    [self.m_popVC dismissPopoverAnimated:YES];
 }
 
 @end
