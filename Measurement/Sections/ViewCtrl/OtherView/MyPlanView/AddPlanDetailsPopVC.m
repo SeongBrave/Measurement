@@ -182,15 +182,18 @@
     
     @weakify(self);
     
-    [self.nameOFEntityTF.rac_textSignal subscribeNext:^(NSString *wtdwmcStr) {
-        [[BaseNetWork getInstance] hideDialog];
-        NSDictionary *dict =@{@"wtdwmc":wtdwmcStr,@"num":@"5"};
-        [[[[BaseNetWork getInstance] rac_getPath:@"getWtdw.do" parameters:dict]map:^(id responseData)
-          {
-              NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-              
-              return [dict valueForKeyPath:@"wtdwList"];
-          }]subscribeNext:^(NSArray *arr){
+    [[self.nameOFEntityTF.rac_textSignal
+       throttle:0.5] subscribeNext:^(NSString *wtdwmcStr)
+     {
+         [[BaseNetWork getInstance] hideDialog];
+         NSDictionary *dict =@{@"wtdwmc":wtdwmcStr,@"num":@"5"};
+         [[[[[BaseNetWork getInstance] rac_getPath:@"getWtdw.do" parameters:dict]map:^(id responseData)
+            {
+                NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+                
+                return [dict valueForKeyPath:@"wtdwList"];
+            }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+          subscribeNext:^(NSArray *arr) {
               @strongify(self)
               
               self.m_autoTFArr = [arr linq_select:^id(NSDictionary *dict){
@@ -216,7 +219,7 @@
               
               
           }];
-    }];
+     }];
     
 }
 
