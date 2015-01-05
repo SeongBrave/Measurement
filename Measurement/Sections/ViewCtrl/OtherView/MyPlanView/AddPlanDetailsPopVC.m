@@ -7,9 +7,15 @@
 //
 
 #import "AddPlanDetailsPopVC.h"
+#import "AutoCompleteTextFieldDataSource.h"
+#import "AutoCompleteTextFieldDelegate.h"
+#import "AutoCompleteTextField.h"
+#import "autoTableViewData.h"
 
-@interface AddPlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate>
+@interface AddPlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate>
 
+
+@property(nonatomic , strong)NSArray *m_autoTFArr;
 
 
 /**
@@ -29,7 +35,7 @@
 /**
  *  单位名称
  */
-@property (weak, nonatomic) IBOutlet UITextField *nameOFEntityTF;
+@property (weak, nonatomic) IBOutlet AutoCompleteTextField *nameOFEntityTF;
 
 /**
  *  单位地址
@@ -163,7 +169,54 @@
 -(void)SetUpData
 {
     [self layoutMainCustomView];
+    
   
+    [self Add_RAC_Attention];
+    
+}
+
+-(void)Add_RAC_Attention
+{
+    
+    //nameOFEntityTF
+    
+    @weakify(self);
+    
+    [self.nameOFEntityTF.rac_textSignal subscribeNext:^(NSString *wtdwmcStr) {
+        [[BaseNetWork getInstance] hideDialog];
+        NSDictionary *dict =@{@"wtdwmc":wtdwmcStr,@"num":@"5"};
+        [[[[BaseNetWork getInstance] rac_getPath:@"getWtdw.do" parameters:dict]map:^(id responseData)
+          {
+              NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+              
+              return [dict valueForKeyPath:@"wtdwList"];
+          }]subscribeNext:^(NSArray *arr){
+              @strongify(self)
+              
+              self.m_autoTFArr = [arr linq_select:^id(NSDictionary *dict){
+                  
+                  autoTableViewData *data = [[autoTableViewData alloc]init];
+                  data.m_dict = [NSDictionary dictionaryWithDictionary:dict];
+                  
+                  return data;
+              }];
+              
+              [self.nameOFEntityTF reloadData];
+              
+              
+          }error:^(NSError *error){
+              //          @strongify(self)
+              ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
+              ////          self.m_DataSourceArr = arr;
+              ////          [_header endRefreshing];
+              ////          [_footer endRefreshing];
+              ////
+              ////          [self failedGetDataWithResponseData:arr];
+              //          //          [self.m_collectionView reloadData];
+              
+              
+          }];
+    }];
     
 }
 
@@ -290,8 +343,24 @@
  */
 
 
+#pragma mark - AutoCompleteTextFieldDataSource
+//TODO:数据回来时必须先更新数据代理，然后再调用autotextfield 的 relodata
+-(NSArray *)autoCompleteDataSourceTextField:(AutoCompleteTextField *)textField
+{
+    return self.m_autoTFArr;
+}
 
-
-
+#pragma mark - AutoCompleteTextFieldDelegate
+- (void)autoCompleteTextField:(AutoCompleteTextField *)textField
+  didSelectAutoCompleteString:(NSString *)selectedString
+       withAutoCompleteObject:(id<AutoCompletionObject>)selectedObject
+            forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(selectedObject){
+        NSLog(@"selected object from autocomplete menu %@ with string %@", selectedObject, [selectedObject autocompleteString]);
+    } else {
+        NSLog(@"selected string '%@' from autocomplete menu", selectedString);
+    }
+}
 
 @end

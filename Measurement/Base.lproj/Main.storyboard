@@ -1207,7 +1207,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjr-fv-I2O">
                                 <rect key="frame" x="0.0" y="116" width="768" height="1484"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4AZ-ms-VFQ">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4AZ-ms-VFQ" customClass="AutoCompleteTextField">
                                         <rect key="frame" x="179" y="32" width="529" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="529" id="VKh-ym-oLo"/>
@@ -1215,6 +1215,11 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="autoCompleteDataSource" destination="3TU-a3-8tX" id="iOZ-w3-nI2"/>
+                                            <outlet property="autoCompleteDelegate" destination="3TU-a3-8tX" id="NhA-Iz-cY4"/>
+                                            <outlet property="delegate" destination="3TU-a3-8tX" id="qcE-Ri-VX2"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="单位地址" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUg-8w-RvG">
                                         <rect key="frame" x="78" y="77" width="60" height="18"/>

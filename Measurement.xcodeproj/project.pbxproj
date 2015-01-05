@@ -75,6 +75,9 @@
 		C9BFAA121A487BF400C887B4 /* MenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFAA071A487BF400C887B4 /* MenuItemView.m */; };
 		C9BFAA131A487BF400C887B4 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFAA091A487BF400C887B4 /* MenuView.m */; };
 		C9BFAA151A487BF400C887B4 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFAA0D1A487BF400C887B4 /* SettingCell.m */; };
+		C9D6B9F61A5AE648006D27EF /* AutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F01A5AE648006D27EF /* AutoCompleteTextField.m */; };
+		C9D6B9F71A5AE648006D27EF /* NSString+Levenshtein.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */; };
+		C9D6B9FA1A5AEB8F006D27EF /* autoTableViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F91A5AEB8F006D27EF /* autoTableViewData.m */; };
 		C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E226D61A52FF6E004A9A69 /* DatePickerViewController.m */; };
 		C9E94DCA1A4A669100E8CC83 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9E94DC01A4A669100E8CC83 /* MJRefresh.bundle */; };
 		C9E94DCB1A4A669100E8CC83 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E94DC31A4A669100E8CC83 /* MJRefreshBaseView.m */; };
@@ -258,6 +261,15 @@
 		C9BFAA091A487BF400C887B4 /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
 		C9BFAA0C1A487BF400C887B4 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		C9BFAA0D1A487BF400C887B4 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
+		C9D6B9EF1A5AE648006D27EF /* AutoCompleteTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoCompleteTextField.h; sourceTree = "<group>"; };
+		C9D6B9F01A5AE648006D27EF /* AutoCompleteTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoCompleteTextField.m; sourceTree = "<group>"; };
+		C9D6B9F11A5AE648006D27EF /* AutoCompleteTextFieldDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoCompleteTextFieldDataSource.h; sourceTree = "<group>"; };
+		C9D6B9F21A5AE648006D27EF /* AutoCompleteTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoCompleteTextFieldDelegate.h; sourceTree = "<group>"; };
+		C9D6B9F31A5AE648006D27EF /* AutoCompletionObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoCompletionObject.h; sourceTree = "<group>"; };
+		C9D6B9F41A5AE648006D27EF /* NSString+Levenshtein.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Levenshtein.h"; sourceTree = "<group>"; };
+		C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Levenshtein.m"; sourceTree = "<group>"; };
+		C9D6B9F81A5AEB8F006D27EF /* autoTableViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autoTableViewData.h; sourceTree = "<group>"; };
+		C9D6B9F91A5AEB8F006D27EF /* autoTableViewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = autoTableViewData.m; sourceTree = "<group>"; };
 		C9E226D51A52FF6E004A9A69 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		C9E226D61A52FF6E004A9A69 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		C9E94DC01A4A669100E8CC83 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
@@ -660,6 +672,7 @@
 		C9651FA51A43B25F00B770BB /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				C9D6B9EE1A5AE648006D27EF /* AutoCompleteTextField */,
 				C9F51E631A582F9F009F84D1 /* protocol */,
 				C9903BFA1A46E9E30006FD99 /* DockMenu */,
 				C9651FA61A43B25F00B770BB /* CustomBadge */,
@@ -924,6 +937,20 @@
 			path = CommonLogicCell;
 			sourceTree = "<group>";
 		};
+		C9D6B9EE1A5AE648006D27EF /* AutoCompleteTextField */ = {
+			isa = PBXGroup;
+			children = (
+				C9D6B9EF1A5AE648006D27EF /* AutoCompleteTextField.h */,
+				C9D6B9F01A5AE648006D27EF /* AutoCompleteTextField.m */,
+				C9D6B9F11A5AE648006D27EF /* AutoCompleteTextFieldDataSource.h */,
+				C9D6B9F21A5AE648006D27EF /* AutoCompleteTextFieldDelegate.h */,
+				C9D6B9F31A5AE648006D27EF /* AutoCompletionObject.h */,
+				C9D6B9F41A5AE648006D27EF /* NSString+Levenshtein.h */,
+				C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */,
+			);
+			path = AutoCompleteTextField;
+			sourceTree = "<group>";
+		};
 		C9E226D41A52FF40004A9A69 /* DatePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -984,6 +1011,8 @@
 				C9F51E6A1A5830A5009F84D1 /* MyPlanPopVC.m */,
 				C9648A8B1A5970A3005ECFC6 /* AddPlanDetailsPopVC.h */,
 				C9648A8C1A5970A3005ECFC6 /* AddPlanDetailsPopVC.m */,
+				C9D6B9F81A5AEB8F006D27EF /* autoTableViewData.h */,
+				C9D6B9F91A5AEB8F006D27EF /* autoTableViewData.m */,
 			);
 			path = MyPlanView;
 			sourceTree = "<group>";
@@ -1157,6 +1186,7 @@
 				C9651FC31A43B25F00B770BB /* BaseNetWork.m in Sources */,
 				C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */,
 				C9431FBD1A4DAF7B0017FED0 /* MyPlanViewCell.m in Sources */,
+				C9D6B9FA1A5AEB8F006D27EF /* autoTableViewData.m in Sources */,
 				C9903BFF1A46E9FE0006FD99 /* DockItem.m in Sources */,
 				C9BFAA151A487BF400C887B4 /* SettingCell.m in Sources */,
 				C9A337751A499B8F004560D1 /* ProgramOverviewViewController.m in Sources */,
@@ -1178,6 +1208,7 @@
 				C9F51E6B1A5830A5009F84D1 /* MyPlanPopVC.m in Sources */,
 				C9651FEB1A43B26000B770BB /* Localisator.m in Sources */,
 				C9E94DCC1A4A669100E8CC83 /* MJRefreshConst.m in Sources */,
+				C9D6B9F61A5AE648006D27EF /* AutoCompleteTextField.m in Sources */,
 				C9651FEC1A43B26000B770BB /* CustomTabBarViewController.m in Sources */,
 				C9F51E2B1A57BADA009F84D1 /* SignatureViewController.m in Sources */,
 				C9651FF71A43BE3100B770BB /* YTKKeyValueStore.m in Sources */,
@@ -1192,6 +1223,7 @@
 				C9F51E2A1A57BADA009F84D1 /* ScanViewController.m in Sources */,
 				C9A337871A499D6B004560D1 /* SystemSettingsViewController.m in Sources */,
 				C9651FD01A43B26000B770BB /* CYTextField.m in Sources */,
+				C9D6B9F71A5AE648006D27EF /* NSString+Levenshtein.m in Sources */,
 				C9651FED1A43B26000B770BB /* TabBarHeaderView.m in Sources */,
 				C9651FD71A43B26000B770BB /* MyGestureRecognizerView.m in Sources */,
 				C9651FCF1A43B26000B770BB /* CommonTextField.m in Sources */,
@@ -1339,8 +1371,8 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: jia li (RS5JKD7E43)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jia li (RS5JKD7E43)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
 				GCC_PREFIX_HEADER = Measurement/Measurement.pch;
 				INFOPLIST_FILE = Measurement/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -1352,7 +1384,7 @@
 					"$(PROJECT_DIR)/Measurement/Library/ToolsLib/Views",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d6318b5d-921d-4fbd-9e73-b8d54f65b185";
+				PROVISIONING_PROFILE = "6049498f-2732-4389-b150-b3ac94c12b74";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s";
 			};
@@ -1364,8 +1396,8 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: jia li (RS5JKD7E43)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jia li (RS5JKD7E43)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
 				GCC_PREFIX_HEADER = Measurement/Measurement.pch;
 				INFOPLIST_FILE = Measurement/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -1377,7 +1409,7 @@
 					"$(PROJECT_DIR)/Measurement/Library/ToolsLib/Views",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d6318b5d-921d-4fbd-9e73-b8d54f65b185";
+				PROVISIONING_PROFILE = "6049498f-2732-4389-b150-b3ac94c12b74";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;

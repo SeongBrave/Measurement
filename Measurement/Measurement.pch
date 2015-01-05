@@ -25,5 +25,6 @@
 #import "FileHelpers.h"
 #import "YTKKeyValueStore.h"
 #import "BaseNetWork.h"
+#import "NSArray+LinqExtensions.h"
 
 #endif

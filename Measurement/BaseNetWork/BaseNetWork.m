@@ -30,6 +30,10 @@ static BaseNetWork *instance =nil;
     return instance;
 }
 
+-(void)hideDialog
+{
+    self.isShow = NO;
+}
 -(void)showDialog
 {
     self.isShow = YES;

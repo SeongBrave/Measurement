@@ -25,6 +25,7 @@ typedef enum{
 
 @property(nonatomic, strong)Dialog *m_show;
 
+-(void)hideDialog;
 -(void)showDialog;
 +(BaseNetWork *)getInstance;
 
