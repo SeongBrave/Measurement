@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "AutoCompleteTextFieldDataSource.h"
 #import "AutoCompleteTextFieldDelegate.h"
-#import "UITextField+RACSignalSupport.h"
 
 @protocol AutoCompleteSortOperationDelegate <NSObject>
 - (void)autoCompleteTermsDidSort:(NSArray *)completions;
@@ -24,8 +23,7 @@
 @property (weak) IBOutlet id <AutoCompleteTextFieldDataSource> autoCompleteDataSource;
 @property (weak) IBOutlet id <AutoCompleteTextFieldDelegate> autoCompleteDelegate;
 
-@property (assign) NSTimeInterval autoCompleteFetchRequestDelay; //default is 0.1, if you fetch from a web service you may want this higher to prevent multiple calls happening very quickly.
-@property (assign) BOOL sortAutoCompleteSuggestionsByClosestMatch;
+
 @property (assign) BOOL applyBoldEffectToAutoCompleteSuggestions;
 @property (assign) BOOL reverseAutoCompleteSuggestionsBoldEffect;
 @property (assign) BOOL showTextFieldDropShadowWhenAutoCompleteTableIsOpen;

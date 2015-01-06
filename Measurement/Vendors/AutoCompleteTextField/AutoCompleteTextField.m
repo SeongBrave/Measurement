@@ -421,8 +421,7 @@ withAutoCompleteString:(NSString *)string
 - (void)setDefaultValuesForVariables
 {
     [self setClipsToBounds:NO];
-//    [self setAutoCompleteFetchRequestDelay:DefaultAutoCompleteRequestDelay];
-    [self setSortAutoCompleteSuggestionsByClosestMatch:YES];
+
     [self setApplyBoldEffectToAutoCompleteSuggestions:YES];
     [self setShowTextFieldDropShadowWhenAutoCompleteTableIsOpen:YES];
     [self setShouldResignFirstResponderFromKeyboardAfterSelectionOfAutoCompleteRows:YES];

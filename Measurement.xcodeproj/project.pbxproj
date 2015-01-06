@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C90DF5BE1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C90DF5BD1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.m */; };
 		C91ACE171A4FA06E0037757A /* OptionMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91ACE161A4FA06E0037757A /* OptionMenuTableViewController.m */; };
 		C91ACE1A1A50563F0037757A /* SelectValueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91ACE191A50563F0037757A /* SelectValueTableViewController.m */; };
 		C9431FBD1A4DAF7B0017FED0 /* MyPlanViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */; };
@@ -105,6 +106,8 @@
 /* Begin PBXFileReference section */
 		70EB99E52CC50C5CE31D45B6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B42B534DE9B630AB14C37B76 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C90DF5BC1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatePlanDetailsPopVC.h; sourceTree = "<group>"; };
+		C90DF5BD1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatePlanDetailsPopVC.m; sourceTree = "<group>"; };
 		C91ACE151A4FA06E0037757A /* OptionMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionMenuTableViewController.h; sourceTree = "<group>"; };
 		C91ACE161A4FA06E0037757A /* OptionMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionMenuTableViewController.m; sourceTree = "<group>"; };
 		C91ACE181A50563F0037757A /* SelectValueTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectValueTableViewController.h; sourceTree = "<group>"; };
@@ -1013,6 +1016,8 @@
 				C9648A8C1A5970A3005ECFC6 /* AddPlanDetailsPopVC.m */,
 				C9D6B9F81A5AEB8F006D27EF /* autoTableViewData.h */,
 				C9D6B9F91A5AEB8F006D27EF /* autoTableViewData.m */,
+				C90DF5BC1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.h */,
+				C90DF5BD1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.m */,
 			);
 			path = MyPlanView;
 			sourceTree = "<group>";
@@ -1181,6 +1186,7 @@
 				C9B3A2AE1A4D9C7100CE276B /* CommonLogicViewController.m in Sources */,
 				C9BFA9F81A487BB000C887B4 /* HomeViewController.m in Sources */,
 				C9BFAA101A487BF400C887B4 /* HeaderView.m in Sources */,
+				C90DF5BE1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.m in Sources */,
 				C91ACE171A4FA06E0037757A /* OptionMenuTableViewController.m in Sources */,
 				C9E94DCD1A4A669100E8CC83 /* MJRefreshFooterView.m in Sources */,
 				C9651FC31A43B25F00B770BB /* BaseNetWork.m in Sources */,

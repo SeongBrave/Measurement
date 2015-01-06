@@ -62,8 +62,11 @@
     //获取上次登录时记录的工号和密码
     NSDictionary *lofinInfo = [FileHelpers GetDataFromNSUserDefaultsWithKey:@"loginInfo"];
     
-     _m_uNameTextField.text = [lofinInfo objectForKey:@"cStaffCode"];
-     _m_uPwdTextField.text = [lofinInfo objectForKey:@"cStaffCode"];
+    
+
+    
+     _m_uNameTextField.text = [lofinInfo objectForKey:@"usercode"];
+     _m_uPwdTextField.text = [lofinInfo objectForKey:@"password"];
     
     UIImage *leftImage = [UIImage imageNamed:@"login-user"];
     UIImageView *usernameIconImage = [[UIImageView alloc] initWithFrame:CGRectMake(9, 9, 15, 15)];
@@ -85,6 +88,17 @@
     [PwdusernameIconContainer addSubview:PwdusernameIconImage];
     _m_uPwdTextField.leftViewMode = UITextFieldViewModeAlways;
     _m_uPwdTextField.leftView = PwdusernameIconContainer;
+    
+    isRememberPwd= [[FileHelpers GetDataFromNSUserDefaultsWithKey:@"loginState"] boolValue];
+    
+    [self.m_remberPwdBtn setBackgroundImage:[UIImage imageNamed:@"memory-checkbox-defauit"] forState:UIControlStateNormal];
+     [self.m_remberPwdBtn setBackgroundImage:[UIImage imageNamed:@"memory-checkbox-selected"] forState:UIControlStateSelected];
+    
+    /**
+     *  修改m_remberPwdBtn的状态
+     */
+    self.m_remberPwdBtn.selected = isRememberPwd;
+    
     
 //    UIImage *PwdleftImage = [UIImage imageNamed:@"login-pass"];
 //    UIImageView *PwdusernameIconImage = [[UIImageView alloc] initWithFrame:CGRectMake(9, 9, 20, 20)];
@@ -150,16 +164,31 @@
     }
 
     
-    NSDictionary *dict = @{@"usercode":uNameStr,@"password":uPwdStr};
+    NSDictionary *reqDict = @{@"usercode":uNameStr,@"password":uPwdStr};
     [[BaseNetWork getInstance] showDialog];
     @weakify(self)
-    [[[BaseNetWork getInstance] rac_getPath:@"login.do" parameters:dict]
+    [[[BaseNetWork getInstance] rac_getPath:@"login.do" parameters:reqDict]
      subscribeNext:^(id responseData){
          @strongify(self)
          NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
          //登录成功过
          if ([dict[@"ret"] integerValue] == 1) {
              
+             /**
+              *  如果勾选了记住密码则将密码保存到文件中
+              */
+             if(isRememberPwd == 1)
+             {
+                 
+                 [FileHelpers SaveDataWithNSUserDefaultsForData:reqDict andWithKey:@"loginInfo"];
+                
+                 
+             }else
+             {
+                 [FileHelpers SaveDataWithNSUserDefaultsForData:@{@"usercode":uNameStr,@"password":@""} andWithKey:@"loginInfo"];
+             }
+             
+              [FileHelpers SaveDataWithNSUserDefaultsForData:[[NSNumber alloc]initWithBool:isRememberPwd] andWithKey:@"loginState"];
               [self performSegueWithIdentifier:@"ToLoginSuccess" sender:nil];
              
          }else //登录失败

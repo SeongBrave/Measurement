@@ -11,8 +11,10 @@
 #import "AutoCompleteTextFieldDelegate.h"
 #import "AutoCompleteTextField.h"
 #import "autoTableViewData.h"
+#import "DatePickerViewController.h"
+#import "CustomButton.h"
 
-@interface AddPlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate>
+@interface AddPlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate>
 
 
 @property(nonatomic , strong)NSArray *m_autoTFArr;
@@ -88,6 +90,8 @@
 @property (weak, nonatomic) IBOutlet UIView *fromDateView;
 
 @property (weak, nonatomic) IBOutlet UIView *toDateView;
+@property (weak, nonatomic) IBOutlet CustomButton *fromDatePickerBtn;
+@property (weak, nonatomic) IBOutlet CustomButton *toDatePickerBtn;
 
 @end
 
@@ -123,8 +127,27 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+    if ([segue.identifier isEqualToString:@"toDatePicker"] )
+    {
+    
+        DatePickerViewController *datePickerVC = (DatePickerViewController*)[segue destinationViewController];
+        datePickerVC.dateDelegate = self;
+        datePickerVC.m_clickBtn = self.toDatePickerBtn;
+        
+    }
+    if ([segue.identifier isEqualToString:@"fromDatePicker"] )
+    {
+        
+        DatePickerViewController *datePickerVC = (DatePickerViewController*)[segue destinationViewController];
+        datePickerVC.dateDelegate = self;
+        datePickerVC.m_clickBtn = self.fromDatePickerBtn;
+        
+    }
+    
+    
+    
+    
 }
 
 #pragma mark - 自定义方法
@@ -223,7 +246,92 @@
     
 }
 
+/**
+ *  通过查询委托单位过去的基本信息
+ *
+ *  @param 
 
+ arr 更新视图 arr[0]:  委托单基本信息
+        {
+ 
+            "WTDWDZ": "安达街安达大厦 5B",
+            "LXR": "林乐涛",
+            "WTDWMC": "吉林省非凡消防工程检测服务有限公司", 
+            "WTDWBM": "13700",
+            "WTDWYB": 130011,
+            "LXDH": "15543661119",
+            "HYLBBM": "C025",
+            "SZDQ": "220100"
+        }   
+ arr[1] :联系人信息
+        {
+            "LXR": "林乐涛",
+            "LXDH": "15543661119" 
+        }
+ */
+-(void)updateWTDWWithData:(NSArray *) arr
+{
+    if (arr.count >=1) {
+        
+        NSString *dqbhStr = nil;
+        NSDictionary *dict0 = [NSDictionary dictionaryWithDictionary:arr[0][0]];
+         NSDictionary *dict1 = [NSDictionary dictionaryWithDictionary:arr[1][0]];
+        if ([dict0 objectForKey:@"WTDWDZ"])
+        {
+            self.addrOFEntity.text = [NSString stringWithFormat:@"%@",dict0[@"WTDWDZ"]];
+            self.zipCodeTF.text = [NSString stringWithFormat:@"%@",dict0[@"WTDWYB"]];
+            self.contactTF.text = [NSString stringWithFormat:@"%@",dict1[@"LXR"]];
+            self.ContactTELTF.text = [NSString stringWithFormat:@"%@",dict1[@"LXDH"]];
+            
+            dqbhStr = [NSString stringWithFormat:@"%@",dict0[@"SZDQ"]];
+
+        }else //否则说明arr[0] 是 联系人信息
+        {
+            self.addrOFEntity.text = [NSString stringWithFormat:@"%@",dict1[@"WTDWDZ"]];
+            self.zipCodeTF.text = [NSString stringWithFormat:@"%@",dict1[@"WTDWYB"]];
+            self.contactTF.text = [NSString stringWithFormat:@"%@",dict0[@"LXR"]];
+            self.ContactTELTF.text = [NSString stringWithFormat:@"%@",dict0[@"LXDH"]];
+            
+            dqbhStr = [NSString stringWithFormat:@"%@",dict1[@"SZDQ"]];
+        }
+
+        
+        
+        @weakify(self)
+        [[BaseNetWork getInstance] showDialog];
+        NSDictionary *dict =@{@"dqbh":dqbhStr};
+        [[[[[BaseNetWork getInstance] rac_getPath:@"findSzdq.do" parameters:dict]map:^(id responseData)
+           {
+               NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+               
+               return [dict valueForKeyPath:@"szdq"];
+           }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+         subscribeNext:^(NSArray *arr) {
+             
+             @strongify(self)
+             self.districtTF.text = arr[0][@"dqmc"];
+             
+         }error:^(NSError *error){
+             //          @strongify(self)
+             ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
+             ////          self.m_DataSourceArr = arr;
+             ////          [_header endRefreshing];
+             ////          [_footer endRefreshing];
+             ////
+             ////          [self failedGetDataWithResponseData:arr];
+             //          //          [self.m_collectionView reloadData];
+             
+             
+         }];
+        
+
+    }
+    
+    
+    
+   
+    
+}
 - (IBAction)dismissClick:(id)sender {
     
     if ([self.m_popDelegate respondsToSelector:@selector(dismissPopoverSelected)]) {
@@ -359,11 +467,63 @@
        withAutoCompleteObject:(id<AutoCompletionObject>)selectedObject
             forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(selectedObject){
-        NSLog(@"selected object from autocomplete menu %@ with string %@", selectedObject, [selectedObject autocompleteString]);
-    } else {
-        NSLog(@"selected string '%@' from autocomplete menu", selectedString);
-    }
+    
+    autoTableViewData *data = ( autoTableViewData *)selectedObject;
+    
+    @weakify(self)
+    [[BaseNetWork getInstance] showDialog];
+    NSDictionary *dict =@{@"wtdwbm":data.m_dict[@"WTDWBM"]};
+    [[[[[BaseNetWork getInstance] rac_getPath:@"getWtdwjbxx.do" parameters:dict]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return [dict valueForKeyPath:@"wtdwjbxx"];
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSArray *arr) {
+        
+        @strongify(self)
+         [self updateWTDWWithData:arr];
+         
+     }error:^(NSError *error){
+         //          @strongify(self)
+         ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
+         ////          self.m_DataSourceArr = arr;
+         ////          [_header endRefreshing];
+         ////          [_footer endRefreshing];
+         ////
+         ////          [self failedGetDataWithResponseData:arr];
+         //          //          [self.m_collectionView reloadData];
+         
+         
+     }];
+
+  
+}
+
+#pragma mark - DatePickerDelegate
+-(void)DatePickerVC:(DatePickerViewController*)datePickerVC DidseletedDate:(NSDate*) date
+{
+    
+    // 将NSDate格式装换成NSString类型
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    
+    // 设置日历显示格式
+    
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    
+    // 把日历时间传给字符串
+    
+    NSString *strDate = [dateFormatter stringFromDate:date];
+
+    
+    CustomButton *customBtn = (CustomButton *)datePickerVC.m_clickBtn;
+    
+    
+    [customBtn setTitle:strDate forState:UIControlStateNormal];
+    
+    [customBtn.m_info setObject:date forKey:@"date"];
+    
 }
 
 @end
