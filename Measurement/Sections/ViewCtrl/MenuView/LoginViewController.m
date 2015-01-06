@@ -153,22 +153,29 @@
     NSDictionary *dict = @{@"usercode":uNameStr,@"password":uPwdStr};
     [[BaseNetWork getInstance] showDialog];
     @weakify(self)
-    [[[[BaseNetWork getInstance] rac_getPath:@"login.do" parameters:dict]map:^(id responseData)
-      {
-          NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-          
-          return [dict valueForKeyPath:@"page.result"];
-      }]subscribeNext:^(NSArray *arr){
-          @strongify(self)
-          
-          [self performSegueWithIdentifier:@"ToLoginSuccess" sender:nil];
-          
-          
-      }error:^(NSError *error){
+    [[[BaseNetWork getInstance] rac_getPath:@"login.do" parameters:dict]
+     subscribeNext:^(id responseData){
+         @strongify(self)
+         NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+         //登录成功过
+         if ([dict[@"ret"] integerValue] == 1) {
+             
+              [self performSegueWithIdentifier:@"ToLoginSuccess" sender:nil];
+             
+         }else //登录失败
+         {
+             [Dialog toast:dict[@"message"]];
+         }
+         
+         
+         
+     }error:^(NSError *error){
+         
+         
+         
+     }];
 
-          
-          
-      }];
+    
 
     
 //    [self performSegueWithIdentifier:@"ToLoginSuccess" sender:nil];
