@@ -10,6 +10,7 @@
 		C90DF5BE1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C90DF5BD1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.m */; };
 		C91ACE171A4FA06E0037757A /* OptionMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91ACE161A4FA06E0037757A /* OptionMenuTableViewController.m */; };
 		C91ACE1A1A50563F0037757A /* SelectValueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91ACE191A50563F0037757A /* SelectValueTableViewController.m */; };
+		C92F29951A5D0D89001AB4C8 /* DropDownTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C92F29941A5D0D89001AB4C8 /* DropDownTextField.m */; };
 		C9431FBD1A4DAF7B0017FED0 /* MyPlanViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */; };
 		C9648A8D1A5970A3005ECFC6 /* AddPlanDetailsPopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C9648A8C1A5970A3005ECFC6 /* AddPlanDetailsPopVC.m */; };
 		C9651ECC1A43AD8F00B770BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651ECB1A43AD8F00B770BB /* main.m */; };
@@ -112,6 +113,8 @@
 		C91ACE161A4FA06E0037757A /* OptionMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionMenuTableViewController.m; sourceTree = "<group>"; };
 		C91ACE181A50563F0037757A /* SelectValueTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectValueTableViewController.h; sourceTree = "<group>"; };
 		C91ACE191A50563F0037757A /* SelectValueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectValueTableViewController.m; sourceTree = "<group>"; };
+		C92F29931A5D0D89001AB4C8 /* DropDownTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownTextField.h; sourceTree = "<group>"; };
+		C92F29941A5D0D89001AB4C8 /* DropDownTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownTextField.m; sourceTree = "<group>"; };
 		C9431FBB1A4DAF7B0017FED0 /* MyPlanViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlanViewCell.h; sourceTree = "<group>"; };
 		C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlanViewCell.m; sourceTree = "<group>"; };
 		C9648A8B1A5970A3005ECFC6 /* AddPlanDetailsPopVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPlanDetailsPopVC.h; sourceTree = "<group>"; };
@@ -342,6 +345,15 @@
 				C9BBC63F1A519ED300C0C862 /* SelectValue_XCKS_TableViewController.m */,
 			);
 			path = TooLsVC;
+			sourceTree = "<group>";
+		};
+		C92F29921A5D0D89001AB4C8 /* DropDownTextField */ = {
+			isa = PBXGroup;
+			children = (
+				C92F29931A5D0D89001AB4C8 /* DropDownTextField.h */,
+				C92F29941A5D0D89001AB4C8 /* DropDownTextField.m */,
+			);
+			path = DropDownTextField;
 			sourceTree = "<group>";
 		};
 		C9431FBA1A4DAF640017FED0 /* MyPlanViewCell */ = {
@@ -675,6 +687,7 @@
 		C9651FA51A43B25F00B770BB /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				C92F29921A5D0D89001AB4C8 /* DropDownTextField */,
 				C9D6B9EE1A5AE648006D27EF /* AutoCompleteTextField */,
 				C9F51E631A582F9F009F84D1 /* protocol */,
 				C9903BFA1A46E9E30006FD99 /* DockMenu */,
@@ -1223,6 +1236,7 @@
 				C9651FEF1A43B26000B770BB /* DropDownListView.m in Sources */,
 				C9F51E681A58306D009F84D1 /* MyPlanViewController.m in Sources */,
 				C9BFAA131A487BF400C887B4 /* MenuView.m in Sources */,
+				C92F29951A5D0D89001AB4C8 /* DropDownTextField.m in Sources */,
 				C99F47C11A4B0BAF007C68AB /* CompanyCollectionViewCell.m in Sources */,
 				C9A337701A499B8F004560D1 /* DetectionTaskQueryViewController.m in Sources */,
 				C9BFA9FD1A487BB000C887B4 /* ViewController.m in Sources */,

@@ -13,8 +13,9 @@
 #import "autoTableViewData.h"
 #import "DatePickerViewController.h"
 #import "CustomButton.h"
+#import "DropDownTextField.h"
 
-@interface AddPlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate>
+@interface AddPlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,DropDownTextFieldShowCellTextLabel>
 
 
 @property(nonatomic , strong)NSArray *m_autoTFArr;
@@ -56,12 +57,12 @@
 /**
  *  所在区
  */
-@property (weak, nonatomic) IBOutlet UITextField *districtTF;
+@property (weak, nonatomic) IBOutlet DropDownTextField *districtTF;
 
 /**
  *  行业类别
  */
-@property (weak, nonatomic) IBOutlet UITextField *IndustryCategoriesTF;
+@property (weak, nonatomic) IBOutlet DropDownTextField *IndustryCategoriesTF;
 
 /**
  *  邮编
@@ -71,12 +72,12 @@
 /**
  *  业务负责科室
  */
-@property (weak, nonatomic) IBOutlet UITextField *responsibleDepTF;
+@property (weak, nonatomic) IBOutlet DropDownTextField *responsibleDepTF;
 
 /**
  *  业务负责人
  */
-@property (weak, nonatomic) IBOutlet UITextField *headOFTF;
+@property (weak, nonatomic) IBOutlet DropDownTextField *headOFTF;
 
 /**
  *  取证日期
@@ -180,6 +181,33 @@
     self.fromDateView.layer.borderColor = UIColorFromRGB(217, 217, 217).CGColor;
     
 
+    
+    /**
+     *  所在区
+     */
+    self.districtTF.dropDownDelegate = self;
+    self.districtTF.dropDownDataSource = self;
+    
+    /**
+     *  行业类别
+     */
+    self.IndustryCategoriesTF.dropDownDelegate = self;
+    self.IndustryCategoriesTF.dropDownDataSource = self;
+    
+    /**
+     *  业务负责人
+     */
+    self.headOFTF.dropDownDelegate = self;
+    self.headOFTF.dropDownDataSource = self;
+    
+    /**
+     *  业务负责科室
+     */
+    self.responsibleDepTF.dropDownDelegate = self;
+    self.responsibleDepTF.dropDownDataSource = self;
+    
+ 
+    
     /**
      *  ios7以后需要专门设置下分割线要不然不是从每行的开始绘制的
      *
@@ -524,6 +552,19 @@
     
     [customBtn.m_info setObject:date forKey:@"date"];
     
+}
+
+#pragma  mark - DropDownTextFieldDataSource
+-(NSArray *)dropDownTextFieldDataSourceTextField:(DropDownTextField *)textField;
+
+{
+    return @[@"sadf",@"asdf",@"asdfsadf",@"asdffdsa",@"sadf",@"asdf",@"asdfsadf",@"asdffdsa"];
+}
+
+#pragma mark - DropDownTextFieldShowCellTextLabel
+- (NSString *)getShowCellForTextLabel
+{
+    return @"asdfsadf";
 }
 
 @end

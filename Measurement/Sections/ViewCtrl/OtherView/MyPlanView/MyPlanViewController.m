@@ -17,6 +17,10 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *m_flowLayout;
 @property (weak, nonatomic) IBOutlet UICollectionView *m_collectionView;
+
+@property (nonatomic, strong) NSIndexPath *lastIndex;
+@property (nonatomic, strong) NSIndexPath *currentIndex;
+
 @end
 
 @implementation MyPlanViewController
@@ -222,14 +226,22 @@
     
 }
 
+#pragma mark - SwipeForOptionsCellDelegate Methods
+
+
 - (void)MyPlanViewCell:(MyPlanViewCell *)cell didShowMenu:(BOOL)isShowingMenu
 {
-    
+    if (isShowingMenu) {
+        self.lastIndex = [self.m_collectionView indexPathForCell:cell];
+    }
 }
 
 - (void)MyPlanViewCellDidEndScrolling:(MyPlanViewCell *)cell
 {
-    
+    if (_lastIndex && _lastIndex.row != [self.m_collectionView indexPathForCell:cell].row) {
+        cell = (MyPlanViewCell *)[self.m_collectionView cellForItemAtIndexPath:_lastIndex];
+        [cell hideUtilityButtonsAnimated:YES];
+    }
 }
 
 - (void)MyPlanViewcollectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath

@@ -373,7 +373,8 @@ withAutoCompleteString:(NSString *)string
     [self resetDropDownAutoCompleteTableFrameForNumberOfRows:numberOfRows];
     
     
-    if(numberOfRows && (self.autoCompleteTableViewHidden == NO)){
+    if(numberOfRows && (self.autoCompleteTableViewHidden == NO))
+    {
         [self.autoCompleteTableView setAlpha:1];
         
         if(!self.autoCompleteTableView.superview){
