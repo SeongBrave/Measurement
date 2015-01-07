@@ -143,12 +143,33 @@
 }
 
 
+-(void)Test
+{
+    NSDictionary *dict =@{@"user":@"root",@"pass":@"lovefox7"};
+    
+    [[[BaseNetWork getInstance] rac_postPath:@"http://www.uumatch.com/root/Login.php" parameters:dict]
+     subscribeNext:^(id responseData){
+         
+         NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+         
+         debug_object(dict);
+         
+     }error:^(NSError *error){
+         
+         debug_object(error);
+         
+     }];
+
+}
 /**
  *  登录
  *
  *  @param sender btn
  */
 - (IBAction)loginBtnClick:(id)sender {
+    
+    
+//    [self Test];
     
     NSString *uNameStr = self.m_uNameTextField.text;
     NSString *uPwdStr = self.m_uPwdTextField.text;
@@ -167,7 +188,7 @@
     NSDictionary *reqDict = @{@"usercode":uNameStr,@"password":uPwdStr};
     [[BaseNetWork getInstance] showDialog];
     @weakify(self)
-    [[[BaseNetWork getInstance] rac_getPath:@"login.do" parameters:reqDict]
+    [[[BaseNetWork getInstance] rac_postPath:@"login.do" parameters:reqDict]
      subscribeNext:^(id responseData){
          @strongify(self)
          NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
@@ -196,7 +217,7 @@
              [Dialog toast:dict[@"message"]];
          }
          
-         
+          [self performSegueWithIdentifier:@"ToLoginSuccess" sender:nil];
          
      }error:^(NSError *error){
          

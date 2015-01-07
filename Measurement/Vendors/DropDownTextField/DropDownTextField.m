@@ -407,16 +407,14 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
     
    
     id <DropDownTextFieldShowCellTextLabel>  dropDownData = (id <DropDownTextFieldShowCellTextLabel>)[self.dropDownDataSource dropDownTextFieldDataSourceTextField:self][indexPath.row];
-
-//    NSString *suggestedString;
     
-//     suggestedString =  [(id <DropDownTextFieldShowCellTextLabel>)dropDownData getShowCellForTextLabel];
+      NSString *suggestedString =  [(id <DropDownTextFieldShowCellTextLabel>)dropDownData getShowCellForTextLabel];
     
-//    if ([dropDownData respondsToSelector:@selector(getShowCellForTextLabel)]) {
-//    
-//    }
+    if ([dropDownData respondsToSelector:@selector(getShowCellForTextLabel)]) {
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@",dropDownData];
+    }
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@",suggestedString];
     
 
     return cell;

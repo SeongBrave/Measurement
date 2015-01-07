@@ -14,8 +14,12 @@
 #import "DatePickerViewController.h"
 #import "CustomButton.h"
 #import "DropDownTextField.h"
+#import "DistrictModel.h"
+#import "HeadOFModel.h"
+#import "ResponsibleDepModel.h"
+#import "IndustryCategoriesModel.h"
 
-@interface AddPlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,DropDownTextFieldShowCellTextLabel>
+@interface AddPlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate>
 
 
 @property(nonatomic , strong)NSArray *m_autoTFArr;
@@ -91,6 +95,29 @@
 @property (weak, nonatomic) IBOutlet UIView *fromDateView;
 
 @property (weak, nonatomic) IBOutlet UIView *toDateView;
+
+/**
+ *  所在区
+ */
+@property (nonatomic , strong)NSArray *districtArr;
+
+/**
+ *  行业类别
+ */
+@property (nonatomic , strong)NSArray *industryCategoriesArr;
+
+/**
+ *  业务负责科室
+ */
+@property (nonatomic , strong)NSArray *responsibleDepArr;
+
+/**
+ *  业务负责人
+ */
+@property (nonatomic , strong)NSArray *headOFArr;
+
+
+
 @property (weak, nonatomic) IBOutlet CustomButton *fromDatePickerBtn;
 @property (weak, nonatomic) IBOutlet CustomButton *toDatePickerBtn;
 
@@ -224,8 +251,87 @@
   
     [self Add_RAC_Attention];
     
+    [self loadInitDutyc];
+    
 }
 
+/**
+ *  获取 进入添加计划页面 的数据
+ */
+-(void)loadInitDutyc
+{
+    @weakify(self)
+    [[[[[BaseNetWork getInstance] rac_getPath:@"initDutyc.do" parameters:nil]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return [dict valueForKeyPath:@"ret"];
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary  *retDict) {
+         
+         @strongify(self)
+        
+         /**
+          *  所在区
+          */
+           NSArray *district_Arr = retDict[@"szdq"];
+         self.districtArr = [district_Arr linq_select:^id(NSDictionary *dict){
+             
+             DistrictModel *districtModel = [[DistrictModel alloc]init];
+             districtModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
+             
+             return districtModel;
+         }];
+         
+         /**
+          *  行业类别
+          */
+         NSArray *industryCategories_Arr = retDict[@"hylb"];
+         self.industryCategoriesArr = [industryCategories_Arr linq_select:^id(NSDictionary *dict){
+             
+             IndustryCategoriesModel *industryCategoriesModel = [[IndustryCategoriesModel alloc]init];
+             industryCategoriesModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
+             
+             return industryCategoriesModel;
+         }];
+         
+         /**
+          *  业务负责科室
+          */
+         NSArray *responsibleDep_Arr = retDict[@"ksry"];
+         self.responsibleDepArr = [responsibleDep_Arr linq_select:^id(NSDictionary *dict){
+             
+             ResponsibleDepModel *responsibleDepModel = [[ResponsibleDepModel alloc]init];
+             responsibleDepModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
+             
+             return responsibleDepModel;
+         }];
+        
+         
+         //TODO: 需要修改这块
+         /**
+          *  业务负责科室
+          */
+         NSArray *headOF_Arr = retDict[@"ry"];
+         self.headOFArr = [headOF_Arr linq_select:^id(NSDictionary *dict){
+             
+             HeadOFModel *headOFModel = [[HeadOFModel alloc]init];
+             headOFModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
+             
+             return headOFModel;
+         }];
+         
+       
+//         self.districtArr = districts.linq_select
+        
+         
+     }error:^(NSError *error){
+
+         
+     }];
+    
+
+}
 -(void)Add_RAC_Attention
 {
     
@@ -558,13 +664,53 @@
 -(NSArray *)dropDownTextFieldDataSourceTextField:(DropDownTextField *)textField;
 
 {
-    return @[@"sadf",@"asdf",@"asdfsadf",@"asdffdsa",@"sadf",@"asdf",@"asdfsadf",@"asdffdsa"];
+    
+    if (textField == self.districtTF) {
+        return self.districtArr;
+    }else if (textField == self.IndustryCategoriesTF) {
+        return self.industryCategoriesArr;
+    }else if (textField == self.responsibleDepTF) {
+        return self.responsibleDepArr;
+    }else if (textField == self.headOFTF) {
+        return self.headOFArr;
+    }
+    return nil;
 }
 
-#pragma mark - DropDownTextFieldShowCellTextLabel
-- (NSString *)getShowCellForTextLabel
+#pragma mark - DropDownTextFieldDelegate
+-(void)dropDownTextField:(DropDownTextField *)textField didSelectedWithData:(id<DropDownTextFieldShowCellTextLabel>) data forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return @"asdfsadf";
+    
+    if (textField == self.districtTF) {
+        
+        
+    }else if (textField == self.IndustryCategoriesTF) {
+      
+        
+    }else if (textField == self.responsibleDepTF)
+    {
+        //在选择完 业务负责科室 后需要更新业务负责人得数据
+        ResponsibleDepModel *respModel = ( ResponsibleDepModel *)data;
+        
+        /**
+         *  业务负责科室
+         */
+        NSArray *headOF_Arr = respModel.m_data[@"ry"];
+        self.headOFArr = [headOF_Arr linq_select:^id(NSDictionary *dict){
+            
+            HeadOFModel *headOFModel = [[HeadOFModel alloc]init];
+            headOFModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
+            
+            return headOFModel;
+        }];
+     
+        
+        
+    }else if (textField == self.headOFTF) {
+   
+    }
+    debug_object([data getShowCellForTextLabel]);
+    
 }
 
 @end

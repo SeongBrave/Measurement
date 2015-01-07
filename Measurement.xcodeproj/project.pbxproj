@@ -86,6 +86,10 @@
 		C9E94DCC1A4A669100E8CC83 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E94DC51A4A669100E8CC83 /* MJRefreshConst.m */; };
 		C9E94DCD1A4A669100E8CC83 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E94DC71A4A669100E8CC83 /* MJRefreshFooterView.m */; };
 		C9E94DCE1A4A669100E8CC83 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E94DC91A4A669100E8CC83 /* MJRefreshHeaderView.m */; };
+		C9F3DFC51A5D903500D34A19 /* DistrictModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DFBE1A5D903500D34A19 /* DistrictModel.m */; };
+		C9F3DFC61A5D903500D34A19 /* HeadOFModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DFC01A5D903500D34A19 /* HeadOFModel.m */; };
+		C9F3DFC71A5D903500D34A19 /* IndustryCategoriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DFC21A5D903500D34A19 /* IndustryCategoriesModel.m */; };
+		C9F3DFC81A5D903500D34A19 /* ResponsibleDepModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DFC41A5D903500D34A19 /* ResponsibleDepModel.m */; };
 		C9F51E2A1A57BADA009F84D1 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F51E271A57BADA009F84D1 /* ScanViewController.m */; };
 		C9F51E2B1A57BADA009F84D1 /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F51E291A57BADA009F84D1 /* SignatureViewController.m */; };
 		C9F51E621A582E70009F84D1 /* backgroundV.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F51E611A582E70009F84D1 /* backgroundV.m */; };
@@ -288,6 +292,14 @@
 		C9E94DC71A4A669100E8CC83 /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
 		C9E94DC81A4A669100E8CC83 /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
 		C9E94DC91A4A669100E8CC83 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
+		C9F3DFBD1A5D903500D34A19 /* DistrictModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistrictModel.h; sourceTree = "<group>"; };
+		C9F3DFBE1A5D903500D34A19 /* DistrictModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistrictModel.m; sourceTree = "<group>"; };
+		C9F3DFBF1A5D903500D34A19 /* HeadOFModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadOFModel.h; sourceTree = "<group>"; };
+		C9F3DFC01A5D903500D34A19 /* HeadOFModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadOFModel.m; sourceTree = "<group>"; };
+		C9F3DFC11A5D903500D34A19 /* IndustryCategoriesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndustryCategoriesModel.h; sourceTree = "<group>"; };
+		C9F3DFC21A5D903500D34A19 /* IndustryCategoriesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndustryCategoriesModel.m; sourceTree = "<group>"; };
+		C9F3DFC31A5D903500D34A19 /* ResponsibleDepModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponsibleDepModel.h; sourceTree = "<group>"; };
+		C9F3DFC41A5D903500D34A19 /* ResponsibleDepModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponsibleDepModel.m; sourceTree = "<group>"; };
 		C9F51E261A57BADA009F84D1 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
 		C9F51E271A57BADA009F84D1 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
 		C9F51E281A57BADA009F84D1 /* SignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureViewController.h; sourceTree = "<group>"; };
@@ -397,6 +409,7 @@
 				C9651F4B1A43B25F00B770BB /* Macro */,
 				C9651F511A43B25F00B770BB /* Sections */,
 				C9651EEF1A43AFBB00B770BB /* Resources */,
+				C9F3DFA81A5D647700D34A19 /* Model */,
 				C9651EC91A43AD8F00B770BB /* Supporting Files */,
 			);
 			path = Measurement;
@@ -993,6 +1006,37 @@
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
+		C9F3DFA81A5D647700D34A19 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C9F3DFA91A5D64CB00D34A19 /* AddPlanDetailsModel */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C9F3DFA91A5D64CB00D34A19 /* AddPlanDetailsModel */ = {
+			isa = PBXGroup;
+			children = (
+				C9F3DFBC1A5D903500D34A19 /* PlanDetailsModel */,
+			);
+			path = AddPlanDetailsModel;
+			sourceTree = "<group>";
+		};
+		C9F3DFBC1A5D903500D34A19 /* PlanDetailsModel */ = {
+			isa = PBXGroup;
+			children = (
+				C9F3DFBD1A5D903500D34A19 /* DistrictModel.h */,
+				C9F3DFBE1A5D903500D34A19 /* DistrictModel.m */,
+				C9F3DFBF1A5D903500D34A19 /* HeadOFModel.h */,
+				C9F3DFC01A5D903500D34A19 /* HeadOFModel.m */,
+				C9F3DFC11A5D903500D34A19 /* IndustryCategoriesModel.h */,
+				C9F3DFC21A5D903500D34A19 /* IndustryCategoriesModel.m */,
+				C9F3DFC31A5D903500D34A19 /* ResponsibleDepModel.h */,
+				C9F3DFC41A5D903500D34A19 /* ResponsibleDepModel.m */,
+			);
+			path = PlanDetailsModel;
+			sourceTree = "<group>";
+		};
 		C9F51E5E1A582E5F009F84D1 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1188,7 +1232,9 @@
 				C9651FD41A43B26000B770BB /* CustomStepper.m in Sources */,
 				C9903C021A46EA0C0006FD99 /* CellItem.m in Sources */,
 				C9651FE51A43B26000B770BB /* BaseViewController.m in Sources */,
+				C9F3DFC81A5D903500D34A19 /* ResponsibleDepModel.m in Sources */,
 				C9A337781A499C79004560D1 /* CheckTaskViewController.m in Sources */,
+				C9F3DFC51A5D903500D34A19 /* DistrictModel.m in Sources */,
 				C9651FC21A43B25F00B770BB /* TableViewBindingHelper.m in Sources */,
 				C9648A8D1A5970A3005ECFC6 /* AddPlanDetailsPopVC.m in Sources */,
 				C9E94DCB1A4A669100E8CC83 /* MJRefreshBaseView.m in Sources */,
@@ -1213,6 +1259,7 @@
 				C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */,
 				C9651FD51A43B26000B770BB /* StepperModel.m in Sources */,
 				C99FD92A1A4C4F2F000AB1A6 /* ProgramOverviewCell.m in Sources */,
+				C9F3DFC61A5D903500D34A19 /* HeadOFModel.m in Sources */,
 				C9651FE41A43B26000B770BB /* BaseTableViewController.m in Sources */,
 				C9651FD11A43B26000B770BB /* CYTextFieldAutoFillInputView.m in Sources */,
 				C9651FD61A43B26000B770BB /* StepperViewModel.m in Sources */,
@@ -1230,6 +1277,7 @@
 				C9D6B9F61A5AE648006D27EF /* AutoCompleteTextField.m in Sources */,
 				C9651FEC1A43B26000B770BB /* CustomTabBarViewController.m in Sources */,
 				C9F51E2B1A57BADA009F84D1 /* SignatureViewController.m in Sources */,
+				C9F3DFC71A5D903500D34A19 /* IndustryCategoriesModel.m in Sources */,
 				C9651FF71A43BE3100B770BB /* YTKKeyValueStore.m in Sources */,
 				C9A337741A499B8F004560D1 /* PlanningDepartmentViewController.m in Sources */,
 				C9B625F51A4E903D00AE9251 /* FactoryTaskCell.m in Sources */,
