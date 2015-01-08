@@ -28,6 +28,8 @@
 #pragma mark - 系统方法
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.m_netParamDict = [[NSMutableDictionary alloc]init];
     // Do any additional setup after loading the view.
 }
 

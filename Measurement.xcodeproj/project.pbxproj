@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C903B0C51A5EB1B00038AA1B /* PlanDetailsHead_DepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C903B0C41A5EB1B00038AA1B /* PlanDetailsHead_DepCell.m */; };
+		C903B0C81A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C903B0C71A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m */; };
+		C903B0CE1A5EBA5D0038AA1B /* DepManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C903B0CD1A5EBA5D0038AA1B /* DepManViewController.m */; };
+		C903B0D11A5EBF910038AA1B /* DepMans_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = C903B0D01A5EBF910038AA1B /* DepMans_Cell.m */; };
 		C90DF5BE1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C90DF5BD1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.m */; };
 		C91ACE171A4FA06E0037757A /* OptionMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91ACE161A4FA06E0037757A /* OptionMenuTableViewController.m */; };
 		C91ACE1A1A50563F0037757A /* SelectValueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91ACE191A50563F0037757A /* SelectValueTableViewController.m */; };
@@ -67,7 +71,6 @@
 		C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AE087E1A450FE200DA39BF /* LoginViewController.m */; };
 		C9B3A2AE1A4D9C7100CE276B /* CommonLogicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B3A2AD1A4D9C7100CE276B /* CommonLogicViewController.m */; };
 		C9B625F21A4E8E1C00AE9251 /* Other.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B625F01A4E8E1C00AE9251 /* Other.storyboard */; };
-		C9B625F51A4E903D00AE9251 /* FactoryTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B625F41A4E903D00AE9251 /* FactoryTaskCell.m */; };
 		C9BBC63D1A519E5E00C0C862 /* SelectValue_XCRY_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BBC63C1A519E5E00C0C862 /* SelectValue_XCRY_TableViewController.m */; };
 		C9BBC6401A519ED300C0C862 /* SelectValue_XCKS_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BBC63F1A519ED300C0C862 /* SelectValue_XCKS_TableViewController.m */; };
 		C9BFA9F81A487BB000C887B4 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9E91A487BB000C887B4 /* HomeViewController.m */; };
@@ -80,6 +83,7 @@
 		C9D6B9F61A5AE648006D27EF /* AutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F01A5AE648006D27EF /* AutoCompleteTextField.m */; };
 		C9D6B9F71A5AE648006D27EF /* NSString+Levenshtein.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */; };
 		C9D6B9FA1A5AEB8F006D27EF /* autoTableViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F91A5AEB8F006D27EF /* autoTableViewData.m */; };
+		C9D88CF61A5E2D0D003ED50F /* ks_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D88CF51A5E2D0D003ED50F /* ks_Model.m */; };
 		C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E226D61A52FF6E004A9A69 /* DatePickerViewController.m */; };
 		C9E94DCA1A4A669100E8CC83 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9E94DC01A4A669100E8CC83 /* MJRefresh.bundle */; };
 		C9E94DCB1A4A669100E8CC83 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E94DC31A4A669100E8CC83 /* MJRefreshBaseView.m */; };
@@ -90,6 +94,9 @@
 		C9F3DFC61A5D903500D34A19 /* HeadOFModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DFC01A5D903500D34A19 /* HeadOFModel.m */; };
 		C9F3DFC71A5D903500D34A19 /* IndustryCategoriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DFC21A5D903500D34A19 /* IndustryCategoriesModel.m */; };
 		C9F3DFC81A5D903500D34A19 /* ResponsibleDepModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DFC41A5D903500D34A19 /* ResponsibleDepModel.m */; };
+		C9F3DFCF1A5D99E800D34A19 /* ry_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DFCE1A5D99E800D34A19 /* ry_Model.m */; };
+		C9F3DFD41A5D9CD100D34A19 /* FactoryTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DFD21A5D9CD100D34A19 /* FactoryTaskCell.m */; };
+		C9F3DFD71A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DFD61A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m */; };
 		C9F51E2A1A57BADA009F84D1 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F51E271A57BADA009F84D1 /* ScanViewController.m */; };
 		C9F51E2B1A57BADA009F84D1 /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F51E291A57BADA009F84D1 /* SignatureViewController.m */; };
 		C9F51E621A582E70009F84D1 /* backgroundV.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F51E611A582E70009F84D1 /* backgroundV.m */; };
@@ -111,6 +118,14 @@
 /* Begin PBXFileReference section */
 		70EB99E52CC50C5CE31D45B6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B42B534DE9B630AB14C37B76 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C903B0C31A5EB1B00038AA1B /* PlanDetailsHead_DepCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanDetailsHead_DepCell.h; sourceTree = "<group>"; };
+		C903B0C41A5EB1B00038AA1B /* PlanDetailsHead_DepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanDetailsHead_DepCell.m; sourceTree = "<group>"; };
+		C903B0C61A5EB1C00038AA1B /* PlanDetailsMans_DepCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanDetailsMans_DepCell.h; sourceTree = "<group>"; };
+		C903B0C71A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanDetailsMans_DepCell.m; sourceTree = "<group>"; };
+		C903B0CC1A5EBA5D0038AA1B /* DepManViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepManViewController.h; sourceTree = "<group>"; };
+		C903B0CD1A5EBA5D0038AA1B /* DepManViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepManViewController.m; sourceTree = "<group>"; };
+		C903B0CF1A5EBF910038AA1B /* DepMans_Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepMans_Cell.h; sourceTree = "<group>"; };
+		C903B0D01A5EBF910038AA1B /* DepMans_Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepMans_Cell.m; sourceTree = "<group>"; };
 		C90DF5BC1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatePlanDetailsPopVC.h; sourceTree = "<group>"; };
 		C90DF5BD1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatePlanDetailsPopVC.m; sourceTree = "<group>"; };
 		C91ACE151A4FA06E0037757A /* OptionMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionMenuTableViewController.h; sourceTree = "<group>"; };
@@ -251,8 +266,6 @@
 		C9B3A2AC1A4D9C7100CE276B /* CommonLogicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLogicViewController.h; sourceTree = "<group>"; };
 		C9B3A2AD1A4D9C7100CE276B /* CommonLogicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonLogicViewController.m; sourceTree = "<group>"; };
 		C9B625F11A4E8E1C00AE9251 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Other.storyboard; sourceTree = "<group>"; };
-		C9B625F31A4E903D00AE9251 /* FactoryTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryTaskCell.h; sourceTree = "<group>"; };
-		C9B625F41A4E903D00AE9251 /* FactoryTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryTaskCell.m; sourceTree = "<group>"; };
 		C9BBC63B1A519E5E00C0C862 /* SelectValue_XCRY_TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectValue_XCRY_TableViewController.h; sourceTree = "<group>"; };
 		C9BBC63C1A519E5E00C0C862 /* SelectValue_XCRY_TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectValue_XCRY_TableViewController.m; sourceTree = "<group>"; };
 		C9BBC63E1A519ED300C0C862 /* SelectValue_XCKS_TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectValue_XCKS_TableViewController.h; sourceTree = "<group>"; };
@@ -280,6 +293,8 @@
 		C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Levenshtein.m"; sourceTree = "<group>"; };
 		C9D6B9F81A5AEB8F006D27EF /* autoTableViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autoTableViewData.h; sourceTree = "<group>"; };
 		C9D6B9F91A5AEB8F006D27EF /* autoTableViewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = autoTableViewData.m; sourceTree = "<group>"; };
+		C9D88CF41A5E2D0D003ED50F /* ks_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ks_Model.h; sourceTree = "<group>"; };
+		C9D88CF51A5E2D0D003ED50F /* ks_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ks_Model.m; sourceTree = "<group>"; };
 		C9E226D51A52FF6E004A9A69 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		C9E226D61A52FF6E004A9A69 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		C9E94DC01A4A669100E8CC83 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
@@ -300,6 +315,12 @@
 		C9F3DFC21A5D903500D34A19 /* IndustryCategoriesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndustryCategoriesModel.m; sourceTree = "<group>"; };
 		C9F3DFC31A5D903500D34A19 /* ResponsibleDepModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponsibleDepModel.h; sourceTree = "<group>"; };
 		C9F3DFC41A5D903500D34A19 /* ResponsibleDepModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponsibleDepModel.m; sourceTree = "<group>"; };
+		C9F3DFCD1A5D99E800D34A19 /* ry_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ry_Model.h; sourceTree = "<group>"; };
+		C9F3DFCE1A5D99E800D34A19 /* ry_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ry_Model.m; sourceTree = "<group>"; };
+		C9F3DFD11A5D9CD100D34A19 /* FactoryTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryTaskCell.h; sourceTree = "<group>"; };
+		C9F3DFD21A5D9CD100D34A19 /* FactoryTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryTaskCell.m; sourceTree = "<group>"; };
+		C9F3DFD51A5D9DFD00D34A19 /* PlanDetailsHead_Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanDetailsHead_Cell.h; sourceTree = "<group>"; };
+		C9F3DFD61A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanDetailsHead_Cell.m; sourceTree = "<group>"; };
 		C9F51E261A57BADA009F84D1 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
 		C9F51E271A57BADA009F84D1 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
 		C9F51E281A57BADA009F84D1 /* SignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureViewController.h; sourceTree = "<group>"; };
@@ -949,8 +970,8 @@
 		C9A8B6041A490682008E94B7 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				C9B625F31A4E903D00AE9251 /* FactoryTaskCell.h */,
-				C9B625F41A4E903D00AE9251 /* FactoryTaskCell.m */,
+				C9F3DFD01A5D9CD100D34A19 /* FactoryTaskCell */,
+				C9F3DFD31A5D9CD100D34A19 /* PlanDetailsCell */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -1017,6 +1038,7 @@
 		C9F3DFA91A5D64CB00D34A19 /* AddPlanDetailsModel */ = {
 			isa = PBXGroup;
 			children = (
+				C9F3DFC91A5D98C400D34A19 /* PlanDetailsTableListModel */,
 				C9F3DFBC1A5D903500D34A19 /* PlanDetailsModel */,
 			);
 			path = AddPlanDetailsModel;
@@ -1035,6 +1057,41 @@
 				C9F3DFC41A5D903500D34A19 /* ResponsibleDepModel.m */,
 			);
 			path = PlanDetailsModel;
+			sourceTree = "<group>";
+		};
+		C9F3DFC91A5D98C400D34A19 /* PlanDetailsTableListModel */ = {
+			isa = PBXGroup;
+			children = (
+				C9F3DFCD1A5D99E800D34A19 /* ry_Model.h */,
+				C9F3DFCE1A5D99E800D34A19 /* ry_Model.m */,
+				C9D88CF41A5E2D0D003ED50F /* ks_Model.h */,
+				C9D88CF51A5E2D0D003ED50F /* ks_Model.m */,
+			);
+			path = PlanDetailsTableListModel;
+			sourceTree = "<group>";
+		};
+		C9F3DFD01A5D9CD100D34A19 /* FactoryTaskCell */ = {
+			isa = PBXGroup;
+			children = (
+				C9F3DFD11A5D9CD100D34A19 /* FactoryTaskCell.h */,
+				C9F3DFD21A5D9CD100D34A19 /* FactoryTaskCell.m */,
+			);
+			path = FactoryTaskCell;
+			sourceTree = "<group>";
+		};
+		C9F3DFD31A5D9CD100D34A19 /* PlanDetailsCell */ = {
+			isa = PBXGroup;
+			children = (
+				C9F3DFD51A5D9DFD00D34A19 /* PlanDetailsHead_Cell.h */,
+				C9F3DFD61A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m */,
+				C903B0C31A5EB1B00038AA1B /* PlanDetailsHead_DepCell.h */,
+				C903B0C41A5EB1B00038AA1B /* PlanDetailsHead_DepCell.m */,
+				C903B0C61A5EB1C00038AA1B /* PlanDetailsMans_DepCell.h */,
+				C903B0C71A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m */,
+				C903B0CF1A5EBF910038AA1B /* DepMans_Cell.h */,
+				C903B0D01A5EBF910038AA1B /* DepMans_Cell.m */,
+			);
+			path = PlanDetailsCell;
 			sourceTree = "<group>";
 		};
 		C9F51E5E1A582E5F009F84D1 /* CustomView */ = {
@@ -1075,6 +1132,8 @@
 				C9D6B9F91A5AEB8F006D27EF /* autoTableViewData.m */,
 				C90DF5BC1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.h */,
 				C90DF5BD1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.m */,
+				C903B0CC1A5EBA5D0038AA1B /* DepManViewController.h */,
+				C903B0CD1A5EBA5D0038AA1B /* DepManViewController.m */,
 			);
 			path = MyPlanView;
 			sourceTree = "<group>";
@@ -1233,10 +1292,12 @@
 				C9903C021A46EA0C0006FD99 /* CellItem.m in Sources */,
 				C9651FE51A43B26000B770BB /* BaseViewController.m in Sources */,
 				C9F3DFC81A5D903500D34A19 /* ResponsibleDepModel.m in Sources */,
+				C903B0CE1A5EBA5D0038AA1B /* DepManViewController.m in Sources */,
 				C9A337781A499C79004560D1 /* CheckTaskViewController.m in Sources */,
 				C9F3DFC51A5D903500D34A19 /* DistrictModel.m in Sources */,
 				C9651FC21A43B25F00B770BB /* TableViewBindingHelper.m in Sources */,
 				C9648A8D1A5970A3005ECFC6 /* AddPlanDetailsPopVC.m in Sources */,
+				C903B0D11A5EBF910038AA1B /* DepMans_Cell.m in Sources */,
 				C9E94DCB1A4A669100E8CC83 /* MJRefreshBaseView.m in Sources */,
 				C9A3376F1A499B8F004560D1 /* AuditNotPassViewController.m in Sources */,
 				C9BBC63D1A519E5E00C0C862 /* SelectValue_XCRY_TableViewController.m in Sources */,
@@ -1244,6 +1305,7 @@
 				C9651ECF1A43AD8F00B770BB /* AppDelegate.m in Sources */,
 				C9B3A2AE1A4D9C7100CE276B /* CommonLogicViewController.m in Sources */,
 				C9BFA9F81A487BB000C887B4 /* HomeViewController.m in Sources */,
+				C903B0C81A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m in Sources */,
 				C9BFAA101A487BF400C887B4 /* HeaderView.m in Sources */,
 				C90DF5BE1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.m in Sources */,
 				C91ACE171A4FA06E0037757A /* OptionMenuTableViewController.m in Sources */,
@@ -1257,6 +1319,7 @@
 				C9A337751A499B8F004560D1 /* ProgramOverviewViewController.m in Sources */,
 				C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */,
 				C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */,
+				C9F3DFD71A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m in Sources */,
 				C9651FD51A43B26000B770BB /* StepperModel.m in Sources */,
 				C99FD92A1A4C4F2F000AB1A6 /* ProgramOverviewCell.m in Sources */,
 				C9F3DFC61A5D903500D34A19 /* HeadOFModel.m in Sources */,
@@ -1267,6 +1330,8 @@
 				C9651FEA1A43B26000B770BB /* CustomBadge.m in Sources */,
 				C91ACE1A1A50563F0037757A /* SelectValueTableViewController.m in Sources */,
 				C9A337811A499D1A004560D1 /* BidManagementViewController.m in Sources */,
+				C9F3DFD41A5D9CD100D34A19 /* FactoryTaskCell.m in Sources */,
+				C9D88CF61A5E2D0D003ED50F /* ks_Model.m in Sources */,
 				C9651FD91A43B26000B770BB /* CustomVitalSignsView.m in Sources */,
 				C9651FD81A43B26000B770BB /* CustomBodyTempView.m in Sources */,
 				C9651FD21A43B26000B770BB /* CustomButton.m in Sources */,
@@ -1276,11 +1341,11 @@
 				C9E94DCC1A4A669100E8CC83 /* MJRefreshConst.m in Sources */,
 				C9D6B9F61A5AE648006D27EF /* AutoCompleteTextField.m in Sources */,
 				C9651FEC1A43B26000B770BB /* CustomTabBarViewController.m in Sources */,
+				C9F3DFCF1A5D99E800D34A19 /* ry_Model.m in Sources */,
 				C9F51E2B1A57BADA009F84D1 /* SignatureViewController.m in Sources */,
 				C9F3DFC71A5D903500D34A19 /* IndustryCategoriesModel.m in Sources */,
 				C9651FF71A43BE3100B770BB /* YTKKeyValueStore.m in Sources */,
 				C9A337741A499B8F004560D1 /* PlanningDepartmentViewController.m in Sources */,
-				C9B625F51A4E903D00AE9251 /* FactoryTaskCell.m in Sources */,
 				C9651FEF1A43B26000B770BB /* DropDownListView.m in Sources */,
 				C9F51E681A58306D009F84D1 /* MyPlanViewController.m in Sources */,
 				C9BFAA131A487BF400C887B4 /* MenuView.m in Sources */,
@@ -1303,6 +1368,7 @@
 				C9BFAA0F1A487BF400C887B4 /* Dock.m in Sources */,
 				C9BBC6401A519ED300C0C862 /* SelectValue_XCKS_TableViewController.m in Sources */,
 				C9A3377E1A499CF4004560D1 /* CertificateGuaranteeViewController.m in Sources */,
+				C903B0C51A5EB1B00038AA1B /* PlanDetailsHead_DepCell.m in Sources */,
 				C9651ECC1A43AD8F00B770BB /* main.m in Sources */,
 				C9F51E621A582E70009F84D1 /* backgroundV.m in Sources */,
 				C9A337711A499B8F004560D1 /* FactoryTaskViewController.m in Sources */,

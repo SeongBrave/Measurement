@@ -18,17 +18,46 @@
 #import "HeadOFModel.h"
 #import "ResponsibleDepModel.h"
 #import "IndustryCategoriesModel.h"
+#import "PlanDetailsHead_DepCell.h"
+#import "PlanDetailsMans_DepCell.h"
+#import "ks_Model.h"
+#import "DepManViewController.h"
 
-@interface AddPlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate>
+
+
+@interface AddPlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,PlanDetailsHead_DepCellDelegate,PlanDetailsMans_DepCellDelegate,DepManVCDelegate>
 
 
 @property(nonatomic , strong)NSArray *m_autoTFArr;
+
+
+@property(nonatomic , strong)DepManViewController *m_head_depManVC;
+
+@property(nonatomic , strong)DepManViewController *m_mans_depManVC;
+
+/**
+ *  科室负责人数据
+ */
+@property(nonatomic, strong)NSArray *m_ks_headArr;
+
+/**
+ *  科室人员数据
+ */
+@property(nonatomic, strong)NSArray *m_ks_mansArr;
+
+@property(nonatomic , strong)ks_Model *selected_ks_headModel;
+
+@property(nonatomic , strong)ks_Model *selected_ks_MansModel;
 
 
 /**
  *  科室负责人
  */
 @property (weak, nonatomic) IBOutlet UITableView *headTableView;
+
+
+@property (nonatomic, strong) NSIndexPath *lastIndex;
+
 /**
  *  科室人员
  */
@@ -260,6 +289,8 @@
  */
 -(void)loadInitDutyc
 {
+    
+    [[BaseNetWork getInstance]hideDialog];
     @weakify(self)
     [[[[[BaseNetWork getInstance] rac_getPath:@"initDutyc.do" parameters:nil]map:^(id responseData)
        {
@@ -315,14 +346,70 @@
          NSArray *headOF_Arr = retDict[@"ry"];
          self.headOFArr = [headOF_Arr linq_select:^id(NSDictionary *dict){
              
-             HeadOFModel *headOFModel = [[HeadOFModel alloc]init];
-             headOFModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
              
-             return headOFModel;
+             ResponsibleDepModel *responsibleDepModel = [[ResponsibleDepModel alloc]init];
+             responsibleDepModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
+             
+             return responsibleDepModel;
          }];
          
-       
-//         self.districtArr = districts.linq_select
+         /**
+          *  科室人员
+          *
+          *  @param
+          *
+          *  @return
+          */
+         self.m_ks_mansArr = [responsibleDep_Arr linq_select:^id(NSDictionary *dict){
+             
+             ks_Model *model = [MTLJSONAdapter modelOfClass:[ks_Model class] fromJSONDictionary:dict error:nil];
+             model.isSelected = NO;
+             model.isCheckBox = YES;
+             
+             NSArray *myarr = dict[@"ry"];
+             model.ryArr =[myarr linq_select:^id(NSDictionary *dict){
+             
+                 ry_Model *ryModel = [MTLJSONAdapter modelOfClass:[ry_Model class] fromJSONDictionary:dict error:nil];
+                 ryModel.isSelected = NO;
+                 ryModel.isCheckBox = YES;
+                 
+                 
+                 return ryModel;
+             }];
+             return model;
+         }];
+         
+         
+         /**
+          *  科室负责人
+          *
+          *  @param
+          *
+          *  @return
+          */
+         self.m_ks_headArr = [responsibleDep_Arr linq_select:^id(NSDictionary *dict){
+             
+             ks_Model *model = [MTLJSONAdapter modelOfClass:[ks_Model class] fromJSONDictionary:dict error:nil];
+             model.isSelected = NO;
+             model.isCheckBox = NO;
+             NSArray *myarr = dict[@"ry"];
+             model.ryArr =[myarr linq_select:^id(NSDictionary *dict){
+                 
+                 ry_Model *ryModel = [MTLJSONAdapter modelOfClass:[ry_Model class] fromJSONDictionary:dict error:nil];
+                 ryModel.isSelected = NO;
+                 ryModel.isCheckBox = NO;
+                 
+                 
+                 return ryModel;
+             }];
+             
+             return model;
+             
+         }];
+         
+         [self.headTableView reloadData];
+          [self.mansTableView reloadData];
+    
         
          
      }error:^(NSError *error){
@@ -496,7 +583,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    if(tableView == self.headTableView)
+    {
+        return _m_ks_headArr.count;
+    }else if(tableView == self.mansTableView)
+    {
+       return _m_ks_mansArr.count;
+    }
+    return 0;
 }
 /*
  -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -529,30 +623,24 @@
     
     static NSString *cellIdentifier;
     if (tableView == self.headTableView) {
-        cellIdentifier = @"headTableViewCell";
-          UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-//        radio-defauit
+        cellIdentifier = @"PlanDetailsHead_DepCell";
+          PlanDetailsHead_DepCell *cell = (PlanDetailsHead_DepCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
         
-        if(indexPath.row == 0)
-        {
-            cell.imageView.image = [UIImage imageNamed:@"radio-selected"];
-        }else
-        {
-            cell.imageView.image = [UIImage imageNamed:@"radio-defauit"];
-        }
+        cell.m_head_DepDelegate = self;
         
+        [cell configureCellWithItem:self.m_ks_headArr[indexPath.row]];
         
-        cell.textLabel.text = @"检验科室A组";
         return cell;
     }else
     {
-        cellIdentifier = @"mansTableView";
-          UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-        cell.imageView.image = [UIImage imageNamed:@"checkbox-selected"];
+        cellIdentifier = @"PlanDetailsMans_DepCell";
+        PlanDetailsMans_DepCell *cell = (PlanDetailsMans_DepCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
         
-        cell.textLabel.text = @"检验科室A组";
+        cell.m_mans_DepDelegate = self;
+        
+        [cell configureCellWithItem:self.m_ks_mansArr[indexPath.row]];
+        
         return cell;
-        
     }
  
     
@@ -560,6 +648,32 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //单选功能
+    if(tableView == self.headTableView)
+    {
+       
+        ks_Model *model = self.m_ks_headArr[indexPath.row];
+        if (_lastIndex && _lastIndex.row != indexPath.row) {
+            
+            ks_Model *lastModel = self.m_ks_headArr[_lastIndex.row];
+            model.isSelected = YES;
+            lastModel.isSelected = NO;
+            
+        }else
+        {
+            model.isSelected = !model.isSelected;
+        }
+
+        _lastIndex = indexPath;
+
+    }else if(tableView == self.mansTableView)
+    {
+        ks_Model *model = self.m_ks_mansArr[indexPath.row];
+        
+        model.isSelected = !model.isSelected;
+        
+    }
+    
     
 }
 
@@ -712,5 +826,77 @@
     debug_object([data getShowCellForTextLabel]);
     
 }
+
+#pragma mark - PlanDetailsHead_DepCellDelegate
+-(void)planDetailsHead_DepCell:(PlanDetailsHead_DepCell*) depCell didSelectedWithks_Model:(ks_Model *) ksModel
+{
+    
+    DepManViewController *depManVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DepManViewController"];
+    depManVC.modalPresentationStyle = UIModalPresentationFormSheet;
+    depManVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    depManVC.m_dataSourceArr = ksModel.ryArr;
+    depManVC.m_delegate = self;
+    [self presentViewController:depManVC animated:YES completion:nil];
+//    depManVC.view.superview.bounds = CGRectMake(0, 0, 529, 279);
+    depManVC.view.superview.frame = CGRectMake(0, 0, 529, 279);//it's important to do this after presentModalViewController
+    depManVC.view.superview.center = self.view.center;
+    self.m_head_depManVC = depManVC;
+     self.m_head_depManVC.ksModel = ksModel;
+}
+
+
+#pragma mark - PlanDetailsMans_DepCellDelegate
+-(void)planDetailsMans_DepCell:(PlanDetailsMans_DepCell*) depCell didSelectedWithks_Model:(ks_Model *) ksModel
+{
+    
+    self.selected_ks_headModel = ksModel;
+    DepManViewController *depManVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DepManViewController"];
+
+    depManVC.m_delegate = self;
+    depManVC.modalPresentationStyle = UIModalPresentationFormSheet;
+    depManVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    depManVC.m_dataSourceArr = ksModel.ryArr;
+    [self presentViewController:depManVC animated:YES completion:nil];
+    //    depManVC.view.superview.bounds = CGRectMake(0, 0, 529, 279);
+    depManVC.view.superview.frame = CGRectMake(100, 200, 529, 279);//it's important to do this after presentModalViewController
+    depManVC.view.superview.center = self.view.center;
+    
+    self.m_mans_depManVC = depManVC;
+    
+    self.m_mans_depManVC.ksModel = ksModel;
+}
+
+
+#pragma mark - DepManVCDelegate
+-(void)DepManVC:(DepManViewController *)depManVC didSelectedArr:(NSArray *) selectedArr
+{
+    
+    if (selectedArr.count>0) {
+        
+        /**
+         *  多选
+         */
+        if (depManVC == _m_mans_depManVC) {
+            
+            
+            
+            
+            
+            
+        }else if (depManVC == _m_head_depManVC) {
+            //单选
+            
+            
+//            self.m_
+            
+        }
+        
+        
+        
+    }
+ 
+}
+
+
 
 @end

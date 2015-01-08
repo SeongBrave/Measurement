@@ -89,7 +89,7 @@
     [self setCollectionToRefreshDelegate];
     
     pageNo = 1;
-    pageSize = 10;
+    pageSize = 9;
     
 }
 
@@ -133,6 +133,8 @@
 -(void)loadNetData
 {
     [self setBaseNetWorkParameters];
+    
+    debug_object(self.m_netParamDict);
     /**
      *  设置加载时显示提示
      */
