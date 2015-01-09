@@ -19,7 +19,7 @@
 @property (nonatomic, assign) id<DropDownChooseDataSource> dropDownDataSource;
 
 @property (nonatomic, strong) UIView *mSuperView;
-@property (nonatomic, strong) UIView *mTableBaseView;
+
 @property (nonatomic, strong) UITableView *mTableView;
 
 

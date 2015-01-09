@@ -22,10 +22,12 @@
 #import "PlanDetailsMans_DepCell.h"
 #import "ks_Model.h"
 #import "DepManViewController.h"
+#import "DepMansViewController.h"
 
 
 
-@interface AddPlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,PlanDetailsHead_DepCellDelegate,PlanDetailsMans_DepCellDelegate,DepManVCDelegate>
+
+@interface AddPlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,PlanDetailsHead_DepCellDelegate,PlanDetailsMans_DepCellDelegate,DepManVCDelegate,DepMansVCDelegate>
 
 
 @property(nonatomic , strong)NSArray *m_autoTFArr;
@@ -33,7 +35,7 @@
 
 @property(nonatomic , strong)DepManViewController *m_head_depManVC;
 
-@property(nonatomic , strong)DepManViewController *m_mans_depManVC;
+@property(nonatomic , strong)DepMansViewController *m_mans_depManVC;
 
 /**
  *  科室负责人数据
@@ -124,6 +126,8 @@
 @property (weak, nonatomic) IBOutlet UIView *fromDateView;
 
 @property (weak, nonatomic) IBOutlet UIView *toDateView;
+@property (weak, nonatomic) IBOutlet UIView *forensicsDateView;
+@property (weak, nonatomic) IBOutlet CustomButton *forensicsDateBtn;
 
 /**
  *  所在区
@@ -202,6 +206,15 @@
         
     }
     
+    if ([segue.identifier isEqualToString:@"forensicsDatePicker"] )
+    {
+        
+        DatePickerViewController *datePickerVC = (DatePickerViewController*)[segue destinationViewController];
+        datePickerVC.dateDelegate = self;
+        datePickerVC.m_clickBtn = self.forensicsDateBtn;
+        
+    }
+    
     
     
     
@@ -232,6 +245,9 @@
     
     self.toDateView.layer.borderWidth = 2.0;
     self.toDateView.layer.borderColor = UIColorFromRGB(217, 217, 217).CGColor;
+    
+    self.forensicsDateView.layer.borderWidth = 2.0;
+    self.forensicsDateView.layer.borderColor = UIColorFromRGB(217, 217, 217).CGColor;
     
     self.fromDateView.layer.borderWidth = 2.0;
     self.fromDateView.layer.borderColor = UIColorFromRGB(217, 217, 217).CGColor;
@@ -841,6 +857,10 @@
     depManVC.view.superview.frame = CGRectMake(0, 0, 529, 279);//it's important to do this after presentModalViewController
     depManVC.view.superview.center = self.view.center;
     self.m_head_depManVC = depManVC;
+    
+    /**
+     *  将要修改的model赋值给vc然后再vc中修改
+     */
      self.m_head_depManVC.ksModel = ksModel;
 }
 
@@ -850,7 +870,7 @@
 {
     
     self.selected_ks_headModel = ksModel;
-    DepManViewController *depManVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DepManViewController"];
+    DepMansViewController *depManVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DepMansViewController"];
 
     depManVC.m_delegate = self;
     depManVC.modalPresentationStyle = UIModalPresentationFormSheet;
@@ -863,6 +883,9 @@
     
     self.m_mans_depManVC = depManVC;
     
+    /**
+     *  将要修改的model赋值给vc然后再vc中修改
+     */
     self.m_mans_depManVC.ksModel = ksModel;
 }
 
@@ -870,33 +893,14 @@
 #pragma mark - DepManVCDelegate
 -(void)DepManVC:(DepManViewController *)depManVC didSelectedArr:(NSArray *) selectedArr
 {
-    
-    if (selectedArr.count>0) {
-        
-        /**
-         *  多选
-         */
-        if (depManVC == _m_mans_depManVC) {
-            
-            
-            
-            
-            
-            
-        }else if (depManVC == _m_head_depManVC) {
-            //单选
-            
-            
-//            self.m_
-            
-        }
-        
-        
-        
-    }
+
  
 }
 
-
+#pragma mark - DepMansVCDelegate
+-(void)DepMansVC:(DepMansViewController *)depManVC didSelectedArr:(NSArray *) selectedArr
+{
+    
+}
 
 @end

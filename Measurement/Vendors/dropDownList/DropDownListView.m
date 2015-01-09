@@ -45,58 +45,68 @@
 
 -(void)InitUI
 {
-    self.backgroundColor = [UIColor whiteColor];
+    self.layer.borderWidth = 2.0;
+    self.layer.borderColor = UIColorFromRGB(217, 217, 217).CGColor;
+
+    
     currentExtendSection = -1;
 
-    
-    NSInteger sectionNum =0;
-    if ([self.dropDownDataSource respondsToSelector:@selector(numberOfSections)] ) {
-        
-        sectionNum = [self.dropDownDataSource numberOfSections];
-    }
-    
 
     
-    //初始化默认显示view
-    CGFloat sectionWidth = (1.0*(self.frame.size.width)/sectionNum);
-    for (int i = 0; i <sectionNum; i++) {
-        UIButton *sectionBtn = [[UIButton alloc] initWithFrame:CGRectMake(sectionWidth*i, 1, sectionWidth, self.frame.size.height-2)];
-        sectionBtn.tag = SECTION_BTN_TAG_BEGIN + i;
-        [sectionBtn addTarget:self action:@selector(sectionBtnTouch:) forControlEvents:UIControlEventTouchUpInside];
-        NSString *sectionBtnTitle = @"--";
-        if ([self.dropDownDataSource respondsToSelector:@selector(titleInSection:index:)]) {
-            sectionBtnTitle = [self.dropDownDataSource titleInSection:i index:[self.dropDownDataSource defaultShowSection:i]];
-        }
-        [sectionBtn  setTitle:sectionBtnTitle forState:UIControlStateNormal];
-        [sectionBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        sectionBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
-        [self addSubview:sectionBtn];
-        
-        UIImageView *sectionBtnIv = [[UIImageView alloc] initWithFrame:CGRectMake(sectionWidth*i +(sectionWidth - 16), (self.frame.size.height-12)/2, 12, 12)];
-        [sectionBtnIv setImage:[UIImage imageNamed:@"down_dark.png"]];
-        [sectionBtnIv setContentMode:UIViewContentModeScaleToFill];
-        sectionBtnIv.tag = SECTION_IV_TAG_BEGIN + i;
-        
-        [self addSubview: sectionBtnIv];
-        
-        if (i<sectionNum && i != 0) {
-            UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(sectionWidth*i, self.frame.size.height/4, 1, self.frame.size.height/2)];
-            lineView.backgroundColor = [UIColor lightGrayColor];
-            [self addSubview:lineView];
-        }
-        
+    UIButton *sectionBtn = [[UIButton alloc] init];
+    sectionBtn.tag = SECTION_BTN_TAG_BEGIN;
+    [sectionBtn addTarget:self action:@selector(sectionBtnTouch:) forControlEvents:UIControlEventTouchUpInside];
+    NSString *sectionBtnTitle = @"";
+    if ([self.dropDownDataSource respondsToSelector:@selector(titleInindex:)]) {
+        sectionBtnTitle = [self.dropDownDataSource titleInindex:[self.dropDownDataSource defaultShowInindex]];
     }
+    
+    [sectionBtn  setTitle:sectionBtnTitle forState:UIControlStateNormal];
+    [sectionBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    sectionBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+    [self addSubview:sectionBtn];
+    
+    [sectionBtn mas_updateConstraints:^(MASConstraintMaker *make) {
+        
+        
+        make.leading.equalTo(self.mas_leading); //设置中线视图
+        make.center.equalTo(self);
+        make.top.equalTo(self.mas_top).offset(1);
+        
+    }];
+    
+    
+    UIImageView *sectionBtnIv = [[UIImageView alloc]init];
+    [sectionBtnIv setImage:[UIImage imageNamed:@"down_dark.png"]];
+    [sectionBtnIv setContentMode:UIViewContentModeScaleToFill];
+    sectionBtnIv.tag = SECTION_IV_TAG_BEGIN;
+    
+    [self addSubview: sectionBtnIv];
+    
+    
+    [sectionBtnIv mas_updateConstraints:^(MASConstraintMaker *make) {
+        
+        
+        make.trailing.equalTo(self.mas_trailing).offset(-8); //设置中线视图
+        
+        make.width.equalTo(@12);
+        make.height.equalTo(@12);
+        make.centerY.equalTo(self.mas_centerY);
+        
+    }];
+    
+    
+    
     
 }
 -(void)sectionBtnTouch:(UIButton *)btn
 {
     NSInteger section = btn.tag - SECTION_BTN_TAG_BEGIN;
     
+ 
     UIImageView *currentIV= (UIImageView *)[self viewWithTag:(SECTION_IV_TAG_BEGIN +currentExtendSection)];
     
-    [UIView animateWithDuration:0.3 animations:^{
-        currentIV.transform = CGAffineTransformRotate(currentIV.transform, DEGREES_TO_RADIANS(180));
-    }];
+    
     
     if (currentExtendSection == section) {
         [self hideExtendedChooseView];
@@ -107,7 +117,7 @@
             currentIV.transform = CGAffineTransformRotate(currentIV.transform, DEGREES_TO_RADIANS(180));
         }];
         
-        [self showChooseListViewInSection:currentExtendSection choosedIndex:[self.dropDownDataSource defaultShowSection:currentExtendSection]];
+        [self showChooseListViewInSection:currentExtendSection choosedIndex:[self.dropDownDataSource defaultShowInindex]];
     }
 
 }
@@ -127,88 +137,85 @@
 }
 -  (void)hideExtendedChooseView
 {
-    if (currentExtendSection != -1) {
+ 
+    
+    UIImageView *currentIV= (UIImageView *)[self viewWithTag:(SECTION_IV_TAG_BEGIN +currentExtendSection)];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        currentIV.transform = CGAffineTransformRotate(currentIV.transform, DEGREES_TO_RADIANS(180));
+    }];
+    
+    [ self.mTableView mas_updateConstraints:^(MASConstraintMaker *make) {
+        
+        
+        make.height.equalTo(@0);
+        
+    }];
+    [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+        [self layoutIfNeeded];
         currentExtendSection = -1;
-        CGRect rect = self.mTableView.frame;
-        rect.size.height = 0;
-        [UIView animateWithDuration:0.3 animations:^{
-            self.mTableBaseView.alpha = 1.0f;
-            self.mTableView.alpha = 1.0f;
-            
-            self.mTableBaseView.alpha = 0.2f;
-            self.mTableView.alpha = 0.2;
-            
-            self.mTableView.frame = rect;
-        }completion:^(BOOL finished) {
-            [self.mTableView removeFromSuperview];
-            [self.mTableBaseView removeFromSuperview];
-        }];
-    }
+        [self.mTableView removeFromSuperview];
+        
+    }completion:NULL];
+    
 }
 
 -(void)showChooseListViewInSection:(NSInteger)section choosedIndex:(NSInteger)index
 {
     if (!self.mTableView) {
-        self.mTableBaseView = [[UIView alloc] initWithFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y + self.frame.size.height , self.frame.size.width, self.mSuperView.frame.size.height - self.frame.origin.y - self.frame.size.height)];
-        self.mTableBaseView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.5];
+
         
-        UITapGestureRecognizer *bgTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bgTappedAction:)];
-        [self.mTableBaseView addGestureRecognizer:bgTap];
-        
-        self.mTableView = [[UITableView alloc] initWithFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y + self.frame.size.height, self.frame.size.width, 240) style:UITableViewStylePlain];
+        self.mTableView = [[UITableView alloc] init];
         self.mTableView.delegate = self;
         self.mTableView.dataSource = self;
         
     }
+
+    [self.superview addSubview:self.mTableView];
     
-    //修改tableview的frame
-    int sectionWidth = (self.frame.size.width)/[self.dropDownDataSource numberOfSections];
-    CGRect rect = self.mTableView.frame;
-    rect.origin.x = sectionWidth *section;
-    rect.size.width = sectionWidth;
-    rect.size.height = 0;
-    self.mTableView.frame = rect;
-    [self.mSuperView addSubview:self.mTableBaseView];
-    [self.mSuperView addSubview:self.mTableView];
+    //    隐藏多余行的分割线
+    self.mTableView.tableFooterView = [[UIView alloc] init];
     
-    //动画设置位置
-    rect .size.height = 240;
-    [UIView animateWithDuration:0.3 animations:^{
-        self.mTableBaseView.alpha = 0.2;
-        self.mTableView.alpha = 0.2;
+    self.mTableView.layer.borderWidth = 2.0;
+    self.mTableView.layer.borderColor = UIColorFromRGB(217, 217, 217).CGColor;
+    [ self.mTableView mas_updateConstraints:^(MASConstraintMaker *make) {
         
-        self.mTableBaseView.alpha = 1.0;
-        self.mTableView.alpha = 1.0;
-        self.mTableView.frame =  rect;
+        
+        make.trailing.equalTo(self.mas_trailing).offset(0); //设置中线视图
+        make.centerX.equalTo(self.mas_centerX).offset(0);
+        make.top.equalTo(self.mas_bottom).offset(-1);
+        make.height.equalTo(@120);
+        
     }];
+    
+    [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+        [self layoutIfNeeded];
+    }completion:NULL];
+    
     [self.mTableView reloadData];
 }
 
--(void)bgTappedAction:(UITapGestureRecognizer *)tap
-{
-    UIImageView *currentIV = (UIImageView *)[self viewWithTag:(SECTION_IV_TAG_BEGIN + currentExtendSection)];
-    [UIView animateWithDuration:0.3 animations:^{
-        currentIV.transform = CGAffineTransformRotate(currentIV.transform, DEGREES_TO_RADIANS(180));
-    }];
-    [self hideExtendedChooseView];
-}
 #pragma mark -- UITableView Delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 40;
+    return 35;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.dropDownDelegate respondsToSelector:@selector(chooseAtSection:index:)]) {
-        NSString *chooseCellTitle = [self.dropDownDataSource titleInSection:currentExtendSection index:indexPath.row];
+    if ([self.dropDownDelegate respondsToSelector:@selector(chooseAtindex:)])
+    {
+        NSString *chooseCellTitle = [self.dropDownDataSource titleInindex:indexPath.row];
         
         UIButton *currentSectionBtn = (UIButton *)[self viewWithTag:SECTION_BTN_TAG_BEGIN + currentExtendSection];
         [currentSectionBtn setTitle:chooseCellTitle forState:UIControlStateNormal];
         
-        [self.dropDownDelegate chooseAtSection:currentExtendSection index:indexPath.row];
-        [self hideExtendedChooseView];
+        [self.dropDownDelegate chooseAtindex:indexPath.row];
+        
+          [self hideExtendedChooseView];
+        
     }
+  
 }
 
 #pragma mark -- UITableView DataSource
@@ -220,7 +227,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.dropDownDataSource numberOfRowsInSection:currentExtendSection];
+    return [self.dropDownDataSource numberOfindex];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -232,20 +239,12 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    cell.textLabel.text = [self.dropDownDataSource titleInSection:currentExtendSection index:indexPath.row];
-    cell.textLabel.font = [UIFont systemFontOfSize:14];
+    cell.textLabel.textColor = [UIColor blackColor];
+    cell.textLabel.text = [self.dropDownDataSource titleInindex:indexPath.row];
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:14.0f];
     return cell;
 }
 
 
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

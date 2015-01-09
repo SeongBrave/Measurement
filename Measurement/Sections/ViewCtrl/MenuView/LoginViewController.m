@@ -184,11 +184,12 @@
         return;
     }
 
+//    [self performSegueWithIdentifier:@"ToLoginSuccess" sender:nil];
     
     NSDictionary *reqDict = @{@"usercode":uNameStr,@"password":uPwdStr};
     [[BaseNetWork getInstance] showDialog];
     @weakify(self)
-    [[[BaseNetWork getInstance] rac_postPath:@"login.do" parameters:reqDict]
+    [[[BaseNetWork getInstance] rac_getPath:@"login.do" parameters:reqDict]
      subscribeNext:^(id responseData){
          @strongify(self)
          NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];

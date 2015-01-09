@@ -12,7 +12,12 @@
 #import "UpdatePlanDetailsPopVC.h"
 #import "MyPlanPopVC.h"
 #import "backgroundV.h"
-@interface MyPlanViewController ()<UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,SwipeMyPlanViewCellDelegate,PopViewDelegate>
+#import "DropDownListView.h"
+
+@interface MyPlanViewController ()<UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,SwipeMyPlanViewCellDelegate,PopViewDelegate,DropDownChooseDelegate,DropDownChooseDataSource>
+{
+    NSArray *chooseArray ;
+}
 
 
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *m_flowLayout;
@@ -20,6 +25,7 @@
 
 @property (nonatomic, strong) NSIndexPath *lastIndex;
 @property (nonatomic, strong) NSIndexPath *currentIndex;
+@property (weak, nonatomic) IBOutlet DropDownListView *dropDownDateList;
 
 @end
 
@@ -71,6 +77,17 @@
     
     self.m_tableName = @"CommonLogicViewController";
     self.title = @"我的创建计划";
+    
+    /**
+     *  jt今天/bz本周/by dwsjfw
+     */
+    chooseArray = @[ @{@"text":@"今日计划",@"code":@"jt"},@{@"text":@"本周计划",@"code":@"bz"},@{@"text":@"本月计划",@"code":@"by"},@{@"text":@"不传参",@"code":@""}];
+    
+    self.dropDownDateList.dropDownDelegate = self;
+    self.dropDownDateList.dropDownDataSource = self;
+    self.dropDownDateList.mSuperView = self.view;
+    
+    [self.dropDownDateList InitUI];
     
     /**
      *  横向每个cell的间距
@@ -131,6 +148,10 @@
     [self.m_netParamDict setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"pageSize"];
     
 }
+- (IBAction)CreatePlanClick:(id)sender {
+    
+     [self showPopVC];
+}
 
 /**
  *  请求成功后调用的方法
@@ -190,27 +211,32 @@
   
     if (indexPath.row == self.m_DataSourceArr.count) {
         
-        MyPlanPopVC *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"popVC"];;
-        popVc.m_popDelegate = self;
-        self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
-        self.m_popVC.delegate = self;
         
-        //TODO:popoverLayoutMargins是指你的popover相对于整个window上下左右的margin
-        self.m_popVC.popoverLayoutMargins = UIEdgeInsetsMake(20,0,0,0);
-        
-        self.m_popVC.popoverBackgroundViewClass = [backgroundV class];
-        // 设定展示区域的大小
-        // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
-        //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
-        [self.m_popVC presentPopoverFromRect:collectionView.bounds
-                                      inView:collectionView
-                    permittedArrowDirections:0
-                                    animated:YES];
-        
+        [self showPopVC];
         
     }
 
 
+}
+
+-(void)showPopVC
+{
+    MyPlanPopVC *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"popVC"];;
+    popVc.m_popDelegate = self;
+    self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
+    self.m_popVC.delegate = self;
+    
+    //TODO:popoverLayoutMargins是指你的popover相对于整个window上下左右的margin
+    self.m_popVC.popoverLayoutMargins = UIEdgeInsetsMake(20,0,0,0);
+    
+    self.m_popVC.popoverBackgroundViewClass = [backgroundV class];
+    // 设定展示区域的大小
+    // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
+    //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
+    [self.m_popVC presentPopoverFromRect:self.m_collectionView.bounds
+                                  inView:self.m_collectionView
+                permittedArrowDirections:0
+                                animated:YES];
 }
 #pragma mark -  DidOptionMenuDelegate
 
@@ -325,11 +351,36 @@
 }
 
 
-#pragma mark - PopViewDelegate
+#pragma mark -- dropDownListDelegate
 -(void)dismissPopoverSelected
 {
 
     [self.m_popVC dismissPopoverAnimated:YES];
 }
+
+-(void) chooseAtindex:(NSInteger)index
+{
+    
+    [self.m_netParamDict setObject:chooseArray[index][@"code"] forKey:@"dwsjfw"];
+    
+    [self loadNetData];
+
+    
+}
+#pragma mark -- dropdownList DataSource
+-(NSInteger)numberOfindex
+{
+    return [chooseArray count];
+}
+-(NSString *)titleInindex:(NSInteger) index
+{
+    return chooseArray[index][@"text"];
+}
+-(NSInteger)defaultShowInindex
+{
+    return 0;
+}
+
+
 
 @end

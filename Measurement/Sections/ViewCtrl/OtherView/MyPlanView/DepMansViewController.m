@@ -1,16 +1,17 @@
 //
-//  DepManViewController.m
+//  DepMansViewController.m
 //  Measurement
 //
-//  Created by DTSoft on 15/1/8.
+//  Created by DTSoft on 15/1/9.
 //  Copyright (c) 2015年 成勇. All rights reserved.
 //
 
-#import "DepManViewController.h"
+#import "DepMansViewController.h"
+
 #import "DepMans_Cell.h"
 
 
-@interface DepManViewController ()
+@interface DepMansViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *m_tableView;
 
@@ -20,8 +21,7 @@
 
 
 @end
-@implementation DepManViewController
-
+@implementation DepMansViewController
 
 
 #pragma mark - 系统方法
@@ -111,45 +111,38 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier;
- 
-        cellIdentifier = @"DepMans_Cell";
-        DepMans_Cell *cell = (DepMans_Cell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-        
-
-        
-        [cell configureCellWithItem:self.m_dataSourceArr[indexPath.row]];
     
-        return cell;
+    cellIdentifier = @"DepMans_Cell";
+    DepMans_Cell *cell = (DepMans_Cell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    
+    
+    [cell configureCellWithItem:self.m_dataSourceArr[indexPath.row]];
+    
+    return cell;
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ry_Model *model = self.m_dataSourceArr[indexPath.row];
     
+    model.isSelected = !model.isSelected;
     
-        if (_lastIndex && _lastIndex.row != indexPath.row) {
-            
-            ry_Model *lastModel = self.m_dataSourceArr[_lastIndex.row];
-            model.isSelected = YES;
-            lastModel.isSelected = NO;
-            
-        }else
-        {
-            model.isSelected = !model.isSelected;
-        }
+    if (model.isSelected) {
+        
+        [self.m_didSelectedArr addObject:model];
+    }else
+    {
+        [self.m_didSelectedArr removeObject:model];
+    }
     
-   
-    [self.m_didSelectedArr setObject:model atIndexedSubscript:0];
     
-        _lastIndex = indexPath;
-
-   
     self.ksModel.selected_RYArr = _m_didSelectedArr;
     
-    if ([self.m_delegate respondsToSelector:@selector(DepManVC:didSelectedArr:)]) {
+    if ([self.m_delegate respondsToSelector:@selector(DepMansVC:didSelectedArr:)]) {
         
         
-        [self.m_delegate DepManVC:self didSelectedArr:_m_didSelectedArr];
+        [self.m_delegate DepMansVC:self didSelectedArr:_m_didSelectedArr];
         
     }
     
