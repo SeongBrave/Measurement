@@ -1511,8 +1511,8 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: jia li (RS5JKD7E43)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jia li (RS5JKD7E43)";
 				GCC_PREFIX_HEADER = Measurement/Measurement.pch;
 				INFOPLIST_FILE = Measurement/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -1524,7 +1524,7 @@
 					"$(PROJECT_DIR)/Measurement/Library/ToolsLib/Views",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6049498f-2732-4389-b150-b3ac94c12b74";
+				PROVISIONING_PROFILE = "d6318b5d-921d-4fbd-9e73-b8d54f65b185";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s";
 			};
@@ -1536,8 +1536,8 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: jia li (RS5JKD7E43)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jia li (RS5JKD7E43)";
 				GCC_PREFIX_HEADER = Measurement/Measurement.pch;
 				INFOPLIST_FILE = Measurement/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -1549,7 +1549,7 @@
 					"$(PROJECT_DIR)/Measurement/Library/ToolsLib/Views",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6049498f-2732-4389-b150-b3ac94c12b74";
+				PROVISIONING_PROFILE = "d6318b5d-921d-4fbd-9e73-b8d54f65b185";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;

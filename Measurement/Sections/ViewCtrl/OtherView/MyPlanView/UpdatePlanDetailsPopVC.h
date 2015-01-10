@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "PopViewDelegate.h"
 
 @interface UpdatePlanDetailsPopVC : BaseViewController
+
+@property(nonatomic , assign)id<PopViewDelegate> m_popDelegate;
 
 @end
