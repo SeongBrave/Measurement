@@ -10,9 +10,10 @@
 #import "FactoryTaskCell.h"
 #import <UIColor+HexString.h>
 #import "CompanyCollectionViewCell.h"
+#import "MyPlanPopVC.h"
 
 
-@interface FactoryTaskViewController ()<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, SwipeCellDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface FactoryTaskViewController ()<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, SwipeCellDelegate, UICollectionViewDataSource, UICollectionViewDelegate,PopViewDelegate,UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
@@ -20,6 +21,7 @@
 @property (nonatomic, strong) NSArray *dataArray;
 @property (nonatomic, strong) NSIndexPath *lastIndex;
 @property (nonatomic, strong) NSIndexPath *currentIndex;
+@property(nonatomic , strong)UIPopoverController *m_popVC;
 
 
 @end
@@ -134,6 +136,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    MyPlanPopVC *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"popVC"];;
+    popVc.m_popDelegate = self;
+    self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
+    self.m_popVC.delegate = self;
+    
+    //TODO:popoverLayoutMargins是指你的popover相对于整个window上下左右的margin
+    self.m_popVC.popoverLayoutMargins = UIEdgeInsetsMake(20,0,0,0);
+    
+//    self.m_popVC.popoverBackgroundViewClass = [backgroundV class];
+    // 设定展示区域的大小
+    // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
+    //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
+    [self.m_popVC presentPopoverFromRect:CGRectMake(400, 400, 20, 20)
+                                  inView:self.view
+                permittedArrowDirections:0
+                                animated:YES];
 }
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
@@ -190,14 +208,16 @@
 }
 
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - UIPopoverControllerDelegate
+- (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController
+{
+    return NO;
 }
-*/
+
+#pragma mark - PopViewDelegate
+-(void)dismissPopoverSelected
+{
+    [self.m_popVC dismissPopoverAnimated:YES];
+}
 
 @end
