@@ -33,6 +33,12 @@
 }
 
 - (IBAction)confirmButtonPress:(id)sender{
+    
+    
+    [self dismissViewControllerAnimated:YES completion:^(void){
+       
+        
+    }];
     UIImage *signatureImage = self.signatureView.signatureImage;
 //    网络请求发送签名图片
 }

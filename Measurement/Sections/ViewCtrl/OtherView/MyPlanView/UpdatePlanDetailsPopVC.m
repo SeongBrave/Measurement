@@ -27,6 +27,9 @@
 #import "jcjd_Model.h"
 #import "jcjd_Detail_Model.h"
 #import "TestProgressContentCell.h"
+#import "SignatureCell.h"
+#import "SignatureViewController.h"
+
 
 #define MaxOffset  100
 
@@ -94,6 +97,13 @@
 
 @property(nonatomic , strong)ks_Model *selected_ks_MansModel;
 
+
+
+@property (weak, nonatomic) IBOutlet UITableView *SignatureTableView;
+
+@property(nonatomic , strong)NSArray *signatureArr;
+
+@property(nonatomic , strong)NSDictionary *signatureDict;
 
 /**
  *  科室负责人
@@ -837,6 +847,58 @@
      }];
     
     
+    /**
+     *  客户签名
+     *
+     *  @param
+     *
+     *  @return
+     */
+    [[[[[BaseNetWork getInstance] rac_getPath:@"khqzrwxx.do" parameters:@{@"rwbh":@"003ac671dd1e45738aa515701d21c95e"}]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return [dict valueForKeyPath:@"data"];
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary  *retDict) {
+         
+         
+//         NSArray *arr = retDict[@"wtd"];
+         
+         self.signatureDict = retDict[@"wtd"];
+         
+         self.signatureArr = [self.signatureDict allKeys];
+         
+         [self.SignatureTableView reloadData];
+     
+//         self.m_jcjd_ModelArr = [jcjdArr linq_select:^id(NSDictionary *dict){
+//             
+//             jcjd_Model *model = [MTLJSONAdapter modelOfClass:[jcjd_Model class] fromJSONDictionary:dict error:nil];
+//             
+//             NSArray *myarr = dict[@"yqxx"];
+//             model.jcjdDetailArr =[myarr linq_select:^id(NSDictionary *dict){
+//                 
+//                 jcjd_Detail_Model *ryModel = [MTLJSONAdapter modelOfClass:[jcjd_Detail_Model class] fromJSONDictionary:dict error:nil];
+//                 
+//                 return ryModel;
+//             }];
+//             
+//             return model;
+//             
+//         }];
+         
+         [self.testProgressTableView reloadData];
+         
+         
+         
+         
+     }error:^(NSError *error){
+         
+         
+     }];
+
+    
+    
 }
 
 /**
@@ -955,6 +1017,9 @@
     if (tableView == self.testProgressTableView)
     {
         return _m_jcjd_ModelArr.count;
+    }else  if (tableView == self.SignatureTableView)
+    {
+        return _signatureArr.count;
     }else
     {
         return 1;
@@ -982,6 +1047,15 @@
         }
         return 1;
         
+    }else  if (tableView == self.SignatureTableView)
+    {
+        
+        NSString *keyStr = _signatureArr[section];
+        
+        
+        NSArray *arr = self.signatureDict[keyStr];
+
+        return arr.count +1 ;
     }
     return 0;
 }
@@ -1009,6 +1083,18 @@
     
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (tableView == self.SignatureTableView) {
+        
+        NSString *keyStr = _signatureArr[section];
+    
+        
+        return [NSString stringWithFormat:@"委托单编号%@",keyStr];
+    }else
+        return @"";
+    
+}
 #pragma mark - UITableView Delegate
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -1083,6 +1169,47 @@
         }
 
         
+        
+    }else if (tableView == self.SignatureTableView)
+    {
+        
+        if (indexPath.row ==0) {
+            
+            /**
+             *  表头
+             */
+            cellIdentifier = @"SignatureTitleCell";
+            UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            
+            return cell;
+            
+            
+        }else
+        {
+            cellIdentifier = @"SignatureCell";
+            SignatureCell *cell = (SignatureCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+           
+            
+            
+            NSString *keyStr = _signatureArr[indexPath.section];
+            
+            
+            NSArray *arr = self.signatureDict[keyStr];
+            
+    
+            
+            
+            NSDictionary *myDict = arr[indexPath.row -1];
+            
+            
+              wtdbh_Model *wtdbhModel = [MTLJSONAdapter modelOfClass:[wtdbh_Model class] fromJSONDictionary:myDict error:nil];
+
+            
+            [cell configureCellWithItem:wtdbhModel];
+            
+            return cell;
+            
+        }
         
     }
     
@@ -1195,7 +1322,14 @@
     if (self.isOpen) [self.testProgressTableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
-
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (tableView == self.SignatureTableView) {
+        return 35;
+    }
+    
+    return 0;
+}
 /*
  //设置cell的行高
  - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -1381,7 +1515,7 @@
     depManVC.m_dataSourceArr = ksModel.ryArr;
     [self presentViewController:depManVC animated:YES completion:nil];
     //    depManVC.view.superview.bounds = CGRectMake(0, 0, 529, 279);
-    depManVC.view.superview.frame = CGRectMake(100, 200, 529, 279);//it's important to do this after presentModalViewController
+    depManVC.view.superview.frame = CGRectMake(100, 400, 529, 279);//it's important to do this after presentModalViewController
     depManVC.view.superview.center = self.view.center;
     
     self.m_mans_depManVC = depManVC;
@@ -1426,6 +1560,24 @@
         
         
     }
+    
+    
+}
+- (IBAction)SignatureClick:(id)sender {
+    
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Other" bundle:nil];
+    
+    
+    SignatureViewController *signatureVC = [story instantiateViewControllerWithIdentifier:@"SignatureViewController"];
+    
+    
+    
+    signatureVC.modalPresentationStyle = UIModalPresentationFormSheet;
+    signatureVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:signatureVC animated:YES completion:nil];
+    //    depManVC.view.superview.bounds = CGRectMake(0, 0, 529, 279);
+    signatureVC.view.superview.frame = CGRectMake(400, 800, 688, 410);//it's important to do this after presentModalViewController
+    signatureVC.view.superview.center = self.view.center;
     
     
 }
