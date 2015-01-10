@@ -100,6 +100,16 @@
         
     }];
     
+    [self.planBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        
+        make.width.equalTo(@60);
+        make.leading.equalTo(@31);
+ 
+        
+        
+    }];
+    
 }
 
 
