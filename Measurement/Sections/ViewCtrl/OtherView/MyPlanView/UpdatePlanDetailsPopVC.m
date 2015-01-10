@@ -23,11 +23,18 @@
 #import "ks_Model.h"
 #import "DepManViewController.h"
 #import "DepMansViewController.h"
+#import "ProgressOverviewCell.h"
+#import "jcjd_Model.h"
+#import "jcjd_Detail_Model.h"
+#import "TestProgressContentCell.h"
 
 #define MaxOffset  100
 
 @interface UpdatePlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,PlanDetailsHead_DepCellDelegate,PlanDetailsMans_DepCellDelegate,DepManVCDelegate,DepMansVCDelegate>
 
+
+@property (assign)BOOL isOpen;
+@property (nonatomic,retain)NSIndexPath *selectIndex;
 
 /**
  *  客户签字
@@ -54,6 +61,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *signatureBtn;
 @property (weak, nonatomic) IBOutlet UIButton *planBtn;
 @property (strong, nonatomic)  UIImageView *btnLineImgV;
+@property (weak, nonatomic) IBOutlet UITableView *testProgressTableView;
 
 @property(nonatomic ,strong)UIImageView *lineImgV;
 
@@ -77,6 +85,10 @@
  *  科室人员数据
  */
 @property(nonatomic, strong)NSArray *m_ks_mansArr;
+
+
+@property(nonatomic , strong)NSArray *m_jcjd_ModelArr;
+
 
 @property(nonatomic , strong)ks_Model *selected_ks_headModel;
 
@@ -584,6 +596,7 @@
     
     [self loadInitDutyc];
     
+    self.isOpen = NO;
     
 }
 -(void)updatePlanBtnLineConstraints
@@ -779,6 +792,51 @@
      }];
     
     
+    
+    [[[[[BaseNetWork getInstance] rac_getPath:@"jcjds.do" parameters:@{@"rwbh":@"003ac671dd1e45738aa515701d21c95e"}]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return [dict valueForKeyPath:@"data"];
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSArray  *jcjdArr) {
+         
+         
+         
+         /**
+          *  检测进度数据
+          *
+          *  @param
+          *
+          *  @return
+          */
+         self.m_jcjd_ModelArr = [jcjdArr linq_select:^id(NSDictionary *dict){
+             
+             jcjd_Model *model = [MTLJSONAdapter modelOfClass:[jcjd_Model class] fromJSONDictionary:dict error:nil];
+  
+             NSArray *myarr = dict[@"yqxx"];
+             model.jcjdDetailArr =[myarr linq_select:^id(NSDictionary *dict){
+                 
+                 jcjd_Detail_Model *ryModel = [MTLJSONAdapter modelOfClass:[jcjd_Detail_Model class] fromJSONDictionary:dict error:nil];
+                 
+                 return ryModel;
+             }];
+             
+             return model;
+             
+         }];
+         
+         [self.testProgressTableView reloadData];
+
+         
+         
+         
+     }error:^(NSError *error){
+         
+         
+     }];
+    
+    
 }
 
 /**
@@ -893,9 +951,16 @@
 #pragma mark Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
+    
+    if (tableView == self.testProgressTableView)
+    {
+        return _m_jcjd_ModelArr.count;
+    }else
+    {
+        return 1;
+    }
     return 1;
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -905,6 +970,18 @@
     }else if(tableView == self.mansTableView)
     {
         return _m_ks_mansArr.count;
+    }else if (tableView == self.testProgressTableView)
+    {
+        if (self.isOpen) {
+            if (self.selectIndex.section == section) {
+                
+                jcjd_Model *model = [_m_jcjd_ModelArr objectAtIndex:section];
+                
+                return [model.jcjdDetailArr count]+2;
+            }
+        }
+        return 1;
+        
     }
     return 0;
 }
@@ -947,7 +1024,7 @@
         [cell configureCellWithItem:self.m_ks_headArr[indexPath.row]];
         
         return cell;
-    }else
+    }else if(tableView == self.mansTableView )
     {
         cellIdentifier = @"PlanDetailsMans_DepCell";
         PlanDetailsMans_DepCell *cell = (PlanDetailsMans_DepCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
@@ -957,8 +1034,59 @@
         [cell configureCellWithItem:self.m_ks_mansArr[indexPath.row]];
         
         return cell;
+    }else if (tableView == self.testProgressTableView)
+    {
+        
+       
+        if (self.isOpen&&self.selectIndex.section == indexPath.section&&indexPath.row!=0)
+        {
+            
+            
+            if (indexPath.row ==1) {
+                
+                /**
+                 *  表头
+                 */
+                cellIdentifier = @"ProgressOverviewTitleCell";
+                UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+                
+                return cell;
+                
+                
+            }else
+            {
+                cellIdentifier = @"TestProgressContentCell";
+                TestProgressContentCell *cell = (TestProgressContentCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+                
+                jcjd_Model *model = [_m_jcjd_ModelArr objectAtIndex:indexPath.section];
+                
+                //            return [[model.jcjdDetailArr count]+1];
+                
+                [cell configureCellWithItem:model.jcjdDetailArr[indexPath.row-2]];
+                
+                return cell;
+                
+            }
+      
+            
+//            NSArray *list = [[_dataList objectAtIndex:self.selectIndex.section] objectForKey:@"list"];
+//            cell.titleLabel.text = [list objectAtIndex:indexPath.row-1];
+//            return cell;
+        }else
+        {
+            cellIdentifier = @"ProgressOverviewCell";
+            ProgressOverviewCell *cell = (ProgressOverviewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            
+            [cell configureCellWithItem:self.m_jcjd_ModelArr[indexPath.row]];
+            
+            return cell;
+        }
+
+        
+        
     }
     
+    return nil;
     
     
 }
@@ -988,10 +1116,85 @@
         
         model.isSelected = !model.isSelected;
         
+    }else if (tableView == self.testProgressTableView)
+    {
+        
+        if (indexPath.row == 0)
+        {
+            
+            
+            if ([indexPath isEqual:self.selectIndex]) {
+                self.isOpen = NO;
+                [self didSelectCellRowFirstDo:NO nextDo:NO];
+                self.selectIndex = nil;
+                
+            }else
+            {
+                if (!self.selectIndex) {
+                    self.selectIndex = indexPath;
+                    [self didSelectCellRowFirstDo:YES nextDo:NO];
+                    
+                }else
+                {
+                    
+                    [self didSelectCellRowFirstDo:NO nextDo:YES];
+                }
+            }
+            
+        }
+        else
+        {
+            /**
+             *  选中详细列表行
+             */
+        }
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     }
     
     
 }
+
+- (void)didSelectCellRowFirstDo:(BOOL)firstDoInsert nextDo:(BOOL)nextDoInsert
+{
+    self.isOpen = firstDoInsert;
+    
+    PlanDetailsMans_DepCell *cell = (PlanDetailsMans_DepCell *)[self.testProgressTableView cellForRowAtIndexPath:self.selectIndex];
+//    [cell changeArrowWithUp:firstDoInsert];
+    
+    [self.testProgressTableView beginUpdates];
+    
+    int section = self.selectIndex.section;
+    
+     jcjd_Model *model = [_m_jcjd_ModelArr objectAtIndex:section];
+    
+    int contentCount = [model.jcjdDetailArr count] +1;
+    
+    NSMutableArray* rowToInsert = [[NSMutableArray alloc] init];
+    for (NSUInteger i = 1; i < contentCount + 1; i++) {
+        NSIndexPath* indexPathToInsert = [NSIndexPath indexPathForRow:i inSection:section];
+        [rowToInsert addObject:indexPathToInsert];
+    }
+    
+    
+    if (firstDoInsert)
+    {   [self.testProgressTableView insertRowsAtIndexPaths:rowToInsert withRowAnimation:UITableViewRowAnimationTop];
+    }
+    else
+    {
+        [self.testProgressTableView deleteRowsAtIndexPaths:rowToInsert withRowAnimation:UITableViewRowAnimationTop];
+    }
+    
+    
+    [self.testProgressTableView endUpdates];
+    if (nextDoInsert) {
+        self.isOpen = YES;
+        self.selectIndex = [self.testProgressTableView indexPathForSelectedRow];
+        [self didSelectCellRowFirstDo:YES nextDo:NO];
+    }
+    if (self.isOpen) [self.testProgressTableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
 
 /*
  //设置cell的行高

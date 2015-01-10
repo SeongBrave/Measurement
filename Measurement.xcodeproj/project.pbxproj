@@ -68,6 +68,10 @@
 		C9A337841A499D42004560D1 /* ChargeManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337831A499D42004560D1 /* ChargeManagementViewController.m */; };
 		C9A337871A499D6B004560D1 /* SystemSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337861A499D6B004560D1 /* SystemSettingsViewController.m */; };
 		C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */; };
+		C9A95B491A613C890017BE2B /* ProgressOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A95B481A613C890017BE2B /* ProgressOverviewCell.m */; };
+		C9A95B4C1A613CD50017BE2B /* TestProgressContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A95B4B1A613CD50017BE2B /* TestProgressContentCell.m */; };
+		C9A95B511A613EA10017BE2B /* jcjd_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A95B501A613EA10017BE2B /* jcjd_Model.m */; };
+		C9A95B541A613EF90017BE2B /* jcjd_Detail_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A95B531A613EF90017BE2B /* jcjd_Detail_Model.m */; };
 		C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AE087E1A450FE200DA39BF /* LoginViewController.m */; };
 		C9B3A2AE1A4D9C7100CE276B /* CommonLogicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B3A2AD1A4D9C7100CE276B /* CommonLogicViewController.m */; };
 		C9B625F21A4E8E1C00AE9251 /* Other.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B625F01A4E8E1C00AE9251 /* Other.storyboard */; };
@@ -262,6 +266,14 @@
 		C9A337861A499D6B004560D1 /* SystemSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSettingsViewController.m; sourceTree = "<group>"; };
 		C9A8B6091A490728008E94B7 /* CommonLogicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLogicCell.h; sourceTree = "<group>"; };
 		C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonLogicCell.m; sourceTree = "<group>"; };
+		C9A95B471A613C890017BE2B /* ProgressOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressOverviewCell.h; sourceTree = "<group>"; };
+		C9A95B481A613C890017BE2B /* ProgressOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressOverviewCell.m; sourceTree = "<group>"; };
+		C9A95B4A1A613CD50017BE2B /* TestProgressContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestProgressContentCell.h; sourceTree = "<group>"; };
+		C9A95B4B1A613CD50017BE2B /* TestProgressContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestProgressContentCell.m; sourceTree = "<group>"; };
+		C9A95B4F1A613EA10017BE2B /* jcjd_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jcjd_Model.h; sourceTree = "<group>"; };
+		C9A95B501A613EA10017BE2B /* jcjd_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jcjd_Model.m; sourceTree = "<group>"; };
+		C9A95B521A613EF90017BE2B /* jcjd_Detail_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jcjd_Detail_Model.h; sourceTree = "<group>"; };
+		C9A95B531A613EF90017BE2B /* jcjd_Detail_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jcjd_Detail_Model.m; sourceTree = "<group>"; };
 		C9AE087D1A450FE200DA39BF /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C9AE087E1A450FE200DA39BF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		C9B3A2AC1A4D9C7100CE276B /* CommonLogicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLogicViewController.h; sourceTree = "<group>"; };
@@ -973,6 +985,7 @@
 		C9A8B6041A490682008E94B7 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				C9A95B461A613C250017BE2B /* TestProgressCell */,
 				C9F3DFD01A5D9CD100D34A19 /* FactoryTaskCell */,
 				C9F3DFD31A5D9CD100D34A19 /* PlanDetailsCell */,
 			);
@@ -988,6 +1001,36 @@
 				C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */,
 			);
 			path = CommonLogicCell;
+			sourceTree = "<group>";
+		};
+		C9A95B461A613C250017BE2B /* TestProgressCell */ = {
+			isa = PBXGroup;
+			children = (
+				C9A95B471A613C890017BE2B /* ProgressOverviewCell.h */,
+				C9A95B481A613C890017BE2B /* ProgressOverviewCell.m */,
+				C9A95B4A1A613CD50017BE2B /* TestProgressContentCell.h */,
+				C9A95B4B1A613CD50017BE2B /* TestProgressContentCell.m */,
+			);
+			path = TestProgressCell;
+			sourceTree = "<group>";
+		};
+		C9A95B4D1A613E3D0017BE2B /* UpdatePlanDetailsModel */ = {
+			isa = PBXGroup;
+			children = (
+				C9A95B4E1A613E3D0017BE2B /* TestProgressModel */,
+			);
+			path = UpdatePlanDetailsModel;
+			sourceTree = "<group>";
+		};
+		C9A95B4E1A613E3D0017BE2B /* TestProgressModel */ = {
+			isa = PBXGroup;
+			children = (
+				C9A95B4F1A613EA10017BE2B /* jcjd_Model.h */,
+				C9A95B501A613EA10017BE2B /* jcjd_Model.m */,
+				C9A95B521A613EF90017BE2B /* jcjd_Detail_Model.h */,
+				C9A95B531A613EF90017BE2B /* jcjd_Detail_Model.m */,
+			);
+			path = TestProgressModel;
 			sourceTree = "<group>";
 		};
 		C9D6B9EE1A5AE648006D27EF /* AutoCompleteTextField */ = {
@@ -1033,6 +1076,7 @@
 		C9F3DFA81A5D647700D34A19 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C9A95B4D1A613E3D0017BE2B /* UpdatePlanDetailsModel */,
 				C9F3DFA91A5D64CB00D34A19 /* AddPlanDetailsModel */,
 			);
 			path = Model;
@@ -1312,6 +1356,7 @@
 				C9BFA9F81A487BB000C887B4 /* HomeViewController.m in Sources */,
 				C903B0C81A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m in Sources */,
 				C9BFAA101A487BF400C887B4 /* HeaderView.m in Sources */,
+				C9A95B4C1A613CD50017BE2B /* TestProgressContentCell.m in Sources */,
 				C90DF5BE1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.m in Sources */,
 				C91ACE171A4FA06E0037757A /* OptionMenuTableViewController.m in Sources */,
 				C9E94DCD1A4A669100E8CC83 /* MJRefreshFooterView.m in Sources */,
@@ -1322,6 +1367,8 @@
 				C9903BFF1A46E9FE0006FD99 /* DockItem.m in Sources */,
 				C9BFAA151A487BF400C887B4 /* SettingCell.m in Sources */,
 				C9A337751A499B8F004560D1 /* ProgramOverviewViewController.m in Sources */,
+				C9A95B511A613EA10017BE2B /* jcjd_Model.m in Sources */,
+				C9A95B491A613C890017BE2B /* ProgressOverviewCell.m in Sources */,
 				C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */,
 				C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */,
 				C9F3DFD71A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m in Sources */,
@@ -1354,6 +1401,7 @@
 				C9A337741A499B8F004560D1 /* PlanningDepartmentViewController.m in Sources */,
 				C9651FEF1A43B26000B770BB /* DropDownListView.m in Sources */,
 				C9F51E681A58306D009F84D1 /* MyPlanViewController.m in Sources */,
+				C9A95B541A613EF90017BE2B /* jcjd_Detail_Model.m in Sources */,
 				C9BFAA131A487BF400C887B4 /* MenuView.m in Sources */,
 				C92F29951A5D0D89001AB4C8 /* DropDownTextField.m in Sources */,
 				C99F47C11A4B0BAF007C68AB /* CompanyCollectionViewCell.m in Sources */,
