@@ -27,6 +27,7 @@ typedef enum{
 
 -(void)hideDialog;
 -(void)showDialog;
+-(void)showDialogWithVC:(UIViewController *) Vc;
 +(BaseNetWork *)getInstance;
 
 //- (RACSignal *)rac_enqueueHTTPRequestOperation:(AFHTTPRequestOperation *)requestOperation;

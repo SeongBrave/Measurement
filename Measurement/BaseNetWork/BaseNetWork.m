@@ -11,6 +11,11 @@
 static BaseNetWork *instance =nil;
 
 @interface BaseNetWork ()
+
+/**
+ *  显示到bgvc界面上
+ */
+@property(nonatomic , strong)UIViewController *bgVC;
 @property(nonatomic , assign)BOOL isShow;
 
 
@@ -25,6 +30,8 @@ static BaseNetWork *instance =nil;
             instance=[[BaseNetWork alloc] init];
             instance.m_show = [[Dialog alloc]init];
             instance.isShow = NO;
+            instance.bgVC = nil;
+            
         }
     }
     return instance;
@@ -33,6 +40,13 @@ static BaseNetWork *instance =nil;
 -(void)hideDialog
 {
     self.isShow = NO;
+   
+}
+
+-(void)showDialogWithVC:(UIViewController *) Vc
+{
+    self.isShow = YES;
+     self.bgVC = Vc;
 }
 -(void)showDialog
 {
@@ -143,7 +157,11 @@ static BaseNetWork *instance =nil;
             createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
                 
                 @strongify(self)
-                if (self.isShow) {
+                if (self.isShow&&self.bgVC !=nil) {
+                    [self.m_show showProgress:_bgVC withLabel:@"正在加载..."];
+                    
+                }else if (self.isShow)
+                {
                     [self.m_show showCenterProgressWithLabel:@"正在加载..."];
                 }
                 
@@ -160,6 +178,7 @@ static BaseNetWork *instance =nil;
                             @strongify(self)
                             if (self.isShow) {
                                [self.m_show hideProgress];
+                                self.bgVC = nil;
                             }
                             [subscriber sendNext:responseObject];
                             [subscriber sendCompleted];
@@ -167,6 +186,7 @@ static BaseNetWork *instance =nil;
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                             @strongify(self)
                             if (self.isShow) {
+                                self.bgVC = nil;
                                 [self.m_show hideProgress];
                             }
                             [subscriber sendError:error];
@@ -182,6 +202,7 @@ static BaseNetWork *instance =nil;
                             
                             @strongify(self)
                             if (self.isShow) {
+                                self.bgVC = nil;
                                 [self.m_show hideProgress];
                             }
                             [subscriber sendNext:responseObject];
@@ -191,6 +212,7 @@ static BaseNetWork *instance =nil;
                             
                             @strongify(self)
                             if (self.isShow) {
+                                self.bgVC = nil;
                                 [self.m_show hideProgress];
                             }
                             [subscriber sendError:error];
@@ -205,6 +227,7 @@ static BaseNetWork *instance =nil;
                         opation = [manager PUT:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             @strongify(self)
                             if (self.isShow) {
+                                self.bgVC = nil;
                                 [self.m_show hideProgress];
                             }
                             [subscriber sendNext:responseObject];
@@ -213,6 +236,7 @@ static BaseNetWork *instance =nil;
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                             @strongify(self)
                             if (self.isShow) {
+                                self.bgVC = nil;
                                 [self.m_show hideProgress];
                             }
                             [subscriber sendError:error];
@@ -227,6 +251,7 @@ static BaseNetWork *instance =nil;
                         opation = [manager PATCH:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             @strongify(self)
                             if (self.isShow) {
+                                self.bgVC = nil;
                                 [self.m_show hideProgress];
                             }
                             [subscriber sendNext:responseObject];
@@ -235,6 +260,7 @@ static BaseNetWork *instance =nil;
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                             @strongify(self)
                             if (self.isShow) {
+                                self.bgVC = nil;
                                 [self.m_show hideProgress];
                             }
                             [subscriber sendError:error];
@@ -249,6 +275,7 @@ static BaseNetWork *instance =nil;
                         opation = [manager DELETE:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             @strongify(self)
                             if (self.isShow) {
+                                self.bgVC = nil;
                                 [self.m_show hideProgress];
                             }
                             [subscriber sendNext:responseObject];
@@ -257,6 +284,7 @@ static BaseNetWork *instance =nil;
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                             @strongify(self)
                             if (self.isShow) {
+                                self.bgVC = nil;
                                 [self.m_show hideProgress];
                             }
                             [subscriber sendError:error];
@@ -271,6 +299,7 @@ static BaseNetWork *instance =nil;
                 return [RACDisposable disposableWithBlock:^{
                     @strongify(self)
                     if (self.isShow) {
+                        self.bgVC = nil;
                         [self.m_show hideProgress];
                     }
                     [opation cancel];

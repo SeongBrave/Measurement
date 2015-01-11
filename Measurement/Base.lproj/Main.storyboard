@@ -509,6 +509,9 @@
                                                             <state key="normal" title="编辑">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <state key="highlighted">
+                                                                <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </state>
                                                             <connections>
                                                                 <action selector="editorPress:" destination="Pp6-Xn-uOv" eventType="touchUpInside" id="PJx-iQ-bFm"/>
                                                             </connections>
@@ -522,6 +525,9 @@
                                                             <state key="normal" title="删除">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <state key="highlighted">
+                                                                <color key="titleShadowColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </state>
                                                             <connections>
                                                                 <action selector="deletePress:" destination="Pp6-Xn-uOv" eventType="touchUpInside" id="BD6-bX-TOA"/>
                                                             </connections>
@@ -532,8 +538,9 @@
                                                                 <constraint firstAttribute="height" constant="40" id="lkv-Y8-jqY"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                            <state key="normal" title="标记完成">
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <state key="normal" title="标记完成"/>
+                                                            <state key="highlighted">
+                                                                <color key="titleShadowColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
                                                             <connections>
                                                                 <action selector="markCompletedPress:" destination="Pp6-Xn-uOv" eventType="touchUpInside" id="uV7-bO-vma"/>
@@ -866,7 +873,7 @@
         <!--Add Plan Details PopVC-->
         <scene sceneID="Byy-ox-N4E">
             <objects>
-                <viewController storyboardIdentifier="popVC" id="3TU-a3-8tX" customClass="AddPlanDetailsPopVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddPlanDetailsPopVC" id="3TU-a3-8tX" customClass="AddPlanDetailsPopVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ebp-27-RvH"/>
                         <viewControllerLayoutGuide type="bottom" id="cV8-A5-vbt"/>

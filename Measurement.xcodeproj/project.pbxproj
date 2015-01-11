@@ -9,14 +9,9 @@
 /* Begin PBXBuildFile section */
 		C903B0C51A5EB1B00038AA1B /* PlanDetailsHead_DepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C903B0C41A5EB1B00038AA1B /* PlanDetailsHead_DepCell.m */; };
 		C903B0C81A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C903B0C71A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m */; };
-		C903B0CE1A5EBA5D0038AA1B /* DepManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C903B0CD1A5EBA5D0038AA1B /* DepManViewController.m */; };
 		C903B0D11A5EBF910038AA1B /* DepMans_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = C903B0D01A5EBF910038AA1B /* DepMans_Cell.m */; };
-		C90DF5BE1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C90DF5BD1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.m */; };
-		C91ACE171A4FA06E0037757A /* OptionMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91ACE161A4FA06E0037757A /* OptionMenuTableViewController.m */; };
-		C91ACE1A1A50563F0037757A /* SelectValueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91ACE191A50563F0037757A /* SelectValueTableViewController.m */; };
 		C92F29951A5D0D89001AB4C8 /* DropDownTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C92F29941A5D0D89001AB4C8 /* DropDownTextField.m */; };
 		C9431FBD1A4DAF7B0017FED0 /* MyPlanViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */; };
-		C9648A8D1A5970A3005ECFC6 /* AddPlanDetailsPopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C9648A8C1A5970A3005ECFC6 /* AddPlanDetailsPopVC.m */; };
 		C9651ECC1A43AD8F00B770BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651ECB1A43AD8F00B770BB /* main.m */; };
 		C9651ECF1A43AD8F00B770BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651ECE1A43AD8F00B770BB /* AppDelegate.m */; };
 		C9651ED51A43AD8F00B770BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9651ED31A43AD8F00B770BB /* Main.storyboard */; };
@@ -50,23 +45,36 @@
 		C9651FF71A43BE3100B770BB /* YTKKeyValueStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651FF61A43BE3100B770BB /* YTKKeyValueStore.m */; };
 		C965204C1A43FBE200B770BB /* libDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C965204B1A43FBE200B770BB /* libDialog.a */; };
 		C965204E1A43FC6900B770BB /* libToolsLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C965204D1A43FC6900B770BB /* libToolsLib.a */; };
+		C97093DC1A62B0A000141DC5 /* LoginedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C97093DB1A62B0A000141DC5 /* LoginedUser.m */; };
+		C97093E91A62CBD200141DC5 /* OptionMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97093DF1A62CBD200141DC5 /* OptionMenuTableViewController.m */; };
+		C97093EA1A62CBD200141DC5 /* SelectValue_XCKS_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97093E11A62CBD200141DC5 /* SelectValue_XCKS_TableViewController.m */; };
+		C97093EB1A62CBD200141DC5 /* SelectValue_XCRY_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97093E31A62CBD200141DC5 /* SelectValue_XCRY_TableViewController.m */; };
+		C97093EC1A62CBD200141DC5 /* SelectValueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97093E51A62CBD200141DC5 /* SelectValueTableViewController.m */; };
+		C97093ED1A62CBD200141DC5 /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97093E81A62CBD200141DC5 /* SignatureViewController.m */; };
+		C97093F11A62CC3F00141DC5 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97093F01A62CC3F00141DC5 /* ScanViewController.m */; };
+		C97094551A62D09B00141DC5 /* ProgramOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094241A62D09A00141DC5 /* ProgramOverviewViewController.m */; };
+		C97094561A62D09B00141DC5 /* PlanningDepartmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094271A62D09A00141DC5 /* PlanningDepartmentViewController.m */; };
+		C97094571A62D09B00141DC5 /* AddPlanDetailsPopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C970942A1A62D09A00141DC5 /* AddPlanDetailsPopVC.m */; };
+		C970945C1A62D09B00141DC5 /* MyPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094341A62D09A00141DC5 /* MyPlanViewController.m */; };
+		C970945D1A62D09B00141DC5 /* UpdatePlanDetailsPopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094361A62D09A00141DC5 /* UpdatePlanDetailsPopVC.m */; };
+		C970945E1A62D09B00141DC5 /* FactoryTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094391A62D09A00141DC5 /* FactoryTaskViewController.m */; };
+		C970945F1A62D09B00141DC5 /* DetectionTaskQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C970943C1A62D09A00141DC5 /* DetectionTaskQueryViewController.m */; };
+		C97094601A62D09B00141DC5 /* CheckTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C970943F1A62D09A00141DC5 /* CheckTaskViewController.m */; };
+		C97094611A62D09B00141DC5 /* ApprovalTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094421A62D09A00141DC5 /* ApprovalTaskViewController.m */; };
+		C97094621A62D09B00141DC5 /* CertificateGuaranteeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094451A62D09A00141DC5 /* CertificateGuaranteeViewController.m */; };
+		C97094631A62D09B00141DC5 /* BidManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094481A62D09A00141DC5 /* BidManagementViewController.m */; };
+		C97094641A62D09B00141DC5 /* ChargeManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C970944B1A62D09A00141DC5 /* ChargeManagementViewController.m */; };
+		C97094651A62D09B00141DC5 /* SystemSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C970944E1A62D09A00141DC5 /* SystemSettingsViewController.m */; };
+		C97094661A62D09B00141DC5 /* InspectionTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094511A62D09A00141DC5 /* InspectionTasksViewController.m */; };
+		C97094671A62D09B00141DC5 /* AuditNotPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094541A62D09B00141DC5 /* AuditNotPassViewController.m */; };
+		C970946C1A62D2DA00141DC5 /* autoTableViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = C970946B1A62D2DA00141DC5 /* autoTableViewData.m */; };
+		C97094721A62D36A00141DC5 /* DepMansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C970946F1A62D36A00141DC5 /* DepMansViewController.m */; };
+		C97094731A62D36A00141DC5 /* DepManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094711A62D36A00141DC5 /* DepManViewController.m */; };
 		C9903BFF1A46E9FE0006FD99 /* DockItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903BFE1A46E9FE0006FD99 /* DockItem.m */; };
 		C9903C021A46EA0C0006FD99 /* CellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903C011A46EA0C0006FD99 /* CellItem.m */; };
 		C9903C1E1A470BDB0006FD99 /* UIImage+Fit.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903C1D1A470BDB0006FD99 /* UIImage+Fit.m */; };
 		C99F47C11A4B0BAF007C68AB /* CompanyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F47C01A4B0BAF007C68AB /* CompanyCollectionViewCell.m */; };
 		C99FD92A1A4C4F2F000AB1A6 /* ProgramOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C99FD9291A4C4F2F000AB1A6 /* ProgramOverviewCell.m */; };
-		C9A3376F1A499B8F004560D1 /* AuditNotPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337621A499B8F004560D1 /* AuditNotPassViewController.m */; };
-		C9A337701A499B8F004560D1 /* DetectionTaskQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337641A499B8F004560D1 /* DetectionTaskQueryViewController.m */; };
-		C9A337711A499B8F004560D1 /* FactoryTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337661A499B8F004560D1 /* FactoryTaskViewController.m */; };
-		C9A337721A499B8F004560D1 /* InspectionTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337681A499B8F004560D1 /* InspectionTasksViewController.m */; };
-		C9A337741A499B8F004560D1 /* PlanningDepartmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3376C1A499B8F004560D1 /* PlanningDepartmentViewController.m */; };
-		C9A337751A499B8F004560D1 /* ProgramOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3376E1A499B8F004560D1 /* ProgramOverviewViewController.m */; };
-		C9A337781A499C79004560D1 /* CheckTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337771A499C79004560D1 /* CheckTaskViewController.m */; };
-		C9A3377B1A499CC0004560D1 /* ApprovalTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3377A1A499CC0004560D1 /* ApprovalTaskViewController.m */; };
-		C9A3377E1A499CF4004560D1 /* CertificateGuaranteeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3377D1A499CF4004560D1 /* CertificateGuaranteeViewController.m */; };
-		C9A337811A499D1A004560D1 /* BidManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337801A499D1A004560D1 /* BidManagementViewController.m */; };
-		C9A337841A499D42004560D1 /* ChargeManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337831A499D42004560D1 /* ChargeManagementViewController.m */; };
-		C9A337871A499D6B004560D1 /* SystemSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A337861A499D6B004560D1 /* SystemSettingsViewController.m */; };
 		C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */; };
 		C9A95B491A613C890017BE2B /* ProgressOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A95B481A613C890017BE2B /* ProgressOverviewCell.m */; };
 		C9A95B4C1A613CD50017BE2B /* TestProgressContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A95B4B1A613CD50017BE2B /* TestProgressContentCell.m */; };
@@ -77,8 +85,6 @@
 		C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AE087E1A450FE200DA39BF /* LoginViewController.m */; };
 		C9B3A2AE1A4D9C7100CE276B /* CommonLogicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B3A2AD1A4D9C7100CE276B /* CommonLogicViewController.m */; };
 		C9B625F21A4E8E1C00AE9251 /* Other.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B625F01A4E8E1C00AE9251 /* Other.storyboard */; };
-		C9BBC63D1A519E5E00C0C862 /* SelectValue_XCRY_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BBC63C1A519E5E00C0C862 /* SelectValue_XCRY_TableViewController.m */; };
-		C9BBC6401A519ED300C0C862 /* SelectValue_XCKS_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BBC63F1A519ED300C0C862 /* SelectValue_XCKS_TableViewController.m */; };
 		C9BFA9F81A487BB000C887B4 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9E91A487BB000C887B4 /* HomeViewController.m */; };
 		C9BFA9FD1A487BB000C887B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9F31A487BB000C887B4 /* ViewController.m */; };
 		C9BFAA0F1A487BF400C887B4 /* Dock.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFAA011A487BF400C887B4 /* Dock.m */; };
@@ -88,10 +94,8 @@
 		C9BFAA151A487BF400C887B4 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFAA0D1A487BF400C887B4 /* SettingCell.m */; };
 		C9D6B9F61A5AE648006D27EF /* AutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F01A5AE648006D27EF /* AutoCompleteTextField.m */; };
 		C9D6B9F71A5AE648006D27EF /* NSString+Levenshtein.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */; };
-		C9D6B9FA1A5AEB8F006D27EF /* autoTableViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F91A5AEB8F006D27EF /* autoTableViewData.m */; };
 		C9D88CF61A5E2D0D003ED50F /* ks_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D88CF51A5E2D0D003ED50F /* ks_Model.m */; };
 		C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E226D61A52FF6E004A9A69 /* DatePickerViewController.m */; };
-		C9E233CB1A5FC7B200DA3C3C /* DepMansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E233CA1A5FC7B200DA3C3C /* DepMansViewController.m */; };
 		C9E94DCA1A4A669100E8CC83 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9E94DC01A4A669100E8CC83 /* MJRefresh.bundle */; };
 		C9E94DCB1A4A669100E8CC83 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E94DC31A4A669100E8CC83 /* MJRefreshBaseView.m */; };
 		C9E94DCC1A4A669100E8CC83 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E94DC51A4A669100E8CC83 /* MJRefreshConst.m */; };
@@ -104,11 +108,7 @@
 		C9F3DFCF1A5D99E800D34A19 /* ry_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DFCE1A5D99E800D34A19 /* ry_Model.m */; };
 		C9F3DFD41A5D9CD100D34A19 /* FactoryTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DFD21A5D9CD100D34A19 /* FactoryTaskCell.m */; };
 		C9F3DFD71A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DFD61A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m */; };
-		C9F51E2A1A57BADA009F84D1 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F51E271A57BADA009F84D1 /* ScanViewController.m */; };
-		C9F51E2B1A57BADA009F84D1 /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F51E291A57BADA009F84D1 /* SignatureViewController.m */; };
 		C9F51E621A582E70009F84D1 /* backgroundV.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F51E611A582E70009F84D1 /* backgroundV.m */; };
-		C9F51E681A58306D009F84D1 /* MyPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F51E671A58306D009F84D1 /* MyPlanViewController.m */; };
-		C9F51E6B1A5830A5009F84D1 /* MyPlanPopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F51E6A1A5830A5009F84D1 /* MyPlanPopVC.m */; };
 		F65BA8D3002CC2F8A0A2DE2E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5F62FAAA8BD23C06EFF46D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -129,22 +129,12 @@
 		C903B0C41A5EB1B00038AA1B /* PlanDetailsHead_DepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanDetailsHead_DepCell.m; sourceTree = "<group>"; };
 		C903B0C61A5EB1C00038AA1B /* PlanDetailsMans_DepCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanDetailsMans_DepCell.h; sourceTree = "<group>"; };
 		C903B0C71A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanDetailsMans_DepCell.m; sourceTree = "<group>"; };
-		C903B0CC1A5EBA5D0038AA1B /* DepManViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepManViewController.h; sourceTree = "<group>"; };
-		C903B0CD1A5EBA5D0038AA1B /* DepManViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepManViewController.m; sourceTree = "<group>"; };
 		C903B0CF1A5EBF910038AA1B /* DepMans_Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepMans_Cell.h; sourceTree = "<group>"; };
 		C903B0D01A5EBF910038AA1B /* DepMans_Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepMans_Cell.m; sourceTree = "<group>"; };
-		C90DF5BC1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatePlanDetailsPopVC.h; sourceTree = "<group>"; };
-		C90DF5BD1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatePlanDetailsPopVC.m; sourceTree = "<group>"; };
-		C91ACE151A4FA06E0037757A /* OptionMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionMenuTableViewController.h; sourceTree = "<group>"; };
-		C91ACE161A4FA06E0037757A /* OptionMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionMenuTableViewController.m; sourceTree = "<group>"; };
-		C91ACE181A50563F0037757A /* SelectValueTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectValueTableViewController.h; sourceTree = "<group>"; };
-		C91ACE191A50563F0037757A /* SelectValueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectValueTableViewController.m; sourceTree = "<group>"; };
 		C92F29931A5D0D89001AB4C8 /* DropDownTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownTextField.h; sourceTree = "<group>"; };
 		C92F29941A5D0D89001AB4C8 /* DropDownTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownTextField.m; sourceTree = "<group>"; };
 		C9431FBB1A4DAF7B0017FED0 /* MyPlanViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlanViewCell.h; sourceTree = "<group>"; };
 		C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlanViewCell.m; sourceTree = "<group>"; };
-		C9648A8B1A5970A3005ECFC6 /* AddPlanDetailsPopVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPlanDetailsPopVC.h; sourceTree = "<group>"; };
-		C9648A8C1A5970A3005ECFC6 /* AddPlanDetailsPopVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPlanDetailsPopVC.m; sourceTree = "<group>"; };
 		C9651EC61A43AD8F00B770BB /* Measurement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Measurement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9651ECA1A43AD8F00B770BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9651ECB1A43AD8F00B770BB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -232,6 +222,56 @@
 		C96520381A43C8BE00B770BB /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
 		C965204B1A43FBE200B770BB /* libDialog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDialog.a; sourceTree = "<group>"; };
 		C965204D1A43FC6900B770BB /* libToolsLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libToolsLib.a; sourceTree = "<group>"; };
+		C97093DA1A62B0A000141DC5 /* LoginedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginedUser.h; sourceTree = "<group>"; };
+		C97093DB1A62B0A000141DC5 /* LoginedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginedUser.m; sourceTree = "<group>"; };
+		C97093DE1A62CBD200141DC5 /* OptionMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionMenuTableViewController.h; sourceTree = "<group>"; };
+		C97093DF1A62CBD200141DC5 /* OptionMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionMenuTableViewController.m; sourceTree = "<group>"; };
+		C97093E01A62CBD200141DC5 /* SelectValue_XCKS_TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectValue_XCKS_TableViewController.h; sourceTree = "<group>"; };
+		C97093E11A62CBD200141DC5 /* SelectValue_XCKS_TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectValue_XCKS_TableViewController.m; sourceTree = "<group>"; };
+		C97093E21A62CBD200141DC5 /* SelectValue_XCRY_TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectValue_XCRY_TableViewController.h; sourceTree = "<group>"; };
+		C97093E31A62CBD200141DC5 /* SelectValue_XCRY_TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectValue_XCRY_TableViewController.m; sourceTree = "<group>"; };
+		C97093E41A62CBD200141DC5 /* SelectValueTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectValueTableViewController.h; sourceTree = "<group>"; };
+		C97093E51A62CBD200141DC5 /* SelectValueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectValueTableViewController.m; sourceTree = "<group>"; };
+		C97093E71A62CBD200141DC5 /* SignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureViewController.h; sourceTree = "<group>"; };
+		C97093E81A62CBD200141DC5 /* SignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureViewController.m; sourceTree = "<group>"; };
+		C97093EF1A62CC3F00141DC5 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
+		C97093F01A62CC3F00141DC5 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
+		C97094231A62D09A00141DC5 /* ProgramOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramOverviewViewController.h; sourceTree = "<group>"; };
+		C97094241A62D09A00141DC5 /* ProgramOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramOverviewViewController.m; sourceTree = "<group>"; };
+		C97094261A62D09A00141DC5 /* PlanningDepartmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningDepartmentViewController.h; sourceTree = "<group>"; };
+		C97094271A62D09A00141DC5 /* PlanningDepartmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanningDepartmentViewController.m; sourceTree = "<group>"; };
+		C97094291A62D09A00141DC5 /* AddPlanDetailsPopVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPlanDetailsPopVC.h; sourceTree = "<group>"; };
+		C970942A1A62D09A00141DC5 /* AddPlanDetailsPopVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPlanDetailsPopVC.m; sourceTree = "<group>"; };
+		C97094331A62D09A00141DC5 /* MyPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlanViewController.h; sourceTree = "<group>"; };
+		C97094341A62D09A00141DC5 /* MyPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlanViewController.m; sourceTree = "<group>"; };
+		C97094351A62D09A00141DC5 /* UpdatePlanDetailsPopVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatePlanDetailsPopVC.h; sourceTree = "<group>"; };
+		C97094361A62D09A00141DC5 /* UpdatePlanDetailsPopVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatePlanDetailsPopVC.m; sourceTree = "<group>"; };
+		C97094381A62D09A00141DC5 /* FactoryTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryTaskViewController.h; sourceTree = "<group>"; };
+		C97094391A62D09A00141DC5 /* FactoryTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryTaskViewController.m; sourceTree = "<group>"; };
+		C970943B1A62D09A00141DC5 /* DetectionTaskQueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetectionTaskQueryViewController.h; sourceTree = "<group>"; };
+		C970943C1A62D09A00141DC5 /* DetectionTaskQueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetectionTaskQueryViewController.m; sourceTree = "<group>"; };
+		C970943E1A62D09A00141DC5 /* CheckTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckTaskViewController.h; sourceTree = "<group>"; };
+		C970943F1A62D09A00141DC5 /* CheckTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckTaskViewController.m; sourceTree = "<group>"; };
+		C97094411A62D09A00141DC5 /* ApprovalTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApprovalTaskViewController.h; sourceTree = "<group>"; };
+		C97094421A62D09A00141DC5 /* ApprovalTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApprovalTaskViewController.m; sourceTree = "<group>"; };
+		C97094441A62D09A00141DC5 /* CertificateGuaranteeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateGuaranteeViewController.h; sourceTree = "<group>"; };
+		C97094451A62D09A00141DC5 /* CertificateGuaranteeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateGuaranteeViewController.m; sourceTree = "<group>"; };
+		C97094471A62D09A00141DC5 /* BidManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidManagementViewController.h; sourceTree = "<group>"; };
+		C97094481A62D09A00141DC5 /* BidManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidManagementViewController.m; sourceTree = "<group>"; };
+		C970944A1A62D09A00141DC5 /* ChargeManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeManagementViewController.h; sourceTree = "<group>"; };
+		C970944B1A62D09A00141DC5 /* ChargeManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeManagementViewController.m; sourceTree = "<group>"; };
+		C970944D1A62D09A00141DC5 /* SystemSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSettingsViewController.h; sourceTree = "<group>"; };
+		C970944E1A62D09A00141DC5 /* SystemSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSettingsViewController.m; sourceTree = "<group>"; };
+		C97094501A62D09A00141DC5 /* InspectionTasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectionTasksViewController.h; sourceTree = "<group>"; };
+		C97094511A62D09A00141DC5 /* InspectionTasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectionTasksViewController.m; sourceTree = "<group>"; };
+		C97094531A62D09B00141DC5 /* AuditNotPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuditNotPassViewController.h; sourceTree = "<group>"; };
+		C97094541A62D09B00141DC5 /* AuditNotPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuditNotPassViewController.m; sourceTree = "<group>"; };
+		C970946A1A62D2DA00141DC5 /* autoTableViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autoTableViewData.h; sourceTree = "<group>"; };
+		C970946B1A62D2DA00141DC5 /* autoTableViewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = autoTableViewData.m; sourceTree = "<group>"; };
+		C970946E1A62D36A00141DC5 /* DepMansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepMansViewController.h; sourceTree = "<group>"; };
+		C970946F1A62D36A00141DC5 /* DepMansViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepMansViewController.m; sourceTree = "<group>"; };
+		C97094701A62D36A00141DC5 /* DepManViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepManViewController.h; sourceTree = "<group>"; };
+		C97094711A62D36A00141DC5 /* DepManViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepManViewController.m; sourceTree = "<group>"; };
 		C9903BFD1A46E9FE0006FD99 /* DockItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DockItem.h; sourceTree = "<group>"; };
 		C9903BFE1A46E9FE0006FD99 /* DockItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DockItem.m; sourceTree = "<group>"; };
 		C9903C001A46EA0C0006FD99 /* CellItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellItem.h; sourceTree = "<group>"; };
@@ -242,30 +282,6 @@
 		C99F47C01A4B0BAF007C68AB /* CompanyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyCollectionViewCell.m; sourceTree = "<group>"; };
 		C99FD9281A4C4F2F000AB1A6 /* ProgramOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramOverviewCell.h; sourceTree = "<group>"; };
 		C99FD9291A4C4F2F000AB1A6 /* ProgramOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramOverviewCell.m; sourceTree = "<group>"; };
-		C9A337611A499B8F004560D1 /* AuditNotPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuditNotPassViewController.h; sourceTree = "<group>"; };
-		C9A337621A499B8F004560D1 /* AuditNotPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuditNotPassViewController.m; sourceTree = "<group>"; };
-		C9A337631A499B8F004560D1 /* DetectionTaskQueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetectionTaskQueryViewController.h; sourceTree = "<group>"; };
-		C9A337641A499B8F004560D1 /* DetectionTaskQueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetectionTaskQueryViewController.m; sourceTree = "<group>"; };
-		C9A337651A499B8F004560D1 /* FactoryTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryTaskViewController.h; sourceTree = "<group>"; };
-		C9A337661A499B8F004560D1 /* FactoryTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryTaskViewController.m; sourceTree = "<group>"; };
-		C9A337671A499B8F004560D1 /* InspectionTasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectionTasksViewController.h; sourceTree = "<group>"; };
-		C9A337681A499B8F004560D1 /* InspectionTasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectionTasksViewController.m; sourceTree = "<group>"; };
-		C9A3376B1A499B8F004560D1 /* PlanningDepartmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningDepartmentViewController.h; sourceTree = "<group>"; };
-		C9A3376C1A499B8F004560D1 /* PlanningDepartmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanningDepartmentViewController.m; sourceTree = "<group>"; };
-		C9A3376D1A499B8F004560D1 /* ProgramOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramOverviewViewController.h; sourceTree = "<group>"; };
-		C9A3376E1A499B8F004560D1 /* ProgramOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramOverviewViewController.m; sourceTree = "<group>"; };
-		C9A337761A499C79004560D1 /* CheckTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckTaskViewController.h; sourceTree = "<group>"; };
-		C9A337771A499C79004560D1 /* CheckTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckTaskViewController.m; sourceTree = "<group>"; };
-		C9A337791A499CC0004560D1 /* ApprovalTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApprovalTaskViewController.h; sourceTree = "<group>"; };
-		C9A3377A1A499CC0004560D1 /* ApprovalTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApprovalTaskViewController.m; sourceTree = "<group>"; };
-		C9A3377C1A499CF4004560D1 /* CertificateGuaranteeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateGuaranteeViewController.h; sourceTree = "<group>"; };
-		C9A3377D1A499CF4004560D1 /* CertificateGuaranteeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateGuaranteeViewController.m; sourceTree = "<group>"; };
-		C9A3377F1A499D1A004560D1 /* BidManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidManagementViewController.h; sourceTree = "<group>"; };
-		C9A337801A499D1A004560D1 /* BidManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidManagementViewController.m; sourceTree = "<group>"; };
-		C9A337821A499D42004560D1 /* ChargeManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeManagementViewController.h; sourceTree = "<group>"; };
-		C9A337831A499D42004560D1 /* ChargeManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeManagementViewController.m; sourceTree = "<group>"; };
-		C9A337851A499D6B004560D1 /* SystemSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSettingsViewController.h; sourceTree = "<group>"; };
-		C9A337861A499D6B004560D1 /* SystemSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSettingsViewController.m; sourceTree = "<group>"; };
 		C9A8B6091A490728008E94B7 /* CommonLogicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLogicCell.h; sourceTree = "<group>"; };
 		C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonLogicCell.m; sourceTree = "<group>"; };
 		C9A95B471A613C890017BE2B /* ProgressOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressOverviewCell.h; sourceTree = "<group>"; };
@@ -285,10 +301,6 @@
 		C9B3A2AC1A4D9C7100CE276B /* CommonLogicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLogicViewController.h; sourceTree = "<group>"; };
 		C9B3A2AD1A4D9C7100CE276B /* CommonLogicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonLogicViewController.m; sourceTree = "<group>"; };
 		C9B625F11A4E8E1C00AE9251 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Other.storyboard; sourceTree = "<group>"; };
-		C9BBC63B1A519E5E00C0C862 /* SelectValue_XCRY_TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectValue_XCRY_TableViewController.h; sourceTree = "<group>"; };
-		C9BBC63C1A519E5E00C0C862 /* SelectValue_XCRY_TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectValue_XCRY_TableViewController.m; sourceTree = "<group>"; };
-		C9BBC63E1A519ED300C0C862 /* SelectValue_XCKS_TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectValue_XCKS_TableViewController.h; sourceTree = "<group>"; };
-		C9BBC63F1A519ED300C0C862 /* SelectValue_XCKS_TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectValue_XCKS_TableViewController.m; sourceTree = "<group>"; };
 		C9BFA9E81A487BB000C887B4 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		C9BFA9E91A487BB000C887B4 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		C9BFA9F21A487BB000C887B4 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -310,14 +322,10 @@
 		C9D6B9F31A5AE648006D27EF /* AutoCompletionObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoCompletionObject.h; sourceTree = "<group>"; };
 		C9D6B9F41A5AE648006D27EF /* NSString+Levenshtein.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Levenshtein.h"; sourceTree = "<group>"; };
 		C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Levenshtein.m"; sourceTree = "<group>"; };
-		C9D6B9F81A5AEB8F006D27EF /* autoTableViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autoTableViewData.h; sourceTree = "<group>"; };
-		C9D6B9F91A5AEB8F006D27EF /* autoTableViewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = autoTableViewData.m; sourceTree = "<group>"; };
 		C9D88CF41A5E2D0D003ED50F /* ks_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ks_Model.h; sourceTree = "<group>"; };
 		C9D88CF51A5E2D0D003ED50F /* ks_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ks_Model.m; sourceTree = "<group>"; };
 		C9E226D51A52FF6E004A9A69 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		C9E226D61A52FF6E004A9A69 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
-		C9E233C91A5FC7B200DA3C3C /* DepMansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepMansViewController.h; sourceTree = "<group>"; };
-		C9E233CA1A5FC7B200DA3C3C /* DepMansViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepMansViewController.m; sourceTree = "<group>"; };
 		C9E94DC01A4A669100E8CC83 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		C9E94DC11A4A669100E8CC83 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		C9E94DC21A4A669100E8CC83 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -342,17 +350,9 @@
 		C9F3DFD21A5D9CD100D34A19 /* FactoryTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryTaskCell.m; sourceTree = "<group>"; };
 		C9F3DFD51A5D9DFD00D34A19 /* PlanDetailsHead_Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanDetailsHead_Cell.h; sourceTree = "<group>"; };
 		C9F3DFD61A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanDetailsHead_Cell.m; sourceTree = "<group>"; };
-		C9F51E261A57BADA009F84D1 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
-		C9F51E271A57BADA009F84D1 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
-		C9F51E281A57BADA009F84D1 /* SignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureViewController.h; sourceTree = "<group>"; };
-		C9F51E291A57BADA009F84D1 /* SignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureViewController.m; sourceTree = "<group>"; };
 		C9F51E601A582E70009F84D1 /* backgroundV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backgroundV.h; sourceTree = "<group>"; };
 		C9F51E611A582E70009F84D1 /* backgroundV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = backgroundV.m; sourceTree = "<group>"; };
 		C9F51E641A582FE7009F84D1 /* PopViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopViewDelegate.h; sourceTree = "<group>"; };
-		C9F51E661A58306D009F84D1 /* MyPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlanViewController.h; sourceTree = "<group>"; };
-		C9F51E671A58306D009F84D1 /* MyPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlanViewController.m; sourceTree = "<group>"; };
-		C9F51E691A5830A5009F84D1 /* MyPlanPopVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlanPopVC.h; sourceTree = "<group>"; };
-		C9F51E6A1A5830A5009F84D1 /* MyPlanPopVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlanPopVC.m; sourceTree = "<group>"; };
 		DA5F62FAAA8BD23C06EFF46D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -388,15 +388,11 @@
 		C91ACE141A4FA01D0037757A /* TooLsVC */ = {
 			isa = PBXGroup;
 			children = (
+				C970946D1A62D36A00141DC5 /* DepMansVC */,
+				C97093EE1A62CC3F00141DC5 /* ScanVC */,
+				C97093DD1A62CBD200141DC5 /* OptionMenuVC */,
+				C97093E61A62CBD200141DC5 /* SignatureVC */,
 				C9E226D41A52FF40004A9A69 /* DatePicker */,
-				C91ACE151A4FA06E0037757A /* OptionMenuTableViewController.h */,
-				C91ACE161A4FA06E0037757A /* OptionMenuTableViewController.m */,
-				C91ACE181A50563F0037757A /* SelectValueTableViewController.h */,
-				C91ACE191A50563F0037757A /* SelectValueTableViewController.m */,
-				C9BBC63B1A519E5E00C0C862 /* SelectValue_XCRY_TableViewController.h */,
-				C9BBC63C1A519E5E00C0C862 /* SelectValue_XCRY_TableViewController.m */,
-				C9BBC63E1A519ED300C0C862 /* SelectValue_XCKS_TableViewController.h */,
-				C9BBC63F1A519ED300C0C862 /* SelectValue_XCKS_TableViewController.m */,
 			);
 			path = TooLsVC;
 			sourceTree = "<group>";
@@ -877,6 +873,197 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		C97093D91A62B02900141DC5 /* UserModel */ = {
+			isa = PBXGroup;
+			children = (
+				C97093DA1A62B0A000141DC5 /* LoginedUser.h */,
+				C97093DB1A62B0A000141DC5 /* LoginedUser.m */,
+			);
+			path = UserModel;
+			sourceTree = "<group>";
+		};
+		C97093DD1A62CBD200141DC5 /* OptionMenuVC */ = {
+			isa = PBXGroup;
+			children = (
+				C97093DE1A62CBD200141DC5 /* OptionMenuTableViewController.h */,
+				C97093DF1A62CBD200141DC5 /* OptionMenuTableViewController.m */,
+				C97093E01A62CBD200141DC5 /* SelectValue_XCKS_TableViewController.h */,
+				C97093E11A62CBD200141DC5 /* SelectValue_XCKS_TableViewController.m */,
+				C97093E21A62CBD200141DC5 /* SelectValue_XCRY_TableViewController.h */,
+				C97093E31A62CBD200141DC5 /* SelectValue_XCRY_TableViewController.m */,
+				C97093E41A62CBD200141DC5 /* SelectValueTableViewController.h */,
+				C97093E51A62CBD200141DC5 /* SelectValueTableViewController.m */,
+			);
+			path = OptionMenuVC;
+			sourceTree = "<group>";
+		};
+		C97093E61A62CBD200141DC5 /* SignatureVC */ = {
+			isa = PBXGroup;
+			children = (
+				C97093E71A62CBD200141DC5 /* SignatureViewController.h */,
+				C97093E81A62CBD200141DC5 /* SignatureViewController.m */,
+			);
+			path = SignatureVC;
+			sourceTree = "<group>";
+		};
+		C97093EE1A62CC3F00141DC5 /* ScanVC */ = {
+			isa = PBXGroup;
+			children = (
+				C97093EF1A62CC3F00141DC5 /* ScanViewController.h */,
+				C97093F01A62CC3F00141DC5 /* ScanViewController.m */,
+			);
+			path = ScanVC;
+			sourceTree = "<group>";
+		};
+		C97094221A62D09A00141DC5 /* 01ProgramOverviewView */ = {
+			isa = PBXGroup;
+			children = (
+				C97094231A62D09A00141DC5 /* ProgramOverviewViewController.h */,
+				C97094241A62D09A00141DC5 /* ProgramOverviewViewController.m */,
+			);
+			path = 01ProgramOverviewView;
+			sourceTree = "<group>";
+		};
+		C97094251A62D09A00141DC5 /* 02PlanningDepartmentView */ = {
+			isa = PBXGroup;
+			children = (
+				C97094261A62D09A00141DC5 /* PlanningDepartmentViewController.h */,
+				C97094271A62D09A00141DC5 /* PlanningDepartmentViewController.m */,
+			);
+			path = 02PlanningDepartmentView;
+			sourceTree = "<group>";
+		};
+		C97094281A62D09A00141DC5 /* 03MyPlanView */ = {
+			isa = PBXGroup;
+			children = (
+				C97094331A62D09A00141DC5 /* MyPlanViewController.h */,
+				C97094341A62D09A00141DC5 /* MyPlanViewController.m */,
+				C97094291A62D09A00141DC5 /* AddPlanDetailsPopVC.h */,
+				C970942A1A62D09A00141DC5 /* AddPlanDetailsPopVC.m */,
+				C97094351A62D09A00141DC5 /* UpdatePlanDetailsPopVC.h */,
+				C97094361A62D09A00141DC5 /* UpdatePlanDetailsPopVC.m */,
+			);
+			path = 03MyPlanView;
+			sourceTree = "<group>";
+		};
+		C97094371A62D09A00141DC5 /* 04FactoryTaskView */ = {
+			isa = PBXGroup;
+			children = (
+				C97094381A62D09A00141DC5 /* FactoryTaskViewController.h */,
+				C97094391A62D09A00141DC5 /* FactoryTaskViewController.m */,
+			);
+			path = 04FactoryTaskView;
+			sourceTree = "<group>";
+		};
+		C970943A1A62D09A00141DC5 /* 05DetectionTaskQueryView */ = {
+			isa = PBXGroup;
+			children = (
+				C970943B1A62D09A00141DC5 /* DetectionTaskQueryViewController.h */,
+				C970943C1A62D09A00141DC5 /* DetectionTaskQueryViewController.m */,
+			);
+			path = 05DetectionTaskQueryView;
+			sourceTree = "<group>";
+		};
+		C970943D1A62D09A00141DC5 /* 06CheckTaskView */ = {
+			isa = PBXGroup;
+			children = (
+				C970943E1A62D09A00141DC5 /* CheckTaskViewController.h */,
+				C970943F1A62D09A00141DC5 /* CheckTaskViewController.m */,
+			);
+			path = 06CheckTaskView;
+			sourceTree = "<group>";
+		};
+		C97094401A62D09A00141DC5 /* 07ApprovalTaskView */ = {
+			isa = PBXGroup;
+			children = (
+				C97094411A62D09A00141DC5 /* ApprovalTaskViewController.h */,
+				C97094421A62D09A00141DC5 /* ApprovalTaskViewController.m */,
+			);
+			path = 07ApprovalTaskView;
+			sourceTree = "<group>";
+		};
+		C97094431A62D09A00141DC5 /* 08CertificateGuaranteeView */ = {
+			isa = PBXGroup;
+			children = (
+				C97094441A62D09A00141DC5 /* CertificateGuaranteeViewController.h */,
+				C97094451A62D09A00141DC5 /* CertificateGuaranteeViewController.m */,
+			);
+			path = 08CertificateGuaranteeView;
+			sourceTree = "<group>";
+		};
+		C97094461A62D09A00141DC5 /* 09BidManagementView */ = {
+			isa = PBXGroup;
+			children = (
+				C97094471A62D09A00141DC5 /* BidManagementViewController.h */,
+				C97094481A62D09A00141DC5 /* BidManagementViewController.m */,
+			);
+			path = 09BidManagementView;
+			sourceTree = "<group>";
+		};
+		C97094491A62D09A00141DC5 /* 10ChargeManagementView */ = {
+			isa = PBXGroup;
+			children = (
+				C970944A1A62D09A00141DC5 /* ChargeManagementViewController.h */,
+				C970944B1A62D09A00141DC5 /* ChargeManagementViewController.m */,
+			);
+			path = 10ChargeManagementView;
+			sourceTree = "<group>";
+		};
+		C970944C1A62D09A00141DC5 /* 11SystemSettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				C970944D1A62D09A00141DC5 /* SystemSettingsViewController.h */,
+				C970944E1A62D09A00141DC5 /* SystemSettingsViewController.m */,
+			);
+			path = 11SystemSettingsView;
+			sourceTree = "<group>";
+		};
+		C970944F1A62D09A00141DC5 /* 12InspectionTasksView */ = {
+			isa = PBXGroup;
+			children = (
+				C97094501A62D09A00141DC5 /* InspectionTasksViewController.h */,
+				C97094511A62D09A00141DC5 /* InspectionTasksViewController.m */,
+			);
+			path = 12InspectionTasksView;
+			sourceTree = "<group>";
+		};
+		C97094521A62D09B00141DC5 /* 13AuditNotPassView */ = {
+			isa = PBXGroup;
+			children = (
+				C97094531A62D09B00141DC5 /* AuditNotPassViewController.h */,
+				C97094541A62D09B00141DC5 /* AuditNotPassViewController.m */,
+			);
+			path = 13AuditNotPassView;
+			sourceTree = "<group>";
+		};
+		C97094681A62D2C300141DC5 /* ToolModel */ = {
+			isa = PBXGroup;
+			children = (
+				C97094691A62D2C300141DC5 /* wtdwmcModel */,
+			);
+			path = ToolModel;
+			sourceTree = "<group>";
+		};
+		C97094691A62D2C300141DC5 /* wtdwmcModel */ = {
+			isa = PBXGroup;
+			children = (
+				C970946A1A62D2DA00141DC5 /* autoTableViewData.h */,
+				C970946B1A62D2DA00141DC5 /* autoTableViewData.m */,
+			);
+			path = wtdwmcModel;
+			sourceTree = "<group>";
+		};
+		C970946D1A62D36A00141DC5 /* DepMansVC */ = {
+			isa = PBXGroup;
+			children = (
+				C970946E1A62D36A00141DC5 /* DepMansViewController.h */,
+				C970946F1A62D36A00141DC5 /* DepMansViewController.m */,
+				C97094701A62D36A00141DC5 /* DepManViewController.h */,
+				C97094711A62D36A00141DC5 /* DepManViewController.m */,
+			);
+			path = DepMansVC;
+			sourceTree = "<group>";
+		};
 		C9903BFA1A46E9E30006FD99 /* DockMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -936,35 +1123,19 @@
 		C9A337601A499B8F004560D1 /* OtherView */ = {
 			isa = PBXGroup;
 			children = (
-				C9F51E651A58306D009F84D1 /* MyPlanView */,
-				C9F51E261A57BADA009F84D1 /* ScanViewController.h */,
-				C9F51E271A57BADA009F84D1 /* ScanViewController.m */,
-				C9F51E281A57BADA009F84D1 /* SignatureViewController.h */,
-				C9F51E291A57BADA009F84D1 /* SignatureViewController.m */,
-				C9A3376D1A499B8F004560D1 /* ProgramOverviewViewController.h */,
-				C9A3376E1A499B8F004560D1 /* ProgramOverviewViewController.m */,
-				C9A3376B1A499B8F004560D1 /* PlanningDepartmentViewController.h */,
-				C9A3376C1A499B8F004560D1 /* PlanningDepartmentViewController.m */,
-				C9A337651A499B8F004560D1 /* FactoryTaskViewController.h */,
-				C9A337661A499B8F004560D1 /* FactoryTaskViewController.m */,
-				C9A337631A499B8F004560D1 /* DetectionTaskQueryViewController.h */,
-				C9A337641A499B8F004560D1 /* DetectionTaskQueryViewController.m */,
-				C9A337611A499B8F004560D1 /* AuditNotPassViewController.h */,
-				C9A337621A499B8F004560D1 /* AuditNotPassViewController.m */,
-				C9A337761A499C79004560D1 /* CheckTaskViewController.h */,
-				C9A337771A499C79004560D1 /* CheckTaskViewController.m */,
-				C9A337791A499CC0004560D1 /* ApprovalTaskViewController.h */,
-				C9A3377A1A499CC0004560D1 /* ApprovalTaskViewController.m */,
-				C9A3377C1A499CF4004560D1 /* CertificateGuaranteeViewController.h */,
-				C9A3377D1A499CF4004560D1 /* CertificateGuaranteeViewController.m */,
-				C9A3377F1A499D1A004560D1 /* BidManagementViewController.h */,
-				C9A337801A499D1A004560D1 /* BidManagementViewController.m */,
-				C9A337821A499D42004560D1 /* ChargeManagementViewController.h */,
-				C9A337831A499D42004560D1 /* ChargeManagementViewController.m */,
-				C9A337851A499D6B004560D1 /* SystemSettingsViewController.h */,
-				C9A337861A499D6B004560D1 /* SystemSettingsViewController.m */,
-				C9A337671A499B8F004560D1 /* InspectionTasksViewController.h */,
-				C9A337681A499B8F004560D1 /* InspectionTasksViewController.m */,
+				C97094221A62D09A00141DC5 /* 01ProgramOverviewView */,
+				C97094251A62D09A00141DC5 /* 02PlanningDepartmentView */,
+				C97094281A62D09A00141DC5 /* 03MyPlanView */,
+				C97094371A62D09A00141DC5 /* 04FactoryTaskView */,
+				C970943A1A62D09A00141DC5 /* 05DetectionTaskQueryView */,
+				C970943D1A62D09A00141DC5 /* 06CheckTaskView */,
+				C97094401A62D09A00141DC5 /* 07ApprovalTaskView */,
+				C97094431A62D09A00141DC5 /* 08CertificateGuaranteeView */,
+				C97094461A62D09A00141DC5 /* 09BidManagementView */,
+				C97094491A62D09A00141DC5 /* 10ChargeManagementView */,
+				C970944C1A62D09A00141DC5 /* 11SystemSettingsView */,
+				C970944F1A62D09A00141DC5 /* 12InspectionTasksView */,
+				C97094521A62D09B00141DC5 /* 13AuditNotPassView */,
 			);
 			path = OtherView;
 			sourceTree = "<group>";
@@ -1102,6 +1273,8 @@
 		C9F3DFA81A5D647700D34A19 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C97094681A62D2C300141DC5 /* ToolModel */,
+				C97093D91A62B02900141DC5 /* UserModel */,
 				C9A95B4D1A613E3D0017BE2B /* UpdatePlanDetailsModel */,
 				C9F3DFA91A5D64CB00D34A19 /* AddPlanDetailsModel */,
 			);
@@ -1190,27 +1363,6 @@
 				C9F51E641A582FE7009F84D1 /* PopViewDelegate.h */,
 			);
 			path = protocol;
-			sourceTree = "<group>";
-		};
-		C9F51E651A58306D009F84D1 /* MyPlanView */ = {
-			isa = PBXGroup;
-			children = (
-				C9F51E661A58306D009F84D1 /* MyPlanViewController.h */,
-				C9F51E671A58306D009F84D1 /* MyPlanViewController.m */,
-				C9F51E691A5830A5009F84D1 /* MyPlanPopVC.h */,
-				C9F51E6A1A5830A5009F84D1 /* MyPlanPopVC.m */,
-				C9648A8B1A5970A3005ECFC6 /* AddPlanDetailsPopVC.h */,
-				C9648A8C1A5970A3005ECFC6 /* AddPlanDetailsPopVC.m */,
-				C9D6B9F81A5AEB8F006D27EF /* autoTableViewData.h */,
-				C9D6B9F91A5AEB8F006D27EF /* autoTableViewData.m */,
-				C90DF5BC1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.h */,
-				C90DF5BD1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.m */,
-				C903B0CC1A5EBA5D0038AA1B /* DepManViewController.h */,
-				C903B0CD1A5EBA5D0038AA1B /* DepManViewController.m */,
-				C9E233C91A5FC7B200DA3C3C /* DepMansViewController.h */,
-				C9E233CA1A5FC7B200DA3C3C /* DepMansViewController.m */,
-			);
-			path = MyPlanView;
 			sourceTree = "<group>";
 		};
 		D53BBB8B0D9FFE63C65BE2D4 /* Pods */ = {
@@ -1365,95 +1517,95 @@
 				C9BFAA121A487BF400C887B4 /* MenuItemView.m in Sources */,
 				C9651FD41A43B26000B770BB /* CustomStepper.m in Sources */,
 				C9903C021A46EA0C0006FD99 /* CellItem.m in Sources */,
+				C970945F1A62D09B00141DC5 /* DetectionTaskQueryViewController.m in Sources */,
 				C9651FE51A43B26000B770BB /* BaseViewController.m in Sources */,
 				C9F3DFC81A5D903500D34A19 /* ResponsibleDepModel.m in Sources */,
-				C903B0CE1A5EBA5D0038AA1B /* DepManViewController.m in Sources */,
-				C9A337781A499C79004560D1 /* CheckTaskViewController.m in Sources */,
 				C9F3DFC51A5D903500D34A19 /* DistrictModel.m in Sources */,
 				C9651FC21A43B25F00B770BB /* TableViewBindingHelper.m in Sources */,
-				C9648A8D1A5970A3005ECFC6 /* AddPlanDetailsPopVC.m in Sources */,
 				C903B0D11A5EBF910038AA1B /* DepMans_Cell.m in Sources */,
 				C9E94DCB1A4A669100E8CC83 /* MJRefreshBaseView.m in Sources */,
-				C9A3376F1A499B8F004560D1 /* AuditNotPassViewController.m in Sources */,
-				C9BBC63D1A519E5E00C0C862 /* SelectValue_XCRY_TableViewController.m in Sources */,
-				C9A3377B1A499CC0004560D1 /* ApprovalTaskViewController.m in Sources */,
 				C9651ECF1A43AD8F00B770BB /* AppDelegate.m in Sources */,
 				C9B3A2AE1A4D9C7100CE276B /* CommonLogicViewController.m in Sources */,
 				C9BFA9F81A487BB000C887B4 /* HomeViewController.m in Sources */,
+				C970946C1A62D2DA00141DC5 /* autoTableViewData.m in Sources */,
 				C903B0C81A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m in Sources */,
 				C9BFAA101A487BF400C887B4 /* HeaderView.m in Sources */,
+				C97093F11A62CC3F00141DC5 /* ScanViewController.m in Sources */,
+				C97094671A62D09B00141DC5 /* AuditNotPassViewController.m in Sources */,
 				C9A95B4C1A613CD50017BE2B /* TestProgressContentCell.m in Sources */,
-				C90DF5BE1A5B85D3005BF695 /* UpdatePlanDetailsPopVC.m in Sources */,
-				C91ACE171A4FA06E0037757A /* OptionMenuTableViewController.m in Sources */,
+				C97094641A62D09B00141DC5 /* ChargeManagementViewController.m in Sources */,
 				C9E94DCD1A4A669100E8CC83 /* MJRefreshFooterView.m in Sources */,
 				C9651FC31A43B25F00B770BB /* BaseNetWork.m in Sources */,
 				C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */,
 				C9431FBD1A4DAF7B0017FED0 /* MyPlanViewCell.m in Sources */,
-				C9D6B9FA1A5AEB8F006D27EF /* autoTableViewData.m in Sources */,
 				C9903BFF1A46E9FE0006FD99 /* DockItem.m in Sources */,
 				C9BFAA151A487BF400C887B4 /* SettingCell.m in Sources */,
-				C9A337751A499B8F004560D1 /* ProgramOverviewViewController.m in Sources */,
 				C9A95B511A613EA10017BE2B /* jcjd_Model.m in Sources */,
+				C97094561A62D09B00141DC5 /* PlanningDepartmentViewController.m in Sources */,
 				C9A95B491A613C890017BE2B /* ProgressOverviewCell.m in Sources */,
+				C970945E1A62D09B00141DC5 /* FactoryTaskViewController.m in Sources */,
+				C97094601A62D09B00141DC5 /* CheckTaskViewController.m in Sources */,
 				C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */,
 				C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */,
 				C9F3DFD71A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m in Sources */,
-				C9E233CB1A5FC7B200DA3C3C /* DepMansViewController.m in Sources */,
 				C9651FD51A43B26000B770BB /* StepperModel.m in Sources */,
 				C99FD92A1A4C4F2F000AB1A6 /* ProgramOverviewCell.m in Sources */,
+				C97094551A62D09B00141DC5 /* ProgramOverviewViewController.m in Sources */,
 				C9F3DFC61A5D903500D34A19 /* HeadOFModel.m in Sources */,
 				C9651FE41A43B26000B770BB /* BaseTableViewController.m in Sources */,
 				C9651FD11A43B26000B770BB /* CYTextFieldAutoFillInputView.m in Sources */,
+				C97093DC1A62B0A000141DC5 /* LoginedUser.m in Sources */,
 				C9651FD61A43B26000B770BB /* StepperViewModel.m in Sources */,
-				C9A337721A499B8F004560D1 /* InspectionTasksViewController.m in Sources */,
 				C9651FEA1A43B26000B770BB /* CustomBadge.m in Sources */,
-				C91ACE1A1A50563F0037757A /* SelectValueTableViewController.m in Sources */,
-				C9A337811A499D1A004560D1 /* BidManagementViewController.m in Sources */,
 				C9F3DFD41A5D9CD100D34A19 /* FactoryTaskCell.m in Sources */,
 				C9D88CF61A5E2D0D003ED50F /* ks_Model.m in Sources */,
 				C9651FD91A43B26000B770BB /* CustomVitalSignsView.m in Sources */,
+				C97094661A62D09B00141DC5 /* InspectionTasksViewController.m in Sources */,
 				C9651FD81A43B26000B770BB /* CustomBodyTempView.m in Sources */,
 				C9651FD21A43B26000B770BB /* CustomButton.m in Sources */,
-				C9A337841A499D42004560D1 /* ChargeManagementViewController.m in Sources */,
-				C9F51E6B1A5830A5009F84D1 /* MyPlanPopVC.m in Sources */,
 				C9651FEB1A43B26000B770BB /* Localisator.m in Sources */,
 				C9E94DCC1A4A669100E8CC83 /* MJRefreshConst.m in Sources */,
+				C970945C1A62D09B00141DC5 /* MyPlanViewController.m in Sources */,
 				C9D6B9F61A5AE648006D27EF /* AutoCompleteTextField.m in Sources */,
+				C97094611A62D09B00141DC5 /* ApprovalTaskViewController.m in Sources */,
 				C9651FEC1A43B26000B770BB /* CustomTabBarViewController.m in Sources */,
 				C9F3DFCF1A5D99E800D34A19 /* ry_Model.m in Sources */,
-				C9F51E2B1A57BADA009F84D1 /* SignatureViewController.m in Sources */,
 				C9F3DFC71A5D903500D34A19 /* IndustryCategoriesModel.m in Sources */,
 				C9A95B581A61807C0017BE2B /* wtdbh_Model.m in Sources */,
 				C9651FF71A43BE3100B770BB /* YTKKeyValueStore.m in Sources */,
-				C9A337741A499B8F004560D1 /* PlanningDepartmentViewController.m in Sources */,
+				C97093ED1A62CBD200141DC5 /* SignatureViewController.m in Sources */,
+				C97093E91A62CBD200141DC5 /* OptionMenuTableViewController.m in Sources */,
 				C9651FEF1A43B26000B770BB /* DropDownListView.m in Sources */,
-				C9F51E681A58306D009F84D1 /* MyPlanViewController.m in Sources */,
+				C97094621A62D09B00141DC5 /* CertificateGuaranteeViewController.m in Sources */,
 				C9A95B541A613EF90017BE2B /* jcjd_Detail_Model.m in Sources */,
 				C9BFAA131A487BF400C887B4 /* MenuView.m in Sources */,
 				C92F29951A5D0D89001AB4C8 /* DropDownTextField.m in Sources */,
 				C99F47C11A4B0BAF007C68AB /* CompanyCollectionViewCell.m in Sources */,
-				C9A337701A499B8F004560D1 /* DetectionTaskQueryViewController.m in Sources */,
+				C97093EB1A62CBD200141DC5 /* SelectValue_XCRY_TableViewController.m in Sources */,
 				C9BFA9FD1A487BB000C887B4 /* ViewController.m in Sources */,
-				C9F51E2A1A57BADA009F84D1 /* ScanViewController.m in Sources */,
-				C9A337871A499D6B004560D1 /* SystemSettingsViewController.m in Sources */,
 				C9651FD01A43B26000B770BB /* CYTextField.m in Sources */,
 				C9D6B9F71A5AE648006D27EF /* NSString+Levenshtein.m in Sources */,
 				C9651FED1A43B26000B770BB /* TabBarHeaderView.m in Sources */,
+				C97094631A62D09B00141DC5 /* BidManagementViewController.m in Sources */,
 				C9651FD71A43B26000B770BB /* MyGestureRecognizerView.m in Sources */,
 				C9651FCF1A43B26000B770BB /* CommonTextField.m in Sources */,
 				C9E94DCE1A4A669100E8CC83 /* MJRefreshHeaderView.m in Sources */,
 				C9651FDA1A43B26000B770BB /* HomeIconButton.m in Sources */,
+				C97094721A62D36A00141DC5 /* DepMansViewController.m in Sources */,
 				C9651FD31A43B26000B770BB /* FlagButton.m in Sources */,
 				C9651FDB1A43B26000B770BB /* CYRadioButton.m in Sources */,
+				C97094651A62D09B00141DC5 /* SystemSettingsViewController.m in Sources */,
+				C970945D1A62D09B00141DC5 /* UpdatePlanDetailsPopVC.m in Sources */,
+				C97093EA1A62CBD200141DC5 /* SelectValue_XCKS_TableViewController.m in Sources */,
+				C97094571A62D09B00141DC5 /* AddPlanDetailsPopVC.m in Sources */,
 				C9903C1E1A470BDB0006FD99 /* UIImage+Fit.m in Sources */,
+				C97094731A62D36A00141DC5 /* DepManViewController.m in Sources */,
 				C9BFAA0F1A487BF400C887B4 /* Dock.m in Sources */,
-				C9BBC6401A519ED300C0C862 /* SelectValue_XCKS_TableViewController.m in Sources */,
-				C9A3377E1A499CF4004560D1 /* CertificateGuaranteeViewController.m in Sources */,
 				C903B0C51A5EB1B00038AA1B /* PlanDetailsHead_DepCell.m in Sources */,
+				C97093EC1A62CBD200141DC5 /* SelectValueTableViewController.m in Sources */,
 				C9A95B5C1A6181680017BE2B /* SignatureCell.m in Sources */,
 				C9651ECC1A43AD8F00B770BB /* main.m in Sources */,
 				C9F51E621A582E70009F84D1 /* backgroundV.m in Sources */,
-				C9A337711A499B8F004560D1 /* FactoryTaskViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

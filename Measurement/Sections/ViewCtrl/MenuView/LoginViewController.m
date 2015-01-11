@@ -189,12 +189,19 @@
     NSDictionary *reqDict = @{@"usercode":uNameStr,@"password":uPwdStr};
     [[BaseNetWork getInstance] showDialog];
     @weakify(self)
-    [[[BaseNetWork getInstance] rac_getPath:@"login.do" parameters:reqDict]
+    [[[[BaseNetWork getInstance] rac_getPath:@"login.do" parameters:reqDict]deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
      subscribeNext:^(id responseData){
          @strongify(self)
          NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
          //登录成功过
          if ([dict[@"ret"] integerValue] == 1) {
+             
+             /**
+              *  登陆成功了就给LoginedUser 初始化
+              *
+              */
+             
+             LoginedUser *loginedUser = [[LoginedUser alloc]initWithDict:dict[@"user"]];
              
              /**
               *  如果勾选了记住密码则将密码保存到文件中
@@ -203,22 +210,22 @@
              {
                  
                  [FileHelpers SaveDataWithNSUserDefaultsForData:reqDict andWithKey:@"loginInfo"];
-                
+                 
                  
              }else
              {
-                 [FileHelpers SaveDataWithNSUserDefaultsForData:@{@"usercode":uNameStr,@"password":@""} andWithKey:@"loginInfo"];
+                 [FileHelpers SaveDataWithNSUserDefaultsForData:@{@"usercode":loginedUser.usercode,@"password":@""} andWithKey:@"loginInfo"];
              }
              
-              [FileHelpers SaveDataWithNSUserDefaultsForData:[[NSNumber alloc]initWithBool:isRememberPwd] andWithKey:@"loginState"];
-              [self performSegueWithIdentifier:@"ToLoginSuccess" sender:nil];
+             [FileHelpers SaveDataWithNSUserDefaultsForData:[[NSNumber alloc]initWithBool:isRememberPwd] andWithKey:@"loginState"];
+             [self performSegueWithIdentifier:@"ToLoginSuccess" sender:nil];
              
          }else //登录失败
          {
              [Dialog toast:dict[@"message"]];
          }
          
-          [self performSegueWithIdentifier:@"ToLoginSuccess" sender:nil];
+         [self performSegueWithIdentifier:@"ToLoginSuccess" sender:nil];
          
      }error:^(NSError *error){
          
