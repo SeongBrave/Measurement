@@ -53,35 +53,32 @@
 @property(nonatomic , strong)IBOutlet UILabel *m_inFactoryMansL;
 
 /**
+ *  横线
+ */
+@property (nonatomic, strong) IBOutletCollection(UIView) NSArray *lineViews;
+
+/**
  *  备注
  */
 @property(nonatomic , strong)IBOutlet UILabel *m_noteL;
-@property (weak, nonatomic) IBOutlet UIImageView *m_imbLineV;
-@property (weak, nonatomic) IBOutlet UIImageView *manLineImgV;
-@property (weak, nonatomic) IBOutlet UIImageView *collectionImgV;
-@property (weak, nonatomic) IBOutlet UIImageView *inFactoryLineImgV;
-@property (weak, nonatomic) IBOutlet UIImageView *manLineV;
-@property (weak, nonatomic) IBOutlet UIImageView *noteLineImgV;
-@property (weak, nonatomic) IBOutlet UIImageView *contentManLineImgV;
+
 
 @end
 
 @implementation ProgramOverviewCell
 
 
+- (void)awakeFromNib{
+    
+    for (UIView *view  in _lineViews) {
+        view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collectionLabelLine"]];
+    }
+    
+}
+
 - (void)configureCellWithItem:(id )product
 {
-    UIImage *syncBgImg = [UIImage imageNamed:@"collectionLabelLine"];
-    UIColor *color = [[UIColor alloc] initWithPatternImage:syncBgImg];
-    self.m_noteL.backgroundColor = color;
-     self.m_imbLineV.backgroundColor = color;
-     self.manLineImgV.backgroundColor = color;
-     self.collectionImgV.backgroundColor = color;
-     self.inFactoryLineImgV.backgroundColor = color;
-     self.manLineV.backgroundColor = color;
-    self.contentManLineImgV.backgroundColor = color;
-
-    
+  
 //    collectionLabelLine
 
     NSDictionary * commonLogicDict = (NSDictionary *)product;

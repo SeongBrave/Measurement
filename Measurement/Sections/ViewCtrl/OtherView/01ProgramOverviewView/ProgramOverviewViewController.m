@@ -165,7 +165,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-        static NSString *cellIdentifier = @"ProgramOverview";
+        static NSString *cellIdentifier = @"ProgramOverviewCell";
 
     if (indexPath.row == self.m_DataSourceArr.count) {
         
