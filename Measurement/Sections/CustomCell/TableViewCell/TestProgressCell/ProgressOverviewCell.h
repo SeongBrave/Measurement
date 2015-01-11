@@ -16,7 +16,10 @@
 @interface ProgressOverviewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *m_showTitleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *m_stateImgV;
+@property (weak, nonatomic) IBOutlet UIImageView *upDownImgV;
 
 
 - (void)configureCellWithItem:( jcjd_Model* )product;
+
+- (void)changeArrowWithUp:(BOOL)up;
 @end

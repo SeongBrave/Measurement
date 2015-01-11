@@ -14,11 +14,19 @@
 - (void)configureCellWithItem:( jcjd_Model* )product
 {
     
-        self.m_showTitleLabel.text = [NSString stringWithFormat:@"%@",product.showStr];
+    self.m_showTitleLabel.text = [NSString stringWithFormat:@"%@",product.showStr];
     
+    self.m_stateImgV.image = [UIImage imageNamed:@"right-card-title-ywc"];
     
-    
-//    self.m_stateImgV.image = 
-    
+}
+
+- (void)changeArrowWithUp:(BOOL)up
+{
+    if (up) {
+        self.upDownImgV.image = [UIImage imageNamed:@"general-arrow-up"];
+    }else
+    {
+        self.upDownImgV.image = [UIImage imageNamed:@"general-arrow-down"];
+    }
 }
 @end

@@ -34,13 +34,22 @@
 
 - (IBAction)confirmButtonPress:(id)sender{
     
+
+    UIImage *signatureImage = self.signatureView.signatureImage;
+    
+    if ([self.m_delegate respondsToSelector:@selector(SignatureVC:saveUpWithImage:)]) {
+        [self.m_delegate SignatureVC:self saveUpWithImage:signatureImage];
+        
+    }
+//    网络请求发送签名图片
+}
+
+- (IBAction)dismissVC:(id)sender {
     
     [self dismissViewControllerAnimated:YES completion:^(void){
-       
+    
         
     }];
-    UIImage *signatureImage = self.signatureView.signatureImage;
-//    网络请求发送签名图片
 }
 
 /*

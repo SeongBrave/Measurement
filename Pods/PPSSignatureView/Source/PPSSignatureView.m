@@ -122,7 +122,7 @@ static PPSSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
     if (context) {
         time(NULL);
         
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor colorWithWhite:0.839 alpha:1.000];
         self.opaque = NO;
         
         self.context = context;
@@ -216,7 +216,7 @@ static PPSSignaturePoint ViewPointToGL(CGPoint viewPoint, CGRect bounds, GLKVect
 
 //    self.hidden = YES;
 //
-//    self.strokeColor = [UIColor whiteColor];
+    self.strokeColor = [UIColor blackColor];
 //    [self setNeedsDisplay];
     UIImage *screenshot = [self snapshot];
     

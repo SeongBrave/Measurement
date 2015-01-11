@@ -33,7 +33,7 @@
 
 #define MaxOffset  100
 
-@interface UpdatePlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,PlanDetailsHead_DepCellDelegate,PlanDetailsMans_DepCellDelegate,DepManVCDelegate,DepMansVCDelegate>
+@interface UpdatePlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,PlanDetailsHead_DepCellDelegate,PlanDetailsMans_DepCellDelegate,DepManVCDelegate,DepMansVCDelegate,SignatureViewDelegate>
 
 
 @property (assign)BOOL isOpen;
@@ -101,6 +101,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *SignatureTableView;
 
+@property (weak, nonatomic) IBOutlet UIButton *signatureImgBtn;
+
 @property(nonatomic , strong)NSArray *signatureArr;
 
 @property(nonatomic , strong)NSDictionary *signatureDict;
@@ -119,10 +121,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *mansTableView;
 
 
-/**
- *  备注
- */
-@property (weak, nonatomic) IBOutlet UITextView *noteTF;
+
 /**
  *  单位名称
  */
@@ -170,17 +169,28 @@
 /**
  *  取证日期
  */
-
 @property (weak, nonatomic) IBOutlet UIView *forensicsDateView;
 @property (weak, nonatomic) IBOutlet CustomButton *forensicsDateBtn;
+
+
 /**
  *  特殊要求
  */
 @property (weak, nonatomic) IBOutlet UITextField *specialReqTF;
+
+/**
+ *  备注
+ */
+@property (weak, nonatomic) IBOutlet UITextView *noteTF;
+
+/**
+ *  下厂时间
+ */
 @property (weak, nonatomic) IBOutlet UIView *fromDateView;
+@property (weak, nonatomic) IBOutlet CustomButton *fromDatePickerBtn;
 
 @property (weak, nonatomic) IBOutlet UIView *toDateView;
-
+@property (weak, nonatomic) IBOutlet CustomButton *toDatePickerBtn;
 
 /**
  *  所在区
@@ -203,12 +213,31 @@
 @property (nonatomic , strong)NSArray *headOFArr;
 
 
-
-@property (weak, nonatomic) IBOutlet CustomButton *fromDatePickerBtn;
-@property (weak, nonatomic) IBOutlet CustomButton *toDatePickerBtn;
-
-
 @property (weak, nonatomic) IBOutlet UIView *menuBarView;
+
+/**
+ *  客户签字
+ */
+
+/**
+ *  单位名称
+ */
+@property (weak, nonatomic) IBOutlet UILabel *signature_wtdwmc_Label;
+
+/**
+ *  单位地址
+ */
+@property (weak, nonatomic) IBOutlet UILabel *signature_dwdz_Label;
+
+/**
+ *  联系人
+ */
+@property (weak, nonatomic) IBOutlet UILabel *signature_lxrxm_Label;
+
+/**
+ *  联系电话
+ */
+@property (weak, nonatomic) IBOutlet UILabel *signature_lxdh_Label;
 
 
 @end
@@ -230,6 +259,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self updateViewDataWithShowDict:_m_showDict];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -253,6 +284,68 @@
 
 #pragma mark - 自定义方法
 
+
+/**
+ *  用于更新客户签名模块的数据
+ *
+ *  @param showDict
+ */
+-(void)updateSignatureViewDataWithShowDict:(NSDictionary *) showDict
+{
+    self.signature_wtdwmc_Label.text = [NSString stringWithFormat:@"%@",showDict[@"wtdwmc"]];
+    
+       self.signature_dwdz_Label.text = [NSString stringWithFormat:@"%@",showDict[@"dwdz"]];
+    
+       self.signature_lxrxm_Label.text = [NSString stringWithFormat:@"%@",showDict[@"lxrxm"]];
+    
+       self.signature_lxdh_Label.text = [NSString stringWithFormat:@"%@",showDict[@"lxdh"]];
+    
+}
+/**
+ *  用于更新界面数据
+ *
+ *  @param showDict
+ */
+-(void)updateViewDataWithShowDict:(NSDictionary *)showDict
+{
+    
+    self.nameOFEntityTF.text = [NSString stringWithFormat:@"%@",showDict[@"WTDWMC"]];
+    
+    self.addrOFEntity.text = [NSString stringWithFormat:@"%@",showDict[@"DWDZ"]];
+    
+    self.contactTF.text = [NSString stringWithFormat:@"%@",showDict[@"LXDH"]];
+    
+    
+    self.ContactTELTF.text = [NSString stringWithFormat:@"%@",showDict[@"LXDH"]];
+    
+    self.districtTF.text = [NSString stringWithFormat:@"%@",showDict[@"SZDQ"]];
+    
+    
+    self.IndustryCategoriesTF.text = [NSString stringWithFormat:@"%@",showDict[@"HYLBMC"]];
+    
+    self.zipCodeTF.text = [NSString stringWithFormat:@"%@",showDict[@"YB"]];
+    
+    
+    self.responsibleDepTF.text = [NSString stringWithFormat:@"%@",showDict[@"YWFZKS"]];
+    
+    self.headOFTF.text = [NSString stringWithFormat:@"%@",showDict[@"YWFZR"]];
+    
+    [self.forensicsDateBtn setTitle:@"" forState:UIControlStateNormal];
+    
+    self.specialReqTF.text = [NSString stringWithFormat:@"%@",showDict[@""]];
+    
+    self.noteTF.text = [NSString stringWithFormat:@"%@",showDict[@"BZ"]];
+    
+    [self.fromDatePickerBtn setTitle:[NSString stringWithFormat:@"%@",showDict[@"XCSJQ"]]forState:UIControlStateNormal];
+    
+    [self.toDatePickerBtn setTitle:[NSString stringWithFormat:@"%@",showDict[@"XCSJQ"]]forState:UIControlStateNormal];
+    
+    
+//    CJSJ
+    
+    
+    
+}
 //TODO: 添加视图
 -(void)layoutMainCustomView
 {
@@ -306,6 +399,13 @@
     self.responsibleDepTF.dropDownDataSource = self;
     
     
+    /**
+     *  设置tableview不可点击
+     */
+    self.SignatureTableView.allowsSelection=NO;
+//    self.testProgressTableView.allowsSelection=NO;
+    
+    
     
     /**
      *  ios7以后需要专门设置下分割线要不然不是从每行的开始绘制的
@@ -315,9 +415,12 @@
     //    [self.mansTableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     //    
 
-     self.lineImgV = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"float-tab-bg_line"]];
+    //TODO:需要修改bug
+    self.lineImgV = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"float-tab-bg_line"]];
    
     [self.view addSubview:_lineImgV];
+    
+//    [self.lineImgV showPlaceHolder];
     
     
     @weakify(self)
@@ -332,15 +435,11 @@
     
     }];
     
-    [self.planBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        
-        make.width.equalTo(@60);
-        make.leading.equalTo(@31);
- 
-        
-        
-    }];
+//    [self.planBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        
+//        make.width.equalTo(@60);
+//        make.leading.equalTo(@31);
+//    }];
     
 }
 
@@ -811,7 +910,7 @@
        }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
      subscribeNext:^(NSArray  *jcjdArr) {
          
-         
+          @strongify(self)
          
          /**
           *  检测进度数据
@@ -862,10 +961,13 @@
        }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
      subscribeNext:^(NSDictionary  *retDict) {
          
-         
+         @strongify(self)
 //         NSArray *arr = retDict[@"wtd"];
          
          self.signatureDict = retDict[@"wtd"];
+         
+         [self updateSignatureViewDataWithShowDict:retDict];
+         
          
          self.signatureArr = [self.signatureDict allKeys];
          
@@ -1136,6 +1238,7 @@
                 cellIdentifier = @"ProgressOverviewTitleCell";
                 UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
                 
+           
                 return cell;
                 
                 
@@ -1163,6 +1266,7 @@
             cellIdentifier = @"ProgressOverviewCell";
             ProgressOverviewCell *cell = (ProgressOverviewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
             
+            [cell changeArrowWithUp:([self.selectIndex isEqual:indexPath]?YES:NO)];
             [cell configureCellWithItem:self.m_jcjd_ModelArr[indexPath.row]];
             
             return cell;
@@ -1286,8 +1390,8 @@
 {
     self.isOpen = firstDoInsert;
     
-    PlanDetailsMans_DepCell *cell = (PlanDetailsMans_DepCell *)[self.testProgressTableView cellForRowAtIndexPath:self.selectIndex];
-//    [cell changeArrowWithUp:firstDoInsert];
+    ProgressOverviewCell *cell = (ProgressOverviewCell *)[self.testProgressTableView cellForRowAtIndexPath:self.selectIndex];
+    [cell changeArrowWithUp:firstDoInsert];
     
     [self.testProgressTableView beginUpdates];
     
@@ -1568,10 +1672,10 @@
     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Other" bundle:nil];
     
     
-    SignatureViewController *signatureVC = [story instantiateViewControllerWithIdentifier:@"SignatureViewController"];
+    SignatureViewController *signatureVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SignatureViewController"];
     
     
-    
+    signatureVC.m_delegate = self;
     signatureVC.modalPresentationStyle = UIModalPresentationFormSheet;
     signatureVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:signatureVC animated:YES completion:nil];
@@ -1582,4 +1686,16 @@
     
 }
 
+-(void)SignatureVC:(SignatureViewController*) signatureVC saveUpWithImage:(UIImage *) img
+{
+    
+    [signatureVC dismissViewControllerAnimated:YES completion:^(void){
+        
+    }];
+    
+    [self.signatureImgBtn setBackgroundImage:img forState:UIControlStateNormal];
+    
+    
+    
+}
 @end

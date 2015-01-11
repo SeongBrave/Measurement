@@ -20,6 +20,8 @@
     self.m_ggxhLabel.text = [NSString stringWithFormat:@"%@",product.ggxh];
     self.m_sccjLabel.text = [NSString stringWithFormat:@"%@",product.sccj];
     self.m_lbLabel.text = [NSString stringWithFormat:@"%@",product.jclx];
+     self.m_priceLabel.text = [NSString stringWithFormat:@"%@",product.bzsf];
+    
     
 }
 

@@ -13,4 +13,18 @@
 
 @property(nonatomic , assign)id<PopViewDelegate> m_popDelegate;
 
+
+/**
+ *  用于显示的数据
+ */
+@property(nonatomic , strong)NSDictionary *m_showDict;
+
+
+/**
+ *  用于更新界面数据
+ *
+ *  @param showDict
+ */
+-(void)updateViewDataWithShowDict:(NSDictionary *)showDict;
+
 @end

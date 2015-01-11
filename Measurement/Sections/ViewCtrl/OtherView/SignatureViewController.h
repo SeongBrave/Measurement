@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class SignatureViewController;
+
+@protocol SignatureViewDelegate <NSObject>
+
+-(void)SignatureVC:(SignatureViewController*) signatureVC saveUpWithImage:(UIImage *) img;
+
+@end
+
 @interface SignatureViewController : UIViewController
+
+@property(nonatomic , assign)id<SignatureViewDelegate> m_delegate;
 
 @end

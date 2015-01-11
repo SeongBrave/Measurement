@@ -277,8 +277,11 @@
     
     if (indexPath.row  < self.m_DataSourceArr.count) {
         
-        MyPlanPopVC *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"UpdatePlanDetailsPopVC"];;
+        UpdatePlanDetailsPopVC *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"UpdatePlanDetailsPopVC"];;
         popVc.m_popDelegate = self;
+        popVc.m_showDict = self.m_DataSourceArr[indexPath.row];
+        
+        debug_object(popVc.m_showDict);
         self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
         self.m_popVC.delegate = self;
         

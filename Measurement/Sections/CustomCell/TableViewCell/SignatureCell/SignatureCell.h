@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *m_sccjLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *m_lbLabel;
+@property (weak, nonatomic) IBOutlet UILabel *m_priceLabel;
 
 
 - (void)configureCellWithItem:( wtdbh_Model* )product;
