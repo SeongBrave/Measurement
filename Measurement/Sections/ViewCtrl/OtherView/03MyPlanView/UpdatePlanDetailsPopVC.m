@@ -33,7 +33,7 @@
 
 #define MaxOffset  100
 
-@interface UpdatePlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,PlanDetailsHead_DepCellDelegate,PlanDetailsMans_DepCellDelegate,DepManVCDelegate,DepMansVCDelegate,SignatureViewDelegate>
+@interface UpdatePlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate, UIScrollViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,PlanDetailsHead_DepCellDelegate,PlanDetailsMans_DepCellDelegate,DepManVCDelegate,DepMansVCDelegate,SignatureViewDelegate>
 
 
 @property (assign)BOOL isOpen;
@@ -63,7 +63,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *testProgressBtn;
 @property (weak, nonatomic) IBOutlet UIButton *signatureBtn;
 @property (weak, nonatomic) IBOutlet UIButton *planBtn;
-@property (strong, nonatomic)  UIImageView *btnLineImgV;
+//@property (strong, nonatomic)  UIImageView *btnLineImgV;
 @property (weak, nonatomic) IBOutlet UITableView *testProgressTableView;
 
 @property(nonatomic ,strong)UIImageView *lineImgV;
@@ -248,7 +248,7 @@
 #pragma mark - 系统方法
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self SetUpData];
+//    [self SetUpData];
     // Do any additional setup after loading the view.
 }
 
@@ -349,6 +349,7 @@
 //TODO: 添加视图
 -(void)layoutMainCustomView
 {
+    self.mainScrollView.delegate = self;
     /**
      *  绘制分割线
      *
@@ -418,10 +419,11 @@
     //TODO:需要修改bug
     self.lineImgV = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"float-tab-bg_line"]];
    
-    [self.view addSubview:_lineImgV];
+    [self.menuBarView addSubview:_lineImgV];
     
 //    [self.lineImgV showPlaceHolder];
     
+    NSLog(@"%@", self.menuBarView.subviews);
     
     @weakify(self)
     [self.lineImgV mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -430,7 +432,7 @@
         make.width.equalTo(@60);
         make.height.equalTo(@4);
         make.top.equalTo(self.menuBarView.mas_top).offset(2);
-       make.leading.equalTo(self.view.mas_leading).offset(31);
+        make.leading.equalTo(self.planBtn.mas_leading);
         
     
     }];
@@ -465,6 +467,36 @@
             [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*2,0} animated:NO];
         }
         
+    }];
+    
+    [[self rac_signalForSelector:@selector(scrollViewDidEndDecelerating:) fromProtocol:@protocol(UIScrollViewDelegate)] subscribeNext:^(RACTuple *x) {
+        if (x.first == self.mainScrollView) {
+            CGPoint offset = [x.first contentOffset];
+            NSInteger currentPage = (NSInteger)roundf(offset.x / self.view.frame.size.width);
+            [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.width.equalTo(@60);
+                make.height.equalTo(@4);
+                make.top.equalTo(self.menuBarView.mas_top).offset(2);
+                switch (currentPage) {
+                    case 0:
+                        make.leading.equalTo(self.planBtn.mas_leading);
+                        break;
+                    case 1:
+                        make.leading.equalTo(self.testProgressBtn.mas_leading);
+                        break;
+
+                    case 2:
+                        make.leading.equalTo(self.signatureBtn.mas_leading);
+                        break;
+
+                    default:
+                        break;
+                }
+            }];
+            [UIView animateWithDuration:0.25 animations:^{
+                [self.menuBarView layoutIfNeeded];
+            }];
+        }
     }];
     
     
@@ -508,124 +540,124 @@
     
     
     
-    [[[[[RACObserve(self.mainScrollView, contentOffset)
-         filter:^BOOL(NSValue *value) {
-             
-             @strongify(self);
-             CGPoint offset = [value CGPointValue];
-             CGFloat scrollViewWidth = self.view.frame.size.width;
-             return  offset.x < scrollViewWidth/2 ;
-         }] map:^id(NSValue *value){
-             @strongify(self);
-             if (self.nIndex ==0) {
-                 
-                 
-                 return @NO;
-             }else
-             {
-                 
-                 self.nIndex = 0;
-                 return @YES;
-             }
-             
-             
-         }]distinctUntilChanged]
-      filter:^BOOL(NSNumber *bNum){
-          
-          return [bNum boolValue];
-      }]
-     subscribeNext:^(NSValue *value){
-         
-         //触发进入计划详情
-         
-         debug_object(@"触发进入计划详情");
-         
-         [self updatePlanBtnLineConstraints];
-
-         
-         
-     }];
-    
-    
-    [[[[[RACObserve(self.mainScrollView, contentOffset)
-         filter:^BOOL(NSValue *value) {
-             
-             @strongify(self);
-             CGPoint offset = [value CGPointValue];
-             CGFloat scrollViewWidth = self.view.frame.size.width;
-             return  (offset.x > scrollViewWidth/2)&&(offset.x < scrollViewWidth/2+scrollViewWidth) ;
-         }] map:^id(NSValue *value){
-             @strongify(self);
-             if (self.nIndex ==1) {
-                 
-                 
-                 return @NO;
-             }else
-             {
-                 
-                  self.nIndex = 1;
-                 return @YES;
-             }
-             
-             
-         }]distinctUntilChanged]
-      filter:^BOOL(NSNumber *bNum){
-          
-          return [bNum boolValue];
-      }]
-     subscribeNext:^(NSValue *value){
-         
-        
-         
-         [self updateTestProgressBtnLineConstraints];
-         
-         //触发进入检测进度界面
-         debug_object(@"触发进入检测进度界面");
-         
-     }];
-    
-    
-    [[[[[RACObserve(self.mainScrollView, contentOffset)
-         filter:^BOOL(NSValue *value) {
-             
-             @strongify(self);
-             CGPoint offset = [value CGPointValue];
-             CGFloat scrollViewWidth = self.view.frame.size.width;
-             return  (offset.x > scrollViewWidth/2+scrollViewWidth)&&(offset.x < scrollViewWidth*2) ;
-         }] map:^id(NSValue *value){
-             @strongify(self);
-             if (self.nIndex ==2) {
-                 
-                 return @NO;
-             }else
-             {
-                 self.nIndex =2;
-                 return @YES;
-             }
-             
-             
-         }]distinctUntilChanged]
-      filter:^BOOL(NSNumber *bNum){
-          
-          return [bNum boolValue];
-      }]
-     subscribeNext:^(NSValue *value){
-         
-         
-         
-         [self updateSignatureBtnLineConstraints];
-        
-         //触发进入客户签字界面
-         
-         debug_object(@"触发进入客户签字界面");
-         
-         
-     }];
+//    [[[[[RACObserve(self.mainScrollView, contentOffset)
+//         filter:^BOOL(NSValue *value) {
+//             
+//             @strongify(self);
+//             CGPoint offset = [value CGPointValue];
+//             CGFloat scrollViewWidth = self.view.frame.size.width;
+//             return  offset.x < scrollViewWidth/2 ;
+//         }] map:^id(NSValue *value){
+//             @strongify(self);
+//             if (self.nIndex ==0) {
+//                 
+//                 
+//                 return @NO;
+//             }else
+//             {
+//                 
+//                 self.nIndex = 0;
+//                 return @YES;
+//             }
+//             
+//             
+//         }]distinctUntilChanged]
+//      filter:^BOOL(NSNumber *bNum){
+//          
+//          return [bNum boolValue];
+//      }]
+//     subscribeNext:^(NSValue *value){
+//         
+//         //触发进入计划详情
+//         
+//         debug_object(@"触发进入计划详情");
+//         
+//         [self updatePlanBtnLineConstraints];
+//
+//         
+//         
+//     }];
+//    
+//    
+//    [[[[[RACObserve(self.mainScrollView, contentOffset)
+//         filter:^BOOL(NSValue *value) {
+//             
+//             @strongify(self);
+//             CGPoint offset = [value CGPointValue];
+//             CGFloat scrollViewWidth = self.view.frame.size.width;
+//             return  (offset.x > scrollViewWidth/2)&&(offset.x < scrollViewWidth/2+scrollViewWidth) ;
+//         }] map:^id(NSValue *value){
+//             @strongify(self);
+//             if (self.nIndex ==1) {
+//                 
+//                 
+//                 return @NO;
+//             }else
+//             {
+//                 
+//                  self.nIndex = 1;
+//                 return @YES;
+//             }
+//             
+//             
+//         }]distinctUntilChanged]
+//      filter:^BOOL(NSNumber *bNum){
+//          
+//          return [bNum boolValue];
+//      }]
+//     subscribeNext:^(NSValue *value){
+//         
+//        
+//         
+//         [self updateTestProgressBtnLineConstraints];
+//         
+//         //触发进入检测进度界面
+//         debug_object(@"触发进入检测进度界面");
+//         
+//     }];
+//    
+//    
+//    [[[[[RACObserve(self.mainScrollView, contentOffset)
+//         filter:^BOOL(NSValue *value) {
+//             
+//             @strongify(self);
+//             CGPoint offset = [value CGPointValue];
+//             CGFloat scrollViewWidth = self.view.frame.size.width;
+//             return  (offset.x > scrollViewWidth/2+scrollViewWidth)&&(offset.x < scrollViewWidth*2) ;
+//         }] map:^id(NSValue *value){
+//             @strongify(self);
+//             if (self.nIndex ==2) {
+//                 
+//                 return @NO;
+//             }else
+//             {
+//                 self.nIndex =2;
+//                 return @YES;
+//             }
+//             
+//             
+//         }]distinctUntilChanged]
+//      filter:^BOOL(NSNumber *bNum){
+//          
+//          return [bNum boolValue];
+//      }]
+//     subscribeNext:^(NSValue *value){
+//         
+//         
+//         
+//         [self updateSignatureBtnLineConstraints];
+//        
+//         //触发进入客户签字界面
+//         
+//         debug_object(@"触发进入客户签字界面");
+//         
+//         
+//     }];
     
     [[self.planBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id next){
        
         @strongify(self)
-        [self updatePlanBtnLineConstraints];
+        [self updateLineConstraints:next];
 
         [self.mainScrollView setContentOffset:CGPointZero animated:YES];
         
@@ -634,7 +666,7 @@
     
     [[self.testProgressBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id next){
         @strongify(self)
-        [self updateTestProgressBtnLineConstraints];
+        [self updateLineConstraints:next];
         [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width,0} animated:YES];
         
     }];
@@ -642,7 +674,7 @@
     [[self.signatureBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id next){
         
       @strongify(self)
-        [self updateSignatureBtnLineConstraints];
+        [self updateLineConstraints:next];
           [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*2,0} animated:YES];
         
     }];
@@ -708,20 +740,19 @@
     self.isOpen = NO;
     
 }
--(void)updatePlanBtnLineConstraints
+-(void)updateLineConstraints:(UIButton *)button
 {
  
-     @weakify(self)
-    [self.lineImgV mas_updateConstraints:^(MASConstraintMaker *make) {
-        
-        @strongify(self)
-        make.leading.equalTo(self.view.mas_leading).offset(31);
-        
+    @weakify(self);
+    [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.leading.equalTo(button.mas_leading);
+        make.width.equalTo(@60);
+        make.height.equalTo(@4);
+        make.top.equalTo(self.menuBarView.mas_top).offset(2);
     }];
-    
     [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
         @strongify(self)
-        [self.view layoutIfNeeded];
+        [self.menuBarView layoutIfNeeded];
         
     }completion:NULL];
     
@@ -1688,26 +1719,26 @@
 
 
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    if (scrollView == _mainScrollView) {
-        
-        
-        if (scrollView.contentOffset.x < 0.0f) {
-            [self.mainScrollView setContentOffset:CGPointZero animated:NO];
-        }else if(scrollView.contentOffset.x > scrollView.frame.size.width)
-        {
-            
-            [scrollView setContentOffset:(CGPoint){self.view.frame.size.width,0} animated:NO];
-            //        scrollView.contentOffset = CGPointMake(scrollView.frame.size.width, 0
-            //) ;
-        }
-        
-        
-    }
-    
-    
-}
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    if (scrollView == _mainScrollView) {
+//        
+//        
+//        if (scrollView.contentOffset.x < 0.0f) {
+//            [self.mainScrollView setContentOffset:CGPointZero animated:NO];
+//        }else if(scrollView.contentOffset.x > scrollView.frame.size.width)
+//        {
+//            
+//            [scrollView setContentOffset:(CGPoint){self.view.frame.size.width,0} animated:NO];
+//            //        scrollView.contentOffset = CGPointMake(scrollView.frame.size.width, 0
+//            //) ;
+//        }
+//        
+//        
+//    }
+//    
+//    
+//}
 - (IBAction)SignatureClick:(id)sender {
     
     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Other" bundle:nil];
