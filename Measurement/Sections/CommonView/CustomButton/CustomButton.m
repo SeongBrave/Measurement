@@ -20,7 +20,7 @@
 }
 -(NSMutableDictionary *)m_info
 {
-    if (_m_info) {
+    if (_m_info == nil) {
         _m_info = [[NSMutableDictionary alloc]init];
     }
     return _m_info;

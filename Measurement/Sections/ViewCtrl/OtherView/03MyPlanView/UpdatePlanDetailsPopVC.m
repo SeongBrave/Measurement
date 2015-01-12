@@ -292,13 +292,13 @@
  */
 -(void)updateSignatureViewDataWithShowDict:(NSDictionary *) showDict
 {
-    self.signature_wtdwmc_Label.text = [NSString stringWithFormat:@"%@",showDict[@"wtdwmc"]];
+    self.signature_wtdwmc_Label.text =  [showDict GetLabelWithKey:@"wtdwmc"];
     
-       self.signature_dwdz_Label.text = [NSString stringWithFormat:@"%@",showDict[@"dwdz"]];
+       self.signature_dwdz_Label.text =[showDict GetLabelWithKey:@"dwdz"];
     
-       self.signature_lxrxm_Label.text = [NSString stringWithFormat:@"%@",showDict[@"lxrxm"]];
+       self.signature_lxrxm_Label.text = [showDict GetLabelWithKey:@"lxrxm"];
     
-       self.signature_lxdh_Label.text = [NSString stringWithFormat:@"%@",showDict[@"lxdh"]];
+       self.signature_lxdh_Label.text = [showDict GetLabelWithKey:@"lxdh"];
     
 }
 /**
@@ -309,36 +309,35 @@
 -(void)updateViewDataWithShowDict:(NSDictionary *)showDict
 {
     
-    self.nameOFEntityTF.text = [NSString stringWithFormat:@"%@",showDict[@"WTDWMC"]];
+    self.nameOFEntityTF.text =  [showDict GetLabelWithKey:@"WTDWMC"];
     
-    self.addrOFEntity.text = [NSString stringWithFormat:@"%@",showDict[@"DWDZ"]];
+    self.addrOFEntity.text = [showDict GetLabelWithKey:@"DWDZ"];
     
-    self.contactTF.text = [NSString stringWithFormat:@"%@",showDict[@"LXDH"]];
-    
-    
-    self.ContactTELTF.text = [NSString stringWithFormat:@"%@",showDict[@"LXDH"]];
-    
-    self.districtTF.text = [NSString stringWithFormat:@"%@",showDict[@"SZDQ"]];
+    self.contactTF.text =[showDict GetLabelWithKey:@"LXDH"];
     
     
-    self.IndustryCategoriesTF.text = [NSString stringWithFormat:@"%@",showDict[@"HYLBMC"]];
+    self.ContactTELTF.text =[showDict GetLabelWithKey:@"LXDH"];
     
-    self.zipCodeTF.text = [NSString stringWithFormat:@"%@",showDict[@"YB"]];
+    self.districtTF.text =[showDict GetLabelWithKey:@"SZDQ"];
     
     
-    self.responsibleDepTF.text = [NSString stringWithFormat:@"%@",showDict[@"YWFZKS"]];
+    self.IndustryCategoriesTF.text =[showDict GetLabelWithKey:@"HYLBMC"];
     
-    self.headOFTF.text = [NSString stringWithFormat:@"%@",showDict[@"YWFZR"]];
+    self.zipCodeTF.text =[showDict GetLabelWithKey:@"YB"];
+    
+    
+    self.responsibleDepTF.text = [showDict GetLabelWithKey:@"YWFZKS"];
+    self.headOFTF.text =[showDict GetLabelWithKey:@"YWFZR"];
     
     [self.forensicsDateBtn setTitle:@"" forState:UIControlStateNormal];
     
-    self.specialReqTF.text = [NSString stringWithFormat:@"%@",showDict[@""]];
+    self.specialReqTF.text = [showDict GetLabelWithKey:@"tsyq"];
     
-    self.noteTF.text = [NSString stringWithFormat:@"%@",showDict[@"BZ"]];
+    self.noteTF.text = [showDict GetLabelWithKey:@"BZ"];
+ 
+    [self.fromDatePickerBtn setTitle:[showDict GetLabelWithKey:@"XCSJQ"]forState:UIControlStateNormal];
     
-    [self.fromDatePickerBtn setTitle:[NSString stringWithFormat:@"%@",showDict[@"XCSJQ"]]forState:UIControlStateNormal];
-    
-    [self.toDatePickerBtn setTitle:[NSString stringWithFormat:@"%@",showDict[@"XCSJQ"]]forState:UIControlStateNormal];
+    [self.toDatePickerBtn setTitle:[showDict GetLabelWithKey:@"XCSJQ"] forState:UIControlStateNormal];
     
     
 //    CJSJ
@@ -473,6 +472,7 @@
         if (x.first == self.mainScrollView) {
             CGPoint offset = [x.first contentOffset];
             NSInteger currentPage = (NSInteger)roundf(offset.x / self.view.frame.size.width);
+            
             [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.width.equalTo(@60);
                 make.height.equalTo(@4);
@@ -539,121 +539,6 @@
  
     
     
-    
-//    [[[[[RACObserve(self.mainScrollView, contentOffset)
-//         filter:^BOOL(NSValue *value) {
-//             
-//             @strongify(self);
-//             CGPoint offset = [value CGPointValue];
-//             CGFloat scrollViewWidth = self.view.frame.size.width;
-//             return  offset.x < scrollViewWidth/2 ;
-//         }] map:^id(NSValue *value){
-//             @strongify(self);
-//             if (self.nIndex ==0) {
-//                 
-//                 
-//                 return @NO;
-//             }else
-//             {
-//                 
-//                 self.nIndex = 0;
-//                 return @YES;
-//             }
-//             
-//             
-//         }]distinctUntilChanged]
-//      filter:^BOOL(NSNumber *bNum){
-//          
-//          return [bNum boolValue];
-//      }]
-//     subscribeNext:^(NSValue *value){
-//         
-//         //触发进入计划详情
-//         
-//         debug_object(@"触发进入计划详情");
-//         
-//         [self updatePlanBtnLineConstraints];
-//
-//         
-//         
-//     }];
-//    
-//    
-//    [[[[[RACObserve(self.mainScrollView, contentOffset)
-//         filter:^BOOL(NSValue *value) {
-//             
-//             @strongify(self);
-//             CGPoint offset = [value CGPointValue];
-//             CGFloat scrollViewWidth = self.view.frame.size.width;
-//             return  (offset.x > scrollViewWidth/2)&&(offset.x < scrollViewWidth/2+scrollViewWidth) ;
-//         }] map:^id(NSValue *value){
-//             @strongify(self);
-//             if (self.nIndex ==1) {
-//                 
-//                 
-//                 return @NO;
-//             }else
-//             {
-//                 
-//                  self.nIndex = 1;
-//                 return @YES;
-//             }
-//             
-//             
-//         }]distinctUntilChanged]
-//      filter:^BOOL(NSNumber *bNum){
-//          
-//          return [bNum boolValue];
-//      }]
-//     subscribeNext:^(NSValue *value){
-//         
-//        
-//         
-//         [self updateTestProgressBtnLineConstraints];
-//         
-//         //触发进入检测进度界面
-//         debug_object(@"触发进入检测进度界面");
-//         
-//     }];
-//    
-//    
-//    [[[[[RACObserve(self.mainScrollView, contentOffset)
-//         filter:^BOOL(NSValue *value) {
-//             
-//             @strongify(self);
-//             CGPoint offset = [value CGPointValue];
-//             CGFloat scrollViewWidth = self.view.frame.size.width;
-//             return  (offset.x > scrollViewWidth/2+scrollViewWidth)&&(offset.x < scrollViewWidth*2) ;
-//         }] map:^id(NSValue *value){
-//             @strongify(self);
-//             if (self.nIndex ==2) {
-//                 
-//                 return @NO;
-//             }else
-//             {
-//                 self.nIndex =2;
-//                 return @YES;
-//             }
-//             
-//             
-//         }]distinctUntilChanged]
-//      filter:^BOOL(NSNumber *bNum){
-//          
-//          return [bNum boolValue];
-//      }]
-//     subscribeNext:^(NSValue *value){
-//         
-//         
-//         
-//         [self updateSignatureBtnLineConstraints];
-//        
-//         //触发进入客户签字界面
-//         
-//         debug_object(@"触发进入客户签字界面");
-//         
-//         
-//     }];
-    
     [[self.planBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id next){
        
         @strongify(self)
@@ -678,53 +563,6 @@
           [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*2,0} animated:YES];
         
     }];
-    
-    
-    //nameOFEntityTF
-    
-    
-//    [[self.nameOFEntityTF.rac_textSignal
-//      throttle:0.5] subscribeNext:^(NSString *wtdwmcStr)
-//     {
-//         [[BaseNetWork getInstance] hideDialog];
-//         NSDictionary *dict =@{@"wtdwmc":wtdwmcStr,@"num":@"5"};
-//         [[[[[BaseNetWork getInstance] rac_getPath:@"getWtdw.do" parameters:dict]map:^(id responseData)
-//            {
-//                NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-//                
-//                return [dict valueForKeyPath:@"wtdwList"];
-//            }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-//          subscribeNext:^(NSArray *arr) {
-//              @strongify(self)
-//              
-//              self.m_autoTFArr = [arr linq_select:^id(NSDictionary *dict){
-//                  
-//                  autoTableViewData *data = [[autoTableViewData alloc]init];
-//                  data.m_dict = [NSDictionary dictionaryWithDictionary:dict];
-//                  
-//                  return data;
-//              }];
-//              
-//              [self.nameOFEntityTF reloadData];
-//              
-//              
-//          }error:^(NSError *error){
-//              //          @strongify(self)
-//              ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
-//              ////          self.m_DataSourceArr = arr;
-//              ////          [_header endRefreshing];
-//              ////          [_footer endRefreshing];
-//              ////
-//              ////          [self failedGetDataWithResponseData:arr];
-//              //          //          [self.m_collectionView reloadData];
-//              
-//              
-//          }];
-//     }];
-//
-    
-    
-//    self.self.planBtn.r
     
     
 }
@@ -1034,6 +872,7 @@
     
 }
 
+
 /**
  *  通过查询委托单位过去的基本信息
  *
@@ -1066,21 +905,25 @@
         NSDictionary *dict1 = [NSDictionary dictionaryWithDictionary:arr[1][0]];
         if ([dict0 objectForKey:@"WTDWDZ"])
         {
-            self.addrOFEntity.text = [NSString stringWithFormat:@"%@",dict0[@"WTDWDZ"]];
-            self.zipCodeTF.text = [NSString stringWithFormat:@"%@",dict0[@"WTDWYB"]];
-            self.contactTF.text = [NSString stringWithFormat:@"%@",dict1[@"LXR"]];
-            self.ContactTELTF.text = [NSString stringWithFormat:@"%@",dict1[@"LXDH"]];
+         
+             self.addrOFEntity.text = [dict0 GetLabelWithKey:@"SZDQ"];
             
-            dqbhStr = [NSString stringWithFormat:@"%@",dict0[@"SZDQ"]];
+            
+            self.addrOFEntity.text =[dict0 GetLabelWithKey:@"WTDWDZ"];
+            self.zipCodeTF.text = [dict0 GetLabelWithKey:@"WTDWYB"] ;
+            self.contactTF.text = [dict1 GetLabelWithKey:@"LXR"] ;
+            self.ContactTELTF.text = [dict1 GetLabelWithKey:@"LXR"];
+            
+            dqbhStr =  [dict0 GetLabelWithKey:@"SZDQ"];
             
         }else //否则说明arr[0] 是 联系人信息
         {
-            self.addrOFEntity.text = [NSString stringWithFormat:@"%@",dict1[@"WTDWDZ"]];
-            self.zipCodeTF.text = [NSString stringWithFormat:@"%@",dict1[@"WTDWYB"]];
-            self.contactTF.text = [NSString stringWithFormat:@"%@",dict0[@"LXR"]];
-            self.ContactTELTF.text = [NSString stringWithFormat:@"%@",dict0[@"LXDH"]];
+            self.addrOFEntity.text = [dict1 GetLabelWithKey:@"WTDWDZ"];
+            self.zipCodeTF.text = [dict1 GetLabelWithKey:@"WTDWYB"];
+            self.contactTF.text = [dict0 GetLabelWithKey:@"LXR"];
+            self.ContactTELTF.text = [dict0 GetLabelWithKey:@"LXDH"];
             
-            dqbhStr = [NSString stringWithFormat:@"%@",dict1[@"SZDQ"]];
+            dqbhStr = [dict1 GetLabelWithKey:@"SZDQ"];
         }
         
         
@@ -1163,14 +1006,8 @@
          }
          
      }error:^(NSError *error){
-         //          @strongify(self)
-         ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
-         ////          self.m_DataSourceArr = arr;
-         ////          [_header endRefreshing];
-         ////          [_footer endRefreshing];
-         ////
-         ////          [self failedGetDataWithResponseData:arr];
-         //          //          [self.m_collectionView reloadData];
+         
+         debug_object(error);
          
          
      }];

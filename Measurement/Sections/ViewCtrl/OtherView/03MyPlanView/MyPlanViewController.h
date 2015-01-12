@@ -14,6 +14,5 @@
 
 @interface MyPlanViewController : CommonLogicViewController
 
-@property(nonatomic , strong)UIPopoverController *m_popVC;
 
 @end

@@ -25,6 +25,8 @@
     
 }
 
+@property(nonatomic , strong)UIPopoverController *m_popVC;
+
 /**
  *  表示请求网络的方法
  */

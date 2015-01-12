@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *m_headsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *m_headsBtn;
 
+
 @property(nonatomic , assign)id<PlanDetailsHead_DepCellDelegate> m_head_DepDelegate;
 
 

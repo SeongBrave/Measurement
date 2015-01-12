@@ -47,9 +47,6 @@
            [self.m_headsBtn setTitle:str.length>=1?[str substringFromIndex:1]:@"未指定" forState:UIControlStateNormal];
          
          
-         
-         
-         
      }];
     
     /**
@@ -121,7 +118,7 @@
 
 - (IBAction)selectHeadClick:(id)sender {
     
-    if ([self.m_head_DepDelegate respondsToSelector:@selector(planDetailsHead_DepCell:didSelectedWithks_Model:)]) {
+    if ([self.m_head_DepDelegate respondsToSelector:@selector(planDetailsHead_DepCell:didSelectedWithks_Model:)] &&_m_model.isSelected) {
         [self.m_head_DepDelegate planDetailsHead_DepCell:self didSelectedWithks_Model:_m_model];
     }
     

@@ -11,4 +11,7 @@
 @interface NSDictionary (GetJsonStr)
 
 - (NSString*)GetJsonStrForDict;
+
+-(NSString *)GetLabelWithKey:(NSString *) key;
+
 @end

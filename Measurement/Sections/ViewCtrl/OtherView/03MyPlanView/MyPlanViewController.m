@@ -248,7 +248,7 @@
     {
         [self.m_netParamDict setObject:dict[key] forKey:key];
     }
-  debug_object(self.m_netParamDict);
+
     
     [self loadNetData];
     

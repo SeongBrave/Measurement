@@ -19,10 +19,18 @@
 
 @interface DatePickerViewController : BaseViewController
 
-@property(nonatomic , strong)UIButton *m_clickBtn;
+@property(nonatomic , strong)CustomButton *m_clickBtn;
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *m_datePicker;
 
 @property(nonatomic , assign)id<DatePickerDelegate> dateDelegate;
+
+
+/**
+ *  用于保存初始化datepicker 的数据
+ */
+@property(nonatomic , strong)NSDate *m_date;
+
+
 
 @end

@@ -78,14 +78,6 @@
 -(void)AddNavgationBarItem
 {
     
-//    UIBarButtonItem *leftBtn =[[UIBarButtonItem alloc] initWithTitle:@"群组" style:UIBarButtonItemStyleBordered target:self action:@selector(leftBtnClick:)];
-//    [leftBtn setImage:[UIImage imageNamed:@"nav_Call"]];
-//    self.navigationItem.leftBarButtonItem=leftBtn;
-    
-//    UIBarButtonItem *rightBtn =[[UIBarButtonItem alloc] initWithTitle:@"群组" style:UIBarButtonItemStyleBordered target:self action:@selector(rightBtnClick:)];
-//    [rightBtn setImage:[UIImage imageNamed:@"nav_MultipartyCalls"]];
-//    self.navigationItem.rightBarButtonItem = rightBtn;
-    
     
 }
 -(void)leftBtnClick:(id)sender

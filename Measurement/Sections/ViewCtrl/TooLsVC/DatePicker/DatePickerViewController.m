@@ -28,6 +28,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.m_datePicker setDate:_m_date animated:NO];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -56,7 +58,6 @@
 {
     
 }
-
 -(void)SetUpData
 {
     
@@ -74,9 +75,6 @@
 }
 
 - (IBAction)DateValueChanged:(id)sender {
-    
-    
-
     
     UIDatePicker *control = (UIDatePicker*)sender;
     

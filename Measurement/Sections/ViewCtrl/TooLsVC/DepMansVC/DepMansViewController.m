@@ -136,8 +136,10 @@
         [self.m_didSelectedArr removeObject:model];
     }
     
+     self.ksModel.selected_RYArr = _m_didSelectedArr;
     
-    self.ksModel.selected_RYArr = _m_didSelectedArr;
+
+
     
     if ([self.m_delegate respondsToSelector:@selector(DepMansVC:didSelectedArr:)]) {
         

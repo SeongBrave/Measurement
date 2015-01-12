@@ -12,17 +12,44 @@
 #import "SelectValue_XCKS_TableViewController.h"
 #import "DatePickerViewController.h"
 
+
 @interface OptionMenuTableViewController ()<DidSelectedValueDelegate,DidSelectedValue_XCRY_Delegate,DidSelectedValue_XCKS_Delegate,DatePickerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *m_companyTF;
 
+/**
+ *  完成状态
+ */
 @property (weak, nonatomic) IBOutlet UILabel *m_finishStateLabel;
+
+/**
+ *  部门
+ */
 @property (weak, nonatomic) IBOutlet UILabel *m_factoryDepartmentLabel;
+
+/**
+ *  专员
+ */
 @property (weak, nonatomic) IBOutlet UILabel *m_factoryCommissionerLabel;
+
+
+/**
+ *  排序方式
+ */
 @property (weak, nonatomic) IBOutlet UILabel *m_sortingWayLabel;
+
+/**
+ *  排序字段
+ */
 @property (weak, nonatomic) IBOutlet UILabel *m_sortingFieldLabel;
-@property (weak, nonatomic) IBOutlet UIButton *fromDateBtn;
-@property (weak, nonatomic) IBOutlet UIButton *toDateBtn;
+
+@property (weak, nonatomic) IBOutlet CustomButton *fromDateBtn;
+@property (weak, nonatomic) IBOutlet CustomButton *toDateBtn;
+@property (weak, nonatomic) IBOutlet UIView *fromBorderView;
+@property (weak, nonatomic) IBOutlet UIView *toBorderView;
+
+@property(nonatomic , strong)DatePickerViewController *fromDatePickerVC;
+@property(nonatomic , strong)DatePickerViewController *toDatePickerVC;
 
 @end
 
@@ -42,7 +69,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     
 }
 
@@ -112,14 +138,25 @@
     }else if ([segue.identifier isEqualToString:@"FromDatePicker"] )
     {
         DatePickerViewController *pickerVC = (DatePickerViewController*)[segue destinationViewController];
+        /**
+         *  必须给了属性然后再viewwillappear中设置给datepicker才行，否则设置不成功
+         */
+        pickerVC.m_date = self.fromDateBtn.m_info[@"data"];
         pickerVC.m_clickBtn = self.fromDateBtn;
+        
         pickerVC.dateDelegate = self;
+         self.fromDatePickerVC = pickerVC;
         
     }else if ([segue.identifier isEqualToString:@"ToDatePicker"] )
     {
         DatePickerViewController *pickerVC = (DatePickerViewController*)[segue destinationViewController];
          pickerVC.m_clickBtn = self.toDateBtn;
         pickerVC.dateDelegate = self;
+        /**
+         *  必须给了属性然后再viewwillappear中设置给datepicker才行，否则设置不成功
+         */
+        pickerVC.m_date = self.toDateBtn.m_info[@"data"];
+        self.toDatePickerVC = pickerVC;
         
     }
     
@@ -129,10 +166,63 @@
 
 #pragma mark - 自定义方法
 
+
+-(void)updateTableViewWithData:(NSDictionary *) dict
+{
+    
+    self.m_companyTF.text = [dict GetLabelWithKey:@"wtdwmc"];
+    
+    self.m_finishStateLabel.text = [dict GetLabelWithKey:@"rwwcqk"];
+    
+    self.m_factoryDepartmentLabel.text =[dict GetLabelWithKey:@"xcksbh"];
+   
+    self.m_factoryCommissionerLabel.text =[dict GetLabelWithKey:@"xcrybh"];;
+    self.m_sortingFieldLabel.text =[dict GetLabelWithKey:@"pxzd"];
+    self.m_sortingWayLabel.text = [dict GetLabelWithKey:@"pxfs"];
+    
+                                    
+                                    
+}
 //TODO: 添加视图
 -(void)layoutMainCustomView
 {
+//    m_companyTF
     
+    
+    self.fromBorderView.layer.borderWidth = 2.0;
+    self.fromBorderView.layer.borderColor = UIColorFromRGB(217, 217, 217).CGColor;
+    
+     self.toBorderView.layer.borderWidth = 2.0;
+    self.toBorderView.layer.borderColor = UIColorFromRGB(217, 217, 217).CGColor;
+
+    
+    
+    // 将NSDate格式装换成NSString类型
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    // 设置日历显示格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    // 把日历时间传给字符串
+    
+    NSString *strDate = [dateFormatter stringFromDate:[NSDate new]];
+    
+    
+    [self.fromDateBtn setTitle:strDate forState:UIControlStateNormal];
+   
+     [self.toDateBtn setTitle:strDate forState:UIControlStateNormal];
+    
+    [self.fromDateBtn.m_info setObject:[[NSDate new] sameTimeOfDate] forKey:@"data"];
+    [self.toDateBtn.m_info setObject:[NSDate new] forKey:@"data"];
+
+}
+
+-(NSMutableDictionary *)m_relValue
+{
+    if (_m_relValue == nil) {
+        self.m_relValue = [[NSMutableDictionary alloc]init];
+    }
+    return _m_relValue;
 }
 
 -(void)SetUpData
@@ -141,7 +231,34 @@
     self.title = @"选项";
     [self layoutMainCustomView];
     [self AddNavgationBarItem];
-    self.m_relValue = [NSMutableDictionary dictionary];
+    
+    [self Add_RAC_Attention];
+    
+}
+
+-(void)Add_RAC_Attention
+{
+
+    @weakify(self)
+    [[self.m_companyTF.rac_textSignal
+      throttle:0.5] subscribeNext:^(NSString *wtdwmcStr)
+     {
+        @strongify(self)
+        
+         [self.m_relValue setObject:wtdwmcStr forKey:@"wtdwmc"];
+
+     }];
+    
+}
+
+/**
+ *  选则是卡片模式还是时间轴模式
+ *
+ *  @param sender 
+ */
+- (IBAction)segonValueChanged:(id)sender {
+    
+    
     
 }
 -(void)AddNavgationBarItem
@@ -271,13 +388,6 @@
 */
 
 
-- (IBAction)showDateDialog:(id)sender {
-    
-    debug_object(self.m_relValue);
-    
-    
-}
-
 /**
  *  查询
  *
@@ -285,24 +395,27 @@
  */
 - (IBAction)queryClick:(id)sender {
     
+    
+
     if ([self.m_optionMenuDelegate respondsToSelector:@selector(OptionMenu:DidsaveValue:)]) {
         
         
         [self.m_optionMenuDelegate OptionMenu:self DidsaveValue:self.m_relValue];
     }
     
-    @weakify(self)
-    [self dismissViewControllerAnimated:YES completion:^(void){
-        
-        @strongify(self)
-        if ([self.m_optionMenuDelegate respondsToSelector:@selector(OptionMenu:DidsaveValue:)]) {
-            
-            
-            [self.m_optionMenuDelegate OptionMenu:self DidsaveValue:self.m_relValue];
-        }
-
-        
-    }];
+//    
+//    @weakify(self)
+//    [self dismissViewControllerAnimated:YES completion:^(void){
+//        
+//        @strongify(self)
+//        if ([self.m_optionMenuDelegate respondsToSelector:@selector(OptionMenu:DidsaveValue:)]) {
+//            
+//            
+//            [self.m_optionMenuDelegate OptionMenu:self DidsaveValue:self.m_relValue];
+//        }
+//
+//        
+//    }];
     
     
     
@@ -313,6 +426,17 @@
  *  @param sender
  */
 - (IBAction)resetClick:(id)sender {
+    
+    
+  
+    for(NSString *key in [self.m_relValue allKeys])
+    {
+        [self.m_relValue setObject:@"" forKey:key];
+    }
+    
+
+    [self updateTableViewWithData:_m_relValue];
+    
 }
 
 #pragma mark - DidSelectedValueDelegate
@@ -377,17 +501,25 @@
 {
     // 将NSDate格式装换成NSString类型
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    
+    NSDateFormatter *formatterShowBtn = [[NSDateFormatter alloc]init];
     // 设置日历显示格式
-    
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    
+    [formatterShowBtn setDateFormat:@"yyyy-MM-dd"];
     // 把日历时间传给字符串
+    NSString *strDate = [formatterShowBtn stringFromDate:date];
     
-    NSString *strDate = [dateFormatter stringFromDate:date];
+    
+    [datePickerVC.m_clickBtn.m_info setObject:date forKey:@"data"];
 
     [datePickerVC.m_clickBtn setTitle:strDate forState:UIControlStateNormal];
+    
+    if (datePickerVC == _toDatePickerVC) {
+        
+        [self.m_relValue setObject:strDate forKey:@"xcsjz"];
+        
+    }else if (datePickerVC == _fromDatePickerVC)
+    {
+        [self.m_relValue setObject:strDate forKey:@"xcsjq"];
+    }
     
 }
 

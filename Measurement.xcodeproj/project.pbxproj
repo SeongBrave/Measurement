@@ -44,7 +44,6 @@
 		C9651FEF1A43B26000B770BB /* DropDownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651FB51A43B25F00B770BB /* DropDownListView.m */; };
 		C9651FF71A43BE3100B770BB /* YTKKeyValueStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651FF61A43BE3100B770BB /* YTKKeyValueStore.m */; };
 		C965204C1A43FBE200B770BB /* libDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C965204B1A43FBE200B770BB /* libDialog.a */; };
-		C965204E1A43FC6900B770BB /* libToolsLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C965204D1A43FC6900B770BB /* libToolsLib.a */; };
 		C97093DC1A62B0A000141DC5 /* LoginedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C97093DB1A62B0A000141DC5 /* LoginedUser.m */; };
 		C97093E91A62CBD200141DC5 /* OptionMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97093DF1A62CBD200141DC5 /* OptionMenuTableViewController.m */; };
 		C97093EA1A62CBD200141DC5 /* SelectValue_XCKS_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97093E11A62CBD200141DC5 /* SelectValue_XCKS_TableViewController.m */; };
@@ -96,6 +95,7 @@
 		C9D6B9F71A5AE648006D27EF /* NSString+Levenshtein.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */; };
 		C9D88CF61A5E2D0D003ED50F /* ks_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D88CF51A5E2D0D003ED50F /* ks_Model.m */; };
 		C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E226D61A52FF6E004A9A69 /* DatePickerViewController.m */; };
+		C9E382181A640AEA0017C55E /* libToolsLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E382171A640AEA0017C55E /* libToolsLib.a */; };
 		C9E94DCA1A4A669100E8CC83 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9E94DC01A4A669100E8CC83 /* MJRefresh.bundle */; };
 		C9E94DCB1A4A669100E8CC83 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E94DC31A4A669100E8CC83 /* MJRefreshBaseView.m */; };
 		C9E94DCC1A4A669100E8CC83 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E94DC51A4A669100E8CC83 /* MJRefreshConst.m */; };
@@ -221,7 +221,6 @@
 		C96520361A43C8BE00B770BB /* ToolsLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsLib.h; sourceTree = "<group>"; };
 		C96520381A43C8BE00B770BB /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
 		C965204B1A43FBE200B770BB /* libDialog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDialog.a; sourceTree = "<group>"; };
-		C965204D1A43FC6900B770BB /* libToolsLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libToolsLib.a; sourceTree = "<group>"; };
 		C97093DA1A62B0A000141DC5 /* LoginedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginedUser.h; sourceTree = "<group>"; };
 		C97093DB1A62B0A000141DC5 /* LoginedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginedUser.m; sourceTree = "<group>"; };
 		C97093DE1A62CBD200141DC5 /* OptionMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionMenuTableViewController.h; sourceTree = "<group>"; };
@@ -326,6 +325,7 @@
 		C9D88CF51A5E2D0D003ED50F /* ks_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ks_Model.m; sourceTree = "<group>"; };
 		C9E226D51A52FF6E004A9A69 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		C9E226D61A52FF6E004A9A69 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
+		C9E382171A640AEA0017C55E /* libToolsLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libToolsLib.a; sourceTree = "<group>"; };
 		C9E94DC01A4A669100E8CC83 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		C9E94DC11A4A669100E8CC83 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		C9E94DC21A4A669100E8CC83 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -363,7 +363,7 @@
 			files = (
 				F65BA8D3002CC2F8A0A2DE2E /* libPods.a in Frameworks */,
 				C965204C1A43FBE200B770BB /* libDialog.a in Frameworks */,
-				C965204E1A43FC6900B770BB /* libToolsLib.a in Frameworks */,
+				C9E382181A640AEA0017C55E /* libToolsLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -868,7 +868,7 @@
 			isa = PBXGroup;
 			children = (
 				C96520381A43C8BE00B770BB /* CircleView.h */,
-				C965204D1A43FC6900B770BB /* libToolsLib.a */,
+				C9E382171A640AEA0017C55E /* libToolsLib.a */,
 			);
 			path = Views;
 			sourceTree = "<group>";

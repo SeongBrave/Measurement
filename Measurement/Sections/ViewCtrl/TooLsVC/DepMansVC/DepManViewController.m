@@ -124,26 +124,36 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     ry_Model *model = self.m_dataSourceArr[indexPath.row];
     
     
-        if (_lastIndex && _lastIndex.row != indexPath.row) {
-            
-            ry_Model *lastModel = self.m_dataSourceArr[_lastIndex.row];
-            model.isSelected = YES;
-            lastModel.isSelected = NO;
-            
-        }else
-        {
-            model.isSelected = !model.isSelected;
-        }
+    if (_lastIndex && _lastIndex.row != indexPath.row)
+    {
+        
+        ry_Model *lastModel = self.m_dataSourceArr[_lastIndex.row];
+        model.isSelected = YES;
+        lastModel.isSelected = NO;
+        
+    }else
+    {
+        model.isSelected = !model.isSelected;
+    }
     
-   
-    [self.m_didSelectedArr setObject:model atIndexedSubscript:0];
+    if (model.isSelected) {
+        
+        [self.m_didSelectedArr setObject:model atIndexedSubscript:0];
+        
+    }else
+    {
+        [self.m_didSelectedArr removeObject:model];
+    }
     
-        _lastIndex = indexPath;
-
-   
+    
+    
+    _lastIndex = indexPath;
+    
+    
     self.ksModel.selected_RYArr = _m_didSelectedArr;
     
     if ([self.m_delegate respondsToSelector:@selector(DepManVC:didSelectedArr:)]) {

@@ -30,6 +30,12 @@
 @interface AddPlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,PlanDetailsHead_DepCellDelegate,PlanDetailsMans_DepCellDelegate,DepManVCDelegate,DepMansVCDelegate>
 
 
+/**
+ *  用于保存最后确定时传的参数
+ */
+@property(nonatomic ,strong)NSMutableDictionary *m_saveDataDict;
+
+
 @property(nonatomic , strong)NSArray *m_autoTFArr;
 
 
@@ -150,6 +156,7 @@
 @property (nonatomic , strong)NSArray *headOFArr;
 
 
+@property (weak, nonatomic) IBOutlet UILabel *selectedDepartmentsInfoLabel;
 
 @property (weak, nonatomic) IBOutlet CustomButton *fromDatePickerBtn;
 @property (weak, nonatomic) IBOutlet CustomButton *toDatePickerBtn;
@@ -157,6 +164,18 @@
 @end
 
 @implementation AddPlanDetailsPopVC
+
+
+
+-(NSMutableDictionary *)m_saveDataDict
+{
+    if (_m_saveDataDict == nil) {
+        self.m_saveDataDict = [[NSMutableDictionary alloc]init];
+    }
+    
+    return self.m_saveDataDict;
+}
+
 #pragma mark - 系统方法
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -221,10 +240,6 @@
 
 #pragma mark - 自定义方法
 
--(void)awakeFromNib
-{
-    
-}
 //TODO: 添加视图
 -(void)layoutMainCustomView
 {
@@ -437,6 +452,14 @@
 -(void)Add_RAC_Attention
 {
     
+    
+    [RACObserve(self,m_ks_mansArr)subscribeNext:^(id next){
+       
+        
+        debug_object(next);
+        
+        
+    }];
     //nameOFEntityTF
     
     @weakify(self);
@@ -587,6 +610,119 @@
     
 }
 
+/**
+ *  usercode
+ WTDWBH VARCHAR2(10 CHAR) Y WTDWMCVARCHAR2(60 CHAR) Y DWDZ VARCHAR2(60 CHAR) Y
+ LXRXM VARCHAR2(10 CHAR) Y LXDH VARCHAR2(15 CHAR) Y YWFZKSBH VARCHAR2(8 CHAR) YWFZKSVARCHAR2(10 CHAR) Y YWFZRBH VARCHAR2(14 CHAR)
+ YWFZR VARCHAR2(10 CHAR) Y HYLBIDVARCHAR2(32 CHAR) Y
+ Y Y
+ 当前用户编号
+ 委托单位编号
+ 委托单位名称
+ 单位地址
+ 联系人 联系电话
+ 业务负责科室编号
+ 业务负责科室
+ 业务负责人编号
+ 业务负责人 行业类别id
+ 已完成
+ Y 行业类别名称 Y 所在地区编号 Y 所在地区
+ 邮编
+ XCSJZ DATE Y 下场时间至
+ RWWCQKVARCHAR2(1) Y 0 任务完成情况 0 未完成 1 是
+ HYLBMCVARCHAR2(60 CHAR) SZDQBHVARCHAR2(32 CHAR) SZDQ VARCHAR2(20 CHAR)
+ YB VARCHAR2(10 CHAR) Y
+ QZRQ DATE Y 取证日期 KHTSYQVARCHAR2(60 CHAR) Y 客户特殊要求 BZ VARCHAR2(500 CHAR) Y 备注
+ XCSJQ DATE Y 下场时间起
+ XCFZR VARCHAR2(10 CHAR) Y XCFZRBH VARCHAR2(10 CHAR) Y xcksbhs 下厂科室组
+ xcrybhs 下厂人员组
+ 下场负责人
+ 下场负责人编号
+ */
+-(void)saveData
+{
+    
+    LoginedUser *usr = [LoginedUser sharedInstance];
+
+    //当前登录用户的usercode
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"usercode"];
+    //委托单位编号
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"WTDWBH"];
+    //委托单位名称
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"WTDWMC"];
+    //单位地址
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"DWDZ"];
+    //联系人
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"LXRXM"];
+    //联系电话
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"LXDH"];
+    //业务负责科室编号
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"YWFZKSBH"];
+    //业务负责科室
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"YWFZKS"];
+    //业务负责人编号
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"YWFZRBH"];
+    //业务负责人
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"YWFZR"];
+    //行业类别id
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"HYLBID"];
+    //行业类别名称
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"HYLBMC"];
+    //所在地区编号
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"SZDQBH"];
+    //所在地区
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"SZDQ"];
+    //邮编
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"YB"];
+    //取证日期
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"QZRQ"];
+    //客户特殊要求
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"KHTSYQ"];
+    //备注
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"BZ"];
+    //下场时间起
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"XCSJQ"];
+    //下场时间至
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"XCSJZ"];
+    //任务完成情况 0 未完成 1 是已完成
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"RWWCQK"];
+    //下场负责人
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"XCFZR"];
+    //下场负责人编号
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"XCFZRBH"];
+    //下厂科室组
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"xcksbhs"];
+    //下厂人员组
+    [self.m_saveDataDict setObject:usr.usercode forKey:@"xcrybhs"];
+    
+}
+
+//TODO:超级低得效率，有待优化
+-(void)ChangeSelectedDepartmentsInfoLabel
+{
+    int iks =0;
+    int ijcy = 0;
+    for(ks_Model *model in  self.m_ks_mansArr)
+    {
+        if (model.isSelected) {
+            iks++;
+            
+            for(ry_Model *ryModel in model.selected_RYArr)
+            {
+                if (ryModel.isSelected ) {
+                    ijcy++;
+                }
+            }
+        }
+    }
+    
+    self.selectedDepartmentsInfoLabel.text = [NSString stringWithFormat:@"已选%d个科室，%d检测员",iks,ijcy];
+    
+    //       ks_Model *model = self.m_ks_mansArr[indexPath.row];
+    
+}
+
+
 #pragma mark - 代理协议方法
 
 #pragma mark Table view data source
@@ -661,6 +797,7 @@
     
   
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //单选功能
@@ -670,9 +807,23 @@
         ks_Model *model = self.m_ks_headArr[indexPath.row];
         if (_lastIndex && _lastIndex.row != indexPath.row) {
             
+             model.isSelected = YES;
+            
             ks_Model *lastModel = self.m_ks_headArr[_lastIndex.row];
-            model.isSelected = YES;
             lastModel.isSelected = NO;
+            
+            /**
+             *  还需要修改科室对应的人员的状态改为未选中状态
+             */
+            lastModel.selected_RYArr = nil;
+            
+            /**
+             *  还需要将ry_Model中 选中的状态改为未选中全部
+             */
+            for(ry_Model *ryModel in lastModel.ryArr)
+            {
+                ryModel.isSelected = NO;
+            }
             
         }else
         {
@@ -686,6 +837,21 @@
         ks_Model *model = self.m_ks_mansArr[indexPath.row];
         
         model.isSelected = !model.isSelected;
+        if (!model.isSelected) {
+            model.selected_RYArr =nil;
+            
+            /**
+             *  还需要将ry_Model中 选中的状态改为未选中全部
+             */
+            for(ry_Model *ryModel in model.ryArr)
+            {
+                ryModel.isSelected = NO;
+            }
+            
+            
+        }
+        
+        [self ChangeSelectedDepartmentsInfoLabel];
         
     }
     
