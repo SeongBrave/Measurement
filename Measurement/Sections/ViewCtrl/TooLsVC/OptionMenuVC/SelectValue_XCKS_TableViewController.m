@@ -85,7 +85,7 @@
      */
     [[BaseNetWork getInstance] showDialog];
     @weakify(self)
-    [[[[BaseNetWork getInstance] rac_getPath:@"getKs.do" parameters:nil]map:^(id responseData)
+    [[[[BaseNetWork getInstance] rac_postPath:@"getKs.do" parameters:nil]map:^(id responseData)
       {
           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
           

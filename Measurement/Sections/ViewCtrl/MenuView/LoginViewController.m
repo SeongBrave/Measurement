@@ -189,7 +189,7 @@
     NSDictionary *reqDict = @{@"usercode":uNameStr,@"password":uPwdStr};
     [[BaseNetWork getInstance] showDialog];
     @weakify(self)
-    [[[[BaseNetWork getInstance] rac_getPath:@"login.do" parameters:reqDict]deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+    [[[[BaseNetWork getInstance] rac_postPath:@"login.do" parameters:reqDict]deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
      subscribeNext:^(id responseData){
          @strongify(self)
          NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];

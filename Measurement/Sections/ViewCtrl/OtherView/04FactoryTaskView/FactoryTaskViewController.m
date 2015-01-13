@@ -34,7 +34,7 @@
     NSDictionary *dict = @{@"userCode":@"1257",@"ID":@"0EFCC23105C84A85AC97588889386397"};
     [[BaseNetWork getInstance] showDialog];
     @weakify(self)
-    [[[[BaseNetWork getInstance] rac_getPath:@"http://192.168.10.169:8080/mbs/convey/findXcrw.do" parameters:dict]map:^(id responseData)
+    [[[[BaseNetWork getInstance] rac_postPath:@"http://192.168.10.169:8080/mbs/convey/findXcrw.do" parameters:dict]map:^(id responseData)
       {
           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
           

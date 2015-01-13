@@ -56,7 +56,7 @@ static BaseNetWork *instance =nil;
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     //请求参数序列化类型
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     //响应结果序列化类型
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     

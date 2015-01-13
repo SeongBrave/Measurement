@@ -322,7 +322,7 @@
     
     [[BaseNetWork getInstance]hideDialog];
     @weakify(self)
-    [[[[[BaseNetWork getInstance] rac_getPath:@"initDutyc.do" parameters:nil]map:^(id responseData)
+    [[[[[BaseNetWork getInstance] rac_postPath:@"initDutyc.do" parameters:nil]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
@@ -468,8 +468,8 @@
        throttle:0.5] subscribeNext:^(NSString *wtdwmcStr)
      {
          [[BaseNetWork getInstance] hideDialog];
-         NSDictionary *dict =@{@"wtdwmc":wtdwmcStr,@"num":@"5"};
-         [[[[[BaseNetWork getInstance] rac_getPath:@"getWtdw.do" parameters:dict]map:^(id responseData)
+         NSDictionary *dict =@{@"wtdwmc":wtdwmcStr,@"num":@"15"};
+         [[[[[BaseNetWork getInstance] rac_postPath:@"getWtdw.do" parameters:dict]map:^(id responseData)
             {
                 NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
                 
@@ -559,7 +559,7 @@
         @weakify(self)
         [[BaseNetWork getInstance] showDialog];
         NSDictionary *dict =@{@"dqbh":dqbhStr};
-        [[[[[BaseNetWork getInstance] rac_getPath:@"findSzdq.do" parameters:dict]map:^(id responseData)
+        [[[[[BaseNetWork getInstance] rac_postPath:@"findSzdq.do" parameters:dict]map:^(id responseData)
            {
                NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
                
@@ -902,7 +902,7 @@
     @weakify(self)
     [[BaseNetWork getInstance] showDialog];
     NSDictionary *dict =@{@"wtdwbm":data.m_dict[@"WTDWBM"]};
-    [[[[[BaseNetWork getInstance] rac_getPath:@"getWtdwjbxx.do" parameters:dict]map:^(id responseData)
+    [[[[[BaseNetWork getInstance] rac_postPath:@"getWtdwjbxx.do" parameters:dict]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
