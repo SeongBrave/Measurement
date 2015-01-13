@@ -53,10 +53,6 @@
  */
 @property(nonatomic, strong)NSArray *m_ks_mansArr;
 
-@property(nonatomic , strong)ks_Model *selected_ks_headModel;
-
-@property(nonatomic , strong)ks_Model *selected_ks_MansModel;
-
 
 /**
  *  科室负责人
@@ -72,10 +68,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *mansTableView;
 
 
-/**
- *  备注
- */
-@property (weak, nonatomic) IBOutlet UITextView *noteTF;
 /**
  *  单位名称
  */
@@ -123,17 +115,31 @@
 /**
  *  取证日期
  */
-@property (weak, nonatomic) IBOutlet UITextField *evidenceDateTF;
+@property (weak, nonatomic) IBOutlet UIView *forensicsDateView;
+@property (weak, nonatomic) IBOutlet CustomButton *forensicsDateBtn;
 
 /**
  *  特殊要求
  */
 @property (weak, nonatomic) IBOutlet UITextField *specialReqTF;
+
+
+/**
+ *  备注
+ */
+@property (weak, nonatomic) IBOutlet UITextView *noteTF;
+
 @property (weak, nonatomic) IBOutlet UIView *fromDateView;
 
 @property (weak, nonatomic) IBOutlet UIView *toDateView;
-@property (weak, nonatomic) IBOutlet UIView *forensicsDateView;
-@property (weak, nonatomic) IBOutlet CustomButton *forensicsDateBtn;
+
+
+
+@property (weak, nonatomic) IBOutlet CustomButton *fromDatePickerBtn;
+@property (weak, nonatomic) IBOutlet CustomButton *toDatePickerBtn;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *selectedDepartmentsInfoLabel;
 
 /**
  *  所在区
@@ -156,10 +162,6 @@
 @property (nonatomic , strong)NSArray *headOFArr;
 
 
-@property (weak, nonatomic) IBOutlet UILabel *selectedDepartmentsInfoLabel;
-
-@property (weak, nonatomic) IBOutlet CustomButton *fromDatePickerBtn;
-@property (weak, nonatomic) IBOutlet CustomButton *toDatePickerBtn;
 
 @end
 
@@ -170,10 +172,10 @@
 -(NSMutableDictionary *)m_saveDataDict
 {
     if (_m_saveDataDict == nil) {
-        self.m_saveDataDict = [[NSMutableDictionary alloc]init];
+        _m_saveDataDict = [[NSMutableDictionary alloc]init];
     }
     
-    return self.m_saveDataDict;
+    return _m_saveDataDict;
 }
 
 #pragma mark - 系统方法
@@ -211,6 +213,7 @@
     {
     
         DatePickerViewController *datePickerVC = (DatePickerViewController*)[segue destinationViewController];
+        datePickerVC.m_date = [NSDate new];
         datePickerVC.dateDelegate = self;
         datePickerVC.m_clickBtn = self.toDatePickerBtn;
         
@@ -219,8 +222,10 @@
     {
         
         DatePickerViewController *datePickerVC = (DatePickerViewController*)[segue destinationViewController];
+        datePickerVC.m_date = [NSDate new];
         datePickerVC.dateDelegate = self;
         datePickerVC.m_clickBtn = self.fromDatePickerBtn;
+
         
     }
     
@@ -228,6 +233,7 @@
     {
         
         DatePickerViewController *datePickerVC = (DatePickerViewController*)[segue destinationViewController];
+        datePickerVC.m_date = [NSDate new];
         datePickerVC.dateDelegate = self;
         datePickerVC.m_clickBtn = self.forensicsDateBtn;
         
@@ -293,6 +299,9 @@
     self.responsibleDepTF.dropDownDataSource = self;
     
  
+    [self.forensicsDateBtn.m_info setObject:[NSDate date] forKey:@"date"];
+    [self.fromDatePickerBtn.m_info setObject:[NSDate date] forKey:@"date"];
+    [self.toDatePickerBtn.m_info setObject:[NSDate date] forKey:@"date"];
     
     /**
      *  ios7以后需要专门设置下分割线要不然不是从每行的开始绘制的
@@ -452,14 +461,6 @@
 -(void)Add_RAC_Attention
 {
     
-    
-    [RACObserve(self,m_ks_mansArr)subscribeNext:^(id next){
-       
-        
-        debug_object(next);
-        
-        
-    }];
     //nameOFEntityTF
     
     @weakify(self);
@@ -541,11 +542,16 @@
             self.zipCodeTF.text = [NSString stringWithFormat:@"%@",dict0[@"WTDWYB"]];
             self.contactTF.text = [NSString stringWithFormat:@"%@",dict1[@"LXR"]];
             self.ContactTELTF.text = [NSString stringWithFormat:@"%@",dict1[@"LXDH"]];
+            self.nameOFEntityTF.m_bm = [dict0 GetLabelWithKey:@"WTDWBM"];
             
             dqbhStr = [NSString stringWithFormat:@"%@",dict0[@"SZDQ"]];
 
         }else //否则说明arr[0] 是 联系人信息
         {
+            /**
+             *  需要给单位名称保存编码
+             */
+            self.nameOFEntityTF.m_bm = [dict1 GetLabelWithKey:@"WTDWBM"];
             self.addrOFEntity.text = [NSString stringWithFormat:@"%@",dict1[@"WTDWDZ"]];
             self.zipCodeTF.text = [NSString stringWithFormat:@"%@",dict1[@"WTDWYB"]];
             self.contactTF.text = [NSString stringWithFormat:@"%@",dict0[@"LXR"]];
@@ -605,7 +611,34 @@
 }
 - (IBAction)okClick:(id)sender {
     
-    [Dialog toast:@"确定"];
+    [self saveData];
+
+    [[BaseNetWork getInstance] showDialogWithVC:self];
+    [[[[[BaseNetWork getInstance] rac_postPath:@"saveDutyc.do" parameters:self.m_saveDataDict]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict[@"ret"];
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSString *str) {
+         
+         if ([str integerValue] == 1) {
+             [Dialog toast:self withMessage:@"保存成功!"];
+         }else
+         {
+             [Dialog toast:self withMessage:@"保存失败!"];
+         }
+         
+         
+     }error:^(NSError *error){
+
+
+         [Dialog toast:self withMessage:error.helpAnchor];
+         debug_object(error);
+         
+         
+     }];
+    
     
     
 }
@@ -645,55 +678,99 @@
     LoginedUser *usr = [LoginedUser sharedInstance];
 
     //当前登录用户的usercode
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"usercode"];
+    [self.m_saveDataDict setObject:[usr.usercode GetNotNullStr]forKey:@"usercode"];
     //委托单位编号
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"WTDWBH"];
+    [self.m_saveDataDict setObject:[_nameOFEntityTF.m_bm GetNotNullStr] forKey:@"WTDWBH"];
     //委托单位名称
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"WTDWMC"];
+    [self.m_saveDataDict setObject:[_nameOFEntityTF.text GetNotNullStr] forKey:@"WTDWMC"];
     //单位地址
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"DWDZ"];
+    [self.m_saveDataDict setObject:[_addrOFEntity.text GetNotNullStr] forKey:@"DWDZ"];
     //联系人
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"LXRXM"];
+    [self.m_saveDataDict setObject:[_contactTF.text GetNotNullStr] forKey:@"LXRXM"];
     //联系电话
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"LXDH"];
-    //业务负责科室编号
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"YWFZKSBH"];
-    //业务负责科室
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"YWFZKS"];
-    //业务负责人编号
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"YWFZRBH"];
-    //业务负责人
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"YWFZR"];
-    //行业类别id
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"HYLBID"];
-    //行业类别名称
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"HYLBMC"];
-    //所在地区编号
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"SZDQBH"];
-    //所在地区
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"SZDQ"];
+    [self.m_saveDataDict setObject:[_ContactTELTF.text GetNotNullStr] forKey:@"LXDH"];
+    
+  
+
+
     //邮编
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"YB"];
-    //取证日期
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"QZRQ"];
+    [self.m_saveDataDict setObject:[_zipCodeTF.text GetNotNullStr] forKey:@"YB"];
+    
+    // 将NSDate格式装换成NSString类型
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    // 设置日历显示格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    // 把日历时间传给字符串
+    NSString *strQzrq = [dateFormatter stringFromDate:self.forensicsDateBtn.m_info[@"date"]];
+    
+    //取证日期 forensicsDateBtn
+    [self.m_saveDataDict setObject:[strQzrq GetNotNullStr] forKey:@"QZRQ"];
     //客户特殊要求
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"KHTSYQ"];
+    [self.m_saveDataDict setObject:[_specialReqTF.text GetNotNullStr] forKey:@"KHTSYQ"];
     //备注
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"BZ"];
+    [self.m_saveDataDict setObject:[_noteTF.text GetNotNullStr] forKey:@"BZ"];
+    
+    
+    NSString *strXcsjq = [dateFormatter stringFromDate:self.fromDatePickerBtn.m_info[@"date"]];
     //下场时间起
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"XCSJQ"];
+    [self.m_saveDataDict setObject:[strXcsjq GetNotNullStr]forKey:@"XCSJQ"];
+    
+     NSString *strXcsjz = [dateFormatter stringFromDate:self.toDatePickerBtn.m_info[@"date"]];
     //下场时间至
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"XCSJZ"];
+    [self.m_saveDataDict setObject:[strXcsjz GetNotNullStr] forKey:@"XCSJZ"];
+    
+    
+    //TODO:需要确认 任务完成情况从哪来的
     //任务完成情况 0 未完成 1 是已完成
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"RWWCQK"];
+    [self.m_saveDataDict setObject:@"0" forKey:@"RWWCQK"];
+    
+    //self.m_ks_headArr
+    
+
+    //TODO:效率太低有待优化
+    NSString *xcfzrStr = nil;
+    NSString *xcfzrbhStr = nil;
+    for(ks_Model *ksModel in self.m_ks_headArr)
+    {
+        if (ksModel.isSelected) {
+            
+            for( ry_Model *rymodel in ksModel.selected_RYArr)
+            {
+                xcfzrStr =  rymodel.username;
+                xcfzrbhStr =  rymodel.usercode;
+            }
+        }
+        
+    }
     //下场负责人
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"XCFZR"];
+    [self.m_saveDataDict setObject:[xcfzrStr GetNotNullStr] forKey:@"XCFZR"];
     //下场负责人编号
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"XCFZRBH"];
+    [self.m_saveDataDict setObject:[xcfzrbhStr GetNotNullStr] forKey:@"XCFZRBH"];
+    
+    
+   
+    NSMutableArray *xcksArr = [[NSMutableArray alloc]init];
+     NSMutableArray *xcryArr = [[NSMutableArray alloc]init];
+    
+    for(ks_Model *ksModel in self.m_ks_mansArr)
+    {
+        if (ksModel.isSelected) {
+            
+            [xcksArr addObject:ksModel.comcode];
+            
+            for( ry_Model *rymodel in ksModel.selected_RYArr)
+            {
+               [xcryArr addObject:rymodel.usercode];
+            }
+        }
+        
+    }
+    
     //下厂科室组
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"xcksbhs"];
+    [self.m_saveDataDict setObject:xcksArr forKey:@"xcksbhs"];
     //下厂人员组
-    [self.m_saveDataDict setObject:usr.usercode forKey:@"xcrybhs"];
+    [self.m_saveDataDict setObject:xcryArr forKey:@"xcrybhs"];
     
 }
 
@@ -948,7 +1025,6 @@
     
     CustomButton *customBtn = (CustomButton *)datePickerVC.m_clickBtn;
     
-    
     [customBtn setTitle:strDate forState:UIControlStateNormal];
     
     [customBtn.m_info setObject:date forKey:@"date"];
@@ -976,14 +1052,36 @@
 -(void)dropDownTextField:(DropDownTextField *)textField didSelectedWithData:(id<DropDownTextFieldShowCellTextLabel>) data forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    DistrictModel *districtModel = self.districtArr[indexPath.row];
+    
+    NSDictionary *dict = districtModel.m_data;
+    
+    debug_object(dict);
+    
+    
     if (textField == self.districtTF) {
+        
+           //所在地区编号
+        [self.m_saveDataDict setObject:[dict GetLabelWithKey:@"dqbh"] forKey:@"SZDQBH"];
+          //所在地区
+        [self.m_saveDataDict setObject:[dict GetLabelWithKey:@"dqmc"] forKey:@"SZDQ"];
         
         
     }else if (textField == self.IndustryCategoriesTF) {
-      
+       
+        //行业类别id
+        [self.m_saveDataDict setObject:[dict GetLabelWithKey:@"ID"] forKey:@"HYLBID"];
+        //行业类别名称
+        [self.m_saveDataDict setObject:[dict GetLabelWithKey:@"DMXXMC"] forKey:@"HYLBMC"];
         
     }else if (textField == self.responsibleDepTF)
     {
+        
+        //业务负责科室
+        [self.m_saveDataDict setObject:[dict GetLabelWithKey:@"comcname"] forKey:@"YWFZKS"];
+        //业务负责科室编号
+        [self.m_saveDataDict setObject:[dict GetLabelWithKey:@"comcode"] forKey:@"YWFZKSBH"];
+        
         //在选择完 业务负责科室 后需要更新业务负责人得数据
         ResponsibleDepModel *respModel = ( ResponsibleDepModel *)data;
         
@@ -1002,9 +1100,14 @@
         
         
     }else if (textField == self.headOFTF) {
+        
+        //业务负责人
+        [self.m_saveDataDict setObject:[dict GetLabelWithKey:@"username"] forKey:@"YWFZR"];
+         //业务负责人编号
+        [self.m_saveDataDict setObject:[dict GetLabelWithKey:@"usercode"] forKey:@"YWFZRBH"];
    
     }
-    debug_object([data getShowCellForTextLabel]);
+
     
 }
 
@@ -1033,8 +1136,7 @@
 #pragma mark - PlanDetailsMans_DepCellDelegate
 -(void)planDetailsMans_DepCell:(PlanDetailsMans_DepCell*) depCell didSelectedWithks_Model:(ks_Model *) ksModel
 {
-    
-    self.selected_ks_headModel = ksModel;
+
     DepMansViewController *depManVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DepMansViewController"];
 
     depManVC.m_delegate = self;

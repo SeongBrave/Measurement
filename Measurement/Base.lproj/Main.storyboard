@@ -544,12 +544,10 @@
                                                                 <constraint firstAttribute="height" constant="40" id="D8E-eY-ug9"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                            <state key="normal" title="编辑">
+                                                            <state key="normal" backgroundImage="right-card-button-bj-defauit">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <state key="highlighted">
-                                                                <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </state>
+                                                            <state key="highlighted" backgroundImage="right-card-button-bj-selected"/>
                                                             <connections>
                                                                 <action selector="editorPress:" destination="Pp6-Xn-uOv" eventType="touchUpInside" id="PJx-iQ-bFm"/>
                                                             </connections>
@@ -560,11 +558,11 @@
                                                                 <constraint firstAttribute="height" constant="40" id="wJH-Eq-qPB"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                            <state key="normal" title="删除">
+                                                            <state key="normal" backgroundImage="right-card-button-sc-defauit">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <state key="highlighted">
-                                                                <color key="titleShadowColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <state key="highlighted" backgroundImage="right-card-button-bj-selected">
+                                                                <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
                                                                 <action selector="deletePress:" destination="Pp6-Xn-uOv" eventType="touchUpInside" id="BD6-bX-TOA"/>
@@ -576,9 +574,9 @@
                                                                 <constraint firstAttribute="height" constant="40" id="lkv-Y8-jqY"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                            <state key="normal" title="标记完成"/>
-                                                            <state key="highlighted">
-                                                                <color key="titleShadowColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <state key="normal" backgroundImage="right-card-button-bjwc-defauit"/>
+                                                            <state key="highlighted" backgroundImage="right-card-button-bjwc-selected">
+                                                                <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
                                                                 <action selector="markCompletedPress:" destination="Pp6-Xn-uOv" eventType="touchUpInside" id="uV7-bO-vma"/>
@@ -715,6 +713,9 @@
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下厂人员" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJH-Vb-gWe">
                                                                     <rect key="frame" x="192" y="155" width="56" height="17"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="170" id="euV-fL-7Zw"/>
+                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                                     <color key="textColor" red="0.29803921570000003" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -727,6 +728,9 @@
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="无" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1El-la-bKq">
                                                                     <rect key="frame" x="234" y="178" width="14" height="17"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="175" id="vvS-3O-jqn"/>
+                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                                     <color key="textColor" red="0.29803921570000003" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -1765,7 +1769,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5MF-yh-xtZ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5MF-yh-xtZ">
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="15" id="8V4-RW-bGg"/>
                                                     </constraints>
@@ -4127,6 +4131,11 @@
         <image name="right-button-xx" width="140" height="52"/>
         <image name="right-card-add- selected" width="580" height="388"/>
         <image name="right-card-add-defauit" width="580" height="388"/>
+        <image name="right-card-button-bj-defauit" width="150" height="74"/>
+        <image name="right-card-button-bj-selected" width="150" height="74"/>
+        <image name="right-card-button-bjwc-defauit" width="150" height="74"/>
+        <image name="right-card-button-bjwc-selected" width="150" height="74"/>
+        <image name="right-card-button-sc-defauit" width="150" height="74"/>
         <image name="right-sign-selected" width="300" height="126"/>
         <image name="sign-in-button" width="798" height="114"/>
     </resources>

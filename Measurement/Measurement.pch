@@ -32,5 +32,6 @@
 #import "CustomButton.h"
 #import "NSDate+Common.h"
 #import "NSDictionary+GetJsonStr.h"
+#import "NSString+NotNullStr.h"
 
 #endif

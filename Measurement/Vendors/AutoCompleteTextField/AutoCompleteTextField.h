@@ -17,6 +17,11 @@
 @interface AutoCompleteTextField : UITextField<UITableViewDataSource, UITableViewDelegate, AutoCompleteSortOperationDelegate>
 
 
+
+/**
+ *  对应的编码
+ */
+@property(nonatomic ,strong)NSString *m_bm;
 @property (strong, readonly) UITableView *autoCompleteTableView;
 
 // all delegates and datasources should be weak referenced

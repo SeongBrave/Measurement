@@ -81,16 +81,25 @@ static CGFloat BUTTONWIDTH = 70.0f;
     
     self.dataDict = commonLogicDict;
     
-    self.m_dateL.text = [NSString stringWithFormat:@"今天"];
-    self.m_companyNameL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"WTDWMC"]];
-    self.m_companyAddrL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"SZDQ"]];
-    self.m_contactNameL.text = [NSString stringWithFormat:@"张科长"];
-    self.m_contactTelL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"LXDH"]];
-    self.m_inFactoryTimeL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"CJSJ"]];
-    self.m_headManNameL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"YWFZR"]];
-    self.m_inFactoryMansL.text = [NSString stringWithFormat:@"刘淑敏、蔡小凡"];
-    self.m_noteL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"BZ"]];
+    self.m_dateL.text =[product GetLabelWithKey:@"今天"];
+    self.m_companyNameL.text = [product GetLabelWithKey:@"WTDWMC"];
+    self.m_companyAddrL.text = [product GetLabelWithKey:@"SZDQ"];
+    self.m_contactNameL.text =  [product GetLabelWithKey:@"CJR"];
+    self.m_contactTelL.text = [product GetLabelWithKey:@"LXDH"];
+    self.m_inFactoryTimeL.text = [product GetLabelWithKey:@"CJSJ"];
+    self.m_headManNameL.text = [product GetLabelWithKey:@"YWFZR"];
+   
+    self.m_noteL.text =[product GetLabelWithKey:@"BZ"];
     
+    NSMutableString *inFactoryMansStr = [[NSMutableString alloc]init];
+    
+    for(NSDictionary *dict in product[@"xcry"])
+    {
+        [inFactoryMansStr appendFormat:@",%@",dict[@"XCRY"]];
+    }
+    
+     self.m_inFactoryMansL.text = inFactoryMansStr.length>=1?[inFactoryMansStr substringFromIndex:1]:@"无";
+
 }
 
 - (void)awakeFromNib{

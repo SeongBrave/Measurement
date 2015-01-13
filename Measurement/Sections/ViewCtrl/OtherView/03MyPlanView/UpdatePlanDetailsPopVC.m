@@ -770,8 +770,10 @@
      }];
     
     
-    
-    [[[[[BaseNetWork getInstance] rac_postPath:@"jcjds.do" parameters:@{@"rwbh":@"003ac671dd1e45738aa515701d21c95e"}]map:^(id responseData)
+    /**
+     *  获取检测进度数据
+     */
+    [[[[[BaseNetWork getInstance] rac_postPath:@"jcjds.do" parameters:@{@"rwbh":self.m_showDict[@"RWBH"]}]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
@@ -822,7 +824,7 @@
      *
      *  @return
      */
-    [[[[[BaseNetWork getInstance] rac_postPath:@"khqzrwxx.do" parameters:@{@"rwbh":@"003ac671dd1e45738aa515701d21c95e"}]map:^(id responseData)
+    [[[[[BaseNetWork getInstance] rac_postPath:@"khqzrwxx.do" parameters:@{@"rwbh":self.m_showDict[@"RWBH"]}]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            

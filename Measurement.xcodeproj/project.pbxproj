@@ -10,6 +10,7 @@
 		C903B0C51A5EB1B00038AA1B /* PlanDetailsHead_DepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C903B0C41A5EB1B00038AA1B /* PlanDetailsHead_DepCell.m */; };
 		C903B0C81A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C903B0C71A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m */; };
 		C903B0D11A5EBF910038AA1B /* DepMans_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = C903B0D01A5EBF910038AA1B /* DepMans_Cell.m */; };
+		C9227A801A6556C3009F780D /* libToolsLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9227A7F1A6556C3009F780D /* libToolsLib.a */; };
 		C92F29951A5D0D89001AB4C8 /* DropDownTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C92F29941A5D0D89001AB4C8 /* DropDownTextField.m */; };
 		C9431FBD1A4DAF7B0017FED0 /* MyPlanViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */; };
 		C9651ECC1A43AD8F00B770BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651ECB1A43AD8F00B770BB /* main.m */; };
@@ -95,7 +96,6 @@
 		C9D6B9F71A5AE648006D27EF /* NSString+Levenshtein.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */; };
 		C9D88CF61A5E2D0D003ED50F /* ks_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D88CF51A5E2D0D003ED50F /* ks_Model.m */; };
 		C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E226D61A52FF6E004A9A69 /* DatePickerViewController.m */; };
-		C9E382181A640AEA0017C55E /* libToolsLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E382171A640AEA0017C55E /* libToolsLib.a */; };
 		C9E94DCA1A4A669100E8CC83 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9E94DC01A4A669100E8CC83 /* MJRefresh.bundle */; };
 		C9E94DCB1A4A669100E8CC83 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E94DC31A4A669100E8CC83 /* MJRefreshBaseView.m */; };
 		C9E94DCC1A4A669100E8CC83 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E94DC51A4A669100E8CC83 /* MJRefreshConst.m */; };
@@ -131,6 +131,8 @@
 		C903B0C71A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanDetailsMans_DepCell.m; sourceTree = "<group>"; };
 		C903B0CF1A5EBF910038AA1B /* DepMans_Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepMans_Cell.h; sourceTree = "<group>"; };
 		C903B0D01A5EBF910038AA1B /* DepMans_Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepMans_Cell.m; sourceTree = "<group>"; };
+		C9227A7F1A6556C3009F780D /* libToolsLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libToolsLib.a; sourceTree = "<group>"; };
+		C9227A811A6556E0009F780D /* NSString+NotNullStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NotNullStr.h"; sourceTree = "<group>"; };
 		C92F29931A5D0D89001AB4C8 /* DropDownTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownTextField.h; sourceTree = "<group>"; };
 		C92F29941A5D0D89001AB4C8 /* DropDownTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownTextField.m; sourceTree = "<group>"; };
 		C9431FBB1A4DAF7B0017FED0 /* MyPlanViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlanViewCell.h; sourceTree = "<group>"; };
@@ -325,7 +327,6 @@
 		C9D88CF51A5E2D0D003ED50F /* ks_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ks_Model.m; sourceTree = "<group>"; };
 		C9E226D51A52FF6E004A9A69 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		C9E226D61A52FF6E004A9A69 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
-		C9E382171A640AEA0017C55E /* libToolsLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libToolsLib.a; sourceTree = "<group>"; };
 		C9E94DC01A4A669100E8CC83 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		C9E94DC11A4A669100E8CC83 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		C9E94DC21A4A669100E8CC83 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -363,7 +364,7 @@
 			files = (
 				F65BA8D3002CC2F8A0A2DE2E /* libPods.a in Frameworks */,
 				C965204C1A43FBE200B770BB /* libDialog.a in Frameworks */,
-				C9E382181A640AEA0017C55E /* libToolsLib.a in Frameworks */,
+				C9227A801A6556C3009F780D /* libToolsLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -832,6 +833,7 @@
 		C965201F1A43C8BE00B770BB /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				C9227A811A6556E0009F780D /* NSString+NotNullStr.h */,
 				C96520201A43C8BE00B770BB /* NSDate+Common.h */,
 				C96520211A43C8BE00B770BB /* NSDate+TimeAgo.h */,
 				C96520221A43C8BE00B770BB /* NSDictionary+GetJsonStr.h */,
@@ -867,8 +869,8 @@
 		C96520371A43C8BE00B770BB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C9227A7F1A6556C3009F780D /* libToolsLib.a */,
 				C96520381A43C8BE00B770BB /* CircleView.h */,
-				C9E382171A640AEA0017C55E /* libToolsLib.a */,
 			);
 			path = Views;
 			sourceTree = "<group>";

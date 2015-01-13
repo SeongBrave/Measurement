@@ -52,6 +52,10 @@
 @property(nonatomic , assign)id<DropDownTextFieldDataSource> dropDownDataSource;
 
 
+/**
+ *  对应的编码
+ */
+@property(nonatomic ,strong)NSString *m_bm;
 
 @property (assign) CGFloat dropDownFontSize;
 @property (strong) NSString *dropDownFontName;
