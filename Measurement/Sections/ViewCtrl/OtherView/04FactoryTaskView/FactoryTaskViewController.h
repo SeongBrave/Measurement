@@ -10,7 +10,10 @@
  *  下厂任务
  */
 #import "CommonLogicViewController.h"
+#import "PopViewDelegate.h"
 
-@interface FactoryTaskViewController : UIViewController
+
+
+@interface FactoryTaskViewController : CommonLogicViewController
 
 @end

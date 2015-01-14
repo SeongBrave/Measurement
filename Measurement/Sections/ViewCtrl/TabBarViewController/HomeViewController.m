@@ -134,7 +134,7 @@
         {
             
             UIStoryboard *story = [UIStoryboard storyboardWithName:@"Other" bundle:nil];
-            vc = [story instantiateViewControllerWithIdentifier:@"FactoryTaskViewController"];;
+            vc = [self.storyboard instantiateViewControllerWithIdentifier:@"FactoryTaskViewController"];;
             
         }else
         {
