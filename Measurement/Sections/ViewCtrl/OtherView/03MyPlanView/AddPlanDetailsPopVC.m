@@ -700,7 +700,7 @@
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     // 设置日历显示格式
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     // 把日历时间传给字符串
     NSString *strQzrq = [dateFormatter stringFromDate:self.forensicsDateBtn.m_info[@"date"]];
     

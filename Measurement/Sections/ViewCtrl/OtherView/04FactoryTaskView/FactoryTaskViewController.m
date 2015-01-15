@@ -17,7 +17,7 @@
 #import "DropDownListView.h"
 
 
-@interface FactoryTaskViewController ()<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, SwipeCellDelegate,UIPopoverControllerDelegate,UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,PopViewDelegate,DropDownChooseDelegate,DropDownChooseDataSource>
+@interface FactoryTaskViewController ()<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, SwipeCellDelegate,UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,PopViewDelegate,DropDownChooseDelegate,DropDownChooseDataSource>
 {
     NSArray *chooseArray ;
 }

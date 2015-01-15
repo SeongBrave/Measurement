@@ -162,7 +162,7 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HwL-hE-BjJ">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HwL-hE-BjJ">
                                 <rect key="frame" x="620" y="70" width="115" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="ETQ-DP-kV0"/>
@@ -880,7 +880,7 @@
                                     <outlet property="delegate" destination="Q84-99-bzW" id="WOZ-yK-yUB"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rK2-Q6-n8b" customClass="DropDownListView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rK2-Q6-n8b" customClass="DropDownListView">
                                 <rect key="frame" x="550" y="68" width="115" height="26"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -2058,6 +2058,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUH-NV-i0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="586.5" y="-6077.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ZUr-a8-wCD">
+            <objects>
+                <viewController storyboardIdentifier="updatePopVC" id="S4c-d4-WtR" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tuq-ec-ofQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="NH5-8E-t0C"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="79v-Vc-pkd">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="450"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.16859552329999999" green="0.65476115030000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="768" height="450"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="omb-E6-XCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-234" y="-6391"/>
         </scene>
         <!--Date Picker View Controller-->
         <scene sceneID="Voo-vp-S3l">
@@ -4532,7 +4553,7 @@
                                     <outlet property="delegate" destination="Bti-xT-zkV" id="sRY-gh-uNC"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zt7-Wl-msi" customClass="DropDownListView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zt7-Wl-msi" customClass="DropDownListView">
                                 <rect key="frame" x="550" y="68" width="115" height="26"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -4568,7 +4589,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rOt-Ah-c8d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2046" y="-3878"/>
+            <point key="canvasLocation" x="-2240" y="-3869"/>
         </scene>
         <!--Factory Task Detail View PopVC-->
         <scene sceneID="YeP-Wb-yCa">
@@ -4897,6 +4918,7 @@
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
+                                                            <action selector="TestPoP:" destination="1Ku-ID-uUI" eventType="touchUpInside" id="Sws-wP-fYd"/>
                                                             <action selector="okClick:" destination="3TU-a3-8tX" eventType="touchUpInside" id="HkW-Rr-HNT"/>
                                                             <action selector="okClick:" destination="1Ku-ID-uUI" eventType="touchUpInside" id="hGh-tH-BXq"/>
                                                         </connections>

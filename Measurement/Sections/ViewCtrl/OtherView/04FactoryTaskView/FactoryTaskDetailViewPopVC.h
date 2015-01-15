@@ -12,11 +12,11 @@
 #import "BaseViewController.h"
 #import "PopViewDelegate.h"
 
-@interface FactoryTaskDetailViewPopVC : BaseViewController
+@interface FactoryTaskDetailViewPopVC : BaseViewController<UIPopoverControllerDelegate>
 
 @property(nonatomic , assign)id<PopViewDelegate> m_popDelegate;
 
-
+@property(nonatomic , strong)UIPopoverController *m_popVC;
 /**
  *  用于显示的数据
  */

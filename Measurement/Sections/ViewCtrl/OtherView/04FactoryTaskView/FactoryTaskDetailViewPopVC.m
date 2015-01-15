@@ -29,7 +29,7 @@
 #import "TestProgressContentCell.h"
 #import "SignatureCell.h"
 #import "SignatureViewController.h"
-
+#import "backgroundV.h"
 
 #define MaxOffset  100
 
@@ -413,7 +413,7 @@
         if (x.first == self.mainScrollView) {
             CGPoint offset = [x.first contentOffset];
             NSInteger currentPage = (NSInteger)roundf(offset.x / self.view.frame.size.width);
-            
+        
             [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
            
                 make.height.equalTo(@4);
@@ -422,6 +422,7 @@
                     case 0:
                         make.centerX.equalTo(self.planBtn.mas_centerX);
                         make.width.equalTo(@60);
+//                        self.view.frame.size.height = 800;
                         break;
                     case 1:
                         make.centerX.equalTo(self.testProgressBtn.mas_centerX);
@@ -950,5 +951,28 @@
     
     
     
+}
+- (IBAction)TestPoP:(id)sender {
+    
+    
+    UIButton *btn = sender;
+//    updatePopVC
+    
+    UIViewController *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"updatePopVC"];
+
+    
+    self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
+    self.m_popVC.delegate = self;
+    //TODO:popoverLayoutMargins是指你的popover相对于整个window上下左右的margin
+    self.m_popVC.popoverLayoutMargins = UIEdgeInsetsMake(20,0,0,0);
+    
+    self.m_popVC.popoverBackgroundViewClass = [backgroundV class];
+    // 设定展示区域的大小
+    // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
+    //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
+    [self.m_popVC presentPopoverFromRect:self.view.bounds
+                                  inView:self.view
+                permittedArrowDirections:0
+                                animated:YES];
 }
 @end
