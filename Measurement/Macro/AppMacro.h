@@ -22,7 +22,7 @@
 
 
 //webservice配置
-#define defaultWebServiceUrl @"http://192.168.10.169:8080/mbs/convey/"
+#define defaultWebServiceUrl @"http://192.168.10.205:8080/mbs/convey/"
 
 
 
