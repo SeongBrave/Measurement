@@ -173,11 +173,42 @@
 {
     if (_m_saveDataDict == nil) {
         _m_saveDataDict = [[NSMutableDictionary alloc]init];
+        [self resetSaveDict];
+        
     }
     
     return _m_saveDataDict;
 }
 
+-(void)resetSaveDict
+{
+    _m_saveDataDict[@"BZ"] = @"";
+    _m_saveDataDict[@"DWDZ"] = @"";
+    _m_saveDataDict[@"HYLBID"] = @"";
+    _m_saveDataDict[@"HYLBMC"] = @"";
+    _m_saveDataDict[@"KHTSYQ"] = @"";
+    _m_saveDataDict[@"LXDH"] = @"";
+    _m_saveDataDict[@"LXRXM"] = @"";
+    _m_saveDataDict[@"QZRQ"] = @"";
+    _m_saveDataDict[@"RWWCQK"] = @"";
+    _m_saveDataDict[@"SZDQ"] = @"";
+    _m_saveDataDict[@"SZDQBH"] = @"";
+    _m_saveDataDict[@"WTDWBH"] = @"";
+    _m_saveDataDict[@"WTDWMC"] = @"";
+    _m_saveDataDict[@"XCFZR"] = @"";
+    _m_saveDataDict[@"XCFZRBH"] = @"";
+    _m_saveDataDict[@"XCSJQ"] = @"";
+     _m_saveDataDict[@"XCSJZ"] = @"";
+     _m_saveDataDict[@"YB"] = @"";
+     _m_saveDataDict[@"YWFZKS"] = @"";
+    _m_saveDataDict[@"YWFZKSBH"] = @"";
+    _m_saveDataDict[@"YWFZR"] = @"";
+    _m_saveDataDict[@"YWFZRBH"] = @"";
+    _m_saveDataDict[@"usercode"] = @"";
+    _m_saveDataDict[@"xcksbhs"] = @"";
+    _m_saveDataDict[@"xcrybhs"] = @"";
+    
+}
 #pragma mark - 系统方法
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -1052,15 +1083,12 @@
 -(void)dropDownTextField:(DropDownTextField *)textField didSelectedWithData:(id<DropDownTextFieldShowCellTextLabel>) data forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    DistrictModel *districtModel = self.districtArr[indexPath.row];
-    
-    NSDictionary *dict = districtModel.m_data;
-    
-    debug_object(dict);
-    
     
     if (textField == self.districtTF) {
         
+        DistrictModel *districtModel = self.districtArr[indexPath.row];
+        
+        NSDictionary *dict = districtModel.m_data;
            //所在地区编号
         [self.m_saveDataDict setObject:[dict GetLabelWithKey:@"dqbh"] forKey:@"SZDQBH"];
           //所在地区
@@ -1068,6 +1096,10 @@
         
         
     }else if (textField == self.IndustryCategoriesTF) {
+        
+        DistrictModel *districtModel = self.industryCategoriesArr[indexPath.row];
+        
+        NSDictionary *dict = districtModel.m_data;
        
         //行业类别id
         [self.m_saveDataDict setObject:[dict GetLabelWithKey:@"ID"] forKey:@"HYLBID"];
@@ -1076,6 +1108,10 @@
         
     }else if (textField == self.responsibleDepTF)
     {
+        
+        DistrictModel *districtModel = self.responsibleDepArr[indexPath.row];
+        
+        NSDictionary *dict = districtModel.m_data;
         
         //业务负责科室
         [self.m_saveDataDict setObject:[dict GetLabelWithKey:@"comcname"] forKey:@"YWFZKS"];
@@ -1101,6 +1137,9 @@
         
     }else if (textField == self.headOFTF) {
         
+        DistrictModel *districtModel = self.headOFArr[indexPath.row];
+        
+        NSDictionary *dict = districtModel.m_data;
         //业务负责人
         [self.m_saveDataDict setObject:[dict GetLabelWithKey:@"username"] forKey:@"YWFZR"];
          //业务负责人编号

@@ -167,31 +167,65 @@ static BaseNetWork *instance =nil;
                 
                 AFHTTPRequestOperationManager *manager = [self getRequestOperationManager];
                 
-                AFHTTPRequestOperation *opation;
+                __block AFHTTPRequestOperation *opation;
                 
                 switch (requestType) {
                     case RequestPost:
                     {
-                        
-                        opation = [manager POST:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            
-                            @strongify(self)
-                            if (self.isShow) {
-                               [self.m_show hideProgress];
-                                self.bgVC = nil;
+                        __block BOOL isUploadImage = NO;
+                        [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
+                            if([[key lowercaseString] isEqualToString:@"image:"])
+                            {
+                                *stop = YES;//停止遍历
+                                isUploadImage = YES;//标记为上传图片模式
+                                
+                             opation =  [manager POST:path parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+                                    [formData appendPartWithFileData:obj name:(NSString *)key fileName:@"upload.jpeg" mimeType:@"image/jpeg"];
+                                    //                [formData appen]
+                                } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                  
+                                    @strongify(self)
+                                    if (self.isShow) {
+                                        [self.m_show hideProgress];
+                                        self.bgVC = nil;
+                                    }
+                                    [subscriber sendNext:responseObject];
+                                    [subscriber sendCompleted];
+                                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                    @strongify(self)
+                                    if (self.isShow) {
+                                        self.bgVC = nil;
+                                        [self.m_show hideProgress];
+                                    }
+                                    [subscriber sendError:error];
+                                    
+                                 
+                                }];
+                            }else
+                            {
+                                opation = [manager POST:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                    
+                                    @strongify(self)
+                                    if (self.isShow) {
+                                        [self.m_show hideProgress];
+                                        self.bgVC = nil;
+                                    }
+                                    [subscriber sendNext:responseObject];
+                                    [subscriber sendCompleted];
+                                    
+                                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                    @strongify(self)
+                                    if (self.isShow) {
+                                        self.bgVC = nil;
+                                        [self.m_show hideProgress];
+                                    }
+                                    [subscriber sendError:error];
+                                    
+                                }];
                             }
-                            [subscriber sendNext:responseObject];
-                            [subscriber sendCompleted];
-                            
-                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            @strongify(self)
-                            if (self.isShow) {
-                                self.bgVC = nil;
-                                [self.m_show hideProgress];
-                            }
-                            [subscriber sendError:error];
-                            
                         }];
+
+
                         
                     }
                         break;

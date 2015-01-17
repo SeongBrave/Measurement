@@ -41,7 +41,37 @@
         [self.m_delegate SignatureVC:self saveUpWithImage:signatureImage];
         
     }
+    
 //    网络请求发送签名图片
+    
+    @weakify(self)
+    [[BaseNetWork getInstance] hideDialog];
+    NSDictionary *dict =@{@"image":self.signatureView.signatureImage};
+    [[[[[BaseNetWork getInstance] rac_postPath:@"khqrqz.do" parameters:dict]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return [dict valueForKeyPath:@"wtdwList"];
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSArray *arr) {
+         @strongify(self)
+         
+     
+         
+         
+     }error:^(NSError *error){
+         //          @strongify(self)
+         ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
+         ////          self.m_DataSourceArr = arr;
+         ////          [_header endRefreshing];
+         ////          [_footer endRefreshing];
+         ////
+         ////          [self failedGetDataWithResponseData:arr];
+         //          //          [self.m_collectionView reloadData];
+         
+         
+     }];
+
 }
 
 - (IBAction)dismissVC:(id)sender {
