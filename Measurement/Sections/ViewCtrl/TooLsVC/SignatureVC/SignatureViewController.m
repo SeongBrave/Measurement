@@ -34,7 +34,7 @@
 
 - (IBAction)confirmButtonPress:(id)sender{
     
-
+    
     UIImage *signatureImage = self.signatureView.signatureImage;
     
     if ([self.m_delegate respondsToSelector:@selector(SignatureVC:saveUpWithImage:)]) {
@@ -42,21 +42,33 @@
         
     }
     
-//    网络请求发送签名图片
+    NSData *_data = UIImageJPEGRepresentation(self.signatureView.signatureImage, 1.0f);
+    
+    NSString *_encodedImageStr = [_data base64Encoding];
+    
+    
+    
+    //    网络请求发送签名图片
     
     @weakify(self)
     [[BaseNetWork getInstance] hideDialog];
-    NSDictionary *dict =@{@"image":self.signatureView.signatureImage};
-    [[[[[BaseNetWork getInstance] rac_postPath:@"khqrqz.do" parameters:dict]map:^(id responseData)
+    NSDictionary *dict =@{@"imgBase64":_encodedImageStr,@"rwbh":@"5dce769b2f9e46a3b3a2c194f46eb80b"};
+    [[[[[BaseNetWork getInstance] rac_postPath:@"khqrqzToBase64.do" parameters:dict]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
-           return [dict valueForKeyPath:@"wtdwList"];
+           return dict;
        }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-     subscribeNext:^(NSArray *arr) {
-         @strongify(self)
+     subscribeNext:^(NSDictionary *retDict) {
          
-     
+         if ([retDict[@"ret"] intValue] == 1) {
+             [Dialog toast:self withMessage:@"上传成功!"];
+         }else
+         {
+             [Dialog toast:self withMessage:retDict[@"message"]];
+         }
+         
+         
          
          
      }error:^(NSError *error){
@@ -71,25 +83,25 @@
          
          
      }];
-
+    
 }
 
 - (IBAction)dismissVC:(id)sender {
     
     [self dismissViewControllerAnimated:YES completion:^(void){
-    
+        
         
     }];
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

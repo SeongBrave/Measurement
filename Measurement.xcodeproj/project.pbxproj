@@ -10,7 +10,11 @@
 		C903B0C51A5EB1B00038AA1B /* PlanDetailsHead_DepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C903B0C41A5EB1B00038AA1B /* PlanDetailsHead_DepCell.m */; };
 		C903B0C81A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C903B0C71A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m */; };
 		C903B0D11A5EBF910038AA1B /* DepMans_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = C903B0D01A5EBF910038AA1B /* DepMans_Cell.m */; };
-		C9227A801A6556C3009F780D /* libToolsLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9227A7F1A6556C3009F780D /* libToolsLib.a */; };
+		C90EA2481A6BC6950038450A /* libDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C90EA2271A6BC6950038450A /* libDialog.a */; };
+		C90EA24A1A6BC6960038450A /* libToolsLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C90EA2391A6BC6950038450A /* libToolsLib.a */; };
+		C90EA2741A6BC7750038450A /* libScanViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C90EA2721A6BC7750038450A /* libScanViewController.a */; };
+		C90EA2861A6BF68D0038450A /* BottomTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90EA2831A6BF68D0038450A /* BottomTabBarView.m */; };
+		C90EA2871A6BF68D0038450A /* IPadScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90EA2851A6BF68D0038450A /* IPadScanViewController.m */; };
 		C92F29951A5D0D89001AB4C8 /* DropDownTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C92F29941A5D0D89001AB4C8 /* DropDownTextField.m */; };
 		C9431FBD1A4DAF7B0017FED0 /* MyPlanViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */; };
 		C9651ECC1A43AD8F00B770BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651ECB1A43AD8F00B770BB /* main.m */; };
@@ -44,14 +48,12 @@
 		C9651FEE1A43B26000B770BB /* down_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = C9651FB21A43B25F00B770BB /* down_dark.png */; };
 		C9651FEF1A43B26000B770BB /* DropDownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651FB51A43B25F00B770BB /* DropDownListView.m */; };
 		C9651FF71A43BE3100B770BB /* YTKKeyValueStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651FF61A43BE3100B770BB /* YTKKeyValueStore.m */; };
-		C965204C1A43FBE200B770BB /* libDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C965204B1A43FBE200B770BB /* libDialog.a */; };
 		C97093DC1A62B0A000141DC5 /* LoginedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C97093DB1A62B0A000141DC5 /* LoginedUser.m */; };
 		C97093E91A62CBD200141DC5 /* OptionMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97093DF1A62CBD200141DC5 /* OptionMenuTableViewController.m */; };
 		C97093EA1A62CBD200141DC5 /* SelectValue_XCKS_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97093E11A62CBD200141DC5 /* SelectValue_XCKS_TableViewController.m */; };
 		C97093EB1A62CBD200141DC5 /* SelectValue_XCRY_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97093E31A62CBD200141DC5 /* SelectValue_XCRY_TableViewController.m */; };
 		C97093EC1A62CBD200141DC5 /* SelectValueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97093E51A62CBD200141DC5 /* SelectValueTableViewController.m */; };
 		C97093ED1A62CBD200141DC5 /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97093E81A62CBD200141DC5 /* SignatureViewController.m */; };
-		C97093F11A62CC3F00141DC5 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97093F01A62CC3F00141DC5 /* ScanViewController.m */; };
 		C97094551A62D09B00141DC5 /* ProgramOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094241A62D09A00141DC5 /* ProgramOverviewViewController.m */; };
 		C97094561A62D09B00141DC5 /* PlanningDepartmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094271A62D09A00141DC5 /* PlanningDepartmentViewController.m */; };
 		C97094571A62D09B00141DC5 /* AddPlanDetailsPopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C970942A1A62D09A00141DC5 /* AddPlanDetailsPopVC.m */; };
@@ -132,8 +134,32 @@
 		C903B0C71A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanDetailsMans_DepCell.m; sourceTree = "<group>"; };
 		C903B0CF1A5EBF910038AA1B /* DepMans_Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepMans_Cell.h; sourceTree = "<group>"; };
 		C903B0D01A5EBF910038AA1B /* DepMans_Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepMans_Cell.m; sourceTree = "<group>"; };
-		C9227A7F1A6556C3009F780D /* libToolsLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libToolsLib.a; sourceTree = "<group>"; };
-		C9227A811A6556E0009F780D /* NSString+NotNullStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NotNullStr.h"; sourceTree = "<group>"; };
+		C90EA2261A6BC6950038450A /* Dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dialog.h; sourceTree = "<group>"; };
+		C90EA2271A6BC6950038450A /* libDialog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDialog.a; sourceTree = "<group>"; };
+		C90EA22D1A6BC6950038450A /* NSDate+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Common.h"; sourceTree = "<group>"; };
+		C90EA22E1A6BC6950038450A /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeAgo.h"; sourceTree = "<group>"; };
+		C90EA22F1A6BC6950038450A /* NSDictionary+GetJsonStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+GetJsonStr.h"; sourceTree = "<group>"; };
+		C90EA2301A6BC6950038450A /* NSDictionary+MutableDeepCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+MutableDeepCopy.h"; sourceTree = "<group>"; };
+		C90EA2311A6BC6950038450A /* NSLayoutConstraint+ClassMethodPriority.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+ClassMethodPriority.h"; sourceTree = "<group>"; };
+		C90EA2321A6BC6950038450A /* NSMutableArray+AddDictToArr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+AddDictToArr.h"; sourceTree = "<group>"; };
+		C90EA2331A6BC6950038450A /* NSObject+NotNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+NotNull.h"; sourceTree = "<group>"; };
+		C90EA2341A6BC6950038450A /* NSString+NotNullStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NotNullStr.h"; sourceTree = "<group>"; };
+		C90EA2351A6BC6950038450A /* SDiPhoneVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDiPhoneVersion.h; sourceTree = "<group>"; };
+		C90EA2371A6BC6950038450A /* GetAdeviceIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAdeviceIP.h; sourceTree = "<group>"; };
+		C90EA2381A6BC6950038450A /* GetMyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMyView.h; sourceTree = "<group>"; };
+		C90EA2391A6BC6950038450A /* libToolsLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libToolsLib.a; sourceTree = "<group>"; };
+		C90EA2411A6BC6950038450A /* AudioTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioTool.h; sourceTree = "<group>"; };
+		C90EA2421A6BC6950038450A /* ChineseInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseInclude.h; sourceTree = "<group>"; };
+		C90EA2431A6BC6950038450A /* CommonTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTool.h; sourceTree = "<group>"; };
+		C90EA2441A6BC6950038450A /* FileHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelpers.h; sourceTree = "<group>"; };
+		C90EA2451A6BC6950038450A /* ToolsLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsLib.h; sourceTree = "<group>"; };
+		C90EA2471A6BC6950038450A /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
+		C90EA2721A6BC7750038450A /* libScanViewController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libScanViewController.a; sourceTree = "<group>"; };
+		C90EA2731A6BC7750038450A /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
+		C90EA2821A6BF68D0038450A /* BottomTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomTabBarView.h; sourceTree = "<group>"; };
+		C90EA2831A6BF68D0038450A /* BottomTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomTabBarView.m; sourceTree = "<group>"; };
+		C90EA2841A6BF68D0038450A /* IPadScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPadScanViewController.h; sourceTree = "<group>"; };
+		C90EA2851A6BF68D0038450A /* IPadScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPadScanViewController.m; sourceTree = "<group>"; };
 		C92F29931A5D0D89001AB4C8 /* DropDownTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownTextField.h; sourceTree = "<group>"; };
 		C92F29941A5D0D89001AB4C8 /* DropDownTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownTextField.m; sourceTree = "<group>"; };
 		C9431FBB1A4DAF7B0017FED0 /* MyPlanViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlanViewCell.h; sourceTree = "<group>"; };
@@ -206,24 +232,6 @@
 		C9651FB51A43B25F00B770BB /* DropDownListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownListView.m; sourceTree = "<group>"; };
 		C9651FF51A43BE3100B770BB /* YTKKeyValueStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKKeyValueStore.h; sourceTree = "<group>"; };
 		C9651FF61A43BE3100B770BB /* YTKKeyValueStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKKeyValueStore.m; sourceTree = "<group>"; };
-		C965201C1A43C8BE00B770BB /* Dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dialog.h; sourceTree = "<group>"; };
-		C96520201A43C8BE00B770BB /* NSDate+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Common.h"; sourceTree = "<group>"; };
-		C96520211A43C8BE00B770BB /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeAgo.h"; sourceTree = "<group>"; };
-		C96520221A43C8BE00B770BB /* NSDictionary+GetJsonStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+GetJsonStr.h"; sourceTree = "<group>"; };
-		C96520231A43C8BE00B770BB /* NSDictionary+MutableDeepCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+MutableDeepCopy.h"; sourceTree = "<group>"; };
-		C96520241A43C8BE00B770BB /* NSLayoutConstraint+ClassMethodPriority.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+ClassMethodPriority.h"; sourceTree = "<group>"; };
-		C96520251A43C8BE00B770BB /* NSMutableArray+AddDictToArr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+AddDictToArr.h"; sourceTree = "<group>"; };
-		C96520261A43C8BE00B770BB /* NSObject+NotNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+NotNull.h"; sourceTree = "<group>"; };
-		C96520271A43C8BE00B770BB /* SDiPhoneVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDiPhoneVersion.h; sourceTree = "<group>"; };
-		C96520291A43C8BE00B770BB /* GetAdeviceIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAdeviceIP.h; sourceTree = "<group>"; };
-		C965202A1A43C8BE00B770BB /* GetMyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMyView.h; sourceTree = "<group>"; };
-		C96520321A43C8BE00B770BB /* AudioTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioTool.h; sourceTree = "<group>"; };
-		C96520331A43C8BE00B770BB /* ChineseInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseInclude.h; sourceTree = "<group>"; };
-		C96520341A43C8BE00B770BB /* CommonTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTool.h; sourceTree = "<group>"; };
-		C96520351A43C8BE00B770BB /* FileHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelpers.h; sourceTree = "<group>"; };
-		C96520361A43C8BE00B770BB /* ToolsLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsLib.h; sourceTree = "<group>"; };
-		C96520381A43C8BE00B770BB /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
-		C965204B1A43FBE200B770BB /* libDialog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDialog.a; sourceTree = "<group>"; };
 		C97093DA1A62B0A000141DC5 /* LoginedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginedUser.h; sourceTree = "<group>"; };
 		C97093DB1A62B0A000141DC5 /* LoginedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginedUser.m; sourceTree = "<group>"; };
 		C97093DE1A62CBD200141DC5 /* OptionMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionMenuTableViewController.h; sourceTree = "<group>"; };
@@ -236,8 +244,6 @@
 		C97093E51A62CBD200141DC5 /* SelectValueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectValueTableViewController.m; sourceTree = "<group>"; };
 		C97093E71A62CBD200141DC5 /* SignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureViewController.h; sourceTree = "<group>"; };
 		C97093E81A62CBD200141DC5 /* SignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureViewController.m; sourceTree = "<group>"; };
-		C97093EF1A62CC3F00141DC5 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
-		C97093F01A62CC3F00141DC5 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
 		C97094231A62D09A00141DC5 /* ProgramOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramOverviewViewController.h; sourceTree = "<group>"; };
 		C97094241A62D09A00141DC5 /* ProgramOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramOverviewViewController.m; sourceTree = "<group>"; };
 		C97094261A62D09A00141DC5 /* PlanningDepartmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningDepartmentViewController.h; sourceTree = "<group>"; };
@@ -366,8 +372,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F65BA8D3002CC2F8A0A2DE2E /* libPods.a in Frameworks */,
-				C965204C1A43FBE200B770BB /* libDialog.a in Frameworks */,
-				C9227A801A6556C3009F780D /* libToolsLib.a in Frameworks */,
+				C90EA2741A6BC7750038450A /* libScanViewController.a in Frameworks */,
+				C90EA2481A6BC6950038450A /* libDialog.a in Frameworks */,
+				C90EA24A1A6BC6960038450A /* libToolsLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +394,85 @@
 				DA5F62FAAA8BD23C06EFF46D /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C90EA2251A6BC6950038450A /* Dialog */ = {
+			isa = PBXGroup;
+			children = (
+				C90EA2261A6BC6950038450A /* Dialog.h */,
+				C90EA2271A6BC6950038450A /* libDialog.a */,
+			);
+			path = Dialog;
+			sourceTree = "<group>";
+		};
+		C90EA22B1A6BC6950038450A /* ToolsLib */ = {
+			isa = PBXGroup;
+			children = (
+				C90EA22C1A6BC6950038450A /* Categories */,
+				C90EA2361A6BC6950038450A /* Classes */,
+				C90EA2391A6BC6950038450A /* libToolsLib.a */,
+				C90EA2401A6BC6950038450A /* Tools */,
+				C90EA2451A6BC6950038450A /* ToolsLib.h */,
+				C90EA2461A6BC6950038450A /* Views */,
+			);
+			path = ToolsLib;
+			sourceTree = "<group>";
+		};
+		C90EA22C1A6BC6950038450A /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				C90EA22D1A6BC6950038450A /* NSDate+Common.h */,
+				C90EA22E1A6BC6950038450A /* NSDate+TimeAgo.h */,
+				C90EA22F1A6BC6950038450A /* NSDictionary+GetJsonStr.h */,
+				C90EA2301A6BC6950038450A /* NSDictionary+MutableDeepCopy.h */,
+				C90EA2311A6BC6950038450A /* NSLayoutConstraint+ClassMethodPriority.h */,
+				C90EA2321A6BC6950038450A /* NSMutableArray+AddDictToArr.h */,
+				C90EA2331A6BC6950038450A /* NSObject+NotNull.h */,
+				C90EA2341A6BC6950038450A /* NSString+NotNullStr.h */,
+				C90EA2351A6BC6950038450A /* SDiPhoneVersion.h */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		C90EA2361A6BC6950038450A /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C90EA2371A6BC6950038450A /* GetAdeviceIP.h */,
+				C90EA2381A6BC6950038450A /* GetMyView.h */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		C90EA2401A6BC6950038450A /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				C90EA2411A6BC6950038450A /* AudioTool.h */,
+				C90EA2421A6BC6950038450A /* ChineseInclude.h */,
+				C90EA2431A6BC6950038450A /* CommonTool.h */,
+				C90EA2441A6BC6950038450A /* FileHelpers.h */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		C90EA2461A6BC6950038450A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C90EA2471A6BC6950038450A /* CircleView.h */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C90EA2711A6BC7750038450A /* ScanViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C90EA2821A6BF68D0038450A /* BottomTabBarView.h */,
+				C90EA2831A6BF68D0038450A /* BottomTabBarView.m */,
+				C90EA2841A6BF68D0038450A /* IPadScanViewController.h */,
+				C90EA2851A6BF68D0038450A /* IPadScanViewController.m */,
+				C90EA2721A6BC7750038450A /* libScanViewController.a */,
+				C90EA2731A6BC7750038450A /* ScanViewController.h */,
+			);
+			path = ScanViewController;
 			sourceTree = "<group>";
 		};
 		C91ACE141A4FA01D0037757A /* TooLsVC */ = {
@@ -806,76 +892,11 @@
 		C965201A1A43C8BE00B770BB /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				C965201B1A43C8BE00B770BB /* Dialog */,
-				C965201E1A43C8BE00B770BB /* ToolsLib */,
+				C90EA2711A6BC7750038450A /* ScanViewController */,
+				C90EA2251A6BC6950038450A /* Dialog */,
+				C90EA22B1A6BC6950038450A /* ToolsLib */,
 			);
 			path = Library;
-			sourceTree = "<group>";
-		};
-		C965201B1A43C8BE00B770BB /* Dialog */ = {
-			isa = PBXGroup;
-			children = (
-				C965204B1A43FBE200B770BB /* libDialog.a */,
-				C965201C1A43C8BE00B770BB /* Dialog.h */,
-			);
-			path = Dialog;
-			sourceTree = "<group>";
-		};
-		C965201E1A43C8BE00B770BB /* ToolsLib */ = {
-			isa = PBXGroup;
-			children = (
-				C965201F1A43C8BE00B770BB /* Categories */,
-				C96520281A43C8BE00B770BB /* Classes */,
-				C96520311A43C8BE00B770BB /* Tools */,
-				C96520361A43C8BE00B770BB /* ToolsLib.h */,
-				C96520371A43C8BE00B770BB /* Views */,
-			);
-			path = ToolsLib;
-			sourceTree = "<group>";
-		};
-		C965201F1A43C8BE00B770BB /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				C9227A811A6556E0009F780D /* NSString+NotNullStr.h */,
-				C96520201A43C8BE00B770BB /* NSDate+Common.h */,
-				C96520211A43C8BE00B770BB /* NSDate+TimeAgo.h */,
-				C96520221A43C8BE00B770BB /* NSDictionary+GetJsonStr.h */,
-				C96520231A43C8BE00B770BB /* NSDictionary+MutableDeepCopy.h */,
-				C96520241A43C8BE00B770BB /* NSLayoutConstraint+ClassMethodPriority.h */,
-				C96520251A43C8BE00B770BB /* NSMutableArray+AddDictToArr.h */,
-				C96520261A43C8BE00B770BB /* NSObject+NotNull.h */,
-				C96520271A43C8BE00B770BB /* SDiPhoneVersion.h */,
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
-		C96520281A43C8BE00B770BB /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				C96520291A43C8BE00B770BB /* GetAdeviceIP.h */,
-				C965202A1A43C8BE00B770BB /* GetMyView.h */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		C96520311A43C8BE00B770BB /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				C96520321A43C8BE00B770BB /* AudioTool.h */,
-				C96520331A43C8BE00B770BB /* ChineseInclude.h */,
-				C96520341A43C8BE00B770BB /* CommonTool.h */,
-				C96520351A43C8BE00B770BB /* FileHelpers.h */,
-			);
-			path = Tools;
-			sourceTree = "<group>";
-		};
-		C96520371A43C8BE00B770BB /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				C9227A7F1A6556C3009F780D /* libToolsLib.a */,
-				C96520381A43C8BE00B770BB /* CircleView.h */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		C97093D91A62B02900141DC5 /* UserModel */ = {
@@ -914,8 +935,6 @@
 		C97093EE1A62CC3F00141DC5 /* ScanVC */ = {
 			isa = PBXGroup;
 			children = (
-				C97093EF1A62CC3F00141DC5 /* ScanViewController.h */,
-				C97093F01A62CC3F00141DC5 /* ScanViewController.m */,
 			);
 			path = ScanVC;
 			sourceTree = "<group>";
@@ -1537,7 +1556,6 @@
 				C970946C1A62D2DA00141DC5 /* autoTableViewData.m in Sources */,
 				C903B0C81A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m in Sources */,
 				C9BFAA101A487BF400C887B4 /* HeaderView.m in Sources */,
-				C97093F11A62CC3F00141DC5 /* ScanViewController.m in Sources */,
 				C97094671A62D09B00141DC5 /* AuditNotPassViewController.m in Sources */,
 				C9A95B4C1A613CD50017BE2B /* TestProgressContentCell.m in Sources */,
 				C97094641A62D09B00141DC5 /* ChargeManagementViewController.m in Sources */,
@@ -1551,6 +1569,7 @@
 				C97094561A62D09B00141DC5 /* PlanningDepartmentViewController.m in Sources */,
 				C9A95B491A613C890017BE2B /* ProgressOverviewCell.m in Sources */,
 				C970945E1A62D09B00141DC5 /* FactoryTaskViewController.m in Sources */,
+				C90EA2871A6BF68D0038450A /* IPadScanViewController.m in Sources */,
 				C97094601A62D09B00141DC5 /* CheckTaskViewController.m in Sources */,
 				C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */,
 				C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */,
@@ -1598,6 +1617,7 @@
 				C9651FD71A43B26000B770BB /* MyGestureRecognizerView.m in Sources */,
 				C9651FCF1A43B26000B770BB /* CommonTextField.m in Sources */,
 				C9E94DCE1A4A669100E8CC83 /* MJRefreshHeaderView.m in Sources */,
+				C90EA2861A6BF68D0038450A /* BottomTabBarView.m in Sources */,
 				C9651FDA1A43B26000B770BB /* HomeIconButton.m in Sources */,
 				C97094721A62D36A00141DC5 /* DepMansViewController.m in Sources */,
 				C9651FD31A43B26000B770BB /* FlagButton.m in Sources */,
@@ -1751,13 +1771,16 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jia li (RS5JKD7E43)";
 				GCC_PREFIX_HEADER = Measurement/Measurement.pch;
 				INFOPLIST_FILE = Measurement/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Measurement/extern/BaiduMap_SDK",
 					"$(PROJECT_DIR)/Measurement/Library/Dialog",
 					"$(PROJECT_DIR)/Measurement/Library/ToolsLib/Views",
+					"$(PROJECT_DIR)/Measurement/Library/ScanViewController",
+					"$(PROJECT_DIR)/Measurement/Library/ScanViewController/Dialog",
+					"$(PROJECT_DIR)/Measurement/Library/ScanViewController/ToolsLib",
+					"$(PROJECT_DIR)/Measurement/Library/ToolsLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d6318b5d-921d-4fbd-9e73-b8d54f65b185";
@@ -1776,13 +1799,16 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
 				GCC_PREFIX_HEADER = Measurement/Measurement.pch;
 				INFOPLIST_FILE = Measurement/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Measurement/extern/BaiduMap_SDK",
 					"$(PROJECT_DIR)/Measurement/Library/Dialog",
 					"$(PROJECT_DIR)/Measurement/Library/ToolsLib/Views",
+					"$(PROJECT_DIR)/Measurement/Library/ScanViewController",
+					"$(PROJECT_DIR)/Measurement/Library/ScanViewController/Dialog",
+					"$(PROJECT_DIR)/Measurement/Library/ScanViewController/ToolsLib",
+					"$(PROJECT_DIR)/Measurement/Library/ToolsLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6049498f-2732-4389-b150-b3ac94c12b74";

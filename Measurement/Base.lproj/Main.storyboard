@@ -2059,10 +2059,10 @@
             </objects>
             <point key="canvasLocation" x="586.5" y="-6077.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Pad Scan View Controller-->
         <scene sceneID="ZUr-a8-wCD">
             <objects>
-                <viewController storyboardIdentifier="updatePopVC" id="S4c-d4-WtR" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="updatePopVC" id="S4c-d4-WtR" customClass="IPadScanViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tuq-ec-ofQ"/>
                         <viewControllerLayoutGuide type="bottom" id="NH5-8E-t0C"/>

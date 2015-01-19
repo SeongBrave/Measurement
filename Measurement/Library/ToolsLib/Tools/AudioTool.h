@@ -17,8 +17,19 @@
 +(void)vibrate;
 
 
-//播放对应文件的音频
+/**
+ *  播放对应文件的音频
+ *
+ *  @param str 默认格式为wav
+ */
 -(void)voicePromptWithStr:(NSString *) str;
+
+/**
+ *  播放对应文件的音频
+ *
+ *  @param str strType 格式的
+ */
+-(void)voicePromptWithStr:(NSString *) str andWithType:(NSString *) strType;
 
 +(AudioTool *)getInstance;
 @end

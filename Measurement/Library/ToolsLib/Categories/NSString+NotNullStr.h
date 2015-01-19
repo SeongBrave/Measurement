@@ -10,10 +10,11 @@
 
 @interface NSString (NotNullStr)
 
+
 /**
- *  如果字符串为nil或null等就返回@""
+ *  取得一个字符串，该字符串不可能为nil或NSNULL 等
  *
- *  @return
+ *  @return 
  */
 -(NSString *)GetNotNullStr;
 
