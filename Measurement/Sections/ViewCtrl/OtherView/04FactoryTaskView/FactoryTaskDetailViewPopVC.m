@@ -29,7 +29,8 @@
 #import "TestProgressContentCell.h"
 #import "SignatureCell.h"
 #import "SignatureViewController.h"
-#import "backgroundV.h"
+#import "BlackBackGroundV.h"
+#import "AppDelegate.h"
 
 #define MaxOffset  100
 
@@ -38,6 +39,9 @@
 
 @property (assign)BOOL isOpen;
 @property (nonatomic,retain)NSIndexPath *selectIndex;
+@property (weak, nonatomic) IBOutlet UITableView *m_detail_ksry_TableView;
+
+@property(nonatomic , strong)NSArray *m_detail_ksry_Arr;
 
 /**
  *  客户签字
@@ -337,6 +341,15 @@
 //TODO: 添加视图
 -(void)layoutMainCustomView
 {
+    /**
+     *  隐藏滚动条
+     */
+    self.m_detail_ksry_TableView.showsVerticalScrollIndicator = NO;
+    
+    /**
+     *  隐藏分割线
+     */
+    self.m_detail_ksry_TableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.mainScrollView.delegate = self;
 
     
@@ -597,19 +610,58 @@
         [self.m_popDelegate dismissPopoverSelected];
     }
 }
-- (IBAction)cancleClick:(id)sender {
+
+/**
+ *  添加设备
+ *
+ *  @param sender
+ */
+- (IBAction)Add_SB_Click:(id)sender {
+
     
-    if ([self.m_popDelegate respondsToSelector:@selector(dismissPopoverSelected)]) {
-        [self.m_popDelegate dismissPopoverSelected];
-    }
+    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    
+    
+    UIViewController *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"updatePopVC"];
+    
+    
+    self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
+    self.m_popVC.delegate = self;
+    //TODO:popoverLayoutMargins是指你的popover相对于整个window上下左右的margin
+    self.m_popVC.popoverLayoutMargins = UIEdgeInsetsMake(0,0,0,0);
+
+    self.m_popVC.popoverBackgroundViewClass = [BlackBackGroundV class];
+    // 设定展示区域的大小
+    // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
+    //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
+    [self.m_popVC presentPopoverFromRect:app.window.bounds
+                                  inView:app.window
+                permittedArrowDirections:0
+                                animated:YES];
+    
 }
-- (IBAction)okClick:(id)sender {
+
+/**
+ *  进入设备列表
+ *
+ *  @param sender
+ */
+- (IBAction)In_SBLB_Click:(id)sender {
     
- 
+    @weakify(self);
+    [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.testProgressBtn.mas_centerX);
+        make.width.equalTo(@90);
+        make.height.equalTo(@4);
+        make.top.equalTo(self.menuBarView.mas_top).offset(2);
+    }];
+    [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+        @strongify(self)
+        [self.menuBarView layoutIfNeeded];
+        
+    }completion:NULL];
     
-    
-    
-    
+    [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width,0} animated:YES];
 }
 
 
@@ -626,6 +678,9 @@
     }else  if (tableView == self.SignatureTableView)
     {
         return _signatureArr.count;
+    }else if (tableView == self.m_detail_ksry_TableView)
+    {
+        return 1;
     }else
     {
         return 1;
@@ -656,6 +711,9 @@
         NSArray *arr = self.signatureDict[keyStr];
         
         return arr.count +1 ;
+    }else if (tableView == self.m_detail_ksry_TableView)
+    {
+        return 10;
     }
     return 0;
 }
@@ -794,6 +852,15 @@
             
         }
         
+    }else if(tableView == self.m_detail_ksry_TableView)
+    {
+        cellIdentifier = @"ksryCell";
+        UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        
+        cell.textLabel.text = @"调度科，刘凯";
+        
+        return cell;
+        
     }
     
     return nil;
@@ -921,25 +988,6 @@
     return self.m_autoTFArr;
 }
 
-- (IBAction)SignatureClick:(id)sender {
-    
-    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Other" bundle:nil];
-    
-    
-    SignatureViewController *signatureVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SignatureViewController"];
-    
-    
-    signatureVC.m_delegate = self;
-    signatureVC.modalPresentationStyle = UIModalPresentationFormSheet;
-    signatureVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self presentViewController:signatureVC animated:YES completion:nil];
-    //    depManVC.view.superview.bounds = CGRectMake(0, 0, 529, 279);
-    signatureVC.view.superview.frame = CGRectMake(400, 800, 688, 410);//it's important to do this after presentModalViewController
-    signatureVC.view.superview.center = self.view.center;
-    
-    
-}
-
 -(void)SignatureVC:(SignatureViewController*) signatureVC saveUpWithImage:(UIImage *) img
 {
     
@@ -951,28 +999,5 @@
     
     
     
-}
-- (IBAction)TestPoP:(id)sender {
-    
-    
-    UIButton *btn = sender;
-//    updatePopVC
-    
-    UIViewController *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"updatePopVC"];
-
-    
-    self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
-    self.m_popVC.delegate = self;
-    //TODO:popoverLayoutMargins是指你的popover相对于整个window上下左右的margin
-    self.m_popVC.popoverLayoutMargins = UIEdgeInsetsMake(20,0,0,0);
-    
-    self.m_popVC.popoverBackgroundViewClass = [backgroundV class];
-    // 设定展示区域的大小
-    // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
-    //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
-    [self.m_popVC presentPopoverFromRect:self.view.bounds
-                                  inView:self.view
-                permittedArrowDirections:0
-                                animated:YES];
 }
 @end

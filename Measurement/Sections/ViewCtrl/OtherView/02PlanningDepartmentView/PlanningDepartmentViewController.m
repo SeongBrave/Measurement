@@ -141,11 +141,22 @@
 -(void)setBaseNetWorkParameters
 {
     
-    self.m_netFunctionStr = @"loadcDuty.do";
+    LoginedUser *usr = [LoginedUser sharedInstance];
     
-    [self.m_netParamDict setObject:@"1257" forKey:@"userCode"];
+    self.m_netFunctionStr = @"loadcDuty.do";
+    //pxfs
+    [self.m_netParamDict setObject:usr.usercode forKey:@"userCode"];
     [self.m_netParamDict setObject:[NSString stringWithFormat:@"%d",pageNo] forKey:@"pageNo"];
     [self.m_netParamDict setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"pageSize"];
+    
+    /**
+     *  排序字段
+     */
+    [self.m_netParamDict setObject:@"cjsj" forKey:@"pxzd"];
+    /**
+     *  排序方式
+     */
+    [self.m_netParamDict setObject:@"jx" forKey:@"pxfs"];
     
 }
 - (IBAction)CreatePlanClick:(id)sender {
@@ -183,27 +194,17 @@
     
     
     
-    return self.m_DataSourceArr.count +1;
+    return self.m_DataSourceArr.count ;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdentifier = @"MyPlanViewCell";
     
-    if (indexPath.row == self.m_DataSourceArr.count) {
-        
-        UICollectionViewCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"OpenMyPlanViewCell" forIndexPath:indexPath];
-        //        [cell configureCellWithItem:self.m_DataSourceArr[indexPath.row]];
-        //    cell.delegate = self;
-        return cell;
-        
-    }else
-    {
         MyPlanViewCell *cell = (MyPlanViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
         [cell configureCellWithItem:self.m_DataSourceArr[indexPath.row]];
         cell.delegate = self;
         return cell;
-        
-    }
+
     
 }
 

@@ -50,8 +50,7 @@
     
     //    网络请求发送签名图片
     
-    @weakify(self)
-    [[BaseNetWork getInstance] hideDialog];
+    [[BaseNetWork getInstance] showDialogWithVC:self];
     NSDictionary *dict =@{@"imgBase64":_encodedImageStr,@"rwbh":@"5dce769b2f9e46a3b3a2c194f46eb80b"};
     [[[[[BaseNetWork getInstance] rac_postPath:@"khqrqzToBase64.do" parameters:dict]map:^(id responseData)
        {
@@ -62,10 +61,13 @@
      subscribeNext:^(NSDictionary *retDict) {
          
          if ([retDict[@"ret"] intValue] == 1) {
-             [Dialog toast:self withMessage:@"上传成功!"];
+//             [Dialog toast:self withMessage:@"上传成功!"];
+             
+             [Dialog toastCenter:@"上传成功!"];
          }else
          {
-             [Dialog toast:self withMessage:retDict[@"message"]];
+             [Dialog toastCenter:retDict[@"message"]];
+//             [Dialog toast:self withMessage:retDict[@"message"]];
          }
          
          

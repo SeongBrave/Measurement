@@ -1609,4 +1609,32 @@
     
     
 }
+
+#pragma  mark UITextFieldDelegate
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    
+    DropDownTextField *myTextField = (DropDownTextField *)textField;
+    
+    if (myTextField == self.districtTF) {
+        
+        return NO;
+        
+    }else if (myTextField == self.IndustryCategoriesTF) {
+        
+        return NO;
+        
+    }else if (myTextField == self.responsibleDepTF)
+    {
+        
+        return NO;
+        
+        
+        
+    }else if (textField == self.headOFTF) {
+        
+        return NO;
+    }
+    return YES;
+}
 @end

@@ -17,6 +17,7 @@
 		C90EA2871A6BF68D0038450A /* IPadScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90EA2851A6BF68D0038450A /* IPadScanViewController.m */; };
 		C92F29951A5D0D89001AB4C8 /* DropDownTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C92F29941A5D0D89001AB4C8 /* DropDownTextField.m */; };
 		C9431FBD1A4DAF7B0017FED0 /* MyPlanViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */; };
+		C945BB0E1A6D6C3000C6E11E /* BlackBackGroundV.m in Sources */ = {isa = PBXBuildFile; fileRef = C945BB0D1A6D6C3000C6E11E /* BlackBackGroundV.m */; };
 		C9651ECC1A43AD8F00B770BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651ECB1A43AD8F00B770BB /* main.m */; };
 		C9651ECF1A43AD8F00B770BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651ECE1A43AD8F00B770BB /* AppDelegate.m */; };
 		C9651ED51A43AD8F00B770BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9651ED31A43AD8F00B770BB /* Main.storyboard */; };
@@ -164,6 +165,8 @@
 		C92F29941A5D0D89001AB4C8 /* DropDownTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownTextField.m; sourceTree = "<group>"; };
 		C9431FBB1A4DAF7B0017FED0 /* MyPlanViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlanViewCell.h; sourceTree = "<group>"; };
 		C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlanViewCell.m; sourceTree = "<group>"; };
+		C945BB0C1A6D6C3000C6E11E /* BlackBackGroundV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackBackGroundV.h; sourceTree = "<group>"; };
+		C945BB0D1A6D6C3000C6E11E /* BlackBackGroundV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackBackGroundV.m; sourceTree = "<group>"; };
 		C9651EC61A43AD8F00B770BB /* Measurement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Measurement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9651ECA1A43AD8F00B770BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9651ECB1A43AD8F00B770BB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1379,6 +1382,8 @@
 			children = (
 				C9F51E601A582E70009F84D1 /* backgroundV.h */,
 				C9F51E611A582E70009F84D1 /* backgroundV.m */,
+				C945BB0C1A6D6C3000C6E11E /* BlackBackGroundV.h */,
+				C945BB0D1A6D6C3000C6E11E /* BlackBackGroundV.m */,
 			);
 			path = UIPopoverBackgroundView;
 			sourceTree = "<group>";
@@ -1555,6 +1560,7 @@
 				C9BFA9F81A487BB000C887B4 /* HomeViewController.m in Sources */,
 				C970946C1A62D2DA00141DC5 /* autoTableViewData.m in Sources */,
 				C903B0C81A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m in Sources */,
+				C945BB0E1A6D6C3000C6E11E /* BlackBackGroundV.m in Sources */,
 				C9BFAA101A487BF400C887B4 /* HeaderView.m in Sources */,
 				C97094671A62D09B00141DC5 /* AuditNotPassViewController.m in Sources */,
 				C9A95B4C1A613CD50017BE2B /* TestProgressContentCell.m in Sources */,

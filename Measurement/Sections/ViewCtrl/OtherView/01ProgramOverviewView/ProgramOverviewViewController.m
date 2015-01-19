@@ -125,12 +125,22 @@
 -(void)setBaseNetWorkParameters
 {
    
+    LoginedUser *usr = [LoginedUser sharedInstance];
     
     self.m_netFunctionStr = @"findJhzl.do";
-    
-    [self.m_netParamDict setObject:@"1257" forKey:@"userCode"];
+    //pxfs
+    [self.m_netParamDict setObject:usr.usercode forKey:@"userCode"];
     [self.m_netParamDict setObject:[NSString stringWithFormat:@"%d",pageNo] forKey:@"pageNo"];
     [self.m_netParamDict setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"pageSize"];
+    
+    /**
+     *  排序字段
+     */
+    [self.m_netParamDict setObject:@"cjsj" forKey:@"pxzd"];
+    /**
+     *  排序方式
+     */
+    [self.m_netParamDict setObject:@"jx" forKey:@"pxfs"];
     
 }
 

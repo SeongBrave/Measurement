@@ -569,13 +569,13 @@
          NSDictionary *dict1 = [NSDictionary dictionaryWithDictionary:arr[1][0]];
         if ([dict0 objectForKey:@"WTDWDZ"])
         {
-            self.addrOFEntity.text = [NSString stringWithFormat:@"%@",dict0[@"WTDWDZ"]];
-            self.zipCodeTF.text = [NSString stringWithFormat:@"%@",dict0[@"WTDWYB"]];
-            self.contactTF.text = [NSString stringWithFormat:@"%@",dict1[@"LXR"]];
-            self.ContactTELTF.text = [NSString stringWithFormat:@"%@",dict1[@"LXDH"]];
+            self.addrOFEntity.text = [dict0 GetLabelWithKey:@"WTDWDZ"];
+            self.zipCodeTF.text = [dict0 GetLabelWithKey:@"WTDWYB"];
+            self.contactTF.text = [dict1 GetLabelWithKey:@"LXR"];
+            self.ContactTELTF.text = [dict1 GetLabelWithKey:@"LXDH"];
             self.nameOFEntityTF.m_bm = [dict0 GetLabelWithKey:@"WTDWBM"];
             
-            dqbhStr = [NSString stringWithFormat:@"%@",dict0[@"SZDQ"]];
+            dqbhStr = [dict0 GetLabelWithKey:@"SZDQ"];
 
         }else //否则说明arr[0] 是 联系人信息
         {
@@ -583,12 +583,12 @@
              *  需要给单位名称保存编码
              */
             self.nameOFEntityTF.m_bm = [dict1 GetLabelWithKey:@"WTDWBM"];
-            self.addrOFEntity.text = [NSString stringWithFormat:@"%@",dict1[@"WTDWDZ"]];
-            self.zipCodeTF.text = [NSString stringWithFormat:@"%@",dict1[@"WTDWYB"]];
-            self.contactTF.text = [NSString stringWithFormat:@"%@",dict0[@"LXR"]];
-            self.ContactTELTF.text = [NSString stringWithFormat:@"%@",dict0[@"LXDH"]];
+            self.addrOFEntity.text =[dict1 GetLabelWithKey:@"WTDWDZ"];
+            self.zipCodeTF.text = [dict1 GetLabelWithKey:@"WTDWYB"];
+            self.contactTF.text = [dict0 GetLabelWithKey:@"LXR"];
+            self.ContactTELTF.text = [dict0 GetLabelWithKey:@"LXDH"];
             
-            dqbhStr = [NSString stringWithFormat:@"%@",dict1[@"SZDQ"]];
+            dqbhStr = [dict0 GetLabelWithKey:@"SZDQ"];
         }
 
         
@@ -1209,4 +1209,32 @@
     
 }
 
+
+#pragma  mark UITextFieldDelegate
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    
+    DropDownTextField *myTextField = (DropDownTextField *)textField;
+    
+    if (myTextField == self.districtTF) {
+        
+     return NO;
+        
+    }else if (myTextField == self.IndustryCategoriesTF) {
+        
+    return NO;
+        
+    }else if (myTextField == self.responsibleDepTF)
+    {
+        
+    return NO;
+        
+        
+        
+    }else if (textField == self.headOFTF) {
+        
+        return NO;
+    }
+    return YES;
+}
 @end
