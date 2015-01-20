@@ -4655,9 +4655,6 @@
                                         <state key="normal" backgroundImage="popup-return">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="dismissClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="YBo-aL-TE3"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -4816,9 +4813,6 @@
                                                 <rect key="frame" x="179" y="189" width="529" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="aXG-2Y-ofb" id="sD8-xf-L3Y"/>
-                                                </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ljs-1w-PhA">
                                                 <rect key="frame" x="179" y="230" width="529" height="26"/>
@@ -4906,7 +4900,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="cancleClick:" destination="3TU-a3-8tX" eventType="touchUpInside" id="cwq-6l-k21"/>
-                                                    <action selector="cancleClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="f1Z-Cy-3MO"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lds-yM-YR4">
@@ -4916,7 +4909,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="okClick:" destination="3TU-a3-8tX" eventType="touchUpInside" id="Dgu-U1-EOj"/>
-                                                    <action selector="okClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="ZLt-da-sn6"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cCS-IU-YPK">
@@ -5334,10 +5326,6 @@
                                                                 </connections>
                                                             </tableViewCell>
                                                         </prototypes>
-                                                        <connections>
-                                                            <outlet property="dataSource" destination="aXG-2Y-ofb" id="6MH-04-21b"/>
-                                                            <outlet property="delegate" destination="aXG-2Y-ofb" id="ikC-mc-fiE"/>
-                                                        </connections>
                                                     </tableView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ws0-aA-Zni">
                                                         <rect key="frame" x="610" y="547" width="150" height="63"/>
@@ -5348,9 +5336,6 @@
                                                         <state key="normal" backgroundImage="right-sign-selected">
                                                             <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
-                                                        <connections>
-                                                            <action selector="SignatureClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="Zva-DM-ba6"/>
-                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客户签字" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3R-n7-2n8">
                                                         <rect key="frame" x="525" y="568" width="68" height="21"/>
@@ -5656,10 +5641,6 @@
                                                         </connections>
                                                     </tableViewCell>
                                                 </prototypes>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="aXG-2Y-ofb" id="0rD-bj-InZ"/>
-                                                    <outlet property="delegate" destination="aXG-2Y-ofb" id="NQl-y8-svu"/>
-                                                </connections>
                                             </tableView>
                                         </subviews>
                                         <constraints>
@@ -5703,24 +5684,6 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="768" height="748"/>
-                    <connections>
-                        <outlet property="SignatureTableView" destination="fBS-3h-Uaz" id="4YI-lF-CKi"/>
-                        <outlet property="districtTF" destination="LTV-wr-LUH" id="yWH-hs-cAE"/>
-                        <outlet property="mainScrollView" destination="5WD-76-lmm" id="CrG-5C-mTb"/>
-                        <outlet property="menuBarView" destination="02G-M5-rWc" id="trq-2J-vF3"/>
-                        <outlet property="planBtn" destination="2rq-6C-rTO" id="upF-ZV-4eS"/>
-                        <outlet property="planDetailsScrollView" destination="CkD-Qf-R4u" id="1GY-wl-v1e"/>
-                        <outlet property="signatureBtn" destination="Ari-MY-xFk" id="G14-XX-qnS"/>
-                        <outlet property="signatureImgBtn" destination="Ws0-aA-Zni" id="dzv-Ep-Ycd"/>
-                        <outlet property="signatureScrollView" destination="SLt-FU-pab" id="NoL-8f-Az6"/>
-                        <outlet property="signature_dwdz_Label" destination="TL1-kd-tw2" id="1rF-mM-TeU"/>
-                        <outlet property="signature_lxdh_Label" destination="1fC-7i-jtD" id="bPw-YD-ESt"/>
-                        <outlet property="signature_lxrxm_Label" destination="uWP-Pm-qJo" id="WBL-ov-3ey"/>
-                        <outlet property="signature_wtdwmc_Label" destination="S1Q-ow-m0R" id="EYU-8y-i3s"/>
-                        <outlet property="testProgressBtn" destination="taf-nA-Gi0" id="jGL-Qs-rK3"/>
-                        <outlet property="testProgressScrollView" destination="q4Z-Ll-auR" id="gNM-b7-MRe"/>
-                        <outlet property="testProgressTableView" destination="M9d-hI-lo7" id="sQR-XE-wB3"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXa-Jj-DgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
