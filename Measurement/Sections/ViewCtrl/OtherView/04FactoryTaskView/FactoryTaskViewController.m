@@ -11,7 +11,7 @@
 #import <UIColor+HexString.h>
 #import "CompanyCollectionViewCell.h"
 #import "OptionMenuTableViewController.h"
-#import "UpdatePlanDetailsPopVC.h"
+#import "FactoryTaskDetailViewPopVC.h"
 #import "AddPlanDetailsPopVC.h"
 #import "backgroundV.h"
 #import "DropDownListView.h"
@@ -443,7 +443,8 @@
 
     if (indexPath.row  < self.m_DataSourceArr.count) {
         
-        UpdatePlanDetailsPopVC *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"FactoryTaskDetailViewPopVC"];
+        FactoryTaskDetailViewPopVC *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"FactoryTaskDetailViewPopVC"];
+        popVc.m_superVC = self;
         popVc.m_popDelegate = self;
         popVc.m_showDict = self.m_DataSourceArr[indexPath.row];
         

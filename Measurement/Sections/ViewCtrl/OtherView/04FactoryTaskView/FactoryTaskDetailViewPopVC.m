@@ -24,17 +24,23 @@
 #import "DepManViewController.h"
 #import "DepMansViewController.h"
 #import "ProgressOverviewCell.h"
-#import "jcjd_Model.h"
+#import "sblb_Model.h"
 #import "jcjd_Detail_Model.h"
 #import "TestProgressContentCell.h"
 #import "SignatureCell.h"
 #import "SignatureViewController.h"
 #import "BlackBackGroundV.h"
 #import "AppDelegate.h"
+#import "Sblb_TableViewCell.h"
+#import "IPadScanViewController.h"
+#import "backgroundV.h"
+#import "TestingDataRegistViewController.h"
+
+
 
 #define MaxOffset  100
 
-@interface FactoryTaskDetailViewPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate, UIScrollViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,PlanDetailsHead_DepCellDelegate,PlanDetailsMans_DepCellDelegate,DepManVCDelegate,DepMansVCDelegate,SignatureViewDelegate>
+@interface FactoryTaskDetailViewPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate, UIScrollViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,PlanDetailsHead_DepCellDelegate,PlanDetailsMans_DepCellDelegate,DepManVCDelegate,DepMansVCDelegate,SignatureViewDelegate,IPadScanViewControllerDelegate,SWTableViewCellDelegate>
 
 
 @property (assign)BOOL isOpen;
@@ -42,6 +48,13 @@
 @property (weak, nonatomic) IBOutlet UITableView *m_detail_ksry_TableView;
 
 @property(nonatomic , strong)NSArray *m_detail_ksry_Arr;
+
+
+/**
+ *  下厂科室人员
+ */
+@property(nonatomic , strong)NSArray *m_xcry_Arr;
+
 
 /**
  *  客户签字
@@ -68,7 +81,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *signatureBtn;
 @property (weak, nonatomic) IBOutlet UIButton *planBtn;
 //@property (strong, nonatomic)  UIImageView *btnLineImgV;
-@property (weak, nonatomic) IBOutlet UITableView *testProgressTableView;
+@property (weak, nonatomic) IBOutlet UITableView *m_My_Sblb_TableView;
 
 @property(nonatomic ,strong)UIImageView *lineImgV;
 
@@ -94,7 +107,7 @@
 @property(nonatomic, strong)NSArray *m_ks_mansArr;
 
 
-@property(nonatomic , strong)NSArray *m_jcjd_ModelArr;
+@property(nonatomic , strong)NSArray *m_Sblb_ModelArr;
 
 
 @property(nonatomic , strong)ks_Model *selected_ks_headModel;
@@ -303,6 +316,8 @@
 -(void)updateViewDataWithShowDict:(NSDictionary *)showDict
 {
     
+    
+    
     self.nameOFEntityLB.text =  [showDict GetLabelWithKey:@"WTDWMC"];
     
     self.addrOFEntityLB.text = [showDict GetLabelWithKey:@"DWDZ"];
@@ -335,6 +350,9 @@
       self.toDatePickerLB.text = [showDict GetLabelWithKey:@"XCSJQ"];
 
     
+    self.m_xcry_Arr = showDict[@"xcry"];
+    
+    [self.m_detail_ksry_TableView reloadData];
     
     
 }
@@ -350,6 +368,7 @@
      *  隐藏分割线
      */
     self.m_detail_ksry_TableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     self.mainScrollView.delegate = self;
 
     
@@ -357,7 +376,7 @@
      *  设置tableview不可点击
      */
     self.SignatureTableView.allowsSelection=NO;
-    //    self.testProgressTableView.allowsSelection=NO;
+    //    self.m_My_Sblb_TableView.allowsSelection=NO;
     
     
     
@@ -522,6 +541,13 @@
         
     }];
     
+    /**
+     *  我的设备列表
+     *
+     *  @return m_Sblb_ModelArr
+     */
+    
+    
     
 }
 -(void)SetUpData
@@ -600,6 +626,49 @@
 -(void)loadInitDutyc
 {
     
+    /**
+     *  获取检测进度数据
+     */
+    @weakify(self)
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findWdsblb.do" parameters:@{@"rwbh":@"003ac671dd1e45738aa515701d21c95e",@"usercode":@"1283"}]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return [dict valueForKeyPath:@"data"];
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary  *retDict) {
+         
+         NSArray *jcjdArr = retDict[@"sblb"];
+         
+         @strongify(self)
+         
+         /**
+          *  检测进度数据
+          *
+          *  @param
+          *
+          *  @return
+          */
+         self.m_Sblb_ModelArr = [jcjdArr linq_select:^id(NSDictionary *dict){
+             
+             sblb_Model *model = [MTLJSONAdapter modelOfClass:[sblb_Model class] fromJSONDictionary:dict error:nil];
+             
+             
+             return model;
+             
+         }];
+         
+         [self.m_My_Sblb_TableView reloadData];
+         
+         
+         
+         
+     }error:^(NSError *error){
+         
+         
+     }];
+    
+
     
     
 }
@@ -622,8 +691,9 @@
     AppDelegate *app = [UIApplication sharedApplication].delegate;
     
     
-    UIViewController *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"updatePopVC"];
+    IPadScanViewController *popVc = (IPadScanViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"IPadScanViewController"];
     
+    popVc.m_ScanDelegate = self;
     
     self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
     self.m_popVC.delegate = self;
@@ -672,9 +742,9 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     
-    if (tableView == self.testProgressTableView)
+    if (tableView == self.m_My_Sblb_TableView)
     {
-        return _m_jcjd_ModelArr.count;
+        return 1;
     }else  if (tableView == self.SignatureTableView)
     {
         return _signatureArr.count;
@@ -690,17 +760,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (tableView == self.testProgressTableView)
+    if (tableView == self.m_My_Sblb_TableView)
     {
-        if (self.isOpen) {
-            if (self.selectIndex.section == section) {
-                
-                jcjd_Model *model = [_m_jcjd_ModelArr objectAtIndex:section];
-                
-                return [model.jcjdDetailArr count]+2;
-            }
-        }
-        return 1;
+        return  _m_Sblb_ModelArr.count+1;
         
     }else  if (tableView == self.SignatureTableView)
     {
@@ -713,7 +775,7 @@
         return arr.count +1 ;
     }else if (tableView == self.m_detail_ksry_TableView)
     {
-        return 10;
+        return _m_xcry_Arr.count;
     }
     return 0;
 }
@@ -759,57 +821,32 @@
 {
     
     static NSString *cellIdentifier;
-    if (tableView == self.testProgressTableView)
+    if (tableView == self.m_My_Sblb_TableView)
     {
-        
-        
-        if (self.isOpen&&self.selectIndex.section == indexPath.section&&indexPath.row!=0)
-        {
+        if (indexPath.row == 0) {
             
-            
-            if (indexPath.row ==1) {
-                
-                /**
-                 *  表头
-                 */
-                cellIdentifier = @"ProgressOverviewTitleCell";
-                UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-                
-                
-                return cell;
-                
-                
-            }else
-            {
-                cellIdentifier = @"TestProgressContentCell";
-                TestProgressContentCell *cell = (TestProgressContentCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-                
-                jcjd_Model *model = [_m_jcjd_ModelArr objectAtIndex:indexPath.section];
-                
-                //            return [[model.jcjdDetailArr count]+1];
-                
-                [cell configureCellWithItem:model.jcjdDetailArr[indexPath.row-2]];
-                
-                return cell;
-                
-            }
-            
-            
-            //            NSArray *list = [[_dataList objectAtIndex:self.selectIndex.section] objectForKey:@"list"];
-            //            cell.titleLabel.text = [list objectAtIndex:indexPath.row-1];
-            //            return cell;
-        }else
-        {
-            cellIdentifier = @"ProgressOverviewCell";
-            ProgressOverviewCell *cell = (ProgressOverviewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-            
-            [cell changeArrowWithUp:([self.selectIndex isEqual:indexPath]?YES:NO)];
-            [cell configureCellWithItem:self.m_jcjd_ModelArr[indexPath.row]];
+            cellIdentifier = @"Sblb_TableViewTitleCell";
+            UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
             
             return cell;
+            
+            
+        }else
+        {
+            
+            cellIdentifier = @"Sblb_TableViewCell";
+            Sblb_TableViewCell *cell = (Sblb_TableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            
+            sblb_Model *model = [_m_Sblb_ModelArr objectAtIndex:indexPath.row -1];
+            cell.rightUtilityButtons = [self rightButtons];
+
+            [cell configureCellWithItem:model andIndex:indexPath.row];
+            
+            return cell;
+            
         }
-        
-        
+
+
         
     }else if (tableView == self.SignatureTableView)
     {
@@ -857,7 +894,13 @@
         cellIdentifier = @"ksryCell";
         UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
         
-        cell.textLabel.text = @"调度科，刘凯";
+        NSDictionary *dict = _m_xcry_Arr[indexPath.row];
+        
+        NSString *xcryStr = [NSString stringWithFormat:@"%@,下厂人员为:%@",dict[@"XCKS"],dict[@"XCRY"]];
+        
+        //xcry
+        cell.textLabel.font = [UIFont systemFontOfSize:16];
+        cell.textLabel.text = xcryStr;
         
         return cell;
         
@@ -869,84 +912,84 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView == self.testProgressTableView)
-    {
-        
-        if (indexPath.row == 0)
-        {
-            
-            
-            if ([indexPath isEqual:self.selectIndex]) {
-                self.isOpen = NO;
-                [self didSelectCellRowFirstDo:NO nextDo:NO];
-                self.selectIndex = nil;
-                
-            }else
-            {
-                if (!self.selectIndex) {
-                    self.selectIndex = indexPath;
-                    [self didSelectCellRowFirstDo:YES nextDo:NO];
-                    
-                }else
-                {
-                    
-                    [self didSelectCellRowFirstDo:NO nextDo:YES];
-                }
-            }
-            
-        }
-        else
-        {
-            /**
-             *  选中详细列表行
-             */
-        }
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        
-    }
+//    if (tableView == self.m_My_Sblb_TableView)
+//    {
+//        
+//        if (indexPath.row == 0)
+//        {
+//            
+//            
+//            if ([indexPath isEqual:self.selectIndex]) {
+//                self.isOpen = NO;
+//                [self didSelectCellRowFirstDo:NO nextDo:NO];
+//                self.selectIndex = nil;
+//                
+//            }else
+//            {
+//                if (!self.selectIndex) {
+//                    self.selectIndex = indexPath;
+//                    [self didSelectCellRowFirstDo:YES nextDo:NO];
+//                    
+//                }else
+//                {
+//                    
+//                    [self didSelectCellRowFirstDo:NO nextDo:YES];
+//                }
+//            }
+//            
+//        }
+//        else
+//        {
+//            /**
+//             *  选中详细列表行
+//             */
+//        }
+//        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//        
+//    }
     
     
 }
 
-- (void)didSelectCellRowFirstDo:(BOOL)firstDoInsert nextDo:(BOOL)nextDoInsert
-{
-    self.isOpen = firstDoInsert;
-    
-    ProgressOverviewCell *cell = (ProgressOverviewCell *)[self.testProgressTableView cellForRowAtIndexPath:self.selectIndex];
-    [cell changeArrowWithUp:firstDoInsert];
-    
-    [self.testProgressTableView beginUpdates];
-    
-    int section = self.selectIndex.section;
-    
-    jcjd_Model *model = [_m_jcjd_ModelArr objectAtIndex:section];
-    
-    int contentCount = [model.jcjdDetailArr count] +1;
-    
-    NSMutableArray* rowToInsert = [[NSMutableArray alloc] init];
-    for (NSUInteger i = 1; i < contentCount + 1; i++) {
-        NSIndexPath* indexPathToInsert = [NSIndexPath indexPathForRow:i inSection:section];
-        [rowToInsert addObject:indexPathToInsert];
-    }
-    
-    
-    if (firstDoInsert)
-    {   [self.testProgressTableView insertRowsAtIndexPaths:rowToInsert withRowAnimation:UITableViewRowAnimationTop];
-    }
-    else
-    {
-        [self.testProgressTableView deleteRowsAtIndexPaths:rowToInsert withRowAnimation:UITableViewRowAnimationTop];
-    }
-    
-    
-    [self.testProgressTableView endUpdates];
-    if (nextDoInsert) {
-        self.isOpen = YES;
-        self.selectIndex = [self.testProgressTableView indexPathForSelectedRow];
-        [self didSelectCellRowFirstDo:YES nextDo:NO];
-    }
-    if (self.isOpen) [self.testProgressTableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
-}
+//- (void)didSelectCellRowFirstDo:(BOOL)firstDoInsert nextDo:(BOOL)nextDoInsert
+//{
+//    self.isOpen = firstDoInsert;
+//    
+//    ProgressOverviewCell *cell = (ProgressOverviewCell *)[self.m_My_Sblb_TableView cellForRowAtIndexPath:self.selectIndex];
+//    [cell changeArrowWithUp:firstDoInsert];
+//    
+//    [self.m_My_Sblb_TableView beginUpdates];
+//    
+//    int section = self.selectIndex.section;
+//    
+//    sblb_Model *model = [_m_Sblb_ModelArr objectAtIndex:section];
+//    
+//    int contentCount = [model.jcjdDetailArr count] +1;
+//    
+//    NSMutableArray* rowToInsert = [[NSMutableArray alloc] init];
+//    for (NSUInteger i = 1; i < contentCount + 1; i++) {
+//        NSIndexPath* indexPathToInsert = [NSIndexPath indexPathForRow:i inSection:section];
+//        [rowToInsert addObject:indexPathToInsert];
+//    }
+//    
+//    
+//    if (firstDoInsert)
+//    {   [self.m_My_Sblb_TableView insertRowsAtIndexPaths:rowToInsert withRowAnimation:UITableViewRowAnimationTop];
+//    }
+//    else
+//    {
+//        [self.m_My_Sblb_TableView deleteRowsAtIndexPaths:rowToInsert withRowAnimation:UITableViewRowAnimationTop];
+//    }
+//    
+//    
+//    [self.m_My_Sblb_TableView endUpdates];
+//    if (nextDoInsert) {
+//        self.isOpen = YES;
+//        self.selectIndex = [self.m_My_Sblb_TableView indexPathForSelectedRow];
+//        [self didSelectCellRowFirstDo:YES nextDo:NO];
+//    }
+//    if (self.isOpen) [self.m_My_Sblb_TableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -1000,4 +1043,142 @@
     
     
 }
+
+#pragma mark -IPadScanViewControllerDelegate
+-(void)IPadScanVC:(IPadScanViewController*) ipadScanVC DidScanViewWithStr:(NSString *) resultValue
+{
+    
+    [Dialog toast:self withMessage:resultValue];
+    
+}
+
+-(void)IPadScanVC:(IPadScanViewController*) ipadScanVC DidCancleClick:(UIButton *) CancleBtn
+{
+    [self.m_popVC dismissPopoverAnimated:YES];
+}
+
+-(void)IPadScanVC:(IPadScanViewController*) ipadScanVC DidSkipClick:(UIButton *) skinBtn
+{
+//    MyPopTest
+    
+    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    
+    
+    [self.m_popVC dismissPopoverAnimated:YES];
+    
+    UIViewController *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"TestingDataRegistViewController"];
+    
+
+    
+    self.m_popSecondVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
+    self.m_popSecondVC.delegate = self;
+    //TODO:popoverLayoutMargins是指你的popover相对于整个window上下左右的margin
+    self.m_popSecondVC.popoverLayoutMargins = UIEdgeInsetsMake(20,0,0,0);
+    
+    self.m_popSecondVC.popoverBackgroundViewClass = [backgroundV class];
+    // 设定展示区域的大小
+    // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
+    //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
+    [self.m_popSecondVC presentPopoverFromRect:self.m_superVC.view.bounds
+                                  inView:self.m_superVC.view
+                permittedArrowDirections:0
+                                animated:YES];
+    
+}
+
+
+
+-(NSMutableArray *)rightButtons
+{
+    NSMutableArray *leftUtilityButtons = [[NSMutableArray alloc]init];
+    
+    [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor colorWithRed:0.071 green:0.455 blue:0.550 alpha:1.000] title:@"驳回"];
+    [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor colorWithRed:0.750 green:0.336 blue:0.052 alpha:1.000] title:@"删除"];
+    
+    return leftUtilityButtons;
+    
+}
+
+// TODO: SWTableViewCellDelegate
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+        {
+            
+            [Dialog toast:self withMessage:@"sadfsdaf"];
+        }
+            break;
+        case 1:
+        {
+          
+            [Dialog toast:self withMessage:@"asdf"];
+            
+        }
+            break;
+        case 2:
+            NSLog(@"cross button was pressed");
+            break;
+        case 3:
+            NSLog(@"list button was pressed");
+        default:
+            break;
+    }
+    
+}
+
+
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
+{
+    
+    switch (index) {
+        case 0:
+        {
+            NSLog(@"More button was pressed");
+            UIAlertView *alertTest = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"More more more" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles: nil];
+            [alertTest show];
+            
+            [cell hideUtilityButtonsAnimated:YES];
+            break;
+        }
+        case 1:
+        {
+            // Delete button was pressed
+            //            NSIndexPath *cellIndexPath = [self.m_tableView indexPathForCell:cell];
+            //
+            //            [_m_DataSourceArr[cellIndexPath.section] removeObjectAtIndex:cellIndexPath.row];
+            //            [self.m_tableView deleteRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+            //            break;
+        }
+        default:
+            break;
+    }
+    
+}
+
+- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell
+{
+    
+    // allow just one cell's utility button to be open at once
+    return YES;
+}
+
+- (BOOL)swipeableTableViewCell:(SWTableViewCell *)cell canSwipeToState:(SWCellState)state
+{
+    
+    switch (state) {
+        case 1:
+            // set to NO to disable all left utility buttons appearing
+            return YES;
+            break;
+        case 2:
+            // set to NO to disable all right utility buttons appearing
+            return YES;
+            break;
+        default:
+            break;
+    }
+    return YES;
+}
+
 @end

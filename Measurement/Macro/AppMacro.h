@@ -24,7 +24,7 @@
 //webservice配置
 #define defaultWebServiceUrl @"http://192.168.10.169:8080/mbs/convey/"
 
-//#define defaultWebServiceUrl @"http://192.168.15.7/Test/convey/"
+//#define defaultWebServiceUrl @"http://175.17.22.182:8080/mbs/convey/"
 
 //DaoTongHttpManager
 
