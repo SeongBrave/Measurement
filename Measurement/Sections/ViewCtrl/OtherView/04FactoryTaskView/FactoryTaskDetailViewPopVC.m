@@ -393,9 +393,6 @@
     
     [self.menuBarView addSubview:_lineImgV];
     
-    //    [self.lineImgV showPlaceHolder];
-    
-    NSLog(@"%@", self.menuBarView.subviews);
     
     @weakify(self)
     [self.lineImgV mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -409,11 +406,6 @@
         
     }];
     
-    //    [self.planBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-    //
-    //        make.width.equalTo(@60);
-    //        make.leading.equalTo(@31);
-    //    }];
     
 }
 
@@ -704,8 +696,8 @@
     // 设定展示区域的大小
     // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
     //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
-    [self.m_popVC presentPopoverFromRect:app.window.bounds
-                                  inView:app.window
+    [self.m_popVC presentPopoverFromRect:self.view.bounds
+                                  inView:self.view
                 permittedArrowDirections:0
                                 animated:YES];
     
@@ -1079,8 +1071,8 @@
     // 设定展示区域的大小
     // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
     //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
-    [self.m_popSecondVC presentPopoverFromRect:self.m_superVC.view.bounds
-                                  inView:self.m_superVC.view
+    [self.m_popSecondVC presentPopoverFromRect:self.m_superView.bounds
+                                  inView:self.m_superView
                 permittedArrowDirections:0
                                 animated:YES];
     

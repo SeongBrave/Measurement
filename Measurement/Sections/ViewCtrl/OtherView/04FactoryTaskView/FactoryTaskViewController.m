@@ -445,6 +445,7 @@
         
         FactoryTaskDetailViewPopVC *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"FactoryTaskDetailViewPopVC"];
         popVc.m_superVC = self;
+        popVc.m_superView = collectionView;
         popVc.m_popDelegate = self;
         popVc.m_showDict = self.m_DataSourceArr[indexPath.row];
         
