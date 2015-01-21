@@ -799,9 +799,9 @@
     }
     
     //下厂科室组
-    [self.m_saveDataDict setObject:xcksArr forKey:@"xcksbhs"];
+    [self.m_saveDataDict setObject:[xcksArr componentsJoinedByString:@","] forKey:@"xcksbhs"];
     //下厂人员组
-    [self.m_saveDataDict setObject:xcryArr forKey:@"xcrybhs"];
+    [self.m_saveDataDict setObject:[xcryArr componentsJoinedByString:@","] forKey:@"xcrybhs"];
     
 }
 
