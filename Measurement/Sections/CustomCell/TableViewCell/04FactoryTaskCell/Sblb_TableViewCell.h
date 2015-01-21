@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *m_jltxLabel;
 @property (weak, nonatomic) IBOutlet UILabel *m_jcfwLabel;
+@property (weak, nonatomic) IBOutlet UILabel *m_dwmcLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *m_ggxhLabel;
 @property (weak, nonatomic) IBOutlet UILabel *m_sccjLabel;

@@ -831,6 +831,7 @@
             
             sblb_Model *model = [_m_Sblb_ModelArr objectAtIndex:indexPath.row -1];
             cell.rightUtilityButtons = [self rightButtons];
+            cell.delegate = self;
 
             [cell configureCellWithItem:model andIndex:indexPath.row];
             
@@ -991,13 +992,13 @@
     
     return 0;
 }
-/*
+
  //设置cell的行高
  - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
  {
- return 70;
+ return 50;
  }
- 
+ /*
  //设置cell的隔行换色
  - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
  {
