@@ -65,6 +65,7 @@ install_resource()
                     install_resource "TSMessages/Pod/Assets/NotificationButtonBackground.png"
                     install_resource "TSMessages/Pod/Assets/NotificationButtonBackground@2x.png"
                     install_resource "TSMessages/Pod/Assets/TSMessagesDefaultDesign.json"
+                    install_resource "Vertigo/Vertigo/TGRImageViewController.xib"
           
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 if [[ "${ACTION}" == "install" ]]; then

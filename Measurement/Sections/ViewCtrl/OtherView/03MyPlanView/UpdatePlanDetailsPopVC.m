@@ -29,11 +29,15 @@
 #import "TestProgressContentCell.h"
 #import "SignatureCell.h"
 #import "SignatureViewController.h"
+#import "TGRImageViewController.h"
+#import "TGRImageZoomAnimationController.h"
+#import "AppDelegate.h"
+#import "UIButton+WebCache.h"
 
 
 #define MaxOffset  100
 
-@interface UpdatePlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate, UIScrollViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,PlanDetailsHead_DepCellDelegate,PlanDetailsMans_DepCellDelegate,DepManVCDelegate,DepMansVCDelegate,SignatureViewDelegate>
+@interface UpdatePlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate, UIScrollViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,PlanDetailsHead_DepCellDelegate,PlanDetailsMans_DepCellDelegate,DepManVCDelegate,DepMansVCDelegate,SignatureViewDelegate,UIViewControllerTransitioningDelegate>
 
 
 @property (assign)BOOL isOpen;
@@ -348,6 +352,9 @@
 //TODO: 添加视图
 -(void)layoutMainCustomView
 {
+    
+    self.signatureImgBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    
     self.mainScrollView.delegate = self;
     /**
      *  绘制分割线
@@ -564,6 +571,7 @@
         
     }];
     
+    [self.signatureImgBtn sd_setImageWithURL:[NSURL URLWithString:@"http://192.168.10.169:8080/mbs/convey/khqzck.do?rwbh=5dce769b2f9e46a3b3a2c194f46eb80b"] forState:UIControlStateNormal];
     
 }
 -(void)SetUpData
@@ -1580,19 +1588,42 @@
 //}
 - (IBAction)SignatureClick:(id)sender {
     
-    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Other" bundle:nil];
+    
+//    SignatureViewController *signatureVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SignatureViewController"];
+//    
+//    
+//    signatureVC.m_delegate = self;
+//    signatureVC.modalPresentationStyle = UIModalPresentationFormSheet;
+//    signatureVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+//    [self presentViewController:signatureVC animated:YES completion:nil];
+//    //    depManVC.view.superview.bounds = CGRectMake(0, 0, 529, 279);
+//    signatureVC.view.superview.frame = CGRectMake(400, 800, 688, 410);//it's important to do this after presentModalViewController
+//    signatureVC.view.superview.center = self.view.center;
     
     
-    SignatureViewController *signatureVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SignatureViewController"];
+     AppDelegate *app = [UIApplication sharedApplication].delegate;
     
+    TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:[self.signatureImgBtn imageForState:UIControlStateNormal]];
+    viewController.transitioningDelegate = self;
+
     
-    signatureVC.m_delegate = self;
-    signatureVC.modalPresentationStyle = UIModalPresentationFormSheet;
-    signatureVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self presentViewController:signatureVC animated:YES completion:nil];
-    //    depManVC.view.superview.bounds = CGRectMake(0, 0, 529, 279);
-    signatureVC.view.superview.frame = CGRectMake(400, 800, 688, 410);//it's important to do this after presentModalViewController
-    signatureVC.view.superview.center = self.view.center;
+    CGRect frame =  viewController.view.frame;
+    frame.size = CGSizeMake(400, 600);
+    viewController.view.frame = frame;
+    
+    self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:viewController];
+    //TODO:popoverLayoutMargins是指你的popover相对于整个window上下左右的margin
+    self.m_popVC.popoverLayoutMargins = UIEdgeInsetsMake(20,0,0,0);
+    
+//    self.m_popVC.popoverBackgroundViewClass = [BlackBackGroundV class];
+    // 设定展示区域的大小
+    // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
+    //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
+    [self.m_popVC presentPopoverFromRect:app.window.bounds
+                                  inView:app.window
+                permittedArrowDirections:0
+                                animated:YES];
+
     
     
 }
@@ -1637,4 +1668,21 @@
     }
     return YES;
 }
+#pragma mark - UIViewControllerTransitioningDelegate methods
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    if ([presented isKindOfClass:TGRImageViewController.class]) {
+        return [[TGRImageZoomAnimationController alloc] initWithReferenceImageView:self.signatureImgBtn.imageView];
+    }
+    return nil;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    if ([dismissed isKindOfClass:TGRImageViewController.class]) {
+        return [[TGRImageZoomAnimationController alloc] initWithReferenceImageView:self.signatureImgBtn.imageView];
+    }
+    return nil;
+}
+
+//signatureImgBtn
 @end

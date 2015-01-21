@@ -77,7 +77,7 @@
 // This library does not follow semantic-versioning,
 // so we were not able to define version macros.
 // Please contact the author.
-// Version: 3.2.0.3.
+// Version: 3.2.1.0.
 
 // LinqToObjectiveC
 #define COCOAPODS_POD_AVAILABLE_LinqToObjectiveC
@@ -101,13 +101,13 @@
 #define COCOAPODS_POD_AVAILABLE_Mantle
 #define COCOAPODS_VERSION_MAJOR_Mantle 1
 #define COCOAPODS_VERSION_MINOR_Mantle 5
-#define COCOAPODS_VERSION_PATCH_Mantle 3
+#define COCOAPODS_VERSION_PATCH_Mantle 4
 
 // Mantle/extobjc
 #define COCOAPODS_POD_AVAILABLE_Mantle_extobjc
 #define COCOAPODS_VERSION_MAJOR_Mantle_extobjc 1
 #define COCOAPODS_VERSION_MINOR_Mantle_extobjc 5
-#define COCOAPODS_VERSION_PATCH_Mantle_extobjc 3
+#define COCOAPODS_VERSION_PATCH_Mantle_extobjc 4
 
 // Masonry
 #define COCOAPODS_POD_AVAILABLE_Masonry
@@ -173,11 +173,17 @@
 #define COCOAPODS_POD_AVAILABLE_TSMessages
 #define COCOAPODS_VERSION_MAJOR_TSMessages 0
 #define COCOAPODS_VERSION_MINOR_TSMessages 9
-#define COCOAPODS_VERSION_PATCH_TSMessages 11
+#define COCOAPODS_VERSION_PATCH_TSMessages 12
 
 // UIColor-HexString
 #define COCOAPODS_POD_AVAILABLE_UIColor_HexString
 #define COCOAPODS_VERSION_MAJOR_UIColor_HexString 1
 #define COCOAPODS_VERSION_MINOR_UIColor_HexString 1
 #define COCOAPODS_VERSION_PATCH_UIColor_HexString 0
+
+// Vertigo
+#define COCOAPODS_POD_AVAILABLE_Vertigo
+#define COCOAPODS_VERSION_MAJOR_Vertigo 0
+#define COCOAPODS_VERSION_MINOR_Vertigo 1
+#define COCOAPODS_VERSION_PATCH_Vertigo 0
 
