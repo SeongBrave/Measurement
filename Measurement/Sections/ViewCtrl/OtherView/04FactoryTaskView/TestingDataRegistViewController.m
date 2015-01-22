@@ -8,7 +8,9 @@
 
 #import "TestingDataRegistViewController.h"
 #import "DropDownTextField.h"
-
+#import "Jlbzkhzsh_TableViewCell.h"
+#import "Bzqsb_TableViewCell.h"
+#import "Jsyj_TableViewCell.h"
 
 @interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldShowCellTextLabel>
 
@@ -74,6 +76,14 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *m_ggxx_ScrollView;
 
 
+@property (weak, nonatomic) IBOutlet UITableView *m_jlbzkhzsh_TableView;
+@property(nonatomic , strong)NSArray *m_jlbzkhzsh_Arr;
+
+@property (weak, nonatomic) IBOutlet UITableView *m_bzqsb_TableView;
+@property(nonatomic , strong)NSArray *m_bzqsb_Arr;
+
+@property (weak, nonatomic) IBOutlet UITableView *m_jsyj_TableView;
+@property(nonatomic , strong)NSArray *m_jsyj_Arr;
 
 
 /**
@@ -101,6 +111,9 @@
 #pragma mark - 系统方法
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    [self update_sbxqViewByDict:_m_qjxxDict];
     
 }
 
@@ -357,28 +370,85 @@
  */
 -(void)loadNetData
 {
+//    @weakify(self)
+//    [[BaseNetWork getInstance] showDialogWithVC:self];
+//    NSDictionary *dict =@{@"txm":@"140000009"};
+//    [[[[[BaseNetWork getInstance] rac_postPath:@"findJiliangqjByTxm.do" parameters:dict]map:^(id responseData)
+//       {
+//           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+//           
+//           return [dict valueForKeyPath:@"qjxx"];
+//       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+//     subscribeNext:^(NSDictionary *retDict) {
+//         
+//         @strongify(self)
+//         [self update_sbxqViewByDict:retDict];
+//         
+//
+//         
+//     }error:^(NSError *error){
+//    
+//         
+//         
+//     }];
+    
+//    usercode=1114&yqid=EF83462867CE4727BEE9BEA253E15B3E
     @weakify(self)
     [[BaseNetWork getInstance] showDialogWithVC:self];
-    NSDictionary *dict =@{@"txm":@"140000009"};
-    [[[[[BaseNetWork getInstance] rac_postPath:@"findJiliangqjByTxm.do" parameters:dict]map:^(id responseData)
+    NSDictionary *dict =@{@"usercode":@"1114",@"yqid":@"EF83462867CE4727BEE9BEA253E15B3E"};
+    [[[[[BaseNetWork getInstance] rac_postPath:@"initDetectionDataRegistration.do" parameters:dict]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
-           return [dict valueForKeyPath:@"qjxx"];
+           return dict;
        }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
      subscribeNext:^(NSDictionary *retDict) {
          
          @strongify(self)
-         [self update_sbxqViewByDict:retDict];
          
-
+         NSArray *jlbzkhzshArr = retDict[@"jlbzkhzsLists"];
+         NSArray *bzqsbArr = retDict[@"bzqsbLists"];
+         
+         NSArray *jsyjArr = retDict[@"jsyjLists"];
+         
+         self.m_jlbzkhzsh_Arr = [jlbzkhzshArr
+                                 linq_select:^id(NSDictionary *dict)
+                                 {
+                                     
+                                     Jlbzkhzsh_Model *model = [MTLJSONAdapter modelOfClass:[Jlbzkhzsh_Model class] fromJSONDictionary:dict error:nil];
+                                     
+                                     return model;
+                                 }];
+         
+         self.m_bzqsb_Arr = [bzqsbArr
+                             linq_select:^id(NSDictionary *dict)
+                             {
+                                 
+                                 Bzqsb_Model *model = [MTLJSONAdapter modelOfClass:[Bzqsb_Model class] fromJSONDictionary:dict error:nil];
+                                 
+                                 return model;
+                             }];
+         
+         self.m_jsyj_Arr = [jsyjArr
+                            linq_select:^id(NSDictionary *dict)
+                            {
+                                
+                                Jsyj_Model *model = [MTLJSONAdapter modelOfClass:[Jsyj_Model class] fromJSONDictionary:dict error:nil];
+                                
+                                return model;
+                            }];
+         
+         
+         [self.m_jlbzkhzsh_TableView reloadData];
+         [self.m_bzqsb_TableView reloadData];
+         [self.m_jsyj_TableView reloadData];
+         
          
      }error:^(NSError *error){
-    
+         
          
          
      }];
-    
 
     
 }
@@ -406,6 +476,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
+    if (tableView == _m_jlbzkhzsh_TableView)
+    {
+        return _m_jlbzkhzsh_Arr.count +1;
+        
+    }else if (tableView == _m_bzqsb_TableView)
+    {
+        return _m_bzqsb_Arr.count +1;
+    }else if (tableView == _m_jsyj_TableView)
+    {
+        return _m_jsyj_Arr.count +1;
+    }
     
     return 0;
 }
@@ -443,18 +525,98 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+     static NSString *cellIdentifier;
     
-    static NSString *cellIdentifier = @"cellIdentifier";
-    UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    
-    return cell;
-    
-    
-    
+    if (tableView == _m_jlbzkhzsh_TableView)
+    {
+        
+        if (indexPath.row ==0) {
+            cellIdentifier = @"Jlbzkhzsh_TableViewCellTitle";
+            
+             UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            
+            return cell;
+            
+        }else
+        {
+            cellIdentifier = @"Jlbzkhzsh_TableViewCell";
+            Jlbzkhzsh_TableViewCell *cell = (Jlbzkhzsh_TableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            
+            Jlbzkhzsh_Model *model = _m_jlbzkhzsh_Arr[indexPath.row -1];
+            [cell configureCellWithItem:model];
+            
+            return cell;
+        }
+        
+        
+    }else if (tableView == _m_bzqsb_TableView)
+    {
+        
+        if (indexPath.row ==0) {
+            cellIdentifier = @"Bzqsb_TableViewCellTitle";
+            
+            UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            
+            return cell;
+            
+        }else
+        {
+            cellIdentifier = @"Bzqsb_TableViewCell";
+            Bzqsb_TableViewCell *cell = (Bzqsb_TableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            
+            Bzqsb_Model *model = _m_bzqsb_Arr[indexPath.row-1];
+            [cell configureCellWithItem:model];
+            
+            return cell;
+        }
+        
+    }else if (tableView == _m_jsyj_TableView)
+    {
+        
+        if (indexPath.row ==0) {
+            cellIdentifier = @"Jsyj_TableViewCellTitle";
+            
+            UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            
+            return cell;
+            
+        }else
+        {
+            cellIdentifier = @"Jsyj_TableViewCell";
+            Jsyj_TableViewCell *cell = (Jsyj_TableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            
+            Jsyj_Model *model = _m_jsyj_Arr[indexPath.row-1];
+            [cell configureCellWithItem:model];
+            
+            return cell;
+        }
+    }
+
+    return nil;
+
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if (indexPath.row > 0) {
+        
+        if (tableView == _m_jlbzkhzsh_TableView)
+        {
+            Jlbzkhzsh_Model *model = _m_jlbzkhzsh_Arr[indexPath.row-1];
+            model.isSelected = !model.isSelected;
+            
+        }else if (tableView == _m_bzqsb_TableView)
+        {
+            Bzqsb_Model *model = _m_bzqsb_Arr[indexPath.row-1];
+            model.isSelected = !model.isSelected;
+        }else if (tableView == _m_jsyj_TableView)
+        {
+            Jsyj_Model *model = _m_jsyj_Arr[indexPath.row-1];
+            
+            model.isSelected = !model.isSelected;
+        }
+        
+    }
+  
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

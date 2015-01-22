@@ -73,6 +73,12 @@
 		C970946C1A62D2DA00141DC5 /* autoTableViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = C970946B1A62D2DA00141DC5 /* autoTableViewData.m */; };
 		C97094721A62D36A00141DC5 /* DepMansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C970946F1A62D36A00141DC5 /* DepMansViewController.m */; };
 		C97094731A62D36A00141DC5 /* DepManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094711A62D36A00141DC5 /* DepManViewController.m */; };
+		C9791A981A71485900DC5643 /* Jlbzkhzsh_TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9791A971A71485900DC5643 /* Jlbzkhzsh_TableViewCell.m */; };
+		C9791A9B1A7148B400DC5643 /* Bzqsb_TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9791A9A1A7148B400DC5643 /* Bzqsb_TableViewCell.m */; };
+		C9791A9E1A7148C500DC5643 /* Jsyj_TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9791A9D1A7148C500DC5643 /* Jsyj_TableViewCell.m */; };
+		C9791AA21A71496C00DC5643 /* Jlbzkhzsh_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9791AA11A71496C00DC5643 /* Jlbzkhzsh_Model.m */; };
+		C9791AA51A71498000DC5643 /* Bzqsb_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9791AA41A71498000DC5643 /* Bzqsb_Model.m */; };
+		C9791AA81A71498F00DC5643 /* Jsyj_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9791AA71A71498F00DC5643 /* Jsyj_Model.m */; };
 		C9903BFF1A46E9FE0006FD99 /* DockItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903BFE1A46E9FE0006FD99 /* DockItem.m */; };
 		C9903C021A46EA0C0006FD99 /* CellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903C011A46EA0C0006FD99 /* CellItem.m */; };
 		C9903C1E1A470BDB0006FD99 /* UIImage+Fit.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903C1D1A470BDB0006FD99 /* UIImage+Fit.m */; };
@@ -286,6 +292,18 @@
 		C970946F1A62D36A00141DC5 /* DepMansViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepMansViewController.m; sourceTree = "<group>"; };
 		C97094701A62D36A00141DC5 /* DepManViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepManViewController.h; sourceTree = "<group>"; };
 		C97094711A62D36A00141DC5 /* DepManViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepManViewController.m; sourceTree = "<group>"; };
+		C9791A961A71485900DC5643 /* Jlbzkhzsh_TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jlbzkhzsh_TableViewCell.h; sourceTree = "<group>"; };
+		C9791A971A71485900DC5643 /* Jlbzkhzsh_TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jlbzkhzsh_TableViewCell.m; sourceTree = "<group>"; };
+		C9791A991A7148B400DC5643 /* Bzqsb_TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bzqsb_TableViewCell.h; sourceTree = "<group>"; };
+		C9791A9A1A7148B400DC5643 /* Bzqsb_TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bzqsb_TableViewCell.m; sourceTree = "<group>"; };
+		C9791A9C1A7148C500DC5643 /* Jsyj_TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jsyj_TableViewCell.h; sourceTree = "<group>"; };
+		C9791A9D1A7148C500DC5643 /* Jsyj_TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jsyj_TableViewCell.m; sourceTree = "<group>"; };
+		C9791AA01A71496C00DC5643 /* Jlbzkhzsh_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jlbzkhzsh_Model.h; sourceTree = "<group>"; };
+		C9791AA11A71496C00DC5643 /* Jlbzkhzsh_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jlbzkhzsh_Model.m; sourceTree = "<group>"; };
+		C9791AA31A71498000DC5643 /* Bzqsb_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bzqsb_Model.h; sourceTree = "<group>"; };
+		C9791AA41A71498000DC5643 /* Bzqsb_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bzqsb_Model.m; sourceTree = "<group>"; };
+		C9791AA61A71498F00DC5643 /* Jsyj_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jsyj_Model.h; sourceTree = "<group>"; };
+		C9791AA71A71498F00DC5643 /* Jsyj_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jsyj_Model.m; sourceTree = "<group>"; };
 		C9903BFD1A46E9FE0006FD99 /* DockItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DockItem.h; sourceTree = "<group>"; };
 		C9903BFE1A46E9FE0006FD99 /* DockItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DockItem.m; sourceTree = "<group>"; };
 		C9903C001A46EA0C0006FD99 /* CellItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellItem.h; sourceTree = "<group>"; };
@@ -1104,6 +1122,32 @@
 			path = DepMansVC;
 			sourceTree = "<group>";
 		};
+		C9791A951A71480D00DC5643 /* Ggxx_TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				C9791A961A71485900DC5643 /* Jlbzkhzsh_TableViewCell.h */,
+				C9791A971A71485900DC5643 /* Jlbzkhzsh_TableViewCell.m */,
+				C9791A991A7148B400DC5643 /* Bzqsb_TableViewCell.h */,
+				C9791A9A1A7148B400DC5643 /* Bzqsb_TableViewCell.m */,
+				C9791A9C1A7148C500DC5643 /* Jsyj_TableViewCell.h */,
+				C9791A9D1A7148C500DC5643 /* Jsyj_TableViewCell.m */,
+			);
+			path = Ggxx_TableViewCell;
+			sourceTree = "<group>";
+		};
+		C9791A9F1A71493A00DC5643 /* Ggxx_Model */ = {
+			isa = PBXGroup;
+			children = (
+				C9791AA01A71496C00DC5643 /* Jlbzkhzsh_Model.h */,
+				C9791AA11A71496C00DC5643 /* Jlbzkhzsh_Model.m */,
+				C9791AA31A71498000DC5643 /* Bzqsb_Model.h */,
+				C9791AA41A71498000DC5643 /* Bzqsb_Model.m */,
+				C9791AA61A71498F00DC5643 /* Jsyj_Model.h */,
+				C9791AA71A71498F00DC5643 /* Jsyj_Model.m */,
+			);
+			path = Ggxx_Model;
+			sourceTree = "<group>";
+		};
 		C9903BFA1A46E9E30006FD99 /* DockMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1516,6 +1560,7 @@
 		C9FFC1611A6E7C5F00AA6BE7 /* FactoryTaskDetailModel */ = {
 			isa = PBXGroup;
 			children = (
+				C9791A9F1A71493A00DC5643 /* Ggxx_Model */,
 				C9FFC1621A6E7C9900AA6BE7 /* sblb_Model.h */,
 				C9FFC1631A6E7C9900AA6BE7 /* sblb_Model.m */,
 			);
@@ -1525,6 +1570,7 @@
 		C9FFC1651A6E7E6C00AA6BE7 /* 04FactoryTaskCell */ = {
 			isa = PBXGroup;
 			children = (
+				C9791A951A71480D00DC5643 /* Ggxx_TableViewCell */,
 				C9FFC1661A6E7ECB00AA6BE7 /* Sblb_TableViewCell.h */,
 				C9FFC1671A6E7ECB00AA6BE7 /* Sblb_TableViewCell.m */,
 			);
@@ -1680,6 +1726,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9791AA21A71496C00DC5643 /* Jlbzkhzsh_Model.m in Sources */,
 				C9BFAA121A487BF400C887B4 /* MenuItemView.m in Sources */,
 				C9651FD41A43B26000B770BB /* CustomStepper.m in Sources */,
 				C9903C021A46EA0C0006FD99 /* CellItem.m in Sources */,
@@ -1692,6 +1739,7 @@
 				C9651ECF1A43AD8F00B770BB /* AppDelegate.m in Sources */,
 				C9B3A2AE1A4D9C7100CE276B /* CommonLogicViewController.m in Sources */,
 				C9BFA9F81A487BB000C887B4 /* HomeViewController.m in Sources */,
+				C9791A9B1A7148B400DC5643 /* Bzqsb_TableViewCell.m in Sources */,
 				C970946C1A62D2DA00141DC5 /* autoTableViewData.m in Sources */,
 				C903B0C81A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m in Sources */,
 				C945BB0E1A6D6C3000C6E11E /* BlackBackGroundV.m in Sources */,
@@ -1709,6 +1757,7 @@
 				C9BFAA151A487BF400C887B4 /* SettingCell.m in Sources */,
 				C9FFC1501A6E7A6A00AA6BE7 /* ks_Model.m in Sources */,
 				C9FFC1531A6E7A6A00AA6BE7 /* jcjd_Detail_Model.m in Sources */,
+				C9791AA51A71498000DC5643 /* Bzqsb_Model.m in Sources */,
 				C97094561A62D09B00141DC5 /* PlanningDepartmentViewController.m in Sources */,
 				C9A95B491A613C890017BE2B /* ProgressOverviewCell.m in Sources */,
 				C970945E1A62D09B00141DC5 /* FactoryTaskViewController.m in Sources */,
@@ -1732,10 +1781,12 @@
 				C9651FD91A43B26000B770BB /* CustomVitalSignsView.m in Sources */,
 				C97094661A62D09B00141DC5 /* InspectionTasksViewController.m in Sources */,
 				C9651FD81A43B26000B770BB /* CustomBodyTempView.m in Sources */,
+				C9791A9E1A7148C500DC5643 /* Jsyj_TableViewCell.m in Sources */,
 				C9651FD21A43B26000B770BB /* CustomButton.m in Sources */,
 				C9651FEB1A43B26000B770BB /* Localisator.m in Sources */,
 				C9E94DCC1A4A669100E8CC83 /* MJRefreshConst.m in Sources */,
 				C970945C1A62D09B00141DC5 /* MyPlanViewController.m in Sources */,
+				C9791A981A71485900DC5643 /* Jlbzkhzsh_TableViewCell.m in Sources */,
 				C9D6B9F61A5AE648006D27EF /* AutoCompleteTextField.m in Sources */,
 				C9FFC1521A6E7A6A00AA6BE7 /* wtdbh_Model.m in Sources */,
 				C97094611A62D09B00141DC5 /* ApprovalTaskViewController.m in Sources */,
@@ -1762,6 +1813,7 @@
 				C9E94DCE1A4A669100E8CC83 /* MJRefreshHeaderView.m in Sources */,
 				C90EA2861A6BF68D0038450A /* BottomTabBarView.m in Sources */,
 				C9FFC14E1A6E7A6A00AA6BE7 /* IndustryCategoriesModel.m in Sources */,
+				C9791AA81A71498F00DC5643 /* Jsyj_Model.m in Sources */,
 				C9651FDA1A43B26000B770BB /* HomeIconButton.m in Sources */,
 				C97094721A62D36A00141DC5 /* DepMansViewController.m in Sources */,
 				C9651FD31A43B26000B770BB /* FlagButton.m in Sources */,

@@ -109,24 +109,26 @@
 -(void)OrientationDidChange:(NSNotification *) notification
 {
     
-    AVCaptureVideoOrientation newOrientation;
-    switch ([[UIDevice currentDevice] orientation]) {
-        case UIDeviceOrientationPortrait:
-            newOrientation = AVCaptureVideoOrientationPortrait;
-            break;
-        case UIDeviceOrientationPortraitUpsideDown:
-            newOrientation = AVCaptureVideoOrientationPortraitUpsideDown;
-            break;
-        case UIDeviceOrientationLandscapeLeft:
-            newOrientation = AVCaptureVideoOrientationLandscapeRight;
-            break;
-        case UIDeviceOrientationLandscapeRight:
-            newOrientation = AVCaptureVideoOrientationLandscapeLeft;
-            break;
-        default:
-            newOrientation = AVCaptureVideoOrientationPortrait;
-    }
-    _m_preview.connection.videoOrientation = newOrientation;
+    _m_preview.connection.videoOrientation =[UIDevice currentDevice].orientation;
+    
+//    AVCaptureVideoOrientation newOrientation;
+//    switch ([[UIDevice currentDevice] orientation]) {
+//        case UIDeviceOrientationPortrait:
+//            newOrientation = AVCaptureVideoOrientationPortrait;
+//            break;
+//        case UIDeviceOrientationPortraitUpsideDown:
+//            newOrientation = AVCaptureVideoOrientationPortraitUpsideDown;
+//            break;
+//        case UIDeviceOrientationLandscapeLeft:
+//            newOrientation = AVCaptureVideoOrientationLandscapeRight;
+//            break;
+//        case UIDeviceOrientationLandscapeRight:
+//            newOrientation = AVCaptureVideoOrientationLandscapeLeft;
+//            break;
+//        default:
+//            newOrientation = AVCaptureVideoOrientationPortrait;
+//    }
+//    _m_preview.connection.videoOrientation = newOrientation;
 }
 -(id)initWithDelegate:(id<IPadScanViewControllerDelegate>) _mydelegate
 {

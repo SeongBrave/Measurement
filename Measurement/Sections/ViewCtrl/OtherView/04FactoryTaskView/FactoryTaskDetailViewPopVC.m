@@ -727,6 +727,57 @@
 }
 
 
+/**
+ *  获取  的数据
+ */
+-(void)loadJiliangqjByTxm:(NSString *) txmStr
+{
+    @weakify(self)
+    [[BaseNetWork getInstance] showDialogWithVC:self];
+    NSDictionary *dict =@{@"txm":txmStr};
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findJiliangqjByTxm.do" parameters:dict]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return [dict valueForKeyPath:@"qjxx"];
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+         
+         @strongify(self)
+         [self ToTestingDataRegistViewControllerWithDict:retDict];
+         
+         
+     }error:^(NSError *error){
+         
+         
+         
+     }];
+    
+    
+    
+}
+
+-(void)ToTestingDataRegistViewControllerWithDict:(NSDictionary *) qjxxDict
+{
+    TestingDataRegistViewController *popVc = (TestingDataRegistViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"TestingDataRegistViewController"];
+    
+    popVc.m_qjxxDict = qjxxDict;
+    
+    self.m_popSecondVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
+    self.m_popSecondVC.delegate = self;
+    //TODO:popoverLayoutMargins是指你的popover相对于整个window上下左右的margin
+    self.m_popSecondVC.popoverLayoutMargins = UIEdgeInsetsMake(20,0,0,0);
+    
+    self.m_popSecondVC.popoverBackgroundViewClass = [backgroundV class];
+    // 设定展示区域的大小
+    // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
+    //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
+    [self.m_popSecondVC presentPopoverFromRect:self.m_superView.bounds
+                                        inView:self.m_superView
+                      permittedArrowDirections:0
+                                      animated:YES];
+}
+
 #pragma mark - 代理协议方法*
 
 
@@ -1040,9 +1091,9 @@
 #pragma mark -IPadScanViewControllerDelegate
 -(void)IPadScanVC:(IPadScanViewController*) ipadScanVC DidScanViewWithStr:(NSString *) resultValue
 {
-    
-    [Dialog toast:self withMessage:resultValue];
-    
+    [self.m_popVC dismissPopoverAnimated:YES];
+   
+    [self loadJiliangqjByTxm:resultValue];
 }
 
 -(void)IPadScanVC:(IPadScanViewController*) ipadScanVC DidCancleClick:(UIButton *) CancleBtn
@@ -1056,23 +1107,7 @@
 
     [self.m_popVC dismissPopoverAnimated:YES];
     
-    UIViewController *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"TestingDataRegistViewController"];
-    
-
-    
-    self.m_popSecondVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
-    self.m_popSecondVC.delegate = self;
-    //TODO:popoverLayoutMargins是指你的popover相对于整个window上下左右的margin
-    self.m_popSecondVC.popoverLayoutMargins = UIEdgeInsetsMake(20,0,0,0);
-    
-    self.m_popSecondVC.popoverBackgroundViewClass = [backgroundV class];
-    // 设定展示区域的大小
-    // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
-    //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
-    [self.m_popSecondVC presentPopoverFromRect:self.m_superView.bounds
-                                  inView:self.m_superView
-                permittedArrowDirections:0
-                                animated:YES];
+    [self ToTestingDataRegistViewControllerWithDict:nil];
     
 }
 

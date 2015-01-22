@@ -14,4 +14,9 @@
 
 @interface TestingDataRegistViewController : BaseViewController
 
+/**
+ *  用于显示设备详情界面的数据
+ */
+@property(nonatomic , strong)NSDictionary *m_qjxxDict;
+
 @end
