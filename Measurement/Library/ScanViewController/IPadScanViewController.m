@@ -92,13 +92,42 @@
 {
     [showDialog showProgress:self withLabel:@"正在初始化摄像头..."];
     [self.navigationController setNavigationBarHidden:YES];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(OrientationDidChange:)
+                                                 name:UIDeviceOrientationDidChangeNotification object:self];
 }
+
+
 -(void)viewWillDisappear:(BOOL)animated
 {
     //进入扫描腕带界面时隐藏了navgationbar所以需要重新显示
     [self.navigationController setNavigationBarHidden:NO];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
 }
-
+-(void)OrientationDidChange:(NSNotification *) notification
+{
+    
+    AVCaptureVideoOrientation newOrientation;
+    switch ([[UIDevice currentDevice] orientation]) {
+        case UIDeviceOrientationPortrait:
+            newOrientation = AVCaptureVideoOrientationPortrait;
+            break;
+        case UIDeviceOrientationPortraitUpsideDown:
+            newOrientation = AVCaptureVideoOrientationPortraitUpsideDown;
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            newOrientation = AVCaptureVideoOrientationLandscapeRight;
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            newOrientation = AVCaptureVideoOrientationLandscapeLeft;
+            break;
+        default:
+            newOrientation = AVCaptureVideoOrientationPortrait;
+    }
+    _m_preview.connection.videoOrientation = newOrientation;
+}
 -(id)initWithDelegate:(id<IPadScanViewControllerDelegate>) _mydelegate
 {
     self = [super init];
@@ -287,6 +316,8 @@
     
     
     _m_preview =[AVCaptureVideoPreviewLayer layerWithSession:self.m_session];
+    _m_preview.connection.videoOrientation =[UIDevice currentDevice].orientation;
+    
     _m_preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
     _m_preview.frame = CGRectMake(0, 0, 1024, 768);
     [self.view.layer insertSublayer:self.m_preview atIndex:0];

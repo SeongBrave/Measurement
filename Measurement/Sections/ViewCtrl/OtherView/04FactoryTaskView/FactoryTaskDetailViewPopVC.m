@@ -1053,10 +1053,7 @@
 -(void)IPadScanVC:(IPadScanViewController*) ipadScanVC DidSkipClick:(UIButton *) skinBtn
 {
 //    MyPopTest
-    
-    AppDelegate *app = [UIApplication sharedApplication].delegate;
-    
-    
+
     [self.m_popVC dismissPopoverAnimated:YES];
     
     UIViewController *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"TestingDataRegistViewController"];
