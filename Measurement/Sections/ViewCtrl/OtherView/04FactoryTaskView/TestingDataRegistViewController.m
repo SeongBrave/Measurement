@@ -93,6 +93,9 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *m_ysjl_ScrollView;
 
+@property (weak, nonatomic) IBOutlet UIWebView *m_ysjl_WebView;
+
+
 
 
 
@@ -449,6 +452,10 @@
          
          
      }];
+    
+    self.m_ysjl_WebView.scrollView.scrollEnabled = NO;
+    [self.m_ysjl_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.10.169:8080/lims/web/pages/detectionTask/record-addc.jsp?yqid=5F96662544EA4D769784B663BFC521F9&jljspmc=1005522"]]];
+    
 
     
 }
@@ -673,5 +680,10 @@
     
 }
 
+
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    if (scrollView.contentOffset.y &gt; 0 scrollView.contentOffset.y &lt; 0 ) scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, 0);
+//}
 
 @end
