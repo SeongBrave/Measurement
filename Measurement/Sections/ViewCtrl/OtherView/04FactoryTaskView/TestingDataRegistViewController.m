@@ -459,6 +459,14 @@
 
     
 }
+- (IBAction)BackToVC:(id)sender {
+    
+    
+    [self dismissViewControllerAnimated:YES completion:^(void){
+       
+        
+    }];
+}
 
 
 - (IBAction)CancleClick:(id)sender {
