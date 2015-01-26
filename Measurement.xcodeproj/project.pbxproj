@@ -82,6 +82,7 @@
 		C9791AA21A71496C00DC5643 /* Jlbzkhzsh_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9791AA11A71496C00DC5643 /* Jlbzkhzsh_Model.m */; };
 		C9791AA51A71498000DC5643 /* Bzqsb_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9791AA41A71498000DC5643 /* Bzqsb_Model.m */; };
 		C9791AA81A71498F00DC5643 /* Jsyj_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9791AA71A71498F00DC5643 /* Jsyj_Model.m */; };
+		C97C77481A76A8780016C779 /* FullScreenPreviewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C97C77471A76A8780016C779 /* FullScreenPreviewVC.m */; };
 		C9903BFF1A46E9FE0006FD99 /* DockItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903BFE1A46E9FE0006FD99 /* DockItem.m */; };
 		C9903C021A46EA0C0006FD99 /* CellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903C011A46EA0C0006FD99 /* CellItem.m */; };
 		C9903C1E1A470BDB0006FD99 /* UIImage+Fit.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903C1D1A470BDB0006FD99 /* UIImage+Fit.m */; };
@@ -313,6 +314,8 @@
 		C9791AA41A71498000DC5643 /* Bzqsb_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bzqsb_Model.m; sourceTree = "<group>"; };
 		C9791AA61A71498F00DC5643 /* Jsyj_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jsyj_Model.h; sourceTree = "<group>"; };
 		C9791AA71A71498F00DC5643 /* Jsyj_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jsyj_Model.m; sourceTree = "<group>"; };
+		C97C77461A76A8780016C779 /* FullScreenPreviewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenPreviewVC.h; sourceTree = "<group>"; };
+		C97C77471A76A8780016C779 /* FullScreenPreviewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullScreenPreviewVC.m; sourceTree = "<group>"; };
 		C9903BFD1A46E9FE0006FD99 /* DockItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DockItem.h; sourceTree = "<group>"; };
 		C9903BFE1A46E9FE0006FD99 /* DockItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DockItem.m; sourceTree = "<group>"; };
 		C9903C001A46EA0C0006FD99 /* CellItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellItem.h; sourceTree = "<group>"; };
@@ -544,6 +547,7 @@
 		C91ACE141A4FA01D0037757A /* TooLsVC */ = {
 			isa = PBXGroup;
 			children = (
+				C97C77451A76A8670016C779 /* FullScreenPreviewVC */,
 				C90F31161A729DB300A7A06E /* TemplatesListVC */,
 				C970946D1A62D36A00141DC5 /* DepMansVC */,
 				C97093EE1A62CC3F00141DC5 /* ScanVC */,
@@ -1185,6 +1189,15 @@
 			path = Ggxx_Model;
 			sourceTree = "<group>";
 		};
+		C97C77451A76A8670016C779 /* FullScreenPreviewVC */ = {
+			isa = PBXGroup;
+			children = (
+				C97C77461A76A8780016C779 /* FullScreenPreviewVC.h */,
+				C97C77471A76A8780016C779 /* FullScreenPreviewVC.m */,
+			);
+			path = FullScreenPreviewVC;
+			sourceTree = "<group>";
+		};
 		C9903BFA1A46E9E30006FD99 /* DockMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1783,6 +1796,7 @@
 				C970946C1A62D2DA00141DC5 /* autoTableViewData.m in Sources */,
 				C903B0C81A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m in Sources */,
 				C945BB0E1A6D6C3000C6E11E /* BlackBackGroundV.m in Sources */,
+				C97C77481A76A8780016C779 /* FullScreenPreviewVC.m in Sources */,
 				C9BFAA101A487BF400C887B4 /* HeaderView.m in Sources */,
 				C97094671A62D09B00141DC5 /* AuditNotPassViewController.m in Sources */,
 				C9A95B4C1A613CD50017BE2B /* TestProgressContentCell.m in Sources */,

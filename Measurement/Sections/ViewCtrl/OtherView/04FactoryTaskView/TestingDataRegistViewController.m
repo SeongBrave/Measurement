@@ -12,6 +12,7 @@
 #import "Bzqsb_TableViewCell.h"
 #import "Jsyj_TableViewCell.h"
 #import "TemplatesListViewController.h"
+#import "FullScreenPreviewVC.h"
 
 @interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldShowCellTextLabel>
 
@@ -503,6 +504,21 @@
 }
 
 - (IBAction)NextStepClick:(id)sender {
+}
+- (IBAction)FullScreenPreviewBtnClick:(id)sender {
+    
+//    FullScreenPreviewVC
+    
+    FullScreenPreviewVC *tempLasteVC = [self.storyboard instantiateViewControllerWithIdentifier:@"FullScreenPreviewVC"];
+    tempLasteVC.modalPresentationStyle = UIModalPresentationFormSheet;
+    tempLasteVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    
+    [self presentViewController:tempLasteVC animated:YES completion:nil];
+    
+    
+    
+}
+- (IBAction)m_UpBtnClick:(id)sender {
 }
 
 #pragma mark - 代理协议方法*
