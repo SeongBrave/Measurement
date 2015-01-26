@@ -54,4 +54,7 @@
  */
 @property (nonatomic, copy) NSString *jlsyfw;
 
+
+@property(nonatomic , assign)BOOL isSelected;
+
 @end

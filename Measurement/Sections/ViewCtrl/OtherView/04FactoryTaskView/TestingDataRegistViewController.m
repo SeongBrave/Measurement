@@ -11,6 +11,7 @@
 #import "Jlbzkhzsh_TableViewCell.h"
 #import "Bzqsb_TableViewCell.h"
 #import "Jsyj_TableViewCell.h"
+#import "TemplatesListViewController.h"
 
 @interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldShowCellTextLabel>
 
@@ -105,6 +106,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *m_zs_Btn;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *m_zs_ScrollView;
+@property (weak, nonatomic) IBOutlet UIWebView *m_zs_WebView;
 
 
 @end
@@ -231,11 +233,13 @@
                     case 2:
                         make.centerX.equalTo(self.m_ysjl_Btn.mas_centerX);
                         make.width.equalTo(@60);
+                        [self PopTemplatesListViewControllerWithTemplatesListType:RecordType];
                         break;
                         
                     case 3:
                         make.centerX.equalTo(self.m_zs_Btn.mas_centerX);
                         make.width.equalTo(@30);
+                        [self PopTemplatesListViewControllerWithTemplatesListType:CertificateType];
                         break;
                         
                     default:
@@ -305,6 +309,7 @@
         
         @strongify(self)
         [self updateLineConstraints:next];
+        [self PopTemplatesListViewControllerWithTemplatesListType:RecordType];
         [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*2,0} animated:YES];
         
     }];
@@ -313,6 +318,7 @@
         
         @strongify(self)
         [self updateLineConstraints:next];
+        [self PopTemplatesListViewControllerWithTemplatesListType:CertificateType];
         [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*3,0} animated:YES];
         
     }];
@@ -348,25 +354,39 @@
     
      self.m_txm_TF.text =  [sbxqDict GetLabelWithKey:@"txm"];
     self.m_yqmc_TF.text =  [sbxqDict GetLabelWithKey:@"yqmc"];
-    self.m_jlfw_TF.text =  [sbxqDict GetLabelWithKey:@"jlfw"];
+     //TODO:需修改字段
+    self.m_jlfw_TF.text =  [sbxqDict GetLabelWithKey:@"jltx"];
     //TODO:需修改字段
-    self.m_clfw_TF.text =  [sbxqDict GetLabelWithKey:@"clfw"];
+    self.m_clfw_TF.text =  [sbxqDict GetLabelWithKey:@"jcfw"];
     self.m_ggxh_TF.text =  [sbxqDict GetLabelWithKey:@"ggxh"];
     self.m_sccj_TF.text =  [sbxqDict GetLabelWithKey:@"sccj"];
     self.m_ccbh_TF.text =  [sbxqDict GetLabelWithKey:@"ccbh"];
     //TODO:需修改字段
-    self.m_jclx_DTF.text =  [sbxqDict GetLabelWithKey:@"jclx"];
+    self.m_jclx_DTF.text =  [sbxqDict GetLabelWithKey:@"by4"];
     self.m_sl_TF.text =  [sbxqDict GetLabelWithKey:@"sl"];
     self.m_dw_DTF.text =  [sbxqDict GetLabelWithKey:@"wtdw"];
     self.m_bj_TF.text =  [sbxqDict GetLabelWithKey:@"bj"];
     self.m_wg_TF.text =  [sbxqDict GetLabelWithKey:@"wg"];
     self.m_xm_TF.text =  [sbxqDict GetLabelWithKey:@"xmmc"];
     //TODO:需修改字段
-    self.m_fj_TF.text =  [sbxqDict GetLabelWithKey:@"fj"];
+    self.m_fj_TF.text =  [sbxqDict GetLabelWithKey:@"pj"];
     //TODO:需修改字段
     self.m_txyq_TF.text =  [sbxqDict GetLabelWithKey:@"tsyq"];
     self.m_bz_TV.text =  [sbxqDict GetLabelWithKey:@"bz"];
 
+}
+//layoutMainCustomView
+-(void)PopTemplatesListViewControllerWithTemplatesListType:(TemplatesListType )type
+{
+    TemplatesListViewController *tempLasteVC = [self.storyboard instantiateViewControllerWithIdentifier:@"TemplatesListViewController"];
+    tempLasteVC.m_templatesType = type;
+    tempLasteVC.modalPresentationStyle = UIModalPresentationFormSheet;
+    tempLasteVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    
+    [self presentViewController:tempLasteVC animated:YES completion:nil];
+    
+    
+    
 }
 /**
  *  获取  的数据
@@ -453,8 +473,14 @@
          
      }];
     
+    
+    
+    
     self.m_ysjl_WebView.scrollView.scrollEnabled = NO;
     [self.m_ysjl_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.10.169:8080/lims/web/pages/detectionTask/record-addc.jsp?yqid=5F96662544EA4D769784B663BFC521F9&jljspmc=1005522"]]];
+    
+    [self.m_zs_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.10.169:8080/lims/web/pages/detectionTask/record-addc.jsp?yqid=5F96662544EA4D769784B663BFC521F9&jljspmc=1005522"]]];
+    
     
 
     

@@ -11,6 +11,20 @@
  */
 #import "BaseViewController.h"
 
+
+typedef enum
+{
+    CertificateType = 0,
+    RecordType,
+    
+} TemplatesListType;
+
 @interface TemplatesListViewController : BaseViewController
+
+
+@property(nonatomic , assign)TemplatesListType m_templatesType;
+
+
+
 
 @end

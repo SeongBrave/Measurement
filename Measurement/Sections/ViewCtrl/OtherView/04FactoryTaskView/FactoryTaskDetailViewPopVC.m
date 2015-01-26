@@ -667,9 +667,11 @@
 
 - (IBAction)dismissClick:(id)sender {
     
-    if ([self.m_popDelegate respondsToSelector:@selector(dismissPopoverSelected)]) {
-        [self.m_popDelegate dismissPopoverSelected];
-    }
+    [self dismissViewControllerAnimated:YES completion:^(void){
+        
+    }];
+    
+    
 }
 
 /**
@@ -678,9 +680,6 @@
  *  @param sender
  */
 - (IBAction)Add_SB_Click:(id)sender {
-
-    
-    AppDelegate *app = [UIApplication sharedApplication].delegate;
     
     
     IPadScanViewController *popVc = (IPadScanViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"IPadScanViewController"];
