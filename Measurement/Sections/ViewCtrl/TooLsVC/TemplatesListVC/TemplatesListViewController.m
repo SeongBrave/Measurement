@@ -233,22 +233,33 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    jlmb_Model *model = self.m_dataSourceArr[indexPath.row];
-    if (_lastIndex && _lastIndex.row != indexPath.row) {
-        
-        model.isSelected = YES;
-        
-        jlmb_Model *lastModel = self.m_dataSourceArr[_lastIndex.row];
-        lastModel.isSelected = NO;
-
+    if(indexPath.row == 0)
+    {
         
     }else
+        
     {
-        model.isSelected = !model.isSelected;
+        jlmb_Model *model = self.m_dataSourceArr[indexPath.row -1];
+        if (_lastIndex && (_lastIndex.row -1) !=  (indexPath.row -1))
+        {
+            
+            model.isSelected = YES;
+            
+            jlmb_Model *lastModel = self.m_dataSourceArr[_lastIndex.row -1];
+            lastModel.isSelected = NO;
+            
+            
+        }else
+        {
+            model.isSelected = !model.isSelected;
+        }
+        
+        _lastIndex = indexPath;
+
+        
+        
     }
     
-    _lastIndex = indexPath;
     
 }
 

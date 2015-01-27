@@ -22,6 +22,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *m_menuBarView;
 
+@property(nonatomic , strong) FullScreenPreviewVC *m_fullScreenVc;
+
 /**
  *  设备详情
  */
@@ -504,8 +506,10 @@
 }
 
 - (IBAction)NextStepClick:(id)sender {
+    
 }
 - (IBAction)FullScreenPreviewBtnClick:(id)sender {
+    
     
 //    FullScreenPreviewVC
     
@@ -513,11 +517,35 @@
     tempLasteVC.modalPresentationStyle = UIModalPresentationFormSheet;
     tempLasteVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     
-    [self presentViewController:tempLasteVC animated:YES completion:nil];
+    @weakify(self)
+    [self presentViewController:tempLasteVC animated:YES completion:^(void){
+       
+        
+//        /**
+//         点击webview页面两次就会隐藏
+//         */
+//        @strongify(self)
+//        
+//        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick:)];
+//        tapGesture.numberOfTapsRequired  = 2;
+//        
+//        [tempLasteVC.m_webView.superview addGestureRecognizer:tapGesture];
+//        
+//        self.m_fullScreenVc = tempLasteVC;
+
+    }];
     
     
     
 }
+
+- (void)tapClick:(UITapGestureRecognizer *)gestureRecognizer
+{
+    [self.m_fullScreenVc dismissViewControllerAnimated:YES completion:^(void){
+        
+    }];
+}
+
 - (IBAction)m_UpBtnClick:(id)sender {
 }
 

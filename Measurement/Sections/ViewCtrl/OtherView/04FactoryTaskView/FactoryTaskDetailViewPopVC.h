@@ -14,16 +14,6 @@
 
 @interface FactoryTaskDetailViewPopVC : BaseViewController<UIPopoverControllerDelegate>
 
-/**
- *  保存在那个vc上弹出的
- */
-@property(nonatomic , strong)UIViewController *m_superVC;
-
-/**
- *  保存在那个视图上弹出的
- */
-@property(nonatomic , strong)UIView *m_superView;
-
 @property(nonatomic , assign)id<PopViewDelegate> m_popDelegate;
 
 @property(nonatomic , strong)UIPopoverController *m_popVC;

@@ -681,24 +681,34 @@
  */
 - (IBAction)Add_SB_Click:(id)sender {
     
+//    
+//    IPadScanViewController *popVc = (IPadScanViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"IPadScanViewController"];
+//    
+//    popVc.m_ScanDelegate = self;
+//    
+//    self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
+//    self.m_popVC.delegate = self;
+//    //TODO:popoverLayoutMargins是指你的popover相对于整个window上下左右的margin
+//    self.m_popVC.popoverLayoutMargins = UIEdgeInsetsMake(0,0,0,0);
+//
+//    self.m_popVC.popoverBackgroundViewClass = [BlackBackGroundV class];
+//    // 设定展示区域的大小
+//    // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
+//    //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
+//    [self.m_popVC presentPopoverFromRect:self.view.bounds
+//                                  inView:self.view
+//                permittedArrowDirections:0
+//                                animated:YES];
+    
+    
     
     IPadScanViewController *popVc = (IPadScanViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"IPadScanViewController"];
+       popVc.m_ScanDelegate = self;
     
-    popVc.m_ScanDelegate = self;
+    popVc.modalPresentationStyle = UIModalPresentationFormSheet;
+    popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     
-    self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
-    self.m_popVC.delegate = self;
-    //TODO:popoverLayoutMargins是指你的popover相对于整个window上下左右的margin
-    self.m_popVC.popoverLayoutMargins = UIEdgeInsetsMake(0,0,0,0);
-
-    self.m_popVC.popoverBackgroundViewClass = [BlackBackGroundV class];
-    // 设定展示区域的大小
-    // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
-    //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
-    [self.m_popVC presentPopoverFromRect:self.view.bounds
-                                  inView:self.view
-                permittedArrowDirections:0
-                                animated:YES];
+    [self presentViewController:popVc animated:YES completion:nil];
     
 }
 
@@ -766,39 +776,6 @@
     
      [self presentViewController:popVc animated:YES completion:nil];
     
-//    self.m_popSecondVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
-//    self.m_popSecondVC.delegate = self;
-//    //TODO:popoverLayoutMargins是指你的popover相对于整个window上下左右的margin
-//    self.m_popSecondVC.popoverLayoutMargins = UIEdgeInsetsMake(20,0,0,0);
-//    
-//    self.m_popSecondVC.popoverBackgroundViewClass = [backgroundV class];
-//    // 设定展示区域的大小
-//    // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
-//    //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
-//    [self.m_popSecondVC presentPopoverFromRect:self.m_superView.bounds
-//                                        inView:self.m_superView
-//                      permittedArrowDirections:0
-//                                      animated:YES];
-//    
-//    
-//    
-//    
-//    DepManViewController *depManVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DepManViewController"];
-//    depManVC.modalPresentationStyle = UIModalPresentationFormSheet;
-//    depManVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-//    depManVC.m_dataSourceArr = ksModel.ryArr;
-//    depManVC.m_delegate = self;
-//    [self presentViewController:depManVC animated:YES completion:nil];
-//    //    depManVC.view.superview.bounds = CGRectMake(0, 0, 529, 279);
-//    depManVC.view.superview.frame = CGRectMake(0, 0, 529, 279);//it's important to do this after presentModalViewController
-//    depManVC.view.superview.center = self.view.center;
-//    self.m_head_depManVC = depManVC;
-//    
-//    /**
-//     *  将要修改的model赋值给vc然后再vc中修改
-//     */
-//    self.m_head_depManVC.ksModel = ksModel;
-
 
 }
 
@@ -1117,23 +1094,38 @@
 #pragma mark -IPadScanViewControllerDelegate
 -(void)IPadScanVC:(IPadScanViewController*) ipadScanVC DidScanViewWithStr:(NSString *) resultValue
 {
-    [self.m_popVC dismissPopoverAnimated:YES];
+    @weakify(self)
+    [self dismissViewControllerAnimated:YES completion:^(void){
+        @strongify(self)
+        [self loadJiliangqjByTxm:resultValue];
+        
+    }];
    
-    [self loadJiliangqjByTxm:resultValue];
+    
 }
 
 -(void)IPadScanVC:(IPadScanViewController*) ipadScanVC DidCancleClick:(UIButton *) CancleBtn
 {
-    [self.m_popVC dismissPopoverAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^(void){
+        
+      
+        
+    }];
 }
 
 -(void)IPadScanVC:(IPadScanViewController*) ipadScanVC DidSkipClick:(UIButton *) skinBtn
 {
 //    MyPopTest
 
-    [self.m_popVC dismissPopoverAnimated:YES];
+    @weakify(self)
+    [self dismissViewControllerAnimated:YES completion:^(void){
+        
+        @strongify(self)
+        [self ToTestingDataRegistViewControllerWithDict:nil];
+        
+    }];
     
-    [self ToTestingDataRegistViewControllerWithDict:nil];
+   
     
 }
 

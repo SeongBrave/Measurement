@@ -63,6 +63,7 @@
     
 
 }
+
 -(void)CancelClick:(UIButton *) sender
 {
     if ([self.m_delegate respondsToSelector:@selector(bottomTabBarView:didCancleClick:)]) {

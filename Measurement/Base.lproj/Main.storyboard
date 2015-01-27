@@ -2095,17 +2095,15 @@
                         <viewControllerLayoutGuide type="bottom" id="NH5-8E-t0C"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="79v-Vc-pkd">
-                        <rect key="frame" x="0.0" y="0.0" width="1009" height="673"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="1009" height="673"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="omb-E6-XCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-556.5" y="-6772.5"/>
+            <point key="canvasLocation" x="-4.5" y="-8004.5"/>
         </scene>
         <!--Date Picker View Controller-->
         <scene sceneID="Voo-vp-S3l">

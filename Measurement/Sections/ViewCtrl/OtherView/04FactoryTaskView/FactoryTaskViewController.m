@@ -29,9 +29,11 @@
 @property (nonatomic, strong) IBOutlet UIView *menuView;
 @property (nonatomic, strong) NSIndexPath *lastIndex;
 @property (nonatomic, strong) NSIndexPath *currentIndex;
-@property(nonatomic , strong)UIPopoverController *m_popVC;
 
 @property (weak, nonatomic) IBOutlet DropDownListView *dropDownDateList;
+
+
+@property(nonatomic , strong)FactoryTaskDetailViewPopVC *m_factoryc;
 
 
 @end
@@ -446,19 +448,21 @@
         
         FactoryTaskDetailViewPopVC *popVc = (FactoryTaskDetailViewPopVC*)[self.storyboard instantiateViewControllerWithIdentifier:@"FactoryTaskDetailViewPopVC"];
         
-        popVc.m_superVC = self;
-        popVc.m_superView = collectionView;
         popVc.m_popDelegate = self;
         popVc.m_showDict = self.m_DataSourceArr[indexPath.row];
         popVc.modalPresentationStyle = UIModalPresentationFormSheet;
         popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        
-        [self presentViewController:popVc animated:YES completion:nil];
+        @weakify(self)
+        [self presentViewController:popVc animated:YES completion:^(void){
+
+        }];
         
     }
     
 
 }
+
+
 
 #pragma mark - SwipeForOptionsCellDelegate Methods
 
