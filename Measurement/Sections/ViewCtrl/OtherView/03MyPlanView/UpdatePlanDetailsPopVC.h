@@ -11,7 +11,6 @@
 
 @interface UpdatePlanDetailsPopVC : BaseViewController
 
-@property(nonatomic , assign)id<PopViewDelegate> m_popDelegate;
 
 @property(nonatomic , strong)UIPopoverController *m_popVC;
 /**

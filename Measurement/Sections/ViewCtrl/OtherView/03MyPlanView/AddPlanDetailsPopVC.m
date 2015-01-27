@@ -630,15 +630,15 @@
 }
 - (IBAction)dismissClick:(id)sender {
     
-    if ([self.m_popDelegate respondsToSelector:@selector(dismissPopoverSelected)]) {
-        [self.m_popDelegate dismissPopoverSelected];
-    }
+    [self dismissViewControllerAnimated:YES completion:^(void){
+        
+    }];
 }
 - (IBAction)cancleClick:(id)sender {
     
-    if ([self.m_popDelegate respondsToSelector:@selector(dismissPopoverSelected)]) {
-        [self.m_popDelegate dismissPopoverSelected];
-    }
+    [self dismissViewControllerAnimated:YES completion:^(void){
+        
+    }];
 }
 - (IBAction)okClick:(id)sender {
     
