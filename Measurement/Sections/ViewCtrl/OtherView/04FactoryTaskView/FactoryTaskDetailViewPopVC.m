@@ -681,7 +681,30 @@
  */
 - (IBAction)Add_SB_Click:(id)sender {
     
-//    
+    
+    NSDictionary *dict = @{@"rwbh":@"",@"xtbs":@""};
+    
+    @weakify(self)
+    [[BaseNetWork getInstance] hideDialog];
+    [[[[[BaseNetWork getInstance] rac_postPath:@"addEquipment.do" parameters:dict]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return [dict valueForKeyPath:@"qjxx"];
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+         
+         @strongify(self)
+         [self ToTestingDataRegistViewControllerWithDict:retDict];
+         
+         
+     }error:^(NSError *error){
+         
+         
+         
+     }];
+    
+//
 //    IPadScanViewController *popVc = (IPadScanViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"IPadScanViewController"];
 //    
 //    popVc.m_ScanDelegate = self;

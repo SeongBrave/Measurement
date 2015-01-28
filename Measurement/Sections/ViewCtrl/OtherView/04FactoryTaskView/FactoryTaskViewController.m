@@ -470,6 +470,7 @@
     if (isShowingMenu) {
         self.lastIndex = [self.m_collectionView indexPathForCell:cell];
     }
+    
 }
 
 - (void)cellDidEndScrolling:(CompanyCollectionViewCell *)cell{
