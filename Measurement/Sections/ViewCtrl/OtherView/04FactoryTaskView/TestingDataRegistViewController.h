@@ -19,4 +19,9 @@
  */
 @property(nonatomic , strong)NSDictionary *m_qjxxDict;
 
+/**
+ *  用于保存最后确定时传的参数
+ */
+@property(nonatomic ,strong)NSMutableDictionary *m_saveDataDict;
+
 @end

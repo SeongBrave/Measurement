@@ -673,7 +673,40 @@
     
     
 }
+/*
 
+@function:添加设备
+* @param: *String rwbh
+* @param: *String xtbs
+* @param: *String usercode
+* @param: String txm
+* @param: String yqmc
+* @param: String ksbh
+* @param: String ks
+* @param: String jltx *
+* @param: String xmbh
+* @param: String jcfw
+* @param: String ggxh
+ 
+ 
+* @param: String sccj
+* @param: String ccbh *
+* @param: String jclxbh
+* @param: String jclx
+* @param: String sl
+* @param: String bzsf
+ 
+* @param: String bzsfbh *
+* @param: String wg
+* @param: String pj
+* @param: String bz
+* @param: String jdzqbh
+* @param: String by1
+* @param: String by2
+* @param: String sfsq *
+* @return: json 1 成功/0 异常 * @author: yz
+* @createtime: 2014-12-10
+*/
 /**
  *  添加设备
  *
@@ -681,29 +714,7 @@
  */
 - (IBAction)Add_SB_Click:(id)sender {
     
-    
-    NSDictionary *dict = @{@"rwbh":@"",@"xtbs":@""};
-    
-    @weakify(self)
-    [[BaseNetWork getInstance] hideDialog];
-    [[[[[BaseNetWork getInstance] rac_postPath:@"addEquipment.do" parameters:dict]map:^(id responseData)
-       {
-           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-           
-           return [dict valueForKeyPath:@"qjxx"];
-       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-     subscribeNext:^(NSDictionary *retDict) {
-         
-         @strongify(self)
-         [self ToTestingDataRegistViewControllerWithDict:retDict];
-         
-         
-     }error:^(NSError *error){
-         
-         
-         
-     }];
-    
+
 //
 //    IPadScanViewController *popVc = (IPadScanViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"IPadScanViewController"];
 //    
@@ -982,42 +993,20 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (tableView == self.m_My_Sblb_TableView)
-//    {
-//        
-//        if (indexPath.row == 0)
-//        {
-//            
-//            
-//            if ([indexPath isEqual:self.selectIndex]) {
-//                self.isOpen = NO;
-//                [self didSelectCellRowFirstDo:NO nextDo:NO];
-//                self.selectIndex = nil;
-//                
-//            }else
-//            {
-//                if (!self.selectIndex) {
-//                    self.selectIndex = indexPath;
-//                    [self didSelectCellRowFirstDo:YES nextDo:NO];
-//                    
-//                }else
-//                {
-//                    
-//                    [self didSelectCellRowFirstDo:NO nextDo:YES];
-//                }
-//            }
-//            
-//        }
-//        else
-//        {
-//            /**
-//             *  选中详细列表行
-//             */
-//        }
-//        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//        
-//    }
+    if(tableView == _m_My_Sblb_TableView)
+    {
+        if (indexPath.row == 0) {
+            
+        }else
+        {
+            
+            [self ToTestingDataRegistViewControllerWithDict:nil];
+            
+            
+        }
+        
     
+    }
     
 }
 

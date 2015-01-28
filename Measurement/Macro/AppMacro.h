@@ -20,9 +20,17 @@
 #define WEBCLASSNAME @"Transfusion.asmx"
 
 
+//系统标示(本院:by/精仪:jy)
 
-//webservice配置
+#define MBS_XTBS @"by"
+
+
+
+//webservice配置 主
 #define defaultWebServiceUrl @"http://192.168.10.169:8080/mbs/convey/"
+
+//测试
+//#define defaultWebServiceUrl @"http://192.168.10.205:8080/mbs/convey/"
 
 //#define defaultWebServiceUrl @"http://175.17.22.182:8080/mbs/convey/"
 

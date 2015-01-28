@@ -86,6 +86,9 @@
 		C9903BFF1A46E9FE0006FD99 /* DockItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903BFE1A46E9FE0006FD99 /* DockItem.m */; };
 		C9903C021A46EA0C0006FD99 /* CellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903C011A46EA0C0006FD99 /* CellItem.m */; };
 		C9903C1E1A470BDB0006FD99 /* UIImage+Fit.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903C1D1A470BDB0006FD99 /* UIImage+Fit.m */; };
+		C990B7E61A79335B00DF81C8 /* Yqmc_Auto_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C990B7E51A79335B00DF81C8 /* Yqmc_Auto_Model.m */; };
+		C990B7EA1A7937B000DF81C8 /* Yqjbxx_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C990B7E91A7937B000DF81C8 /* Yqjbxx_Model.m */; };
+		C990B7EE1A7942E700DF81C8 /* dmxx_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C990B7ED1A7942E700DF81C8 /* dmxx_Model.m */; };
 		C99F47C11A4B0BAF007C68AB /* CompanyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F47C01A4B0BAF007C68AB /* CompanyCollectionViewCell.m */; };
 		C99FD92A1A4C4F2F000AB1A6 /* ProgramOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C99FD9291A4C4F2F000AB1A6 /* ProgramOverviewCell.m */; };
 		C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */; };
@@ -322,6 +325,12 @@
 		C9903C011A46EA0C0006FD99 /* CellItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellItem.m; sourceTree = "<group>"; };
 		C9903C1C1A470BDB0006FD99 /* UIImage+Fit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Fit.h"; sourceTree = "<group>"; };
 		C9903C1D1A470BDB0006FD99 /* UIImage+Fit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Fit.m"; sourceTree = "<group>"; };
+		C990B7E41A79335B00DF81C8 /* Yqmc_Auto_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yqmc_Auto_Model.h; sourceTree = "<group>"; };
+		C990B7E51A79335B00DF81C8 /* Yqmc_Auto_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Yqmc_Auto_Model.m; sourceTree = "<group>"; };
+		C990B7E81A7937B000DF81C8 /* Yqjbxx_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yqjbxx_Model.h; sourceTree = "<group>"; };
+		C990B7E91A7937B000DF81C8 /* Yqjbxx_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Yqjbxx_Model.m; sourceTree = "<group>"; };
+		C990B7EC1A7942E700DF81C8 /* dmxx_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dmxx_Model.h; sourceTree = "<group>"; };
+		C990B7ED1A7942E700DF81C8 /* dmxx_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dmxx_Model.m; sourceTree = "<group>"; };
 		C99F47BF1A4B0BAF007C68AB /* CompanyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyCollectionViewCell.h; sourceTree = "<group>"; };
 		C99F47C01A4B0BAF007C68AB /* CompanyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyCollectionViewCell.m; sourceTree = "<group>"; };
 		C99FD9281A4C4F2F000AB1A6 /* ProgramOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramOverviewCell.h; sourceTree = "<group>"; };
@@ -1138,6 +1147,7 @@
 		C97094681A62D2C300141DC5 /* ToolModel */ = {
 			isa = PBXGroup;
 			children = (
+				C990B7EB1A7942A800DF81C8 /* dmxx_Model */,
 				C97094691A62D2C300141DC5 /* wtdwmcModel */,
 			);
 			path = ToolModel;
@@ -1243,6 +1253,33 @@
 				C9903C1D1A470BDB0006FD99 /* UIImage+Fit.m */,
 			);
 			path = category;
+			sourceTree = "<group>";
+		};
+		C990B7E31A79332E00DF81C8 /* Yqmc_Auto_Model */ = {
+			isa = PBXGroup;
+			children = (
+				C990B7E41A79335B00DF81C8 /* Yqmc_Auto_Model.h */,
+				C990B7E51A79335B00DF81C8 /* Yqmc_Auto_Model.m */,
+			);
+			path = Yqmc_Auto_Model;
+			sourceTree = "<group>";
+		};
+		C990B7E71A7937A600DF81C8 /* Yqjbxx_Model */ = {
+			isa = PBXGroup;
+			children = (
+				C990B7E81A7937B000DF81C8 /* Yqjbxx_Model.h */,
+				C990B7E91A7937B000DF81C8 /* Yqjbxx_Model.m */,
+			);
+			path = Yqjbxx_Model;
+			sourceTree = "<group>";
+		};
+		C990B7EB1A7942A800DF81C8 /* dmxx_Model */ = {
+			isa = PBXGroup;
+			children = (
+				C990B7EC1A7942E700DF81C8 /* dmxx_Model.h */,
+				C990B7ED1A7942E700DF81C8 /* dmxx_Model.m */,
+			);
+			path = dmxx_Model;
 			sourceTree = "<group>";
 		};
 		C99FD9271A4C4F0A000AB1A6 /* ProgramOverviewCell */ = {
@@ -1611,6 +1648,8 @@
 		C9FFC1611A6E7C5F00AA6BE7 /* FactoryTaskDetailModel */ = {
 			isa = PBXGroup;
 			children = (
+				C990B7E71A7937A600DF81C8 /* Yqjbxx_Model */,
+				C990B7E31A79332E00DF81C8 /* Yqmc_Auto_Model */,
 				C9791A9F1A71493A00DC5643 /* Ggxx_Model */,
 				C9FFC1621A6E7C9900AA6BE7 /* sblb_Model.h */,
 				C9FFC1631A6E7C9900AA6BE7 /* sblb_Model.m */,
@@ -1821,6 +1860,7 @@
 				C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */,
 				C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */,
 				C9F3DFD71A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m in Sources */,
+				C990B7EE1A7942E700DF81C8 /* dmxx_Model.m in Sources */,
 				C9651FD51A43B26000B770BB /* StepperModel.m in Sources */,
 				C99FD92A1A4C4F2F000AB1A6 /* ProgramOverviewCell.m in Sources */,
 				C97094551A62D09B00141DC5 /* ProgramOverviewViewController.m in Sources */,
@@ -1841,6 +1881,7 @@
 				C9651FD21A43B26000B770BB /* CustomButton.m in Sources */,
 				C9651FEB1A43B26000B770BB /* Localisator.m in Sources */,
 				C9E94DCC1A4A669100E8CC83 /* MJRefreshConst.m in Sources */,
+				C990B7E61A79335B00DF81C8 /* Yqmc_Auto_Model.m in Sources */,
 				C970945C1A62D09B00141DC5 /* MyPlanViewController.m in Sources */,
 				C9791A981A71485900DC5643 /* Jlbzkhzsh_TableViewCell.m in Sources */,
 				C9D6B9F61A5AE648006D27EF /* AutoCompleteTextField.m in Sources */,
@@ -1860,6 +1901,7 @@
 				C9BFA9FD1A487BB000C887B4 /* ViewController.m in Sources */,
 				C9651FD01A43B26000B770BB /* CYTextField.m in Sources */,
 				C9FFC1541A6E7A6A00AA6BE7 /* jcjd_Model.m in Sources */,
+				C990B7EA1A7937B000DF81C8 /* Yqjbxx_Model.m in Sources */,
 				C9FFC14C1A6E7A6A00AA6BE7 /* DistrictModel.m in Sources */,
 				C9D6B9F71A5AE648006D27EF /* NSString+Levenshtein.m in Sources */,
 				C9651FED1A43B26000B770BB /* TabBarHeaderView.m in Sources */,
