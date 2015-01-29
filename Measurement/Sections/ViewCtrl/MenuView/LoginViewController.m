@@ -184,7 +184,6 @@
         return;
     }
 
-//    [self performSegueWithIdentifier:@"ToLoginSuccess" sender:nil];
     
     NSDictionary *reqDict = @{@"usercode":uNameStr,@"password":uPwdStr};
     [[BaseNetWork getInstance] showDialog];

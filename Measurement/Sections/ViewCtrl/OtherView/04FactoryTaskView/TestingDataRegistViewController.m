@@ -550,6 +550,8 @@
      //TODO:需修改字段 计量特性
     self.m_jlfw_TF.text =  [sbxqDict GetLabelWithKey:@"jltx"];
     
+    self.m_jclx_DTF.m_bm = [sbxqDict GetLabelWithKey:@"jclxbh"];
+    
     //TODO:需修改字段
     self.m_clfw_TF.text =  [sbxqDict GetLabelWithKey:@"jcfw"];
     
@@ -557,7 +559,7 @@
     
     self.m_sccj_TF.text =  [sbxqDict GetLabelWithKey:@"sccj"];
     self.m_ccbh_TF.text =  [sbxqDict GetLabelWithKey:@"ccbh"];
-    //TODO:by4 是指的检测类型吗？
+    //通过条形码得到数据 by4 是指的检测类型
     self.m_jclx_DTF.text =  [sbxqDict GetLabelWithKey:@"by4"];
     
     self.m_sl_TF.text =  [sbxqDict GetLabelWithKey:@"sl"];
@@ -734,11 +736,16 @@
 }
 
 
-- (IBAction)CancleClick:(id)sender {
-}
 
 
-- (IBAction)SaveClick:(id)sender {
+
+/**
+ *  设备详情底部按钮事件
+ *
+ *  @param sender
+ */
+
+- (IBAction)Sbxq_SaveBtnClick:(id)sender {
     
     //TODO:需要把dwbh 改成by2
     //by2  数量单位编号  ,    findJiliangqjByTxm.do : dwbh
@@ -748,7 +755,7 @@
     /**
      *  项目 : 模糊查询
      */
-   // SSKSBH -> ksbh  科室编号 SSKS ->ks
+    // SSKSBH -> ksbh  科室编号 SSKS ->ks
     //JLQJMC ->仪器名称
     
     //JLQJBH ->计量器具名称编号
@@ -756,7 +763,7 @@
     
     [self saveData];
     
-//    @weakify(self)
+    //    @weakify(self)
     [[BaseNetWork getInstance] hideDialog];
     [[[[[BaseNetWork getInstance] rac_postPath:@"addEquipment.do" parameters:_m_saveDataDict]map:^(id responseData)
        {
@@ -770,9 +777,9 @@
              [Dialog toast:self withMessage:@"保存成功！"];
          }else
          {
-              [Dialog toast:self withMessage:@"保存失败！"];
+             [Dialog toast:self withMessage:@"保存失败！"];
          }
-
+         
          
          
      }error:^(NSError *error){
@@ -780,12 +787,132 @@
          
          
      }];
+}
+
+- (IBAction)Sbxq_CancleBtnClick:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:^(void){
+        
+        
+    }];
+
+}
+
+
+
+- (IBAction)Sbxq_NextStepBtnClick:(id)sender {
+    
+    @weakify(self);
+    [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
+ 
+        make.centerX.equalTo(self.m_ggxx_Btn.mas_centerX);
+        make.width.equalTo(@60);
+        make.height.equalTo(@4);
+        make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
+    }];
+    [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+        @strongify(self)
+        [self.m_menuBarView layoutIfNeeded];
+        
+    }completion:NULL];
+    
+    
+    [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width,0} animated:YES];
+    
     
 }
 
-- (IBAction)NextStepClick:(id)sender {
+
+/**
+ *  公共信息 底部按钮事件
+ *
+ *  @param sender
+ */
+- (IBAction)Ggxx_SaveBtnClick:(id)sender {
+}
+
+- (IBAction)Ggxx_CancleBtnClick:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:^(void){
+        
+        
+    }];
+
+}
+
+- (IBAction)Ggxx_NextStepBtnClick:(id)sender {
+    
+    
+    @weakify(self);
+    [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
+        
+        make.centerX.equalTo(self.m_ysjl_Btn.mas_centerX);
+        make.width.equalTo(@60);
+        make.height.equalTo(@4);
+        make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
+    }];
+    [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+        @strongify(self)
+        [self.m_menuBarView layoutIfNeeded];
+        
+    }completion:NULL];
+    
+    
+    [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width,0} animated:YES];
     
 }
+
+
+/**
+ *  原始记录 底部按钮事件
+ *
+ *  @param sender
+ */
+- (IBAction)Ysjl_SaveBtnClick:(id)sender {
+}
+- (IBAction)Ysjl_CancleBtbClick:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:^(void){
+        
+        
+    }];
+
+}
+
+- (IBAction)Ysjl_NextStepBtnClick:(id)sender {
+    
+    
+    @weakify(self);
+    [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
+        
+        make.centerX.equalTo(self.m_zs_Btn.mas_centerX);
+        make.width.equalTo(@30);
+        make.height.equalTo(@4);
+        make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
+    }];
+    [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+        @strongify(self)
+        [self.m_menuBarView layoutIfNeeded];
+        
+    }completion:NULL];
+    
+     [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*2,0} animated:YES];
+    
+    
+}
+
+/**
+ *  证书 底部按钮事件
+ *
+ *  @param sender
+ */
+- (IBAction)Zs_SaveBtnClick:(id)sender {
+}
+
+- (IBAction)Zs_CancleBtnClick:(id)sender {
+}
+
+
 - (IBAction)FullScreenPreviewBtnClick:(id)sender {
     
     
@@ -795,7 +922,6 @@
     tempLasteVC.modalPresentationStyle = UIModalPresentationFormSheet;
     tempLasteVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     
-    @weakify(self)
     [self presentViewController:tempLasteVC animated:YES completion:^(void){
        
         
@@ -831,7 +957,7 @@
 -(void)saveData
 {
     
-    self.m_saveDataDict[@"rwbh"] = [_m_yqmc_TF.m_bm GetNotNullStr];
+    self.m_saveDataDict[@"rwbh"] = [self.m_showDict GetLabelWithKey:@"RWBH"];
     self.m_saveDataDict[@"txm"] = [_m_txm_TF.text GetNotNullStr];
     self.m_saveDataDict[@"yqmc"] = [_m_yqmc_TF.text GetNotNullStr];
     self.m_saveDataDict[@"ksbh"] = [_m_qjxxDict GetLabelWithKey:@"ksbh"];
@@ -845,7 +971,7 @@
     self.m_saveDataDict[@"jclxbh"] = [_m_jclx_DTF.m_bm GetNotNullStr];
     self.m_saveDataDict[@"jclx"] = [_m_jclx_DTF.text GetNotNullStr];
     self.m_saveDataDict[@"sl"] = [_m_sl_TF.text GetNotNullStr];
-    self.m_saveDataDict[@"bzsf"] = [_m_qjxxDict GetLabelWithKey:@"bzsfbh"];
+    self.m_saveDataDict[@"bzsf"] = [_m_qjxxDict GetLabelWithKey:@"bzsf"];
     self.m_saveDataDict[@"bzsfbh"] = [_m_qjxxDict GetLabelWithKey:@"bzsfbh"];
     self.m_saveDataDict[@"wg"] = [_m_wg_TF.text GetNotNullStr];
     self.m_saveDataDict[@"pj"] = [_m_sl_TF.text GetNotNullStr];

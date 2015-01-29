@@ -14,6 +14,12 @@
 
 @interface TestingDataRegistViewController : BaseViewController
 
+
+/**
+ *  用于保存上一级界面传递过来的数据
+ */
+@property(nonatomic , strong)NSDictionary *m_showDict;
+
 /**
  *  用于显示设备详情界面的数据
  */

@@ -618,11 +618,12 @@
 -(void)loadInitDutyc
 {
     
+    LoginedUser *loginUsr = [LoginedUser sharedInstance];
     /**
      *  获取检测进度数据
      */
     @weakify(self)
-    [[[[[BaseNetWork getInstance] rac_postPath:@"findWdsblb.do" parameters:@{@"rwbh":@"003ac671dd1e45738aa515701d21c95e",@"usercode":@"1283"}]map:^(id responseData)
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findWdsblb.do" parameters:@{@"rwbh":[self.m_showDict GetLabelWithKey:@"RWBH"],@"usercode":loginUsr.usercode}]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
@@ -805,6 +806,7 @@
     TestingDataRegistViewController *popVc = (TestingDataRegistViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"TestingDataRegistViewController"];
     
     popVc.m_qjxxDict = qjxxDict;
+    popVc.m_showDict = self.m_showDict;
     popVc.modalPresentationStyle = UIModalPresentationFormSheet;
     popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     
@@ -1106,6 +1108,8 @@
 #pragma mark -IPadScanViewControllerDelegate
 -(void)IPadScanVC:(IPadScanViewController*) ipadScanVC DidScanViewWithStr:(NSString *) resultValue
 {
+   
+   
     @weakify(self)
     [self dismissViewControllerAnimated:YES completion:^(void){
         @strongify(self)
@@ -1133,7 +1137,9 @@
     [self dismissViewControllerAnimated:YES completion:^(void){
         
         @strongify(self)
-        [self ToTestingDataRegistViewControllerWithDict:nil];
+        //模拟器测试
+          [self loadJiliangqjByTxm: @"140047018"];
+//        [self ToTestingDataRegistViewControllerWithDict:nil];
         
     }];
     

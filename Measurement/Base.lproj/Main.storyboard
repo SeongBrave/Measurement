@@ -916,7 +916,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o0D-9L-cB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2046" y="-3878"/>
+            <point key="canvasLocation" x="-2104" y="-3583"/>
         </scene>
         <!--Add Plan Details PopVC-->
         <scene sceneID="Byy-ox-N4E">
@@ -5029,7 +5029,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rOt-Ah-c8d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2240" y="-3869"/>
+            <point key="canvasLocation" x="-2054" y="-3888"/>
         </scene>
         <!--Testing Data Regist View Controller-->
         <scene sceneID="60b-3D-GMu">
@@ -5314,8 +5314,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="CancleClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="yUO-tQ-NUj"/>
-                                                    <action selector="cancleClick:" destination="3TU-a3-8tX" eventType="touchUpInside" id="cwq-6l-k21"/>
+                                                    <action selector="Sbxq_CancleBtnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="iu2-Na-ltD"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lds-yM-YR4" userLabel="Button保存">
@@ -5324,8 +5323,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="SaveClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="nuQ-EE-zgG"/>
-                                                    <action selector="okClick:" destination="3TU-a3-8tX" eventType="touchUpInside" id="Dgu-U1-EOj"/>
+                                                    <action selector="Sbxq_SaveBtnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="rcg-qA-HIK"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YV-1T-cGa" userLabel="Button下一步">
@@ -5334,9 +5332,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="NextStepClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="1S4-fP-dMV"/>
-                                                    <action selector="NextStupClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="3nw-5a-fd3"/>
-                                                    <action selector="okClick:" destination="3TU-a3-8tX" eventType="touchUpInside" id="KSV-FZ-XU2"/>
+                                                    <action selector="Sbxq_NextStepBtnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="9aR-xi-iEN"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cCS-IU-YPK">
@@ -6144,7 +6140,7 @@
                                                     <outlet property="delegate" destination="aXG-2Y-ofb" id="sIg-sk-9SL"/>
                                                 </connections>
                                             </tableView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbJ-of-Oxm">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbJ-of-Oxm" userLabel="Button保存">
                                                 <rect key="frame" x="349" y="1363" width="70" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="Gij-ed-51w"/>
@@ -6153,8 +6149,11 @@
                                                 <state key="normal" image="right-button-bc">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="Ggxx_SaveBtnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="DfL-ra-Vha"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Zr-ZR-Lrv">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Zr-ZR-Lrv" userLabel="Button下一步">
                                                 <rect key="frame" x="429" y="1363" width="70" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="26" id="7K5-6W-gUP"/>
@@ -6163,8 +6162,11 @@
                                                 <state key="normal" image="right-button-xyb">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="Ggxx_NextStepBtnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="Amm-E1-pUG"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQ7-eU-ljk">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQ7-eU-ljk" userLabel="Button取消">
                                                 <rect key="frame" x="269" y="1363" width="70" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="VjV-CD-ndB"/>
@@ -6173,6 +6175,9 @@
                                                 <state key="normal" image="right-button-qx">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="Ggxx_CancleBtnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="pF7-IY-FC7"/>
+                                                </connections>
                                             </button>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cj3-ok-dTI">
                                                 <rect key="frame" x="0.0" y="578" width="768" height="248"/>
@@ -6405,6 +6410,9 @@
                                                 <state key="normal" image="right-button-bc">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="Ysjl_SaveBtnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="Ou3-oP-FQZ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIg-ah-NFV" userLabel="Button取消">
                                                 <rect key="frame" x="269" y="586" width="70" height="26"/>
@@ -6415,6 +6423,9 @@
                                                 <state key="normal" image="right-button-qc">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="Ysjl_CancleBtbClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="vb6-8Z-Giy"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pc7-Ag-SHE" userLabel="Button下一步">
                                                 <rect key="frame" x="429" y="586" width="70" height="26"/>
@@ -6425,6 +6436,9 @@
                                                 <state key="normal" image="right-button-xyb">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="Ysjl_NextStepBtnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="Whg-fM-feW"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -6525,6 +6539,9 @@
                                                 <state key="normal" image="right-button-tjhy">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="Zs_SaveBtnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="T5C-8h-hdJ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAR-LG-7kC" userLabel="Button取消">
                                                 <rect key="frame" x="314" y="586" width="70" height="26"/>
@@ -6536,6 +6553,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
+                                                    <action selector="Zs_CancleBtnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="ntO-s7-oYY"/>
                                                     <action selector="m_UpBtnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="R1B-gD-919"/>
                                                 </connections>
                                             </button>
@@ -6632,7 +6650,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXa-Jj-DgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="-9021"/>
+            <point key="canvasLocation" x="896" y="-9025"/>
         </scene>
         <!--Full Screen PreviewVC-->
         <scene sceneID="XbH-hE-Fn6">
@@ -7759,7 +7777,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYU-1C-TjG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1346" y="-8289"/>
+            <point key="canvasLocation" x="983" y="-8112"/>
         </scene>
     </scenes>
     <resources>

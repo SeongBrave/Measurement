@@ -299,7 +299,93 @@
 //    //    - (void)moveItemAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath;
 //}
 
+#pragma mark --王永忠添加
+#pragma mark - wyz 左侧划出编辑
 
+/**
+ *  检测
+ *
+ *  @param cell
+ */
+- (void)editorPress:(CompanyCollectionViewCell *)cell
+{
+    
+    NSIndexPath *indexPath = [self.m_collectionView indexPathForCell:cell];
+    
+    NSDictionary *paraDic = @{@"usercode":[[[LoginedUser sharedInstance] usercode] GetNotNullStr],@"rwbh":[[self.m_DataSourceArr objectAtIndex:indexPath.row] objectForKey:@"rwbh"]};
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findWdsblb.do" parameters:paraDic]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary  *retDict) {
+         if ([[retDict objectForKey:@"ret"] integerValue] == 1) {
+             //TODO:成功
+             [Dialog toast:@"成功"];
+         }else{
+             //TODO:失败
+             [Dialog toast:@"失败"];
+         }
+     }error:^(NSError *error){
+         
+     }];
+    
+}
+/**
+ *  驳回
+ *
+ *  @param cell
+ */
+- (void)deletePress:(CompanyCollectionViewCell *)cell
+{
+    //TODO:要单独显示个驳回界面，然后再调用下面代码
+    NSIndexPath *indexPath = [self.m_collectionView indexPathForCell:cell];
+    NSDictionary *paraDic = @{@"usercode":[[[LoginedUser sharedInstance] usercode] GetNotNullStr],@"rwbh":[[self.m_DataSourceArr objectAtIndex:indexPath.row] objectForKey:@"rwbh"]};
+    [[[[[BaseNetWork getInstance] rac_postPath:@"xcrwbh.do" parameters:paraDic]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary  *retDict) {
+         if ([[retDict objectForKey:@"ret"] integerValue] == 1) {
+             //TODO:成功
+             [Dialog toast:@"成功"];
+         }else{
+             //TODO:失败
+             [Dialog toast:@"失败"];
+         }
+     }error:^(NSError *error){
+         
+     }];
+}
+
+/**
+ *  标记完成
+ *
+ *  @param cell
+ */
+- (void)markCompletedPress:(CompanyCollectionViewCell *)cell
+{
+    
+    //TODO:要单独显示个驳回界面，然后再调用下面代码
+    NSIndexPath *indexPath = [self.m_collectionView indexPathForCell:cell];
+    NSDictionary *paraDic = @{@"usercode":[[[LoginedUser sharedInstance] usercode] GetNotNullStr],@"rwbh":[[self.m_DataSourceArr objectAtIndex:indexPath.row] objectForKey:@"rwbh"]};
+    [[[[[BaseNetWork getInstance] rac_postPath:@"bjwcbjry.do" parameters:paraDic]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary  *retDict) {
+         if ([[retDict objectForKey:@"ret"] integerValue] == 1) {
+             //TODO:成功
+         }else{
+             //TODO:失败
+         }
+     }error:^(NSError *error){
+         
+     }];
+    
+}
 
 
 #pragma mark -- dropDownListDelegate
