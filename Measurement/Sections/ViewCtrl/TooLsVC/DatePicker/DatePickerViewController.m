@@ -62,7 +62,7 @@
 {
     
 
-    [self.m_datePicker  setDatePickerMode:UIDatePickerModeDate];
+    [self.m_datePicker  setDatePickerMode:_datePickerMode];
     [self layoutMainCustomView];
     [self AddNavgationBarItem];
     

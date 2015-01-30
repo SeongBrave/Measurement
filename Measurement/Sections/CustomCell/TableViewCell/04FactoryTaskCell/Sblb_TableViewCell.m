@@ -24,7 +24,7 @@
     self.m_sccjLabel.text = [sblbModel.sccj GetNotNullStr];
     self.m_lbLabel.text = [sblbModel.jclx GetNotNullStr];
     self.m_priceLabel.text = [sblbModel.bzsf GetNotNullStr];
-    self.m_dwmcLabel.text = [sblbModel.zsbh GetNotNullStr];
+    self.m_dwmcLabel.text = [sblbModel.yqmc GetNotNullStr];
     
     self.numberLabel.text = [NSString stringWithFormat:@"00%@",[@(index) stringValue]];
     

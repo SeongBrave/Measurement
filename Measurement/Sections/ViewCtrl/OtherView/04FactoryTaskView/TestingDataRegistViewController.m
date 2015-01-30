@@ -17,8 +17,11 @@
 #import "Yqmc_Auto_Model.h"
 #import "Yqjbxx_Model.h"
 #import "dmxx_Model.h"
+#import "DatePickerViewController.h"
+#import "pzr_Model.h"
+#import "hyr_Model.h"
 
-@interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate>
+@interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 
@@ -87,6 +90,40 @@
 @property (weak, nonatomic) IBOutlet UIButton *m_ggxx_Btn;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *m_ggxx_ScrollView;
+
+@property (weak, nonatomic) IBOutlet DropDownTextField *m_qjyt_DTF;
+@property(nonatomic , strong)NSArray *m_qjytTFArr;
+
+
+@property (weak, nonatomic) IBOutlet DropDownTextField *m_jdzq_DTF;
+@property(nonatomic , strong)NSArray *m_jdzqTFArr;
+
+
+@property (weak, nonatomic) IBOutlet UITextField *m_jddd_TF;
+
+
+
+@property (weak, nonatomic) IBOutlet UITextField *m_hjwd_TF;
+
+@property (weak, nonatomic) IBOutlet UITextField *m_xdsd_TF;
+
+@property (weak, nonatomic) IBOutlet UITextField *m_qt_TF;
+
+@property (weak, nonatomic) IBOutlet UITextField *m_jdy_TF;
+
+@property (weak, nonatomic) IBOutlet DropDownTextField *m_hyy_DTF;
+@property(nonatomic , strong)NSArray *m_hyyTFArr;
+
+@property (weak, nonatomic) IBOutlet DropDownTextField *m_pzr_DTF;
+@property(nonatomic , strong)NSArray *m_pzrTFArr;
+
+@property (weak, nonatomic) IBOutlet UITextField *m_jszt_TF;
+
+
+
+@property (weak, nonatomic) IBOutlet UIView *m_jdrq_V;
+
+@property (weak, nonatomic) IBOutlet CustomButton *m_jdrq_Btn;
 
 
 @property (weak, nonatomic) IBOutlet UITableView *m_jlbzkhzsh_TableView;
@@ -238,6 +275,21 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    if ([segue.identifier isEqualToString:@"JDRQ_DatePicker"] )
+    {
+        
+        DatePickerViewController *datePickerVC = (DatePickerViewController*)[segue destinationViewController];
+        datePickerVC.datePickerMode = UIDatePickerModeDateAndTime;
+        
+        NSDate * date = self.m_jdrq_Btn.m_info[@"date"];
+        
+        datePickerVC.m_date = date;
+        datePickerVC.dateDelegate = self;
+        datePickerVC.m_clickBtn = self.m_jdrq_Btn;
+        
+    }
+    
+    
 }
 
 #pragma mark - 自定义方法
@@ -261,6 +313,17 @@
 -(void)layoutMainCustomView
 {
     
+    self.m_jdrq_V.layer.borderWidth = 2.0;
+    self.m_jdrq_V.layer.borderColor = UIColorFromRGB(217, 217, 217).CGColor;
+    self.m_qjyt_DTF.dropDownDelegate = self;
+    self.m_qjyt_DTF.dropDownDataSource= self;
+    self.m_qjyt_DTF.delegate = self;
+    
+    self.m_jdzq_DTF.dropDownDelegate = self;
+    self.m_jdzq_DTF.dropDownDataSource= self;
+    self.m_jdzq_DTF.delegate = self;
+
+    
     self.m_jclx_DTF.dropDownDelegate = self;
     self.m_jclx_DTF.dropDownDataSource= self;
     self.m_jclx_DTF.delegate = self;
@@ -268,6 +331,13 @@
     self.m_dw_DTF.dropDownDelegate = self;
     self.m_dw_DTF.dropDownDataSource= self;
     self.m_dw_DTF.delegate = self;
+    
+    
+    /**
+     *  默认检定日期为当前时间
+     */
+    [self.m_jdrq_Btn.m_info setObject:[NSDate date] forKey:@"date"];
+    
     
     self.lineImgV = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"float-tab-bg_line"]];
     
@@ -550,6 +620,46 @@
          
          
      }];
+    
+    
+    /**
+     *  获取器具用途
+     */
+    [[BaseNetWork getInstance] hideDialog];
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findDmxx.do" parameters:@{@"zdbm":@"qjyt"}]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict[@"dmxxList"];
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSArray *arr) {
+         @strongify(self)
+         
+         self.m_qjytTFArr = [arr linq_select:^id(NSDictionary *dict){
+             
+             dmxx_Model *dmxxModel = [MTLJSONAdapter modelOfClass:[dmxx_Model class] fromJSONDictionary:dict error:nil];
+             
+             
+             return dmxxModel;
+         }];
+         
+         
+         
+         
+     }error:^(NSError *error){
+         //          @strongify(self)
+         ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
+         ////          self.m_DataSourceArr = arr;
+         ////          [_header endRefreshing];
+         ////          [_footer endRefreshing];
+         ////
+         ////          [self failedGetDataWithResponseData:arr];
+         //          //          [self.m_collectionView reloadData];
+         
+         
+     }];
+    
+
 
     
 }
@@ -656,6 +766,141 @@
     
 }
 
+/**
+ *  更新设备详情界面
+ *
+ */
+-(void)update_ggxxViewByYretDict:(NSDictionary *) retDict
+{
+    
+
+    /**
+     *  检定日期
+     */
+    
+    // 2012-05-17 11:23:23
+    NSDateFormatter *format=[[NSDateFormatter alloc] init];
+    [format setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSDate *fromdate=[format dateFromString:[retDict GetLabelWithKey:@"wtrq"]];
+    NSTimeZone *fromzone = [NSTimeZone systemTimeZone];
+    NSInteger frominterval = [fromzone secondsFromGMTForDate: fromdate];
+    NSDate *fromDate = [fromdate  dateByAddingTimeInterval: frominterval];
+ 
+    
+    [self.m_jdrq_Btn.m_info setObject:fromDate forKey:@"date"];
+    
+    /**
+     *  注:默认检定人,不可修改
+     */
+    NSDictionary *hyrDict = retDict[@"jdrmap"];
+    if ([hyrDict allKeys].count >0) {
+        
+      self.m_jdy_TF.text =[hyrDict GetLabelWithKey:[hyrDict allKeys][0]];
+        
+    }else
+    {
+        self.m_jdy_TF.text = @"";
+    }
+    
+    NSString *jdzqStr = [retDict GetLabelWithKey:@"jdzqbh"];
+    
+    
+    NSArray *jdzqArr = retDict[@"jdzqList"];
+
+    
+    self.m_jdzqTFArr = [jdzqArr linq_select:^id(NSDictionary *dict){
+        
+        dmxx_Model *dmxxModel = [MTLJSONAdapter modelOfClass:[dmxx_Model class] fromJSONDictionary:dict error:nil];
+
+        return dmxxModel;
+    }];
+    
+
+    for(dmxx_Model *model in self.m_jdzqTFArr)
+    {
+        if ([jdzqStr isEqualToString:model.dmbm] )
+        {
+
+            self.m_jdzq_DTF.text = model.dmxxmc;
+            self.m_jdzq_DTF.m_bm = model.dmbm;
+        }
+    }
+  
+    /**
+     *  hyrmap 注:核验人
+     */
+    // NSDictionary *hyrDict = retDict[@"hyrmap"];
+    
+    NSMutableArray *hyrList = [[NSMutableArray alloc]init];
+    for(NSString *strKey  in hyrDict.allKeys)
+    {
+        hyr_Model *hyrModel = [[hyr_Model alloc]init];
+        hyrModel.m_key = strKey;
+        hyrModel.m_value = hyrDict[strKey];
+        [hyrList addObject:hyrModel];
+    }
+    
+    self.m_hyyTFArr = hyrList ;
+
+    
+    
+    /**
+     *  hyrmap 注:批准人
+     */
+    NSArray *pzrArr = retDict[@"pzrList"];
+    
+    self.m_pzrTFArr = [pzrArr linq_select:^id(NSDictionary *dict){
+        
+        pzr_Model *pzrModel = [MTLJSONAdapter modelOfClass:[pzr_Model class] fromJSONDictionary:dict error:nil];
+        
+        return pzrModel;
+    }];
+    
+
+    
+    
+    
+    
+    NSArray *jlbzkhzshArr = retDict[@"jlbzkhzsLists"];
+    NSArray *bzqsbArr = retDict[@"bzqsbLists"];
+    
+    NSArray *jsyjArr = retDict[@"jsyjLists"];
+    
+    self.m_jlbzkhzsh_Arr = [jlbzkhzshArr
+                            linq_select:^id(NSDictionary *dict)
+                            {
+                                
+                                Jlbzkhzsh_Model *model = [MTLJSONAdapter modelOfClass:[Jlbzkhzsh_Model class] fromJSONDictionary:dict error:nil];
+                                model.isSelected = YES;
+                                
+                                return model;
+                            }];
+    
+    self.m_bzqsb_Arr = [bzqsbArr
+                        linq_select:^id(NSDictionary *dict)
+                        {
+                            
+                            Bzqsb_Model *model = [MTLJSONAdapter modelOfClass:[Bzqsb_Model class] fromJSONDictionary:dict error:nil];
+                            model.isSelected = YES;
+                            return model;
+                        }];
+    
+    self.m_jsyj_Arr = [jsyjArr
+                       linq_select:^id(NSDictionary *dict)
+                       {
+                           
+                           Jsyj_Model *model = [MTLJSONAdapter modelOfClass:[Jsyj_Model class] fromJSONDictionary:dict error:nil];
+                           model.isSelected = YES;
+                           
+                           return model;
+                       }];
+    
+    
+    [self.m_jlbzkhzsh_TableView reloadData];
+    [self.m_bzqsb_TableView reloadData];
+    [self.m_jsyj_TableView reloadData];
+
+}
 //layoutMainCustomView
 -(void)PopTemplatesListViewControllerWithTemplatesListType:(TemplatesListType )type
 {
@@ -712,43 +957,7 @@
      subscribeNext:^(NSDictionary *retDict) {
          
          @strongify(self)
-         
-         NSArray *jlbzkhzshArr = retDict[@"jlbzkhzsLists"];
-         NSArray *bzqsbArr = retDict[@"bzqsbLists"];
-         
-         NSArray *jsyjArr = retDict[@"jsyjLists"];
-         
-         self.m_jlbzkhzsh_Arr = [jlbzkhzshArr
-                                 linq_select:^id(NSDictionary *dict)
-                                 {
-                                     
-                                     Jlbzkhzsh_Model *model = [MTLJSONAdapter modelOfClass:[Jlbzkhzsh_Model class] fromJSONDictionary:dict error:nil];
-                                     
-                                     return model;
-                                 }];
-         
-         self.m_bzqsb_Arr = [bzqsbArr
-                             linq_select:^id(NSDictionary *dict)
-                             {
-                                 
-                                 Bzqsb_Model *model = [MTLJSONAdapter modelOfClass:[Bzqsb_Model class] fromJSONDictionary:dict error:nil];
-                                 
-                                 return model;
-                             }];
-         
-         self.m_jsyj_Arr = [jsyjArr
-                            linq_select:^id(NSDictionary *dict)
-                            {
-                                
-                                Jsyj_Model *model = [MTLJSONAdapter modelOfClass:[Jsyj_Model class] fromJSONDictionary:dict error:nil];
-                                
-                                return model;
-                            }];
-         
-         
-         [self.m_jlbzkhzsh_TableView reloadData];
-         [self.m_bzqsb_TableView reloadData];
-         [self.m_jsyj_TableView reloadData];
+         [ self update_ggxxViewByYretDict:retDict];
          
          
      }error:^(NSError *error){
@@ -1070,6 +1279,18 @@
 - (IBAction)m_UpBtnClick:(id)sender {
 }
 
+-(void)save_ggxx_Data
+{
+    // 将NSDate格式装换成NSString类型
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    // 设置日历显示格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    // 把日历时间传给字符串
+    NSString *strQzrq = [dateFormatter stringFromDate:self.m_jdrq_Btn.m_info[@"date"]];
+    
+    //取证日期 forensicsDateBtn
+}
 
 -(void)saveData
 {
@@ -1301,7 +1522,22 @@
     }else if(textField == _m_dw_DTF) {
         
         return _m_dwTFArr;
+    }else if(textField == _m_qjyt_DTF)
+    {
+        return _m_qjytTFArr;
+        
+    }else if(textField == _m_hyy_DTF)
+    {
+        return _m_hyyTFArr;
+    }else if(textField == _m_pzr_DTF)
+    {
+        return _m_pzrTFArr;
+        
+    }else if(textField == _m_jdzq_DTF)
+    {
+        return _m_jdzqTFArr;
     }
+    
     return nil;
 }
 
@@ -1313,7 +1549,7 @@
     if (textField == _m_jclx_DTF) {
          dmxx_Model *model = _m_jclxTFArr[indexPath.row];
         
-        self.m_jclx_DTF.m_bm = model.dmxxmc;
+        self.m_jclx_DTF.m_bm = model.dmbm;
         
         [self.m_Sbxq_saveDataDict setObject:model.dmxxmc forKey:@"jclxbh"];
          [self.m_Sbxq_saveDataDict setObject:model.dmbm forKey:@"jclx"];
@@ -1322,13 +1558,38 @@
         
         dmxx_Model *model = _m_dwTFArr[indexPath.row];
         
-        self.m_dw_DTF.m_bm = model.dmxxmc;
+        self.m_dw_DTF.m_bm = model.dmbm;
         
          [self.m_Sbxq_saveDataDict setObject:model.dmxxmc forKey:@"by1"];
          [self.m_Sbxq_saveDataDict setObject:model.dmbm forKey:@"by2"];
         
+    }else if(textField == _m_qjyt_DTF) {
+        
+        dmxx_Model *model = _m_qjytTFArr[indexPath.row];
+        
+        self.m_qjyt_DTF.m_bm = model.dmbm;
+        
+        [self.m_Sbxq_saveDataDict setObject:model.dmbm forKey:@"qjytbh"];
+        
+    }else if(textField == _m_jdzq_DTF)
+    {
+        
+        dmxx_Model *model = _m_qjytTFArr[indexPath.row];
+        
+        self.m_qjyt_DTF.m_bm = model.dmbm;
+        
+        [self.m_Sbxq_saveDataDict setObject:model.dmbm forKey:@"qjytbh"];
+        
+//        return _m_jdzqTFArr;
     }
-    
+     else if(textField == _m_hyy_DTF)
+    {
+//        return _m_hyyTFArr;
+    }else if(textField == _m_pzr_DTF)
+    {
+//        return _m_pzrTFArr;
+        
+    }
     
 }
 
@@ -1342,8 +1603,23 @@
         
          return NO;
         
+    }else if(textField == _m_qjyt_DTF) {
+        
+        return NO;
+        
+    }else if(textField == _m_jdzq_DTF)
+    {
+        return NO;
     }
-    
+    else if(textField == _m_hyy_DTF)
+    {
+        return NO;
+    }else if(textField == _m_pzr_DTF)
+    {
+        return NO;
+        
+    }
+   
     return YES;
 }
 
@@ -1408,6 +1684,108 @@
     
     
 }
-
+#pragma mark - DatePickerDelegate
+-(void)DatePickerVC:(DatePickerViewController*)datePickerVC DidseletedDate:(NSDate*) date
+{
+    
+    // 将NSDate格式装换成NSString类型
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    
+    // 设置日历显示格式
+    
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    
+    // 把日历时间传给字符串
+    
+    NSString *strDate = [dateFormatter stringFromDate:date];
+    
+    
+    CustomButton *customBtn = (CustomButton *)datePickerVC.m_clickBtn;
+    
+    [customBtn setTitle:strDate forState:UIControlStateNormal];
+    
+    [customBtn.m_info setObject:date forKey:@"date"];
+    
+    
+    /**
+     *  需要实时的获取更新下面的数据 findJlkhzrBzqsbJsyj.do
+     1.4.15.3 结果集 json 格式 {
+     "ret": 1, "jlbzkhzsLists": [
+     */
+    
+    
+    debug_object([_m_qjxxDict GetLabelWithKey:@"xmbh"]);
+    
+    @weakify(self)
+    /**
+     *  获取单位名称
+     */
+    [[BaseNetWork getInstance] hideDialog];
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findJlkhzrBzqsbJsyj.do" parameters:@{@"jdrq":strDate,@"xmbh":[_m_qjxxDict GetLabelWithKey:@"xmbh"]}]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+         @strongify(self)
+        
+         
+         NSArray *jlbzkhzshArr = retDict[@"jlbzkhzsLists"];
+         NSArray *bzqsbArr = retDict[@"bzqsbLists"];
+         
+         NSArray *jsyjArr = retDict[@"jsyjLists"];
+         
+         self.m_jlbzkhzsh_Arr = [jlbzkhzshArr
+                                 linq_select:^id(NSDictionary *dict)
+                                 {
+                                     
+                                     Jlbzkhzsh_Model *model = [MTLJSONAdapter modelOfClass:[Jlbzkhzsh_Model class] fromJSONDictionary:dict error:nil];
+                                     model.isSelected = YES;
+                                     
+                                     return model;
+                                 }];
+         
+         self.m_bzqsb_Arr = [bzqsbArr
+                             linq_select:^id(NSDictionary *dict)
+                             {
+                                 
+                                 Bzqsb_Model *model = [MTLJSONAdapter modelOfClass:[Bzqsb_Model class] fromJSONDictionary:dict error:nil];
+                                 model.isSelected = YES;
+                                 return model;
+                             }];
+         
+         self.m_jsyj_Arr = [jsyjArr
+                            linq_select:^id(NSDictionary *dict)
+                            {
+                                
+                                Jsyj_Model *model = [MTLJSONAdapter modelOfClass:[Jsyj_Model class] fromJSONDictionary:dict error:nil];
+                                model.isSelected = YES;
+                                
+                                return model;
+                            }];
+         
+         
+         [self.m_jlbzkhzsh_TableView reloadData];
+         [self.m_bzqsb_TableView reloadData];
+         [self.m_jsyj_TableView reloadData];
+         
+         
+         
+     }error:^(NSError *error){
+         //          @strongify(self)
+         ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
+         ////          self.m_DataSourceArr = arr;
+         ////          [_header endRefreshing];
+         ////          [_footer endRefreshing];
+         ////
+         ////          [self failedGetDataWithResponseData:arr];
+         //          //          [self.m_collectionView reloadData];
+         
+         
+     }];
+    
+}
 
 @end

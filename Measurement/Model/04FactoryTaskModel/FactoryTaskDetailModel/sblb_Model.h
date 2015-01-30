@@ -25,6 +25,11 @@
 @property (nonatomic, copy) NSString *ggxh;
 
 /**
+ * yqmc
+ */
+@property (nonatomic, copy) NSString *yqmc;
+
+/**
  *  jcfw
  */
 @property (nonatomic, copy) NSString *jcfw;

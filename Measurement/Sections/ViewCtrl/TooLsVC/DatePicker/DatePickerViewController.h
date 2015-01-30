@@ -21,6 +21,10 @@
 
 @property(nonatomic , strong)CustomButton *m_clickBtn;
 
+/**
+ *  设置datepicker的类型
+ */
+@property (nonatomic, assign) UIDatePickerMode datePickerMode;
 @property (weak, nonatomic) IBOutlet UIDatePicker *m_datePicker;
 
 @property(nonatomic , assign)id<DatePickerDelegate> dateDelegate;
