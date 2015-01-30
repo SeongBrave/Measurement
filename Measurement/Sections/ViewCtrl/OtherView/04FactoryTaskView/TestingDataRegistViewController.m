@@ -127,48 +127,88 @@
 
 #pragma mark - 系统方法
 
--(NSMutableDictionary *)m_saveDataDict
+-(NSMutableDictionary *)m_Sbxq_saveDataDict
 {
-    if (_m_saveDataDict == nil) {
-        _m_saveDataDict = [[NSMutableDictionary alloc]init];
-        [self resetSaveDict];
+    if (_m_Sbxq_saveDataDict == nil) {
+        _m_Sbxq_saveDataDict = [[NSMutableDictionary alloc]init];
+        [self reset_Sbxq_SaveDict];
         
     }
     
-    return _m_saveDataDict;
+    return _m_Sbxq_saveDataDict;
 }
 
--(void)resetSaveDict
+-(NSMutableDictionary *)m_Ggxx_saveDataDict
+{
+    if (_m_Ggxx_saveDataDict == nil) {
+        _m_Ggxx_saveDataDict = [[NSMutableDictionary alloc]init];
+        [self reset_Ggxx_SaveDict];
+        
+    }
+    
+    return _m_Ggxx_saveDataDict;
+}
+
+-(void)reset_Ggxx_SaveDict
+{
+    LoginedUser *user = [LoginedUser sharedInstance];
+    
+    _m_Sbxq_saveDataDict[@"usercode"] = user.usercode;
+    _m_Sbxq_saveDataDict[@"yqid"] = MBS_XTBS;
+    _m_Sbxq_saveDataDict[@"xmbh"] = @"";
+    _m_Sbxq_saveDataDict[@"qjytbh"] = @"";
+    _m_Sbxq_saveDataDict[@"jdrq"] = @"";
+    
+    _m_Sbxq_saveDataDict[@"jdzq"] = @"";
+    _m_Sbxq_saveDataDict[@"jdzqbh"] = @"";
+    _m_Sbxq_saveDataDict[@"hjwd"] = @"";
+    _m_Sbxq_saveDataDict[@"hjsd"] = @"";
+    _m_Sbxq_saveDataDict[@"jdrbh"] = @"";
+    
+    _m_Sbxq_saveDataDict[@"hyrbh"] = @"";
+    _m_Sbxq_saveDataDict[@"pzrbh"] = @"";
+    _m_Sbxq_saveDataDict[@"jddd"] = @"";
+    _m_Sbxq_saveDataDict[@"jszt"] = @"";
+    _m_Sbxq_saveDataDict[@"qt"] = @"";
+    
+    _m_Sbxq_saveDataDict[@"jlbzkhzsID"] = @"";
+    _m_Sbxq_saveDataDict[@"bzsbbhs"] = @"";
+    _m_Sbxq_saveDataDict[@"syzshs"] = @"";
+    _m_Sbxq_saveDataDict[@"jsyjID"] = @"";
+
+}
+
+-(void)reset_Sbxq_SaveDict
 {
     
     LoginedUser *user = [LoginedUser sharedInstance];
     
-    _m_saveDataDict[@"rwbh"] = @"";
-    _m_saveDataDict[@"xtbs"] = MBS_XTBS;
-    _m_saveDataDict[@"usercode"] = user.usercode;
-    _m_saveDataDict[@"HYLBMC"] = @"";
-    _m_saveDataDict[@"txm"] = @"";
-    _m_saveDataDict[@"yqmc"] = @"";
-    _m_saveDataDict[@"ksbh"] = @"";
-    _m_saveDataDict[@"ks"] = @"";
-    _m_saveDataDict[@"jltx"] = @"";
-    _m_saveDataDict[@"xmbh"] = @"";
-    _m_saveDataDict[@"jcfw"] = @"";
-    _m_saveDataDict[@"ggxh"] = @"";
-    _m_saveDataDict[@"sccj"] = @"";
-    _m_saveDataDict[@"ccbh"] = @"";
-    _m_saveDataDict[@"jclxbh"] = @"";
-    _m_saveDataDict[@"jclx"] = @"";
-    _m_saveDataDict[@"sl"] = @"";
-    _m_saveDataDict[@"bzsf"] = @"";
-    _m_saveDataDict[@"bzsfbh"] = @"";
-    _m_saveDataDict[@"wg"] = @"";
-    _m_saveDataDict[@"pj"] = @"";
-    _m_saveDataDict[@"bz"] = @"";
-    _m_saveDataDict[@"jdzqbh"] = @"";
-    _m_saveDataDict[@"by1"] = @"";
-    _m_saveDataDict[@"by2"] = @"";
-    _m_saveDataDict[@"sfsq"] = @"";
+    _m_Sbxq_saveDataDict[@"rwbh"] = @"";
+    _m_Sbxq_saveDataDict[@"xtbs"] = MBS_XTBS;
+    _m_Sbxq_saveDataDict[@"usercode"] = user.usercode;
+    _m_Sbxq_saveDataDict[@"HYLBMC"] = @"";
+    _m_Sbxq_saveDataDict[@"txm"] = @"";
+    _m_Sbxq_saveDataDict[@"yqmc"] = @"";
+    _m_Sbxq_saveDataDict[@"ksbh"] = @"";
+    _m_Sbxq_saveDataDict[@"ks"] = @"";
+    _m_Sbxq_saveDataDict[@"jltx"] = @"";
+    _m_Sbxq_saveDataDict[@"xmbh"] = @"";
+    _m_Sbxq_saveDataDict[@"jcfw"] = @"";
+    _m_Sbxq_saveDataDict[@"ggxh"] = @"";
+    _m_Sbxq_saveDataDict[@"sccj"] = @"";
+    _m_Sbxq_saveDataDict[@"ccbh"] = @"";
+    _m_Sbxq_saveDataDict[@"jclxbh"] = @"";
+    _m_Sbxq_saveDataDict[@"jclx"] = @"";
+    _m_Sbxq_saveDataDict[@"sl"] = @"";
+    _m_Sbxq_saveDataDict[@"bzsf"] = @"";
+    _m_Sbxq_saveDataDict[@"bzsfbh"] = @"";
+    _m_Sbxq_saveDataDict[@"wg"] = @"";
+    _m_Sbxq_saveDataDict[@"pj"] = @"";
+    _m_Sbxq_saveDataDict[@"bz"] = @"";
+    _m_Sbxq_saveDataDict[@"jdzqbh"] = @"";
+    _m_Sbxq_saveDataDict[@"by1"] = @"";
+    _m_Sbxq_saveDataDict[@"by2"] = @"";
+    _m_Sbxq_saveDataDict[@"sfsq"] = @"";
 
     
 }
@@ -657,9 +697,12 @@
 //     }];
     
 //    usercode=1114&yqid=EF83462867CE4727BEE9BEA253E15B3E
+    
+    LoginedUser *loginUsr = [LoginedUser sharedInstance];
+    
     @weakify(self)
     [[BaseNetWork getInstance] showDialogWithVC:self];
-    NSDictionary *dict =@{@"usercode":@"1114",@"yqid":@"EF83462867CE4727BEE9BEA253E15B3E"};
+    NSDictionary *dict =@{@"usercode":loginUsr.usercode,@"yqid":@"8914CE467ADE4DE4863BF59C64BF04B8"};
     [[[[[BaseNetWork getInstance] rac_postPath:@"initDetectionDataRegistration.do" parameters:dict]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
@@ -765,7 +808,7 @@
     
     //    @weakify(self)
     [[BaseNetWork getInstance] hideDialog];
-    [[[[[BaseNetWork getInstance] rac_postPath:@"addEquipment.do" parameters:_m_saveDataDict]map:^(id responseData)
+    [[[[[BaseNetWork getInstance] rac_postPath:@"addEquipment.do" parameters:_m_Sbxq_saveDataDict]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
@@ -829,6 +872,80 @@
  *  @param sender
  */
 - (IBAction)Ggxx_SaveBtnClick:(id)sender {
+    
+    //TODO: 每次选择日期就更新 三个 tableview  默认选中 ，取消
+    
+    
+    
+    /**
+     * @function: 保存 检测数据 公共信息 --单证
+     * @param1: *Strng usercode * @param2: *Strng yqid
+     * @param3: *Strng xmbh
+     * @param4: *Strng qjytbh
+     * @param5: *Strng jdrq HH:mm)
+     *
+     * @param6: *Strng jdzq
+     * @param7: *Strng jdzqbh
+     * @param8: *Strng hjwd
+     * @param9: *Strng hjsd
+     * @param10: *Strng jdrbh *
+     * @param11: *Strng hyrbh
+     * @param12: *Strng pzrbh
+     * @param13: *Strng jddd
+     * @param14: *Strng jszt
+     * @param15: *Strng qt *
+     * @param16: *Strng jlbzkhzsID
+     分隔)
+     * @param17: *Strng bzsbbhs
+     个按","分隔)
+     * @param18: *Strng syzshs
+     按","分隔)
+     * @param19: *Strng jsyjID *
+     * @return: json
+     * @author: yz
+     * @createtime: 2014-12-25
+    当前用户账号 仪器yqid 项目编号
+    器具用途编号 检定日期(格式:yyyy-MM-dd
+                检定周期 检定周期编号
+                环境温度 环境湿度
+                检定人编号
+                核验人编号
+                批准人编号
+                检定地点
+                接收状态
+                其它 计量标准考核证书ID(多个按","
+                              标准器设备--标准设备编号(多 标准器设备--溯源证书号(多个 技术依据ID(多个按","分隔)
+    */
+    
+    
+    
+    [self saveData];
+    
+    //    @weakify(self)
+    [[BaseNetWork getInstance] hideDialog];
+    [[[[[BaseNetWork getInstance] rac_postPath:@"saveDdrTojson.do" parameters:_m_Ggxx_saveDataDict]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return [dict valueForKeyPath:@"ret"];
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSString *retStr) {
+         
+         if ([retStr intValue] == 1) {
+             [Dialog toast:self withMessage:@"保存成功！"];
+         }else
+         {
+             [Dialog toast:self withMessage:@"保存失败！"];
+         }
+         
+         
+         
+     }error:^(NSError *error){
+         
+         
+         
+     }];
+    
 }
 
 - (IBAction)Ggxx_CancleBtnClick:(id)sender {
@@ -956,34 +1073,35 @@
 
 -(void)saveData
 {
-    
-    self.m_saveDataDict[@"rwbh"] = [self.m_showDict GetLabelWithKey:@"RWBH"];
-    self.m_saveDataDict[@"txm"] = [_m_txm_TF.text GetNotNullStr];
-    self.m_saveDataDict[@"yqmc"] = [_m_yqmc_TF.text GetNotNullStr];
-    self.m_saveDataDict[@"ksbh"] = [_m_qjxxDict GetLabelWithKey:@"ksbh"];
-    self.m_saveDataDict[@"ks"] = [_m_qjxxDict GetLabelWithKey:@"ksbh"];
-    self.m_saveDataDict[@"jltx"] = [_m_jlfw_TF.text GetNotNullStr];
-    self.m_saveDataDict[@"xmbh"] = [_m_qjxxDict GetLabelWithKey:@"xmbh"];
-    self.m_saveDataDict[@"jcfw"] = [_m_clfw_TF.text GetNotNullStr];
-    self.m_saveDataDict[@"ggxh"] = [_m_ggxh_TF.text GetNotNullStr];
-    self.m_saveDataDict[@"sccj"] = [_m_sccj_TF.text GetNotNullStr];
-    self.m_saveDataDict[@"ccbh"] = [_m_ccbh_TF.text GetNotNullStr];
-    self.m_saveDataDict[@"jclxbh"] = [_m_jclx_DTF.m_bm GetNotNullStr];
-    self.m_saveDataDict[@"jclx"] = [_m_jclx_DTF.text GetNotNullStr];
-    self.m_saveDataDict[@"sl"] = [_m_sl_TF.text GetNotNullStr];
-    self.m_saveDataDict[@"bzsf"] = [_m_qjxxDict GetLabelWithKey:@"bzsf"];
-    self.m_saveDataDict[@"bzsfbh"] = [_m_qjxxDict GetLabelWithKey:@"bzsfbh"];
-    self.m_saveDataDict[@"wg"] = [_m_wg_TF.text GetNotNullStr];
-    self.m_saveDataDict[@"pj"] = [_m_sl_TF.text GetNotNullStr];
-    self.m_saveDataDict[@"bz"] = [_m_bz_TV.text GetNotNullStr];
-    self.m_saveDataDict[@"jdzqbh"] = [_m_qjxxDict GetLabelWithKey:@"jdzqbh"];
-    self.m_saveDataDict[@"by1"] = [_m_dw_DTF.text GetNotNullStr];
+    //测试用的任务编号
+    //8bb405f2714e4c71ab4acf77179d67f1
+    self.m_Sbxq_saveDataDict[@"rwbh"] = @"8bb405f2714e4c71ab4acf77179d67f1";// [self.m_showDict GetLabelWithKey:@"RWBH"];
+    self.m_Sbxq_saveDataDict[@"txm"] = [_m_txm_TF.text GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"yqmc"] = [_m_yqmc_TF.text GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"ksbh"] = [_m_qjxxDict GetLabelWithKey:@"ksbh"];
+    self.m_Sbxq_saveDataDict[@"ks"] = [_m_qjxxDict GetLabelWithKey:@"ksbh"];
+    self.m_Sbxq_saveDataDict[@"jltx"] = [_m_jlfw_TF.text GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"xmbh"] = [_m_qjxxDict GetLabelWithKey:@"xmbh"];
+    self.m_Sbxq_saveDataDict[@"jcfw"] = [_m_clfw_TF.text GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"ggxh"] = [_m_ggxh_TF.text GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"sccj"] = [_m_sccj_TF.text GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"ccbh"] = [_m_ccbh_TF.text GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"jclxbh"] = [_m_jclx_DTF.m_bm GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"jclx"] = [_m_jclx_DTF.text GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"sl"] = [_m_sl_TF.text GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"bzsf"] = [_m_qjxxDict GetLabelWithKey:@"bzsf"];
+    self.m_Sbxq_saveDataDict[@"bzsfbh"] = [_m_qjxxDict GetLabelWithKey:@"bzsfbh"];
+    self.m_Sbxq_saveDataDict[@"wg"] = [_m_wg_TF.text GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"pj"] = [_m_sl_TF.text GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"bz"] = [_m_bz_TV.text GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"jdzqbh"] = [_m_qjxxDict GetLabelWithKey:@"jdzqbh"];
+    self.m_Sbxq_saveDataDict[@"by1"] = [_m_dw_DTF.text GetNotNullStr];
     
     //单位编号
-    self.m_saveDataDict[@"by2"] = [_m_dw_DTF.m_bm GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"by2"] = [_m_dw_DTF.m_bm GetNotNullStr];
     
     //TODO:先默认授权把
-    self.m_saveDataDict[@"sfsq"] = @"0";
+    self.m_Sbxq_saveDataDict[@"sfsq"] = @"0";
     
 }
 
@@ -1197,8 +1315,8 @@
         
         self.m_jclx_DTF.m_bm = model.dmxxmc;
         
-        [self.m_saveDataDict setObject:model.dmxxmc forKey:@"jclxbh"];
-         [self.m_saveDataDict setObject:model.dmbm forKey:@"jclx"];
+        [self.m_Sbxq_saveDataDict setObject:model.dmxxmc forKey:@"jclxbh"];
+         [self.m_Sbxq_saveDataDict setObject:model.dmbm forKey:@"jclx"];
     
     }else if(textField == _m_dw_DTF) {
         
@@ -1206,8 +1324,8 @@
         
         self.m_dw_DTF.m_bm = model.dmxxmc;
         
-         [self.m_saveDataDict setObject:model.dmxxmc forKey:@"by1"];
-         [self.m_saveDataDict setObject:model.dmbm forKey:@"by2"];
+         [self.m_Sbxq_saveDataDict setObject:model.dmxxmc forKey:@"by1"];
+         [self.m_Sbxq_saveDataDict setObject:model.dmbm forKey:@"by2"];
         
     }
     

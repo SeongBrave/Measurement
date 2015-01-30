@@ -619,6 +619,10 @@
 {
     
     LoginedUser *loginUsr = [LoginedUser sharedInstance];
+    
+    
+//    NSDictionary *dict = @{@"rwbh":[self.m_showDict GetLabelWithKey:@"RWBH"],@"usercode":loginUsr.usercode};
+    
     /**
      *  获取检测进度数据
      */
@@ -714,27 +718,6 @@
  *  @param sender
  */
 - (IBAction)Add_SB_Click:(id)sender {
-    
-
-//
-//    IPadScanViewController *popVc = (IPadScanViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"IPadScanViewController"];
-//    
-//    popVc.m_ScanDelegate = self;
-//    
-//    self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
-//    self.m_popVC.delegate = self;
-//    //TODO:popoverLayoutMargins是指你的popover相对于整个window上下左右的margin
-//    self.m_popVC.popoverLayoutMargins = UIEdgeInsetsMake(0,0,0,0);
-//
-//    self.m_popVC.popoverBackgroundViewClass = [BlackBackGroundV class];
-//    // 设定展示区域的大小
-//    // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
-//    //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
-//    [self.m_popVC presentPopoverFromRect:self.view.bounds
-//                                  inView:self.view
-//                permittedArrowDirections:0
-//                                animated:YES];
-    
     
     
     IPadScanViewController *popVc = (IPadScanViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"IPadScanViewController"];
@@ -1138,8 +1121,8 @@
         
         @strongify(self)
         //模拟器测试
-          [self loadJiliangqjByTxm: @"140047018"];
-//        [self ToTestingDataRegistViewControllerWithDict:nil];
+//          [self loadJiliangqjByTxm: @"140047018"];
+        [self ToTestingDataRegistViewControllerWithDict:nil];
         
     }];
     

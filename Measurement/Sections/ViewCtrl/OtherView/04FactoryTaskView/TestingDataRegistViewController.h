@@ -26,8 +26,15 @@
 @property(nonatomic , strong)NSDictionary *m_qjxxDict;
 
 /**
- *  用于保存最后确定时传的参数
+ *  用于保存设备详情最后确定时传的参数
  */
-@property(nonatomic ,strong)NSMutableDictionary *m_saveDataDict;
+@property(nonatomic ,strong)NSMutableDictionary *m_Sbxq_saveDataDict;
+
+/**
+ *  用于保存公共信息最后确定时传的参数
+ */
+@property(nonatomic ,strong)NSMutableDictionary *m_Ggxx_saveDataDict;
+
+
 
 @end
