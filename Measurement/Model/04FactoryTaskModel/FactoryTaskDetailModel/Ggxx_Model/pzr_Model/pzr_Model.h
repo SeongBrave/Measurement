@@ -10,9 +10,9 @@
  *  批准人
  */
 #import <Mantle.h>
-#import "AutoCompletionObject.h"
+#import "DropDownTextField.h"
 
-@interface pzr_Model : MTLModel<MTLJSONSerializing,AutoCompletionObject>
+@interface pzr_Model : MTLModel<MTLJSONSerializing,DropDownTextFieldShowCellTextLabel>
 
 
 /**

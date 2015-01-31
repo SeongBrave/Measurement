@@ -21,6 +21,7 @@
 		C92F29951A5D0D89001AB4C8 /* DropDownTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C92F29941A5D0D89001AB4C8 /* DropDownTextField.m */; };
 		C93AC00C1A7BECD400FB3EE1 /* hyr_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C93AC00B1A7BECD400FB3EE1 /* hyr_Model.m */; };
 		C93AC00F1A7BECDD00FB3EE1 /* pzr_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C93AC00E1A7BECDD00FB3EE1 /* pzr_Model.m */; };
+		C93E89621A7D204200F51667 /* jdzq_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C93E89611A7D204200F51667 /* jdzq_Model.m */; };
 		C9431FBD1A4DAF7B0017FED0 /* MyPlanViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */; };
 		C945BB0E1A6D6C3000C6E11E /* BlackBackGroundV.m in Sources */ = {isa = PBXBuildFile; fileRef = C945BB0D1A6D6C3000C6E11E /* BlackBackGroundV.m */; };
 		C9651ECC1A43AD8F00B770BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651ECB1A43AD8F00B770BB /* main.m */; };
@@ -191,6 +192,8 @@
 		C93AC00B1A7BECD400FB3EE1 /* hyr_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hyr_Model.m; sourceTree = "<group>"; };
 		C93AC00D1A7BECDD00FB3EE1 /* pzr_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pzr_Model.h; sourceTree = "<group>"; };
 		C93AC00E1A7BECDD00FB3EE1 /* pzr_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pzr_Model.m; sourceTree = "<group>"; };
+		C93E89601A7D204200F51667 /* jdzq_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jdzq_Model.h; sourceTree = "<group>"; };
+		C93E89611A7D204200F51667 /* jdzq_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jdzq_Model.m; sourceTree = "<group>"; };
 		C9431FBB1A4DAF7B0017FED0 /* MyPlanViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlanViewCell.h; sourceTree = "<group>"; };
 		C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlanViewCell.m; sourceTree = "<group>"; };
 		C945BB0C1A6D6C3000C6E11E /* BlackBackGroundV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackBackGroundV.h; sourceTree = "<group>"; };
@@ -598,6 +601,15 @@
 				C93AC00E1A7BECDD00FB3EE1 /* pzr_Model.m */,
 			);
 			path = pzr_Model;
+			sourceTree = "<group>";
+		};
+		C93E895F1A7D203A00F51667 /* jdzq_Model */ = {
+			isa = PBXGroup;
+			children = (
+				C93E89601A7D204200F51667 /* jdzq_Model.h */,
+				C93E89611A7D204200F51667 /* jdzq_Model.m */,
+			);
+			path = jdzq_Model;
 			sourceTree = "<group>";
 		};
 		C9431FBA1A4DAF640017FED0 /* MyPlanViewCell */ = {
@@ -1213,6 +1225,7 @@
 		C9791A9F1A71493A00DC5643 /* Ggxx_Model */ = {
 			isa = PBXGroup;
 			children = (
+				C93E895F1A7D203A00F51667 /* jdzq_Model */,
 				C93AC0081A7BECCA00FB3EE1 /* hyr_Model */,
 				C93AC0091A7BECCA00FB3EE1 /* pzr_Model */,
 				C9791AA01A71496C00DC5643 /* Jlbzkhzsh_Model.h */,
@@ -1847,6 +1860,7 @@
 				C9BFAA121A487BF400C887B4 /* MenuItemView.m in Sources */,
 				C9651FD41A43B26000B770BB /* CustomStepper.m in Sources */,
 				C9903C021A46EA0C0006FD99 /* CellItem.m in Sources */,
+				C93E89621A7D204200F51667 /* jdzq_Model.m in Sources */,
 				C970945F1A62D09B00141DC5 /* DetectionTaskQueryViewController.m in Sources */,
 				C9651FE51A43B26000B770BB /* BaseViewController.m in Sources */,
 				C9651FC21A43B25F00B770BB /* TableViewBindingHelper.m in Sources */,

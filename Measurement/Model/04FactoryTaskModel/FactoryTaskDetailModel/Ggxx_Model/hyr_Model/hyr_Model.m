@@ -23,7 +23,7 @@
  *
  *  @return textlabel要显示的数据
  */
-- (NSString *)autocompleteString
+- (NSString *)getShowCellForTextLabel
 {
     return self.m_value;
 }

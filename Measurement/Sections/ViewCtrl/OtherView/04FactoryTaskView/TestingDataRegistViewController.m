@@ -20,6 +20,7 @@
 #import "DatePickerViewController.h"
 #import "pzr_Model.h"
 #import "hyr_Model.h"
+#import "jdzq_Model.h"
 
 @interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate>
 
@@ -87,6 +88,9 @@
 /**
  *  公共信息
  */
+
+@property(nonatomic , strong)NSDictionary *m_jdy_Dict;
+
 @property (weak, nonatomic) IBOutlet UIButton *m_ggxx_Btn;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *m_ggxx_ScrollView;
@@ -190,28 +194,29 @@
 {
     LoginedUser *user = [LoginedUser sharedInstance];
     
-    _m_Sbxq_saveDataDict[@"usercode"] = user.usercode;
-    _m_Sbxq_saveDataDict[@"yqid"] = MBS_XTBS;
-    _m_Sbxq_saveDataDict[@"xmbh"] = @"";
-    _m_Sbxq_saveDataDict[@"qjytbh"] = @"";
-    _m_Sbxq_saveDataDict[@"jdrq"] = @"";
+    _m_Ggxx_saveDataDict[@"usercode"] = user.usercode;
     
-    _m_Sbxq_saveDataDict[@"jdzq"] = @"";
-    _m_Sbxq_saveDataDict[@"jdzqbh"] = @"";
-    _m_Sbxq_saveDataDict[@"hjwd"] = @"";
-    _m_Sbxq_saveDataDict[@"hjsd"] = @"";
-    _m_Sbxq_saveDataDict[@"jdrbh"] = @"";
+    _m_Ggxx_saveDataDict[@"yqid"] = MBS_XTBS;
+    _m_Ggxx_saveDataDict[@"xmbh"] = [_m_qjxxDict GetLabelWithKey:@"xmbh"];
+    _m_Ggxx_saveDataDict[@"qjytbh"] = @"";
+    _m_Ggxx_saveDataDict[@"jdrq"] = @"";
     
-    _m_Sbxq_saveDataDict[@"hyrbh"] = @"";
-    _m_Sbxq_saveDataDict[@"pzrbh"] = @"";
-    _m_Sbxq_saveDataDict[@"jddd"] = @"";
-    _m_Sbxq_saveDataDict[@"jszt"] = @"";
-    _m_Sbxq_saveDataDict[@"qt"] = @"";
+    _m_Ggxx_saveDataDict[@"jdzq"] = @"";
+    _m_Ggxx_saveDataDict[@"jdzqbh"] = @"";
+    _m_Ggxx_saveDataDict[@"hjwd"] = @"";
+    _m_Ggxx_saveDataDict[@"hjsd"] = @"";
+    _m_Ggxx_saveDataDict[@"jdrbh"] = @"";
     
-    _m_Sbxq_saveDataDict[@"jlbzkhzsID"] = @"";
-    _m_Sbxq_saveDataDict[@"bzsbbhs"] = @"";
-    _m_Sbxq_saveDataDict[@"syzshs"] = @"";
-    _m_Sbxq_saveDataDict[@"jsyjID"] = @"";
+    _m_Ggxx_saveDataDict[@"hyrbh"] = @"";
+    _m_Ggxx_saveDataDict[@"pzrbh"] = @"";
+    _m_Ggxx_saveDataDict[@"jddd"] = @"";
+    _m_Ggxx_saveDataDict[@"jszt"] = @"";
+    _m_Ggxx_saveDataDict[@"qt"] = @"";
+    
+    _m_Ggxx_saveDataDict[@"jlbzkhzsID"] = @"";
+    _m_Ggxx_saveDataDict[@"bzsbbhs"] = @"";
+    _m_Ggxx_saveDataDict[@"syzshs"] = @"";
+    _m_Ggxx_saveDataDict[@"jsyjID"] = @"";
 
 }
 
@@ -229,7 +234,7 @@
     _m_Sbxq_saveDataDict[@"ksbh"] = @"";
     _m_Sbxq_saveDataDict[@"ks"] = @"";
     _m_Sbxq_saveDataDict[@"jltx"] = @"";
-    _m_Sbxq_saveDataDict[@"xmbh"] = @"";
+    _m_Sbxq_saveDataDict[@"xmbh"] = [_m_qjxxDict GetLabelWithKey:@"xmbh"];
     _m_Sbxq_saveDataDict[@"jcfw"] = @"";
     _m_Sbxq_saveDataDict[@"ggxh"] = @"";
     _m_Sbxq_saveDataDict[@"sccj"] = @"";
@@ -332,6 +337,15 @@
     self.m_dw_DTF.dropDownDataSource= self;
     self.m_dw_DTF.delegate = self;
     
+    self.m_hyy_DTF.dropDownDelegate = self;
+    self.m_hyy_DTF.dropDownDataSource= self;
+    self.m_hyy_DTF.delegate = self;
+    
+    self.m_pzr_DTF.dropDownDelegate = self;
+    self.m_pzr_DTF.dropDownDataSource= self;
+    self.m_pzr_DTF.delegate = self;
+    
+ 
     
     /**
      *  默认检定日期为当前时间
@@ -797,10 +811,14 @@
         
       self.m_jdy_TF.text =[hyrDict GetLabelWithKey:[hyrDict allKeys][0]];
         
+       
+        
     }else
     {
         self.m_jdy_TF.text = @"";
     }
+    
+     self.m_jdy_Dict = hyrDict;
     
     NSString *jdzqStr = [retDict GetLabelWithKey:@"jdzqbh"];
     
@@ -810,13 +828,13 @@
     
     self.m_jdzqTFArr = [jdzqArr linq_select:^id(NSDictionary *dict){
         
-        dmxx_Model *dmxxModel = [MTLJSONAdapter modelOfClass:[dmxx_Model class] fromJSONDictionary:dict error:nil];
+        jdzq_Model *dmxxModel = [MTLJSONAdapter modelOfClass:[jdzq_Model class] fromJSONDictionary:dict error:nil];
 
         return dmxxModel;
     }];
     
 
-    for(dmxx_Model *model in self.m_jdzqTFArr)
+    for(jdzq_Model *model in self.m_jdzqTFArr)
     {
         if ([jdzqStr isEqualToString:model.dmbm] )
         {
@@ -896,11 +914,15 @@
                        }];
     
     
+  
+
+    
     [self.m_jlbzkhzsh_TableView reloadData];
     [self.m_bzqsb_TableView reloadData];
     [self.m_jsyj_TableView reloadData];
 
 }
+
 //layoutMainCustomView
 -(void)PopTemplatesListViewControllerWithTemplatesListType:(TemplatesListType )type
 {
@@ -1128,7 +1150,7 @@
     
     
     
-    [self saveData];
+    [self save_ggxx_Data];
     
     //    @weakify(self)
     [[BaseNetWork getInstance] hideDialog];
@@ -1279,16 +1301,151 @@
 - (IBAction)m_UpBtnClick:(id)sender {
 }
 
+
+
+/**
+ *  点击保存是，取得计量标准考核证书ID(多个按","分隔)
+ *
+ *  @return 计量标准考核证书ID(多个按","分隔)
+ */
+-(NSString *)get_jlbzkhzsID
+{
+    
+    //01. 第一步先找出选中的数据
+    NSArray *jlbzkhzshArr = [self.m_jlbzkhzsh_Arr linq_where:^BOOL(Jlbzkhzsh_Model *model) {
+        return model.isSelected;
+    }];
+    //02. 第二步筛选出 计量标准考核证书ID
+    NSArray *jlbzkhzshIDArr = [jlbzkhzshArr linq_select:^id(Jlbzkhzsh_Model *model){
+        return model.m_id;
+    }];
+    
+    debug_object(jlbzkhzshIDArr);
+    //03. 第三步 将计量标准考核证书ID数组转换成","分割的字符串
+    NSString *retStr = [jlbzkhzshIDArr componentsJoinedByString:@","];
+      debug_object(retStr);
+    return  retStr;
+}
+
+/**
+ *  点击保存是，取得 标准器设备--标准设备编号(多个按","分隔)
+ *
+ *  @return 标准器设备--标准设备编号(多个按","分隔)
+ */
+-(NSString *)get_bzsbbhs
+{
+    
+    //01. 第一步先找出选中的数据
+    NSArray *bzqsbArr = [self.m_bzqsb_Arr linq_where:^BOOL(Bzqsb_Model *model) {
+        return model.isSelected;
+    }];
+    //02. 第二步筛选出 计量标准考核证书ID
+    NSArray *jlbzkhzshIDArr = [bzqsbArr linq_select:^id(Bzqsb_Model *model){
+        return model.m_id;
+    }];
+    
+    //03. 第三步 将计量标准考核证书ID数组转换成","分割的字符串
+    NSString *retStr = [jlbzkhzshIDArr componentsJoinedByString:@","];
+     debug_object(retStr);
+    return  retStr;
+}
+
+/**
+ *  点击保存是，取得 标准器设备--溯源证书号(多个按","分隔)
+ *
+ *  @return 标准器设备--溯源证书号(多个按","分隔)
+ */
+-(NSString *)get_syzshs
+{
+    
+    //01. 第一步先找出选中的数据
+    NSArray *bzqsbArr = [self.m_bzqsb_Arr linq_where:^BOOL(Bzqsb_Model *model) {
+        return model.isSelected;
+    }];
+    //02. 第二步筛选出 计量标准考核证书ID
+    NSArray *jlbzkhzshIDArr = [bzqsbArr linq_select:^id(Bzqsb_Model *model){
+        return model.syzsh;
+    }];
+    
+    //03. 第三步 将计量标准考核证书ID数组转换成","分割的字符串
+    NSString *retStr = [jlbzkhzshIDArr componentsJoinedByString:@","];
+     debug_object(retStr);
+    return  retStr;
+}
+
+
+/**
+ *  点击保存是，取得 技术依据ID(多个按","分隔)
+ *
+ *  @return 技术依据ID(多个按","分隔)
+ */
+-(NSString *)get_jsyjID
+{
+    
+    //01. 第一步先找出选中的数据
+    NSArray *bzqsbArr = [self.m_jsyj_Arr linq_where:^BOOL(Jsyj_Model *model) {
+        return model.isSelected;
+    }];
+    //02. 第二步筛选出  技术依据ID
+    NSArray *jlbzkhzshIDArr = [bzqsbArr linq_select:^id(Jsyj_Model *model){
+        return model.m_id;
+    }];
+    
+    //03. 第三步  技术依据ID数组转换成","分割的字符串
+    NSString *retStr = [jlbzkhzshIDArr componentsJoinedByString:@","];
+    
+    return  retStr;
+}
+
 -(void)save_ggxx_Data
 {
     // 将NSDate格式装换成NSString类型
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     // 设置日历显示格式
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     // 把日历时间传给字符串
-    NSString *strQzrq = [dateFormatter stringFromDate:self.m_jdrq_Btn.m_info[@"date"]];
+    NSString *jdrqStr = [dateFormatter stringFromDate:self.m_jdrq_Btn.m_info[@"date"]];
     
+    
+    self.m_Ggxx_saveDataDict[@"yqid"] = @"8914CE467ADE4DE4863BF59C64BF04B8";
+    
+    self.m_Ggxx_saveDataDict[@"xmbh"] = [_m_qjxxDict GetLabelWithKey:@"xmbh"];
+    self.m_Ggxx_saveDataDict[@"qjytbh"] = self.m_qjyt_DTF.m_bm;
+    self.m_Ggxx_saveDataDict[@"jdrq"] = [jdrqStr GetNotNullStr];
+    
+    self.m_Ggxx_saveDataDict[@"jdzq"] = [self.m_jdzq_DTF.text GetNotNullStr];
+    self.m_Ggxx_saveDataDict[@"jdzqbh"] = [self.m_jdzq_DTF.m_bm GetNotNullStr];
+    self.m_Ggxx_saveDataDict[@"hjwd"] = [self.m_hjwd_TF.text GetNotNullStr];
+    self.m_Ggxx_saveDataDict[@"hjsd"] = [self.m_xdsd_TF.text GetNotNullStr];
+    
+    
+    NSArray *jdyArr = [self.m_jdy_Dict allKeys];
+    
+    if (jdyArr.count>0) {
+        self.m_Ggxx_saveDataDict[@"jdrbh"] = jdyArr[0];
+    }else
+    {
+         self.m_Ggxx_saveDataDict[@"jdrbh"] = @"";
+    }
+    
+    self.m_Ggxx_saveDataDict[@"hyrbh"] = [self.m_hyy_DTF.m_bm GetNotNullStr];
+    self.m_Ggxx_saveDataDict[@"pzrbh"] = [self.m_pzr_DTF.m_bm GetNotNullStr];
+
+    self.m_Ggxx_saveDataDict[@"jddd"] = [self.m_jddd_TF.text GetNotNullStr];
+    self.m_Ggxx_saveDataDict[@"jszt"] = [self.m_jszt_TF.text GetNotNullStr];
+    self.m_Ggxx_saveDataDict[@"qt"] = [self.m_qt_TF.text GetNotNullStr];
+    
+    
+    
+    self.m_Ggxx_saveDataDict[@"jlbzkhzsID"] = [[self get_jlbzkhzsID] GetNotNullStr];
+    self.m_Ggxx_saveDataDict[@"bzsbbhs"] = [[self get_bzsbbhs] GetNotNullStr];
+    self.m_Ggxx_saveDataDict[@"syzshs"] = [[self get_syzshs] GetNotNullStr];
+   self.m_Ggxx_saveDataDict[@"jsyjID"] = [[self get_jsyjID] GetNotNullStr];
+    
+    
+    
+   // jdrq
     //取证日期 forensicsDateBtn
 }
 
@@ -1565,7 +1722,7 @@
         
     }else if(textField == _m_qjyt_DTF) {
         
-        dmxx_Model *model = _m_qjytTFArr[indexPath.row];
+        jdzq_Model *model = _m_qjytTFArr[indexPath.row];
         
         self.m_qjyt_DTF.m_bm = model.dmbm;
         
@@ -1576,18 +1733,29 @@
         
         dmxx_Model *model = _m_qjytTFArr[indexPath.row];
         
-        self.m_qjyt_DTF.m_bm = model.dmbm;
+        self.m_jdzq_DTF.m_bm = model.dmbm;
         
-        [self.m_Sbxq_saveDataDict setObject:model.dmbm forKey:@"qjytbh"];
+        [self.m_Sbxq_saveDataDict setObject:model.dmbm forKey:@"jdzqbh"];
         
-//        return _m_jdzqTFArr;
     }
      else if(textField == _m_hyy_DTF)
     {
-//        return _m_hyyTFArr;
+
+        hyr_Model *model = _m_hyyTFArr[indexPath.row];
+        
+        self.m_hyy_DTF.m_bm = model.m_key;
+        
+        [self.m_Sbxq_saveDataDict setObject:model.m_key forKey:@"pzrbh"];
+        
     }else if(textField == _m_pzr_DTF)
     {
-//        return _m_pzrTFArr;
+
+        pzr_Model *model = _m_pzrTFArr[indexPath.row];
+        
+        self.m_pzr_DTF.m_bm = model.usercode;
+        
+        [self.m_Sbxq_saveDataDict setObject:model.usercode forKey:@"pzrbh"];
+        
         
     }
     

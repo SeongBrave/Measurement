@@ -1,20 +1,26 @@
 //
-//  pzr_Model.m
+//  jdzq_Model.m
 //  Measurement
 //
 //  Created by DTSoft on 15/1/31.
 //  Copyright (c) 2015年 成勇. All rights reserved.
 //
 
-#import "pzr_Model.h"
+#import "jdzq_Model.h"
 
-@implementation pzr_Model
+@implementation jdzq_Model
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              
-             @"username" : @"USERNAME",
-             @"usercode" : @"USERCODE",
+             @"cjr" : @"cjr",
+             @"cjsj" : @"cjsj",
+             @"dmbm":@"dmbm",
+             @"dmxxmc" : @"dmxxmc",
+             @"m_id" : @"id",
+             @"zdbm":@"zdbm",
+             @"zdmc" : @"zdbm"
+             
              };
 }
 
@@ -25,6 +31,7 @@
  */
 - (NSString *)getShowCellForTextLabel
 {
-    return self.username;
+    return self.dmxxmc;
 }
+
 @end

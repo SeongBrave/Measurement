@@ -10,8 +10,8 @@
  *  核验人
  */
 #import <Mantle.h>
-#import "AutoCompletionObject.h"
-@interface hyr_Model : MTLModel<MTLJSONSerializing,AutoCompletionObject>
+#import "DropDownTextField.h"
+@interface hyr_Model : MTLModel<MTLJSONSerializing,DropDownTextFieldShowCellTextLabel>
 
 
 /**
