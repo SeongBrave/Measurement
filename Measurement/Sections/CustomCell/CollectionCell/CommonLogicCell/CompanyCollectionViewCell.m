@@ -68,6 +68,7 @@ static CGFloat BUTTONWIDTH = 70.0f;
 
 @property (nonatomic, assign) BOOL isShowingMenu;
 
+@property (weak, nonatomic) IBOutlet UIImageView *m_state_ImgV;
 
 @end
 
@@ -95,6 +96,14 @@ static CGFloat BUTTONWIDTH = 70.0f;
     }
     
     self.m_inFactoryMansL.text = inFactoryMansStr.length>=1?[inFactoryMansStr substringFromIndex:1]:@"无";
+    
+    if ([[product GetLabelWithKey:@"BY1"] isEqualToString:@"1"]) {
+        [self.m_state_ImgV setImage:[UIImage imageNamed:@"right-card-title-yqz"]];
+    }else
+    {
+        [self.m_state_ImgV setImage:[UIImage imageNamed:@"right-card-title-ywc"]];
+        
+    }
 }
 
 - (void)awakeFromNib{
