@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-
+/**
+ *  下厂任务cell
+ */
 @class CompanyCollectionViewCell;
 
-@protocol SwipeCellDelegate <NSObject>
+@protocol SwipeCompanyCollectionViewCellDelegate <NSObject>
 
 - (void)cell:(CompanyCollectionViewCell *)cell didShowMenu:(BOOL)isShowingMenu;
 
@@ -19,10 +21,26 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 
+/**
+ *  检测
+ *
+ *  @param cell
+ */
+- (void)cellDetectionPress:(CompanyCollectionViewCell *)cell;
 
-- (void)cellSharePress:(CompanyCollectionViewCell *)cell;
+/**
+ *  驳回
+ *
+ *  @param cell
+ */
+- (void)cellRejectedPress:(CompanyCollectionViewCell *)cell;
 
-- (void)cellTopPress:(CompanyCollectionViewCell *)cell;
+/**
+ *  标记已完成
+ *
+ *  @param cell
+ */
+- (void)cellMarkCompletedPress:(CompanyCollectionViewCell *)cell;
 
 @end
 
@@ -30,7 +48,7 @@
 
 @interface CompanyCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, weak) id<SwipeCellDelegate> delegate;
+@property (nonatomic, weak) id<SwipeCompanyCollectionViewCellDelegate> m_delegate;
 
 - (void)configureCellWithItem:(id )product;
 

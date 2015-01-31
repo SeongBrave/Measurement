@@ -77,18 +77,24 @@ static CGFloat BUTTONWIDTH = 70.0f;
 - (void)configureCellWithItem:(id )product
 {
     
-    NSDictionary * commonLogicDict = (NSDictionary *)product;
+    self.m_dateL.text =[product GetLabelWithKey:@"今天"];
+    self.m_companyNameL.text = [product GetLabelWithKey:@"WTDWMC"];
+    self.m_companyAddrL.text = [product GetLabelWithKey:@"SZDQ"];
+    self.m_contactNameL.text =  [product GetLabelWithKey:@"CJR"];
+    self.m_contactTelL.text = [product GetLabelWithKey:@"LXDH"];
+    self.m_inFactoryTimeL.text = [product GetLabelWithKey:@"CJSJ"];
+    self.m_headManNameL.text = [product GetLabelWithKey:@"YWFZR"];
     
-    self.m_dateL.text = [NSString stringWithFormat:@"今天"];
-    self.m_companyNameL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"WTDWMC"]];
-    self.m_companyAddrL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"SZDQ"]];
-    self.m_contactNameL.text = [NSString stringWithFormat:@"张科长"];
-    self.m_contactTelL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"LXDH"]];
-    self.m_inFactoryTimeL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"CJSJ"]];
-    self.m_headManNameL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"YWFZR"]];
-    self.m_inFactoryMansL.text = [NSString stringWithFormat:@"刘淑敏、蔡小凡"];
-    self.m_noteL.text = [NSString stringWithFormat:@"%@",commonLogicDict[@"BZ"]];
+    self.m_noteL.text =[product GetLabelWithKey:@"BZ"];
     
+    NSMutableString *inFactoryMansStr = [[NSMutableString alloc]init];
+    
+    for(NSDictionary *dict in product[@"xcry"])
+    {
+        [inFactoryMansStr appendFormat:@",%@",dict[@"XCRY"]];
+    }
+    
+    self.m_inFactoryMansL.text = inFactoryMansStr.length>=1?[inFactoryMansStr substringFromIndex:1]:@"无";
 }
 
 - (void)awakeFromNib{
@@ -150,11 +156,11 @@ static CGFloat BUTTONWIDTH = 70.0f;
         if (!self.isShowingMenu) {
             self.isShowingMenu = YES;
             [self.contentView bringSubviewToFront:_scrollViewButtonView];
-            if (_delegate && [self.delegate respondsToSelector:@selector(cellDidEndScrolling:)]) {
-                [self.delegate cellDidEndScrolling:self];
+            if (_m_delegate && [self.m_delegate respondsToSelector:@selector(cellDidEndScrolling:)]) {
+                [self.m_delegate cellDidEndScrolling:self];
             }
-            if (_delegate && [self.delegate respondsToSelector:@selector(cell:didShowMenu:)]) {
-                [self.delegate cell:self didShowMenu:self.isShowingMenu];
+            if (_m_delegate && [self.m_delegate respondsToSelector:@selector(cell:didShowMenu:)]) {
+                [self.m_delegate cell:self didShowMenu:self.isShowingMenu];
             }
         }
     }
@@ -166,22 +172,27 @@ static CGFloat BUTTONWIDTH = 70.0f;
     else{
         self.isShowingMenu = NO;
         [self.contentView sendSubviewToBack:_scrollViewButtonView];
-        if (_delegate && [self.delegate respondsToSelector:@selector(cell:didShowMenu:)]) {
-            [self.delegate cell:self didShowMenu:self.isShowingMenu];
+        if (_m_delegate && [self.m_delegate respondsToSelector:@selector(cell:didShowMenu:)]) {
+            [self.m_delegate cell:self didShowMenu:self.isShowingMenu];
         }
     }
 }
 
-
-- (IBAction)didShareButtonPress:(id)sender{
-    if (_delegate && [self.delegate respondsToSelector:@selector(cellSharePress:)]) {
-        [self.delegate cellSharePress:self];
+- (IBAction)cellDetectionPress:(id)sender{
+    if (_m_delegate && [self.m_delegate respondsToSelector:@selector(cellDetectionPress:)]) {
+        [self.m_delegate cellDetectionPress:self];
     }
 }
 
-- (IBAction)didTopButtonPress:(id)sender{
-    if (_delegate && [self.delegate respondsToSelector:@selector(cellTopPress:)]) {
-        [self.delegate cellTopPress:self];
+- (IBAction)cellRejectedPress:(id)sender{
+    if (_m_delegate && [self.m_delegate respondsToSelector:@selector(cellRejectedPress:)]) {
+        [self.m_delegate cellRejectedPress:self];
+    }
+}
+
+- (IBAction)cellMarkCompletedPress:(id)sender{
+    if (_m_delegate && [self.m_delegate respondsToSelector:@selector(cellMarkCompletedPress:)]) {
+        [self.m_delegate cellMarkCompletedPress:self];
     }
 }
 
@@ -191,7 +202,7 @@ static CGFloat BUTTONWIDTH = 70.0f;
         [self hideUtilityButtonsAnimated:YES];
     }
     else{
-        if (_delegate && [self.delegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]){
+        if (_m_delegate && [self.m_delegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]){
             
             UICollectionView *collectionView = (UICollectionView *)[self superview];
             
@@ -202,7 +213,7 @@ static CGFloat BUTTONWIDTH = 70.0f;
             
             [self.contentView sendSubviewToBack:_scrollViewButtonView];
             
-            [self.delegate collectionView:collectionView didSelectItemAtIndexPath:indexPath];
+            [self.m_delegate collectionView:collectionView didSelectItemAtIndexPath:indexPath];
         }
     }
 }
