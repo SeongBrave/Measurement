@@ -11,6 +11,13 @@
  */
 #import "BaseViewController.h"
 
+@class TemplatesListViewController;
+
+@protocol TemplatesListVCDelegate <NSObject>
+
+-(void)TemplatesListVC:(TemplatesListViewController *) templatestVC didSelectedOKByObj:(id ) data;
+
+@end
 
 typedef enum
 {
@@ -22,6 +29,7 @@ typedef enum
 @interface TemplatesListViewController : BaseViewController
 
 
+@property(nonatomic , assign)id<TemplatesListVCDelegate> m_delegate;
 @property(nonatomic , assign)TemplatesListType m_templatesType;
 
 

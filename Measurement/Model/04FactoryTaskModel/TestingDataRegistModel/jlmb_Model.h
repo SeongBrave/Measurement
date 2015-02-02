@@ -54,6 +54,11 @@
  */
 @property (nonatomic, copy) NSString *jlsyfw;
 
+/**
+ *  jljspmc
+ */
+@property (nonatomic, copy) NSString *jljspmc;
+
 
 @property(nonatomic , assign)BOOL isSelected;
 

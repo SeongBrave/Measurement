@@ -20,10 +20,10 @@ PODS:
   - AFNetworking/UIKit (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - FMDB (2.4):
-    - FMDB/standard (= 2.4)
-  - FMDB/common (2.4)
-  - FMDB/standard (2.4):
+  - FMDB (2.5):
+    - FMDB/standard (= 2.5)
+  - FMDB/common (2.5)
+  - FMDB/standard (2.5):
     - FMDB/common
   - HexColors (2.2.1)
   - IQKeyboardManager (3.2.1.0)
@@ -51,6 +51,7 @@ PODS:
     - HexColors
   - UIColor-HexString (1.1.0)
   - Vertigo (0.1)
+  - WebViewJavascriptBridge (4.1.4)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.4.1)
@@ -69,10 +70,11 @@ DEPENDENCIES:
   - TSMessages
   - UIColor-HexString
   - Vertigo
+  - WebViewJavascriptBridge
 
 SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
-  FMDB: 0b2fa25e5264ef177973c0cb8c02c711107979aa
+  FMDB: 0efa188cf0dd1ce82c27a478cd5f5fa245308677
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
   IQKeyboardManager: 167388b27d0194abc50b2ffc3cc16b881a8227df
   LinqToObjectiveC: db2ceec81d45192ffe971bbd8e73ef0de614723c
@@ -88,5 +90,6 @@ SPEC CHECKSUMS:
   TSMessages: b2b5dc71f65146387e51f2600bb0eb8f3a6c4ab8
   UIColor-HexString: a9eabf02c1a2f9036ed6ac9cb2a3ea086f3b39e4
   Vertigo: 606222b572b2f54d5a85329b7afe1436a4859e89
+  WebViewJavascriptBridge: 259a6c8c67b492bd8079c9944b6866d3476e16ac
 
 COCOAPODS: 0.35.0

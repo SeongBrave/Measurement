@@ -19,6 +19,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *m_headTitle_LB;
 
+@property(nonatomic, strong)id data;
+
 @end
 
 @implementation TemplatesListViewController
@@ -138,8 +140,11 @@
 - (IBAction)OKBtnClick:(id)sender {
     
     [self dismissViewControllerAnimated:YES completion:^(void){
-        
+        if ([self.m_delegate respondsToSelector:@selector(TemplatesListVC:didSelectedOKByObj:)]) {
+            [self.m_delegate TemplatesListVC:self didSelectedOKByObj:self.data];
+        }
     }];
+    
     
 }
 
@@ -256,7 +261,7 @@
         
         _lastIndex = indexPath;
 
-        
+        self.data = model;
         
     }
     

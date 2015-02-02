@@ -22,7 +22,8 @@
              @"jlmbbh" : @"JLMBBH",
              @"jlmblx":@"JLMBLX",
              @"jlmbmc" : @"JLMBMC",
-             @"jlsyfw" : @"JLSYFW"
+             @"jlsyfw" : @"JLSYFW",
+             @"jljspmc":@"JLJSPMC"
              
              };
 }

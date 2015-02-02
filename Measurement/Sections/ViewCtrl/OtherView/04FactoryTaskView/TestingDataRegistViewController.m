@@ -21,6 +21,8 @@
 #import "pzr_Model.h"
 #import "hyr_Model.h"
 #import "jdzq_Model.h"
+#import "WebViewJavascriptBridge.h"
+#import "jlmb_Model.h"
 
 @interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate>
 
@@ -31,6 +33,8 @@
 @property (weak, nonatomic) IBOutlet UIView *m_menuBarView;
 
 @property(nonatomic , strong) FullScreenPreviewVC *m_fullScreenVc;
+
+@property(nonatomic , strong)NSString *yqid_Str;
 
 /**
  *  设备详情
@@ -149,7 +153,7 @@
 
 @property (weak, nonatomic) IBOutlet UIWebView *m_ysjl_WebView;
 
-
+@property (strong, nonatomic) WebViewJavascriptBridge *m_ysjl_javascriptBridge;
 
 
 
@@ -160,6 +164,7 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *m_zs_ScrollView;
 @property (weak, nonatomic) IBOutlet UIWebView *m_zs_WebView;
+@property (strong, nonatomic) WebViewJavascriptBridge *m_zs_javascriptBridge;
 
 
 @end
@@ -196,7 +201,7 @@
     
     _m_Ggxx_saveDataDict[@"usercode"] = user.usercode;
     
-    _m_Ggxx_saveDataDict[@"yqid"] = MBS_XTBS;
+    _m_Ggxx_saveDataDict[@"yqid"] = @"";
     _m_Ggxx_saveDataDict[@"xmbh"] = [_m_qjxxDict GetLabelWithKey:@"xmbh"];
     _m_Ggxx_saveDataDict[@"qjytbh"] = @"";
     _m_Ggxx_saveDataDict[@"jdrq"] = @"";
@@ -228,7 +233,6 @@
     _m_Sbxq_saveDataDict[@"rwbh"] = @"";
     _m_Sbxq_saveDataDict[@"xtbs"] = MBS_XTBS;
     _m_Sbxq_saveDataDict[@"usercode"] = user.usercode;
-    _m_Sbxq_saveDataDict[@"HYLBMC"] = @"";
     _m_Sbxq_saveDataDict[@"txm"] = @"";
     _m_Sbxq_saveDataDict[@"yqmc"] = @"";
     _m_Sbxq_saveDataDict[@"ksbh"] = @"";
@@ -318,6 +322,8 @@
 -(void)layoutMainCustomView
 {
     
+
+    
     self.m_jdrq_V.layer.borderWidth = 2.0;
     self.m_jdrq_V.layer.borderColor = UIColorFromRGB(217, 217, 217).CGColor;
     self.m_qjyt_DTF.dropDownDelegate = self;
@@ -376,7 +382,13 @@
     self.m_bz_TV.layer.borderColor = UIColorFromRGB(217, 217, 217).CGColor;
     
  
-
+    self.m_ysjl_javascriptBridge = [WebViewJavascriptBridge bridgeForWebView:self.m_ysjl_WebView handler:^(id data, WVJBResponseCallback responseCallback) {
+        
+    }];
+    
+    self.m_zs_javascriptBridge = [WebViewJavascriptBridge bridgeForWebView:self.m_zs_WebView handler:^(id data, WVJBResponseCallback responseCallback) {
+        
+    }];
 
 }
 /**
@@ -801,7 +813,7 @@
     NSDate *fromDate = [fromdate  dateByAddingTimeInterval: frominterval];
  
     
-    [self.m_jdrq_Btn.m_info setObject:fromDate forKey:@"date"];
+    [self.m_jdrq_Btn.m_info setObject:fromDate ==nil?[NSDate new]:fromDate forKey:@"date"];
     
     /**
      *  注:默认检定人,不可修改
@@ -824,7 +836,8 @@
     
     
     NSArray *jdzqArr = retDict[@"jdzqList"];
-
+ 
+    self.m_Ggxx_saveDataDict[@"jdzqbh"] = [jdzqStr GetNotNullStr];
     
     self.m_jdzqTFArr = [jdzqArr linq_select:^id(NSDictionary *dict){
         
@@ -928,6 +941,7 @@
 {
     TemplatesListViewController *tempLasteVC = [self.storyboard instantiateViewControllerWithIdentifier:@"TemplatesListViewController"];
     tempLasteVC.m_templatesType = type;
+    tempLasteVC.m_delegate = self;
     tempLasteVC.modalPresentationStyle = UIModalPresentationFormSheet;
     tempLasteVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     
@@ -965,36 +979,11 @@
     
 //    usercode=1114&yqid=EF83462867CE4727BEE9BEA253E15B3E
     
-    LoginedUser *loginUsr = [LoginedUser sharedInstance];
-    
-    @weakify(self)
-    [[BaseNetWork getInstance] showDialogWithVC:self];
-    NSDictionary *dict =@{@"usercode":loginUsr.usercode,@"yqid":@"8914CE467ADE4DE4863BF59C64BF04B8"};
-    [[[[[BaseNetWork getInstance] rac_postPath:@"initDetectionDataRegistration.do" parameters:dict]map:^(id responseData)
-       {
-           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-           
-           return dict;
-       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-     subscribeNext:^(NSDictionary *retDict) {
-         
-         @strongify(self)
-         [ self update_ggxxViewByYretDict:retDict];
-         
-         
-     }error:^(NSError *error){
-         
-         
-         
-     }];
     
     
+
     
-    
-    self.m_ysjl_WebView.scrollView.scrollEnabled = NO;
-    [self.m_ysjl_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.10.169:8080/lims/web/pages/detectionTask/record-addc.jsp?yqid=5F96662544EA4D769784B663BFC521F9&jljspmc=1005522"]]];
-    
-    [self.m_zs_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.10.169:8080/lims/web/pages/detectionTask/record-addc.jsp?yqid=5F96662544EA4D769784B663BFC521F9&jljspmc=1005522"]]];
+   
     
     
 
@@ -1037,11 +1026,15 @@
     
     [self saveData];
     
-    //    @weakify(self)
+    @weakify(self)
     [[BaseNetWork getInstance] hideDialog];
     [[[[[BaseNetWork getInstance] rac_postPath:@"addEquipment.do" parameters:_m_Sbxq_saveDataDict]map:^(id responseData)
        {
+           
+           @strongify(self)
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           self.yqid_Str = dict[@"yqid"];
            
            return [dict valueForKeyPath:@"ret"];
        }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
@@ -1076,22 +1069,57 @@
 
 - (IBAction)Sbxq_NextStepBtnClick:(id)sender {
     
-    @weakify(self);
-    [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
- 
-        make.centerX.equalTo(self.m_ggxx_Btn.mas_centerX);
-        make.width.equalTo(@60);
-        make.height.equalTo(@4);
-        make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
-    }];
-    [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
-        @strongify(self)
-        [self.m_menuBarView layoutIfNeeded];
+    
+    if ([_yqid_Str isNotNull])
+    {
         
-    }completion:NULL];
-    
-    
-    [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width,0} animated:YES];
+        
+        @weakify(self);
+        [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
+            
+            make.centerX.equalTo(self.m_ggxx_Btn.mas_centerX);
+            make.width.equalTo(@60);
+            make.height.equalTo(@4);
+            make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
+        }];
+        [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+            @strongify(self)
+            [self.m_menuBarView layoutIfNeeded];
+            
+        }completion:NULL];
+        
+        
+        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width,0} animated:YES];
+        
+        
+        LoginedUser *loginUsr = [LoginedUser sharedInstance];
+        
+        [[BaseNetWork getInstance] showDialogWithVC:self];
+        NSDictionary *dict =@{@"usercode":loginUsr.usercode,@"yqid":self.yqid_Str};
+        [[[[[BaseNetWork getInstance] rac_postPath:@"initDetectionDataRegistration.do" parameters:dict]map:^(id responseData)
+           {
+               NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+               
+               return dict;
+           }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+         subscribeNext:^(NSDictionary *retDict) {
+             
+             @strongify(self)
+             [ self update_ggxxViewByYretDict:retDict];
+             
+             
+         }error:^(NSError *error){
+             
+             
+             
+         }];
+
+        
+    }else
+    {
+        [Dialog toast:self withMessage:@"没有仪器id!"];
+    }
+   
     
     
 }
@@ -1217,7 +1245,27 @@
  *  @param sender
  */
 - (IBAction)Ysjl_SaveBtnClick:(id)sender {
+    
+    id data = @{ @"name": @"杨智",@"title":@"成功了嘛？" };
+    [self.m_ysjl_javascriptBridge callHandler:@"testJavascriptHandler" data:data responseCallback:^(id response)
+    {
+        
+//   jlModel 记录信息 TModelJiluxxb model记录信息表 jlModel 字段包括 A1,A2,A3......A992
+
+        
+  
+    }];
+    
+    //jdjl 检定结论(校准记录可为空) 否则（检定的必须有值）
+    //jlModel 记录信息 TModelJiluxxb model记录信息表 jlModel 字段包括 A1,A2,A3......A992
 }
+- (IBAction)Ysjl_hqsj_BtnClick:(id)sender {
+}
+
+- (IBAction)Ysjl_ghzsmb_btnClick:(id)sender {
+}
+
+
 - (IBAction)Ysjl_CancleBtbClick:(id)sender {
     
     [self dismissViewControllerAnimated:YES completion:^(void){
@@ -1255,6 +1303,17 @@
  *  @param sender
  */
 - (IBAction)Zs_SaveBtnClick:(id)sender {
+    
+    id data = @{ @"name": @"杨智",@"title":@"成功了嘛？" };
+    [self.m_zs_javascriptBridge callHandler:@"testJavascriptHandler" data:data responseCallback:^(id response)
+     {
+         
+         //   jlModel 记录信息 TModelJiluxxb model记录信息表 jlModel 字段包括 A1,A2,A3......A992
+         
+         
+         
+     }];
+    
 }
 
 - (IBAction)Zs_CancleBtnClick:(id)sender {
@@ -1341,7 +1400,7 @@
     }];
     //02. 第二步筛选出 计量标准考核证书ID
     NSArray *jlbzkhzshIDArr = [bzqsbArr linq_select:^id(Bzqsb_Model *model){
-        return model.m_id;
+        return model.bzsbbh;
     }];
     
     //03. 第三步 将计量标准考核证书ID数组转换成","分割的字符串
@@ -1408,14 +1467,14 @@
     NSString *jdrqStr = [dateFormatter stringFromDate:self.m_jdrq_Btn.m_info[@"date"]];
     
     
-    self.m_Ggxx_saveDataDict[@"yqid"] = @"8914CE467ADE4DE4863BF59C64BF04B8";
+    self.m_Ggxx_saveDataDict[@"yqid"] = self.yqid_Str;
     
     self.m_Ggxx_saveDataDict[@"xmbh"] = [_m_qjxxDict GetLabelWithKey:@"xmbh"];
     self.m_Ggxx_saveDataDict[@"qjytbh"] = self.m_qjyt_DTF.m_bm;
     self.m_Ggxx_saveDataDict[@"jdrq"] = [jdrqStr GetNotNullStr];
     
     self.m_Ggxx_saveDataDict[@"jdzq"] = [self.m_jdzq_DTF.text GetNotNullStr];
-    self.m_Ggxx_saveDataDict[@"jdzqbh"] = [self.m_jdzq_DTF.m_bm GetNotNullStr];
+    
     self.m_Ggxx_saveDataDict[@"hjwd"] = [self.m_hjwd_TF.text GetNotNullStr];
     self.m_Ggxx_saveDataDict[@"hjsd"] = [self.m_xdsd_TF.text GetNotNullStr];
     
@@ -1453,7 +1512,7 @@
 {
     //测试用的任务编号
     //8bb405f2714e4c71ab4acf77179d67f1
-    self.m_Sbxq_saveDataDict[@"rwbh"] = @"8bb405f2714e4c71ab4acf77179d67f1";// [self.m_showDict GetLabelWithKey:@"RWBH"];
+    self.m_Sbxq_saveDataDict[@"rwbh"]=[self.m_showDict GetLabelWithKey:@"RWBH"];
     self.m_Sbxq_saveDataDict[@"txm"] = [_m_txm_TF.text GetNotNullStr];
     self.m_Sbxq_saveDataDict[@"yqmc"] = [_m_yqmc_TF.text GetNotNullStr];
     self.m_Sbxq_saveDataDict[@"ksbh"] = [_m_qjxxDict GetLabelWithKey:@"ksbh"];
@@ -1955,5 +2014,73 @@
      }];
     
 }
+#pragma mark -TemplatesListVCDelegate
+-(void)TemplatesListVC:(TemplatesListViewController *) templatestVC didSelectedOKByObj:(id ) data
+{
+    jlmb_Model *model = (jlmb_Model*)data;
+    /**
+     *   原始记录模板 保存
+     */
+    @weakify(self)
+    [[BaseNetWork getInstance] hideDialog];
+    [[[[[BaseNetWork getInstance] rac_postPath:@"saveJlmb.do" parameters:@{@"dzjlmbID":model.m_id,@"yqid":self.yqid_Str}]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+         @strongify(self)
+         if ([retDict[@"ret"] intValue] ==1) {
+             //然后再去 为显示记录模板 而获取 显示记录模板的url地址
+             
+             if (templatestVC.m_templatesType == CertificateType) {
+                 [self load_zs_WebViewWithjljspmc:model.jljspmc];
+                 
+             }else if (templatestVC.m_templatesType == RecordType) {
+                 [self load_ysjl_WebViewWithjljspmc:model.jljspmc];
+             }
+             
+             
+         }else
+         {
+             [Dialog toast:self withMessage:@"原始记录模板 保存失败!"];
+         }
+         
+         
+     }error:^(NSError *error){
+         //          @strongify(self)
+         ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
+         ////          self.m_DataSourceArr = arr;
+         ////          [_header endRefreshing];
+         ////          [_footer endRefreshing];
+         ////
+         ////          [self failedGetDataWithResponseData:arr];
+         //          //          [self.m_collectionView reloadData];
+         
+         
+     }];
+    
+}
 
+
+-(void)load_ysjl_WebViewWithjljspmc:(NSString *) jljspmc
+{
+    
+    NSString *webysjlStr = [NSString stringWithFormat:@"http://192.168.10.169:8080/lims/web/pages/detectionTask/record-addc.jsp?yqid=%@&jljspmc=%@",self.yqid_Str,jljspmc];
+    
+    self.m_ysjl_WebView.scrollView.scrollEnabled = NO;
+    [self.m_ysjl_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webysjlStr]]];
+    
+}
+
+
+-(void)load_zs_WebViewWithjljspmc:(NSString *) jljspmc
+{
+    
+    NSString *webzsStr = [NSString stringWithFormat:@"http://192.168.10.169:8080/lims/web/pages/detectionTask/record-addc.jsp?yqid=%@&jljspmc=%@",self.yqid_Str,jljspmc];
+    
+    [self.m_zs_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webzsStr]]];
+    
+}
 @end
