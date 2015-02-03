@@ -23,6 +23,7 @@
 #import "jdzq_Model.h"
 #import "WebViewJavascriptBridge.h"
 #import "jlmb_Model.h"
+#import "SBJson4Parser.h"
 
 @interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate>
 
@@ -688,6 +689,8 @@
 
 
     
+    [self.m_ysjl_WebView showPlaceHolderWithLineColor:[UIColor purpleColor]];
+    
 }
 
 -(void)updateLineConstraints:(UIButton *)button
@@ -716,6 +719,9 @@
  */
 -(void)update_sbxqViewByDict:(NSDictionary *) sbxqDict
 {
+    
+    //TODO:测试需要
+    [self test_SbxqV];
     
      self.m_txm_TF.text =  [sbxqDict GetLabelWithKey:@"txm"];
     self.m_yqmc_TF.text =  [sbxqDict GetLabelWithKey:@"yqmc"];
@@ -792,6 +798,27 @@
     
 }
 
+
+-(void)test_SbxqV
+{
+    self.m_sl_TF.text = @"2";
+    self.m_bj_TF.text = @"223";
+    self.m_xm_TF.text = @"sfad";
+    self.m_fj_TF.text = @"233";
+    self.m_txyq_TF.text = @"233";
+    
+    
+}
+
+-(void)test_GgxxV
+{
+    self.m_jddd_TF.text = @"sadf";
+    self.m_hjwd_TF.text = @"23";
+    self.m_xdsd_TF.text = @"sfad";
+    self.m_qt_TF.text = @"233";
+    
+    
+}
 /**
  *  更新设备详情界面
  *
@@ -800,6 +827,8 @@
 {
     
 
+    //TODO:测试需要的
+    [self test_GgxxV];
     /**
      *  检定日期
      */
@@ -1246,18 +1275,129 @@
  */
 - (IBAction)Ysjl_SaveBtnClick:(id)sender {
     
+    
+   
+    
+    @weakify(self)
     id data = @{ @"name": @"杨智",@"title":@"成功了嘛？" };
     [self.m_ysjl_javascriptBridge callHandler:@"testJavascriptHandler" data:data responseCallback:^(id response)
     {
+        @strongify(self)
         
-//   jlModel 记录信息 TModelJiluxxb model记录信息表 jlModel 字段包括 A1,A2,A3......A992
-
-        
+        [self pasteWithDictStr:response];
+    
   
     }];
     
     //jdjl 检定结论(校准记录可为空) 否则（检定的必须有值）
     //jlModel 记录信息 TModelJiluxxb model记录信息表 jlModel 字段包括 A1,A2,A3......A992
+}
+
+-(void)postToNetWithDict:(NSDictionary *)dict
+{
+    
+     LoginedUser *usr = [LoginedUser sharedInstance];
+    
+    NSMutableDictionary *dict1 = [NSMutableDictionary dictionaryWithDictionary:dict];
+    
+    [dict1 addEntriesFromDictionary:@{@"yqid":self.yqid_Str,@"usercode":usr.usercode}];
+    //判断是否为 校准记录
+    if (1>0)
+    {
+        
+        /**
+         *   检定结论(校准记录可为空) 否则（检定的必须有值）
+         */
+        if ([dict[@"jdjl"]isNotNull]) {
+            
+            
+            //    @weakify(self)
+            [[BaseNetWork getInstance] hideDialog];
+            [[[[[BaseNetWork getInstance] rac_postPath:@"addJiluxx.do" parameters:dict1]map:^(id responseData)
+               {
+                   NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+                   
+                   return dict;
+               }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+             subscribeNext:^(NSDictionary *retDict) {
+                 
+                 
+                 
+             }error:^(NSError *error){
+                 //          @strongify(self)
+                 ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
+                 ////          self.m_DataSourceArr = arr;
+                 ////          [_header endRefreshing];
+                 ////          [_footer endRefreshing];
+                 ////
+                 ////          [self failedGetDataWithResponseData:arr];
+                 //          //          [self.m_collectionView reloadData];
+                 
+                 
+             }];
+            
+            
+        }else
+        {
+            //表示不符合条件
+            [Dialog toast:self withMessage:@"检定必须有值!"];
+        
+        }
+        
+        
+    }else
+    {
+        
+        //    @weakify(self)
+        [[[[[BaseNetWork getInstance] rac_postPath:@"addJiluxx.do" parameters:dict1]map:^(id responseData)
+           {
+               NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+               
+               return dict;
+           }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+         subscribeNext:^(NSDictionary *retDict) {
+             
+             
+             
+         }error:^(NSError *error){
+             //          @strongify(self)
+             ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
+             ////          self.m_DataSourceArr = arr;
+             ////          [_header endRefreshing];
+             ////          [_footer endRefreshing];
+             ////
+             ////          [self failedGetDataWithResponseData:arr];
+             //          //          [self.m_collectionView reloadData];
+             
+             
+         }];
+        
+    }
+
+}
+-(void)pasteWithDictStr:(id ) jsonStr
+{
+    
+    @weakify(self)
+    SBJson4ValueBlock block = ^(id v, BOOL *stop) {
+       
+        @strongify(self)
+        
+        [self postToNetWithDict:v];
+    };
+    
+    SBJson4ErrorBlock eh = ^(NSError* err) {
+        NSLog(@"OOPS: %@", err);
+    };
+    
+    id parser = [SBJson4Parser multiRootParserWithBlock:block
+                                           errorHandler:eh];
+    NSData* xmlData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+    // Note that this input contains multiple top-level JSON documents
+//    id data = [jsonStr dataWithEncoding:NSUTF8StringEncoding];
+    [parser parse:xmlData];
+    
+    
 }
 - (IBAction)Ysjl_hqsj_BtnClick:(id)sender {
 }
@@ -1785,16 +1925,16 @@
         
         self.m_qjyt_DTF.m_bm = model.dmbm;
         
-        [self.m_Sbxq_saveDataDict setObject:model.dmbm forKey:@"qjytbh"];
+        [self.m_Ggxx_saveDataDict setObject:model.dmbm forKey:@"qjytbh"];
         
     }else if(textField == _m_jdzq_DTF)
     {
         
-        dmxx_Model *model = _m_qjytTFArr[indexPath.row];
+        dmxx_Model *model = _m_jdzqTFArr[indexPath.row];
         
         self.m_jdzq_DTF.m_bm = model.dmbm;
         
-        [self.m_Sbxq_saveDataDict setObject:model.dmbm forKey:@"jdzqbh"];
+        [self.m_Ggxx_saveDataDict setObject:model.dmbm forKey:@"jdzqbh"];
         
     }
      else if(textField == _m_hyy_DTF)
@@ -1804,7 +1944,7 @@
         
         self.m_hyy_DTF.m_bm = model.m_key;
         
-        [self.m_Sbxq_saveDataDict setObject:model.m_key forKey:@"pzrbh"];
+        [self.m_Ggxx_saveDataDict setObject:model.m_key forKey:@"pzrbh"];
         
     }else if(textField == _m_pzr_DTF)
     {
@@ -1813,7 +1953,7 @@
         
         self.m_pzr_DTF.m_bm = model.usercode;
         
-        [self.m_Sbxq_saveDataDict setObject:model.usercode forKey:@"pzrbh"];
+        [self.m_Ggxx_saveDataDict setObject:model.usercode forKey:@"pzrbh"];
         
         
     }
@@ -2066,10 +2206,11 @@
 
 -(void)load_ysjl_WebViewWithjljspmc:(NSString *) jljspmc
 {
+    //175.17.22.241:8080
     
-    NSString *webysjlStr = [NSString stringWithFormat:@"http://192.168.10.169:8080/lims/web/pages/detectionTask/record-addc.jsp?yqid=%@&jljspmc=%@",self.yqid_Str,jljspmc];
+    NSString *webysjlStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/record-addc.jsp?yqid=%@&jljspmc=%@",WEBURL,self.yqid_Str,jljspmc];
     
-    self.m_ysjl_WebView.scrollView.scrollEnabled = NO;
+//    self.m_ysjl_WebView.scrollView.scrollEnabled = NO;
     [self.m_ysjl_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webysjlStr]]];
     
 }
@@ -2078,7 +2219,7 @@
 -(void)load_zs_WebViewWithjljspmc:(NSString *) jljspmc
 {
     
-    NSString *webzsStr = [NSString stringWithFormat:@"http://192.168.10.169:8080/lims/web/pages/detectionTask/record-addc.jsp?yqid=%@&jljspmc=%@",self.yqid_Str,jljspmc];
+    NSString *webzsStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/record-addc.jsp?yqid=%@&jljspmc=%@",WEBURL,self.yqid_Str,jljspmc];
     
     [self.m_zs_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webzsStr]]];
     

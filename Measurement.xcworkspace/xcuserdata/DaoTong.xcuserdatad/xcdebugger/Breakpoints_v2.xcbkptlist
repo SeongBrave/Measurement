@@ -106,11 +106,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Measurement/Sections/ViewCtrl/OtherView/04FactoryTaskView/TestingDataRegistViewController.m"
-            timestampString = "444586606.839662"
+            timestampString = "444674473.977197"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2069"
-            endingLineNumber = "2069"
+            startingLineNumber = "1308"
+            endingLineNumber = "1308"
+            landmarkName = "-postToNetWithDict:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Measurement/Sections/ViewCtrl/OtherView/04FactoryTaskView/TestingDataRegistViewController.m"
+            timestampString = "444674473.977197"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2210"
+            endingLineNumber = "2210"
             landmarkName = "-load_ysjl_WebViewWithjljspmc:"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,12 +138,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Measurement/Sections/ViewCtrl/OtherView/04FactoryTaskView/TestingDataRegistViewController.m"
-            timestampString = "444586608.71185"
+            timestampString = "444675341.265342"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2079"
-            endingLineNumber = "2079"
-            landmarkName = "-load_zs_WebViewWithjljspmc:"
+            startingLineNumber = "1165"
+            endingLineNumber = "1165"
+            landmarkName = "-Ggxx_SaveBtnClick:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Measurement/Sections/ViewCtrl/OtherView/04FactoryTaskView/TestingDataRegistViewController.m"
+            timestampString = "444675866.100678"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1603"
+            endingLineNumber = "1603"
+            landmarkName = "-save_ggxx_Data"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

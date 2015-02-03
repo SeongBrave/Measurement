@@ -43,6 +43,7 @@ PODS:
   - ReactiveCocoa/no-arc (2.3.1)
   - ReactiveCocoa/UI (2.3.1):
     - ReactiveCocoa/Core
+  - SBJson (4.0.1)
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
@@ -65,6 +66,7 @@ DEPENDENCIES:
   - PPSSignatureView
   - RBStoryboardLink
   - ReactiveCocoa (~> 2.3.1)
+  - SBJson
   - SDWebImage (~> 3.6)
   - SWTableViewCell
   - TSMessages
@@ -85,6 +87,7 @@ SPEC CHECKSUMS:
   PPSSignatureView: 961f6168b88c0334007f1d49a17e3ebb2f1462a9
   RBStoryboardLink: 2abe4697a7dd6137482590b044f6e4f1c2b05837
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
+  SBJson: d71212c078abf4679d54b0d0565260c474e46235
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SWTableViewCell: 25de71898e3fcd11cf75707ef90245acf990ec03
   TSMessages: b2b5dc71f65146387e51f2600bb0eb8f3a6c4ab8
