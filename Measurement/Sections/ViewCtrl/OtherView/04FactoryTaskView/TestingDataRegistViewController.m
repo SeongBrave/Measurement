@@ -11,7 +11,6 @@
 #import "Jlbzkhzsh_TableViewCell.h"
 #import "Bzqsb_TableViewCell.h"
 #import "Jsyj_TableViewCell.h"
-#import "TemplatesListViewController.h"
 #import "FullScreenPreviewVC.h"
 #import "AutoCompleteTextField.h"
 #import "Yqmc_Auto_Model.h"
@@ -24,8 +23,11 @@
 #import "WebViewJavascriptBridge.h"
 #import "jlmb_Model.h"
 #import "SBJson4Parser.h"
+#import "ZS_TemplatesListViewController.h"
+#import "YSJL_TemplatesListViewController.h"
+#import "zsmb_Model.h"
 
-@interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate>
+@interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 
@@ -144,6 +146,11 @@
 @property (weak, nonatomic) IBOutlet UITableView *m_jsyj_TableView;
 @property(nonatomic , strong)NSArray *m_jsyj_Arr;
 
+/**
+ *  保存保存成功后返回的数据
+ */
+@property (strong, nonatomic) NSDictionary *m_ggxx_retDict;
+
 
 /**
  *  原始记录
@@ -155,6 +162,11 @@
 @property (weak, nonatomic) IBOutlet UIWebView *m_ysjl_WebView;
 
 @property (strong, nonatomic) WebViewJavascriptBridge *m_ysjl_javascriptBridge;
+
+/**
+ *  保存保存成功后返回的数据
+ */
+@property (strong, nonatomic) NSDictionary *m_ysjl_retDict;
 
 
 
@@ -437,13 +449,12 @@
                     case 2:
                         make.centerX.equalTo(self.m_ysjl_Btn.mas_centerX);
                         make.width.equalTo(@60);
-                        [self PopTemplatesListViewControllerWithTemplatesListType:RecordType];
+                        
                         break;
                         
                     case 3:
                         make.centerX.equalTo(self.m_zs_Btn.mas_centerX);
                         make.width.equalTo(@30);
-                        [self PopTemplatesListViewControllerWithTemplatesListType:CertificateType];
                         break;
                         
                     default:
@@ -513,8 +524,8 @@
         
         @strongify(self)
         [self updateLineConstraints:next];
-        [self PopTemplatesListViewControllerWithTemplatesListType:RecordType];
-        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*2,0} animated:YES];
+//        [self PopYSJL_TemplatesListViewControllerWithZSretDict:nil];
+        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width,0} animated:YES];
         
     }];
     
@@ -522,8 +533,8 @@
         
         @strongify(self)
         [self updateLineConstraints:next];
-        [self PopTemplatesListViewControllerWithTemplatesListType:CertificateType];
-        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*3,0} animated:YES];
+//        [self PopZS_TemplatesListViewControllerWithZSretDict:nil];
+//        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*3,0} animated:YES];
         
     }];
     
@@ -689,7 +700,7 @@
 
 
     
-    [self.m_ysjl_WebView showPlaceHolderWithLineColor:[UIColor purpleColor]];
+//    [self.m_ysjl_WebView showPlaceHolderWithLineColor:[UIColor purpleColor]];
     
 }
 
@@ -966,19 +977,30 @@
 }
 
 //layoutMainCustomView
--(void)PopTemplatesListViewControllerWithTemplatesListType:(TemplatesListType )type
-{
-    TemplatesListViewController *tempLasteVC = [self.storyboard instantiateViewControllerWithIdentifier:@"TemplatesListViewController"];
-    tempLasteVC.m_templatesType = type;
+-(void)PopZS_TemplatesListViewControllerWithZSretDict:(NSDictionary *)retDict{
+    ZS_TemplatesListViewController *tempLasteVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ZS_TemplatesListViewController"];
+    tempLasteVC.m_delegate = self;
+    /**
+     *  保存需要请求获取的参数
+     */
+    tempLasteVC.m_zsParameterDict = retDict;
+    tempLasteVC.modalPresentationStyle = UIModalPresentationFormSheet;
+    tempLasteVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    
+    [self presentViewController:tempLasteVC animated:YES completion:nil];
+    
+}
+-(void)PopYSJL_TemplatesListViewControllerWithZSretDict:(NSDictionary *)retDict{
+    YSJL_TemplatesListViewController *tempLasteVC = [self.storyboard instantiateViewControllerWithIdentifier:@"YSJL_TemplatesListViewController"];
+    tempLasteVC.m_ysjlParameterDict = retDict;
     tempLasteVC.m_delegate = self;
     tempLasteVC.modalPresentationStyle = UIModalPresentationFormSheet;
     tempLasteVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     
     [self presentViewController:tempLasteVC animated:YES completion:nil];
     
-    
-    
 }
+
 /**
  *  获取  的数据
  */
@@ -1209,12 +1231,17 @@
     
     [self save_ggxx_Data];
     
-    //    @weakify(self)
+       @weakify(self)
     [[BaseNetWork getInstance] hideDialog];
     [[[[[BaseNetWork getInstance] rac_postPath:@"saveDdrTojson.do" parameters:_m_Ggxx_saveDataDict]map:^(id responseData)
        {
-           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
+           @strongify(self)
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           /**
+            *  保存公共信息返回的数据，点击下一步用
+            */
+           self.m_ggxx_retDict = dict;
            return [dict valueForKeyPath:@"ret"];
        }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
      subscribeNext:^(NSString *retStr) {
@@ -1240,7 +1267,23 @@
     
     [self dismissViewControllerAnimated:YES completion:^(void){
         
+        @weakify(self);
+        [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
+            
+            make.centerX.equalTo(self.m_ysjl_Btn.mas_centerX);
+            make.width.equalTo(@60);
+            make.height.equalTo(@4);
+            make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
+        }];
+        [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+            @strongify(self)
+            [self.m_menuBarView layoutIfNeeded];
+            
+        }completion:NULL];
         
+        
+        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*2,0} animated:YES];
+
     }];
 
 }
@@ -1248,22 +1291,43 @@
 - (IBAction)Ggxx_NextStepBtnClick:(id)sender {
     
     
-    @weakify(self);
-    [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
-        
-        make.centerX.equalTo(self.m_ysjl_Btn.mas_centerX);
-        make.width.equalTo(@60);
-        make.height.equalTo(@4);
-        make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
-    }];
-    [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
-        @strongify(self)
-        [self.m_menuBarView layoutIfNeeded];
-        
-    }completion:NULL];
     
+    if ([_m_ggxx_retDict[@"ret"]intValue] == 1)
+    {
+        
+        
+        @weakify(self);
+        [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
+            
+            make.centerX.equalTo(self.m_ysjl_Btn.mas_centerX);
+            make.width.equalTo(@60);
+            make.height.equalTo(@4);
+            make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
+        }];
+        [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+            @strongify(self)
+            [self.m_menuBarView layoutIfNeeded];
+            
+        }completion:NULL];
+        
+        
+        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*2,0} animated:YES];
     
-    [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width,0} animated:YES];
+        NSDictionary *dict = @{@"xmbh":[_m_qjxxDict GetLabelWithKey:@"xmbh"],@"jclxbh":self.m_Sbxq_saveDataDict[@"jclxbh"]};
+        [self PopYSJL_TemplatesListViewControllerWithZSretDict:dict];
+    }else
+    {
+        [Dialog toast:self withMessage:@"未保存成功公共信息!"];
+    }
+    
+
+    
+    if ([_m_ggxx_retDict[@"ret"]intValue] == 1) {
+      
+        
+    }
+    
+   
     
 }
 
@@ -1276,18 +1340,28 @@
 - (IBAction)Ysjl_SaveBtnClick:(id)sender {
     
     
+    [self.m_ysjl_javascriptBridge callHandler:@"hqlssj" data:self.yqid_Str responseCallback:^(id response)
+     {
+      
+         
+         debug_object(response);
+         
+         
+         
+     }];
+    
    
     
-    @weakify(self)
-    id data = @{ @"name": @"杨智",@"title":@"成功了嘛？" };
-    [self.m_ysjl_javascriptBridge callHandler:@"testJavascriptHandler" data:data responseCallback:^(id response)
-    {
-        @strongify(self)
-        
-        [self pasteWithDictStr:response];
-    
-  
-    }];
+//    @weakify(self)
+//    id data = @{ @"name": @"杨智",@"title":@"成功了嘛？" };
+//    [self.m_ysjl_javascriptBridge callHandler:@"testJavascriptHandler" data:data responseCallback:^(id response)
+//    {
+//        @strongify(self)
+//        
+//        [self pasteWithDictStr:response];
+//    
+//  
+//    }];
     
     //jdjl 检定结论(校准记录可为空) 否则（检定的必须有值）
     //jlModel 记录信息 TModelJiluxxb model记录信息表 jlModel 字段包括 A1,A2,A3......A992
@@ -1302,7 +1376,7 @@
     
     [dict1 addEntriesFromDictionary:@{@"yqid":self.yqid_Str,@"usercode":usr.usercode}];
     //判断是否为 校准记录
-    if (1>0)
+    if (dict[@"jdjl"] !=nil)
     {
         
         /**
@@ -1321,18 +1395,24 @@
                }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
              subscribeNext:^(NSDictionary *retDict) {
                  
+//                 jlh = "JL-CD02156224";
+//                 jlid = 97A22AC96BEF433598730B4E6ECC7925;
+//                 ret = 1;
+                 self.m_ysjl_retDict = retDict;
                  
+                 if ([retDict[@"ret"] intValue] == 0)
+                 {
+                     
+                     [Dialog toast:self withMessage:@"保存失败!"];
+                     
+                 }else
+                 {
+                      [Dialog toast:self withMessage:@"保存成功!"];
+                 }
                  
              }error:^(NSError *error){
-                 //          @strongify(self)
-                 ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
-                 ////          self.m_DataSourceArr = arr;
-                 ////          [_header endRefreshing];
-                 ////          [_footer endRefreshing];
-                 ////
-                 ////          [self failedGetDataWithResponseData:arr];
-                 //          //          [self.m_collectionView reloadData];
                  
+
                  
              }];
             
@@ -1357,7 +1437,17 @@
            }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
          subscribeNext:^(NSDictionary *retDict) {
              
+              self.m_ysjl_retDict = retDict;
              
+             if ([retDict[@"ret"] intValue] == 0)
+             {
+                 
+                 [Dialog toast:self withMessage:@"保存失败!"];
+                 
+             }else
+             {
+                 [Dialog toast:self withMessage:@"保存成功!"];
+             }
              
          }error:^(NSError *error){
              //          @strongify(self)
@@ -1400,9 +1490,12 @@
     
 }
 - (IBAction)Ysjl_hqsj_BtnClick:(id)sender {
+    
+    
 }
 
 - (IBAction)Ysjl_ghzsmb_btnClick:(id)sender {
+    
 }
 
 
@@ -1417,22 +1510,36 @@
 
 - (IBAction)Ysjl_NextStepBtnClick:(id)sender {
     
-    
-    @weakify(self);
-    [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
+    /**
+     *  原始记录保存后的数据成功时才能下一步
+     */
+    if ([self.m_ysjl_retDict[@"ret"]intValue] == 1) {
         
-        make.centerX.equalTo(self.m_zs_Btn.mas_centerX);
-        make.width.equalTo(@30);
-        make.height.equalTo(@4);
-        make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
-    }];
-    [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
-        @strongify(self)
-        [self.m_menuBarView layoutIfNeeded];
         
-    }completion:NULL];
+        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*3,0} animated:YES];
+        
+        @weakify(self);
+        [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
+            
+            make.centerX.equalTo(self.m_zs_Btn.mas_centerX);
+            make.width.equalTo(@30);
+            make.height.equalTo(@4);
+            make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
+        }];
+        [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+            @strongify(self)
+            [self.m_menuBarView layoutIfNeeded];
+            
+        }completion:NULL];
+          [self PopZS_TemplatesListViewControllerWithZSretDict:self.m_ysjl_retDict];
+        
+    }else
+    {
+        [Dialog toast:self withMessage:@"原始记录未保存成功!"];
+    }
     
-     [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*2,0} animated:YES];
+    
+ 
     
     
 }
@@ -1709,6 +1816,7 @@
     
     return 0;
 }
+
 /*
  -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
  {
@@ -1907,8 +2015,8 @@
         
         self.m_jclx_DTF.m_bm = model.dmbm;
         
-        [self.m_Sbxq_saveDataDict setObject:model.dmxxmc forKey:@"jclxbh"];
-         [self.m_Sbxq_saveDataDict setObject:model.dmbm forKey:@"jclx"];
+        [self.m_Sbxq_saveDataDict setObject:model.dmbm forKey:@"jclxbh"];
+         [self.m_Sbxq_saveDataDict setObject:model.dmxxmc forKey:@"jclx"];
     
     }else if(textField == _m_dw_DTF) {
         
@@ -2154,55 +2262,6 @@
      }];
     
 }
-#pragma mark -TemplatesListVCDelegate
--(void)TemplatesListVC:(TemplatesListViewController *) templatestVC didSelectedOKByObj:(id ) data
-{
-    jlmb_Model *model = (jlmb_Model*)data;
-    /**
-     *   原始记录模板 保存
-     */
-    @weakify(self)
-    [[BaseNetWork getInstance] hideDialog];
-    [[[[[BaseNetWork getInstance] rac_postPath:@"saveJlmb.do" parameters:@{@"dzjlmbID":model.m_id,@"yqid":self.yqid_Str}]map:^(id responseData)
-       {
-           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-           
-           return dict;
-       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-     subscribeNext:^(NSDictionary *retDict) {
-         @strongify(self)
-         if ([retDict[@"ret"] intValue] ==1) {
-             //然后再去 为显示记录模板 而获取 显示记录模板的url地址
-             
-             if (templatestVC.m_templatesType == CertificateType) {
-                 [self load_zs_WebViewWithjljspmc:model.jljspmc];
-                 
-             }else if (templatestVC.m_templatesType == RecordType) {
-                 [self load_ysjl_WebViewWithjljspmc:model.jljspmc];
-             }
-             
-             
-         }else
-         {
-             [Dialog toast:self withMessage:@"原始记录模板 保存失败!"];
-         }
-         
-         
-     }error:^(NSError *error){
-         //          @strongify(self)
-         ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
-         ////          self.m_DataSourceArr = arr;
-         ////          [_header endRefreshing];
-         ////          [_footer endRefreshing];
-         ////
-         ////          [self failedGetDataWithResponseData:arr];
-         //          //          [self.m_collectionView reloadData];
-         
-         
-     }];
-    
-}
-
 
 -(void)load_ysjl_WebViewWithjljspmc:(NSString *) jljspmc
 {
@@ -2223,5 +2282,63 @@
     
     [self.m_zs_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webzsStr]]];
     
+}
+
+
+#pragma mark -ZS_TemplatesListVCDelegate
+-(void)ZS_TemplatesListVC:(ZS_TemplatesListViewController *) templatestVC didSelectedOKByObj:(id ) data
+{
+    zsmb_Model *model = (zsmb_Model*)data;
+
+    NSString *webzsStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/certificate-autoc.jsp?zsbh=%@",WEBURL,@"CD02146019"];
+    
+    [self.m_zs_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webzsStr]]];
+
+}
+
+#pragma mark -YSJL_TemplatesListViewController
+-(void)YSJL_TemplatesListVC:(YSJL_TemplatesListViewController *) templatestVC didSelectedOKByObj:(id ) data
+{
+    jlmb_Model *model = (jlmb_Model*)data;
+    /**
+     *   原始记录模板 保存
+     */
+    @weakify(self)
+    [[BaseNetWork getInstance] hideDialog];
+    [[[[[BaseNetWork getInstance] rac_postPath:@"saveJlmb.do" parameters:@{@"dzjlmbID":model.m_id,@"yqid":self.yqid_Str}]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+         @strongify(self)
+         if ([retDict[@"ret"] intValue] ==1) {
+             //然后再去 为显示记录模板 而获取 显示记录模板的url地址
+             
+
+             [self load_ysjl_WebViewWithjljspmc:model.jljspmc];
+             
+             
+             
+         }else
+         {
+             [Dialog toast:self withMessage:@"原始记录模板 保存失败!"];
+         }
+         
+         
+     }error:^(NSError *error){
+         //          @strongify(self)
+         ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
+         ////          self.m_DataSourceArr = arr;
+         ////          [_header endRefreshing];
+         ////          [_footer endRefreshing];
+         ////
+         ////          [self failedGetDataWithResponseData:arr];
+         //          //          [self.m_collectionView reloadData];
+         
+         
+     }];
+
 }
 @end

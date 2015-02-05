@@ -117,6 +117,10 @@
 		C9E94DCC1A4A669100E8CC83 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E94DC51A4A669100E8CC83 /* MJRefreshConst.m */; };
 		C9E94DCD1A4A669100E8CC83 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E94DC71A4A669100E8CC83 /* MJRefreshFooterView.m */; };
 		C9E94DCE1A4A669100E8CC83 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E94DC91A4A669100E8CC83 /* MJRefreshHeaderView.m */; };
+		C9EB13511A83B6C600DE9B1D /* ZS_TemplatesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EB13501A83B6C600DE9B1D /* ZS_TemplatesListViewController.m */; };
+		C9EB13541A83B72E00DE9B1D /* YSJL_TemplatesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EB13531A83B72E00DE9B1D /* YSJL_TemplatesListViewController.m */; };
+		C9EB13571A83BA9100DE9B1D /* zsmb_TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EB13561A83BA9100DE9B1D /* zsmb_TableViewCell.m */; };
+		C9EB135A1A83BADC00DE9B1D /* zsmb_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EB13591A83BADC00DE9B1D /* zsmb_Model.m */; };
 		C9F3DFD41A5D9CD100D34A19 /* FactoryTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DFD21A5D9CD100D34A19 /* FactoryTaskCell.m */; };
 		C9F3DFD71A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DFD61A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m */; };
 		C9F51E621A582E70009F84D1 /* backgroundV.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F51E611A582E70009F84D1 /* backgroundV.m */; };
@@ -392,6 +396,14 @@
 		C9E94DC71A4A669100E8CC83 /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
 		C9E94DC81A4A669100E8CC83 /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
 		C9E94DC91A4A669100E8CC83 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
+		C9EB134F1A83B6C600DE9B1D /* ZS_TemplatesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZS_TemplatesListViewController.h; sourceTree = "<group>"; };
+		C9EB13501A83B6C600DE9B1D /* ZS_TemplatesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZS_TemplatesListViewController.m; sourceTree = "<group>"; };
+		C9EB13521A83B72E00DE9B1D /* YSJL_TemplatesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSJL_TemplatesListViewController.h; sourceTree = "<group>"; };
+		C9EB13531A83B72E00DE9B1D /* YSJL_TemplatesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSJL_TemplatesListViewController.m; sourceTree = "<group>"; };
+		C9EB13551A83BA9100DE9B1D /* zsmb_TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zsmb_TableViewCell.h; sourceTree = "<group>"; };
+		C9EB13561A83BA9100DE9B1D /* zsmb_TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = zsmb_TableViewCell.m; sourceTree = "<group>"; };
+		C9EB13581A83BADC00DE9B1D /* zsmb_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zsmb_Model.h; sourceTree = "<group>"; };
+		C9EB13591A83BADC00DE9B1D /* zsmb_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = zsmb_Model.m; sourceTree = "<group>"; };
 		C9F3DFD11A5D9CD100D34A19 /* FactoryTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryTaskCell.h; sourceTree = "<group>"; };
 		C9F3DFD21A5D9CD100D34A19 /* FactoryTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryTaskCell.m; sourceTree = "<group>"; };
 		C9F3DFD51A5D9DFD00D34A19 /* PlanDetailsHead_Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanDetailsHead_Cell.h; sourceTree = "<group>"; };
@@ -540,6 +552,8 @@
 			children = (
 				C90F310F1A729BB600A7A06E /* jlmb_Model.h */,
 				C90F31101A729BB600A7A06E /* jlmb_Model.m */,
+				C9EB13581A83BADC00DE9B1D /* zsmb_Model.h */,
+				C9EB13591A83BADC00DE9B1D /* zsmb_Model.m */,
 			);
 			path = TestingDataRegistModel;
 			sourceTree = "<group>";
@@ -549,6 +563,8 @@
 			children = (
 				C90F31131A729D2F00A7A06E /* jlmb_TableViewCell.h */,
 				C90F31141A729D2F00A7A06E /* jlmb_TableViewCell.m */,
+				C9EB13551A83BA9100DE9B1D /* zsmb_TableViewCell.h */,
+				C9EB13561A83BA9100DE9B1D /* zsmb_TableViewCell.m */,
 			);
 			path = TestingDataRegistCell;
 			sourceTree = "<group>";
@@ -558,6 +574,10 @@
 			children = (
 				C90F31171A729DDF00A7A06E /* TemplatesListViewController.h */,
 				C90F31181A729DDF00A7A06E /* TemplatesListViewController.m */,
+				C9EB134F1A83B6C600DE9B1D /* ZS_TemplatesListViewController.h */,
+				C9EB13501A83B6C600DE9B1D /* ZS_TemplatesListViewController.m */,
+				C9EB13521A83B72E00DE9B1D /* YSJL_TemplatesListViewController.h */,
+				C9EB13531A83B72E00DE9B1D /* YSJL_TemplatesListViewController.m */,
 			);
 			path = TemplatesListVC;
 			sourceTree = "<group>";
@@ -1856,6 +1876,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9EB13571A83BA9100DE9B1D /* zsmb_TableViewCell.m in Sources */,
 				C9791AA21A71496C00DC5643 /* Jlbzkhzsh_Model.m in Sources */,
 				C9BFAA121A487BF400C887B4 /* MenuItemView.m in Sources */,
 				C9651FD41A43B26000B770BB /* CustomStepper.m in Sources */,
@@ -1893,6 +1914,7 @@
 				C9BFAA151A487BF400C887B4 /* SettingCell.m in Sources */,
 				C9FFC1501A6E7A6A00AA6BE7 /* ks_Model.m in Sources */,
 				C9FFC1531A6E7A6A00AA6BE7 /* jcjd_Detail_Model.m in Sources */,
+				C9EB13511A83B6C600DE9B1D /* ZS_TemplatesListViewController.m in Sources */,
 				C9791AA51A71498000DC5643 /* Bzqsb_Model.m in Sources */,
 				C97094561A62D09B00141DC5 /* PlanningDepartmentViewController.m in Sources */,
 				C9A95B491A613C890017BE2B /* ProgressOverviewCell.m in Sources */,
@@ -1923,6 +1945,7 @@
 				C9651FD21A43B26000B770BB /* CustomButton.m in Sources */,
 				C9651FEB1A43B26000B770BB /* Localisator.m in Sources */,
 				C9E94DCC1A4A669100E8CC83 /* MJRefreshConst.m in Sources */,
+				C9EB13541A83B72E00DE9B1D /* YSJL_TemplatesListViewController.m in Sources */,
 				C990B7E61A79335B00DF81C8 /* Yqmc_Auto_Model.m in Sources */,
 				C970945C1A62D09B00141DC5 /* MyPlanViewController.m in Sources */,
 				C9791A981A71485900DC5643 /* Jlbzkhzsh_TableViewCell.m in Sources */,
@@ -1934,6 +1957,7 @@
 				C9651FF71A43BE3100B770BB /* YTKKeyValueStore.m in Sources */,
 				C97093ED1A62CBD200141DC5 /* SignatureViewController.m in Sources */,
 				C97093E91A62CBD200141DC5 /* OptionMenuTableViewController.m in Sources */,
+				C9EB135A1A83BADC00DE9B1D /* zsmb_Model.m in Sources */,
 				C9651FEF1A43B26000B770BB /* DropDownListView.m in Sources */,
 				C97094621A62D09B00141DC5 /* CertificateGuaranteeViewController.m in Sources */,
 				C9BFAA131A487BF400C887B4 /* MenuView.m in Sources */,
