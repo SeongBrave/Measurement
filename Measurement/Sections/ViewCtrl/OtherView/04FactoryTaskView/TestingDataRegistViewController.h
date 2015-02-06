@@ -11,9 +11,18 @@
  */
 #import "BaseViewController.h"
 
+typedef enum
+{
+    TxmDataSourceType = 0,
+    YqidDataSourceType,
+    NullDataSourceType,
+    
+} DataSourceType;
 
 @interface TestingDataRegistViewController : BaseViewController
 
+
+@property(nonatomic , assign)DataSourceType m_dataSourceType;
 
 /**
  *  用于保存上一级界面传递过来的数据

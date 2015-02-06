@@ -82,8 +82,8 @@
 -(void)Add_RAC_Attention
 {
     //dzjlmbID=7A77D3409DA34336A3FD6B65759BC026
-//    NSDictionary *dict = @{@"dzjlmbID":self.m_zsParameterDict[@"jlid"]};
-     NSDictionary *dict = @{@"dzjlmbID":@"7A77D3409DA34336A3FD6B65759BC026"};
+    NSDictionary *dict = @{@"yqid":self.m_zsParameterDict[@"yqid"]};
+   //  NSDictionary *dict = @{@"yqid":@"7A77D3409DA34336A3FD6B65759BC026"};
     [[BaseNetWork getInstance] showDialog];
     @weakify(self)
     [[[[BaseNetWork getInstance] rac_postPath:@"findZsmb.do" parameters:dict]map:^(id responseData)

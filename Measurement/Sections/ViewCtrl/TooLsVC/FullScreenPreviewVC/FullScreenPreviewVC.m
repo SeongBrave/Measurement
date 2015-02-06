@@ -67,6 +67,8 @@
 {
      self.m_dialog = [[Dialog alloc]init];
     self.m_webView.delegate = self;
+     [self.m_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_m_urlStr]]];
+    
     [self.m_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://139.212.89.77:8080/lims/web/pages/detectionTask/certificate-autoc.jsp?zsbh=CD02146019"]]];
 }
 - (IBAction)BackToVC:(id)sender {

@@ -66,6 +66,11 @@
  */
 @property (nonatomic, copy) NSString *txm;
 
+/**
+ *  yqid
+ */
+@property (nonatomic, copy) NSString *yqid;
+
 
 
 

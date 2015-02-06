@@ -771,7 +771,7 @@
      subscribeNext:^(NSDictionary *retDict) {
          
          @strongify(self)
-         [self ToTestingDataRegistViewControllerWithDict:retDict];
+          [self ToTestingDataRegistViewControllerWithDict:retDict AndDataSourceType:TxmDataSourceType];
          
          
      }error:^(NSError *error){
@@ -784,11 +784,12 @@
     
 }
 
--(void)ToTestingDataRegistViewControllerWithDict:(NSDictionary *) qjxxDict
+-(void)ToTestingDataRegistViewControllerWithDict:(NSDictionary *) qjxxDict AndDataSourceType:(DataSourceType) dataSourceType
 {
     TestingDataRegistViewController *popVc = (TestingDataRegistViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"TestingDataRegistViewController"];
     
     popVc.m_qjxxDict = qjxxDict;
+    popVc.m_dataSourceType = dataSourceType;
     popVc.m_showDict = self.m_showDict;
     popVc.modalPresentationStyle = UIModalPresentationFormSheet;
     popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
@@ -797,8 +798,6 @@
     
 
 }
-
-
 
 #pragma mark - 代理协议方法*
 
@@ -985,7 +984,33 @@
         }else
         {
             
-            [self ToTestingDataRegistViewControllerWithDict:nil];
+              sblb_Model *model = [_m_Sblb_ModelArr objectAtIndex:indexPath.row -1];
+            
+            
+            
+    
+            @weakify(self)
+            [[BaseNetWork getInstance] showDialogWithVC:self];
+            NSDictionary *dict =@{@"yqid":model.yqid};
+            [[[[[BaseNetWork getInstance] rac_postPath:@"findWtdxxxxByYqid.do" parameters:dict]map:^(id responseData)
+               {
+                   NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+                   
+                   return [dict valueForKeyPath:@"qjxx"];
+               }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+             subscribeNext:^(NSDictionary *retDict) {
+                 
+                 @strongify(self)
+                 [self ToTestingDataRegistViewControllerWithDict:retDict AndDataSourceType:YqidDataSourceType];
+                 
+                 
+             }error:^(NSError *error){
+                 
+                 
+                 
+             }];
+            
+            
             
             
         }
@@ -1122,7 +1147,7 @@
         @strongify(self)
         //模拟器测试
 //          [self loadJiliangqjByTxm: @"140047018"];
-        [self ToTestingDataRegistViewControllerWithDict:nil];
+        [self ToTestingDataRegistViewControllerWithDict:nil AndDataSourceType:NullDataSourceType];
         
     }];
     

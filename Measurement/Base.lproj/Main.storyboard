@@ -476,7 +476,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HVA-xX-OGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-361" y="-2394"/>
+            <point key="canvasLocation" x="119" y="-2386"/>
         </scene>
         <!--My Plan View Controller-->
         <scene sceneID="WMs-kX-IV6">
@@ -6639,7 +6639,6 @@
         <!--Full Screen PreviewVC-->
         <scene sceneID="XbH-hE-Fn6">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0T5-ag-VvP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="FullScreenPreviewVC" id="kCv-hj-TQr" customClass="FullScreenPreviewVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uAz-P3-Jz0"/>
@@ -6707,6 +6706,7 @@
                         <outlet property="m_webView" destination="3Sj-hD-8Ex" id="eJM-8G-zS2"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0T5-ag-VvP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2266" y="-8720"/>
         </scene>

@@ -179,6 +179,8 @@
 @property (weak, nonatomic) IBOutlet UIWebView *m_zs_WebView;
 @property (strong, nonatomic) WebViewJavascriptBridge *m_zs_javascriptBridge;
 
+@property(nonatomic , strong)NSDictionary *m_zs_retDict;
+
 
 @end
 
@@ -983,7 +985,7 @@
     /**
      *  保存需要请求获取的参数
      */
-    tempLasteVC.m_zsParameterDict = retDict;
+    tempLasteVC.m_zsParameterDict = @{@"yqid":_yqid_Str};
     tempLasteVC.modalPresentationStyle = UIModalPresentationFormSheet;
     tempLasteVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     
@@ -1340,28 +1342,28 @@
 - (IBAction)Ysjl_SaveBtnClick:(id)sender {
     
     
-    [self.m_ysjl_javascriptBridge callHandler:@"hqlssj" data:self.yqid_Str responseCallback:^(id response)
-     {
-      
-         
-         debug_object(response);
-         
-         
-         
-     }];
+//    [self.m_ysjl_javascriptBridge callHandler:@"hqlssj" data:self.yqid_Str responseCallback:^(id response)
+//     {
+//      
+//         
+//         debug_object(response);
+//         
+//         
+//         
+//     }];
     
    
     
-//    @weakify(self)
-//    id data = @{ @"name": @"杨智",@"title":@"成功了嘛？" };
-//    [self.m_ysjl_javascriptBridge callHandler:@"testJavascriptHandler" data:data responseCallback:^(id response)
-//    {
-//        @strongify(self)
-//        
-//        [self pasteWithDictStr:response];
-//    
-//  
-//    }];
+    @weakify(self)
+    id data = @{ @"name": @"杨智",@"title":@"成功了嘛？" };
+    [self.m_ysjl_javascriptBridge callHandler:@"testJavascriptHandler" data:data responseCallback:^(id response)
+    {
+        @strongify(self)
+        
+        [self pasteWithDictStr:response];
+    
+  
+    }];
     
     //jdjl 检定结论(校准记录可为空) 否则（检定的必须有值）
     //jlModel 记录信息 TModelJiluxxb model记录信息表 jlModel 字段包括 A1,A2,A3......A992
@@ -1551,15 +1553,54 @@
  */
 - (IBAction)Zs_SaveBtnClick:(id)sender {
     
-    id data = @{ @"name": @"杨智",@"title":@"成功了嘛？" };
-    [self.m_zs_javascriptBridge callHandler:@"testJavascriptHandler" data:data responseCallback:^(id response)
-     {
-         
-         //   jlModel 记录信息 TModelJiluxxb model记录信息表 jlModel 字段包括 A1,A2,A3......A992
-         
-         
-         
-     }];
+    
+    if ([self.yqid_Str isNotNull]) {
+        
+        LoginedUser *usr = [LoginedUser sharedInstance];
+        
+        //    @weakify(self)
+        [[[[[BaseNetWork getInstance] rac_postPath:@"tjhy.do" parameters:@{@"usercode":usr.usercode,@"yqid":self.yqid_Str}]map:^(id responseData)
+           {
+               NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+               
+               return dict;
+           }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+         subscribeNext:^(NSDictionary *retDict) {
+             
+             if ([retDict[@"ret"] intValue] == 0)
+             {
+                 
+                 [Dialog toast:self withMessage:@"核验失败!"];
+                 
+             }else
+             {
+                 [Dialog toast:self withMessage:@"核验成功!"];
+                 
+                 [self dismissViewControllerAnimated:YES completion:^(void){
+                     
+                 }];
+             }
+             
+         }error:^(NSError *error){
+             //          @strongify(self)
+             ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
+             ////          self.m_DataSourceArr = arr;
+             ////          [_header endRefreshing];
+             ////          [_footer endRefreshing];
+             ////
+             ////          [self failedGetDataWithResponseData:arr];
+             //          //          [self.m_collectionView reloadData];
+             
+             
+         }];
+
+        
+    }else
+    {
+        [Dialog toast:self withMessage:@"没有仪器id!"];
+    }
+   
+  
     
 }
 
@@ -1572,26 +1613,24 @@
     
 //    FullScreenPreviewVC
     
-    FullScreenPreviewVC *tempLasteVC = [self.storyboard instantiateViewControllerWithIdentifier:@"FullScreenPreviewVC"];
-    tempLasteVC.modalPresentationStyle = UIModalPresentationFormSheet;
-    tempLasteVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    
-    [self presentViewController:tempLasteVC animated:YES completion:^(void){
-       
+    if ([self.m_zs_retDict[@"UrlStr"] isNotNull]) {
         
-//        /**
-//         点击webview页面两次就会隐藏
-//         */
-//        @strongify(self)
-//        
-//        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick:)];
-//        tapGesture.numberOfTapsRequired  = 2;
-//        
-//        [tempLasteVC.m_webView.superview addGestureRecognizer:tapGesture];
-//        
-//        self.m_fullScreenVc = tempLasteVC;
-
-    }];
+        FullScreenPreviewVC *tempLasteVC = [self.storyboard instantiateViewControllerWithIdentifier:@"FullScreenPreviewVC"];
+        tempLasteVC.m_urlStr = self.m_zs_retDict[@"UrlStr"] ;
+        tempLasteVC.modalPresentationStyle = UIModalPresentationFormSheet;
+        tempLasteVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        
+        [self presentViewController:tempLasteVC animated:YES completion:^(void){
+            
+            
+        }];
+        
+    }else
+    {
+        [Dialog toast:self withMessage:@"web页面不存在!"];
+    }
+    
+  
     
     
     
@@ -2280,6 +2319,7 @@
     
     NSString *webzsStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/record-addc.jsp?yqid=%@&jljspmc=%@",WEBURL,self.yqid_Str,jljspmc];
     
+    self.m_zs_retDict = @{@"UrlStr":webzsStr};
     [self.m_zs_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webzsStr]]];
     
 }
@@ -2289,10 +2329,36 @@
 -(void)ZS_TemplatesListVC:(ZS_TemplatesListViewController *) templatestVC didSelectedOKByObj:(id ) data
 {
     zsmb_Model *model = (zsmb_Model*)data;
+    @weakify(self)
+    [[[[[BaseNetWork getInstance] rac_postPath:@"sczs.do" parameters:@{@"zsmbid":model.m_id,@"yqid":self.yqid_Str}]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+         @strongify(self)
+         if ([retDict[@"ret"] intValue] == 1) {
+             
+             
+             
+             [self load_zs_WebViewWithjljspmc:retDict[@"zsbh"]];
+//             NSString *webzsStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/certificate-autoc.jsp?zsbh=%@",WEBURL,retDict[@"zsbh"]];
+//             
+//             [self.m_zs_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webzsStr]]];
+             
+         }
+         
+         
+         
+     }error:^(NSError *error){
 
-    NSString *webzsStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/certificate-autoc.jsp?zsbh=%@",WEBURL,@"CD02146019"];
+         
+     }];
+
     
-    [self.m_zs_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webzsStr]]];
+
+  
 
 }
 

@@ -23,7 +23,8 @@
              @"jcfw" : @"jcfw",
              @"ggxh" : @"ggxh",
              @"bzsf":@"bzsf",
-             @"yqmc":@"yqmc"
+             @"yqmc":@"yqmc",
+             @"yqid":@"yqid"
              
              };
 }
