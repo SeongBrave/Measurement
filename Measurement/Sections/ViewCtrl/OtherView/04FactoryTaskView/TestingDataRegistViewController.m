@@ -1143,7 +1143,7 @@
     //JLQJBH ->计量器具名称编号
     
     
-    [self saveData];
+    [self save_Sbxq_Data];
     
     @weakify(self)
     [[BaseNetWork getInstance] hideDialog];
@@ -1860,17 +1860,34 @@
     //取证日期 forensicsDateBtn
 }
 
--(void)saveData
+-(void)save_Sbxq_Data
 {
     //测试用的任务编号
     //8bb405f2714e4c71ab4acf77179d67f1
     self.m_Sbxq_saveDataDict[@"rwbh"]=[self.m_showDict GetLabelWithKey:@"RWBH"];
     self.m_Sbxq_saveDataDict[@"txm"] = [_m_txm_TF.text GetNotNullStr];
     self.m_Sbxq_saveDataDict[@"yqmc"] = [_m_yqmc_TF.text GetNotNullStr];
-    self.m_Sbxq_saveDataDict[@"ksbh"] = [_m_qjxxDict GetLabelWithKey:@"ksbh"];
-    self.m_Sbxq_saveDataDict[@"ks"] = [_m_qjxxDict GetLabelWithKey:@"ksbh"];
-    self.m_Sbxq_saveDataDict[@"jltx"] = [_m_jlfw_TF.text GetNotNullStr];
+    
+    
+    /**
+     *  条形码与仪器id的区别字段
+     */
+    if (_m_dataSourceType == TxmDataSourceType) {
+        self.m_Sbxq_saveDataDict[@"ks"] = [_m_qjxxDict GetLabelWithKey:@"by3"];
+
+    }else if(_m_dataSourceType == YqidDataSourceType)
+    {
+        self.m_Sbxq_saveDataDict[@"ks"] = [_m_qjxxDict GetLabelWithKey:@"ks"];
+    }
+    
+    self.m_Sbxq_saveDataDict[@"jdzqbh"] = [_m_qjxxDict GetLabelWithKey:@"jdzqbh"];
+    self.m_Sbxq_saveDataDict[@"bzsf"] = [_m_qjxxDict GetLabelWithKey:@"bzsf"];
+    self.m_Sbxq_saveDataDict[@"bzsfbh"] = [_m_qjxxDict GetLabelWithKey:@"bzsfbh"];
     self.m_Sbxq_saveDataDict[@"xmbh"] = [_m_qjxxDict GetLabelWithKey:@"xmbh"];
+    self.m_Sbxq_saveDataDict[@"ksbh"] = [_m_qjxxDict GetLabelWithKey:@"ksbh"];
+    
+    self.m_Sbxq_saveDataDict[@"jltx"] = [_m_jlfw_TF.text GetNotNullStr];
+    
     self.m_Sbxq_saveDataDict[@"jcfw"] = [_m_clfw_TF.text GetNotNullStr];
     self.m_Sbxq_saveDataDict[@"ggxh"] = [_m_ggxh_TF.text GetNotNullStr];
     self.m_Sbxq_saveDataDict[@"sccj"] = [_m_sccj_TF.text GetNotNullStr];
@@ -1878,14 +1895,12 @@
     self.m_Sbxq_saveDataDict[@"jclxbh"] = [_m_jclx_DTF.m_bm GetNotNullStr];
     self.m_Sbxq_saveDataDict[@"jclx"] = [_m_jclx_DTF.text GetNotNullStr];
     self.m_Sbxq_saveDataDict[@"sl"] = [_m_sl_TF.text GetNotNullStr];
-    self.m_Sbxq_saveDataDict[@"bzsf"] = [_m_qjxxDict GetLabelWithKey:@"bzsf"];
-    self.m_Sbxq_saveDataDict[@"bzsfbh"] = [_m_qjxxDict GetLabelWithKey:@"bzsfbh"];
+    
     self.m_Sbxq_saveDataDict[@"wg"] = [_m_wg_TF.text GetNotNullStr];
     self.m_Sbxq_saveDataDict[@"pj"] = [_m_sl_TF.text GetNotNullStr];
     self.m_Sbxq_saveDataDict[@"bz"] = [_m_bz_TV.text GetNotNullStr];
-    self.m_Sbxq_saveDataDict[@"jdzqbh"] = [_m_qjxxDict GetLabelWithKey:@"jdzqbh"];
-    self.m_Sbxq_saveDataDict[@"by1"] = [_m_dw_DTF.text GetNotNullStr];
     
+    self.m_Sbxq_saveDataDict[@"by1"] = [_m_dw_DTF.text GetNotNullStr];
     //单位编号
     self.m_Sbxq_saveDataDict[@"by2"] = [_m_dw_DTF.m_bm GetNotNullStr];
     
