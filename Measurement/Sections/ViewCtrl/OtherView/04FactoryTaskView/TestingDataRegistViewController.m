@@ -277,8 +277,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    switch (_m_dataSourceType) {
+        case TxmDataSourceType:
+        {
+            [self update_sbxqViewByYqidDict:_m_qjxxDict];
+        }
+            
+            break;
+        case YqidDataSourceType:
+        {
+             [self update_sbxqViewByTxmDict:_m_qjxxDict];
+        }
+            
+            break;
+        case NullDataSourceType:
+        {
+            
+        }
+            
+            break;
+            
+        default:
+            break;
+    }
+
     
-    [self update_sbxqViewByDict:_m_qjxxDict];
     
 }
 
@@ -587,10 +610,10 @@
     
     
     /**
-     *  获取检测类型
+     *  获取单位名称
      */
     [[BaseNetWork getInstance] hideDialog];
-    [[[[[BaseNetWork getInstance] rac_postPath:@"findDmxx.do" parameters:@{@"zdbm":@"jclx"}]map:^(id responseData)
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findDmxx.do" parameters:@{@"zdbm":@"dw"}]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
@@ -625,10 +648,10 @@
 
     
     /**
-     *  获取单位名称
+     *  获取检测类型
      */
     [[BaseNetWork getInstance] hideDialog];
-    [[[[[BaseNetWork getInstance] rac_postPath:@"findDmxx.do" parameters:@{@"zdbm":@"dw"}]map:^(id responseData)
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findDmxx.do" parameters:@{@"zdbm":@"jclx"}]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
@@ -730,7 +753,50 @@
  *  by2  数量单位编号  ,    findJiliangqjByTxm.do : dwbh
  *
  */
--(void)update_sbxqViewByDict:(NSDictionary *) sbxqDict
+-(void)update_sbxqViewByTxmDict:(NSDictionary *) sbxqDict
+{
+    //TODO:测试需要
+    [self test_SbxqV];
+    
+    self.m_txm_TF.text =  [sbxqDict GetLabelWithKey:@"txm"];
+    self.m_yqmc_TF.text =  [sbxqDict GetLabelWithKey:@"yqmc"];
+    
+    // TODO: **注意意思这块是通过 findJiliangqjByTxm.do 扫描条码获取到得 ，需要把dwbh 改成by2
+    self.m_yqmc_TF.m_bm = [sbxqDict GetLabelWithKey:@"yqid"];
+    
+    //TODO:需修改字段 计量特性
+    self.m_jlfw_TF.text =  [sbxqDict GetLabelWithKey:@"jltx"];
+    
+    self.m_jclx_DTF.m_bm = [sbxqDict GetLabelWithKey:@"jclxbh"];
+    
+    //TODO:需修改字段
+    self.m_clfw_TF.text =  [sbxqDict GetLabelWithKey:@"jcfw"];
+    
+    self.m_ggxh_TF.text =  [sbxqDict GetLabelWithKey:@"ggxh"];
+    
+    self.m_sccj_TF.text =  [sbxqDict GetLabelWithKey:@"sccj"];
+    self.m_ccbh_TF.text =  [sbxqDict GetLabelWithKey:@"ccbh"];
+    //通过条形码得到数据 by4 是指的检测类型
+    self.m_jclx_DTF.text =  [sbxqDict GetLabelWithKey:@"by4"];
+    
+    self.m_sl_TF.text =  [sbxqDict GetLabelWithKey:@"sl"];
+    self.m_dw_DTF.text =  [sbxqDict GetLabelWithKey:@"by5"];
+    self.m_dw_DTF.m_bm =  [sbxqDict GetLabelWithKey:@"dwbh"];
+    
+    self.m_bj_TF.text =  [sbxqDict GetLabelWithKey:@"bj"];
+    self.m_wg_TF.text =  [sbxqDict GetLabelWithKey:@"wg"];
+    self.m_xm_TF.text =  [sbxqDict GetLabelWithKey:@"xmmc"];
+    self.m_fj_TF.text =  [sbxqDict GetLabelWithKey:@"pj"];
+    self.m_bz_TV.text =  [sbxqDict GetLabelWithKey:@"bz"];
+    
+}
+/**
+ *  更新设备详情界面
+ *  TODO:需要把dwbh 改成by2
+ *  by2  数量单位编号  ,    findJiliangqjByTxm.do : dwbh
+ *
+ */
+-(void)update_sbxqViewByYqidDict:(NSDictionary *) sbxqDict
 {
     
     //TODO:测试需要
@@ -740,7 +806,7 @@
     self.m_yqmc_TF.text =  [sbxqDict GetLabelWithKey:@"yqmc"];
     
     // TODO: **注意意思这块是通过 findJiliangqjByTxm.do 扫描条码获取到得 ，需要把dwbh 改成by2
-    self.m_yqmc_TF.m_bm = [sbxqDict GetLabelWithKey:@"dwbh"];
+    self.m_yqmc_TF.m_bm = [sbxqDict GetLabelWithKey:@"yqid"];
     
      //TODO:需修改字段 计量特性
     self.m_jlfw_TF.text =  [sbxqDict GetLabelWithKey:@"jltx"];
@@ -758,8 +824,8 @@
     self.m_jclx_DTF.text =  [sbxqDict GetLabelWithKey:@"by4"];
     
     self.m_sl_TF.text =  [sbxqDict GetLabelWithKey:@"sl"];
-    self.m_dw_DTF.text =  [sbxqDict GetLabelWithKey:@"wtdw"];
-    self.m_dw_DTF.m_bm =  [sbxqDict GetLabelWithKey:@"wtdwbh"];
+    self.m_dw_DTF.text =  [sbxqDict GetLabelWithKey:@"by1"];
+    self.m_dw_DTF.m_bm =  [sbxqDict GetLabelWithKey:@"by2"];
     
     self.m_bj_TF.text =  [sbxqDict GetLabelWithKey:@"bj"];
     self.m_wg_TF.text =  [sbxqDict GetLabelWithKey:@"wg"];
