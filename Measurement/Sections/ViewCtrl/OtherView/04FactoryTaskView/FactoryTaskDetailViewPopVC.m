@@ -35,6 +35,8 @@
 #import "IPadScanViewController.h"
 #import "backgroundV.h"
 #import "TestingDataRegistViewController.h"
+#import "wlqsb_Model.h"
+#import "Wlqsb_TableViewCell.h"
 
 
 
@@ -125,6 +127,8 @@
 @property(nonatomic , strong)NSDictionary *signatureDict;
 
 
+@property (weak, nonatomic) IBOutlet UITableView *m_wlqsb_TableView;
+@property(nonatomic , strong)NSArray *m_wlqsb_DataSourceArr;
 
 
 
@@ -622,6 +626,7 @@
     
     
 //    NSDictionary *dict = @{@"rwbh":[self.m_showDict GetLabelWithKey:@"RWBH"],@"usercode":loginUsr.usercode};
+
     
     /**
      *  获取检测进度数据
@@ -634,11 +639,10 @@
            return [dict valueForKeyPath:@"data"];
        }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
      subscribeNext:^(NSDictionary  *retDict) {
-         
-         NSArray *jcjdArr = retDict[@"sblb"];
-         
          @strongify(self)
          
+         NSArray *jcjdArr = retDict[@"sblb"];
+
          /**
           *  检测进度数据
           *
@@ -648,10 +652,11 @@
           */
          self.m_Sblb_ModelArr = [jcjdArr linq_select:^id(NSDictionary *dict){
              
-             sblb_Model *model = [MTLJSONAdapter modelOfClass:[sblb_Model class] fromJSONDictionary:dict error:nil];
+            
+             sblb_Model *sblbmodel = [MTLJSONAdapter modelOfClass:[sblb_Model class] fromJSONDictionary:dict error:nil];
              
              
-             return model;
+             return sblbmodel;
              
          }];
          
@@ -665,7 +670,48 @@
          
      }];
     
-
+    
+    /**
+     *  获取检测进度数据
+     */
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findShebei.do" parameters:@{@"rwbh":@"5dce769b2f9e46a3b3a2c194f46eb80b"/*[self.m_showDict GetLabelWithKey:@"RWBH"]*/}]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return [dict valueForKeyPath:@"data"];
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSArray  *retArr) {
+         @strongify(self)
+         
+         
+         /**
+          *  未领取设备
+          *
+          *  @param
+          *
+          *  @return
+          */
+         self.m_wlqsb_DataSourceArr = [retArr linq_select:^id(NSDictionary *dict){
+             
+             
+             wlqsb_Model *sblbmodel = [MTLJSONAdapter modelOfClass:[wlqsb_Model class] fromJSONDictionary:dict error:nil];
+             
+             
+             return sblbmodel;
+             
+         }];
+         
+         [self.m_wlqsb_TableView reloadData];
+         
+         
+         
+         
+     }error:^(NSError *error){
+         
+         
+     }];
+    
+//m_wlqsb_DataSourceArr
     
     
 }
@@ -815,7 +861,7 @@
     }else if (tableView == self.m_detail_ksry_TableView)
     {
         return 1;
-    }else
+    }else if(tableView == _m_wlqsb_TableView)
     {
         return 1;
     }
@@ -840,6 +886,9 @@
     }else if (tableView == self.m_detail_ksry_TableView)
     {
         return _m_xcry_Arr.count;
+    }else if(tableView == _m_wlqsb_TableView)
+    {
+        return _m_wlqsb_DataSourceArr.count +1;
     }
     return 0;
 }
@@ -969,6 +1018,31 @@
         
         return cell;
         
+    }else if(tableView == _m_wlqsb_TableView)
+    {
+        if (indexPath.row == 0) {
+            
+            cellIdentifier = @"Wlqsb_TableViewCellTitle";
+            UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            
+            return cell;
+            
+            
+        }else
+        {
+            
+            cellIdentifier = @"Wlqsb_TableViewCell";
+            Wlqsb_TableViewCell *cell = (Wlqsb_TableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            
+            wlqsb_Model *model = [_m_wlqsb_DataSourceArr objectAtIndex:indexPath.row -1];
+            cell.rightUtilityButtons = [self rightButtons];
+            cell.delegate = self;
+            
+            [cell configureCellWithItem:model andIndex:indexPath.row];
+            
+            return cell;
+            
+        }
     }
     
     return nil;
@@ -984,7 +1058,7 @@
         }else
         {
             
-              sblb_Model *model = [_m_Sblb_ModelArr objectAtIndex:indexPath.row -1];
+              sblb_Model *model = [self.m_Sblb_ModelArr objectAtIndex:indexPath.row -1];
             
             
             

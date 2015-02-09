@@ -38,6 +38,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
 }
 
 // TODO: 使用autolayout 布局界面

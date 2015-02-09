@@ -27,7 +27,11 @@
 #import "YSJL_TemplatesListViewController.h"
 #import "zsmb_Model.h"
 
-@interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate>
+
+@interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate>
+
+@property(nonatomic , strong)MBProgressHUD *m_hub;
+@property(nonatomic , strong)RTSpinKitView *m_spinner;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 
@@ -390,6 +394,8 @@
     self.m_pzr_DTF.delegate = self;
     
  
+    self.m_ysjl_WebView.delegate = self;
+    self.m_zs_WebView.delegate = self;
     
     /**
      *  默认检定日期为当前时间
@@ -2167,10 +2173,20 @@
     }
      else if(textField == _m_hyy_DTF)
     {
+        /**
+         *  需要判断 如果id与检定员id相同则重新修改
+         */
 
         hyr_Model *model = _m_hyyTFArr[indexPath.row];
         
         self.m_hyy_DTF.m_bm = model.m_key;
+        if ([model.m_key isEqualToString:@""]) {
+            
+            
+            
+            
+            
+        }
         
         [self.m_Ggxx_saveDataDict setObject:model.m_key forKey:@"pzrbh"];
         
@@ -2398,7 +2414,9 @@
 -(void)load_zs_WebViewWithjljspmc:(NSString *) jljspmc
 {
     
-    NSString *webzsStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/record-addc.jsp?yqid=%@&jljspmc=%@",WEBURL,self.yqid_Str,jljspmc];
+    debug_object(jljspmc);
+    
+      NSString *webzsStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/certificate-autoc.jsp?zsbh=%@",WEBURL,jljspmc];
     
     self.m_zs_retDict = @{@"UrlStr":webzsStr};
     [self.m_zs_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webzsStr]]];
@@ -2410,6 +2428,8 @@
 -(void)ZS_TemplatesListVC:(ZS_TemplatesListViewController *) templatestVC didSelectedOKByObj:(id ) data
 {
     zsmb_Model *model = (zsmb_Model*)data;
+    
+    debug_object(self.yqid_Str);
     @weakify(self)
     [[[[[BaseNetWork getInstance] rac_postPath:@"sczs.do" parameters:@{@"zsmbid":model.m_id,@"yqid":self.yqid_Str}]map:^(id responseData)
        {
@@ -2424,9 +2444,6 @@
              
              
              [self load_zs_WebViewWithjljspmc:retDict[@"zsbh"]];
-//             NSString *webzsStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/certificate-autoc.jsp?zsbh=%@",WEBURL,retDict[@"zsbh"]];
-//             
-//             [self.m_zs_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webzsStr]]];
              
          }
          
@@ -2488,4 +2505,45 @@
      }];
 
 }
+
+
+#pragma mark - 代理协议方法*
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    return YES;
+}
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    if (self.m_hub == nil) {
+        RTSpinKitView *spinner = [[RTSpinKitView alloc] initWithStyle:RTSpinKitViewStyleWave color:[UIColor whiteColor]];
+        
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.square = YES;
+        hud.mode = MBProgressHUDModeCustomView;
+        hud.customView = spinner;
+        hud.labelText = @"加载中...";
+        self.m_hub = hud;
+          [self.m_spinner startAnimating];
+        self.m_spinner = spinner;
+    }else
+    {
+        [self.m_spinner startAnimating];
+        [self.m_hub show:YES];
+      
+    }
+    
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+
+    [self.m_hub hide:YES];
+    [self.m_spinner stopAnimating];
+    
+}
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    
+}
+
 @end
