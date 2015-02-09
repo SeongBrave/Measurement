@@ -24,15 +24,15 @@
 
 #define MBS_XTBS @"by"
 
-//#define WEBURL @"139.210.66.241:8080"
+#define WEBURL @"139.210.66.205:8080"
 
-#define WEBURL @"139.210.66.169:8080"
+//#define WEBURL @"139.210.66.169:8080"
 
 //webservice配置 主
-#define defaultWebServiceUrl @"http://192.168.10.169:8080/mbs/convey/"
+//#define defaultWebServiceUrl @"http://192.168.10.169:8080/mbs/convey/"
 
 //测试
-//#define defaultWebServiceUrl @"http://139.210.66.241:8080/mbs/convey/"
+#define defaultWebServiceUrl @"http://139.210.66.205:8080/mbs/convey/"
 
 
 //DaoTongHttpManager

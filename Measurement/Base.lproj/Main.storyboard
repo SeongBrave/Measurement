@@ -6719,14 +6719,14 @@
                         <viewControllerLayoutGuide type="bottom" id="R2s-p2-8Ev"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="iZz-Qg-0g2">
-                        <rect key="frame" x="0.0" y="0.0" width="2304" height="748"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="748"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="inc-Eu-CwO">
-                                <rect key="frame" x="0.0" y="0.0" width="2304" height="68"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="68"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Upi-Xn-tx7">
-                                        <rect key="frame" x="0.0" y="67" width="2304" height="1"/>
+                                        <rect key="frame" x="0.0" y="67" width="768" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="5Nk-WR-NMk"/>
@@ -6757,10 +6757,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zb9-89-FKM">
-                                <rect key="frame" x="0.0" y="68" width="2304" height="48"/>
+                                <rect key="frame" x="0.0" y="68" width="768" height="48"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I3b-wb-wf7">
-                                        <rect key="frame" x="0.0" y="47" width="2304" height="1"/>
+                                        <rect key="frame" x="0.0" y="47" width="768" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="s04-s8-S6P"/>
@@ -6821,7 +6821,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lBd-lh-fRi">
-                                <rect key="frame" x="0.0" y="116" width="2304" height="632"/>
+                                <rect key="frame" x="0.0" y="116" width="768" height="632"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ap-2I-dCX" userLabel="Scroll View计划详情">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="632"/>
@@ -7768,7 +7768,7 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="2304" height="748"/>
+                    <size key="freeformSize" width="768" height="748"/>
                     <connections>
                         <outlet property="ContactTELLB" destination="MrX-H6-b7w" id="uk9-s4-UHB"/>
                         <outlet property="IndustryCategoriesLB" destination="q9h-WF-ioz" id="heR-f5-lep"/>
@@ -7799,7 +7799,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYU-1C-TjG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-486" y="-8074"/>
+            <point key="canvasLocation" x="-116" y="-8142"/>
         </scene>
         <!--Templates List View Controller-->
         <scene sceneID="VoT-gg-9Wu">
