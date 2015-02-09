@@ -111,6 +111,7 @@
 		C9D6B9F61A5AE648006D27EF /* AutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F01A5AE648006D27EF /* AutoCompleteTextField.m */; };
 		C9D6B9F71A5AE648006D27EF /* NSString+Levenshtein.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */; };
 		C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E226D61A52FF6E004A9A69 /* DatePickerViewController.m */; };
+		C9E6B2951A8885DF00432DE8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9E6B2941A8885DF00432DE8 /* Settings.bundle */; };
 		C9E935AB1A66C72B00F174DA /* FactoryTaskDetailViewPopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E935AA1A66C72B00F174DA /* FactoryTaskDetailViewPopVC.m */; };
 		C9E94DCA1A4A669100E8CC83 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9E94DC01A4A669100E8CC83 /* MJRefresh.bundle */; };
 		C9E94DCB1A4A669100E8CC83 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E94DC31A4A669100E8CC83 /* MJRefreshBaseView.m */; };
@@ -384,6 +385,7 @@
 		C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Levenshtein.m"; sourceTree = "<group>"; };
 		C9E226D51A52FF6E004A9A69 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		C9E226D61A52FF6E004A9A69 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
+		C9E6B2941A8885DF00432DE8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		C9E935A91A66C72B00F174DA /* FactoryTaskDetailViewPopVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryTaskDetailViewPopVC.h; sourceTree = "<group>"; };
 		C9E935AA1A66C72B00F174DA /* FactoryTaskDetailViewPopVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryTaskDetailViewPopVC.m; sourceTree = "<group>"; };
 		C9E94DC01A4A669100E8CC83 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
@@ -723,6 +725,7 @@
 				C9651ED81A43AD9000B770BB /* LaunchScreen.xib */,
 				C9651ECD1A43AD8F00B770BB /* AppDelegate.h */,
 				C9651ECE1A43AD8F00B770BB /* AppDelegate.m */,
+				C9E6B2941A8885DF00432DE8 /* Settings.bundle */,
 			);
 			name = AppDelegate;
 			sourceTree = "<group>";
@@ -1819,6 +1822,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9E6B2951A8885DF00432DE8 /* Settings.bundle in Resources */,
 				C9651ED51A43AD8F00B770BB /* Main.storyboard in Resources */,
 				C9651EF11A43AFBB00B770BB /* 计量Ipad项目版本说明.xlsx in Resources */,
 				C9E94DCA1A4A669100E8CC83 /* MJRefresh.bundle in Resources */,

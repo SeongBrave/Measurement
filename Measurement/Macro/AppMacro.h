@@ -19,20 +19,22 @@
 
 #define WEBCLASSNAME @"Transfusion.asmx"
 
-
 //系统标示(本院:by/精仪:jy)
 
 #define MBS_XTBS @"by"
 
-#define WEBURL @"139.210.66.205:8080"
+#define WEBURL [NSString stringWithFormat:@"%@:%@",[[FileHelpers readPreferences][@"name_preference"] isEqualToString:@""]?@"192.168.10.169":[FileHelpers readPreferences][@"name_preference"] ,[[FileHelpers readPreferences][@"port_preference"]isEqualToString:@""]?@"8080":[FileHelpers readPreferences][@"port_preference"]]
 
-//#define WEBURL @"139.210.66.169:8080"
 
 //webservice配置 主
+#define defaultWebServiceUrl [NSString stringWithFormat:@"http://%@/mbs/convey/",WEBURL]
+
+
+
+
+//webservice配置 默认是这样的
 //#define defaultWebServiceUrl @"http://192.168.10.169:8080/mbs/convey/"
 
-//测试
-#define defaultWebServiceUrl @"http://139.210.66.205:8080/mbs/convey/"
 
 
 //DaoTongHttpManager

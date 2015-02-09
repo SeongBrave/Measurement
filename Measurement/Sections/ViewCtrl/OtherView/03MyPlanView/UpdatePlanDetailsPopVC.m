@@ -572,7 +572,7 @@
     }];
     
     [self.signatureImgBtn sd_setImageWithURL:[NSURL URLWithString:@"http://192.168.10.169:8080/mbs/convey/khqzck.do?rwbh=5dce769b2f9e46a3b3a2c194f46eb80b"] forState:UIControlStateNormal];
-    
+
 }
 -(void)SetUpData
 {

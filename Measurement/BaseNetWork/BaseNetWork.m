@@ -147,8 +147,8 @@ static BaseNetWork *instance =nil;
  */
 - (RACSignal *)rac_RequestPath:(NSString *)path parameters:(NSDictionary *)parameters andType:(RequestType ) requestType
 {
-    
     if (![path hasPrefix:@"http://"]) {
+        
         path = [NSString stringWithFormat:@"%@%@",defaultWebServiceUrl,path];
     }
     
