@@ -78,6 +78,7 @@ static CGFloat BUTTONWIDTH = 70.0f;
 - (void)configureCellWithItem:(id )product
 {
     
+    debug_object(product);
     self.m_dateL.text =[product GetLabelWithKey:@"今天"];
     self.m_companyNameL.text = [product GetLabelWithKey:@"WTDWMC"];
     self.m_companyAddrL.text = [product GetLabelWithKey:@"SZDQ"];
@@ -97,7 +98,7 @@ static CGFloat BUTTONWIDTH = 70.0f;
     
     self.m_inFactoryMansL.text = inFactoryMansStr.length>=1?[inFactoryMansStr substringFromIndex:1]:@"无";
     
-    if ([[product GetLabelWithKey:@"BY1"] isEqualToString:@"1"]) {
+    if ([[product GetLabelWithKey:@"sfhy"] isEqualToString:@"1"]) {
         [self.m_state_ImgV setImage:[UIImage imageNamed:@"right-card-title-yqz"]];
     }else
     {

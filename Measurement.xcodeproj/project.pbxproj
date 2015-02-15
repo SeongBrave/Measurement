@@ -110,6 +110,8 @@
 		C9D6B9F71A5AE648006D27EF /* NSString+Levenshtein.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */; };
 		C9E184BF1A907C67005690BD /* AuditNotPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E184BB1A907C67005690BD /* AuditNotPassViewController.m */; };
 		C9E184C71A90AADF005690BD /* SystemSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E184C61A90AADF005690BD /* SystemSettingsViewController.m */; };
+		C9E184CA1A90C75E005690BD /* DetectionTaskQueryDidHYPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E184C91A90C75E005690BD /* DetectionTaskQueryDidHYPopViewController.m */; };
+		C9E184CD1A90C79E005690BD /* DetectionTaskQueryDidNotHYPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E184CC1A90C79E005690BD /* DetectionTaskQueryDidNotHYPopViewController.m */; };
 		C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E226D61A52FF6E004A9A69 /* DatePickerViewController.m */; };
 		C9E6B2951A8885DF00432DE8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9E6B2941A8885DF00432DE8 /* Settings.bundle */; };
 		C9E6B2CE1A88FE5800432DE8 /* sblb_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E6B2CD1A88FE5800432DE8 /* sblb_Model.m */; };
@@ -385,6 +387,10 @@
 		C9E184BB1A907C67005690BD /* AuditNotPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuditNotPassViewController.m; sourceTree = "<group>"; };
 		C9E184C51A90AADF005690BD /* SystemSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSettingsViewController.h; sourceTree = "<group>"; };
 		C9E184C61A90AADF005690BD /* SystemSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSettingsViewController.m; sourceTree = "<group>"; };
+		C9E184C81A90C75E005690BD /* DetectionTaskQueryDidHYPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetectionTaskQueryDidHYPopViewController.h; sourceTree = "<group>"; };
+		C9E184C91A90C75E005690BD /* DetectionTaskQueryDidHYPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetectionTaskQueryDidHYPopViewController.m; sourceTree = "<group>"; };
+		C9E184CB1A90C79E005690BD /* DetectionTaskQueryDidNotHYPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetectionTaskQueryDidNotHYPopViewController.h; sourceTree = "<group>"; };
+		C9E184CC1A90C79E005690BD /* DetectionTaskQueryDidNotHYPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetectionTaskQueryDidNotHYPopViewController.m; sourceTree = "<group>"; };
 		C9E226D51A52FF6E004A9A69 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		C9E226D61A52FF6E004A9A69 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		C9E6B2941A8885DF00432DE8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -1133,6 +1139,10 @@
 			children = (
 				C970943B1A62D09A00141DC5 /* DetectionTaskQueryViewController.h */,
 				C970943C1A62D09A00141DC5 /* DetectionTaskQueryViewController.m */,
+				C9E184C81A90C75E005690BD /* DetectionTaskQueryDidHYPopViewController.h */,
+				C9E184C91A90C75E005690BD /* DetectionTaskQueryDidHYPopViewController.m */,
+				C9E184CB1A90C79E005690BD /* DetectionTaskQueryDidNotHYPopViewController.h */,
+				C9E184CC1A90C79E005690BD /* DetectionTaskQueryDidNotHYPopViewController.m */,
 			);
 			path = 05DetectionTaskQueryView;
 			sourceTree = "<group>";
@@ -1956,6 +1966,7 @@
 				C97094601A62D09B00141DC5 /* CheckTaskViewController.m in Sources */,
 				C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */,
 				C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */,
+				C9E184CA1A90C75E005690BD /* DetectionTaskQueryDidHYPopViewController.m in Sources */,
 				C9F3DFD71A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m in Sources */,
 				C990B7EE1A7942E700DF81C8 /* dmxx_Model.m in Sources */,
 				C9651FD51A43B26000B770BB /* StepperModel.m in Sources */,
@@ -2026,6 +2037,7 @@
 				C9A95B5C1A6181680017BE2B /* SignatureCell.m in Sources */,
 				C9651ECC1A43AD8F00B770BB /* main.m in Sources */,
 				C9F51E621A582E70009F84D1 /* backgroundV.m in Sources */,
+				C9E184CD1A90C79E005690BD /* DetectionTaskQueryDidNotHYPopViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

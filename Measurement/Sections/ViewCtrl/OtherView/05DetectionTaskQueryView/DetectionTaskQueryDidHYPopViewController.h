@@ -1,18 +1,19 @@
 //
-//  TestingDataRegistViewController.h
+//  DetectionTaskQueryDidHYPopViewController.h
 //  Measurement
 //
-//  Created by DTSoft on 15/1/20.
+//  Created by DTSoft on 15/2/15.
 //  Copyright (c) 2015年 成勇. All rights reserved.
 //
 
 /**
- *  检测数据登记
+ *  已提交核验 显示检测数据修改
  */
 #import "BaseViewController.h"
 
 
-@interface TestingDataRegistViewController : BaseViewController
+@interface DetectionTaskQueryDidHYPopViewController : BaseViewController
+
 
 
 @property(nonatomic , assign)DataSourceType m_dataSourceType;
@@ -36,7 +37,5 @@
  *  用于保存公共信息最后确定时传的参数
  */
 @property(nonatomic ,strong)NSMutableDictionary *m_Ggxx_saveDataDict;
-
-
 
 @end

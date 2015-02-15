@@ -30,7 +30,13 @@
 #define defaultWebServiceUrl [NSString stringWithFormat:@"http://%@/mbs/convey/",WEBURL]
 
 
-
+typedef enum
+{
+    TxmDataSourceType = 0,
+    YqidDataSourceType,
+    NullDataSourceType,
+    
+} DataSourceType;
 
 //webservice配置 默认是这样的
 //#define defaultWebServiceUrl @"http://192.168.10.169:8080/mbs/convey/"
