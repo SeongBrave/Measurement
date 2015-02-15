@@ -73,9 +73,7 @@
 		C97094621A62D09B00141DC5 /* CertificateGuaranteeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094451A62D09A00141DC5 /* CertificateGuaranteeViewController.m */; };
 		C97094631A62D09B00141DC5 /* BidManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094481A62D09A00141DC5 /* BidManagementViewController.m */; };
 		C97094641A62D09B00141DC5 /* ChargeManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C970944B1A62D09A00141DC5 /* ChargeManagementViewController.m */; };
-		C97094651A62D09B00141DC5 /* SystemSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C970944E1A62D09A00141DC5 /* SystemSettingsViewController.m */; };
 		C97094661A62D09B00141DC5 /* InspectionTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094511A62D09A00141DC5 /* InspectionTasksViewController.m */; };
-		C97094671A62D09B00141DC5 /* AuditNotPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094541A62D09B00141DC5 /* AuditNotPassViewController.m */; };
 		C970946C1A62D2DA00141DC5 /* autoTableViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = C970946B1A62D2DA00141DC5 /* autoTableViewData.m */; };
 		C97094721A62D36A00141DC5 /* DepMansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C970946F1A62D36A00141DC5 /* DepMansViewController.m */; };
 		C97094731A62D36A00141DC5 /* DepManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094711A62D36A00141DC5 /* DepManViewController.m */; };
@@ -110,6 +108,8 @@
 		C9BFAA151A487BF400C887B4 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFAA0D1A487BF400C887B4 /* SettingCell.m */; };
 		C9D6B9F61A5AE648006D27EF /* AutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F01A5AE648006D27EF /* AutoCompleteTextField.m */; };
 		C9D6B9F71A5AE648006D27EF /* NSString+Levenshtein.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */; };
+		C9E184BF1A907C67005690BD /* AuditNotPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E184BB1A907C67005690BD /* AuditNotPassViewController.m */; };
+		C9E184C41A907F4D005690BD /* SystemSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E184C31A907F4D005690BD /* SystemSettingsViewController.m */; };
 		C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E226D61A52FF6E004A9A69 /* DatePickerViewController.m */; };
 		C9E6B2951A8885DF00432DE8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9E6B2941A8885DF00432DE8 /* Settings.bundle */; };
 		C9E6B2CE1A88FE5800432DE8 /* sblb_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E6B2CD1A88FE5800432DE8 /* sblb_Model.m */; };
@@ -309,12 +309,8 @@
 		C97094481A62D09A00141DC5 /* BidManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidManagementViewController.m; sourceTree = "<group>"; };
 		C970944A1A62D09A00141DC5 /* ChargeManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeManagementViewController.h; sourceTree = "<group>"; };
 		C970944B1A62D09A00141DC5 /* ChargeManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeManagementViewController.m; sourceTree = "<group>"; };
-		C970944D1A62D09A00141DC5 /* SystemSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSettingsViewController.h; sourceTree = "<group>"; };
-		C970944E1A62D09A00141DC5 /* SystemSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSettingsViewController.m; sourceTree = "<group>"; };
 		C97094501A62D09A00141DC5 /* InspectionTasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectionTasksViewController.h; sourceTree = "<group>"; };
 		C97094511A62D09A00141DC5 /* InspectionTasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectionTasksViewController.m; sourceTree = "<group>"; };
-		C97094531A62D09B00141DC5 /* AuditNotPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuditNotPassViewController.h; sourceTree = "<group>"; };
-		C97094541A62D09B00141DC5 /* AuditNotPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuditNotPassViewController.m; sourceTree = "<group>"; };
 		C970946A1A62D2DA00141DC5 /* autoTableViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autoTableViewData.h; sourceTree = "<group>"; };
 		C970946B1A62D2DA00141DC5 /* autoTableViewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = autoTableViewData.m; sourceTree = "<group>"; };
 		C970946E1A62D36A00141DC5 /* DepMansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepMansViewController.h; sourceTree = "<group>"; };
@@ -385,6 +381,10 @@
 		C9D6B9F31A5AE648006D27EF /* AutoCompletionObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoCompletionObject.h; sourceTree = "<group>"; };
 		C9D6B9F41A5AE648006D27EF /* NSString+Levenshtein.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Levenshtein.h"; sourceTree = "<group>"; };
 		C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Levenshtein.m"; sourceTree = "<group>"; };
+		C9E184BA1A907C67005690BD /* AuditNotPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuditNotPassViewController.h; sourceTree = "<group>"; };
+		C9E184BB1A907C67005690BD /* AuditNotPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuditNotPassViewController.m; sourceTree = "<group>"; };
+		C9E184C21A907F4D005690BD /* SystemSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSettingsViewController.h; sourceTree = "<group>"; };
+		C9E184C31A907F4D005690BD /* SystemSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSettingsViewController.m; sourceTree = "<group>"; };
 		C9E226D51A52FF6E004A9A69 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		C9E226D61A52FF6E004A9A69 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		C9E6B2941A8885DF00432DE8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -1182,15 +1182,6 @@
 			path = 10ChargeManagementView;
 			sourceTree = "<group>";
 		};
-		C970944C1A62D09A00141DC5 /* 11SystemSettingsView */ = {
-			isa = PBXGroup;
-			children = (
-				C970944D1A62D09A00141DC5 /* SystemSettingsViewController.h */,
-				C970944E1A62D09A00141DC5 /* SystemSettingsViewController.m */,
-			);
-			path = 11SystemSettingsView;
-			sourceTree = "<group>";
-		};
 		C970944F1A62D09A00141DC5 /* 12InspectionTasksView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1198,15 +1189,6 @@
 				C97094511A62D09A00141DC5 /* InspectionTasksViewController.m */,
 			);
 			path = 12InspectionTasksView;
-			sourceTree = "<group>";
-		};
-		C97094521A62D09B00141DC5 /* 13AuditNotPassView */ = {
-			isa = PBXGroup;
-			children = (
-				C97094531A62D09B00141DC5 /* AuditNotPassViewController.h */,
-				C97094541A62D09B00141DC5 /* AuditNotPassViewController.m */,
-			);
-			path = 13AuditNotPassView;
 			sourceTree = "<group>";
 		};
 		C97094681A62D2C300141DC5 /* ToolModel */ = {
@@ -1372,9 +1354,9 @@
 				C97094431A62D09A00141DC5 /* 08CertificateGuaranteeView */,
 				C97094461A62D09A00141DC5 /* 09BidManagementView */,
 				C97094491A62D09A00141DC5 /* 10ChargeManagementView */,
-				C970944C1A62D09A00141DC5 /* 11SystemSettingsView */,
+				C9E184B91A907C67005690BD /* 11AuditNotPassView */,
 				C970944F1A62D09A00141DC5 /* 12InspectionTasksView */,
-				C97094521A62D09B00141DC5 /* 13AuditNotPassView */,
+				C9E184C11A907F4D005690BD /* 13SystemSettingsView */,
 			);
 			path = OtherView;
 			sourceTree = "<group>";
@@ -1453,6 +1435,24 @@
 				C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */,
 			);
 			path = AutoCompleteTextField;
+			sourceTree = "<group>";
+		};
+		C9E184B91A907C67005690BD /* 11AuditNotPassView */ = {
+			isa = PBXGroup;
+			children = (
+				C9E184BA1A907C67005690BD /* AuditNotPassViewController.h */,
+				C9E184BB1A907C67005690BD /* AuditNotPassViewController.m */,
+			);
+			path = 11AuditNotPassView;
+			sourceTree = "<group>";
+		};
+		C9E184C11A907F4D005690BD /* 13SystemSettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				C9E184C21A907F4D005690BD /* SystemSettingsViewController.h */,
+				C9E184C31A907F4D005690BD /* SystemSettingsViewController.m */,
+			);
+			path = 13SystemSettingsView;
 			sourceTree = "<group>";
 		};
 		C9E226D41A52FF40004A9A69 /* DatePicker */ = {
@@ -1924,13 +1924,13 @@
 				C9651ECF1A43AD8F00B770BB /* AppDelegate.m in Sources */,
 				C9B3A2AE1A4D9C7100CE276B /* CommonLogicViewController.m in Sources */,
 				C9BFA9F81A487BB000C887B4 /* HomeViewController.m in Sources */,
+				C9E184BF1A907C67005690BD /* AuditNotPassViewController.m in Sources */,
 				C9791A9B1A7148B400DC5643 /* Bzqsb_TableViewCell.m in Sources */,
 				C970946C1A62D2DA00141DC5 /* autoTableViewData.m in Sources */,
 				C903B0C81A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m in Sources */,
 				C945BB0E1A6D6C3000C6E11E /* BlackBackGroundV.m in Sources */,
 				C97C77481A76A8780016C779 /* FullScreenPreviewVC.m in Sources */,
 				C9BFAA101A487BF400C887B4 /* HeaderView.m in Sources */,
-				C97094671A62D09B00141DC5 /* AuditNotPassViewController.m in Sources */,
 				C9A95B4C1A613CD50017BE2B /* TestProgressContentCell.m in Sources */,
 				C90F31151A729D2F00A7A06E /* jlmb_TableViewCell.m in Sources */,
 				C97094641A62D09B00141DC5 /* ChargeManagementViewController.m in Sources */,
@@ -1952,6 +1952,7 @@
 				C9A95B491A613C890017BE2B /* ProgressOverviewCell.m in Sources */,
 				C970945E1A62D09B00141DC5 /* FactoryTaskViewController.m in Sources */,
 				C90EA2871A6BF68D0038450A /* IPadScanViewController.m in Sources */,
+				C9E184C41A907F4D005690BD /* SystemSettingsViewController.m in Sources */,
 				C97094601A62D09B00141DC5 /* CheckTaskViewController.m in Sources */,
 				C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */,
 				C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */,
@@ -2014,7 +2015,6 @@
 				C97094721A62D36A00141DC5 /* DepMansViewController.m in Sources */,
 				C9651FD31A43B26000B770BB /* FlagButton.m in Sources */,
 				C9651FDB1A43B26000B770BB /* CYRadioButton.m in Sources */,
-				C97094651A62D09B00141DC5 /* SystemSettingsViewController.m in Sources */,
 				C970945D1A62D09B00141DC5 /* UpdatePlanDetailsPopVC.m in Sources */,
 				C97093EA1A62CBD200141DC5 /* SelectValue_XCKS_TableViewController.m in Sources */,
 				C97094571A62D09B00141DC5 /* AddPlanDetailsPopVC.m in Sources */,
