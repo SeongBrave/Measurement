@@ -109,7 +109,7 @@
 		C9D6B9F61A5AE648006D27EF /* AutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F01A5AE648006D27EF /* AutoCompleteTextField.m */; };
 		C9D6B9F71A5AE648006D27EF /* NSString+Levenshtein.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */; };
 		C9E184BF1A907C67005690BD /* AuditNotPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E184BB1A907C67005690BD /* AuditNotPassViewController.m */; };
-		C9E184C41A907F4D005690BD /* SystemSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E184C31A907F4D005690BD /* SystemSettingsViewController.m */; };
+		C9E184C71A90AADF005690BD /* SystemSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E184C61A90AADF005690BD /* SystemSettingsViewController.m */; };
 		C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E226D61A52FF6E004A9A69 /* DatePickerViewController.m */; };
 		C9E6B2951A8885DF00432DE8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9E6B2941A8885DF00432DE8 /* Settings.bundle */; };
 		C9E6B2CE1A88FE5800432DE8 /* sblb_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E6B2CD1A88FE5800432DE8 /* sblb_Model.m */; };
@@ -383,8 +383,8 @@
 		C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Levenshtein.m"; sourceTree = "<group>"; };
 		C9E184BA1A907C67005690BD /* AuditNotPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuditNotPassViewController.h; sourceTree = "<group>"; };
 		C9E184BB1A907C67005690BD /* AuditNotPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuditNotPassViewController.m; sourceTree = "<group>"; };
-		C9E184C21A907F4D005690BD /* SystemSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSettingsViewController.h; sourceTree = "<group>"; };
-		C9E184C31A907F4D005690BD /* SystemSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSettingsViewController.m; sourceTree = "<group>"; };
+		C9E184C51A90AADF005690BD /* SystemSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSettingsViewController.h; sourceTree = "<group>"; };
+		C9E184C61A90AADF005690BD /* SystemSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSettingsViewController.m; sourceTree = "<group>"; };
 		C9E226D51A52FF6E004A9A69 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		C9E226D61A52FF6E004A9A69 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		C9E6B2941A8885DF00432DE8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -1449,8 +1449,8 @@
 		C9E184C11A907F4D005690BD /* 13SystemSettingsView */ = {
 			isa = PBXGroup;
 			children = (
-				C9E184C21A907F4D005690BD /* SystemSettingsViewController.h */,
-				C9E184C31A907F4D005690BD /* SystemSettingsViewController.m */,
+				C9E184C51A90AADF005690BD /* SystemSettingsViewController.h */,
+				C9E184C61A90AADF005690BD /* SystemSettingsViewController.m */,
 			);
 			path = 13SystemSettingsView;
 			sourceTree = "<group>";
@@ -1952,7 +1952,7 @@
 				C9A95B491A613C890017BE2B /* ProgressOverviewCell.m in Sources */,
 				C970945E1A62D09B00141DC5 /* FactoryTaskViewController.m in Sources */,
 				C90EA2871A6BF68D0038450A /* IPadScanViewController.m in Sources */,
-				C9E184C41A907F4D005690BD /* SystemSettingsViewController.m in Sources */,
+				C9E184C71A90AADF005690BD /* SystemSettingsViewController.m in Sources */,
 				C97094601A62D09B00141DC5 /* CheckTaskViewController.m in Sources */,
 				C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */,
 				C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */,

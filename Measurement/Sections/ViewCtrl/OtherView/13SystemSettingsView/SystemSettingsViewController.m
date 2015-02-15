@@ -23,6 +23,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)backToVCBtnClick:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:^(void){
+        
+    }];
+}
 
 /*
 #pragma mark - Navigation

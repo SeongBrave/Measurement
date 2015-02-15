@@ -742,7 +742,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VSL-pA-gCd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="454" y="640"/>
+            <point key="canvasLocation" x="391" y="542"/>
         </scene>
         <!--Add Plan Details PopVC-->
         <scene sceneID="cO0-aH-qsQ">
