@@ -78,6 +78,7 @@
 		C97094721A62D36A00141DC5 /* DepMansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C970946F1A62D36A00141DC5 /* DepMansViewController.m */; };
 		C97094731A62D36A00141DC5 /* DepManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094711A62D36A00141DC5 /* DepManViewController.m */; };
 		C97202D11A996587008273AE /* ProgramOverviewDidHYPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97202D01A996587008273AE /* ProgramOverviewDidHYPopViewController.m */; };
+		C97203091A9A37CB008273AE /* PlanningDepartmentDidHYPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97203081A9A37CB008273AE /* PlanningDepartmentDidHYPopViewController.m */; };
 		C9791A981A71485900DC5643 /* Jlbzkhzsh_TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9791A971A71485900DC5643 /* Jlbzkhzsh_TableViewCell.m */; };
 		C9791A9B1A7148B400DC5643 /* Bzqsb_TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9791A9A1A7148B400DC5643 /* Bzqsb_TableViewCell.m */; };
 		C9791A9E1A7148C500DC5643 /* Jsyj_TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9791A9D1A7148C500DC5643 /* Jsyj_TableViewCell.m */; };
@@ -322,6 +323,8 @@
 		C97094711A62D36A00141DC5 /* DepManViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepManViewController.m; sourceTree = "<group>"; };
 		C97202CF1A996587008273AE /* ProgramOverviewDidHYPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramOverviewDidHYPopViewController.h; sourceTree = "<group>"; };
 		C97202D01A996587008273AE /* ProgramOverviewDidHYPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramOverviewDidHYPopViewController.m; sourceTree = "<group>"; };
+		C97203071A9A37CB008273AE /* PlanningDepartmentDidHYPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanningDepartmentDidHYPopViewController.h; sourceTree = "<group>"; };
+		C97203081A9A37CB008273AE /* PlanningDepartmentDidHYPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanningDepartmentDidHYPopViewController.m; sourceTree = "<group>"; };
 		C9791A961A71485900DC5643 /* Jlbzkhzsh_TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jlbzkhzsh_TableViewCell.h; sourceTree = "<group>"; };
 		C9791A971A71485900DC5643 /* Jlbzkhzsh_TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jlbzkhzsh_TableViewCell.m; sourceTree = "<group>"; };
 		C9791A991A7148B400DC5643 /* Bzqsb_TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bzqsb_TableViewCell.h; sourceTree = "<group>"; };
@@ -1109,6 +1112,8 @@
 			children = (
 				C97094261A62D09A00141DC5 /* PlanningDepartmentViewController.h */,
 				C97094271A62D09A00141DC5 /* PlanningDepartmentViewController.m */,
+				C97203071A9A37CB008273AE /* PlanningDepartmentDidHYPopViewController.h */,
+				C97203081A9A37CB008273AE /* PlanningDepartmentDidHYPopViewController.m */,
 			);
 			path = 02PlanningDepartmentView;
 			sourceTree = "<group>";
@@ -2033,6 +2038,7 @@
 				C9651FD31A43B26000B770BB /* FlagButton.m in Sources */,
 				C9651FDB1A43B26000B770BB /* CYRadioButton.m in Sources */,
 				C970945D1A62D09B00141DC5 /* UpdatePlanDetailsPopVC.m in Sources */,
+				C97203091A9A37CB008273AE /* PlanningDepartmentDidHYPopViewController.m in Sources */,
 				C97093EA1A62CBD200141DC5 /* SelectValue_XCKS_TableViewController.m in Sources */,
 				C97094571A62D09B00141DC5 /* AddPlanDetailsPopVC.m in Sources */,
 				C9903C1E1A470BDB0006FD99 /* UIImage+Fit.m in Sources */,

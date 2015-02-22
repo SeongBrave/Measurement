@@ -13,6 +13,8 @@
 #import "AddPlanDetailsPopVC.h"
 #import "backgroundV.h"
 #import "DropDownListView.h"
+#import "PlanningDepartmentDidHYPopViewController.h"
+
 
 @interface PlanningDepartmentViewController ()<UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,SwipeMyPlanViewCellDelegate,PopViewDelegate,DropDownChooseDelegate,DropDownChooseDataSource>
 {
@@ -279,7 +281,7 @@
     if (indexPath.row  < self.m_DataSourceArr.count) {
         
         
-        UpdatePlanDetailsPopVC *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"UpdatePlanDetailsPopVC"];;
+        PlanningDepartmentDidHYPopViewController *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"PlanningDepartmentDidHYPopViewController"];;
         popVc.m_showDict = self.m_DataSourceArr[indexPath.row];
         popVc.modalPresentationStyle = UIModalPresentationFormSheet;
         popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
