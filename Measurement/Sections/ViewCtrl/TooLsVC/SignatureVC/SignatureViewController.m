@@ -51,7 +51,7 @@
     //    网络请求发送签名图片
     
     [[BaseNetWork getInstance] showDialogWithVC:self];
-    NSDictionary *dict =@{@"imgBase64":_encodedImageStr,@"rwbh":@"5dce769b2f9e46a3b3a2c194f46eb80b"};
+    NSDictionary *dict =@{@"imgBase64":_encodedImageStr,@"rwbh":_m_rwbh_Str};
     [[[[[BaseNetWork getInstance] rac_postPath:@"khqrqzToBase64.do" parameters:dict]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];

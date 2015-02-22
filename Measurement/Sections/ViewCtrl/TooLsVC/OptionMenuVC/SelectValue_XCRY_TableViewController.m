@@ -32,9 +32,9 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (_isLoadData) {
-        [self loadNetData];
-    }
+
+    [self loadNetData];
+   
     
 }
 
@@ -84,7 +84,7 @@
      */
     [[BaseNetWork getInstance] showDialog];
     @weakify(self)
-    [[[[BaseNetWork getInstance] rac_postPath:@"getKsryjhn.do" parameters:nil]map:^(id responseData)
+    [[[[BaseNetWork getInstance] rac_postPath:@"getKsry.do" parameters:@{@"comCode":self.m_comCode}]map:^(id responseData)
       {
           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
           
@@ -190,13 +190,12 @@
     
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"selectValue_XCRY_TableViewCell" forIndexPath:indexPath];
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, 5, 200, 40)];
-    [cell.contentView addSubview:label];
-    label.font = [UIFont systemFontOfSize:18];
-    label.textColor = UIColorFromRGB(76, 93, 111);
+
+    cell.textLabel.font  = [UIFont systemFontOfSize:18];
+    cell.textLabel.textColor = UIColorFromRGB(76, 93, 111);
     
+    cell.textLabel.text =self.m_dataSourceArr[indexPath.row][@"username"];
     
-    label.text =self.m_dataSourceArr[indexPath.row][@"username"];
     return cell;
     
 }

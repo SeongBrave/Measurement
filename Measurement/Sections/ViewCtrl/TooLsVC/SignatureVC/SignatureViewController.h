@@ -18,6 +18,8 @@
 
 @interface SignatureViewController : UIViewController
 
+@property(nonatomic , strong)NSString *m_rwbh_Str;
+
 @property(nonatomic , assign)id<SignatureViewDelegate> m_delegate;
 
 @end

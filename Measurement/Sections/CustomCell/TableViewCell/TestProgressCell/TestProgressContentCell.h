@@ -10,6 +10,7 @@
 #import "jcjd_Detail_Model.h"
 
 @interface TestProgressContentCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *m_indexLB;
 
 @property (weak, nonatomic) IBOutlet UILabel *m_txmLabel;
 
@@ -24,5 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *m_priceLabel;
 
 - (void)configureCellWithItem:( jcjd_Detail_Model* )product;
+
+- (void)configureCellWithItem:(id )item andIndex:(NSUInteger)index;
 
 @end

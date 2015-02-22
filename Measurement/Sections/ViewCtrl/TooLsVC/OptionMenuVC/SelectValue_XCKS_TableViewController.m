@@ -191,13 +191,14 @@
     
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"selectValue_XCKS_TableViewCell" forIndexPath:indexPath];
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, 5, 200, 40)];
-    [cell.contentView addSubview:label];
-    label.font = [UIFont systemFontOfSize:18];
-    label.textColor = UIColorFromRGB(76, 93, 111);
-    
-    
-    label.text =self.m_dataSourceArr[indexPath.row][@"comcname"];
+    if (cell == nil) {
+        
+    }
+
+    cell.textLabel.font  = [UIFont systemFontOfSize:18];
+    cell.textLabel.textColor = UIColorFromRGB(76, 93, 111);
+
+    cell.textLabel.text =self.m_dataSourceArr[indexPath.row][@"comcname"];
     return cell;
     
 }

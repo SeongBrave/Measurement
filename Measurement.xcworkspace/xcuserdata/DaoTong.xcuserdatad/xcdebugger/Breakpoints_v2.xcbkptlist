@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Measurement/Sections/CustomCell/CollectionCell/ProgramOverviewCell/ProgramOverviewCell.m"
-            timestampString = "444422243.499706"
+            timestampString = "446303241.07139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "@implementation ProgramOverviewCell"
             landmarkType = "3">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Measurement/Sections/CustomCell/CollectionCell/ProgramOverviewCell/ProgramOverviewCell.m"
-            timestampString = "444422243.499706"
+            timestampString = "446303241.07139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "@implementation ProgramOverviewCell"
             landmarkType = "3">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Measurement/Sections/CustomCell/CollectionCell/ProgramOverviewCell/ProgramOverviewCell.m"
-            timestampString = "444422243.499706"
+            timestampString = "446303241.07139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
             landmarkName = "@implementation ProgramOverviewCell"
             landmarkType = "3">
          </BreakpointContent>
@@ -128,6 +128,22 @@
             startingLineNumber = "396"
             endingLineNumber = "396"
             landmarkName = "-layoutMainCustomView"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Measurement/Sections/CustomCell/TableViewCell/FactoryTaskCell/FactoryTaskCell.m"
+            timestampString = "446302365.918555"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "-configureCellWithItem:andIndex:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

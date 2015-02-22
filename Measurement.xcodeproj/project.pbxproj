@@ -77,6 +77,7 @@
 		C970946C1A62D2DA00141DC5 /* autoTableViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = C970946B1A62D2DA00141DC5 /* autoTableViewData.m */; };
 		C97094721A62D36A00141DC5 /* DepMansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C970946F1A62D36A00141DC5 /* DepMansViewController.m */; };
 		C97094731A62D36A00141DC5 /* DepManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97094711A62D36A00141DC5 /* DepManViewController.m */; };
+		C97202D11A996587008273AE /* ProgramOverviewDidHYPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97202D01A996587008273AE /* ProgramOverviewDidHYPopViewController.m */; };
 		C9791A981A71485900DC5643 /* Jlbzkhzsh_TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9791A971A71485900DC5643 /* Jlbzkhzsh_TableViewCell.m */; };
 		C9791A9B1A7148B400DC5643 /* Bzqsb_TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9791A9A1A7148B400DC5643 /* Bzqsb_TableViewCell.m */; };
 		C9791A9E1A7148C500DC5643 /* Jsyj_TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9791A9D1A7148C500DC5643 /* Jsyj_TableViewCell.m */; };
@@ -319,6 +320,8 @@
 		C970946F1A62D36A00141DC5 /* DepMansViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepMansViewController.m; sourceTree = "<group>"; };
 		C97094701A62D36A00141DC5 /* DepManViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepManViewController.h; sourceTree = "<group>"; };
 		C97094711A62D36A00141DC5 /* DepManViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepManViewController.m; sourceTree = "<group>"; };
+		C97202CF1A996587008273AE /* ProgramOverviewDidHYPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramOverviewDidHYPopViewController.h; sourceTree = "<group>"; };
+		C97202D01A996587008273AE /* ProgramOverviewDidHYPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramOverviewDidHYPopViewController.m; sourceTree = "<group>"; };
 		C9791A961A71485900DC5643 /* Jlbzkhzsh_TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jlbzkhzsh_TableViewCell.h; sourceTree = "<group>"; };
 		C9791A971A71485900DC5643 /* Jlbzkhzsh_TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jlbzkhzsh_TableViewCell.m; sourceTree = "<group>"; };
 		C9791A991A7148B400DC5643 /* Bzqsb_TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bzqsb_TableViewCell.h; sourceTree = "<group>"; };
@@ -1095,6 +1098,8 @@
 			children = (
 				C97094231A62D09A00141DC5 /* ProgramOverviewViewController.h */,
 				C97094241A62D09A00141DC5 /* ProgramOverviewViewController.m */,
+				C97202CF1A996587008273AE /* ProgramOverviewDidHYPopViewController.h */,
+				C97202D01A996587008273AE /* ProgramOverviewDidHYPopViewController.m */,
 			);
 			path = 01ProgramOverviewView;
 			sourceTree = "<group>";
@@ -1939,6 +1944,7 @@
 				C970946C1A62D2DA00141DC5 /* autoTableViewData.m in Sources */,
 				C903B0C81A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m in Sources */,
 				C945BB0E1A6D6C3000C6E11E /* BlackBackGroundV.m in Sources */,
+				C97202D11A996587008273AE /* ProgramOverviewDidHYPopViewController.m in Sources */,
 				C97C77481A76A8780016C779 /* FullScreenPreviewVC.m in Sources */,
 				C9BFAA101A487BF400C887B4 /* HeaderView.m in Sources */,
 				C9A95B4C1A613CD50017BE2B /* TestProgressContentCell.m in Sources */,

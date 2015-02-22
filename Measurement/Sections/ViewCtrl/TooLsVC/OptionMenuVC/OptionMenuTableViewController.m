@@ -132,8 +132,18 @@
         
     }else if ([segue.identifier isEqualToString:@"ToSelectDetail_XCRY_VC"] )
     {
-        SelectValue_XCKS_TableViewController *selectedValueTVC = (SelectValue_XCKS_TableViewController*)[segue destinationViewController];
+        SelectValue_XCRY_TableViewController *selectedValueTVC = (SelectValue_XCRY_TableViewController*)[segue destinationViewController];
         selectedValueTVC.selectedDelegate = self;
+        if ([self.m_relValue[@"xcksbh"] isNotNull]) {
+            selectedValueTVC.m_comCode = self.m_relValue[@"xcksbh"];
+        }else
+        {
+            LoginedUser *usr = [LoginedUser sharedInstance];
+            selectedValueTVC.m_comCode = usr.comcode;
+        }
+      
+//        self.m_relValue
+        //xcksbh
         
     }else if ([segue.identifier isEqualToString:@"FromDatePicker"] )
     {
@@ -356,6 +366,7 @@
     }else if (indexPath.section == 0 &&indexPath.row == 2) {
         
         //  ToSelectDetail_XCKS_VC
+        
         [self performSegueWithIdentifier:@"ToSelectDetail_XCRY_VC" sender:indexPath];
 
     }

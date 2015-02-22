@@ -571,7 +571,9 @@
         
     }];
     
-    [self.signatureImgBtn sd_setImageWithURL:[NSURL URLWithString:@"http://192.168.10.169:8080/mbs/convey/khqzck.do?rwbh=5dce769b2f9e46a3b3a2c194f46eb80b"] forState:UIControlStateNormal];
+        NSString *rwbhStr = [NSString stringWithFormat:@"%@%@?rwbh=%@",defaultWebServiceUrl,@"khqzck.do",self.m_showDict[@"RWBH"]];
+        [self.signatureImgBtn sd_setImageWithURL:[NSURL URLWithString:rwbhStr] forState:UIControlStateNormal];
+//    [self.signatureImgBtn sd_setImageWithURL:[NSURL URLWithString:@"http://192.168.10.169:8080/mbs/convey/khqzck.do?rwbh=5dce769b2f9e46a3b3a2c194f46eb80b"] forState:UIControlStateNormal];
 
 }
 -(void)SetUpData
@@ -1589,40 +1591,42 @@
 - (IBAction)SignatureClick:(id)sender {
     
     
-//    SignatureViewController *signatureVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SignatureViewController"];
-//    
-//    
-//    signatureVC.m_delegate = self;
-//    signatureVC.modalPresentationStyle = UIModalPresentationFormSheet;
-//    signatureVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-//    [self presentViewController:signatureVC animated:YES completion:nil];
-//    //    depManVC.view.superview.bounds = CGRectMake(0, 0, 529, 279);
-//    signatureVC.view.superview.frame = CGRectMake(400, 800, 688, 410);//it's important to do this after presentModalViewController
-//    signatureVC.view.superview.center = self.view.center;
-    
-    
-     AppDelegate *app = [UIApplication sharedApplication].delegate;
-    
-    TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:[self.signatureImgBtn imageForState:UIControlStateNormal]];
-    viewController.transitioningDelegate = self;
 
     
-    CGRect frame =  viewController.view.frame;
-    frame.size = CGSizeMake(400, 600);
-    viewController.view.frame = frame;
+    if ([_m_showDict[@"BY1"] isEqualToString:@"0"]) {
+        
+        SignatureViewController *signatureVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SignatureViewController"];
     
-    self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:viewController];
-    //TODO:popoverLayoutMargins是指你的popover相对于整个window上下左右的margin
-    self.m_popVC.popoverLayoutMargins = UIEdgeInsetsMake(20,0,0,0);
+        signatureVC.m_rwbh_Str = _m_showDict[@"RWBH"];
     
-//    self.m_popVC.popoverBackgroundViewClass = [BlackBackGroundV class];
-    // 设定展示区域的大小
-    // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
-    //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
-    [self.m_popVC presentPopoverFromRect:app.window.bounds
-                                  inView:app.window
-                permittedArrowDirections:0
-                                animated:YES];
+        signatureVC.m_delegate = self;
+        signatureVC.modalPresentationStyle = UIModalPresentationFormSheet;
+        signatureVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self presentViewController:signatureVC animated:YES completion:nil];
+        //    depManVC.view.superview.bounds = CGRectMake(0, 0, 529, 279);
+        signatureVC.view.superview.frame = CGRectMake(400, 800, 688, 410);//it's important to do this after presentModalViewController
+        signatureVC.view.superview.center = self.view.center;
+    }else
+    {
+        TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:[self.signatureImgBtn imageForState:UIControlStateNormal]];
+        viewController.transitioningDelegate = self;
+        
+        self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:viewController];
+        //TODO:popoverLayoutMargins是指你的popover相对于整个window上下左右的margin
+        self.m_popVC.popoverLayoutMargins = UIEdgeInsetsMake(20,0,0,0);
+        
+        //    self.m_popVC.popoverBackgroundViewClass = [BlackBackGroundV class];
+        // 设定展示区域的大小
+        // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
+        //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
+        [self.m_popVC presentPopoverFromRect:self.view.bounds
+                                      inView:self.view
+                    permittedArrowDirections:0
+                                    animated:YES];
+    }
+
+    
+    
 
     
     

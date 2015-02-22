@@ -81,11 +81,20 @@ static CGFloat BUTTONWIDTH = 70.0f;
     debug_object(product);
     self.m_dateL.text =[product GetLabelWithKey:@"今天"];
     self.m_companyNameL.text = [product GetLabelWithKey:@"WTDWMC"];
-    self.m_companyAddrL.text = [product GetLabelWithKey:@"SZDQ"];
+    self.m_companyAddrL.text = [product GetLabelWithKey:@"DWDZ"];
     self.m_contactNameL.text =  [product GetLabelWithKey:@"CJR"];
     self.m_contactTelL.text = [product GetLabelWithKey:@"LXDH"];
-    self.m_inFactoryTimeL.text = [product GetLabelWithKey:@"CJSJ"];
+    NSString *str = [product GetLabelWithKey:@"XCSJQ"];
+    NSRange range;
+    range.location = 0;
+    range.length = 10;
+    if (str.length > 10) {
+        str = [str substringWithRange:range];
+    }
+    self.m_inFactoryTimeL.text = str;
     self.m_headManNameL.text = [product GetLabelWithKey:@"YWFZR"];
+    
+  
     
     self.m_noteL.text =[product GetLabelWithKey:@"BZ"];
     
@@ -98,13 +107,19 @@ static CGFloat BUTTONWIDTH = 70.0f;
     
     self.m_inFactoryMansL.text = inFactoryMansStr.length>=1?[inFactoryMansStr substringFromIndex:1]:@"无";
     
-    if ([[product GetLabelWithKey:@"sfhy"] isEqualToString:@"1"]) {
+    if ([[product GetLabelWithKey:@"BY1"] isEqualToString:@"1"]) {
         [self.m_state_ImgV setImage:[UIImage imageNamed:@"right-card-title-yqz"]];
     }else
     {
-        [self.m_state_ImgV setImage:[UIImage imageNamed:@"right-card-title-ywc"]];
-        
+        if ([[product GetLabelWithKey:@"RWWCQK"] isEqualToString:@"1"]) {
+            [self.m_state_ImgV setImage:[UIImage imageNamed:@"right-card-title-ywc"]];
+        }else
+        {
+            [self.m_state_ImgV setImage:[UIImage imageNamed:@"right-card-title-wwc"]];
+            
+        }
     }
+    
 }
 
 - (void)awakeFromNib{

@@ -12,6 +12,7 @@
 #import "OptionMenuTableViewController.h"
 #import "PopViewDelegate.h"
 #import "backgroundV.h"
+#import "ProgramOverviewDidHYPopViewController.h"
 
 @interface ProgramOverviewViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,PopViewDelegate,UIPopoverControllerDelegate>
 
@@ -196,22 +197,21 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-//    MyPlanPopVC *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"popVC"];;
-//    popVc.m_popDelegate = self;
-//    self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
-//    self.m_popVC.delegate = self;
-//    
-//    //TODO:popoverLayoutMargins是指你的popover相对于整个window上下左右的margin
-//    self.m_popVC.popoverLayoutMargins = UIEdgeInsetsMake(20,0,0,0);
-//    
-//    self.m_popVC.popoverBackgroundViewClass = [backgroundV class];
-//    // 设定展示区域的大小
-//    // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
-//    //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
-//    [self.m_popVC presentPopoverFromRect:CGRectMake(400, 400, 20, 20)
-//                                  inView:self.view
-//                permittedArrowDirections:0
-//                                animated:YES];
+    if (indexPath.row  < self.m_DataSourceArr.count) {
+        
+        
+        ProgramOverviewDidHYPopViewController *popVc = (ProgramOverviewDidHYPopViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProgramOverviewDidHYPopViewController"];
+        
+//        popVc.m_popDelegate = self;
+        popVc.m_showDict = self.m_DataSourceArr[indexPath.row];
+        popVc.modalPresentationStyle = UIModalPresentationFormSheet;
+        popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        //        @weakify(self)
+        [self presentViewController:popVc animated:YES completion:^(void){
+            
+        }];
+        
+    }
     
     
 }

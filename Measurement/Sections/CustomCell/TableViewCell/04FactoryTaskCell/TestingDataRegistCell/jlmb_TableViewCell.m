@@ -25,7 +25,7 @@
         self.m_cjsj_LB.text = [jlmbModel.cjsj GetNotNullStr];
 
     
-        self.m_index_LB.text = [NSString stringWithFormat:@"00%@",[@(index) stringValue]];
+        self.m_index_LB.text = [NSString stringWithFormat:@"%@",[@(index) stringValue]];
     
     
     /**

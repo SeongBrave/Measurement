@@ -32,6 +32,9 @@
  */
 @property(nonatomic , strong)NSDictionary *m_netParamDict;
 
+
+@property(nonatomic , strong)NSString *m_comCode;
+
 @property(nonatomic , assign)id<DidSelectedValue_XCRY_Delegate> selectedDelegate;
 /**
  *  显示的数据格式为:@{@"text":@"显示的数据",@"data":@"保存的值"}

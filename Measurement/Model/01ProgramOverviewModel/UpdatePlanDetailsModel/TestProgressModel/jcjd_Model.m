@@ -25,7 +25,7 @@
 
 -(NSString*)showStr
 {
-    return [NSString stringWithFormat:@"%@科室-,共计台件数%@,共计金额%@",_ks,_gjtjs,_gjje];
+    return [NSString stringWithFormat:@"%@-%@,共计%@台件数,共计%@金额",_ks,_ry,_gjtjs,_gjje];
 }
 
 
