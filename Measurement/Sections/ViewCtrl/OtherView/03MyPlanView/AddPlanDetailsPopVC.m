@@ -213,6 +213,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self SetUpData];
+
     // Do any additional setup after loading the view.
 }
 

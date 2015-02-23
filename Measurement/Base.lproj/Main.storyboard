@@ -1211,7 +1211,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="控制在100字数以内" translatesAutoresizingMaskIntoConstraints="NO" id="fDy-uh-A2N">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDy-uh-A2N">
                                         <rect key="frame" x="179" y="483" width="529" height="95"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -1465,6 +1465,12 @@
                                             <constraint firstItem="4S3-Nz-WY6" firstAttribute="top" secondItem="OrN-kw-YzN" secondAttribute="top" constant="1" id="xhw-wz-IWg"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="控制在100字数以内" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BjW-lP-v41">
+                                        <rect key="frame" x="577" y="586" width="131" height="18"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="hYf-wC-wjA" firstAttribute="trailing" secondItem="Ct5-gS-RiW" secondAttribute="trailing" id="0g2-ZB-EKo"/>
@@ -1531,12 +1537,14 @@
                                     <constraint firstItem="rQy-kC-DVi" firstAttribute="centerY" secondItem="FR1-Zx-7zD" secondAttribute="centerY" id="eGT-TF-znT"/>
                                     <constraint firstItem="4ie-N3-YgV" firstAttribute="leading" secondItem="tjr-fv-I2O" secondAttribute="leading" constant="68" id="f4S-eE-viY"/>
                                     <constraint firstItem="rQy-kC-DVi" firstAttribute="trailing" secondItem="sev-3o-R8w" secondAttribute="trailing" id="fB1-5v-3TI"/>
+                                    <constraint firstItem="BjW-lP-v41" firstAttribute="top" secondItem="fDy-uh-A2N" secondAttribute="bottom" constant="8" id="fQH-SL-Hd5"/>
                                     <constraint firstItem="tfA-w0-q7h" firstAttribute="centerY" secondItem="vFw-F5-bD0" secondAttribute="centerY" id="fyW-7M-uLA"/>
                                     <constraint firstItem="6iO-GZ-ZWn" firstAttribute="leading" secondItem="fDy-uh-A2N" secondAttribute="leading" id="gl8-fr-zfB"/>
                                     <constraint firstItem="Upc-P0-qMr" firstAttribute="centerY" secondItem="dda-ld-4kI" secondAttribute="centerY" id="gza-12-kYH"/>
                                     <constraint firstItem="hYf-wC-wjA" firstAttribute="centerY" secondItem="cTx-le-4JP" secondAttribute="centerY" id="k51-Wv-Vui"/>
                                     <constraint firstItem="Ts2-nN-8MS" firstAttribute="top" secondItem="fDy-uh-A2N" secondAttribute="top" id="kAe-ZY-wNd"/>
                                     <constraint firstItem="VVM-5i-Lwu" firstAttribute="centerY" secondItem="Jdl-n5-ilO" secondAttribute="centerY" id="kNw-sW-RbV"/>
+                                    <constraint firstItem="BjW-lP-v41" firstAttribute="trailing" secondItem="fDy-uh-A2N" secondAttribute="trailing" id="kkp-M8-18u"/>
                                     <constraint firstItem="nMq-kC-VLF" firstAttribute="height" secondItem="rhs-i1-D5H" secondAttribute="height" id="lwe-Yk-TgH"/>
                                     <constraint firstItem="QUg-8w-RvG" firstAttribute="trailing" secondItem="4ie-N3-YgV" secondAttribute="trailing" id="mcN-ve-s1I"/>
                                     <constraint firstItem="4AZ-ms-VFQ" firstAttribute="width" secondItem="rhs-i1-D5H" secondAttribute="width" id="miI-ct-01z"/>
@@ -1611,7 +1619,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ald-M1-XDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1457" y="-6025"/>
+            <point key="canvasLocation" x="-1410" y="-6040"/>
         </scene>
         <!--Option Menu Table View Controller-->
         <scene sceneID="FqP-Si-8ol">
@@ -4581,7 +4589,7 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Huh-i1-boJ">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Huh-i1-boJ">
                                 <rect key="frame" x="681" y="70" width="70" height="26"/>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.58431372550000005" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -4631,7 +4639,7 @@
                                                                 <constraint firstAttribute="height" constant="40" id="tfa-eK-BgY"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                            <state key="normal" backgroundImage="right-card-button-bj-defauit">
+                                                            <state key="normal" backgroundImage="right-card-button-jc-defauit">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <state key="highlighted" backgroundImage="right-card-button-bj-selected"/>
@@ -4645,7 +4653,7 @@
                                                                 <constraint firstAttribute="height" constant="40" id="huZ-F7-Cm1"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                            <state key="normal" backgroundImage="right-card-button-sc-defauit">
+                                                            <state key="normal" backgroundImage="right-card-button-bh-defauit">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <state key="highlighted" backgroundImage="right-card-button-bj-selected">
@@ -5010,7 +5018,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rOt-Ah-c8d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4354" y="-4770"/>
+            <point key="canvasLocation" x="-4324" y="-4878"/>
         </scene>
         <!--Testing Data Regist View Controller-->
         <scene sceneID="60b-3D-GMu">
@@ -15550,10 +15558,12 @@
         <image name="right-button-xyb" width="140" height="52"/>
         <image name="right-card-add- selected" width="580" height="388"/>
         <image name="right-card-add-defauit" width="580" height="388"/>
+        <image name="right-card-button-bh-defauit" width="798" height="114"/>
         <image name="right-card-button-bj-defauit" width="150" height="74"/>
         <image name="right-card-button-bj-selected" width="150" height="74"/>
         <image name="right-card-button-bjwc-defauit" width="150" height="74"/>
         <image name="right-card-button-bjwc-selected" width="150" height="74"/>
+        <image name="right-card-button-jc-defauit" width="798" height="114"/>
         <image name="right-card-button-sc-defauit" width="150" height="74"/>
         <image name="right-card-title-ywc" width="68" height="26"/>
         <image name="right-sign-selected" width="300" height="126"/>
@@ -15565,7 +15575,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="LxV-c5-oeo"/>
+        <segue reference="ky9-bH-6HE"/>
         <segue reference="D1q-FG-v94"/>
     </inferredMetricsTieBreakers>
 </document>

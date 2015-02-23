@@ -63,6 +63,15 @@
     [self layoutMainCustomView];
 }
 
-
+/**
+ *  超级牛x的隐藏 键盘的方法
+ *
+ *  @param touches
+ *  @param event
+ */
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
 
 @end

@@ -326,7 +326,7 @@
     
     self.addrOFEntityLB.text = [showDict GetLabelWithKey:@"DWDZ"];
     
-    self.contactLB.text =[showDict GetLabelWithKey:@"LXDH"];
+    self.contactLB.text =[showDict GetLabelWithKey:@"LXRXM"];
     
     
     self.ContactTELLB.text =[showDict GetLabelWithKey:@"LXDH"];
@@ -351,7 +351,7 @@
     
       self.fromDatePickerLB.text = [showDict GetLabelWithKey:@"XCSJQ"];
     
-      self.toDatePickerLB.text = [showDict GetLabelWithKey:@"XCSJQ"];
+      self.toDatePickerLB.text = [showDict GetLabelWithKey:@"XCFZR"];
 
     
     self.m_xcry_Arr = showDict[@"xcry"];
@@ -631,6 +631,7 @@
     /**
      *  获取检测进度数据
      */
+    [[BaseNetWork getInstance] hideDialog];
     @weakify(self)
     [[[[[BaseNetWork getInstance] rac_postPath:@"findWdsblb.do" parameters:@{@"rwbh":[self.m_showDict GetLabelWithKey:@"RWBH"],@"usercode":loginUsr.usercode}]map:^(id responseData)
        {
@@ -670,7 +671,7 @@
          
      }];
     
-    
+    [[BaseNetWork getInstance] hideDialog];
     /**
      *  获取检测进度数据
      */
@@ -1010,7 +1011,7 @@
         
         NSDictionary *dict = _m_xcry_Arr[indexPath.row];
         
-        NSString *xcryStr = [NSString stringWithFormat:@"%@,下厂人员为:%@",dict[@"XCKS"],dict[@"XCRY"]];
+        NSString *xcryStr = [NSString stringWithFormat:@" %@ :%@",dict[@"XCKS"],dict[@"XCRY"]];
         
         //xcry
         cell.textLabel.font = [UIFont systemFontOfSize:16];
@@ -1064,7 +1065,7 @@
             
     
             @weakify(self)
-            [[BaseNetWork getInstance] showDialogWithVC:self];
+            [[BaseNetWork getInstance]hideDialog];
             NSDictionary *dict =@{@"yqid":model.yqid};
             [[[[[BaseNetWork getInstance] rac_postPath:@"findWtdxxxxByYqid.do" parameters:dict]map:^(id responseData)
                {

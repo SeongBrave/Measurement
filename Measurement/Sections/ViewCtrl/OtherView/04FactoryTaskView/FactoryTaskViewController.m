@@ -504,6 +504,7 @@
     
     
     NSDictionary *paraDic = @{@"usercode":[[[LoginedUser sharedInstance] usercode] GetNotNullStr],@"rwbh":[[self.m_DataSourceArr objectAtIndex:indexPath.row] objectForKey:@"RWBH"]};
+    [[BaseNetWork getInstance]hideDialog];
     [[[[[BaseNetWork getInstance] rac_postPath:@"findWdsblb.do" parameters:paraDic]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
@@ -534,6 +535,7 @@
     
     NSDictionary *paraDic = @{@"usercode":[[[LoginedUser sharedInstance] usercode] GetNotNullStr],@"rwbh":[[self.m_DataSourceArr objectAtIndex:indexPath.row] objectForKey:@"RWBH"]};
     
+    [[BaseNetWork getInstance] hideDialog];
     [[[[[BaseNetWork getInstance] rac_postPath:@"xcrwbh.do" parameters:paraDic]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
@@ -563,6 +565,7 @@
     //TODO:要单独显示个驳回界面，然后再调用下面代码
     NSIndexPath *indexPath = [self.m_collectionView indexPathForCell:cell];
     NSDictionary *paraDic = @{@"usercode":[[[LoginedUser sharedInstance] usercode] GetNotNullStr],@"rwbh":[[self.m_DataSourceArr objectAtIndex:indexPath.row] objectForKey:@"RWBH"]};
+    [[BaseNetWork getInstance] hideDialog];
     [[[[[BaseNetWork getInstance] rac_postPath:@"bjwcbjry.do" parameters:paraDic]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];

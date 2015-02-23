@@ -14,13 +14,19 @@
 #import "backgroundV.h"
 #import "DropDownListView.h"
 #import "PlanningDepartmentDidHYPopViewController.h"
+#import "DepManViewController.h"
+#import "DepMansViewController.h"
+#import "ry_Model.h"
 
-
-@interface PlanningDepartmentViewController ()<UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,SwipeMyPlanViewCellDelegate,PopViewDelegate,DropDownChooseDelegate,DropDownChooseDataSource>
+@interface PlanningDepartmentViewController ()<UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,SwipeMyPlanViewCellDelegate,PopViewDelegate,DropDownChooseDelegate,DropDownChooseDataSource,DepMansVCDelegate>
 {
     NSArray *chooseArray ;
 }
 
+/**
+ *  分配任务时的科室人员数组
+ */
+@property(nonatomic , strong)NSArray *m_ksry_Arr;
 
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *m_flowLayout;
 @property (weak, nonatomic) IBOutlet UICollectionView *m_collectionView;
@@ -115,6 +121,44 @@
 -(void)layoutMainCustomView
 {
     [super layoutMainCustomView];
+    
+    
+    LoginedUser *usr = [LoginedUser sharedInstance];
+    
+    
+    
+    /**
+     *  设置加载时显示提示
+     */
+    [[BaseNetWork getInstance] hideDialog];
+    @weakify(self)
+    [[[[BaseNetWork getInstance] rac_postPath:@"getKsry.do" parameters:@{@"comCode":usr.comcode}]map:^(id responseData)
+      {
+          NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+          
+          return [dict valueForKeyPath:@"ksry"];
+          
+      }]subscribeNext:^(NSArray *arr)
+     {
+         
+         //comcname
+         @strongify(self)
+         self.m_ksry_Arr =[arr linq_select:^id(NSDictionary *dict){
+             
+             ry_Model *ryModel = [MTLJSONAdapter modelOfClass:[ry_Model class] fromJSONDictionary:dict error:nil];
+             ryModel.isSelected = NO;
+             ryModel.isCheckBox = YES;
+             
+             
+             return ryModel;
+         }];
+  
+     }error:^(NSError *error){
+         
+         //          [self.m_collectionView reloadData];
+         
+         
+     }];
 }
 
 /**
@@ -318,29 +362,54 @@
  */
 - (void)deletePress:(MyPlanViewCell *)cell
 {
+
     
-    
-    NSIndexPath *indexPath = [self.m_collectionView indexPathForCell:cell];
-    
-    
-    [self.m_DataSourceArr removeObjectAtIndex:indexPath.row];
-    //    /**
-    //     *  第一种办法 删除cell
-    //     */
-    //    [self.m_collectionView deleteItemsAtIndexPaths:@[indexPath]];
-    
-    /**
-     *   第二种办法 删除cell
-     */
-    [self.m_collectionView performBatchUpdates:^{
-        [self.m_collectionView deleteItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
+    if (_m_ksry_Arr.count >0) {
         
-    } completion:nil];
-    //    [self.photoImages removeObjectAtIndex:row];
-    //    NSArray *deleteItems = @[indexPath];
-    //    [self.m_collectionView moveItemAtIndexPath:indexPath toIndexPath];
-    //
-    //    - (void)moveItemAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath;
+        DepMansViewController *depManVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DepMansViewController"];
+        
+        depManVC.m_delegate = self;
+        depManVC.modalPresentationStyle = UIModalPresentationFormSheet;
+        depManVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        depManVC.m_dataSourceArr = self.m_ksry_Arr;
+        [self presentViewController:depManVC animated:YES completion:nil];
+        //    depManVC.view.superview.bounds = CGRectMake(0, 0, 529, 279);
+        depManVC.view.superview.frame = CGRectMake(100, 200, 529, 279);//it's important to do this after presentModalViewController
+        depManVC.view.superview.center = self.view.center;
+        
+//        self.m_mans_depManVC = depManVC;
+        
+        /**
+         *  将要修改的model赋值给vc然后再vc中修改
+         */
+//        self.m_mans_depManVC.ksModel = ksModel;
+        
+    }
+    
+    
+    
+//    
+//    NSIndexPath *indexPath = [self.m_collectionView indexPathForCell:cell];
+//    
+//    
+//    [self.m_DataSourceArr removeObjectAtIndex:indexPath.row];
+//    //    /**
+//    //     *  第一种办法 删除cell
+//    //     */
+//    //    [self.m_collectionView deleteItemsAtIndexPaths:@[indexPath]];
+//    
+//    /**
+//     *   第二种办法 删除cell
+//     */
+//    [self.m_collectionView performBatchUpdates:^{
+//        [self.m_collectionView deleteItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
+//        
+//    } completion:nil];
+//    //    [self.photoImages removeObjectAtIndex:row];
+//    //    NSArray *deleteItems = @[indexPath];
+//    //    [self.m_collectionView moveItemAtIndexPath:indexPath toIndexPath];
+//    //
+//    //    - (void)moveItemAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath;
 }
 
 /**
@@ -350,7 +419,42 @@
  */
 - (void)editorPress:(MyPlanViewCell *)cell
 {
-    [Dialog toast:@"editorPress"];
+    
+    NSIndexPath *indexPath = [self.m_collectionView indexPathForCell:cell];
+    
+    debug_int(indexPath.row);
+    
+    NSDictionary *dict = [self.m_DataSourceArr objectAtIndex:indexPath.row];
+    
+    
+    LoginedUser *usr = [LoginedUser sharedInstance];
+    /**
+     *  设置加载时显示提示
+     */
+    [[BaseNetWork getInstance] hideDialog];
+    [[[[BaseNetWork getInstance] rac_postPath:@"dutyRwlq.do" parameters:@{@"rwbh":dict[@"RWBH"],@"userCode":usr.usercode}]map:^(id responseData)
+      {
+          NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+          
+          return dict;
+          
+      }]subscribeNext:^(NSDictionary *retDict)
+     {
+         if ([retDict[@"ret"] intValue] ==1) {
+             
+             [Dialog toast:self withMessage:@"领取成功!"];
+         }else
+         {
+             [Dialog toast:self withMessage:retDict[@"message"]];
+         }
+
+     }error:^(NSError *error){
+         
+         //          [self.m_collectionView reloadData];
+         
+         
+     }];
+//    http://IPaddress:port/mbs/convey/dutyRwlq.do
 }
 
 /**
@@ -394,4 +498,9 @@
     return 0;
 }
 
+#pragma  mark - DepMansVCDelegate
+-(void)DepMansVC:(DepMansViewController *)depManVC didSelectedArr:(NSArray *) selectedArr
+{
+    
+}
 @end
