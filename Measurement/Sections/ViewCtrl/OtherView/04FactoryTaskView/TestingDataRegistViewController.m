@@ -246,32 +246,65 @@
 
 -(void)reset_Sbxq_SaveDict
 {
-    
-    LoginedUser *user = [LoginedUser sharedInstance];
-    
-    _m_Sbxq_saveDataDict[@"rwbh"] = @"";
-    _m_Sbxq_saveDataDict[@"xtbs"] = MBS_XTBS;
-    _m_Sbxq_saveDataDict[@"usercode"] = user.usercode;
+    //TODO:界面显示信息
     _m_Sbxq_saveDataDict[@"txm"] = @"";
     _m_Sbxq_saveDataDict[@"yqmc"] = @"";
-    _m_Sbxq_saveDataDict[@"ksbh"] = @"";
-    _m_Sbxq_saveDataDict[@"ks"] = @"";
     _m_Sbxq_saveDataDict[@"jltx"] = @"";
-    _m_Sbxq_saveDataDict[@"xmbh"] = [_m_qjxxDict GetLabelWithKey:@"xmbh"];
     _m_Sbxq_saveDataDict[@"jcfw"] = @"";
+
     _m_Sbxq_saveDataDict[@"ggxh"] = @"";
     _m_Sbxq_saveDataDict[@"sccj"] = @"";
     _m_Sbxq_saveDataDict[@"ccbh"] = @"";
-    _m_Sbxq_saveDataDict[@"jclxbh"] = @"";
     _m_Sbxq_saveDataDict[@"jclx"] = @"";
     _m_Sbxq_saveDataDict[@"sl"] = @"";
-    _m_Sbxq_saveDataDict[@"bzsf"] = @"";
-    _m_Sbxq_saveDataDict[@"bzsfbh"] = @"";
+    /**
+     *  数量单位
+     */
+      _m_Sbxq_saveDataDict[@"by1"] = @"";
+    
+    /**
+     *  报价
+     */
+     _m_Sbxq_saveDataDict[@"bzsf"] = @"";
     _m_Sbxq_saveDataDict[@"wg"] = @"";
-    _m_Sbxq_saveDataDict[@"pj"] = @"";
-    _m_Sbxq_saveDataDict[@"bz"] = @"";
+    
+    /**
+     *  项目 未使用 （界面上唯一未使用的，因为使用了项目编号了）
+     */
+    
+    /**
+     *  附件
+     */
+     _m_Sbxq_saveDataDict[@"pj"] = @"";
+    
+      _m_Sbxq_saveDataDict[@"bz"] = @"";
+    
+    
+    
+    /**
+     *  隐藏信息
+     */
+    LoginedUser *user = [LoginedUser sharedInstance];
+    _m_Sbxq_saveDataDict[@"rwbh"] = @"";
+    _m_Sbxq_saveDataDict[@"xtbs"] = MBS_XTBS;
+    _m_Sbxq_saveDataDict[@"usercode"] = user.usercode;
+    _m_Sbxq_saveDataDict[@"yqid"] = @"";
+    _m_Sbxq_saveDataDict[@"ksbh"] = @"";
+    _m_Sbxq_saveDataDict[@"ks"] = @"";
+    /**
+     *  项目编号
+     */
+    _m_Sbxq_saveDataDict[@"xmbh"] = [_m_qjxxDict GetLabelWithKey:@"xmbh"];
+    _m_Sbxq_saveDataDict[@"jclxbh"] = @"";
+    /**
+     *  报价 标准收费编号
+     */
+    _m_Sbxq_saveDataDict[@"bzsfbh"] = @"";
     _m_Sbxq_saveDataDict[@"jdzqbh"] = @"";
-    _m_Sbxq_saveDataDict[@"by1"] = @"";
+  
+    /**
+     *  数量单位编号
+     */
     _m_Sbxq_saveDataDict[@"by2"] = @"";
     _m_Sbxq_saveDataDict[@"sfsq"] = @"";
 
@@ -284,13 +317,14 @@
     switch (_m_dataSourceType) {
         case TxmDataSourceType:
         {
-            [self update_sbxqViewByYqidDict:_m_qjxxDict];
+            [self update_sbxqViewByTxmDict:_m_qjxxDict];
         }
             
             break;
         case YqidDataSourceType:
         {
-             [self update_sbxqViewByTxmDict:_m_qjxxDict];
+             [self update_sbxqViewByYqidDict:_m_qjxxDict];
+            
         }
             
             break;
@@ -762,18 +796,16 @@
 -(void)update_sbxqViewByTxmDict:(NSDictionary *) sbxqDict
 {
     //TODO:测试需要
-    [self test_SbxqV];
+//    [self test_SbxqV];
     
     self.m_txm_TF.text =  [sbxqDict GetLabelWithKey:@"txm"];
     self.m_yqmc_TF.text =  [sbxqDict GetLabelWithKey:@"yqmc"];
     
-    // TODO: **注意意思这块是通过 findJiliangqjByTxm.do 扫描条码获取到得 ，需要把dwbh 改成by2
-    self.m_yqmc_TF.m_bm = [sbxqDict GetLabelWithKey:@"yqid"];
+//    // TODO: **注意意思这块是通过 findJiliangqjByTxm.do 扫描条码获取到得 ，需要把dwbh 改成by2
+//    self.m_yqmc_TF.m_bm = [sbxqDict GetLabelWithKey:@"yqid"];
     
     //TODO:需修改字段 计量特性
     self.m_jlfw_TF.text =  [sbxqDict GetLabelWithKey:@"jltx"];
-    
-    self.m_jclx_DTF.m_bm = [sbxqDict GetLabelWithKey:@"jclxbh"];
     
     //TODO:需修改字段
     self.m_clfw_TF.text =  [sbxqDict GetLabelWithKey:@"jcfw"];
@@ -787,13 +819,45 @@
     
     self.m_sl_TF.text =  [sbxqDict GetLabelWithKey:@"sl"];
     self.m_dw_DTF.text =  [sbxqDict GetLabelWithKey:@"by5"];
-    self.m_dw_DTF.m_bm =  [sbxqDict GetLabelWithKey:@"dwbh"];
+
     
     self.m_bj_TF.text =  [sbxqDict GetLabelWithKey:@"bj"];
     self.m_wg_TF.text =  [sbxqDict GetLabelWithKey:@"wg"];
     self.m_xm_TF.text =  [sbxqDict GetLabelWithKey:@"xmmc"];
     self.m_fj_TF.text =  [sbxqDict GetLabelWithKey:@"pj"];
     self.m_bz_TV.text =  [sbxqDict GetLabelWithKey:@"bz"];
+    
+    
+    /**
+     *  隐藏信息
+     */
+    LoginedUser *user = [LoginedUser sharedInstance];
+    self.m_Sbxq_saveDataDict[@"rwbh"] = [self.m_showDict GetLabelWithKey:@"RWBH"];
+    self.m_Sbxq_saveDataDict[@"xtbs"] = MBS_XTBS;
+    self.m_Sbxq_saveDataDict[@"usercode"] = user.usercode;
+    self.m_Sbxq_saveDataDict[@"yqid"] = [sbxqDict GetLabelWithKey:@"yqid"];
+    
+    self.m_Sbxq_saveDataDict[@"ks"] = [sbxqDict GetLabelWithKey:@"by3"];
+    
+    
+    self.m_Sbxq_saveDataDict[@"ksbh"] = [sbxqDict GetLabelWithKey:@"ksbh"];
+    
+    /**
+     *  项目编号
+     */
+    self.m_Sbxq_saveDataDict[@"xmbh"] = [sbxqDict GetLabelWithKey:@"xmbh"];
+    self.m_Sbxq_saveDataDict[@"jclxbh"] =[sbxqDict GetLabelWithKey:@"jclxbh"];
+    /**
+     *  报价 标准收费编号
+     */
+    self.m_Sbxq_saveDataDict[@"bzsfbh"] = [sbxqDict GetLabelWithKey:@"bzsfbh"];
+    self.m_Sbxq_saveDataDict[@"jdzqbh"] = [sbxqDict GetLabelWithKey:@"jdzqbh"];
+    
+    /**
+     *  数量单位编号
+     */
+    self.m_Sbxq_saveDataDict[@"by2"] = [sbxqDict GetLabelWithKey:@"dwbh"];
+    self.m_Sbxq_saveDataDict[@"sfsq"] = [sbxqDict GetLabelWithKey:@"by1"];
     
 }
 /**
@@ -806,39 +870,82 @@
 {
     
     //TODO:测试需要
-    [self test_SbxqV];
+//    [self test_SbxqV];
     
      self.m_txm_TF.text =  [sbxqDict GetLabelWithKey:@"txm"];
     self.m_yqmc_TF.text =  [sbxqDict GetLabelWithKey:@"yqmc"];
     
-    // TODO: **注意意思这块是通过 findJiliangqjByTxm.do 扫描条码获取到得 ，需要把dwbh 改成by2
-    self.m_yqmc_TF.m_bm = [sbxqDict GetLabelWithKey:@"yqid"];
+
     
      //TODO:需修改字段 计量特性
     self.m_jlfw_TF.text =  [sbxqDict GetLabelWithKey:@"jltx"];
     
-    self.m_jclx_DTF.m_bm = [sbxqDict GetLabelWithKey:@"jclxbh"];
+
+    self.m_jclx_DTF.text =  [sbxqDict GetLabelWithKey:@"jclx"];
     
     //TODO:需修改字段
     self.m_clfw_TF.text =  [sbxqDict GetLabelWithKey:@"jcfw"];
+    
     
     self.m_ggxh_TF.text =  [sbxqDict GetLabelWithKey:@"ggxh"];
     
     self.m_sccj_TF.text =  [sbxqDict GetLabelWithKey:@"sccj"];
     self.m_ccbh_TF.text =  [sbxqDict GetLabelWithKey:@"ccbh"];
-    //通过条形码得到数据 by4 是指的检测类型
-    self.m_jclx_DTF.text =  [sbxqDict GetLabelWithKey:@"by4"];
+
     
     self.m_sl_TF.text =  [sbxqDict GetLabelWithKey:@"sl"];
     self.m_dw_DTF.text =  [sbxqDict GetLabelWithKey:@"by1"];
-    self.m_dw_DTF.m_bm =  [sbxqDict GetLabelWithKey:@"by2"];
+
     
-    self.m_bj_TF.text =  [sbxqDict GetLabelWithKey:@"bj"];
+    self.m_bj_TF.text =  [sbxqDict GetLabelWithKey:@"bzsf"];
     self.m_wg_TF.text =  [sbxqDict GetLabelWithKey:@"wg"];
     self.m_xm_TF.text =  [sbxqDict GetLabelWithKey:@"xmmc"];
     self.m_fj_TF.text =  [sbxqDict GetLabelWithKey:@"pj"];
+    
     self.m_bz_TV.text =  [sbxqDict GetLabelWithKey:@"bz"];
 
+    
+    
+    /**
+     *  隐藏信息
+     */
+    LoginedUser *user = [LoginedUser sharedInstance];
+    self.m_Sbxq_saveDataDict[@"rwbh"] = [self.m_showDict GetLabelWithKey:@"RWBH"];
+    self.m_Sbxq_saveDataDict[@"xtbs"] = MBS_XTBS;
+    self.m_Sbxq_saveDataDict[@"usercode"] = user.usercode;
+    self.m_Sbxq_saveDataDict[@"yqid"] = [sbxqDict GetLabelWithKey:@"yqid"];
+    
+//    /**
+//     *  条形码与仪器id的区别字段
+//     */
+//    if (_m_dataSourceType == TxmDataSourceType) {
+//        self.m_Sbxq_saveDataDict[@"ks"] = [_m_qjxxDict GetLabelWithKey:@"by3"];
+//        
+//    }else if(_m_dataSourceType == YqidDataSourceType)
+//    {
+//        self.m_Sbxq_saveDataDict[@"ks"] = [_m_qjxxDict GetLabelWithKey:@"ks"];
+//    }
+    self.m_Sbxq_saveDataDict[@"ks"] = [sbxqDict GetLabelWithKey:@"ks"];
+    
+    self.m_Sbxq_saveDataDict[@"ksbh"] = [sbxqDict GetLabelWithKey:@"ksbh"];
+    
+    /**
+     *  项目编号
+     */
+    self.m_Sbxq_saveDataDict[@"xmbh"] = [sbxqDict GetLabelWithKey:@"xmhb"];
+    self.m_Sbxq_saveDataDict[@"jclxbh"] = [sbxqDict GetLabelWithKey:@"jclxbh"];
+    /**
+     *  报价 标准收费编号
+     */
+    self.m_Sbxq_saveDataDict[@"bzsfbh"] = [sbxqDict GetLabelWithKey:@"bzsfbh"];
+    self.m_Sbxq_saveDataDict[@"jdzqbh"] = [sbxqDict GetLabelWithKey:@"jdzqbh"];
+    
+    /**
+     *  数量单位编号
+     */
+    self.m_Sbxq_saveDataDict[@"by2"] = [sbxqDict GetLabelWithKey:@"by2"];
+    
+    self.m_Sbxq_saveDataDict[@"sfsq"] = [sbxqDict GetLabelWithKey:@"sfsq"];
 }
 
 /**
@@ -848,38 +955,39 @@
 -(void)update_sbxqViewByYqjbxx_Model:(Yqjbxx_Model *) sbxqDict
 {
    
+    _m_Sbxq_saveDataDict[@"jdzqbh"] = sbxqDict.by5;
+    _m_Sbxq_saveDataDict[@"ksbh"] =sbxqDict.ssksbh;
+    _m_Sbxq_saveDataDict[@"ks"] =sbxqDict.ssks;
+     _m_Sbxq_saveDataDict[@"by2"] =[sbxqDict.dwbh GetNotNullStr];
+    _m_Sbxq_saveDataDict[@"xmbh"] =[sbxqDict.xmbh GetNotNullStr];
+    
+    _m_Sbxq_saveDataDict[@"jclxbh"] = [sbxqDict.jclxbh GetNotNullStr];
+    _m_Sbxq_saveDataDict[@"sfsq"] = [sbxqDict.sfsq GetNotNullStr];
+    _m_Sbxq_saveDataDict[@"bzsf"] = [sbxqDict.bj GetNotNullStr];
+    /**
+     *  一定要注意
+     */
+     _m_Sbxq_saveDataDict[@"bzsfbh"] = [sbxqDict.sfbzid GetNotNullStr];
+    
+    
     self.m_yqmc_TF.text =  [sbxqDict.jlqjmc GetNotNullStr];
     //TODO:需修改字段
-    self.m_jlfw_TF.text =  [sbxqDict.clfw GetNotNullStr];
+    self.m_jlfw_TF.text =  [sbxqDict.jltx GetNotNullStr];
     //TODO:计量范围应该为 计量特性
-    self.m_clfw_TF.text =  [sbxqDict.jltx GetNotNullStr];
-    self.m_ggxh_TF.text =  [sbxqDict.ggxh GetNotNullStr];
-     //TODO:生产厂家
-    self.m_sccj_TF.text =  [sbxqDict.jlqjmc GetNotNullStr];
+    self.m_clfw_TF.text =  [sbxqDict.clfw GetNotNullStr];
     
-     //TODO:出厂编号
-    self.m_ccbh_TF.text =  [sbxqDict.jlqjmc GetNotNullStr];
+    self.m_ggxh_TF.text =  [sbxqDict.ggxh GetNotNullStr];
+    
     //TODO:需修改字段
     self.m_jclx_DTF.text =  [sbxqDict.jclx GetNotNullStr];
-    self.m_jclx_DTF.m_bm = [sbxqDict.jclxbh GetNotNullStr];
-    
-    self.m_sl_TF.text =  [sbxqDict.jlqjmc GetNotNullStr];
-    
+
     self.m_dw_DTF.text =  [sbxqDict.dw GetNotNullStr];
-    self.m_dw_DTF.m_bm =  [sbxqDict.dwbh GetNotNullStr];
     
     self.m_bj_TF.text =  [sbxqDict.bj GetNotNullStr];
     
     //TODO:需要要求添加 项目字段代替
-    self.m_xm_TF.text =  [sbxqDict.xmbh GetNotNullStr];
-    
-    //TODO:外观
-    self.m_wg_TF.text = [sbxqDict.xmbh GetNotNullStr];
-    //TODO:需修改字段 需确认
-    self.m_fj_TF.text =  [sbxqDict.by5 GetNotNullStr];
-//    //TODO:需修改字段
-//    self.m_txyq_TF.text =  [sbxqDict.jlqjmc GetNotNullStr];
-//    self.m_bz_TV.text =  [sbxqDict.jlqjmc GetNotNullStr];
+    self.m_xm_TF.text =  [sbxqDict.xmmc GetNotNullStr];
+
     
 }
 
@@ -913,7 +1021,7 @@
     
 
     //TODO:测试需要的
-    [self test_GgxxV];
+//    [self test_GgxxV];
     /**
      *  检定日期
      */
@@ -1156,16 +1264,16 @@
     [[[[[BaseNetWork getInstance] rac_postPath:@"addEquipment.do" parameters:_m_Sbxq_saveDataDict]map:^(id responseData)
        {
            
-           @strongify(self)
+
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-           
-           self.yqid_Str = dict[@"yqid"];
-           
-           return [dict valueForKeyPath:@"ret"];
+           return dict;
        }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-     subscribeNext:^(NSString *retStr) {
-         
-         if ([retStr intValue] == 1) {
+     subscribeNext:^(NSDictionary *retDict) {
+                    @strongify(self)
+         if ([retDict[@"ret"] intValue] == 1) {
+             
+             self.yqid_Str = retDict[@"yqid"];
+             self.m_Sbxq_saveDataDict[@"yqid"] = self.yqid_Str;
              [Dialog toast:self withMessage:@"保存成功！"];
          }else
          {
@@ -1868,50 +1976,67 @@
 
 -(void)save_Sbxq_Data
 {
-    //测试用的任务编号
-    //8bb405f2714e4c71ab4acf77179d67f1
-    self.m_Sbxq_saveDataDict[@"rwbh"]=[self.m_showDict GetLabelWithKey:@"RWBH"];
+
+    //TODO:界面显示信息
     self.m_Sbxq_saveDataDict[@"txm"] = [_m_txm_TF.text GetNotNullStr];
     self.m_Sbxq_saveDataDict[@"yqmc"] = [_m_yqmc_TF.text GetNotNullStr];
-    
-    
-    /**
-     *  条形码与仪器id的区别字段
-     */
-    if (_m_dataSourceType == TxmDataSourceType) {
-        self.m_Sbxq_saveDataDict[@"ks"] = [_m_qjxxDict GetLabelWithKey:@"by3"];
-
-    }else if(_m_dataSourceType == YqidDataSourceType)
-    {
-        self.m_Sbxq_saveDataDict[@"ks"] = [_m_qjxxDict GetLabelWithKey:@"ks"];
-    }
-    
-    self.m_Sbxq_saveDataDict[@"jdzqbh"] = [_m_qjxxDict GetLabelWithKey:@"jdzqbh"];
-    self.m_Sbxq_saveDataDict[@"bzsf"] = [_m_qjxxDict GetLabelWithKey:@"bzsf"];
-    self.m_Sbxq_saveDataDict[@"bzsfbh"] = [_m_qjxxDict GetLabelWithKey:@"bzsfbh"];
-    self.m_Sbxq_saveDataDict[@"xmbh"] = [_m_qjxxDict GetLabelWithKey:@"xmbh"];
-    self.m_Sbxq_saveDataDict[@"ksbh"] = [_m_qjxxDict GetLabelWithKey:@"ksbh"];
-    
     self.m_Sbxq_saveDataDict[@"jltx"] = [_m_jlfw_TF.text GetNotNullStr];
-    
     self.m_Sbxq_saveDataDict[@"jcfw"] = [_m_clfw_TF.text GetNotNullStr];
+    
     self.m_Sbxq_saveDataDict[@"ggxh"] = [_m_ggxh_TF.text GetNotNullStr];
     self.m_Sbxq_saveDataDict[@"sccj"] = [_m_sccj_TF.text GetNotNullStr];
     self.m_Sbxq_saveDataDict[@"ccbh"] = [_m_ccbh_TF.text GetNotNullStr];
-    self.m_Sbxq_saveDataDict[@"jclxbh"] = [_m_jclx_DTF.m_bm GetNotNullStr];
     self.m_Sbxq_saveDataDict[@"jclx"] = [_m_jclx_DTF.text GetNotNullStr];
     self.m_Sbxq_saveDataDict[@"sl"] = [_m_sl_TF.text GetNotNullStr];
     
-    self.m_Sbxq_saveDataDict[@"wg"] = [_m_wg_TF.text GetNotNullStr];
-    self.m_Sbxq_saveDataDict[@"pj"] = [_m_sl_TF.text GetNotNullStr];
-    self.m_Sbxq_saveDataDict[@"bz"] = [_m_bz_TV.text GetNotNullStr];
-    
+    /**
+     *  数量单位
+     */
     self.m_Sbxq_saveDataDict[@"by1"] = [_m_dw_DTF.text GetNotNullStr];
-    //单位编号
-    self.m_Sbxq_saveDataDict[@"by2"] = [_m_dw_DTF.m_bm GetNotNullStr];
     
-    //TODO:先默认授权把
-    self.m_Sbxq_saveDataDict[@"sfsq"] = @"0";
+    /**
+     *  报价
+     */
+    self.m_Sbxq_saveDataDict[@"bzsf"] = [_m_bj_TF.text GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"wg"] = [_m_wg_TF.text GetNotNullStr];;
+    
+    /**
+     *  项目 未使用 （界面上唯一未使用的，因为使用了项目编号了）
+     */
+    
+    /**
+     *  附件
+     */
+    self.m_Sbxq_saveDataDict[@"pj"] = [_m_fj_TF.text GetNotNullStr];
+    
+    self.m_Sbxq_saveDataDict[@"bz"] = [_m_bz_TV.text GetNotNullStr];;
+    
+    
+    /*****************************************************/
+
+//    
+//
+//
+//    
+//    self.m_Sbxq_saveDataDict[@"jdzqbh"] = [_m_qjxxDict GetLabelWithKey:@"jdzqbh"];
+//    self.m_Sbxq_saveDataDict[@"bzsf"] = [_m_qjxxDict GetLabelWithKey:@"bzsf"];
+//    self.m_Sbxq_saveDataDict[@"bzsfbh"] = [_m_qjxxDict GetLabelWithKey:@"bzsfbh"];
+//    self.m_Sbxq_saveDataDict[@"xmbh"] = [_m_qjxxDict GetLabelWithKey:@"xmbh"];
+//    
+//    
+//    
+// 
+//    
+//    self.m_Sbxq_saveDataDict[@"wg"] = [_m_wg_TF.text GetNotNullStr];
+//    self.m_Sbxq_saveDataDict[@"pj"] = [_m_sl_TF.text GetNotNullStr];
+//    self.m_Sbxq_saveDataDict[@"bz"] = [_m_bz_TV.text GetNotNullStr];
+//    
+//    self.m_Sbxq_saveDataDict[@"by1"] = [_m_dw_DTF.text GetNotNullStr];
+//    //单位编号
+//    self.m_Sbxq_saveDataDict[@"by2"] = [_m_dw_DTF.m_bm GetNotNullStr];
+//    
+//    //TODO:先默认授权把
+//    self.m_Sbxq_saveDataDict[@"sfsq"] = @"0";
     
 }
 

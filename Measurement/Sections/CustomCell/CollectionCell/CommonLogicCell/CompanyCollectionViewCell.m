@@ -111,7 +111,7 @@ static CGFloat BUTTONWIDTH = 70.0f;
         [self.m_state_ImgV setImage:[UIImage imageNamed:@"right-card-title-yqz"]];
     }else
     {
-        if ([[product GetLabelWithKey:@"RWWCQK"] isEqualToString:@"1"]) {
+        if ([[product GetLabelWithKey:@"RYRWWCQK"] isEqualToString:@"1"]) {
             [self.m_state_ImgV setImage:[UIImage imageNamed:@"right-card-title-ywc"]];
         }else
         {

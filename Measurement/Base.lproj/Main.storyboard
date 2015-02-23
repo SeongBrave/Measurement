@@ -4642,7 +4642,7 @@
                                                             <state key="normal" backgroundImage="right-card-button-jc-defauit">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <state key="highlighted" backgroundImage="right-card-button-bj-selected"/>
+                                                            <state key="highlighted" backgroundImage="right-card-button-jc-selected"/>
                                                             <connections>
                                                                 <action selector="cellDetectionPress:" destination="vT1-88-hrJ" eventType="touchUpInside" id="XF1-Mt-QU7"/>
                                                             </connections>
@@ -4656,7 +4656,7 @@
                                                             <state key="normal" backgroundImage="right-card-button-bh-defauit">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <state key="highlighted" backgroundImage="right-card-button-bj-selected">
+                                                            <state key="highlighted" backgroundImage="right-card-button-bh-selected">
                                                                 <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
@@ -5201,13 +5201,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="测量范围" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qA-Ug-YlB">
-                                                <rect key="frame" x="76" y="152" width="60" height="18"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="计量范围" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4l-8a-ec7" userLabel="计量特性">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="计量特性" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4l-8a-ec7" userLabel="计量特性">
                                                 <rect key="frame" x="78" y="112" width="60" height="18"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -5384,6 +5378,12 @@
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数量" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuA-sk-m7Y">
                                                 <rect key="frame" x="106" y="357" width="30" height="18"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="测量范围" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qA-Ug-YlB">
+                                                <rect key="frame" x="76" y="152" width="60" height="18"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -15558,12 +15558,14 @@
         <image name="right-button-xyb" width="140" height="52"/>
         <image name="right-card-add- selected" width="580" height="388"/>
         <image name="right-card-add-defauit" width="580" height="388"/>
-        <image name="right-card-button-bh-defauit" width="798" height="114"/>
+        <image name="right-card-button-bh-defauit" width="150" height="74"/>
+        <image name="right-card-button-bh-selected" width="150" height="74"/>
         <image name="right-card-button-bj-defauit" width="150" height="74"/>
         <image name="right-card-button-bj-selected" width="150" height="74"/>
         <image name="right-card-button-bjwc-defauit" width="150" height="74"/>
         <image name="right-card-button-bjwc-selected" width="150" height="74"/>
-        <image name="right-card-button-jc-defauit" width="798" height="114"/>
+        <image name="right-card-button-jc-defauit" width="150" height="74"/>
+        <image name="right-card-button-jc-selected" width="150" height="74"/>
         <image name="right-card-button-sc-defauit" width="150" height="74"/>
         <image name="right-card-title-ywc" width="68" height="26"/>
         <image name="right-sign-selected" width="300" height="126"/>

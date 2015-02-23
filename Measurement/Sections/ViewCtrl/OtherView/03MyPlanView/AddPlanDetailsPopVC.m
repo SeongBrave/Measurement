@@ -656,6 +656,10 @@
          
          if ([str integerValue] == 1) {
              [Dialog toast:self withMessage:@"保存成功!"];
+             
+             [self dismissViewControllerAnimated:YES completion:^(void){
+                 
+             }];
          }else
          {
              [Dialog toast:self withMessage:@"保存失败!"];

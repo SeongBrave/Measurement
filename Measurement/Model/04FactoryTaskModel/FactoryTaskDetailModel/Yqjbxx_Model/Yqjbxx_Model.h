@@ -24,6 +24,11 @@
  * BY5
  */
 @property (nonatomic, copy) NSString *by5;
+/**
+ * XMMC
+ */
+@property (nonatomic, copy) NSString *xmmc;
+
 
 /**
  *  CLFW

@@ -28,7 +28,8 @@
              @"xmbh":@"XMBH",
              @"sfsq":@"SFSQ",
              @"jclxbh":@"JCLXBH",
-             @"dwbh":@"DWBH"
+             @"dwbh":@"DWBH",
+             @"xmmc":@"XMMC",
              
              };
 }

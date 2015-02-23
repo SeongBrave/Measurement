@@ -342,16 +342,16 @@
     self.responsibleDepLB.text = [showDict GetLabelWithKey:@"YWFZKS"];
     self.headOFLB.text =[showDict GetLabelWithKey:@"YWFZR"];
     
-    self.forensicsDateLB.text =[showDict GetLabelWithKey:@"YWFZR"];
+    self.forensicsDateLB.text =[showDict GetLabelWithKey:@"QZRQ"];
     
     
-    self.specialReqLB.text = [showDict GetLabelWithKey:@"tsyq"];
+    self.specialReqLB.text = [showDict GetLabelWithKey:@"KHTSYQ"];
     
     self.noteLB.text = [showDict GetLabelWithKey:@"BZ"];
     
-      self.fromDatePickerLB.text = [showDict GetLabelWithKey:@"XCSJQ"];
+    self.fromDatePickerLB.text = [NSString stringWithFormat:@"%@至%@",[showDict GetLabelWithKey:@"XCSJQ"],[showDict GetLabelWithKey:@"XCSJQ"]];
     
-      self.toDatePickerLB.text = [showDict GetLabelWithKey:@"XCFZR"];
+    self.toDatePickerLB.text = [showDict GetLabelWithKey:@"XCFZR"];
 
     
     self.m_xcry_Arr = showDict[@"xcry"];
@@ -629,7 +629,7 @@
 
     
     /**
-     *  获取检测进度数据
+     *  我的设备列表
      */
     [[BaseNetWork getInstance] hideDialog];
     @weakify(self)
@@ -1207,8 +1207,7 @@
 {
     [self dismissViewControllerAnimated:YES completion:^(void){
         
-      
-        
+
     }];
 }
 

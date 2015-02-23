@@ -273,18 +273,20 @@
     self.responsibleDepLB.text = [showDict GetLabelWithKey:@"YWFZKS"];
     self.headOFLB.text =[showDict GetLabelWithKey:@"YWFZR"];
     
+    self.forensicsDateLB.text =[showDict GetLabelWithKey:@"QZRQ"];
     
-    self.forensicsDateLB.text = [NSString stringWithFormat:@"%@%@",[showDict GetLabelWithKey:@"YWFZR"],[showDict GetLabelWithKey:@"YWFZR"]];
     
     self.specialReqLB.text = [showDict GetLabelWithKey:@"KHTSYQ"];
     
     self.noteLB.text = [showDict GetLabelWithKey:@"BZ"];
-
+    
     self.fromDatePickerLB.text = [NSString stringWithFormat:@"%@至%@",[showDict GetLabelWithKey:@"XCSJQ"],[showDict GetLabelWithKey:@"XCSJQ"]];
-
+    
     self.m_xcfzr_LB.text = [showDict GetLabelWithKey:@"XCFZR"];
     
-    self.m_xcry_Arr = showDict[@"xcry"];;
+    
+    self.m_xcry_Arr = showDict[@"xcry"];
+    
     [self.m_xcksry_tableView reloadData];
     
     
