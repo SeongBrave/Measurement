@@ -30,6 +30,12 @@
 
 @interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate>
 
+
+/**
+ *  保存检定人员编号
+ */
+@property(nonatomic , strong)NSString *m_jdrybh_Str;
+
 @property(nonatomic , strong)MBProgressHUD *m_hub;
 @property(nonatomic , strong)RTSpinKitView *m_spinner;
 
@@ -294,7 +300,7 @@
     /**
      *  项目编号
      */
-    _m_Sbxq_saveDataDict[@"xmbh"] = [_m_qjxxDict GetLabelWithKey:@"xmbh"];
+    _m_Sbxq_saveDataDict[@"xmbh"] = @"";
     _m_Sbxq_saveDataDict[@"jclxbh"] = @"";
     /**
      *  报价 标准收费编号
@@ -932,7 +938,9 @@
     /**
      *  项目编号
      */
-    self.m_Sbxq_saveDataDict[@"xmbh"] = [sbxqDict GetLabelWithKey:@"xmhb"];
+    
+
+    self.m_Sbxq_saveDataDict[@"xmbh"] = [sbxqDict GetLabelWithKey:@"xmbh"];
     self.m_Sbxq_saveDataDict[@"jclxbh"] = [sbxqDict GetLabelWithKey:@"jclxbh"];
     /**
      *  报价 标准收费编号
@@ -1013,7 +1021,7 @@
     
 }
 /**
- *  更新设备详情界面
+ *  更新公共信息界面
  *
  */
 -(void)update_ggxxViewByYretDict:(NSDictionary *) retDict
@@ -1025,7 +1033,12 @@
     /**
      *  检定日期
      */
+    // 设置日历显示格式
     
+    
+    // 把日历时间传给字符串
+    
+   
     // 2012-05-17 11:23:23
     NSDateFormatter *format=[[NSDateFormatter alloc] init];
     [format setDateFormat:@"yyyy-MM-dd HH:mm"];
@@ -1036,16 +1049,19 @@
  
     
     [self.m_jdrq_Btn.m_info setObject:fromDate ==nil?[NSDate new]:fromDate forKey:@"date"];
+     NSString *strDate = [format stringFromDate:fromDate];
+    [self.m_jdrq_Btn setTitle:strDate forState:UIControlStateNormal];
     
     /**
      *  注:默认检定人,不可修改
      */
     NSDictionary *hyrDict = retDict[@"jdrmap"];
+    
+    
     if ([hyrDict allKeys].count >0) {
         
       self.m_jdy_TF.text =[hyrDict GetLabelWithKey:[hyrDict allKeys][0]];
-        
-       
+        self.m_jdrybh_Str = [hyrDict allKeys][0];
         
     }else
     {
@@ -1054,7 +1070,7 @@
     
      self.m_jdy_Dict = hyrDict;
     
-    NSString *jdzqStr = [retDict GetLabelWithKey:@"jdzqbh"];
+    NSString *jdzqStr = [retDict[@"yqxx"] GetLabelWithKey:@"jdzqbh"];
     
     
     NSArray *jdzqArr = retDict[@"jdzqList"];
@@ -1337,8 +1353,14 @@
            }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
          subscribeNext:^(NSDictionary *retDict) {
              
-             @strongify(self)
-             [ self update_ggxxViewByYretDict:retDict];
+             if ([retDict[@"ret"] isEqualToString:@"0"]) {
+                 [Dialog toast:self withMessage:@"获取公共信息失败!"];
+             }else
+             {
+                 @strongify(self)
+                 [ self update_ggxxViewByYretDict:retDict];
+             }
+             
              
              
          }error:^(NSError *error){
@@ -2305,15 +2327,16 @@
         hyr_Model *model = _m_hyyTFArr[indexPath.row];
         
         self.m_hyy_DTF.m_bm = model.m_key;
-        if ([model.m_key isEqualToString:@""]) {
+        if ([model.m_key isEqualToString:self.m_jdrybh_Str]) {
+
+            [Dialog toast:self withMessage:@"核验人与检定人不能为同一个人!"];
             
-            
-            
-            
-            
+        }else
+        {
+            [self.m_Ggxx_saveDataDict setObject:model.m_key forKey:@"pzrbh"];
         }
         
-        [self.m_Ggxx_saveDataDict setObject:model.m_key forKey:@"pzrbh"];
+        
         
     }else if(textField == _m_pzr_DTF)
     {
@@ -2430,7 +2453,7 @@
     
     // 设置日历显示格式
     
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     
     // 把日历时间传给字符串
     
