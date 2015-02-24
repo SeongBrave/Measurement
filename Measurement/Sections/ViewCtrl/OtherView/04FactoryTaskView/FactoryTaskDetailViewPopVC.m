@@ -675,7 +675,7 @@
     /**
      *  获取检测进度数据
      */
-    [[[[[BaseNetWork getInstance] rac_postPath:@"findShebei.do" parameters:@{@"rwbh":@"5dce769b2f9e46a3b3a2c194f46eb80b"/*[self.m_showDict GetLabelWithKey:@"RWBH"]*/}]map:^(id responseData)
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findShebei.do" parameters:@{@"rwbh":/*@"5dce769b2f9e46a3b3a2c194f46eb80b"*/[self.m_showDict GetLabelWithKey:@"RWBH"]}]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
@@ -813,12 +813,22 @@
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
-           return [dict valueForKeyPath:@"qjxx"];
+           return dict;
        }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
      subscribeNext:^(NSDictionary *retDict) {
          
          @strongify(self)
-          [self ToTestingDataRegistViewControllerWithDict:retDict AndDataSourceType:TxmDataSourceType];
+         
+         if ([retDict[@"ret"] intValue] == 0) {
+             
+             NSDictionary *dict = @{@"txm":txmStr};
+               [self ToTestingDataRegistViewControllerWithDict:dict AndDataSourceType:TxmNotDataSourceType];
+             
+         }else
+         {
+             [self ToTestingDataRegistViewControllerWithDict:retDict[@"qjxx"] AndDataSourceType:TxmDataSourceType];
+         }
+        
          
          
      }error:^(NSError *error){

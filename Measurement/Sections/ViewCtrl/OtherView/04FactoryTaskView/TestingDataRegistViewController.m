@@ -26,6 +26,7 @@
 #import "ZS_TemplatesListViewController.h"
 #import "YSJL_TemplatesListViewController.h"
 #import "zsmb_Model.h"
+#import "xmbh_Auto_Model.h"
 
 
 @interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate>
@@ -86,7 +87,9 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *m_wg_TF;
 
-@property (weak, nonatomic) IBOutlet UITextField *m_xm_TF;
+//@property (weak, nonatomic) IBOutlet UITextField *m_xm_TF;
+@property (weak, nonatomic) IBOutlet AutoCompleteTextField *m_xm_ADTF;
+@property(nonatomic , strong)NSArray *m_xmAutoTFArr;
 
 @property (weak, nonatomic) IBOutlet UITextField *m_fj_TF;
 
@@ -327,6 +330,20 @@
         }
             
             break;
+        case TxmNotDataSourceType:
+        {
+            
+            /**
+             *  设置隐藏参数
+             */
+            [self update_yczd];
+            /**
+             *  扫描条形码未得到数据时 将扫描到得条形码赋值到界面
+             */
+             self.m_txm_TF.text =  [_m_qjxxDict GetLabelWithKey:@"txm"];
+        }
+            
+            break;
         case YqidDataSourceType:
         {
              [self update_sbxqViewByYqidDict:_m_qjxxDict];
@@ -336,7 +353,10 @@
             break;
         case NullDataSourceType:
         {
-            
+            /**
+             *  设置隐藏参数
+             */
+            [self update_yczd];
         }
             
             break;
@@ -420,7 +440,7 @@
     self.m_jclx_DTF.dropDownDelegate = self;
     self.m_jclx_DTF.dropDownDataSource= self;
     self.m_jclx_DTF.delegate = self;
-    
+
     self.m_dw_DTF.dropDownDelegate = self;
     self.m_dw_DTF.dropDownDataSource= self;
     self.m_dw_DTF.delegate = self;
@@ -609,7 +629,6 @@
         
     }];
     
-    
     /**
      *  仪器名称模糊查询
      *
@@ -654,30 +673,134 @@
           }];
      }];
     
-    
     /**
-     *  获取单位名称
+     *  项目模糊查询m_xm_ADTF
+     */
+    [[self.m_xm_ADTF.rac_textSignal
+      throttle:0.5] subscribeNext:^(NSString *xmmcStr)
+     {
+         [[BaseNetWork getInstance] hideDialog];
+         NSDictionary *dict =@{@"xmmc":xmmcStr,@"num":@"15"};
+         [[[[[BaseNetWork getInstance] rac_postPath:@"findXmxx.do" parameters:dict]map:^(id responseData)
+            {
+                NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+                
+                return dict;
+            }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+          subscribeNext:^(NSDictionary *retDict) {
+              @strongify(self)
+              
+              if ([retDict[@"ret"] intValue] ==0) {
+                  
+              }else
+              {
+                  NSArray *arr = retDict[@"xm"];
+                  self.m_xmAutoTFArr = [arr linq_select:^id(NSDictionary *dict){
+                      
+                      xmbh_Auto_Model *yqmcModel = [MTLJSONAdapter modelOfClass:[xmbh_Auto_Model class] fromJSONDictionary:dict error:nil];
+                      
+                      
+                      return yqmcModel;
+                  }];
+                  
+                  [self.m_xm_ADTF reloadData];
+                  
+              }
+        
+              
+              
+          }error:^(NSError *error){
+              //          @strongify(self)
+              ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
+              ////          self.m_DataSourceArr = arr;
+              ////          [_header endRefreshing];
+              ////          [_footer endRefreshing];
+              ////
+              ////          [self failedGetDataWithResponseData:arr];
+              //          //          [self.m_collectionView reloadData];
+              
+              
+          }];
+     }];
+    
+    
+//    /**
+//     *  获取单位名称
+//     */
+//    [[BaseNetWork getInstance] hideDialog];
+//    [[[[[BaseNetWork getInstance] rac_postPath:@"findDmxx.do" parameters:@{@"zdbm":@"dw"}]map:^(id responseData)
+//       {
+//           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+//           
+//           return dict;
+//       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+//     subscribeNext:^(NSDictionary *retDict) {
+//         @strongify(self)
+//         
+//         if ([retDict[@"ret"] intValue] ==0) {
+//             
+//         }else
+//         {
+//             NSArray *arr = retDict[@"dmxxList"];
+//             self.m_autoTFArr = [arr linq_select:^id(NSDictionary *dict){
+//                 
+//                 Yqmc_Auto_Model *yqmcModel = [MTLJSONAdapter modelOfClass:[Yqmc_Auto_Model class] fromJSONDictionary:dict error:nil];
+//                 
+//                 
+//                 return yqmcModel;
+//             }];
+//             
+//             [self.m_yqmc_TF reloadData];
+//             
+//         }
+//
+//         
+//         
+//     }error:^(NSError *error){
+//         //          @strongify(self)
+//         ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
+//         ////          self.m_DataSourceArr = arr;
+//         ////          [_header endRefreshing];
+//         ////          [_footer endRefreshing];
+//         ////
+//         ////          [self failedGetDataWithResponseData:arr];
+//         //          //          [self.m_collectionView reloadData];
+//         
+//         
+//     }];
+
+    /**
+     *  获取单位数据
      */
     [[BaseNetWork getInstance] hideDialog];
     [[[[[BaseNetWork getInstance] rac_postPath:@"findDmxx.do" parameters:@{@"zdbm":@"dw"}]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
-           return dict[@"dmxxList"];
+           return dict;
        }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-     subscribeNext:^(NSArray *arr) {
+     subscribeNext:^(NSDictionary *retDict) {
          @strongify(self)
          
-         self.m_dwTFArr = [arr linq_select:^id(NSDictionary *dict){
+         if ([retDict[@"ret"] intValue] ==0) {
              
-             dmxx_Model *dmxxModel = [MTLJSONAdapter modelOfClass:[dmxx_Model class] fromJSONDictionary:dict error:nil];
+         }else
+         {
              
+             NSArray *arr = retDict[@"dmxxList"] ;
+             self.m_dwTFArr = [arr linq_select:^id(NSDictionary *dict){
+                 
+                 dmxx_Model *dmxxModel = [MTLJSONAdapter modelOfClass:[dmxx_Model class] fromJSONDictionary:dict error:nil];
+                 
+                 
+                 return dmxxModel;
+             }];
              
-             return dmxxModel;
-         }];
-         
-
-         
+//             
+//             [self.m_dw_DTF reloadData];
+             
+         }
+     
          
      }error:^(NSError *error){
          //          @strongify(self)
@@ -691,6 +814,8 @@
          
          
      }];
+    
+    
 
     
     /**
@@ -715,7 +840,7 @@
          }];
          
          
-         
+//         [self.m_jclx_DTF reloadData];
          
      }error:^(NSError *error){
          //          @strongify(self)
@@ -793,6 +918,32 @@
     
 }
 
+-(void)update_yczd
+{
+    /**
+     *  隐藏信息
+     */
+    LoginedUser *user = [LoginedUser sharedInstance];
+    self.m_Sbxq_saveDataDict[@"rwbh"] = [self.m_showDict GetLabelWithKey:@"RWBH"];
+    self.m_Sbxq_saveDataDict[@"xtbs"] = MBS_XTBS;
+    self.m_Sbxq_saveDataDict[@"usercode"] = user.usercode;
+
+    
+
+
+//    /**
+//     *  报价 标准收费编号
+//     */
+//    self.m_Sbxq_saveDataDict[@"bzsfbh"] = [sbxqDict GetLabelWithKey:@"bzsfbh"];
+//    self.m_Sbxq_saveDataDict[@"jdzqbh"] = [sbxqDict GetLabelWithKey:@"jdzqbh"];
+//    
+//    /**
+//     *  数量单位编号
+//     */
+//    self.m_Sbxq_saveDataDict[@"by2"] = [sbxqDict GetLabelWithKey:@"dwbh"];
+//    self.m_Sbxq_saveDataDict[@"sfsq"] = [sbxqDict GetLabelWithKey:@"by1"];
+
+}
 /**
  *  更新设备详情界面
  *  TODO:需要把dwbh 改成by2
@@ -823,13 +974,13 @@
     //通过条形码得到数据 by4 是指的检测类型
     self.m_jclx_DTF.text =  [sbxqDict GetLabelWithKey:@"by4"];
     
-    self.m_sl_TF.text =  [sbxqDict GetLabelWithKey:@"sl"];
+    self.m_sl_TF.text =  [[sbxqDict GetLabelWithKey:@"sl"] isNotNull]?@"1":[sbxqDict GetLabelWithKey:@"sl"];
     self.m_dw_DTF.text =  [sbxqDict GetLabelWithKey:@"by5"];
 
     
     self.m_bj_TF.text =  [sbxqDict GetLabelWithKey:@"bj"];
     self.m_wg_TF.text =  [sbxqDict GetLabelWithKey:@"wg"];
-    self.m_xm_TF.text =  [sbxqDict GetLabelWithKey:@"xmmc"];
+    self.m_xm_ADTF.text =  [sbxqDict GetLabelWithKey:@"xmmc"];
     self.m_fj_TF.text =  [sbxqDict GetLabelWithKey:@"pj"];
     self.m_bz_TV.text =  [sbxqDict GetLabelWithKey:@"bz"];
     
@@ -899,13 +1050,13 @@
     self.m_ccbh_TF.text =  [sbxqDict GetLabelWithKey:@"ccbh"];
 
     
-    self.m_sl_TF.text =  [sbxqDict GetLabelWithKey:@"sl"];
+    self.m_sl_TF.text =  [[sbxqDict GetLabelWithKey:@"sl"] isNotNull]?@"1":[sbxqDict GetLabelWithKey:@"sl"];
     self.m_dw_DTF.text =  [sbxqDict GetLabelWithKey:@"by1"];
 
     
     self.m_bj_TF.text =  [sbxqDict GetLabelWithKey:@"bzsf"];
     self.m_wg_TF.text =  [sbxqDict GetLabelWithKey:@"wg"];
-    self.m_xm_TF.text =  [sbxqDict GetLabelWithKey:@"xmmc"];
+    self.m_xm_ADTF.text =  [sbxqDict GetLabelWithKey:@"xmmc"];
     self.m_fj_TF.text =  [sbxqDict GetLabelWithKey:@"pj"];
     
     self.m_bz_TV.text =  [sbxqDict GetLabelWithKey:@"bz"];
@@ -920,6 +1071,8 @@
     self.m_Sbxq_saveDataDict[@"xtbs"] = MBS_XTBS;
     self.m_Sbxq_saveDataDict[@"usercode"] = user.usercode;
     self.m_Sbxq_saveDataDict[@"yqid"] = [sbxqDict GetLabelWithKey:@"yqid"];
+    
+    self.yqid_Str = [sbxqDict GetLabelWithKey:@"yqid"];
     
 //    /**
 //     *  条形码与仪器id的区别字段
@@ -994,8 +1147,7 @@
     self.m_bj_TF.text =  [sbxqDict.bj GetNotNullStr];
     
     //TODO:需要要求添加 项目字段代替
-    self.m_xm_TF.text =  [sbxqDict.xmmc GetNotNullStr];
-
+    self.m_xm_ADTF.text =  [sbxqDict.xmmc GetNotNullStr];
     
 }
 
@@ -1004,7 +1156,7 @@
 {
     self.m_sl_TF.text = @"2";
     self.m_bj_TF.text = @"223";
-    self.m_xm_TF.text = @"sfad";
+    self.m_xm_ADTF.text = @"sfad";
     self.m_fj_TF.text = @"233";
     self.m_txyq_TF.text = @"233";
     
@@ -1055,7 +1207,7 @@
     /**
      *  注:默认检定人,不可修改
      */
-    NSDictionary *hyrDict = retDict[@"jdrmap"];
+    NSDictionary *hyrDict = retDict[@"hyrmap"];
     
     
     if ([hyrDict allKeys].count >0) {
@@ -1958,7 +2110,6 @@
     self.m_Ggxx_saveDataDict[@"yqid"] = self.yqid_Str;
     
     self.m_Ggxx_saveDataDict[@"xmbh"] = [_m_qjxxDict GetLabelWithKey:@"xmbh"];
-    self.m_Ggxx_saveDataDict[@"qjytbh"] = self.m_qjyt_DTF.m_bm;
     self.m_Ggxx_saveDataDict[@"jdrq"] = [jdrqStr GetNotNullStr];
     
     self.m_Ggxx_saveDataDict[@"jdzq"] = [self.m_jdzq_DTF.text GetNotNullStr];
@@ -2036,29 +2187,46 @@
     
     /*****************************************************/
 
-//    
-//
-//
-//    
-//    self.m_Sbxq_saveDataDict[@"jdzqbh"] = [_m_qjxxDict GetLabelWithKey:@"jdzqbh"];
-//    self.m_Sbxq_saveDataDict[@"bzsf"] = [_m_qjxxDict GetLabelWithKey:@"bzsf"];
-//    self.m_Sbxq_saveDataDict[@"bzsfbh"] = [_m_qjxxDict GetLabelWithKey:@"bzsfbh"];
-//    self.m_Sbxq_saveDataDict[@"xmbh"] = [_m_qjxxDict GetLabelWithKey:@"xmbh"];
-//    
-//    
-//    
-// 
-//    
-//    self.m_Sbxq_saveDataDict[@"wg"] = [_m_wg_TF.text GetNotNullStr];
-//    self.m_Sbxq_saveDataDict[@"pj"] = [_m_sl_TF.text GetNotNullStr];
-//    self.m_Sbxq_saveDataDict[@"bz"] = [_m_bz_TV.text GetNotNullStr];
-//    
-//    self.m_Sbxq_saveDataDict[@"by1"] = [_m_dw_DTF.text GetNotNullStr];
-//    //单位编号
-//    self.m_Sbxq_saveDataDict[@"by2"] = [_m_dw_DTF.m_bm GetNotNullStr];
-//    
-//    //TODO:先默认授权把
-//    self.m_Sbxq_saveDataDict[@"sfsq"] = @"0";
+    
+    switch (_m_dataSourceType) {
+        case TxmDataSourceType:
+        {
+
+        }
+            
+            break;
+        case TxmNotDataSourceType:
+        {
+            
+            /**
+             *  设置隐藏参数
+             */
+            [self update_yczd];
+
+        }
+            
+            break;
+        case YqidDataSourceType:
+        {
+            
+        }
+            
+            break;
+        case NullDataSourceType:
+        {
+            /**
+             *  设置隐藏参数
+             */
+            [self update_yczd];
+        }
+            
+            break;
+            
+        default:
+            break;
+    }
+    
+
     
 }
 
@@ -2286,36 +2454,28 @@
     if (textField == _m_jclx_DTF) {
          dmxx_Model *model = _m_jclxTFArr[indexPath.row];
         
-        self.m_jclx_DTF.m_bm = model.dmbm;
-        
-        [self.m_Sbxq_saveDataDict setObject:model.dmbm forKey:@"jclxbh"];
-         [self.m_Sbxq_saveDataDict setObject:model.dmxxmc forKey:@"jclx"];
+        self.m_Sbxq_saveDataDict[@"jclxbh"] =model.dmbm;
     
     }else if(textField == _m_dw_DTF) {
         
         dmxx_Model *model = _m_dwTFArr[indexPath.row];
+
+         self.m_Sbxq_saveDataDict[@"by2"] =model.dmbm;
         
-        self.m_dw_DTF.m_bm = model.dmbm;
-        
-         [self.m_Sbxq_saveDataDict setObject:model.dmxxmc forKey:@"by1"];
-         [self.m_Sbxq_saveDataDict setObject:model.dmbm forKey:@"by2"];
         
     }else if(textField == _m_qjyt_DTF) {
         
         jdzq_Model *model = _m_qjytTFArr[indexPath.row];
         
-        self.m_qjyt_DTF.m_bm = model.dmbm;
+        self.m_Sbxq_saveDataDict[@"qjytbh"] =model.dmbm;
         
-        [self.m_Ggxx_saveDataDict setObject:model.dmbm forKey:@"qjytbh"];
         
     }else if(textField == _m_jdzq_DTF)
     {
         
         dmxx_Model *model = _m_jdzqTFArr[indexPath.row];
         
-        self.m_jdzq_DTF.m_bm = model.dmbm;
-        
-        [self.m_Ggxx_saveDataDict setObject:model.dmbm forKey:@"jdzqbh"];
+         self.m_Sbxq_saveDataDict[@"jdzqbh"] =model.dmbm;
         
     }
      else if(textField == _m_hyy_DTF)
@@ -2391,7 +2551,14 @@
 //TODO:数据回来时必须先更新数据代理，然后再调用autotextfield 的 relodata
 -(NSArray *)autoCompleteDataSourceTextField:(AutoCompleteTextField *)textField
 {
-    return self.m_autoTFArr;
+    if (textField == _m_yqmc_TF) {
+        return self.m_autoTFArr;
+    }else if (textField == _m_xm_ADTF)
+    {
+        return self.m_xmAutoTFArr;
+    }
+
+    return nil;
 }
 
 #pragma mark - AutoCompleteTextFieldDelegate
@@ -2401,45 +2568,57 @@
             forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    Yqmc_Auto_Model *yqmcModel = ( Yqmc_Auto_Model *)selectedObject;
-    
-    @weakify(self)
-    [[BaseNetWork getInstance] showDialog];
-    NSDictionary *dict =@{@"sfbzid":yqmcModel.sfbzid};
-    [[[[[BaseNetWork getInstance] rac_postPath:@"getYqbjxx.do" parameters:dict]map:^(id responseData)
-       {
-           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-           
-           return [dict valueForKeyPath:@"yqjbxx"];
-       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-     subscribeNext:^(NSArray *arr) {
-         
-         if (arr.count >0) {
+    if (textField == _m_yqmc_TF) {
+        
+        Yqmc_Auto_Model *yqmcModel = ( Yqmc_Auto_Model *)selectedObject;
+        
+        @weakify(self)
+        [[BaseNetWork getInstance] showDialog];
+        NSDictionary *dict =@{@"sfbzid":yqmcModel.sfbzid};
+        [[[[[BaseNetWork getInstance] rac_postPath:@"getYqbjxx.do" parameters:dict]map:^(id responseData)
+           {
+               NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+               
+               return [dict valueForKeyPath:@"yqjbxx"];
+           }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+         subscribeNext:^(NSArray *arr) {
              
-             //默认区第一条数据
-             NSDictionary *dict = arr[0];
+             if (arr.count >0) {
+                 
+                 //默认区第一条数据
+                 NSDictionary *dict = arr[0];
+                 
+                 Yqjbxx_Model *yqjbxx = [MTLJSONAdapter modelOfClass:[Yqjbxx_Model class] fromJSONDictionary:dict error:nil];
+                 
+                 @strongify(self)
+                 [self update_sbxqViewByYqjbxx_Model:yqjbxx];
+                 
+             }
+             //         Yqjbxx_Model
              
-              Yqjbxx_Model *yqjbxx = [MTLJSONAdapter modelOfClass:[Yqjbxx_Model class] fromJSONDictionary:dict error:nil];
              
-             @strongify(self)
-             [self update_sbxqViewByYqjbxx_Model:yqjbxx];
+         }error:^(NSError *error){
+             //          @strongify(self)
+             ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
+             ////          self.m_DataSourceArr = arr;
+             ////          [_header endRefreshing];
+             ////          [_footer endRefreshing];
+             ////
+             ////          [self failedGetDataWithResponseData:arr];
+             //          //          [self.m_collectionView reloadData];
              
-         }
-//         Yqjbxx_Model
+             
+         }];
 
-         
-     }error:^(NSError *error){
-         //          @strongify(self)
-         ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
-         ////          self.m_DataSourceArr = arr;
-         ////          [_header endRefreshing];
-         ////          [_footer endRefreshing];
-         ////
-         ////          [self failedGetDataWithResponseData:arr];
-         //          //          [self.m_collectionView reloadData];
-         
-         
-     }];
+        
+        
+    }else if (textField == _m_xm_ADTF)
+    {
+      xmbh_Auto_Model *xmmcModel = ( xmbh_Auto_Model *)selectedObject;
+        
+        self.m_Sbxq_saveDataDict[@"xmbh"] = xmmcModel.xmdm;
+    }
+    
     
     
 }

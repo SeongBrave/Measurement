@@ -94,6 +94,7 @@
 		C990B7EE1A7942E700DF81C8 /* dmxx_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C990B7ED1A7942E700DF81C8 /* dmxx_Model.m */; };
 		C99F47C11A4B0BAF007C68AB /* CompanyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F47C01A4B0BAF007C68AB /* CompanyCollectionViewCell.m */; };
 		C99FD92A1A4C4F2F000AB1A6 /* ProgramOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C99FD9291A4C4F2F000AB1A6 /* ProgramOverviewCell.m */; };
+		C9A4350C1A9C254100F85046 /* xmbh_Auto_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A4350B1A9C254100F85046 /* xmbh_Auto_Model.m */; };
 		C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */; };
 		C9A95B491A613C890017BE2B /* ProgressOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A95B481A613C890017BE2B /* ProgressOverviewCell.m */; };
 		C9A95B4C1A613CD50017BE2B /* TestProgressContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A95B4B1A613CD50017BE2B /* TestProgressContentCell.m */; };
@@ -355,6 +356,8 @@
 		C99F47C01A4B0BAF007C68AB /* CompanyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyCollectionViewCell.m; sourceTree = "<group>"; };
 		C99FD9281A4C4F2F000AB1A6 /* ProgramOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramOverviewCell.h; sourceTree = "<group>"; };
 		C99FD9291A4C4F2F000AB1A6 /* ProgramOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramOverviewCell.m; sourceTree = "<group>"; };
+		C9A4350A1A9C254100F85046 /* xmbh_Auto_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xmbh_Auto_Model.h; sourceTree = "<group>"; };
+		C9A4350B1A9C254100F85046 /* xmbh_Auto_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xmbh_Auto_Model.m; sourceTree = "<group>"; };
 		C9A8B6091A490728008E94B7 /* CommonLogicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLogicCell.h; sourceTree = "<group>"; };
 		C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonLogicCell.m; sourceTree = "<group>"; };
 		C9A95B471A613C890017BE2B /* ProgressOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressOverviewCell.h; sourceTree = "<group>"; };
@@ -1381,6 +1384,15 @@
 			path = OtherView;
 			sourceTree = "<group>";
 		};
+		C9A435091A9C250F00F85046 /* xmbh_Auto_Model */ = {
+			isa = PBXGroup;
+			children = (
+				C9A4350A1A9C254100F85046 /* xmbh_Auto_Model.h */,
+				C9A4350B1A9C254100F85046 /* xmbh_Auto_Model.m */,
+			);
+			path = xmbh_Auto_Model;
+			sourceTree = "<group>";
+		};
 		C9A8B6021A490682008E94B7 /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1758,6 +1770,7 @@
 		C9FFC1611A6E7C5F00AA6BE7 /* FactoryTaskDetailModel */ = {
 			isa = PBXGroup;
 			children = (
+				C9A435091A9C250F00F85046 /* xmbh_Auto_Model */,
 				C9E6B2CB1A88FE5800432DE8 /* sblb_Model */,
 				C990B7E71A7937A600DF81C8 /* Yqjbxx_Model */,
 				C990B7E31A79332E00DF81C8 /* Yqmc_Auto_Model */,
@@ -2031,6 +2044,7 @@
 				C9E94DCE1A4A669100E8CC83 /* MJRefreshHeaderView.m in Sources */,
 				C9E6B2D51A8901DB00432DE8 /* Sblb_TableViewCell.m in Sources */,
 				C90EA2861A6BF68D0038450A /* BottomTabBarView.m in Sources */,
+				C9A4350C1A9C254100F85046 /* xmbh_Auto_Model.m in Sources */,
 				C9FFC14E1A6E7A6A00AA6BE7 /* IndustryCategoriesModel.m in Sources */,
 				C9791AA81A71498F00DC5643 /* Jsyj_Model.m in Sources */,
 				C9651FDA1A43B26000B770BB /* HomeIconButton.m in Sources */,

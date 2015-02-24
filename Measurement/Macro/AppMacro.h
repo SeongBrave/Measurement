@@ -33,6 +33,7 @@
 typedef enum
 {
     TxmDataSourceType = 0,
+    TxmNotDataSourceType,
     YqidDataSourceType,
     NullDataSourceType,
     
