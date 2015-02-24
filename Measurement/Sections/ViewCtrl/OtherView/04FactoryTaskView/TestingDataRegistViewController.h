@@ -14,6 +14,7 @@
 
 @interface TestingDataRegistViewController : BaseViewController
 
+@property(nonatomic , strong)UIPopoverController *m_popVC;
 
 @property(nonatomic , assign)DataSourceType m_dataSourceType;
 

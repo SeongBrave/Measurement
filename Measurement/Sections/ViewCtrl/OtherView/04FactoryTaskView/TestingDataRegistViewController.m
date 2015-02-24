@@ -27,9 +27,9 @@
 #import "YSJL_TemplatesListViewController.h"
 #import "zsmb_Model.h"
 #import "xmbh_Auto_Model.h"
+#import "YSJL_HqsjVC.h"
 
-
-@interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate>
+@interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate,DidSelectedValue_XCRY_Delegate,UIPopoverControllerDelegate>
 
 
 /**
@@ -2029,6 +2029,19 @@
 - (IBAction)Ysjl_hqsj_BtnClick:(id)sender {
     
     
+    UIButton *btn= (UIButton *)sender;
+//    YSJL_HqsjVC 
+    YSJL_HqsjVC *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"YSJL_HqsjVC"];;
+    popVc.selectedDelegate = self;
+    self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
+    self.m_popVC.delegate = self;
+    
+ 
+    [self.m_popVC presentPopoverFromRect:btn.bounds
+                                  inView:btn
+                permittedArrowDirections:0
+                                animated:YES];
+    
 }
 
 - (IBAction)Ysjl_ghzsmb_btnClick:(id)sender {
@@ -3064,4 +3077,11 @@
     
 }
 
+
+#pragma mark -DidSelectedValue_XCRY_Delegate
+
+-(void)SelectValue_YSJL_HqsjVC:(YSJL_HqsjVC*) selectValueTVC DidSelectedValue:(id)selectedValue
+{
+    
+}
 @end

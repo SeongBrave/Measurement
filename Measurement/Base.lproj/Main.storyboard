@@ -2250,6 +2250,74 @@
             </objects>
             <point key="canvasLocation" x="222" y="-3111.5"/>
         </scene>
+        <!--HqsjVC-->
+        <scene sceneID="8PE-Mz-ppv">
+            <objects>
+                <tableViewController storyboardIdentifier="YSJL_HqsjVC" id="4va-3B-yiQ" customClass="YSJL_HqsjVC" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9aB-1r-Mfh">
+                        <rect key="frame" x="0.0" y="0.0" width="220" height="98"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="cUf-gh-ADM">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="43" id="Bbd-VK-hOn">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bbd-VK-hOn" id="OxP-Uy-xnz">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="获取同名数据" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RhA-oj-Dok">
+                                                    <rect key="frame" x="14" y="10" width="102" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="RhA-oj-Dok" firstAttribute="leading" secondItem="OxP-Uy-xnz" secondAttribute="leadingMargin" constant="6" id="23l-TE-XZH"/>
+                                                <constraint firstAttribute="centerY" secondItem="RhA-oj-Dok" secondAttribute="centerY" constant="0.5" id="3kx-xV-4w6"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="MMW-Wh-Nfu">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MMW-Wh-Nfu" id="800-aY-NI0">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="获取历史数据" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKK-k8-ojs">
+                                                    <rect key="frame" x="16" y="11" width="102" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="NKK-k8-ojs" secondAttribute="centerY" id="oCu-Sq-8Gj"/>
+                                                <constraint firstItem="NKK-k8-ojs" firstAttribute="leading" secondItem="800-aY-NI0" secondAttribute="leadingMargin" constant="8" id="wjb-f4-v6z"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="XjP-Q7-WIL">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XjP-Q7-WIL" id="2yW-hu-ch5">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="4va-3B-yiQ" id="Ofl-Qi-TXI"/>
+                            <outlet property="delegate" destination="4va-3B-yiQ" id="gLo-lb-QPW"/>
+                        </connections>
+                    </tableView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="220" height="98"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HNO-fd-rxH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1343" y="-8035"/>
+        </scene>
         <!--Select ValueXCKS Table View Controller-->
         <scene sceneID="Ov0-Zz-nUk">
             <objects>
@@ -6362,6 +6430,9 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="Ysjl_hqsj_BtnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="rVG-YJ-GlC"/>
+                                                            <segue destination="4va-3B-yiQ" kind="popover" identifier="ToHqsjVC" popoverAnchorView="lNB-lN-1rb" id="tzt-3w-nID">
+                                                                <popoverArrowDirection key="popoverArrowDirection" down="YES" left="YES" right="YES"/>
+                                                            </segue>
                                                         </connections>
                                                     </button>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M3i-Yz-sH5">
@@ -6373,9 +6444,6 @@
                                                         <state key="normal" image="right-button-ghzsmb">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
-                                                        <connections>
-                                                            <action selector="Ysjl_ghzsmb_btnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="jD6-On-99F"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWR-So-G73">
                                                         <rect key="frame" x="714" y="13" width="30" height="30"/>
@@ -15584,6 +15652,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="ky9-bH-6HE"/>
-        <segue reference="D1q-FG-v94"/>
+        <segue reference="fdr-BD-u06"/>
     </inferredMetricsTieBreakers>
 </document>

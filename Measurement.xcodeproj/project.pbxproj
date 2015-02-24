@@ -95,6 +95,7 @@
 		C99FD92A1A4C4F2F000AB1A6 /* ProgramOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C99FD9291A4C4F2F000AB1A6 /* ProgramOverviewCell.m */; };
 		C9A4350C1A9C254100F85046 /* xmbh_Auto_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A4350B1A9C254100F85046 /* xmbh_Auto_Model.m */; };
 		C9A4350E1A9C48F700F85046 /* libDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A4350D1A9C48F700F85046 /* libDialog.a */; };
+		C9A435121A9CB61B00F85046 /* YSJL_HqsjVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A435111A9CB61B00F85046 /* YSJL_HqsjVC.m */; };
 		C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */; };
 		C9A95B491A613C890017BE2B /* ProgressOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A95B481A613C890017BE2B /* ProgressOverviewCell.m */; };
 		C9A95B4C1A613CD50017BE2B /* TestProgressContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A95B4B1A613CD50017BE2B /* TestProgressContentCell.m */; };
@@ -358,6 +359,8 @@
 		C9A4350A1A9C254100F85046 /* xmbh_Auto_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xmbh_Auto_Model.h; sourceTree = "<group>"; };
 		C9A4350B1A9C254100F85046 /* xmbh_Auto_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xmbh_Auto_Model.m; sourceTree = "<group>"; };
 		C9A4350D1A9C48F700F85046 /* libDialog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDialog.a; sourceTree = "<group>"; };
+		C9A435101A9CB61B00F85046 /* YSJL_HqsjVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSJL_HqsjVC.h; sourceTree = "<group>"; };
+		C9A435111A9CB61B00F85046 /* YSJL_HqsjVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSJL_HqsjVC.m; sourceTree = "<group>"; };
 		C9A8B6091A490728008E94B7 /* CommonLogicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLogicCell.h; sourceTree = "<group>"; };
 		C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonLogicCell.m; sourceTree = "<group>"; };
 		C9A95B471A613C890017BE2B /* ProgressOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressOverviewCell.h; sourceTree = "<group>"; };
@@ -608,6 +611,7 @@
 		C91ACE141A4FA01D0037757A /* TooLsVC */ = {
 			isa = PBXGroup;
 			children = (
+				C9A4350F1A9CB5ED00F85046 /* YSJL_HqsjVC */,
 				C97C77451A76A8670016C779 /* FullScreenPreviewVC */,
 				C90F31161A729DB300A7A06E /* TemplatesListVC */,
 				C970946D1A62D36A00141DC5 /* DepMansVC */,
@@ -1393,6 +1397,15 @@
 			path = xmbh_Auto_Model;
 			sourceTree = "<group>";
 		};
+		C9A4350F1A9CB5ED00F85046 /* YSJL_HqsjVC */ = {
+			isa = PBXGroup;
+			children = (
+				C9A435101A9CB61B00F85046 /* YSJL_HqsjVC.h */,
+				C9A435111A9CB61B00F85046 /* YSJL_HqsjVC.m */,
+			);
+			path = YSJL_HqsjVC;
+			sourceTree = "<group>";
+		};
 		C9A8B6021A490682008E94B7 /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1985,6 +1998,7 @@
 				C97094561A62D09B00141DC5 /* PlanningDepartmentViewController.m in Sources */,
 				C9A95B491A613C890017BE2B /* ProgressOverviewCell.m in Sources */,
 				C970945E1A62D09B00141DC5 /* FactoryTaskViewController.m in Sources */,
+				C9A435121A9CB61B00F85046 /* YSJL_HqsjVC.m in Sources */,
 				C90EA2871A6BF68D0038450A /* IPadScanViewController.m in Sources */,
 				C9E184C71A90AADF005690BD /* SystemSettingsViewController.m in Sources */,
 				C97094601A62D09B00141DC5 /* CheckTaskViewController.m in Sources */,
