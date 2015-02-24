@@ -36,7 +36,9 @@
  */
 - (NSString *)autocompleteString
 {
-    return self.jlqjmc;
+    
+    NSString *showStr = [NSString stringWithFormat:@"%@-%@-%@-%@",[self.jlqjmc isNotNull]?self.jlqjmc:@"*",[self.jltx isNotNull]?self.jltx:@"*",[self.clfw isNotNull]?self.clfw:@"*",[self.bj isNotNull]?self.bj:@"*"];
+    ;    return showStr;
 }
 
 @end

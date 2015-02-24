@@ -271,6 +271,7 @@
 {
     [super viewWillAppear:animated];
     
+     [self loadInitDutyc];
     [self updateViewDataWithShowDict:_m_showDict];
 }
 
@@ -553,7 +554,7 @@
     
     [self Add_RAC_Attention];
     
-    [self loadInitDutyc];
+   
     
     self.isOpen = NO;
     

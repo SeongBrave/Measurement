@@ -6364,7 +6364,7 @@
                                                             <action selector="Ysjl_hqsj_BtnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="rVG-YJ-GlC"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M3i-Yz-sH5">
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M3i-Yz-sH5">
                                                         <rect key="frame" x="138" y="15" width="110" height="26"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="26" id="jdw-9L-8TA"/>
@@ -6377,15 +6377,26 @@
                                                             <action selector="Ysjl_ghzsmb_btnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="jD6-On-99F"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWR-So-G73">
+                                                        <rect key="frame" x="714" y="13" width="30" height="30"/>
+                                                        <state key="normal" title="刷新">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="Ysjl_RefreshBtnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="4CO-OF-md7"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="M3i-Yz-sH5" firstAttribute="leading" secondItem="lNB-lN-1rb" secondAttribute="trailing" constant="23" id="1d4-BU-6yQ"/>
                                                     <constraint firstItem="lNB-lN-1rb" firstAttribute="leading" secondItem="gqG-9n-DaK" secondAttribute="leading" constant="25" id="44s-i5-mbL"/>
+                                                    <constraint firstAttribute="trailing" secondItem="CWR-So-G73" secondAttribute="trailing" constant="24" id="B5O-2a-zrm"/>
                                                     <constraint firstItem="lNB-lN-1rb" firstAttribute="top" secondItem="gqG-9n-DaK" secondAttribute="top" constant="15" id="DGz-L1-CBW"/>
                                                     <constraint firstItem="M3i-Yz-sH5" firstAttribute="centerY" secondItem="lNB-lN-1rb" secondAttribute="centerY" id="Ufh-Ne-vdm"/>
                                                     <constraint firstAttribute="width" constant="768" id="WCm-YW-rMS"/>
                                                     <constraint firstAttribute="height" constant="56" id="qs3-T7-x8x"/>
+                                                    <constraint firstAttribute="centerY" secondItem="CWR-So-G73" secondAttribute="centerY" id="yiU-Iq-vsH"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PvL-24-FxC" userLabel="ContentView">
@@ -6472,26 +6483,19 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="768" height="56"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etV-N4-y9j">
-                                                        <rect key="frame" x="25" y="15" width="90" height="26"/>
+                                                        <rect key="frame" x="25" y="15" width="110" height="26"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="26" id="H0n-WN-9LP"/>
-                                                            <constraint firstAttribute="width" constant="90" id="IvG-L4-8mE"/>
+                                                            <constraint firstAttribute="width" constant="110" id="IvG-L4-8mE"/>
                                                         </constraints>
-                                                        <state key="normal" title="Button" image="right-button-hqsj">
+                                                        <state key="normal" title="Button" image="right-button-ghzsmb">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="zs_GhzsmbBtnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="2gJ-g1-Iyh"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXl-aA-hpx">
-                                                        <rect key="frame" x="138" y="15" width="110" height="26"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="26" id="Yw8-Zz-Wrg"/>
-                                                            <constraint firstAttribute="width" constant="110" id="otL-QX-Iw3"/>
-                                                        </constraints>
-                                                        <state key="normal" image="right-button-ghzsmb">
-                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBT-2o-pTI">
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBT-2o-pTI">
                                                         <rect key="frame" x="671" y="15" width="70" height="26"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="26" id="eqi-FO-8KN"/>
@@ -6504,16 +6508,24 @@
                                                             <action selector="FullScreenPreviewBtnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="dhw-p9-dgI"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1W-IK-GO1">
+                                                        <rect key="frame" x="629" y="13" width="30" height="30"/>
+                                                        <state key="normal" title="刷新">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="Zs_RefreshBtnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="Sq3-OX-DH0"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="jBT-2o-pTI" secondAttribute="trailing" constant="27" id="6QE-im-ye3"/>
                                                     <constraint firstAttribute="height" constant="56" id="76V-t5-Evj"/>
-                                                    <constraint firstItem="cXl-aA-hpx" firstAttribute="leading" secondItem="etV-N4-y9j" secondAttribute="trailing" constant="23" id="Mre-IA-6Ae"/>
+                                                    <constraint firstItem="jBT-2o-pTI" firstAttribute="leading" secondItem="d1W-IK-GO1" secondAttribute="trailing" constant="12" id="HBY-DM-1pw"/>
                                                     <constraint firstAttribute="width" constant="768" id="OKm-Pt-UHV"/>
-                                                    <constraint firstItem="cXl-aA-hpx" firstAttribute="centerY" secondItem="etV-N4-y9j" secondAttribute="centerY" id="OTh-pD-aCQ"/>
                                                     <constraint firstItem="etV-N4-y9j" firstAttribute="leading" secondItem="4OB-rc-bMe" secondAttribute="leading" constant="25" id="UpB-59-tHj"/>
-                                                    <constraint firstItem="cXl-aA-hpx" firstAttribute="centerY" secondItem="jBT-2o-pTI" secondAttribute="centerY" id="oF4-Gv-Wp5"/>
+                                                    <constraint firstItem="d1W-IK-GO1" firstAttribute="centerY" secondItem="jBT-2o-pTI" secondAttribute="centerY" id="Y3e-Xd-PVN"/>
                                                     <constraint firstItem="etV-N4-y9j" firstAttribute="top" secondItem="4OB-rc-bMe" secondAttribute="top" constant="15" id="z1a-ye-PEb"/>
                                                 </constraints>
                                             </view>
@@ -6668,7 +6680,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXa-Jj-DgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="718" y="-9181"/>
+            <point key="canvasLocation" x="-521" y="-9442"/>
         </scene>
         <!--Full Screen PreviewVC-->
         <scene sceneID="XbH-hE-Fn6">
@@ -10082,7 +10094,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfi-Fd-HrD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="236" y="-9542"/>
+            <point key="canvasLocation" x="439" y="-9551"/>
         </scene>
         <!--收费管理-->
         <scene sceneID="YN8-L3-Xjm">

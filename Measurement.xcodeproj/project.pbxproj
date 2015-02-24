@@ -10,7 +10,6 @@
 		C903B0C51A5EB1B00038AA1B /* PlanDetailsHead_DepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C903B0C41A5EB1B00038AA1B /* PlanDetailsHead_DepCell.m */; };
 		C903B0C81A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C903B0C71A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m */; };
 		C903B0D11A5EBF910038AA1B /* DepMans_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = C903B0D01A5EBF910038AA1B /* DepMans_Cell.m */; };
-		C90EA2481A6BC6950038450A /* libDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C90EA2271A6BC6950038450A /* libDialog.a */; };
 		C90EA24A1A6BC6960038450A /* libToolsLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C90EA2391A6BC6950038450A /* libToolsLib.a */; };
 		C90EA2741A6BC7750038450A /* libScanViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C90EA2721A6BC7750038450A /* libScanViewController.a */; };
 		C90EA2861A6BF68D0038450A /* BottomTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90EA2831A6BF68D0038450A /* BottomTabBarView.m */; };
@@ -95,6 +94,7 @@
 		C99F47C11A4B0BAF007C68AB /* CompanyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F47C01A4B0BAF007C68AB /* CompanyCollectionViewCell.m */; };
 		C99FD92A1A4C4F2F000AB1A6 /* ProgramOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C99FD9291A4C4F2F000AB1A6 /* ProgramOverviewCell.m */; };
 		C9A4350C1A9C254100F85046 /* xmbh_Auto_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A4350B1A9C254100F85046 /* xmbh_Auto_Model.m */; };
+		C9A4350E1A9C48F700F85046 /* libDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A4350D1A9C48F700F85046 /* libDialog.a */; };
 		C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */; };
 		C9A95B491A613C890017BE2B /* ProgressOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A95B481A613C890017BE2B /* ProgressOverviewCell.m */; };
 		C9A95B4C1A613CD50017BE2B /* TestProgressContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A95B4B1A613CD50017BE2B /* TestProgressContentCell.m */; };
@@ -167,7 +167,6 @@
 		C903B0CF1A5EBF910038AA1B /* DepMans_Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepMans_Cell.h; sourceTree = "<group>"; };
 		C903B0D01A5EBF910038AA1B /* DepMans_Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepMans_Cell.m; sourceTree = "<group>"; };
 		C90EA2261A6BC6950038450A /* Dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dialog.h; sourceTree = "<group>"; };
-		C90EA2271A6BC6950038450A /* libDialog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDialog.a; sourceTree = "<group>"; };
 		C90EA22D1A6BC6950038450A /* NSDate+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Common.h"; sourceTree = "<group>"; };
 		C90EA22E1A6BC6950038450A /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeAgo.h"; sourceTree = "<group>"; };
 		C90EA22F1A6BC6950038450A /* NSDictionary+GetJsonStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+GetJsonStr.h"; sourceTree = "<group>"; };
@@ -358,6 +357,7 @@
 		C99FD9291A4C4F2F000AB1A6 /* ProgramOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramOverviewCell.m; sourceTree = "<group>"; };
 		C9A4350A1A9C254100F85046 /* xmbh_Auto_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xmbh_Auto_Model.h; sourceTree = "<group>"; };
 		C9A4350B1A9C254100F85046 /* xmbh_Auto_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xmbh_Auto_Model.m; sourceTree = "<group>"; };
+		C9A4350D1A9C48F700F85046 /* libDialog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDialog.a; sourceTree = "<group>"; };
 		C9A8B6091A490728008E94B7 /* CommonLogicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLogicCell.h; sourceTree = "<group>"; };
 		C9A8B60A1A490728008E94B7 /* CommonLogicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonLogicCell.m; sourceTree = "<group>"; };
 		C9A95B471A613C890017BE2B /* ProgressOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressOverviewCell.h; sourceTree = "<group>"; };
@@ -467,8 +467,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F65BA8D3002CC2F8A0A2DE2E /* libPods.a in Frameworks */,
+				C9A4350E1A9C48F700F85046 /* libDialog.a in Frameworks */,
 				C90EA2741A6BC7750038450A /* libScanViewController.a in Frameworks */,
-				C90EA2481A6BC6950038450A /* libDialog.a in Frameworks */,
 				C90EA24A1A6BC6960038450A /* libToolsLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,7 +495,7 @@
 			isa = PBXGroup;
 			children = (
 				C90EA2261A6BC6950038450A /* Dialog.h */,
-				C90EA2271A6BC6950038450A /* libDialog.a */,
+				C9A4350D1A9C48F700F85046 /* libDialog.a */,
 			);
 			path = Dialog;
 			sourceTree = "<group>";

@@ -173,6 +173,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *m_ysjl_ScrollView;
 
 @property (weak, nonatomic) IBOutlet UIWebView *m_ysjl_WebView;
+@property(nonatomic , strong)NSString *m_ysjl_saveUrl_Str;
 
 @property (strong, nonatomic) WebViewJavascriptBridge *m_ysjl_javascriptBridge;
 
@@ -190,6 +191,7 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *m_zs_ScrollView;
 @property (weak, nonatomic) IBOutlet UIWebView *m_zs_WebView;
+@property(nonatomic , strong)NSString *m_zs_saveUrl_Str;
 @property (strong, nonatomic) WebViewJavascriptBridge *m_zs_javascriptBridge;
 
 @property(nonatomic , strong)NSDictionary *m_zs_retDict;
@@ -230,7 +232,7 @@
     _m_Ggxx_saveDataDict[@"usercode"] = user.usercode;
     
     _m_Ggxx_saveDataDict[@"yqid"] = @"";
-    _m_Ggxx_saveDataDict[@"xmbh"] = [_m_qjxxDict GetLabelWithKey:@"xmbh"];
+    _m_Ggxx_saveDataDict[@"xmbh"] = self.m_Sbxq_saveDataDict[@"xmbh"];
     _m_Ggxx_saveDataDict[@"qjytbh"] = @"";
     _m_Ggxx_saveDataDict[@"jdrq"] = @"";
     
@@ -1050,7 +1052,7 @@
     self.m_ccbh_TF.text =  [sbxqDict GetLabelWithKey:@"ccbh"];
 
     
-    self.m_sl_TF.text =  [[sbxqDict GetLabelWithKey:@"sl"] isNotNull]?@"1":[sbxqDict GetLabelWithKey:@"sl"];
+    self.m_sl_TF.text =  [[sbxqDict GetLabelWithKey:@"sl"] isNotNull]?[sbxqDict GetLabelWithKey:@"sl"]:@"1";
     self.m_dw_DTF.text =  [sbxqDict GetLabelWithKey:@"by1"];
 
     
@@ -1669,7 +1671,7 @@
         
         [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*2,0} animated:YES];
     
-        NSDictionary *dict = @{@"xmbh":[_m_qjxxDict GetLabelWithKey:@"xmbh"],@"jclxbh":self.m_Sbxq_saveDataDict[@"jclxbh"]};
+        NSDictionary *dict = @{@"xmbh":self.m_Sbxq_saveDataDict[@"xmbh"],@"jclxbh":self.m_Sbxq_saveDataDict[@"jclxbh"]};
         [self PopYSJL_TemplatesListViewControllerWithZSretDict:dict];
     }else
     {
@@ -1899,6 +1901,19 @@
     
     
 }
+- (IBAction)zs_GhzsmbBtnClick:(id)sender {
+}
+- (IBAction)Ysjl_RefreshBtnClick:(id)sender {
+    
+     [self load_ysjl_WebViewWithjljspmc:_m_ysjl_saveUrl_Str];
+}
+
+- (IBAction)Zs_RefreshBtnClick:(id)sender {
+    
+    [self load_zs_WebViewWithjljspmc:_m_zs_saveUrl_Str];
+    
+    
+}
 
 /**
  *  证书 底部按钮事件
@@ -2109,7 +2124,6 @@
     
     self.m_Ggxx_saveDataDict[@"yqid"] = self.yqid_Str;
     
-    self.m_Ggxx_saveDataDict[@"xmbh"] = [_m_qjxxDict GetLabelWithKey:@"xmbh"];
     self.m_Ggxx_saveDataDict[@"jdrq"] = [jdrqStr GetNotNullStr];
     
     self.m_Ggxx_saveDataDict[@"jdzq"] = [self.m_jdzq_DTF.text GetNotNullStr];
@@ -2126,16 +2140,19 @@
     {
          self.m_Ggxx_saveDataDict[@"jdrbh"] = @"";
     }
-    
-    self.m_Ggxx_saveDataDict[@"hyrbh"] = [self.m_hyy_DTF.m_bm GetNotNullStr];
-    self.m_Ggxx_saveDataDict[@"pzrbh"] = [self.m_pzr_DTF.m_bm GetNotNullStr];
 
     self.m_Ggxx_saveDataDict[@"jddd"] = [self.m_jddd_TF.text GetNotNullStr];
     self.m_Ggxx_saveDataDict[@"jszt"] = [self.m_jszt_TF.text GetNotNullStr];
     self.m_Ggxx_saveDataDict[@"qt"] = [self.m_qt_TF.text GetNotNullStr];
     
-    
-    
+//    if (@"j001") {
+//        
+//    }
+//    if ([[self get_jlbzkhzsID] GetNotNullStr].length <1) {
+//        
+//        return;
+//        
+//    }
     self.m_Ggxx_saveDataDict[@"jlbzkhzsID"] = [[self get_jlbzkhzsID] GetNotNullStr];
     self.m_Ggxx_saveDataDict[@"bzsbbhs"] = [[self get_bzsbbhs] GetNotNullStr];
     self.m_Ggxx_saveDataDict[@"syzshs"] = [[self get_syzshs] GetNotNullStr];
@@ -2486,27 +2503,22 @@
 
         hyr_Model *model = _m_hyyTFArr[indexPath.row];
         
-        self.m_hyy_DTF.m_bm = model.m_key;
         if ([model.m_key isEqualToString:self.m_jdrybh_Str]) {
 
             [Dialog toast:self withMessage:@"核验人与检定人不能为同一个人!"];
             
         }else
         {
-            [self.m_Ggxx_saveDataDict setObject:model.m_key forKey:@"pzrbh"];
+              self.m_Ggxx_saveDataDict[@"hyrbh"] = model.m_key;
         }
         
         
         
     }else if(textField == _m_pzr_DTF)
     {
-
         pzr_Model *model = _m_pzrTFArr[indexPath.row];
-        
-        self.m_pzr_DTF.m_bm = model.usercode;
-        
-        [self.m_Ggxx_saveDataDict setObject:model.usercode forKey:@"pzrbh"];
-        
+        self.m_Ggxx_saveDataDict[@"pzrbh"] = model.usercode;
+
         
     }
     
@@ -2660,7 +2672,7 @@
      *  获取单位名称
      */
     [[BaseNetWork getInstance] hideDialog];
-    [[[[[BaseNetWork getInstance] rac_postPath:@"findJlkhzrBzqsbJsyj.do" parameters:@{@"jdrq":strDate,@"xmbh":[_m_qjxxDict GetLabelWithKey:@"xmbh"]}]map:^(id responseData)
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findJlkhzrBzqsbJsyj.do" parameters:@{@"jdrq":strDate,@"xmbh":self.m_Sbxq_saveDataDict[@"xmbh"]}]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
@@ -2771,7 +2783,7 @@
              
              
              [self load_zs_WebViewWithjljspmc:retDict[@"zsbh"]];
-             
+              self.m_zs_saveUrl_Str = retDict[@"zsbh"];
          }
          
          
@@ -2809,7 +2821,7 @@
              
 
              [self load_ysjl_WebViewWithjljspmc:model.jljspmc];
-             
+             self.m_ysjl_saveUrl_Str = model.jljspmc;
              
              
          }else

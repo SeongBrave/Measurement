@@ -107,11 +107,11 @@
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    [self.m_dialog showProgress:self];
+//    [self.m_dialog showProgress:self];
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.m_dialog hideProgress];
+//    [self.m_dialog hideProgress];
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {

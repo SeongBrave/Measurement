@@ -85,7 +85,7 @@
 -(void)Add_RAC_Attention
 {
     //    xmbh=I0316&jclxbh=J001
-    NSDictionary *dict = @{@"xmbh":_m_ysjlParameterDict[@"xmbh"],@"jclxbh":_m_ysjlParameterDict[@"jclxbh"]};
+    NSDictionary *dict = @{@"xmbh":self.m_ysjlParameterDict[@"xmbh"],@"jclxbh":self.m_ysjlParameterDict[@"jclxbh"]};
     [[BaseNetWork getInstance] showDialog];
     @weakify(self)
     [[[[BaseNetWork getInstance] rac_postPath:@"findYsjlmb.do" parameters:dict]map:^(id responseData)
