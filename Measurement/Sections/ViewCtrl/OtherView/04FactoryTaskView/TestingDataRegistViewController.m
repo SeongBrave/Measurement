@@ -33,6 +33,18 @@
 
 
 /**
+ *  表示当前所在的位置（0：设备详情 1:公共信息 2:原始记录 3:证书）
+ */
+@property(nonatomic , assign)NSInteger n_stept;
+
+@property(nonatomic , assign)BOOL sbxq_Flag;
+@property(nonatomic , assign)BOOL ggxx_Flag;
+@property(nonatomic , assign)BOOL ysjl_Flag;
+@property(nonatomic , assign)BOOL zs_Flag;
+
+
+
+/**
  *  保存检定人员编号
  */
 @property(nonatomic , strong)NSString *m_jdrybh_Str;
@@ -426,6 +438,17 @@
 -(void)layoutMainCustomView
 {
     
+    
+    /**
+     *  初始化标志状态
+     */
+    //初始化状态为 设备详情
+    self.n_stept = 0;
+    self.sbxq_Flag = NO;
+     self.ggxx_Flag = NO;
+     self.ysjl_Flag = NO;
+     self.zs_Flag = NO;
+    self.yqid_Str = nil;
 
     
     self.m_jdrq_V.layer.borderWidth = 2.0;
@@ -497,6 +520,106 @@
     }];
 
 }
+
+/**
+ *  初始化设备详情界面
+ */
+-(void)layout_SbxqInterface
+{
+     self.n_stept = 0;
+}
+/**
+ *  初始化公共信息界面
+ */
+-(void)layout_GgxxInterface
+{
+    self.n_stept = 1;
+    
+    if (!self.sbxq_Flag) {
+        LoginedUser *loginUsr = [LoginedUser sharedInstance];
+        @weakify(self)
+        [[BaseNetWork getInstance] showDialogWithVC:self];
+        NSDictionary *dict =@{@"usercode":loginUsr.usercode,@"yqid":self.yqid_Str};
+        [[[[[BaseNetWork getInstance] rac_postPath:@"initDetectionDataRegistration.do" parameters:dict]map:^(id responseData)
+           {
+               NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+               
+               return dict;
+           }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+         subscribeNext:^(NSDictionary *retDict) {
+             
+             if ([retDict[@"ret"] isEqualToString:@"0"]) {
+                 [Dialog toast:self withMessage:@"获取公共信息失败!"];
+             }else
+             {
+                 @strongify(self)
+                 [ self update_ggxxViewByYretDict:retDict];
+             }
+             
+             
+             
+         }error:^(NSError *error){
+             
+             
+             
+         }];
+    }
+    
+    self.sbxq_Flag = YES;
+//    @weakify(self);
+//    [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        
+//        make.centerX.equalTo(self.m_ggxx_Btn.mas_centerX);
+//        make.width.equalTo(@60);
+//        make.height.equalTo(@4);
+//        make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
+//    }];
+//    [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+//        @strongify(self)
+//        [self.m_menuBarView layoutIfNeeded];
+//        
+//    }completion:NULL];
+//    
+//    
+//    [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width,0} animated:YES];
+    
+    
+    
+    
+    
+}
+/**
+ *  初始化原始记录界面
+ */
+-(void)layout_YsjlInterface
+{
+    self.n_stept = 2;
+    
+    if (!self.ggxx_Flag) {
+        NSDictionary *dict = @{@"xmbh":self.m_Sbxq_saveDataDict[@"xmbh"],@"jclxbh":self.m_Sbxq_saveDataDict[@"jclxbh"]};
+        [self PopYSJL_TemplatesListViewControllerWithZSretDict:dict];
+    }
+    
+    self.ggxx_Flag = YES;
+    
+    
+}
+/**
+ *  初始化证书界面
+ */
+-(void)layout_ZsInterface
+{
+    self.n_stept = 3;
+    
+    if (!self.ysjl_Flag) {
+        [self PopZS_TemplatesListViewControllerWithZSretDict:self.m_ysjl_retDict];
+    }
+    self.ysjl_Flag = YES;
+    
+    
+    
+    
+}
 /**
  *  添加rac检测
  */
@@ -510,12 +633,62 @@
         
         @strongify(self);
         CGPoint offset = [value CGPointValue];
-        if (offset.x < 0.0f) {
-            [self.mainScrollView setContentOffset:CGPointZero animated:NO];
+        
+        switch (_n_stept) {
+            case 0:
+            {
+                if (self.sbxq_Flag == NO&&self.yqid_Str == nil) {
+                    
+                     [self.mainScrollView setContentOffset:CGPointZero animated:NO];
+                }
+            }
+                break;
+            case 1:
+            {
+                
+                if (self.ggxx_Flag == NO&&[_m_ggxx_retDict[@"ret"]intValue] != 1) {
+                    if (offset.x < 0.0f) {
+                        [self.mainScrollView setContentOffset:CGPointZero animated:NO];
+                    }
+                    else if (offset.x >= self.view.frame.size.width){
+                        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*1,0} animated:NO];
+                    }
+                }
+               
+            }
+                break;
+            case 2:
+            {
+                
+                if (self.ysjl_Flag == NO&&[self.m_ysjl_retDict[@"ret"]intValue] != 1) {
+                    if (offset.x < 0.0f) {
+                        [self.mainScrollView setContentOffset:CGPointZero animated:NO];
+                    }
+                    else if (offset.x >= self.view.frame.size.width*2){
+                        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*2,0} animated:NO];
+                    }
+                }
+                
+               
+            }
+                break;
+            case 3:
+            {
+                if (offset.x < 0.0f) {
+                    [self.mainScrollView setContentOffset:CGPointZero animated:NO];
+                }
+                else if (offset.x >= self.view.frame.size.width*3){
+                    [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*3,0} animated:NO];
+                }
+            }
+                break;
+                
+            default:
+                break;
         }
-        else if (offset.x >= self.view.frame.size.width*3){
-            [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*3,0} animated:NO];
-        }
+        
+        
+       
         
     }];
     
@@ -523,7 +696,7 @@
         if (x.first == self.mainScrollView) {
             CGPoint offset = [x.first contentOffset];
             NSInteger currentPage = (NSInteger)roundf(offset.x / self.view.frame.size.width);
-            
+            @strongify(self)
             [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
                 
                 make.height.equalTo(@4);
@@ -532,22 +705,28 @@
                     case 0:
                         make.centerX.equalTo(self.m_sbxq_Btn.mas_centerX);
                         make.width.equalTo(@60);
+                       
+                        [self layout_SbxqInterface];
                         //                        
                         break;
                     case 1:
                         make.centerX.equalTo(self.m_ggxx_Btn.mas_centerX);
                         make.width.equalTo(@60);
+                         [self layout_GgxxInterface];
                         break;
                         
                     case 2:
                         make.centerX.equalTo(self.m_ysjl_Btn.mas_centerX);
                         make.width.equalTo(@60);
-                        
+                      
+                        [self layout_YsjlInterface];
                         break;
                         
                     case 3:
                         make.centerX.equalTo(self.m_zs_Btn.mas_centerX);
                         make.width.equalTo(@30);
+                        
+                        [self layout_ZsInterface];
                         break;
                         
                     default:
