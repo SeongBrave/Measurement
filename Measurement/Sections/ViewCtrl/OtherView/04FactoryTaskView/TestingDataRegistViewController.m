@@ -1606,6 +1606,10 @@
     //JLQJBH ->计量器具名称编号
     
     
+    UIButton *saveBtn = (UIButton *)sender;
+    
+    
+    
     [self save_Sbxq_Data];
     
     @weakify(self)
@@ -1624,6 +1628,10 @@
              self.yqid_Str = retDict[@"yqid"];
              self.m_Sbxq_saveDataDict[@"yqid"] = self.yqid_Str;
              [Dialog toast:self withMessage:@"保存成功！"];
+             
+//              [saveBtn setImage:[UIImage imageNamed:@"right-button-ybc"] forState:UIControlStateNormal];
+             
+             [saveBtn setBackgroundImage:[UIImage imageNamed:@"right-button-ybc.png"] forState:UIControlStateNormal];
          }else
          {
              [Dialog toast:self withMessage:@"保存失败！"];
@@ -1765,7 +1773,7 @@
     */
     
     
-    
+    UIButton *saveBtn = (UIButton *)sender;
     [self save_ggxx_Data];
     
        @weakify(self)
@@ -1785,6 +1793,8 @@
          
          if ([retStr intValue] == 1) {
              [Dialog toast:self withMessage:@"保存成功！"];
+             
+               [saveBtn setImage:[UIImage imageNamed:@"right-button-ybc"] forState:UIControlStateNormal];
          }else
          {
              [Dialog toast:self withMessage:@"保存失败！"];
@@ -1877,6 +1887,7 @@
 - (IBAction)Ysjl_SaveBtnClick:(id)sender {
     
     
+    UIButton *saveBtn = (UIButton *)sender;
 //    [self.m_ysjl_javascriptBridge callHandler:@"hqlssj" data:self.yqid_Str responseCallback:^(id response)
 //     {
 //      
@@ -1896,6 +1907,8 @@
         @strongify(self)
         
         [self pasteWithDictStr:response];
+        
+        [saveBtn setImage:[UIImage imageNamed:@"right-button-ybc"] forState:UIControlStateNormal];
     
   
     }];
@@ -1906,6 +1919,7 @@
 
 -(void)postToNetWithDict:(NSDictionary *)dict
 {
+    
     
      LoginedUser *usr = [LoginedUser sharedInstance];
     
@@ -1945,6 +1959,8 @@
                  }else
                  {
                       [Dialog toast:self withMessage:@"保存成功!"];
+                     
+                     
                  }
                  
              }error:^(NSError *error){

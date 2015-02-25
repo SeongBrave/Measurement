@@ -84,9 +84,9 @@
                                             <constraint firstAttribute="height" constant="18" id="K5r-vB-Fok"/>
                                             <constraint firstAttribute="width" constant="94" id="YaU-gL-3bR"/>
                                         </constraints>
-                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.72549019609999998" green="0.066666666669999999" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal">
-                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.72549019607843135" green="0.066666666666666666" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -140,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="80d-7d-H4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4517" y="-1986"/>
+            <point key="canvasLocation" x="-4278" y="-2275"/>
         </scene>
         <!--计划总揽-->
         <scene sceneID="Ps9-hg-lLv">
@@ -4632,7 +4632,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7jn-db-C0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4445" y="-3014"/>
+            <point key="canvasLocation" x="-4100" y="-3180"/>
         </scene>
         <!--下厂任务-->
         <scene sceneID="sa5-i0-JEP">
@@ -15657,7 +15657,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ky9-bH-6HE"/>
         <segue reference="fdr-BD-u06"/>
+        <segue reference="wF8-d4-iYe"/>
     </inferredMetricsTieBreakers>
 </document>
