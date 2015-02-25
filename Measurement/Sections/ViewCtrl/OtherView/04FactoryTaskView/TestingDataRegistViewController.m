@@ -43,6 +43,20 @@
 @property(nonatomic , assign)BOOL zs_Flag;
 
 
+/**
+ *  表示是否已经编辑  @1 便是编辑过 显示保存 @0未编辑过 button显示 已保存
+ */
+@property(nonatomic , strong)NSNumber *is_sbxq_Edited;
+
+/**
+ *  表示是否已经编辑  @1 便是编辑过 显示保存 @0未编辑过 button显示 已保存
+ */
+@property(nonatomic , strong)NSNumber *is_ggxx_Edited;
+
+/**
+ *  表示是否已经编辑  @1 便是编辑过 显示保存 @0未编辑过 button显示 已保存
+ */
+@property(nonatomic , strong)NSNumber *is_ysjl_Edited;
 
 /**
  *  保存检定人员编号
@@ -116,10 +130,12 @@
  */
 @property(nonatomic ,strong) NSDictionary *m_jcsj_Dict;
 
+@property (weak, nonatomic) IBOutlet UIButton *sbxq_SaveBtn;
 
 /**
  *  公共信息
  */
+@property (weak, nonatomic) IBOutlet UIButton *ggxx_SaveBtn;
 
 @property(nonatomic , strong)NSDictionary *m_jdy_Dict;
 
@@ -181,6 +197,8 @@
  *  原始记录
  */
 @property (weak, nonatomic) IBOutlet UIButton *m_ysjl_Btn;
+
+@property (weak, nonatomic) IBOutlet UIButton *ysjl_SaveBtn;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *m_ysjl_ScrollView;
 
@@ -337,50 +355,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    switch (_m_dataSourceType) {
-        case TxmDataSourceType:
-        {
-            [self update_sbxqViewByTxmDict:_m_qjxxDict];
-        }
-            
-            break;
-        case TxmNotDataSourceType:
-        {
-            
-            /**
-             *  设置隐藏参数
-             */
-            [self update_yczd];
-            /**
-             *  扫描条形码未得到数据时 将扫描到得条形码赋值到界面
-             */
-             self.m_txm_TF.text =  [_m_qjxxDict GetLabelWithKey:@"txm"];
-        }
-            
-            break;
-        case YqidDataSourceType:
-        {
-             [self update_sbxqViewByYqidDict:_m_qjxxDict];
-            
-        }
-            
-            break;
-        case NullDataSourceType:
-        {
-            /**
-             *  设置隐藏参数
-             */
-            [self update_yczd];
-        }
-            
-            break;
-            
-        default:
-            break;
-    }
-
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -449,6 +423,24 @@
      self.ysjl_Flag = NO;
      self.zs_Flag = NO;
     self.yqid_Str = nil;
+    
+    /**
+     *  1表示编辑过 因为在这初始化界面默认编辑过，需要点击保存按钮，所以button显示保存
+     */
+    self.is_sbxq_Edited = @1;
+    
+    /**
+     *  1表示编辑过 因为在这初始化界面默认编辑过，需要点击保存按钮，所以button显示保存
+     */
+    self.is_ggxx_Edited = @1;
+    
+    
+    /**
+     *  1表示编辑过 因为在这初始化界面默认编辑过，需要点击保存按钮，所以button显示保存
+     */
+    self.is_ysjl_Edited = @1;
+    
+    
 
     
     self.m_jdrq_V.layer.borderWidth = 2.0;
@@ -905,6 +897,57 @@
      }];
     
     
+    
+    /**
+     *  rac_prepareForReuseSignal 很关键 否则重用的时候会崩溃
+     *
+     */
+//    RAC(self,sbxq_SaveBtn.selected) =
+//    [RACObserve(self,is_sbxq_Edited)
+//     map:^id(NSNumber *number)
+//     {
+//         return @0;
+//         
+//     }];
+    
+    [RACObserve(self,is_sbxq_Edited) subscribeNext:^(NSNumber *number){
+       
+        if (number.intValue == 0) {
+             [self.sbxq_SaveBtn setBackgroundImage:[UIImage imageNamed:@"right-button-ybc.png"] forState:UIControlStateNormal];
+            
+        }else
+        {
+            [self.sbxq_SaveBtn setBackgroundImage:[UIImage imageNamed:@"right-button-bc.png"] forState:UIControlStateNormal];
+        }
+        
+    }];
+    
+    [RACObserve(self,is_ggxx_Edited) subscribeNext:^(NSNumber *number){
+        
+        if (number.intValue == 0) {
+            [self.ggxx_SaveBtn setImage:[UIImage imageNamed:@"right-button-ybc.png"] forState:UIControlStateNormal];
+            
+        }else
+        {
+            [self.ggxx_SaveBtn setImage:[UIImage imageNamed:@"right-button-bc.png"] forState:UIControlStateNormal];
+            
+        }
+        
+    }];
+    
+    [RACObserve(self,is_ysjl_Edited) subscribeNext:^(NSNumber *number){
+        
+        if (number.intValue == 0) {
+            [self.ysjl_SaveBtn setBackgroundImage:[UIImage imageNamed:@"right-button-ybc.png"] forState:UIControlStateNormal];
+            
+        }else
+        {
+            [self.ysjl_SaveBtn setBackgroundImage:[UIImage imageNamed:@"right-button-bc.png"] forState:UIControlStateNormal];
+        }
+        
+    }];
+
+    
 //    /**
 //     *  获取单位名称
 //     */
@@ -1255,6 +1298,25 @@
     
     self.yqid_Str = [sbxqDict GetLabelWithKey:@"yqid"];
     
+    if (self.yqid_Str.length >0) {
+        /**
+         *  0为显示 已保存
+         */
+        self.is_sbxq_Edited = @0;
+    }else
+    {
+        /**
+         *  1表示编辑过 因为在这初始化界面默认编辑过，需要点击保存按钮，所以button显示保存
+         */
+        self.is_sbxq_Edited = @1;
+    }
+    
+    self.is_ggxx_Edited = @1;
+    
+    self.is_ysjl_Edited = @1;
+    
+    
+    
 //    /**
 //     *  条形码与仪器id的区别字段
 //     */
@@ -1297,6 +1359,15 @@
 -(void)update_sbxqViewByYqjbxx_Model:(Yqjbxx_Model *) sbxqDict
 {
    
+    /**
+     *  1表示编辑过 因为在这初始化界面默认编辑过，需要点击保存按钮，所以button显示保存
+     */
+    self.is_sbxq_Edited = @1;
+    
+    self.is_ggxx_Edited = @1;
+    
+    self.is_ysjl_Edited = @1;
+    
     _m_Sbxq_saveDataDict[@"jdzqbh"] = sbxqDict.by5;
     _m_Sbxq_saveDataDict[@"ksbh"] =sbxqDict.ssksbh;
     _m_Sbxq_saveDataDict[@"ks"] =sbxqDict.ssks;
@@ -1537,31 +1608,48 @@
  */
 -(void)loadNetData
 {
-//    @weakify(self)
-//    [[BaseNetWork getInstance] showDialogWithVC:self];
-//    NSDictionary *dict =@{@"txm":@"140000009"};
-//    [[[[[BaseNetWork getInstance] rac_postPath:@"findJiliangqjByTxm.do" parameters:dict]map:^(id responseData)
-//       {
-//           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-//           
-//           return [dict valueForKeyPath:@"qjxx"];
-//       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-//     subscribeNext:^(NSDictionary *retDict) {
-//         
-//         @strongify(self)
-//         [self update_sbxqViewByDict:retDict];
-//         
-//
-//         
-//     }error:^(NSError *error){
-//    
-//         
-//         
-//     }];
-    
-//    usercode=1114&yqid=EF83462867CE4727BEE9BEA253E15B3E
-    
-    
+   
+    switch (_m_dataSourceType) {
+        case TxmDataSourceType:
+        {
+            [self update_sbxqViewByTxmDict:_m_qjxxDict];
+        }
+            
+            break;
+        case TxmNotDataSourceType:
+        {
+            
+            /**
+             *  设置隐藏参数
+             */
+            [self update_yczd];
+            /**
+             *  扫描条形码未得到数据时 将扫描到得条形码赋值到界面
+             */
+            self.m_txm_TF.text =  [_m_qjxxDict GetLabelWithKey:@"txm"];
+        }
+            
+            break;
+        case YqidDataSourceType:
+        {
+            [self update_sbxqViewByYqidDict:_m_qjxxDict];
+            
+        }
+            
+            break;
+        case NullDataSourceType:
+        {
+            /**
+             *  设置隐藏参数
+             */
+            [self update_yczd];
+        }
+            
+            break;
+            
+        default:
+            break;
+    }
     
 
     
@@ -1628,6 +1716,11 @@
              self.yqid_Str = retDict[@"yqid"];
              self.m_Sbxq_saveDataDict[@"yqid"] = self.yqid_Str;
              [Dialog toast:self withMessage:@"保存成功！"];
+             
+             /**
+              *  1为显示 保存
+              */
+             self.is_sbxq_Edited = @1;
              
 //              [saveBtn setImage:[UIImage imageNamed:@"right-button-ybc"] forState:UIControlStateNormal];
              
@@ -1794,6 +1887,11 @@
          if ([retStr intValue] == 1) {
              [Dialog toast:self withMessage:@"保存成功！"];
              
+             /**
+              *  1为显示 保存
+              */
+             self.is_ggxx_Edited = @1;
+             
                [saveBtn setImage:[UIImage imageNamed:@"right-button-ybc"] forState:UIControlStateNormal];
          }else
          {
@@ -1959,6 +2057,11 @@
                  }else
                  {
                       [Dialog toast:self withMessage:@"保存成功!"];
+                     
+                     /**
+                      *  1为显示 保存
+                      */
+                     self.is_ysjl_Edited = @1;
                      
                      
                  }
@@ -2607,6 +2710,10 @@
             model.isSelected = !model.isSelected;
         }
         
+        /**
+         *  1为显示 保存
+         */
+        self.is_ggxx_Edited = @1;
     }
   
 }
@@ -2680,12 +2787,22 @@
          dmxx_Model *model = _m_jclxTFArr[indexPath.row];
         
         self.m_Sbxq_saveDataDict[@"jclxbh"] =model.dmbm;
+        
+        /**
+         *  1为显示 保存
+         */
+        self.is_sbxq_Edited = @1;
     
     }else if(textField == _m_dw_DTF) {
         
         dmxx_Model *model = _m_dwTFArr[indexPath.row];
 
          self.m_Sbxq_saveDataDict[@"by2"] =model.dmbm;
+        
+        /**
+         *  1为显示 保存
+         */
+        self.is_sbxq_Edited = @1;
         
         
     }else if(textField == _m_qjyt_DTF) {
@@ -2694,6 +2811,9 @@
         
         self.m_Sbxq_saveDataDict[@"qjytbh"] =model.dmbm;
         
+    
+        self.is_ggxx_Edited = @1;
+        
         
     }else if(textField == _m_jdzq_DTF)
     {
@@ -2701,6 +2821,8 @@
         dmxx_Model *model = _m_jdzqTFArr[indexPath.row];
         
          self.m_Sbxq_saveDataDict[@"jdzqbh"] =model.dmbm;
+        
+        self.is_ggxx_Edited = @1;
         
     }
      else if(textField == _m_hyy_DTF)
@@ -2717,7 +2839,9 @@
             
         }else
         {
-              self.m_Ggxx_saveDataDict[@"hyrbh"] = model.m_key;
+            self.m_Ggxx_saveDataDict[@"hyrbh"] = model.m_key;
+            
+            self.is_ggxx_Edited = @1;
         }
         
         
@@ -2758,6 +2882,26 @@
         return NO;
         
     }
+    
+
+    if (textField == _m_txm_TF ||textField == _m_jlfw_TF ||textField == _m_clfw_TF ||textField == _m_ggxh_TF||textField == _m_sccj_TF ||textField == _m_sl_TF ||textField == _m_bj_TF||textField == _m_wg_TF||textField == _m_fj_TF) {
+        
+        /**
+         *  1为显示 保存
+         */
+        self.is_sbxq_Edited = @1;
+        
+    }
+    
+    if (textField == _m_jddd_TF || textField == _m_hjwd_TF || textField == _m_xdsd_TF || textField == _m_qt_TF || textField == _m_jszt_TF) {
+        
+        /**
+         *  1为显示 保存
+         */
+        self.is_ggxx_Edited = @1;
+        
+    }
+
    
     return YES;
 }
@@ -2788,7 +2932,14 @@
             forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    
+    
     if (textField == _m_yqmc_TF) {
+        
+        /**
+         *  1为显示 保存
+         */
+        self.is_sbxq_Edited = @1;
         
         Yqmc_Auto_Model *yqmcModel = ( Yqmc_Auto_Model *)selectedObject;
         
@@ -2837,6 +2988,11 @@
       xmbh_Auto_Model *xmmcModel = ( xmbh_Auto_Model *)selectedObject;
         
         self.m_Sbxq_saveDataDict[@"xmbh"] = xmmcModel.xmdm;
+        
+        
+        self.is_ggxx_Edited = @1;
+        
+    
     }
     
     

@@ -6196,6 +6196,9 @@
                                                         <rect key="frame" x="154" y="138" width="529" height="26"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="aXG-2Y-ofb" id="ha5-H7-Px4"/>
+                                                        </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="检定地点" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9n-td-pjm">
                                                         <rect key="frame" x="53" y="142" width="60" height="18"/>
@@ -6708,6 +6711,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="768" height="748"/>
                     <connections>
+                        <outlet property="ggxx_SaveBtn" destination="RbJ-of-Oxm" id="XNZ-DR-rmN"/>
                         <outlet property="m_bj_TF" destination="cCS-IU-YPK" id="tXZ-Ty-yZj"/>
                         <outlet property="m_bz_TV" destination="QNp-se-Gie" id="DyE-Le-TJm"/>
                         <outlet property="m_bzqsb_TableView" destination="ghn-b7-hZm" id="be0-Ie-nmr"/>
@@ -6750,11 +6754,13 @@
                         <outlet property="m_zs_ScrollView" destination="iih-YJ-MWs" id="Lcw-Hm-Cmm"/>
                         <outlet property="m_zs_WebView" destination="qRv-lp-piv" id="8Mv-dk-2KB"/>
                         <outlet property="mainScrollView" destination="5WD-76-lmm" id="NuZ-9v-0GG"/>
+                        <outlet property="sbxq_SaveBtn" destination="lds-yM-YR4" id="gnY-7W-oML"/>
+                        <outlet property="ysjl_SaveBtn" destination="qlT-DZ-Hz0" id="kOo-zs-28m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXa-Jj-DgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-521" y="-9442"/>
+            <point key="canvasLocation" x="630" y="-9678"/>
         </scene>
         <!--Full Screen PreviewVC-->
         <scene sceneID="XbH-hE-Fn6">
@@ -15657,7 +15663,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="fdr-BD-u06"/>
+        <segue reference="D1q-FG-v94"/>
         <segue reference="wF8-d4-iYe"/>
     </inferredMetricsTieBreakers>
 </document>
