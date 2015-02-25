@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "MenuModel.h"
 
 @interface LoginViewController ()
 {
@@ -100,18 +101,6 @@
      */
     self.m_remberPwdBtn.selected = isRememberPwd;
     
-    
-//    UIImage *PwdleftImage = [UIImage imageNamed:@"login-pass"];
-//    UIImageView *PwdusernameIconImage = [[UIImageView alloc] initWithFrame:CGRectMake(9, 9, 20, 20)];
-//    PwdusernameIconImage.backgroundColor =[UIColor clearColor];
-//    PwdusernameIconImage.image = PwdleftImage;
-//    UIView *PwdusernameIconContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-//    
-//    [usernameIconContainer addSubview:PwdusernameIconContainer];
-//    _m_uPwdTextField.leftViewMode = UITextFieldViewModeAlways;
-//    _m_uPwdTextField.leftView = usernameIconContainer;
-    
-    
 }
 
 -(void)SetUpData
@@ -202,7 +191,16 @@
               */
              
              LoginedUser *loginedUser = [[LoginedUser alloc]initWithDict:dict[@"user"]];
-             
+
+             NSArray *ls =dict[@"ls"];
+             loginedUser.menuList = [ls linq_select:^id(NSDictionary *dict){
+                 
+                 MenuModel *yqmcModel = [MTLJSONAdapter modelOfClass:[MenuModel class] fromJSONDictionary:dict error:nil];
+                 
+                 
+                 return yqmcModel;
+             }];
+
              /**
               *  如果勾选了记住密码则将密码保存到文件中
               */

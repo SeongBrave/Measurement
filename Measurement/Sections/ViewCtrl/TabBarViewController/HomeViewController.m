@@ -88,7 +88,7 @@
     }];
     
     // 4.默认选中全部状态
-    [home selectChildWithItem:[DockItem itemWithIcon:nil className:@"ProgramOverviewViewController"]];
+    [home selectChildWithItem:[DockItem itemWithIcon:@"tab-nav-jhzl-selected" className:@"ProgramOverviewViewController"]];
     
     
 }
@@ -129,21 +129,8 @@
     if (nav == nil) {
         
         
-        UIViewController *vc =nil;
-        if([item.className isEqualToString:@"FactoryTaskViewController"])
-        {
-            
-            UIStoryboard *story = [UIStoryboard storyboardWithName:@"Other" bundle:nil];
-            vc = [self.storyboard instantiateViewControllerWithIdentifier:@"FactoryTaskViewController"];;
-            
-        }else
-        {
-            
-            
-            
-            vc = [self.storyboard  instantiateViewControllerWithIdentifier:item.className];;
-        }
-        
+        UIViewController *vc = [self.storyboard  instantiateViewControllerWithIdentifier:item.className];;
+
         nav = vc;
         // 不要自动伸缩
         nav.view.autoresizingMask = UIViewAutoresizingNone;

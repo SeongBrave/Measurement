@@ -67,7 +67,7 @@
                                             <constraint firstAttribute="height" constant="48" id="Idr-Zf-dA1"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                        <state key="normal" title="登录" backgroundImage="sign-in-button">
+                                        <state key="normal" backgroundImage="sign-in-button">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -112,13 +112,19 @@
                                     <constraint firstAttribute="width" constant="322" id="z79-vO-gL5"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="uwU-EX-WD3">
-                                <rect key="frame" x="397" y="198" width="231" height="62"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="uwU-EX-WD3">
+                                <rect key="frame" x="407" y="213" width="210" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="210" id="CQd-z7-fng"/>
+                                    <constraint firstAttribute="height" constant="48" id="lOi-U8-FQ4"/>
+                                </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.72549019607843135" green="0.066666666666666666" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="KXK-sl-58H" firstAttribute="top" secondItem="uwU-EX-WD3" secondAttribute="bottom" constant="18" id="Fr9-Bd-Qmd"/>
                             <constraint firstAttribute="centerX" secondItem="KXK-sl-58H" secondAttribute="centerX" id="PhT-ZU-MY2"/>
+                            <constraint firstItem="KXK-sl-58H" firstAttribute="centerX" secondItem="uwU-EX-WD3" secondAttribute="centerX" id="Ugg-Pn-QKj"/>
                             <constraint firstAttribute="centerY" secondItem="KXK-sl-58H" secondAttribute="centerY" id="ff6-GB-Kql"/>
                         </constraints>
                     </view>
@@ -134,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="80d-7d-H4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4933" y="-2105"/>
+            <point key="canvasLocation" x="-4517" y="-1986"/>
         </scene>
         <!--计划总揽-->
         <scene sceneID="Ps9-hg-lLv">

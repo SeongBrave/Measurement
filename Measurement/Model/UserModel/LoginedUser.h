@@ -42,6 +42,12 @@
 @property (nonatomic, copy) NSString *validstatus;
 
 
+/**
+ *  保存改该用户菜单
+ */
+@property(nonatomic , strong)NSArray *menuList;
+
+
 //整个项目必定是保持一个LoginedUser，符合单例模式
 +(id)sharedInstance;
 

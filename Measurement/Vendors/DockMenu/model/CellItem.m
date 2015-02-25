@@ -17,13 +17,6 @@
     return item;
 }
 
-//- (id)init
-//{
-//    if (self = [super init]) {
-//        _on = [[NSUserDefaults standardUserDefaults] boolForKey:_title];
-//    }
-//    return self;
-//}
 
 - (void)setTitle:(NSString *)title
 {
