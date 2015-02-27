@@ -111,6 +111,7 @@
 		C9BFAA121A487BF400C887B4 /* MenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFAA071A487BF400C887B4 /* MenuItemView.m */; };
 		C9BFAA131A487BF400C887B4 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFAA091A487BF400C887B4 /* MenuView.m */; };
 		C9BFAA151A487BF400C887B4 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFAA0D1A487BF400C887B4 /* SettingCell.m */; };
+		C9C662811AA0D8CC004EE4E4 /* DemoTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C662801AA0D8CC004EE4E4 /* DemoTextField.m */; };
 		C9D6B9F61A5AE648006D27EF /* AutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F01A5AE648006D27EF /* AutoCompleteTextField.m */; };
 		C9D6B9F71A5AE648006D27EF /* NSString+Levenshtein.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */; };
 		C9E184BF1A907C67005690BD /* AuditNotPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E184BB1A907C67005690BD /* AuditNotPassViewController.m */; };
@@ -391,6 +392,8 @@
 		C9BFAA091A487BF400C887B4 /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
 		C9BFAA0C1A487BF400C887B4 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		C9BFAA0D1A487BF400C887B4 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
+		C9C6627F1AA0D8CC004EE4E4 /* DemoTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoTextField.h; sourceTree = "<group>"; };
+		C9C662801AA0D8CC004EE4E4 /* DemoTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoTextField.m; sourceTree = "<group>"; };
 		C9D6B9EF1A5AE648006D27EF /* AutoCompleteTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoCompleteTextField.h; sourceTree = "<group>"; };
 		C9D6B9F01A5AE648006D27EF /* AutoCompleteTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoCompleteTextField.m; sourceTree = "<group>"; };
 		C9D6B9F11A5AE648006D27EF /* AutoCompleteTextFieldDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoCompleteTextFieldDataSource.h; sourceTree = "<group>"; };
@@ -821,6 +824,7 @@
 		C9651F521A43B25F00B770BB /* CommonView */ = {
 			isa = PBXGroup;
 			children = (
+				C9C6627E1AA0D8CC004EE4E4 /* DemoTextField */,
 				C9651F531A43B25F00B770BB /* CommonTextField */,
 				C9651F5A1A43B25F00B770BB /* CustomButton */,
 				C9651F5F1A43B25F00B770BB /* CustomStepper */,
@@ -1481,6 +1485,15 @@
 			path = SignatureCell;
 			sourceTree = "<group>";
 		};
+		C9C6627E1AA0D8CC004EE4E4 /* DemoTextField */ = {
+			isa = PBXGroup;
+			children = (
+				C9C6627F1AA0D8CC004EE4E4 /* DemoTextField.h */,
+				C9C662801AA0D8CC004EE4E4 /* DemoTextField.m */,
+			);
+			path = DemoTextField;
+			sourceTree = "<group>";
+		};
 		C9D6B9EE1A5AE648006D27EF /* AutoCompleteTextField */ = {
 			isa = PBXGroup;
 			children = (
@@ -2021,6 +2034,7 @@
 				C9E184CA1A90C75E005690BD /* DetectionTaskQueryDidHYPopViewController.m in Sources */,
 				C9F3DFD71A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m in Sources */,
 				C990B7EE1A7942E700DF81C8 /* dmxx_Model.m in Sources */,
+				C9C662811AA0D8CC004EE4E4 /* DemoTextField.m in Sources */,
 				C9651FD51A43B26000B770BB /* StepperModel.m in Sources */,
 				C99FD92A1A4C4F2F000AB1A6 /* ProgramOverviewCell.m in Sources */,
 				C97094551A62D09B00141DC5 /* ProgramOverviewViewController.m in Sources */,

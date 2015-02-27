@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "003872213FCB1A4A5B45161E"
+               BlueprintIdentifier = "76FE420F9B18D192B4EC2C8A"
                BuildableName = "libPods-MMPlaceHolder.a"
                BlueprintName = "Pods-MMPlaceHolder"
                ReferencedContainer = "container:Pods.xcodeproj">

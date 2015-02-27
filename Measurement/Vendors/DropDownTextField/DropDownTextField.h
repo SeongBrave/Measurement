@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DemoTextField.h"
 
 @class DropDownTextField;
 
@@ -43,7 +44,7 @@
 
 
 
-@interface DropDownTextField : UITextField<UITableViewDataSource, UITableViewDelegate>
+@interface DropDownTextField : DemoTextField<UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, readonly) UITableView *dropDownTableView;
 

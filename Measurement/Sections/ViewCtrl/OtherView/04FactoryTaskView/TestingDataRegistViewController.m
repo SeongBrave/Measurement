@@ -28,6 +28,7 @@
 #import "zsmb_Model.h"
 #import "xmbh_Auto_Model.h"
 #import "YSJL_HqsjVC.h"
+#import "DemoTextField.h"
 
 @interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate,DidSelectedValue_XCRY_Delegate,UIPopoverControllerDelegate>
 
@@ -412,7 +413,10 @@
 -(void)layoutMainCustomView
 {
     
-    
+    [self.m_yqmc_TF setRequired:YES];
+    [self.m_dw_DTF setRequired:YES];
+    [self.m_xm_ADTF setRequired:YES];
+
     /**
      *  初始化标志状态
      */
@@ -1693,50 +1697,60 @@
     
     //JLQJBH ->计量器具名称编号
     
+   
     
-    UIButton *saveBtn = (UIButton *)sender;
-    
-    
-    
-    [self save_Sbxq_Data];
-    
-    @weakify(self)
-    [[BaseNetWork getInstance] hideDialog];
-    [[[[[BaseNetWork getInstance] rac_postPath:@"addEquipment.do" parameters:_m_Sbxq_saveDataDict]map:^(id responseData)
-       {
-           
+    if (![self validateInputInView:self.view]){
+        [Dialog alert:@"请补全信息!"];
+        
+    }else
+    {
+        
+        UIButton *saveBtn = (UIButton *)sender;
+        
+        [self save_Sbxq_Data];
+        
+        @weakify(self)
+        [[BaseNetWork getInstance] hideDialog];
+        [[[[[BaseNetWork getInstance] rac_postPath:@"addEquipment.do" parameters:_m_Sbxq_saveDataDict]map:^(id responseData)
+           {
+               
+               
+               NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+               return dict;
+           }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+         subscribeNext:^(NSDictionary *retDict) {
+             @strongify(self)
+             if ([retDict[@"ret"] intValue] == 1) {
+                 
+                 self.yqid_Str = retDict[@"yqid"];
+                 self.m_Sbxq_saveDataDict[@"yqid"] = self.yqid_Str;
+                 [Dialog toast:self withMessage:@"保存成功！"];
+                 
+                 /**
+                  *  1为显示 保存
+                  */
+                 self.is_sbxq_Edited = @1;
+                 
+                 //              [saveBtn setImage:[UIImage imageNamed:@"right-button-ybc"] forState:UIControlStateNormal];
+                 
+                 [saveBtn setBackgroundImage:[UIImage imageNamed:@"right-button-ybc.png"] forState:UIControlStateNormal];
+             }else
+             {
+                 [Dialog toast:self withMessage:@"保存失败！"];
+             }
+             
+             
+             
+         }error:^(NSError *error){
+             
+             
+             
+         }];
 
-           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-           return dict;
-       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-     subscribeNext:^(NSDictionary *retDict) {
-                    @strongify(self)
-         if ([retDict[@"ret"] intValue] == 1) {
-             
-             self.yqid_Str = retDict[@"yqid"];
-             self.m_Sbxq_saveDataDict[@"yqid"] = self.yqid_Str;
-             [Dialog toast:self withMessage:@"保存成功！"];
-             
-             /**
-              *  1为显示 保存
-              */
-             self.is_sbxq_Edited = @1;
-             
-//              [saveBtn setImage:[UIImage imageNamed:@"right-button-ybc"] forState:UIControlStateNormal];
-             
-             [saveBtn setBackgroundImage:[UIImage imageNamed:@"right-button-ybc.png"] forState:UIControlStateNormal];
-         }else
-         {
-             [Dialog toast:self withMessage:@"保存失败！"];
-         }
-         
-         
-         
-     }error:^(NSError *error){
-         
-         
-         
-     }];
+        
+    }
+
+   
 }
 
 - (IBAction)Sbxq_CancleBtnClick:(id)sender {
@@ -2556,6 +2570,22 @@
     
 
     
+}
+
+- (BOOL)validateInputInView:(UIView*)view
+{
+    for(UIView *subView in view.subviews){
+        if ([subView isKindOfClass:[UIScrollView class]])
+            return [self validateInputInView:subView];
+        
+        if ([subView isKindOfClass:[DemoTextField class]]){
+            if (![(MHTextField*)subView validate]){
+                return NO;
+            }
+        }
+    }
+    
+    return YES;
 }
 
 #pragma mark - 代理协议方法*

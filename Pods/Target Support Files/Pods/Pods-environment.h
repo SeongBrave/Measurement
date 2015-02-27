@@ -77,7 +77,7 @@
 // This library does not follow semantic-versioning,
 // so we were not able to define version macros.
 // Please contact the author.
-// Version: 3.2.1.0.
+// Version: 3.2.1.1.
 
 // LinqToObjectiveC
 #define COCOAPODS_POD_AVAILABLE_LinqToObjectiveC
@@ -90,6 +90,12 @@
 #define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
 #define COCOAPODS_VERSION_MINOR_MBProgressHUD 9
 #define COCOAPODS_VERSION_PATCH_MBProgressHUD 0
+
+// MHTextField
+#define COCOAPODS_POD_AVAILABLE_MHTextField
+#define COCOAPODS_VERSION_MAJOR_MHTextField 0
+#define COCOAPODS_VERSION_MINOR_MHTextField 5
+#define COCOAPODS_VERSION_PATCH_MHTextField 0
 
 // MMPlaceHolder
 #define COCOAPODS_POD_AVAILABLE_MMPlaceHolder
@@ -125,7 +131,7 @@
 #define COCOAPODS_POD_AVAILABLE_RBStoryboardLink
 #define COCOAPODS_VERSION_MAJOR_RBStoryboardLink 0
 #define COCOAPODS_VERSION_MINOR_RBStoryboardLink 1
-#define COCOAPODS_VERSION_PATCH_RBStoryboardLink 0
+#define COCOAPODS_VERSION_PATCH_RBStoryboardLink 4
 
 // ReactiveCocoa
 #define COCOAPODS_POD_AVAILABLE_ReactiveCocoa

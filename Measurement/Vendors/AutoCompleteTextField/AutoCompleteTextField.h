@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DemoTextField.h"
 #import "AutoCompleteTextFieldDataSource.h"
 #import "AutoCompleteTextFieldDelegate.h"
 
@@ -14,7 +15,7 @@
 - (void)autoCompleteTermsDidSort:(NSArray *)completions;
 @end
 
-@interface AutoCompleteTextField : UITextField<UITableViewDataSource, UITableViewDelegate, AutoCompleteSortOperationDelegate>
+@interface AutoCompleteTextField : DemoTextField<UITableViewDataSource, UITableViewDelegate, AutoCompleteSortOperationDelegate>
 
 
 
