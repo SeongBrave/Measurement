@@ -27,13 +27,13 @@ PODS:
     - FMDB/common
   - HexColors (2.2.1)
   - IQKeyboardManager (3.2.1.1)
+  - JGProgressHUD (1.2.3)
   - LinqToObjectiveC (2.0.0)
   - Mantle (1.5.4):
     - Mantle/extobjc (= 1.5.4)
   - Mantle/extobjc (1.5.4)
   - Masonry (0.5.3)
   - MBProgressHUD (0.9)
-  - MHTextField (0.5)
   - MMPlaceHolder (1.6)
   - PPSSignatureView (0.1.2)
   - RBStoryboardLink (0.1.4)
@@ -60,11 +60,11 @@ DEPENDENCIES:
   - AFNetworking (~> 2.4.1)
   - FMDB
   - IQKeyboardManager
+  - JGProgressHUD
   - LinqToObjectiveC (~> 2.0.0)
   - Mantle
   - Masonry (~> 0.5.2)
   - MBProgressHUD
-  - MHTextField
   - MMPlaceHolder
   - PPSSignatureView
   - RBStoryboardLink
@@ -83,11 +83,11 @@ SPEC CHECKSUMS:
   FMDB: 0efa188cf0dd1ce82c27a478cd5f5fa245308677
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
   IQKeyboardManager: 4e83eef847c6f5edbd670284e50c7e3d643ebdb5
+  JGProgressHUD: 733523c80f69b6dfc41b88a0f33883a89a8b4c3b
   LinqToObjectiveC: db2ceec81d45192ffe971bbd8e73ef0de614723c
   Mantle: d5fbaf30fbc58031223af13812c060e15934a1fe
   Masonry: 35368c2ca9577ca87722c12fc52c4bad9b1c1516
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
-  MHTextField: f6db75bf005dd08e0f39e338c5098c834a25510f
   MMPlaceHolder: 8fe70118604dfd117155ff3f6e8492965e338443
   PPSSignatureView: 961f6168b88c0334007f1d49a17e3ebb2f1462a9
   RBStoryboardLink: 3bc5f6a73a18506e2f980bd0ace79d6847b18aa6

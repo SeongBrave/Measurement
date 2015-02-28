@@ -5231,7 +5231,7 @@
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CkD-Qf-R4u" userLabel="Scroll View设备详情">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="632"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SKy-mt-6lT">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SKy-mt-6lT" customClass="DemoTextField">
                                                 <rect key="frame" x="179" y="25" width="529" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="529" id="1ir-pW-1Ug"/>
@@ -5265,12 +5265,12 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v4b-3P-YfP">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v4b-3P-YfP" customClass="DemoTextField">
                                                 <rect key="frame" x="179" y="107" width="529" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="skp-YW-boE">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="skp-YW-boE" customClass="DemoTextField">
                                                 <rect key="frame" x="179" y="148" width="529" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -5281,12 +5281,12 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LTV-wr-LUH">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LTV-wr-LUH" customClass="DemoTextField">
                                                 <rect key="frame" x="179" y="189" width="529" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ljs-1w-PhA">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ljs-1w-PhA" customClass="DemoTextField">
                                                 <rect key="frame" x="179" y="230" width="529" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -5297,7 +5297,7 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X9N-sQ-BxV">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X9N-sQ-BxV" customClass="DemoTextField">
                                                 <rect key="frame" x="179" y="271" width="529" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -5313,12 +5313,12 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yoJ-It-ngp">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yoJ-It-ngp" customClass="DemoTextField">
                                                 <rect key="frame" x="179" y="353" width="529" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5G9-no-yfM">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5G9-no-yfM" customClass="DemoTextField">
                                                 <rect key="frame" x="179" y="476" width="529" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -5392,7 +5392,7 @@
                                                     <action selector="Sbxq_NextStepBtnClick:" destination="aXG-2Y-ofb" eventType="touchUpInside" id="9aR-xi-iEN"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cCS-IU-YPK">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cCS-IU-YPK" customClass="DemoTextField">
                                                 <rect key="frame" x="179" y="435" width="529" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -5409,7 +5409,7 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hGg-FK-9eX">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hGg-FK-9eX" customClass="DemoTextField">
                                                 <rect key="frame" x="179" y="558" width="529" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -6192,7 +6192,7 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bGv-Eg-tLz">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bGv-Eg-tLz" customClass="DemoTextField">
                                                         <rect key="frame" x="154" y="138" width="529" height="26"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -6206,10 +6206,10 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M3v-V1-fMh">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M3v-V1-fMh" customClass="DemoTextField">
                                                         <rect key="frame" x="154" y="179" width="529" height="26"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="环境温度" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7I-Dq-7EY">
                                                         <rect key="frame" x="53" y="183" width="60" height="18"/>
@@ -6217,10 +6217,10 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DbU-cs-T3s">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DbU-cs-T3s" customClass="DemoTextField">
                                                         <rect key="frame" x="154" y="220" width="529" height="26"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相对湿度" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKY-DU-csk">
                                                         <rect key="frame" x="53" y="224" width="60" height="18"/>
@@ -6228,7 +6228,7 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Zh-mn-mUU">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Zh-mn-mUU" customClass="DemoTextField">
                                                         <rect key="frame" x="154" y="261" width="529" height="26"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -6239,7 +6239,7 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="65I-aK-2hr">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="65I-aK-2hr" customClass="DemoTextField">
                                                         <rect key="frame" x="154" y="302" width="529" height="26"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -6272,7 +6272,7 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="完好" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c6S-ja-BEK">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="完好" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c6S-ja-BEK" customClass="DemoTextField">
                                                         <rect key="frame" x="154" y="425" width="529" height="26"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -6712,39 +6712,39 @@
                     <size key="freeformSize" width="768" height="748"/>
                     <connections>
                         <outlet property="ggxx_SaveBtn" destination="RbJ-of-Oxm" id="XNZ-DR-rmN"/>
-                        <outlet property="m_bj_TF" destination="cCS-IU-YPK" id="tXZ-Ty-yZj"/>
+                        <outlet property="m_bj_TF" destination="cCS-IU-YPK" id="ERj-0p-CDh"/>
                         <outlet property="m_bz_TV" destination="QNp-se-Gie" id="DyE-Le-TJm"/>
                         <outlet property="m_bzqsb_TableView" destination="ghn-b7-hZm" id="be0-Ie-nmr"/>
-                        <outlet property="m_ccbh_TF" destination="X9N-sQ-BxV" id="7Lv-I1-yFZ"/>
-                        <outlet property="m_clfw_TF" destination="skp-YW-boE" id="CAf-pX-cFC"/>
+                        <outlet property="m_ccbh_TF" destination="X9N-sQ-BxV" id="eXE-Th-N4e"/>
+                        <outlet property="m_clfw_TF" destination="skp-YW-boE" id="a5M-B8-gPR"/>
                         <outlet property="m_dw_DTF" destination="hpV-2a-n6e" id="tFC-gN-kcf"/>
-                        <outlet property="m_fj_TF" destination="hGg-FK-9eX" id="paD-1Y-1yH"/>
-                        <outlet property="m_ggxh_TF" destination="LTV-wr-LUH" id="rNF-Fb-Edc"/>
+                        <outlet property="m_fj_TF" destination="hGg-FK-9eX" id="aKh-UM-ubA"/>
+                        <outlet property="m_ggxh_TF" destination="LTV-wr-LUH" id="nP2-5G-guh"/>
                         <outlet property="m_ggxx_Btn" destination="taf-nA-Gi0" id="pVZ-mb-ZcF"/>
                         <outlet property="m_ggxx_ScrollView" destination="q4Z-Ll-auR" id="upD-Nn-25N"/>
-                        <outlet property="m_hjwd_TF" destination="M3v-V1-fMh" id="m19-Hv-l0b"/>
+                        <outlet property="m_hjwd_TF" destination="M3v-V1-fMh" id="LET-OO-Azc"/>
                         <outlet property="m_hyy_DTF" destination="Ddt-cM-P0b" id="Et9-6F-WvC"/>
                         <outlet property="m_jclx_DTF" destination="TK4-Z5-M2M" id="zow-yq-0nJ"/>
-                        <outlet property="m_jddd_TF" destination="bGv-Eg-tLz" id="Y3P-vu-foW"/>
+                        <outlet property="m_jddd_TF" destination="bGv-Eg-tLz" id="oZe-zG-LYH"/>
                         <outlet property="m_jdrq_Btn" destination="dLk-a1-aT2" id="r8V-Q4-WYF"/>
                         <outlet property="m_jdrq_V" destination="KuX-ID-Ys9" id="s6e-62-bl2"/>
-                        <outlet property="m_jdy_TF" destination="65I-aK-2hr" id="Yla-6U-YUx"/>
+                        <outlet property="m_jdy_TF" destination="65I-aK-2hr" id="Mui-qr-zHz"/>
                         <outlet property="m_jdzq_DTF" destination="gva-Lu-epg" id="TOM-N2-2fI"/>
                         <outlet property="m_jlbzkhzsh_TableView" destination="cj3-ok-dTI" id="oOz-yD-6w1"/>
-                        <outlet property="m_jlfw_TF" destination="v4b-3P-YfP" id="Bsh-Y0-OBt"/>
+                        <outlet property="m_jlfw_TF" destination="v4b-3P-YfP" id="Pvs-Na-NXl"/>
                         <outlet property="m_jsyj_TableView" destination="hec-2J-S3G" id="pen-Ex-P8i"/>
-                        <outlet property="m_jszt_TF" destination="c6S-ja-BEK" id="sSw-OB-iDr"/>
+                        <outlet property="m_jszt_TF" destination="c6S-ja-BEK" id="lYK-Vg-pmw"/>
                         <outlet property="m_menuBarView" destination="02G-M5-rWc" id="MJb-Zl-qjw"/>
                         <outlet property="m_pzr_DTF" destination="LLt-eL-vWe" id="2Ll-KQ-Gh5"/>
                         <outlet property="m_qjyt_DTF" destination="Uwa-Di-1bb" id="wPv-iz-qH1"/>
-                        <outlet property="m_qt_TF" destination="6Zh-mn-mUU" id="Pv7-7L-lHh"/>
+                        <outlet property="m_qt_TF" destination="6Zh-mn-mUU" id="XDr-67-ntP"/>
                         <outlet property="m_sbxq_Btn" destination="2rq-6C-rTO" id="2o5-ya-frQ"/>
                         <outlet property="m_sbxq_ScrollView" destination="CkD-Qf-R4u" id="5yf-LN-kmB"/>
-                        <outlet property="m_sccj_TF" destination="ljs-1w-PhA" id="18f-Ue-Dq2"/>
-                        <outlet property="m_sl_TF" destination="yoJ-It-ngp" id="cld-TF-gqm"/>
-                        <outlet property="m_txm_TF" destination="SKy-mt-6lT" id="oY5-Dd-318"/>
-                        <outlet property="m_wg_TF" destination="5G9-no-yfM" id="Ime-Pz-ydC"/>
-                        <outlet property="m_xdsd_TF" destination="DbU-cs-T3s" id="Lhh-jA-As5"/>
+                        <outlet property="m_sccj_TF" destination="ljs-1w-PhA" id="gTT-cw-SH6"/>
+                        <outlet property="m_sl_TF" destination="yoJ-It-ngp" id="vWM-47-pYL"/>
+                        <outlet property="m_txm_TF" destination="SKy-mt-6lT" id="tgH-Rv-xbB"/>
+                        <outlet property="m_wg_TF" destination="5G9-no-yfM" id="reM-mi-zZ1"/>
+                        <outlet property="m_xdsd_TF" destination="DbU-cs-T3s" id="14x-uL-o3d"/>
                         <outlet property="m_xm_ADTF" destination="EkZ-ls-cCA" id="g3l-FK-dKg"/>
                         <outlet property="m_yqmc_TF" destination="ssG-le-7zP" id="E4G-yP-edd"/>
                         <outlet property="m_ysjl_Btn" destination="Ari-MY-xFk" id="ceK-lm-pqr"/>
@@ -6760,7 +6760,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXa-Jj-DgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="667" y="-9644"/>
+            <point key="canvasLocation" x="1558" y="-9724"/>
         </scene>
         <!--Full Screen PreviewVC-->
         <scene sceneID="XbH-hE-Fn6">

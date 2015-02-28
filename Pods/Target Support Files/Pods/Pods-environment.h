@@ -79,6 +79,12 @@
 // Please contact the author.
 // Version: 3.2.1.1.
 
+// JGProgressHUD
+#define COCOAPODS_POD_AVAILABLE_JGProgressHUD
+#define COCOAPODS_VERSION_MAJOR_JGProgressHUD 1
+#define COCOAPODS_VERSION_MINOR_JGProgressHUD 2
+#define COCOAPODS_VERSION_PATCH_JGProgressHUD 3
+
 // LinqToObjectiveC
 #define COCOAPODS_POD_AVAILABLE_LinqToObjectiveC
 #define COCOAPODS_VERSION_MAJOR_LinqToObjectiveC 2
@@ -90,12 +96,6 @@
 #define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
 #define COCOAPODS_VERSION_MINOR_MBProgressHUD 9
 #define COCOAPODS_VERSION_PATCH_MBProgressHUD 0
-
-// MHTextField
-#define COCOAPODS_POD_AVAILABLE_MHTextField
-#define COCOAPODS_VERSION_MAJOR_MHTextField 0
-#define COCOAPODS_VERSION_MINOR_MHTextField 5
-#define COCOAPODS_VERSION_PATCH_MHTextField 0
 
 // MMPlaceHolder
 #define COCOAPODS_POD_AVAILABLE_MMPlaceHolder

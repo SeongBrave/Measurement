@@ -145,6 +145,13 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
 
     [self loadDropDownTableView];
 }
+
+-(void)verifyshowDropDownTableView
+{
+    
+    [self showDropDownTableView];
+    [self loadDropDownTableView];
+}
 /**
  *  显示DropDownTableView
  */

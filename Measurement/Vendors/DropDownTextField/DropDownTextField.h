@@ -81,4 +81,7 @@
 
 - (void)reloadData;
 
+-(void)verifyshowDropDownTableView;
+-(void)showDropDownTableView;
+
 @end

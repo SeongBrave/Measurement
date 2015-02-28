@@ -82,43 +82,40 @@
  */
 @property (weak, nonatomic) IBOutlet UIButton *m_sbxq_Btn;
 
-
-@property (weak, nonatomic) IBOutlet UITextField *m_txm_TF;
-
+@property (weak, nonatomic) IBOutlet DemoTextField *m_txm_TF;
 @property (weak, nonatomic) IBOutlet AutoCompleteTextField *m_yqmc_TF;
 @property(nonatomic , strong)NSArray *m_autoTFArr;
 
  //TODO:计量范围应该为 计量特性
-@property (weak, nonatomic) IBOutlet UITextField *m_jlfw_TF;
+@property (weak, nonatomic) IBOutlet DemoTextField *m_jlfw_TF;
 
+@property (weak, nonatomic) IBOutlet DemoTextField *m_clfw_TF;
 
-@property (weak, nonatomic) IBOutlet UITextField *m_clfw_TF;
+@property (weak, nonatomic) IBOutlet DemoTextField *m_ggxh_TF;
 
-@property (weak, nonatomic) IBOutlet UITextField *m_ggxh_TF;
+@property (weak, nonatomic) IBOutlet DemoTextField *m_sccj_TF;
 
-
-@property (weak, nonatomic) IBOutlet UITextField *m_sccj_TF;
-
-@property (weak, nonatomic) IBOutlet UITextField *m_ccbh_TF;
+@property (weak, nonatomic) IBOutlet DemoTextField *m_ccbh_TF;
 
 @property (weak, nonatomic) IBOutlet DropDownTextField *m_jclx_DTF;
 @property(nonatomic , strong)NSArray *m_jclxTFArr;
 
 
-@property (weak, nonatomic) IBOutlet UITextField *m_sl_TF;
+@property (weak, nonatomic) IBOutlet DemoTextField *m_sl_TF;
 
 @property (weak, nonatomic) IBOutlet DropDownTextField *m_dw_DTF;
 @property(nonatomic , strong)NSArray *m_dwTFArr;
 
-@property (weak, nonatomic) IBOutlet UITextField *m_bj_TF;
+@property (weak, nonatomic) IBOutlet DemoTextField *m_bj_TF;
 
-@property (weak, nonatomic) IBOutlet UITextField *m_wg_TF;
+
+@property (weak, nonatomic) IBOutlet DemoTextField *m_wg_TF;
 
 //@property (weak, nonatomic) IBOutlet UITextField *m_xm_TF;
 @property (weak, nonatomic) IBOutlet AutoCompleteTextField *m_xm_ADTF;
 @property(nonatomic , strong)NSArray *m_xmAutoTFArr;
 
-@property (weak, nonatomic) IBOutlet UITextField *m_fj_TF;
+@property (weak, nonatomic) IBOutlet DemoTextField *m_fj_TF;
 
 @property (weak, nonatomic) IBOutlet UITextField *m_txyq_TF;
 
@@ -151,18 +148,15 @@
 @property (weak, nonatomic) IBOutlet DropDownTextField *m_jdzq_DTF;
 @property(nonatomic , strong)NSArray *m_jdzqTFArr;
 
+@property (weak, nonatomic) IBOutlet DemoTextField *m_jddd_TF;
+@property (weak, nonatomic) IBOutlet DemoTextField *m_hjwd_TF;
 
-@property (weak, nonatomic) IBOutlet UITextField *m_jddd_TF;
+@property (weak, nonatomic) IBOutlet DemoTextField *m_xdsd_TF;
 
 
+@property (weak, nonatomic) IBOutlet DemoTextField *m_qt_TF;
 
-@property (weak, nonatomic) IBOutlet UITextField *m_hjwd_TF;
-
-@property (weak, nonatomic) IBOutlet UITextField *m_xdsd_TF;
-
-@property (weak, nonatomic) IBOutlet UITextField *m_qt_TF;
-
-@property (weak, nonatomic) IBOutlet UITextField *m_jdy_TF;
+@property (weak, nonatomic) IBOutlet DemoTextField *m_jdy_TF;
 
 @property (weak, nonatomic) IBOutlet DropDownTextField *m_hyy_DTF;
 @property(nonatomic , strong)NSArray *m_hyyTFArr;
@@ -170,7 +164,8 @@
 @property (weak, nonatomic) IBOutlet DropDownTextField *m_pzr_DTF;
 @property(nonatomic , strong)NSArray *m_pzrTFArr;
 
-@property (weak, nonatomic) IBOutlet UITextField *m_jszt_TF;
+
+@property (weak, nonatomic) IBOutlet DemoTextField *m_jszt_TF;
 
 
 
@@ -413,9 +408,20 @@
 -(void)layoutMainCustomView
 {
     
-    [self.m_yqmc_TF setRequired:YES];
+    [self.m_txm_TF setRequired:YES];
     [self.m_dw_DTF setRequired:YES];
     [self.m_xm_ADTF setRequired:YES];
+    [self.m_jclx_DTF setRequired:YES];
+    [self.m_bj_TF setRequired:YES];
+    
+
+    [self.m_qjyt_DTF setRequired:YES];
+    [self.m_jdzq_DTF setRequired:YES];
+    [self.m_jddd_TF setRequired:YES];
+    [self.m_hjwd_TF setRequired:YES];
+    [self.m_xdsd_TF setRequired:YES];
+    [self.m_qt_TF setRequired:YES];
+    [self.m_pzr_DTF setRequired:YES];
 
     /**
      *  初始化标志状态
@@ -771,40 +777,40 @@
         
     }];
 
-    [[self.m_sbxq_Btn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id next){
-        
-        @strongify(self)
-        [self updateLineConstraints:next];
-        
-        [self.mainScrollView setContentOffset:CGPointZero animated:YES];
-        
-    }];
-    
-    
-    [[self.m_ggxx_Btn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id next){
-        @strongify(self)
-        [self updateLineConstraints:next];
-        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width,0} animated:YES];
-        
-    }];
-    
-    [[self.m_ysjl_Btn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id next){
-        
-        @strongify(self)
-        [self updateLineConstraints:next];
-//        [self PopYSJL_TemplatesListViewControllerWithZSretDict:nil];
-        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width,0} animated:YES];
-        
-    }];
-    
-    [[self.m_zs_Btn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id next){
-        
-        @strongify(self)
-        [self updateLineConstraints:next];
-//        [self PopZS_TemplatesListViewControllerWithZSretDict:nil];
-//        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*3,0} animated:YES];
-        
-    }];
+//    [[self.m_sbxq_Btn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id next){
+//        
+//        @strongify(self)
+//        [self updateLineConstraints:next];
+//        
+//        [self.mainScrollView setContentOffset:CGPointZero animated:YES];
+//        
+//    }];
+//    
+//    
+//    [[self.m_ggxx_Btn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id next){
+//        @strongify(self)
+//        [self updateLineConstraints:next];
+//        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width,0} animated:YES];
+//        
+//    }];
+//    
+//    [[self.m_ysjl_Btn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id next){
+//        
+//        @strongify(self)
+//        [self updateLineConstraints:next];
+////        [self PopYSJL_TemplatesListViewControllerWithZSretDict:nil];
+//        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width,0} animated:YES];
+//        
+//    }];
+//    
+//    [[self.m_zs_Btn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id next){
+//        
+//        @strongify(self)
+//        [self updateLineConstraints:next];
+////        [self PopZS_TemplatesListViewControllerWithZSretDict:nil];
+////        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*3,0} animated:YES];
+//        
+//    }];
     
     /**
      *  仪器名称模糊查询
@@ -1697,9 +1703,7 @@
     
     //JLQJBH ->计量器具名称编号
     
-   
-    
-    if (![self validateInputInView:self.view]){
+    if (![self validateInputInView:self.m_sbxq_ScrollView]){
         [Dialog alert:@"请补全信息!"];
         
     }else
@@ -1724,7 +1728,7 @@
                  
                  self.yqid_Str = retDict[@"yqid"];
                  self.m_Sbxq_saveDataDict[@"yqid"] = self.yqid_Str;
-                 [Dialog toast:self withMessage:@"保存成功！"];
+                 [Dialog toastSuccess:@"保存成功！"];
                  
                  /**
                   *  1为显示 保存
@@ -1736,7 +1740,7 @@
                  [saveBtn setBackgroundImage:[UIImage imageNamed:@"right-button-ybc.png"] forState:UIControlStateNormal];
              }else
              {
-                 [Dialog toast:self withMessage:@"保存失败！"];
+                 [Dialog toastError:@"保存失败！"];
              }
              
              
@@ -1879,46 +1883,54 @@
                               标准器设备--标准设备编号(多 标准器设备--溯源证书号(多个 技术依据ID(多个按","分隔)
     */
     
+    if (![self validateInputInView:self.m_ggxx_ScrollView]){
+        [Dialog alert:@"请补全信息!"];
+        
+    }else
+    {
     
-    UIButton *saveBtn = (UIButton *)sender;
-    [self save_ggxx_Data];
-    
-       @weakify(self)
-    [[BaseNetWork getInstance] hideDialog];
-    [[[[[BaseNetWork getInstance] rac_postPath:@"saveDdrTojson.do" parameters:_m_Ggxx_saveDataDict]map:^(id responseData)
-       {
-           
-           @strongify(self)
-           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-           /**
-            *  保存公共信息返回的数据，点击下一步用
-            */
-           self.m_ggxx_retDict = dict;
-           return [dict valueForKeyPath:@"ret"];
-       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-     subscribeNext:^(NSString *retStr) {
-         
-         if ([retStr intValue] == 1) {
-             [Dialog toast:self withMessage:@"保存成功！"];
+        UIButton *saveBtn = (UIButton *)sender;
+        [self save_ggxx_Data];
+        
+        @weakify(self)
+        [[BaseNetWork getInstance] hideDialog];
+        [[[[[BaseNetWork getInstance] rac_postPath:@"saveDdrTojson.do" parameters:_m_Ggxx_saveDataDict]map:^(id responseData)
+           {
+               
+               @strongify(self)
+               NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+               /**
+                *  保存公共信息返回的数据，点击下一步用
+                */
+               self.m_ggxx_retDict = dict;
+               return [dict valueForKeyPath:@"ret"];
+           }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+         subscribeNext:^(NSString *retStr) {
              
-             /**
-              *  1为显示 保存
-              */
-             self.is_ggxx_Edited = @1;
+             if ([retStr intValue] == 1) {
+                 [Dialog toastSuccess:@"保存成功！"];
+                 
+                 /**
+                  *  1为显示 保存
+                  */
+                 self.is_ggxx_Edited = @1;
+                 
+                 [saveBtn setImage:[UIImage imageNamed:@"right-button-ybc"] forState:UIControlStateNormal];
+             }else
+             {
+                 [Dialog toastError:@"保存失败！"];
+             }
              
-               [saveBtn setImage:[UIImage imageNamed:@"right-button-ybc"] forState:UIControlStateNormal];
-         }else
-         {
-             [Dialog toast:self withMessage:@"保存失败！"];
-         }
-         
-         
-         
-     }error:^(NSError *error){
-         
-         
-         
-     }];
+             
+             
+         }error:^(NSError *error){
+             
+             
+             
+         }];
+
+        
+    }
     
 }
 
@@ -2010,22 +2022,26 @@
 //         
 //     }];
     
-   
-    
-    @weakify(self)
-    id data = @{ @"name": @"杨智",@"title":@"成功了嘛？" };
-    [self.m_ysjl_javascriptBridge callHandler:@"testJavascriptHandler" data:data responseCallback:^(id response)
+    if (![self validateInputInView:self.m_sbxq_ScrollView]){
+        [Dialog alert:@"请补全信息!"];
+        
+    }else
     {
-        @strongify(self)
-        
-        [self pasteWithDictStr:response];
-        
-        [saveBtn setImage:[UIImage imageNamed:@"right-button-ybc"] forState:UIControlStateNormal];
+        @weakify(self)
+        id data = @{ @"name": @"杨智",@"title":@"成功了嘛？" };
+        [self.m_ysjl_javascriptBridge callHandler:@"testJavascriptHandler" data:data responseCallback:^(id response)
+         {
+             @strongify(self)
+             
+             [self pasteWithDictStr:response];
+             
+             [saveBtn setImage:[UIImage imageNamed:@"right-button-ybc"] forState:UIControlStateNormal];
+             
+             
+         }];
+    }
     
-  
-    }];
-    
-    //jdjl 检定结论(校准记录可为空) 否则（检定的必须有值）
+       //jdjl 检定结论(校准记录可为空) 否则（检定的必须有值）
     //jlModel 记录信息 TModelJiluxxb model记录信息表 jlModel 字段包括 A1,A2,A3......A992
 }
 
@@ -2065,12 +2081,11 @@
                  
                  if ([retDict[@"ret"] intValue] == 0)
                  {
-                     
-                     [Dialog toast:self withMessage:@"保存失败!"];
+                     [Dialog toastError:@"保存失败!"];
                      
                  }else
                  {
-                      [Dialog toast:self withMessage:@"保存成功!"];
+                      [Dialog toastSuccess:@"保存成功！"];
                      
                      /**
                       *  1为显示 保存
@@ -2111,12 +2126,12 @@
              
              if ([retDict[@"ret"] intValue] == 0)
              {
-                 
-                 [Dialog toast:self withMessage:@"保存失败!"];
+                 [Dialog toastError:@"保存失败!"];
                  
              }else
              {
-                 [Dialog toast:self withMessage:@"保存成功!"];
+                 [Dialog toastSuccess:@"保存成功！"];
+                 
              }
              
          }error:^(NSError *error){
@@ -2574,18 +2589,56 @@
 
 - (BOOL)validateInputInView:(UIView*)view
 {
-    for(UIView *subView in view.subviews){
-        if ([subView isKindOfClass:[UIScrollView class]])
-            return [self validateInputInView:subView];
+    
+    if (view == self.m_ggxx_ScrollView) {
         
-        if ([subView isKindOfClass:[DemoTextField class]]){
-            if (![(MHTextField*)subView validate]){
-                return NO;
-            }
-        }
+        if (![self.m_qjyt_DTF validate]) {
+            [self.m_qjyt_DTF verifyshowDropDownTableView];
+            return NO;
+        }else if (![self.m_jddd_TF validate]) {
+            [self.m_jddd_TF becomeFirstResponder];
+            return NO;
+        }else  if (![self.m_jdzq_DTF validate]) {
+            [self.m_jdzq_DTF verifyshowDropDownTableView];
+            return NO;
+        }else  if (![self.m_jddd_TF validate]) {
+            [self.m_jddd_TF becomeFirstResponder];
+            return NO;
+        }else  if (![self.m_hjwd_TF validate]) {
+            [self.m_hjwd_TF becomeFirstResponder];
+            return NO;
+        }else  if (![self.m_xdsd_TF validate]) {
+            [self.m_xdsd_TF becomeFirstResponder];
+            return NO;
+        }else  if (![self.m_qt_TF validate]) {
+            [self.m_qt_TF becomeFirstResponder];
+            return NO;
+        }else  if (![self.m_pzr_DTF validate]) {
+            [self.m_pzr_DTF verifyshowDropDownTableView];
+            return NO;
+        }else
+            return YES;
+    }else if (view == self.m_sbxq_ScrollView) {
+//        if ([self.m_txm_TF validate]) {
+//            [self.m_txm_TF becomeFirstResponder];
+//            return NO;
+//        }else
+        if (![self.m_jclx_DTF validate]) {
+            [self.m_jclx_DTF verifyshowDropDownTableView];
+            return NO;
+        }else if (![self.m_bj_TF validate]) {
+            [self.m_bj_TF becomeFirstResponder];
+            return NO;
+        }else  if (![self.m_xm_ADTF validate]) {
+            [self.m_xm_ADTF becomeFirstResponder];
+            return NO;
+        }else
+            return YES;
+    }else
+    {
+        return YES;
     }
     
-    return YES;
 }
 
 #pragma mark - 代理协议方法*

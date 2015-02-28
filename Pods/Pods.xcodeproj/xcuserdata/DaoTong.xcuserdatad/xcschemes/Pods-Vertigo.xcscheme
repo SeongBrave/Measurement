@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "535DF56E9EFEE62527062670"
+               BlueprintIdentifier = "36FE166E400FEA78F177D739"
                BuildableName = "libPods-Vertigo.a"
                BlueprintName = "Pods-Vertigo"
                ReferencedContainer = "container:Pods.xcodeproj">
