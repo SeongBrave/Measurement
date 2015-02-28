@@ -11,6 +11,7 @@
 		C903B0C81A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C903B0C71A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m */; };
 		C903B0D11A5EBF910038AA1B /* DepMans_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = C903B0D01A5EBF910038AA1B /* DepMans_Cell.m */; };
 		C90947FE1AA2028C007B5FB7 /* MHTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C90947FD1AA2028C007B5FB7 /* MHTextField.m */; };
+		C90948021AA20F32007B5FB7 /* UIPopoverListView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90948011AA20F32007B5FB7 /* UIPopoverListView.m */; };
 		C90EA24A1A6BC6960038450A /* libToolsLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C90EA2391A6BC6950038450A /* libToolsLib.a */; };
 		C90EA2741A6BC7750038450A /* libScanViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C90EA2721A6BC7750038450A /* libScanViewController.a */; };
 		C90EA2861A6BF68D0038450A /* BottomTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90EA2831A6BF68D0038450A /* BottomTabBarView.m */; };
@@ -176,6 +177,8 @@
 		C903B0D01A5EBF910038AA1B /* DepMans_Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepMans_Cell.m; sourceTree = "<group>"; };
 		C90947FC1AA2028C007B5FB7 /* MHTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHTextField.h; sourceTree = "<group>"; };
 		C90947FD1AA2028C007B5FB7 /* MHTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHTextField.m; sourceTree = "<group>"; };
+		C90948001AA20F32007B5FB7 /* UIPopoverListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPopoverListView.h; sourceTree = "<group>"; };
+		C90948011AA20F32007B5FB7 /* UIPopoverListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPopoverListView.m; sourceTree = "<group>"; };
 		C90EA22D1A6BC6950038450A /* NSDate+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Common.h"; sourceTree = "<group>"; };
 		C90EA22E1A6BC6950038450A /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeAgo.h"; sourceTree = "<group>"; };
 		C90EA22F1A6BC6950038450A /* NSDictionary+GetJsonStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+GetJsonStr.h"; sourceTree = "<group>"; };
@@ -520,6 +523,15 @@
 			path = MHTextField;
 			sourceTree = "<group>";
 		};
+		C90947FF1AA20F32007B5FB7 /* UIPopoverListView */ = {
+			isa = PBXGroup;
+			children = (
+				C90948001AA20F32007B5FB7 /* UIPopoverListView.h */,
+				C90948011AA20F32007B5FB7 /* UIPopoverListView.m */,
+			);
+			path = UIPopoverListView;
+			sourceTree = "<group>";
+		};
 		C90EA2251A6BC6950038450A /* Dialog */ = {
 			isa = PBXGroup;
 			children = (
@@ -824,6 +836,7 @@
 		C9651EFD1A43B25F00B770BB /* extern */ = {
 			isa = PBXGroup;
 			children = (
+				C90947FF1AA20F32007B5FB7 /* UIPopoverListView */,
 				C90947FB1AA2028C007B5FB7 /* MHTextField */,
 				C9E94DBF1A4A669100E8CC83 /* MJRefresh */,
 				C9651FF41A43BE3100B770BB /* YTKKeyValueStore */,
@@ -2135,6 +2148,7 @@
 				C97203091A9A37CB008273AE /* PlanningDepartmentDidHYPopViewController.m in Sources */,
 				C97093EA1A62CBD200141DC5 /* SelectValue_XCKS_TableViewController.m in Sources */,
 				C97094571A62D09B00141DC5 /* AddPlanDetailsPopVC.m in Sources */,
+				C90948021AA20F32007B5FB7 /* UIPopoverListView.m in Sources */,
 				C9903C1E1A470BDB0006FD99 /* UIImage+Fit.m in Sources */,
 				C97094731A62D36A00141DC5 /* DepManViewController.m in Sources */,
 				C9BFAA0F1A487BF400C887B4 /* Dock.m in Sources */,

@@ -29,8 +29,8 @@
 #import "xmbh_Auto_Model.h"
 #import "YSJL_HqsjVC.h"
 #import "DemoTextField.h"
-
-@interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate,DidSelectedValue_XCRY_Delegate,UIPopoverControllerDelegate>
+#import "UIPopoverListView.h"
+@interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate,DidSelectedValue_XCRY_Delegate,UIPopoverControllerDelegate,UIPopoverListViewDataSource,UIPopoverListViewDelegate>
 
 
 /**
@@ -2176,19 +2176,15 @@
 }
 - (IBAction)Ysjl_hqsj_BtnClick:(id)sender {
     
+    CGFloat xWidth = self.view.bounds.size.width - 460;
+    CGFloat yHeight = 80.0f;
+    CGFloat yOffset = (self.view.bounds.size.height - yHeight)/2.0f;
+    UIPopoverListView *poplistview = [[UIPopoverListView alloc] initWithFrame:CGRectMake(230, yOffset, xWidth, yHeight)];
     
-    UIButton *btn= (UIButton *)sender;
-//    YSJL_HqsjVC 
-    YSJL_HqsjVC *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"YSJL_HqsjVC"];;
-    popVc.selectedDelegate = self;
-    self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
-    self.m_popVC.delegate = self;
-    
- 
-    [self.m_popVC presentPopoverFromRect:btn.bounds
-                                  inView:btn
-                permittedArrowDirections:0
-                                animated:YES];
+    poplistview.delegate = self;
+    poplistview.datasource = self;
+    poplistview.listView.scrollEnabled = FALSE;
+    [poplistview show];
     
 }
 
@@ -2242,6 +2238,9 @@
     
 }
 - (IBAction)zs_GhzsmbBtnClick:(id)sender {
+    
+      [self PopZS_TemplatesListViewControllerWithZSretDict:self.m_ysjl_retDict];
+    
 }
 - (IBAction)Ysjl_RefreshBtnClick:(id)sender {
     
@@ -2322,10 +2321,12 @@
     
 //    FullScreenPreviewVC
     
-    if ([self.m_zs_retDict[@"UrlStr"] isNotNull]) {
+    
+    if ([self.m_zs_saveUrl_Str isNotNull]) {
         
+        NSString *webzsStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/certificate-autoc.jsp?zsbh=%@",WEBURL,self.m_zs_saveUrl_Str];
         FullScreenPreviewVC *tempLasteVC = [self.storyboard instantiateViewControllerWithIdentifier:@"FullScreenPreviewVC"];
-        tempLasteVC.m_urlStr = self.m_zs_retDict[@"UrlStr"] ;
+        tempLasteVC.m_urlStr = webzsStr;
         tempLasteVC.modalPresentationStyle = UIModalPresentationFormSheet;
         tempLasteVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         
@@ -3339,4 +3340,46 @@
 {
     
 }
+
+#pragma mark - UIPopoverListViewDataSource
+
+- (UITableViewCell *)popoverListView:(UIPopoverListView *)popoverListView
+                    cellForIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifier = @"cell";
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                                    reuseIdentifier:identifier];
+    
+    int row = indexPath.row;
+    
+    if(row == 0){
+        cell.textLabel.text = @"获取同名数据";
+    }else if (row == 1){
+        cell.textLabel.text = @"获取历史数据";
+    }
+    
+    return cell;
+}
+
+- (NSInteger)popoverListView:(UIPopoverListView *)popoverListView
+       numberOfRowsInSection:(NSInteger)section
+{
+    return 2;
+}
+
+#pragma mark - UIPopoverListViewDelegate
+- (void)popoverListView:(UIPopoverListView *)popoverListView
+     didSelectIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"%s : %d", __func__, indexPath.row);
+    // your code here
+}
+
+- (CGFloat)popoverListView:(UIPopoverListView *)popoverListView
+   heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 45;
+}
+
+
 @end

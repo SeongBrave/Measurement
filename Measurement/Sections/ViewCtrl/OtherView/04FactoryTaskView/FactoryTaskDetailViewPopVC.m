@@ -271,7 +271,7 @@
 {
     [super viewWillAppear:animated];
     
-     [self loadInitDutyc];
+     [self loadNetData];
     [self updateViewDataWithShowDict:_m_showDict];
 }
 
@@ -554,10 +554,110 @@
     
     [self Add_RAC_Attention];
     
-   
     
     self.isOpen = NO;
     
+}
+
+/**
+ *  获取  的数据
+ */
+-(void)loadNetData
+{
+
+    LoginedUser *loginUsr = [LoginedUser sharedInstance];
+    
+    
+    //    NSDictionary *dict = @{@"rwbh":[self.m_showDict GetLabelWithKey:@"RWBH"],@"usercode":loginUsr.usercode};
+    
+    
+    /**
+     *  我的设备列表
+     */
+    [[BaseNetWork getInstance] hideDialog];
+    @weakify(self)
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findWdsblb.do" parameters:@{@"rwbh":[self.m_showDict GetLabelWithKey:@"RWBH"],@"usercode":loginUsr.usercode}]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return [dict valueForKeyPath:@"data"];
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary  *retDict) {
+         @strongify(self)
+         
+         NSArray *jcjdArr = retDict[@"sblb"];
+         
+         /**
+          *  检测进度数据
+          *
+          *  @param
+          *
+          *  @return
+          */
+         self.m_Sblb_ModelArr = [jcjdArr linq_select:^id(NSDictionary *dict){
+             
+             
+             sblb_Model *sblbmodel = [MTLJSONAdapter modelOfClass:[sblb_Model class] fromJSONDictionary:dict error:nil];
+             
+             
+             return sblbmodel;
+             
+         }];
+         
+         [self.m_My_Sblb_TableView reloadData];
+         
+         
+         
+         
+     }error:^(NSError *error){
+         
+         
+     }];
+    
+
+    
+    
+    [[BaseNetWork getInstance] hideDialog];
+    /**
+     *  获取检测进度数据
+     */
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findShebei.do" parameters:@{@"rwbh":/*@"5dce769b2f9e46a3b3a2c194f46eb80b"*/[self.m_showDict GetLabelWithKey:@"RWBH"]}]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return [dict valueForKeyPath:@"data"];
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSArray  *retArr) {
+         @strongify(self)
+         
+         
+         /**
+          *  未领取设备
+          *
+          *  @param
+          *
+          *  @return
+          */
+         self.m_wlqsb_DataSourceArr = [retArr linq_select:^id(NSDictionary *dict){
+             
+             
+             wlqsb_Model *sblbmodel = [MTLJSONAdapter modelOfClass:[wlqsb_Model class] fromJSONDictionary:dict error:nil];
+             
+             
+             return sblbmodel;
+             
+         }];
+         
+         [self.m_wlqsb_TableView reloadData];
+         
+         
+         
+         
+     }error:^(NSError *error){
+         
+         
+     }];
+
 }
 -(void)updateLineConstraints:(UIButton *)button
 {
@@ -612,108 +712,6 @@
         
     }completion:NULL];
     
-    
-    
-}
-
-//TODO:需要修改成 修改界面的数据
-/**
- *  获取 进入添加计划页面 的数据
- */
--(void)loadInitDutyc
-{
-    
-    LoginedUser *loginUsr = [LoginedUser sharedInstance];
-    
-    
-//    NSDictionary *dict = @{@"rwbh":[self.m_showDict GetLabelWithKey:@"RWBH"],@"usercode":loginUsr.usercode};
-
-    
-    /**
-     *  我的设备列表
-     */
-    [[BaseNetWork getInstance] hideDialog];
-    @weakify(self)
-    [[[[[BaseNetWork getInstance] rac_postPath:@"findWdsblb.do" parameters:@{@"rwbh":[self.m_showDict GetLabelWithKey:@"RWBH"],@"usercode":loginUsr.usercode}]map:^(id responseData)
-       {
-           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-           
-           return [dict valueForKeyPath:@"data"];
-       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-     subscribeNext:^(NSDictionary  *retDict) {
-         @strongify(self)
-         
-         NSArray *jcjdArr = retDict[@"sblb"];
-
-         /**
-          *  检测进度数据
-          *
-          *  @param
-          *
-          *  @return
-          */
-         self.m_Sblb_ModelArr = [jcjdArr linq_select:^id(NSDictionary *dict){
-             
-            
-             sblb_Model *sblbmodel = [MTLJSONAdapter modelOfClass:[sblb_Model class] fromJSONDictionary:dict error:nil];
-             
-             
-             return sblbmodel;
-             
-         }];
-         
-         [self.m_My_Sblb_TableView reloadData];
-         
-         
-         
-         
-     }error:^(NSError *error){
-         
-         
-     }];
-    
-    [[BaseNetWork getInstance] hideDialog];
-    /**
-     *  获取检测进度数据
-     */
-    [[[[[BaseNetWork getInstance] rac_postPath:@"findShebei.do" parameters:@{@"rwbh":/*@"5dce769b2f9e46a3b3a2c194f46eb80b"*/[self.m_showDict GetLabelWithKey:@"RWBH"]}]map:^(id responseData)
-       {
-           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-           
-           return [dict valueForKeyPath:@"data"];
-       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-     subscribeNext:^(NSArray  *retArr) {
-         @strongify(self)
-         
-         
-         /**
-          *  未领取设备
-          *
-          *  @param
-          *
-          *  @return
-          */
-         self.m_wlqsb_DataSourceArr = [retArr linq_select:^id(NSDictionary *dict){
-             
-             
-             wlqsb_Model *sblbmodel = [MTLJSONAdapter modelOfClass:[wlqsb_Model class] fromJSONDictionary:dict error:nil];
-             
-             
-             return sblbmodel;
-             
-         }];
-         
-         [self.m_wlqsb_TableView reloadData];
-         
-         
-         
-         
-     }error:^(NSError *error){
-         
-         
-     }];
-    
-//m_wlqsb_DataSourceArr
     
     
 }
@@ -1240,6 +1238,151 @@
     
 }
 
+-(void)delete_Wdsblb_RequestWithByYqid:(NSString *)yqid
+{
+    //delShebeiByYqid.do
+    
+    @weakify(self)
+    [[BaseNetWork getInstance] showDialogWithVC:self];
+    NSDictionary *dict =@{@"yqid":yqid};
+    [[[[[BaseNetWork getInstance] rac_postPath:@"delShebeiByYqid.do" parameters:dict]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+         
+         @strongify(self)
+         
+         if ([retDict[@"ret"] intValue] == 0) {
+             
+             [Dialog toastError:@"删除失败!"];
+             
+         }else
+         {
+             [Dialog toastSuccess:@"删除成功!"];
+             
+             [self loadNetData];
+         }
+         
+         
+         
+     }error:^(NSError *error){
+         
+         
+         
+     }];
+    
+}
+
+-(void)reject_Wdsblb_RequestWithByYqid:(NSString *)yqid
+{
+    @weakify(self)
+    [[BaseNetWork getInstance] showDialogWithVC:self];
+    NSDictionary *dict =@{@"yqid":yqid};
+    [[[[[BaseNetWork getInstance] rac_postPath:@"delShebeiByYqid.do" parameters:dict]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+         
+         @strongify(self)
+         
+         if ([retDict[@"ret"] intValue] == 0) {
+             
+             [Dialog toastError:@"驳回失败!"];
+             
+         }else
+         {
+             [Dialog toastSuccess:@"驳回成功!"];
+             
+             [self loadNetData];
+         }
+         
+         
+         
+     }error:^(NSError *error){
+         
+         
+         
+     }];
+}
+
+-(void)delete_Wlqsb_RequestWithByYqid:(NSString *)yqid
+{
+    //delShebeiByYqid.do
+    
+    @weakify(self)
+    [[BaseNetWork getInstance] showDialogWithVC:self];
+    NSDictionary *dict =@{@"yqid":yqid};
+    [[[[[BaseNetWork getInstance] rac_postPath:@"delShebeiByYqid.do" parameters:dict]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+         
+         @strongify(self)
+         
+         if ([retDict[@"ret"] intValue] == 0) {
+             
+             [Dialog toastError:@"删除失败!"];
+             
+         }else
+         {
+             [Dialog toastSuccess:@"删除成功!"];
+             
+             [self loadNetData];
+         }
+         
+         
+         
+     }error:^(NSError *error){
+         
+         
+         
+     }];
+    
+}
+
+-(void)reject_Wlqsb_RequestWithByYqid:(NSString *)yqid
+{
+    @weakify(self)
+    [[BaseNetWork getInstance] showDialogWithVC:self];
+    NSDictionary *dict =@{@"yqid":yqid};
+    [[[[[BaseNetWork getInstance] rac_postPath:@"delShebeiByYqid.do" parameters:dict]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+         
+         @strongify(self)
+         
+         if ([retDict[@"ret"] intValue] == 0) {
+             
+             [Dialog toastError:@"删除失败!"];
+             
+         }else
+         {
+             [Dialog toastSuccess:@"删除成功!"];
+             
+             [self loadNetData];
+         }
+         
+         
+         
+     }error:^(NSError *error){
+         
+         
+         
+     }];
+}
 
 
 -(NSMutableArray *)rightButtons
@@ -1288,21 +1431,22 @@
     switch (index) {
         case 0:
         {
-            NSLog(@"More button was pressed");
-            UIAlertView *alertTest = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"More more more" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles: nil];
-            [alertTest show];
+            
+          sblb_Model *model = [_m_Sblb_ModelArr objectAtIndex:index];
+            
+            [self reject_Wdsblb_RequestWithByYqid:model.yqid];
             
             [cell hideUtilityButtonsAnimated:YES];
             break;
         }
         case 1:
         {
-            // Delete button was pressed
-            //            NSIndexPath *cellIndexPath = [self.m_tableView indexPathForCell:cell];
-            //
-            //            [_m_DataSourceArr[cellIndexPath.section] removeObjectAtIndex:cellIndexPath.row];
-            //            [self.m_tableView deleteRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
-            //            break;
+            sblb_Model *model = [_m_Sblb_ModelArr objectAtIndex:index];
+            
+            [self delete_Wdsblb_RequestWithByYqid:model.yqid];
+            
+            [cell hideUtilityButtonsAnimated:YES];
+            break;
         }
         default:
             break;

@@ -153,13 +153,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Measurement/Sections/ViewCtrl/OtherView/04FactoryTaskView/TestingDataRegistViewController.m"
-            timestampString = "446826966.292629"
+            filePath = "Measurement/Sections/ViewCtrl/OtherView/04FactoryTaskView/FactoryTaskDetailViewPopVC.m"
+            timestampString = "446831648.585498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1891"
-            endingLineNumber = "1891"
-            landmarkName = "-Ggxx_SaveBtnClick:"
+            startingLineNumber = "1448"
+            endingLineNumber = "1448"
+            landmarkName = "-swipeableTableViewCell:didTriggerRightUtilityButtonWithIndex:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
