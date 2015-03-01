@@ -15,6 +15,8 @@
 #pragma mark - 系统方法
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.m_showDialog = [[Dialog alloc]initWithParentView:self.view];
     [self SetUpData];
     // Do any additional setup after loading the view.
 }
@@ -59,7 +61,13 @@
 
 -(void)SetUpData
 {
-    
+    /**
+     *  如果有导航使得导航之下开始不是顶部
+     */
+    if (IS_IOS_7) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        
+    }
     [self layoutMainCustomView];
 }
 

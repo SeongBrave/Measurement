@@ -409,6 +409,9 @@
 {
     
     [self.m_txm_TF setRequired:YES];
+    [self.m_sl_TF setRequired:YES];
+    [self.m_yqmc_TF setRequired:YES];
+    [self.m_jclx_DTF setRequired:YES];
     [self.m_dw_DTF setRequired:YES];
     [self.m_xm_ADTF setRequired:YES];
     [self.m_jclx_DTF setRequired:YES];
@@ -1704,7 +1707,9 @@
     //JLQJBH ->计量器具名称编号
     
     if (![self validateInputInView:self.m_sbxq_ScrollView]){
-        [Dialog alert:@"请补全信息!"];
+//        [Dialog alert:@"请补全信息!"];
+        
+        [self.m_showDialog WarningNotificationWithMessage:@"请补全信息!"];
         
     }else
     {
@@ -1728,8 +1733,8 @@
                  
                  self.yqid_Str = retDict[@"yqid"];
                  self.m_Sbxq_saveDataDict[@"yqid"] = self.yqid_Str;
-                 [Dialog toastSuccess:@"保存成功！"];
-                 
+                [Dialog toastSuccess:@"保存成功！"];
+//                  [self.m_showDialog SuccessNotificationWithMessage:@"保存成功！"];
                  /**
                   *  1为显示 保存
                   */
@@ -1741,6 +1746,7 @@
              }else
              {
                  [Dialog toastError:@"保存失败！"];
+//                  [self.m_showDialog ErrorNotificationWithMessage:@"保存失败！"];
              }
              
              
@@ -1884,7 +1890,7 @@
     */
     
     if (![self validateInputInView:self.m_ggxx_ScrollView]){
-        [Dialog alert:@"请补全信息!"];
+        [self.m_showDialog WarningNotificationWithMessage:@"请补全信息!"];
         
     }else
     {
@@ -1908,8 +1914,8 @@
          subscribeNext:^(NSString *retStr) {
              
              if ([retStr intValue] == 1) {
-                 [Dialog toastSuccess:@"保存成功！"];
-                 
+               [Dialog toastSuccess:@"保存成功！"];
+//                 [self.m_showDialog SuccessNotificationWithMessage:@"保存成功！"];
                  /**
                   *  1为显示 保存
                   */
@@ -1919,6 +1925,7 @@
              }else
              {
                  [Dialog toastError:@"保存失败！"];
+//                 [self.m_showDialog ErrorNotificationWithMessage:@"保存失败！"];
              }
              
              
@@ -2023,7 +2030,7 @@
 //     }];
     
     if (![self validateInputInView:self.m_sbxq_ScrollView]){
-        [Dialog alert:@"请补全信息!"];
+       [self.m_showDialog WarningNotificationWithMessage:@"请补全信息!"];
         
     }else
     {
@@ -2081,12 +2088,12 @@
                  
                  if ([retDict[@"ret"] intValue] == 0)
                  {
-                     [Dialog toastError:@"保存失败!"];
+                    [Dialog toastError:@"保存失败!"];
+//                     [self.m_showDialog ErrorNotificationWithMessage:@"保存失败！"];
                      
                  }else
                  {
-                      [Dialog toastSuccess:@"保存成功！"];
-                     
+                     [Dialog toastSuccess:@"保存成功！"];
                      /**
                       *  1为显示 保存
                       */
@@ -2127,11 +2134,12 @@
              if ([retDict[@"ret"] intValue] == 0)
              {
                  [Dialog toastError:@"保存失败!"];
+//                 [self.m_showDialog ErrorNotificationWithMessage:@"保存失败！"];
                  
              }else
              {
-                 [Dialog toastSuccess:@"保存成功！"];
-                 
+                [Dialog toastSuccess:@"保存成功！"];
+//                 [self.m_showDialog SuccessNotificationWithMessage:@"保存成功！"];
              }
              
          }error:^(NSError *error){
@@ -2620,12 +2628,20 @@
         }else
             return YES;
     }else if (view == self.m_sbxq_ScrollView) {
-//        if ([self.m_txm_TF validate]) {
-//            [self.m_txm_TF becomeFirstResponder];
-//            return NO;
-//        }else
-        if (![self.m_jclx_DTF validate]) {
+        if (![self.m_txm_TF validate]) {
+            [self.m_txm_TF becomeFirstResponder];
+            return NO;
+        }else if (![self.m_yqmc_TF validate]) {
+            [self.m_yqmc_TF becomeFirstResponder];
+            return NO;
+        }else if (![self.m_jclx_DTF validate]) {
             [self.m_jclx_DTF verifyshowDropDownTableView];
+            return NO;
+        }else if (![self.m_sl_TF validate]) {
+            [self.m_sl_TF becomeFirstResponder];
+            return NO;
+        }else if (![self.m_dw_DTF validate]) {
+            [self.m_dw_DTF becomeFirstResponder];
             return NO;
         }else if (![self.m_bj_TF validate]) {
             [self.m_bj_TF becomeFirstResponder];

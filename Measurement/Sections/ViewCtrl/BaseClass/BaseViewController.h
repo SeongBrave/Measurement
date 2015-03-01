@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Dialog.h"
 
 @interface BaseViewController : UIViewController
 
 
+
+
+@property(nonatomic , strong)Dialog *m_showDialog;
 
 /**
  *  添加视图
