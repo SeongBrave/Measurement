@@ -6320,6 +6320,12 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="℃" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4PA-c5-22S">
+                                                        <rect key="frame" x="691" y="183" width="17" height="18"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -6339,6 +6345,7 @@
                                                     <constraint firstItem="gva-Lu-epg" firstAttribute="leading" secondItem="KuX-ID-Ys9" secondAttribute="leading" id="FjY-3S-HjU"/>
                                                     <constraint firstItem="LLt-eL-vWe" firstAttribute="height" secondItem="Ddt-cM-P0b" secondAttribute="height" id="HdI-T6-4tQ"/>
                                                     <constraint firstItem="5oB-Su-wYE" firstAttribute="centerY" secondItem="Ddt-cM-P0b" secondAttribute="centerY" id="IIZ-GL-ArC"/>
+                                                    <constraint firstItem="M3v-V1-fMh" firstAttribute="centerY" secondItem="4PA-c5-22S" secondAttribute="centerY" id="Ie9-yo-Byo"/>
                                                     <constraint firstItem="fyN-r6-ar1" firstAttribute="centerY" secondItem="6Zh-mn-mUU" secondAttribute="centerY" id="LCx-c9-nxO"/>
                                                     <constraint firstItem="bGv-Eg-tLz" firstAttribute="centerX" secondItem="M3v-V1-fMh" secondAttribute="centerX" id="N3P-2H-aIk"/>
                                                     <constraint firstItem="Uwa-Di-1bb" firstAttribute="leading" secondItem="clh-33-kkJ" secondAttribute="trailing" constant="41" id="ND8-1x-me5"/>
@@ -6350,6 +6357,7 @@
                                                     <constraint firstItem="c6S-ja-BEK" firstAttribute="centerX" secondItem="LLt-eL-vWe" secondAttribute="centerX" id="UjF-5Z-IQy"/>
                                                     <constraint firstItem="DbU-cs-T3s" firstAttribute="centerX" secondItem="6Zh-mn-mUU" secondAttribute="centerX" id="UpO-AU-iud"/>
                                                     <constraint firstItem="clh-33-kkJ" firstAttribute="centerY" secondItem="Uwa-Di-1bb" secondAttribute="centerY" id="VAp-wt-NaP"/>
+                                                    <constraint firstItem="4PA-c5-22S" firstAttribute="leading" secondItem="M3v-V1-fMh" secondAttribute="trailing" constant="8" id="Vun-hu-aPY"/>
                                                     <constraint firstItem="6Zh-mn-mUU" firstAttribute="top" secondItem="DbU-cs-T3s" secondAttribute="bottom" constant="15" id="W6x-qu-0Km"/>
                                                     <constraint firstItem="KuX-ID-Ys9" firstAttribute="width" secondItem="Uwa-Di-1bb" secondAttribute="width" id="WIh-e6-v9L"/>
                                                     <constraint firstItem="Ddt-cM-P0b" firstAttribute="top" secondItem="65I-aK-2hr" secondAttribute="bottom" constant="15" id="Wyg-ev-dSS"/>
@@ -6757,7 +6765,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXa-Jj-DgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1558" y="-9724"/>
+            <point key="canvasLocation" x="1604" y="-9768"/>
         </scene>
         <!--Full Screen PreviewVC-->
         <scene sceneID="XbH-hE-Fn6">
