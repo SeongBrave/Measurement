@@ -188,7 +188,7 @@
     
     self.m_netFunctionStr = @"queryDetectionTask.do";
     //pxfs
-    [self.m_netParamDict setObject:usr.usercode forKey:@"usercode"];
+    [self.m_netParamDict setObject:usr.usercode forKey:@"userCode"];
     [self.m_netParamDict setObject:[NSString stringWithFormat:@"%d",pageNo] forKey:@"pageNo"];
     [self.m_netParamDict setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"pageSize"];
     
@@ -199,7 +199,7 @@
     /**
      *  排序方式
      */
-   // [self.m_netParamDict setObject:@"jx" forKey:@"pxfs"];
+    [self.m_netParamDict setObject:@"jx" forKey:@"pxfs"];
     
 }
 - (IBAction)CreatePlanClick:(id)sender {
@@ -446,33 +446,43 @@
          NSDictionary *dict = self.m_DataSourceArr[indexPath.row];
         
         debug_int([dict[@"SFHY"]intValue]);
-        /**
-         *  是否已经提交核验
-         */
-        if ([dict[@"SFHY"]intValue] == 1) {
+        
+        DetectionTaskQueryDidHYPopViewController *popVc = (DetectionTaskQueryDidHYPopViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"DetectionTaskQueryDidHYPopViewController"];
+        
+        popVc.m_showDict = dict;
+        popVc.modalPresentationStyle = UIModalPresentationFormSheet;
+        popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self presentViewController:popVc animated:YES completion:^(void){
             
-            
-            DetectionTaskQueryDidHYPopViewController *popVc = (DetectionTaskQueryDidHYPopViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"DetectionTaskQueryDidHYPopViewController"];
-            
-            popVc.m_showDict = dict;
-            popVc.modalPresentationStyle = UIModalPresentationFormSheet;
-            popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-            [self presentViewController:popVc animated:YES completion:^(void){
-                
-            }];
-            
-        }else
-        {
-            DetectionTaskQueryDidNotHYPopViewController *popVc = (DetectionTaskQueryDidNotHYPopViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"DetectionTaskQueryDidNotHYPopViewController"];
-            
-            popVc.m_showDict = dict;
-            popVc.modalPresentationStyle = UIModalPresentationFormSheet;
-            popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-            [self presentViewController:popVc animated:YES completion:^(void){
-                
-            }];
-            
-        }
+        }];
+        
+//        /**
+//         *  是否已经提交核验
+//         */
+//        if ([dict[@"SFHY"]intValue] == 0) {
+//            
+//            
+//            DetectionTaskQueryDidHYPopViewController *popVc = (DetectionTaskQueryDidHYPopViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"DetectionTaskQueryDidHYPopViewController"];
+//            
+//            popVc.m_showDict = dict;
+//            popVc.modalPresentationStyle = UIModalPresentationFormSheet;
+//            popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+//            [self presentViewController:popVc animated:YES completion:^(void){
+//                
+//            }];
+//            
+//        }else
+//        {
+//            DetectionTaskQueryDidNotHYPopViewController *popVc = (DetectionTaskQueryDidNotHYPopViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"DetectionTaskQueryDidNotHYPopViewController"];
+//            
+//            popVc.m_showDict = dict;
+//            popVc.modalPresentationStyle = UIModalPresentationFormSheet;
+//            popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+//            [self presentViewController:popVc animated:YES completion:^(void){
+//                
+//            }];
+//            
+//        }
         
         
         

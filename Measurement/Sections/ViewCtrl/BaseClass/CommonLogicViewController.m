@@ -135,6 +135,8 @@
     [self setBaseNetWorkParameters];
     
     debug_object(self.m_netParamDict);
+    
+    debug_object(self.m_netFunctionStr);
     /**
      *  设置加载时显示提示
      */

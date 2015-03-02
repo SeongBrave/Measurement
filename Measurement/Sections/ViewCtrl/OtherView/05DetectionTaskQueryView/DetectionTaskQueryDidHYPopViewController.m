@@ -362,8 +362,36 @@
     
 }
 
--(void)changeLabelStateWithDict:(NSDictionary *) dict forLabel:(UILabel *) label
+-(void)changeLabelStateWithDict:(NSDictionary *) dict
 {
+    /**
+     *  "FZFY": null,
+     "FZFZ": null,
+     "LYDJ": null,
+     "RWLQ": "1,领取人:张健(医化),2014-07-08 13:51:32,2014-07-08 13:52:28",
+     "SFDY": null,
+     "SFHY": "1,魏宇林(通过),2014-07-08 00:00:00,2014-07-08 00:00:00",
+     "SFJD": "1,张健(医化)(已检),2014-07-08 00:00:00",
+     "SFPZ": "1,张健(医化)(通过),2014-07-08 00:00:00,2014-07-08 00:00:00",
+     "SFSY": null,
+     "wtdbh": "1407082031",
+     "WTDJ": "张健(医化),2014-07-08 13:51:31",
+     "yqid": "5FC074F103524B31972DBEB39DA13AC0",
+     "zsbh": "YL95146002"
+     */
+    
+    if ([dict[@"WTDJ"] isNotNull]) {
+        
+        NSString *wtdjStr =dict[@"WTDJ"];
+        
+        
+        
+    }
+    
+    
+    
+    
+    
     
     
 }
@@ -373,8 +401,17 @@
  */
 -(void)update_ggxxViewByYretDict:(NSDictionary *) retDict
 {
-    
-    
+
+    self.m_wtdh_LB.text = [retDict GetLabelWithKey:@"WTDH"];
+    self.m_dwmc_LB.text = [retDict GetLabelWithKey:@"DWMC"];
+    self.m_txm_LB.text = [retDict GetLabelWithKey:@"TXM"];
+    self.m_yqmc_LB.text = [retDict GetLabelWithKey:@"YQMC"];
+    self.m_ggxh_LB.text = [retDict GetLabelWithKey:@"GGXH"];
+    self.m_lx_LB.text = [retDict GetLabelWithKey:@"LX"];
+    self.m_jlh_LB.text = [retDict GetLabelWithKey:@"JLH"];
+    self.m_jllb_LB.text = [retDict GetLabelWithKey:@"JLLB"];
+    self.m_zsh_LB.text = [retDict GetLabelWithKey:@"ZS"];
+    self.m_zslb_LB.text = [retDict GetLabelWithKey:@"ZSLB"];
     
 }
 
@@ -409,7 +446,39 @@
 -(void)loadNetData
 {
     
+    /**
+     *  设备信息-流转跟踪
+     *  yqid
+     */
+    //findLiuzhuangz.do
     
+        @weakify(self)
+    
+    [[BaseNetWork getInstance] hideDialog];
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findLiuzhuangz.do" parameters:@{@"yqid":[self.m_showDict[@"yqid"] isNotNull]?self.m_showDict[@"yqid"]:@"yqid"}]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+         
+         @strongify(self)
+         if ([retDict[@"ret"] intValue] == 0)
+         {
+             
+             [self.m_showDialog WarningNotificationWithMessage:@"获取数据失败!"];
+             
+         }else
+         {
+             [self changeLabelStateWithDict:retDict[@"yqlzgz"]];
+         }
+         
+     }error:^(NSError *error){
+         
+     }];
+
+
 }
 - (IBAction)BackToVC:(id)sender {
     

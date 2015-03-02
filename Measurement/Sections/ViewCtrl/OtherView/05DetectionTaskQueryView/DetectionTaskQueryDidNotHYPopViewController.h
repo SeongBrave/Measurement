@@ -16,6 +16,7 @@
 
 @interface DetectionTaskQueryDidNotHYPopViewController : BaseViewController
 
+@property(nonatomic , strong)UIPopoverController *m_popVC;
 
 @property(nonatomic , assign)DataSourceType m_dataSourceType;
 
@@ -38,5 +39,10 @@
  *  用于保存公共信息最后确定时传的参数
  */
 @property(nonatomic ,strong)NSMutableDictionary *m_Ggxx_saveDataDict;
+
+/**
+ *  显示DropDownTableView
+ */
+-(void)showDropDownTableView;
 
 @end

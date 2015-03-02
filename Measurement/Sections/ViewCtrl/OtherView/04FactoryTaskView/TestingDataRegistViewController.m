@@ -425,6 +425,9 @@
     [self.m_xdsd_TF setRequired:YES];
     [self.m_qt_TF setRequired:YES];
     [self.m_pzr_DTF setRequired:YES];
+    [self.m_jdy_TF setRequired:YES];
+    [self.m_jdzq_DTF setRequired:YES];
+    [self.m_hyy_DTF setRequired:YES];
 
     /**
      *  初始化标志状态
@@ -2604,6 +2607,9 @@
         if (![self.m_qjyt_DTF validate]) {
             [self.m_qjyt_DTF verifyshowDropDownTableView];
             return NO;
+        }else if (![self.m_jdzq_DTF validate]) {
+            [self.m_jdzq_DTF becomeFirstResponder];
+            return NO;
         }else if (![self.m_jddd_TF validate]) {
             [self.m_jddd_TF becomeFirstResponder];
             return NO;
@@ -2622,7 +2628,13 @@
         }else  if (![self.m_qt_TF validate]) {
             [self.m_qt_TF becomeFirstResponder];
             return NO;
-        }else  if (![self.m_pzr_DTF validate]) {
+        }else  if (![self.m_jdy_TF validate]) {
+            [self.m_jdy_TF becomeFirstResponder];
+            return NO;
+        }else if (![self.m_hyy_DTF validate]) {
+            [self.m_hyy_DTF verifyshowDropDownTableView];
+            return NO;
+        }else if (![self.m_pzr_DTF validate]) {
             [self.m_pzr_DTF verifyshowDropDownTableView];
             return NO;
         }else

@@ -80,7 +80,16 @@ static CGFloat BUTTONWIDTH = 70.0f;
     
     debug_object(product);
     self.m_dateL.text =[product GetLabelWithKey:@"今天"];
-    self.m_companyNameL.text = [product GetLabelWithKey:@"WTDWMC"];
+    
+    
+    if ([product GetLabelWithKey:@"WTDW"].length >0) {
+        self.m_companyNameL.text = [product GetLabelWithKey:@"WTDW"];
+    }else
+    {
+        self.m_companyNameL.text = [product GetLabelWithKey:@"WTDWMC"];
+    }
+    
+//    self.m_companyNameL.text = [product GetLabelWithKey:@"WTDWMC"];
     self.m_companyAddrL.text = [product GetLabelWithKey:@"DWDZ"];
     self.m_contactNameL.text =  [product GetLabelWithKey:@"CJR"];
     self.m_contactTelL.text = [product GetLabelWithKey:@"LXDH"];
