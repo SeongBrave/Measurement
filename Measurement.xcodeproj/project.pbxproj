@@ -118,6 +118,8 @@
 		C9BFAA131A487BF400C887B4 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFAA091A487BF400C887B4 /* MenuView.m */; };
 		C9BFAA151A487BF400C887B4 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFAA0D1A487BF400C887B4 /* SettingCell.m */; };
 		C9C662811AA0D8CC004EE4E4 /* DemoTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C662801AA0D8CC004EE4E4 /* DemoTextField.m */; };
+		C9D23C3B1AA73076001EA654 /* Jcrwcx_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D23C3A1AA73076001EA654 /* Jcrwcx_Model.m */; };
+		C9D23C3F1AA73C31001EA654 /* JcrwcxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D23C3E1AA73C31001EA654 /* JcrwcxCell.m */; };
 		C9D6B9F61A5AE648006D27EF /* AutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F01A5AE648006D27EF /* AutoCompleteTextField.m */; };
 		C9D6B9F71A5AE648006D27EF /* NSString+Levenshtein.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */; };
 		C9E184BF1A907C67005690BD /* AuditNotPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E184BB1A907C67005690BD /* AuditNotPassViewController.m */; };
@@ -410,6 +412,10 @@
 		C9BFAA0D1A487BF400C887B4 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		C9C6627F1AA0D8CC004EE4E4 /* DemoTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoTextField.h; sourceTree = "<group>"; };
 		C9C662801AA0D8CC004EE4E4 /* DemoTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoTextField.m; sourceTree = "<group>"; };
+		C9D23C391AA73076001EA654 /* Jcrwcx_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jcrwcx_Model.h; sourceTree = "<group>"; };
+		C9D23C3A1AA73076001EA654 /* Jcrwcx_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jcrwcx_Model.m; sourceTree = "<group>"; };
+		C9D23C3D1AA73C31001EA654 /* JcrwcxCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JcrwcxCell.h; sourceTree = "<group>"; };
+		C9D23C3E1AA73C31001EA654 /* JcrwcxCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JcrwcxCell.m; sourceTree = "<group>"; };
 		C9D6B9EF1A5AE648006D27EF /* AutoCompleteTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoCompleteTextField.h; sourceTree = "<group>"; };
 		C9D6B9F01A5AE648006D27EF /* AutoCompleteTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoCompleteTextField.m; sourceTree = "<group>"; };
 		C9D6B9F11A5AE648006D27EF /* AutoCompleteTextFieldDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoCompleteTextFieldDataSource.h; sourceTree = "<group>"; };
@@ -1485,6 +1491,7 @@
 		C9A8B6031A490682008E94B7 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				C9D23C3C1AA73C21001EA654 /* 05JcrwcxCell */,
 				C9431FBA1A4DAF640017FED0 /* MyPlanViewCell */,
 				C99FD9271A4C4F0A000AB1A6 /* ProgramOverviewCell */,
 				C9A8B6051A4906D3008E94B7 /* CommonLogicCell */,
@@ -1542,6 +1549,24 @@
 				C9C662801AA0D8CC004EE4E4 /* DemoTextField.m */,
 			);
 			path = DemoTextField;
+			sourceTree = "<group>";
+		};
+		C9D23C381AA73040001EA654 /* Jcrwcx_Model */ = {
+			isa = PBXGroup;
+			children = (
+				C9D23C391AA73076001EA654 /* Jcrwcx_Model.h */,
+				C9D23C3A1AA73076001EA654 /* Jcrwcx_Model.m */,
+			);
+			path = Jcrwcx_Model;
+			sourceTree = "<group>";
+		};
+		C9D23C3C1AA73C21001EA654 /* 05JcrwcxCell */ = {
+			isa = PBXGroup;
+			children = (
+				C9D23C3D1AA73C31001EA654 /* JcrwcxCell.h */,
+				C9D23C3E1AA73C31001EA654 /* JcrwcxCell.m */,
+			);
+			path = 05JcrwcxCell;
 			sourceTree = "<group>";
 		};
 		C9D6B9EE1A5AE648006D27EF /* AutoCompleteTextField */ = {
@@ -1796,6 +1821,7 @@
 		C9FFC1581A6E7B4600AA6BE7 /* 05DetectionTaskQueryModel */ = {
 			isa = PBXGroup;
 			children = (
+				C9D23C381AA73040001EA654 /* Jcrwcx_Model */,
 			);
 			path = 05DetectionTaskQueryModel;
 			sourceTree = "<group>";
@@ -2067,6 +2093,7 @@
 				C9E6B2D11A88FE7500432DE8 /* wlqsb_Model.m in Sources */,
 				C9651FC31A43B25F00B770BB /* BaseNetWork.m in Sources */,
 				C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */,
+				C9D23C3B1AA73076001EA654 /* Jcrwcx_Model.m in Sources */,
 				C9FFC14F1A6E7A6A00AA6BE7 /* ResponsibleDepModel.m in Sources */,
 				C9431FBD1A4DAF7B0017FED0 /* MyPlanViewCell.m in Sources */,
 				C98CBFB81A9D9B0C006DC733 /* MenuModel.m in Sources */,
@@ -2151,6 +2178,7 @@
 				C970945D1A62D09B00141DC5 /* UpdatePlanDetailsPopVC.m in Sources */,
 				C97203091A9A37CB008273AE /* PlanningDepartmentDidHYPopViewController.m in Sources */,
 				C97093EA1A62CBD200141DC5 /* SelectValue_XCKS_TableViewController.m in Sources */,
+				C9D23C3F1AA73C31001EA654 /* JcrwcxCell.m in Sources */,
 				C97094571A62D09B00141DC5 /* AddPlanDetailsPopVC.m in Sources */,
 				C90948021AA20F32007B5FB7 /* UIPopoverListView.m in Sources */,
 				C9903C1E1A470BDB0006FD99 /* UIImage+Fit.m in Sources */,

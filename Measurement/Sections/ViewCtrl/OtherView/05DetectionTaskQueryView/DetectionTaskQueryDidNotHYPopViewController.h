@@ -10,7 +10,7 @@
  *  未提交核验的
  */
 #import "BaseViewController.h"
-
+#import "Jcrwcx_Model.h"
 
 
 
@@ -25,6 +25,7 @@
  */
 @property(nonatomic , strong)NSDictionary *m_showDict;
 
+@property(nonatomic , strong)Jcrwcx_Model *m_jcrwcx_Model;
 /**
  *  用于显示设备详情界面的数据
  */

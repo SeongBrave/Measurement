@@ -43,17 +43,32 @@
  */
 @property(nonatomic ,strong) NSDictionary *m_jcsj_Dict;
 
-@property (weak, nonatomic) IBOutlet UILabel *m_wtdh_LB;
-
-@property (weak, nonatomic) IBOutlet UILabel *m_dwmc_LB;
 @property (weak, nonatomic) IBOutlet UILabel *m_txm_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_yqmc_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_ggxh_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_lx_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_jlh_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_jllb_LB;
+
 @property (weak, nonatomic) IBOutlet UILabel *m_zsh_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_zslb_LB;
+
+@property (weak, nonatomic) IBOutlet UILabel *m_ssks_LB;
+@property (weak, nonatomic) IBOutlet UILabel *m_yqmc_LB;
+@property (weak, nonatomic) IBOutlet UILabel *m_ccbh_LB;
+@property (weak, nonatomic) IBOutlet UILabel *m_jclx_LB;
+
+@property (weak, nonatomic) IBOutlet UILabel *m_sl_LB;
+
+@property (weak, nonatomic) IBOutlet UILabel *m_bj_LB;
+@property (weak, nonatomic) IBOutlet UILabel *m_jltx_LB;
+@property (weak, nonatomic) IBOutlet UILabel *m_clfw_LB;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *m_ggxh_LB;
+
+@property (weak, nonatomic) IBOutlet UILabel *m_sccj_LB;
+
+@property (weak, nonatomic) IBOutlet UILabel *m_wg_LB;
+@property (weak, nonatomic) IBOutlet UILabel *m_pj_LB;
+
+@property (weak, nonatomic) IBOutlet UILabel *m_tsyq_LB;
+@property (weak, nonatomic) IBOutlet UILabel *m_bz_LB;
+
 
 /**
  *  流转跟踪
@@ -314,8 +329,19 @@
     
     [[self.m_sbxq_Btn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id next){
         
+        UIButton *button = (UIButton *)next;
         @strongify(self)
-        [self updateLineConstraints:next];
+        [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(button.mas_centerX);
+            make.width.equalTo(@60);
+            make.height.equalTo(@4);
+            make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
+        }];
+        [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+            @strongify(self)
+            [self.m_menuBarView layoutIfNeeded];
+            
+        }completion:NULL];
         
         [self.mainScrollView setContentOffset:CGPointZero animated:YES];
         
@@ -325,8 +351,19 @@
 
     [[self.m_ysjl_Btn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id next){
         
+        UIButton *button = (UIButton *)next;
         @strongify(self)
-        [self updateLineConstraints:next];
+        [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(button.mas_centerX);
+            make.width.equalTo(@60);
+            make.height.equalTo(@4);
+            make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
+        }];
+        [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+            @strongify(self)
+            [self.m_menuBarView layoutIfNeeded];
+            
+        }completion:NULL];
         //        [self PopYSJL_TemplatesListViewControllerWithZSretDict:nil];
         [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width,0} animated:YES];
         
@@ -335,9 +372,20 @@
     [[self.m_zs_Btn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id next){
         
         @strongify(self)
-        [self updateLineConstraints:next];
+        UIButton *button = (UIButton *)next;
+        [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(button.mas_centerX);
+            make.width.equalTo(@30);
+            make.height.equalTo(@4);
+            make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
+        }];
+        [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+            @strongify(self)
+            [self.m_menuBarView layoutIfNeeded];
+            
+        }completion:NULL];
         //        [self PopZS_TemplatesListViewControllerWithZSretDict:nil];
-        //        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*3,0} animated:YES];
+        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*3,0} animated:YES];
         
     }];
     
@@ -380,13 +428,7 @@
      "zsbh": "YL95146002"
      */
     
-    if ([dict[@"WTDJ"] isNotNull]) {
-        
-        NSString *wtdjStr =dict[@"WTDJ"];
-        
-        
-        
-    }
+
     
     
     
@@ -399,20 +441,44 @@
  *  更新设备详情界面
  *
  */
--(void)update_ggxxViewByYretDict:(NSDictionary *) retDict
+-(void)update_ggxxViewByDict:(NSDictionary *) dict
 {
 
-    self.m_wtdh_LB.text = [retDict GetLabelWithKey:@"WTDH"];
-    self.m_dwmc_LB.text = [retDict GetLabelWithKey:@"DWMC"];
-    self.m_txm_LB.text = [retDict GetLabelWithKey:@"TXM"];
-    self.m_yqmc_LB.text = [retDict GetLabelWithKey:@"YQMC"];
-    self.m_ggxh_LB.text = [retDict GetLabelWithKey:@"GGXH"];
-    self.m_lx_LB.text = [retDict GetLabelWithKey:@"LX"];
-    self.m_jlh_LB.text = [retDict GetLabelWithKey:@"JLH"];
-    self.m_jllb_LB.text = [retDict GetLabelWithKey:@"JLLB"];
-    self.m_zsh_LB.text = [retDict GetLabelWithKey:@"ZS"];
-    self.m_zslb_LB.text = [retDict GetLabelWithKey:@"ZSLB"];
+    self.m_txm_LB.text = [dict[@"txm"] GetNotNullStr];
+    self.m_zsh_LB.text = [dict[@"zsbh"] GetNotNullStr];
+    self.m_ssks_LB.text = [dict[@"ks"] GetNotNullStr];
+    self.m_yqmc_LB.text = [dict[@"yqmc"] GetNotNullStr];
+    self.m_ccbh_LB.text = [dict[@"ccbh"] GetNotNullStr];
+    self.m_jclx_LB.text = [dict[@"jclx"] GetNotNullStr];
+    self.m_sl_LB.text = [dict[@"sl"] GetNotNullStr];
     
+    
+    self.m_bj_LB.text = [dict[@"bzsf"] GetNotNullStr];
+    self.m_jltx_LB.text = [dict[@"jltx"] GetNotNullStr];
+    self.m_clfw_LB.text = [dict[@"jcfw"] GetNotNullStr];
+    self.m_ggxh_LB.text = [dict[@"ggxh"] GetNotNullStr];
+    self.m_sccj_LB.text = [dict[@"sccj"] GetNotNullStr];
+    self.m_wg_LB.text = [dict[@"wg"] GetNotNullStr];
+    self.m_pj_LB.text = [dict[@"pj"] GetNotNullStr];
+    
+    self.m_tsyq_LB.text = [dict[@"tsyq"] GetNotNullStr];
+    
+    self.m_bz_LB.text = [dict[@"bz"] GetNotNullStr];
+
+    [self loadwebView];
+    
+}
+
+-(void)loadwebView
+{
+    //设备详情    
+//    http://IPaddress:port/lims/web/pages/detectionTask/record-autoc.jsp
+    
+    [self load_ysjl_WebViewWithjljspmc:self.m_jcrwcx_Model.yqid];
+    //证书
+//    http://IPaddress:port/lims/web/pages/detectionTask/certificate-autoc.jsp
+    
+    [self load_zs_WebViewWithjljspmc:self.m_jcrwcx_Model.zsbh];
 }
 
 //layoutMainCustomView
@@ -478,6 +544,33 @@
          
      }];
 
+    
+    [[BaseNetWork getInstance] hideDialog];
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findWtdxxxxByYqid.do" parameters:@{@"yqid":[self.m_jcrwcx_Model.yqid isNotNull]?self.m_jcrwcx_Model.yqid:@"yqid"}]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+         
+         @strongify(self)
+         if ([retDict[@"ret"] intValue] == 0)
+         {
+             
+             [self.m_showDialog WarningNotificationWithMessage:@"获取数据失败!"];
+             
+         }else
+         {
+             [self update_ggxxViewByDict:retDict[@"qjxx"]];
+         }
+         
+     }error:^(NSError *error){
+         
+     }];
+    
+    
+//    [self update_ggxxViewByYretJcrwcx_Model:self.m_jcrwcx_Model];
 
 }
 - (IBAction)BackToVC:(id)sender {
@@ -806,11 +899,11 @@
 #pragma mark - 代理协议方法*
 
 
--(void)load_ysjl_WebViewWithjljspmc:(NSString *) jljspmc
+-(void)load_ysjl_WebViewWithjljspmc:(NSString *) yqid
 {
     //175.17.22.241:8080
     
-    NSString *webysjlStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/record-addc.jsp?yqid=%@&jljspmc=%@",WEBURL,self.yqid_Str,jljspmc];
+    NSString *webysjlStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/record-autoc.jsp?yqid=%@",WEBURL,yqid];
     
     //    self.m_ysjl_WebView.scrollView.scrollEnabled = NO;
     [self.m_ysjl_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webysjlStr]]];

@@ -9,7 +9,7 @@
 #import "DetectionTaskQueryViewController.h"
 #import "FactoryTaskCell.h"
 #import <UIColor+HexString.h>
-#import "CompanyCollectionViewCell.h"
+#import "JcrwcxCell.h"
 #import "OptionMenuTableViewController.h"
 #import "FactoryTaskDetailViewPopVC.h"
 #import "AddPlanDetailsPopVC.h"
@@ -17,8 +17,9 @@
 #import "DropDownListView.h"
 #import "DetectionTaskQueryDidHYPopViewController.h"
 #import "DetectionTaskQueryDidNotHYPopViewController.h"
-
-@interface DetectionTaskQueryViewController ()<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, SwipeCompanyCollectionViewCellDelegate,UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,PopViewDelegate,DropDownChooseDelegate,DropDownChooseDataSource>
+#import "JcrwcxCell.h"
+#import "Jcrwcx_Model.h"
+@interface DetectionTaskQueryViewController ()<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, SwipeJcrwcxCellDelegate,UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,PopViewDelegate,DropDownChooseDelegate,DropDownChooseDataSource>
 {
     NSArray *chooseArray ;
 }
@@ -188,7 +189,7 @@
     
     self.m_netFunctionStr = @"queryDetectionTask.do";
     //pxfs
-    [self.m_netParamDict setObject:usr.usercode forKey:@"userCode"];
+    [self.m_netParamDict setObject:usr.usercode forKey:@"usercode"];
     [self.m_netParamDict setObject:[NSString stringWithFormat:@"%d",pageNo] forKey:@"pageNo"];
     [self.m_netParamDict setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"pageSize"];
     
@@ -214,6 +215,15 @@
  */
 -(void)successGetDataWithResponseData:(id)responseData
 {
+    NSArray *arr = responseData;
+    
+    self.m_DataSourceArr = [[NSMutableArray alloc ]initWithArray:[arr linq_select:^id(NSDictionary *dict){
+       
+        Jcrwcx_Model *sblbmodel = [MTLJSONAdapter modelOfClass:[Jcrwcx_Model class] fromJSONDictionary:dict error:nil];
+        
+        
+        return sblbmodel;
+    }]];
     
     [self.m_collectionView reloadData];
     //      [self.tableView reloadData];
@@ -433,8 +443,8 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIdentifier = @"CompanyCollectionViewCell";
-    CompanyCollectionViewCell *cell = (CompanyCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    static NSString *cellIdentifier = @"JcrwcxCell";
+    JcrwcxCell *cell = (JcrwcxCell*)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.m_delegate = self;
     [cell configureCellWithItem:self.m_DataSourceArr[indexPath.row]];
     return cell;
@@ -443,46 +453,36 @@
     
     
     if (indexPath.row  < self.m_DataSourceArr.count) {
-         NSDictionary *dict = self.m_DataSourceArr[indexPath.row];
+         Jcrwcx_Model *model = self.m_DataSourceArr[indexPath.row];
         
-        debug_int([dict[@"SFHY"]intValue]);
         
-        DetectionTaskQueryDidHYPopViewController *popVc = (DetectionTaskQueryDidHYPopViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"DetectionTaskQueryDidHYPopViewController"];
-        
-        popVc.m_showDict = dict;
-        popVc.modalPresentationStyle = UIModalPresentationFormSheet;
-        popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        [self presentViewController:popVc animated:YES completion:^(void){
+        /**
+         *  是否已经提交核验
+         */
+        if ([model.sfhy intValue] == 0) {
+           
             
-        }];
-        
-//        /**
-//         *  是否已经提交核验
-//         */
-//        if ([dict[@"SFHY"]intValue] == 0) {
-//            
-//            
-//            DetectionTaskQueryDidHYPopViewController *popVc = (DetectionTaskQueryDidHYPopViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"DetectionTaskQueryDidHYPopViewController"];
-//            
-//            popVc.m_showDict = dict;
-//            popVc.modalPresentationStyle = UIModalPresentationFormSheet;
-//            popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-//            [self presentViewController:popVc animated:YES completion:^(void){
-//                
-//            }];
-//            
-//        }else
-//        {
-//            DetectionTaskQueryDidNotHYPopViewController *popVc = (DetectionTaskQueryDidNotHYPopViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"DetectionTaskQueryDidNotHYPopViewController"];
-//            
-//            popVc.m_showDict = dict;
-//            popVc.modalPresentationStyle = UIModalPresentationFormSheet;
-//            popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-//            [self presentViewController:popVc animated:YES completion:^(void){
-//                
-//            }];
-//            
-//        }
+            DetectionTaskQueryDidHYPopViewController *popVc = (DetectionTaskQueryDidHYPopViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"DetectionTaskQueryDidHYPopViewController"];
+            
+            popVc.m_jcrwcx_Model = model;
+            popVc.modalPresentationStyle = UIModalPresentationFormSheet;
+            popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            [self presentViewController:popVc animated:YES completion:^(void){
+                
+            }];
+            
+        }else
+        {
+            DetectionTaskQueryDidNotHYPopViewController *popVc = (DetectionTaskQueryDidNotHYPopViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"DetectionTaskQueryDidNotHYPopViewController"];
+            
+            popVc.m_jcrwcx_Model = model;
+            popVc.modalPresentationStyle = UIModalPresentationFormSheet;
+            popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            [self presentViewController:popVc animated:YES completion:^(void){
+                
+            }];
+            
+        }
         
         
         
@@ -498,17 +498,17 @@
 
 #pragma mark - SwipeForOptionsCellDelegate Methods
 
-- (void)cell:(CompanyCollectionViewCell *)cell didShowMenu:(BOOL)isShowingMenu
+- (void)cell:(JcrwcxCell *)cell didShowMenu:(BOOL)isShowingMenu
 {
     if (isShowingMenu) {
         self.lastIndex = [self.m_collectionView indexPathForCell:cell];
     }
 }
 
-- (void)cellDidEndScrolling:(CompanyCollectionViewCell *)cell
+- (void)cellDidEndScrolling:(JcrwcxCell *)cell
 {
     if (_lastIndex && _lastIndex.row != [self.m_collectionView indexPathForCell:cell].row) {
-        cell = (CompanyCollectionViewCell *)[self.m_collectionView cellForItemAtIndexPath:_lastIndex];
+        cell = (JcrwcxCell *)[self.m_collectionView cellForItemAtIndexPath:_lastIndex];
         [cell hideUtilityButtonsAnimated:YES];
     }
     
@@ -524,7 +524,7 @@
  *
  *  @param cell
  */
-- (void)cellDetectionPress:(CompanyCollectionViewCell *)cell
+- (void)cellDetectionPress:(JcrwcxCell *)cell
 {
     
     
@@ -560,7 +560,7 @@
  *
  *  @param cell
  */
-- (void)cellRejectedPress:(CompanyCollectionViewCell *)cell
+- (void)cellRejectedPress:(JcrwcxCell *)cell
 {
     //TODO:要单独显示个驳回界面，然后再调用下面代码
     NSIndexPath *indexPath = [self.m_collectionView indexPathForCell:cell];
@@ -591,7 +591,7 @@
  *
  *  @param cell
  */
-- (void)cellMarkCompletedPress:(CompanyCollectionViewCell *)cell
+- (void)cellMarkCompletedPress:(JcrwcxCell *)cell
 {
     //TODO:要单独显示个驳回界面，然后再调用下面代码
     NSIndexPath *indexPath = [self.m_collectionView indexPathForCell:cell];

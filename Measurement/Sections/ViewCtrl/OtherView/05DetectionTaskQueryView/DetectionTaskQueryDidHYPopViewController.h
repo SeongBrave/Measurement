@@ -10,7 +10,7 @@
  *  已提交核验 显示检测数据修改
  */
 #import "BaseViewController.h"
-
+#import "Jcrwcx_Model.h"
 
 @interface DetectionTaskQueryDidHYPopViewController : BaseViewController
 
@@ -22,6 +22,8 @@
  *  用于保存上一级界面传递过来的数据
  */
 @property(nonatomic , strong)NSDictionary *m_showDict;
+
+@property(nonatomic , strong)Jcrwcx_Model *m_jcrwcx_Model;
 
 /**
  *  用于显示设备详情界面的数据
