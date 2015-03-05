@@ -6,6 +6,13 @@
 //  Copyright (c) 2015年 成勇. All rights reserved.
 //
 
+
+#define SELECTEDCOLOR  UIColorFromRGB(185, 17, 57)
+#define DEFAULTCOLOR  UIColorFromRGB(206, 206, 206)
+
+#define SELECTEDFONTCOLOR  UIColorFromRGB(0, 0, 0)
+#define DEFAULTFONTCOLOR  UIColorFromRGB(154, 154, 154)
+
 #import "DetectionTaskQueryDidHYPopViewController.h"
 #import "FullScreenPreviewVC.h"
 #import "WebViewJavascriptBridge.h"
@@ -428,6 +435,156 @@
      "zsbh": "YL95146002"
      */
     
+    NSDictionary *rwdj = dict[@"rwdj"];
+    NSDictionary *sfjd = dict[@"sfjd"];
+    NSDictionary *sfhy = dict[@"sfhy"];
+    NSDictionary *sfpz = dict[@"sfpz"];
+    NSDictionary *sfdy = dict[@"sfdy"];
+    NSDictionary *sffz = dict[@"sffz"];
+    
+    
+    /**
+     *  任务登记
+     */
+    if ([rwdj[@"ret"] intValue] ==1) {
+        
+        self.m_wtdj_usr_LB.textColor = SELECTEDFONTCOLOR;
+        self.m_wtdj_sj_LB.textColor = SELECTEDFONTCOLOR;
+        self.m_wtdj_state_V.backgroundColor = SELECTEDCOLOR;
+        
+        self.m_wtdj_usr_LB.text = rwdj[@"user"];
+        self.m_wtdj_sj_LB.text = rwdj[@"time"];
+        [self.m_wtdj_state_ImgV setImage:[UIImage imageNamed:@"marquee-complete"]];
+      
+    }else
+    {
+        self.m_wtdj_usr_LB.textColor = DEFAULTFONTCOLOR;
+        self.m_wtdj_sj_LB.textColor = DEFAULTFONTCOLOR;
+        self.m_wtdj_state_V.backgroundColor = DEFAULTCOLOR;
+        
+        self.m_wtdj_usr_LB.text = @"/";
+        self.m_wtdj_sj_LB.text = @"/";
+        [self.m_wtdj_state_ImgV setImage:[UIImage imageNamed:@"marquee-unfinished"]];
+    }
+    
+    /**
+     *  是否批准
+     */
+    if([sfjd[@"ret"] intValue] ==1){
+        self.m_lydj_usr_LB.textColor = SELECTEDFONTCOLOR;
+        self.m_lydj_sj_LB.textColor = SELECTEDFONTCOLOR;
+        self.m_lydj_state_V.backgroundColor = SELECTEDCOLOR;
+        
+        self.m_lydj_usr_LB.text = sfjd[@"user"];
+        self.m_lydj_sj_LB.text = sfjd[@"time"];
+        [self.m_lydj_state_ImgV setImage:[UIImage imageNamed:@"marquee-complete"]];
+        
+    }else
+    {
+        self.m_lydj_usr_LB.textColor = DEFAULTFONTCOLOR;
+        self.m_lydj_sj_LB.textColor = DEFAULTFONTCOLOR;
+        self.m_lydj_state_V.backgroundColor = DEFAULTCOLOR;
+        
+        self.m_lydj_usr_LB.text = @"/";
+        self.m_lydj_sj_LB.text = @"/";
+        [self.m_lydj_state_ImgV setImage:[UIImage imageNamed:@"marquee-unfinished"]];
+    }
+    
+    /**
+     *  是否核验
+     */
+    if([sfhy[@"ret"] intValue] ==1){
+        self.m_rwlq_usr_LB.textColor = SELECTEDFONTCOLOR;
+        self.m_rwlq_sj_LB.textColor = SELECTEDFONTCOLOR;
+        self.m_rwlq_state_V.backgroundColor = SELECTEDCOLOR;
+        
+        self.m_rwlq_usr_LB.text = sfhy[@"user"];
+        self.m_rwlq_sj_LB.text = sfhy[@"time"];
+        [self.m_rwlq_state_ImgV setImage:[UIImage imageNamed:@"marquee-complete"]];
+        
+    }else
+    {
+        self.m_rwlq_usr_LB.textColor = DEFAULTFONTCOLOR;
+        self.m_rwlq_sj_LB.textColor = DEFAULTFONTCOLOR;
+        self.m_rwlq_state_V.backgroundColor = DEFAULTCOLOR;
+        
+        self.m_rwlq_usr_LB.text = @"/";
+        self.m_rwlq_sj_LB.text = @"/";
+        [self.m_rwlq_state_ImgV setImage:[UIImage imageNamed:@"marquee-unfinished"]];
+    }
+    
+    /**
+     *  是否批准
+     */
+    if([sfpz[@"ret"] intValue] ==1){
+        self.m_jd_usr_LB.textColor = SELECTEDFONTCOLOR;
+        self.m_jd_sj_LB.textColor = SELECTEDFONTCOLOR;
+        self.m_jd_state_V.backgroundColor = SELECTEDCOLOR;
+        
+        self.m_jd_usr_LB.text = sfpz[@"user"];
+        self.m_jd_sj_LB.text = sfpz[@"time"];
+        [self.m_jd_state_ImgV setImage:[UIImage imageNamed:@"marquee-complete"]];
+        
+    }else
+    {
+        self.m_jd_usr_LB.textColor = DEFAULTFONTCOLOR;
+        self.m_jd_sj_LB.textColor = DEFAULTFONTCOLOR;
+        self.m_jd_state_V.backgroundColor = DEFAULTCOLOR;
+        
+        self.m_jd_usr_LB.text = @"/";
+        self.m_jd_sj_LB.text = @"/";
+        [self.m_jd_state_ImgV setImage:[UIImage imageNamed:@"marquee-unfinished"]];
+    }
+    
+    
+    /**
+     *  是否打印
+     */
+    if([sfdy[@"ret"] intValue] ==1){
+        self.m_hy_usr_LB.textColor = SELECTEDFONTCOLOR;
+        self.m_hy_sj_LB.textColor = SELECTEDFONTCOLOR;
+        self.m_hy_state_V.backgroundColor = SELECTEDCOLOR;
+        
+        self.m_hy_usr_LB.text = sfdy[@"user"];
+        self.m_hy_sj_LB.text = sfdy[@"time"];
+        [self.m_hy_state_ImgV setImage:[UIImage imageNamed:@"marquee-complete"]];
+        
+    }else
+    {
+        self.m_hy_usr_LB.textColor = DEFAULTFONTCOLOR;
+        self.m_hy_sj_LB.textColor = DEFAULTFONTCOLOR;
+        self.m_hy_state_V.backgroundColor = DEFAULTCOLOR;
+        
+        self.m_hy_usr_LB.text = @"/";
+        self.m_hy_sj_LB.text = @"/";
+        [self.m_hy_state_ImgV setImage:[UIImage imageNamed:@"marquee-unfinished"]];
+    }
+    
+    /**
+     *  是否发证
+     */
+    if([sffz[@"ret"] intValue] ==1){
+        self.m_pz_usr_LB.textColor = SELECTEDFONTCOLOR;
+        self.m_pz_sj_LB.textColor = SELECTEDFONTCOLOR;
+        self.m_pz_state_V.backgroundColor = SELECTEDCOLOR;
+        
+        self.m_pz_usr_LB.text = sffz[@"user"];
+        self.m_pz_sj_LB.text = sffz[@"time"];
+        [self.m_pz_state_ImgV setImage:[UIImage imageNamed:@"marquee-complete"]];
+        
+    }else
+    {
+        self.m_pz_usr_LB.textColor = DEFAULTFONTCOLOR;
+        self.m_pz_sj_LB.textColor = DEFAULTFONTCOLOR;
+        self.m_pz_state_V.backgroundColor = DEFAULTCOLOR;
+        
+        self.m_pz_usr_LB.text = @"/";
+        self.m_pz_sj_LB.text = @"/";
+        [self.m_pz_state_ImgV setImage:[UIImage imageNamed:@"marquee-unfinished"]];
+    }
+    
+//    if([sfjd[@"ret"] intValue] ==1){
+    
 
     
     
@@ -521,7 +678,7 @@
         @weakify(self)
     
     [[BaseNetWork getInstance] hideDialog];
-    [[[[[BaseNetWork getInstance] rac_postPath:@"findLiuzhuangz.do" parameters:@{@"yqid":[self.m_showDict[@"yqid"] isNotNull]?self.m_showDict[@"yqid"]:@"yqid"}]map:^(id responseData)
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findLiuzhuangz.do" parameters:@{@"yqid":[self.m_jcrwcx_Model.yqid isNotNull]?self.m_jcrwcx_Model.yqid:@"yqid"}]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            

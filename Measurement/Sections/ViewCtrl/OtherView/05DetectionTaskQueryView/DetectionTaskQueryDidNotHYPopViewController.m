@@ -1307,7 +1307,7 @@
      *  隐藏信息
      */
     LoginedUser *user = [LoginedUser sharedInstance];
-    self.m_Sbxq_saveDataDict[@"rwbh"] = [self.m_showDict GetLabelWithKey:@"RWBH"];
+//    self.m_Sbxq_saveDataDict[@"rwbh"] = [self.m_showDict GetLabelWithKey:@"RWBH"];
     self.m_Sbxq_saveDataDict[@"xtbs"] = MBS_XTBS;
     self.m_Sbxq_saveDataDict[@"usercode"] = user.usercode;
     self.m_Sbxq_saveDataDict[@"yqid"] = [sbxqDict GetLabelWithKey:@"yqid"];
@@ -1625,48 +1625,7 @@
 -(void)loadNetData
 {
     
-    switch (_m_dataSourceType) {
-        case TxmDataSourceType:
-        {
-            [self update_sbxqViewByTxmDict:_m_qjxxDict];
-        }
-            
-            break;
-        case TxmNotDataSourceType:
-        {
-            
-            /**
-             *  设置隐藏参数
-             */
-            [self update_yczd];
-            /**
-             *  扫描条形码未得到数据时 将扫描到得条形码赋值到界面
-             */
-            self.m_txm_TF.text =  [_m_qjxxDict GetLabelWithKey:@"txm"];
-        }
-            
-            break;
-        case YqidDataSourceType:
-        {
-            [self update_sbxqViewByYqidDict:_m_qjxxDict];
-            
-        }
-            
-            break;
-        case NullDataSourceType:
-        {
-            /**
-             *  设置隐藏参数
-             */
-            [self update_yczd];
-        }
-            
-            break;
-            
-        default:
-            break;
-    }
-    
+   [self update_sbxqViewByYqidDict:_m_qjxxDict];
     
     
     

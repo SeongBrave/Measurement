@@ -457,9 +457,9 @@
         
         
         /**
-         *  是否已经提交核验
+         *  已经提交核验
          */
-        if ([model.sfhy intValue] == 0) {
+        if ([model.by1 intValue] == 1) {
            
             
             DetectionTaskQueryDidHYPopViewController *popVc = (DetectionTaskQueryDidHYPopViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"DetectionTaskQueryDidHYPopViewController"];
@@ -471,23 +471,42 @@
                 
             }];
             
-        }else
+        }else //未提交核验
         {
-            DetectionTaskQueryDidNotHYPopViewController *popVc = (DetectionTaskQueryDidNotHYPopViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"DetectionTaskQueryDidNotHYPopViewController"];
             
-            popVc.m_jcrwcx_Model = model;
-            popVc.modalPresentationStyle = UIModalPresentationFormSheet;
-            popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-            [self presentViewController:popVc animated:YES completion:^(void){
-                
-            }];
+            //findWtdxxxxByYqid.do
+            
+            
+            [[[[[BaseNetWork getInstance] rac_postPath:@"findWtdxxxxByYqid.do" parameters:@{@"yqid":model.yqid}]map:^(id responseData)
+               {
+                   NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+                   return dict;
+               }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+             subscribeNext:^(NSDictionary  *retDict) {
+                 if ([[retDict objectForKey:@"ret"] integerValue] == 1) {
+                     
+                   //  retDict[@"qjxx"];
+                     DetectionTaskQueryDidNotHYPopViewController *popVc = (DetectionTaskQueryDidNotHYPopViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"DetectionTaskQueryDidNotHYPopViewController"];
+                     
+                     popVc.m_qjxxDict = retDict[@"qjxx"];
+                     popVc.modalPresentationStyle = UIModalPresentationFormSheet;
+                     popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+                     [self presentViewController:popVc animated:YES completion:^(void){
+                         
+                     }];
+
+                  
+                 }else{
+                     [Dialog toast:self withMessage:@"检测失败!"];
+                 }
+             }error:^(NSError *error){
+                 
+             }];
+            
+            
+//            
             
         }
-        
-        
-        
-        
-      
         
     }
     
