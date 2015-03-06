@@ -19,6 +19,7 @@
 		C90F31111A729BB600A7A06E /* jlmb_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F31101A729BB600A7A06E /* jlmb_Model.m */; };
 		C90F31151A729D2F00A7A06E /* jlmb_TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F31141A729D2F00A7A06E /* jlmb_TableViewCell.m */; };
 		C90F31191A729DDF00A7A06E /* TemplatesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F31181A729DDF00A7A06E /* TemplatesListViewController.m */; };
+		C90FF84D1AA9EB5000695B61 /* AuditNotPassPopVc.m in Sources */ = {isa = PBXBuildFile; fileRef = C90FF84C1AA9EB5000695B61 /* AuditNotPassPopVc.m */; };
 		C92F29951A5D0D89001AB4C8 /* DropDownTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C92F29941A5D0D89001AB4C8 /* DropDownTextField.m */; };
 		C93AC00C1A7BECD400FB3EE1 /* hyr_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C93AC00B1A7BECD400FB3EE1 /* hyr_Model.m */; };
 		C93AC00F1A7BECDD00FB3EE1 /* pzr_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C93AC00E1A7BECDD00FB3EE1 /* pzr_Model.m */; };
@@ -211,6 +212,8 @@
 		C90F31141A729D2F00A7A06E /* jlmb_TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jlmb_TableViewCell.m; sourceTree = "<group>"; };
 		C90F31171A729DDF00A7A06E /* TemplatesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatesListViewController.h; sourceTree = "<group>"; };
 		C90F31181A729DDF00A7A06E /* TemplatesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatesListViewController.m; sourceTree = "<group>"; };
+		C90FF84B1AA9EB5000695B61 /* AuditNotPassPopVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuditNotPassPopVc.h; sourceTree = "<group>"; };
+		C90FF84C1AA9EB5000695B61 /* AuditNotPassPopVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuditNotPassPopVc.m; sourceTree = "<group>"; };
 		C92F29931A5D0D89001AB4C8 /* DropDownTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownTextField.h; sourceTree = "<group>"; };
 		C92F29941A5D0D89001AB4C8 /* DropDownTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownTextField.m; sourceTree = "<group>"; };
 		C93AC00A1A7BECD400FB3EE1 /* hyr_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hyr_Model.h; sourceTree = "<group>"; };
@@ -1588,6 +1591,8 @@
 			children = (
 				C9E184BA1A907C67005690BD /* AuditNotPassViewController.h */,
 				C9E184BB1A907C67005690BD /* AuditNotPassViewController.m */,
+				C90FF84B1AA9EB5000695B61 /* AuditNotPassPopVc.h */,
+				C90FF84C1AA9EB5000695B61 /* AuditNotPassPopVc.m */,
 			);
 			path = 11AuditNotPassView;
 			sourceTree = "<group>";
@@ -2101,6 +2106,7 @@
 				C9BFAA151A487BF400C887B4 /* SettingCell.m in Sources */,
 				C9FFC1501A6E7A6A00AA6BE7 /* ks_Model.m in Sources */,
 				C9FFC1531A6E7A6A00AA6BE7 /* jcjd_Detail_Model.m in Sources */,
+				C90FF84D1AA9EB5000695B61 /* AuditNotPassPopVc.m in Sources */,
 				C9EB13511A83B6C600DE9B1D /* ZS_TemplatesListViewController.m in Sources */,
 				C9791AA51A71498000DC5643 /* Bzqsb_Model.m in Sources */,
 				C97094561A62D09B00141DC5 /* PlanningDepartmentViewController.m in Sources */,

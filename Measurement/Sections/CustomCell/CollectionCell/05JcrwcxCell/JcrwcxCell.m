@@ -98,10 +98,10 @@ static CGFloat BUTTONWIDTH = 70.0f;
  
     
     if ([model.by1 isEqualToString:@"1"]) {
-        [self.m_state_ImgV setImage:[UIImage imageNamed:@"right-card-title-yqz"]];
+        [self.m_state_ImgV setImage:[UIImage imageNamed:@"right-card-title-ytj"]];
     }else
     {
-         [self.m_state_ImgV setImage:[UIImage imageNamed:@"right-card-title-ywc"]];
+         [self.m_state_ImgV setImage:[UIImage imageNamed:@"right-card-title-wtj"]];
         
 //        if ([[product GetLabelWithKey:@"RYRWWCQK"] isEqualToString:@"1"]) {
 //            [self.m_state_ImgV setImage:[UIImage imageNamed:@"right-card-title-ywc"]];

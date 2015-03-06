@@ -1,12 +1,12 @@
 //
-//  DetectionTaskQueryDidNotHYPopViewController.m
+//  AuditNotPassPopVc.m
 //  Measurement
 //
-//  Created by DTSoft on 15/1/20.
+//  Created by DTSoft on 15/3/6.
 //  Copyright (c) 2015年 成勇. All rights reserved.
 //
 
-#import "DetectionTaskQueryDidNotHYPopViewController.h"
+#import "AuditNotPassPopVc.h"
 #import "DropDownTextField.h"
 #import "Jlbzkhzsh_TableViewCell.h"
 #import "Bzqsb_TableViewCell.h"
@@ -32,17 +32,26 @@
 #import "UIPopoverListView.h"
 
 
-@interface DetectionTaskQueryDidNotHYPopViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate,DidSelectedValue_XCRY_Delegate,UIPopoverControllerDelegate,UIPopoverListViewDataSource,UIPopoverListViewDelegate>
+@interface AuditNotPassPopVc ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate,DidSelectedValue_XCRY_Delegate,UIPopoverControllerDelegate,UIPopoverListViewDataSource,UIPopoverListViewDelegate>
+
 
 /**
  *  表示当前所在的位置（0：设备详情 1:公共信息 2:原始记录 3:证书）
  */
 @property(nonatomic , assign)NSInteger n_stept;
 
+@property(nonatomic , assign)BOOL shjg_Flag;
 @property(nonatomic , assign)BOOL sbxq_Flag;
 @property(nonatomic , assign)BOOL ggxx_Flag;
 @property(nonatomic , assign)BOOL ysjl_Flag;
 @property(nonatomic , assign)BOOL zs_Flag;
+
+
+/**
+ *  审核结果
+ */
+@property (weak, nonatomic) IBOutlet UIButton *m_shjg_Btn;
+@property (weak, nonatomic) IBOutlet UIScrollView *m_shjg_scrollView;
 
 
 /**
@@ -223,10 +232,10 @@
 
 @property(nonatomic , strong)NSDictionary *m_zs_retDict;
 
+
 @end
 
-@implementation DetectionTaskQueryDidNotHYPopViewController
-
+@implementation AuditNotPassPopVc
 #pragma mark - 系统方法
 
 -(NSMutableDictionary *)m_Sbxq_saveDataDict
@@ -431,10 +440,11 @@
      */
     //初始化状态为 设备详情
     self.n_stept = 0;
-    self.sbxq_Flag = NO;
-    self.ggxx_Flag = NO;
-    self.ysjl_Flag = NO;
-    self.zs_Flag = NO;
+    self.sbxq_Flag = YES;
+    self.shjg_Flag = YES;
+    self.ggxx_Flag = YES;
+    self.ysjl_Flag = YES;
+    self.zs_Flag = YES;
     self.yqid_Str = nil;
     
     /**
@@ -504,7 +514,7 @@
         make.width.equalTo(@60);
         make.height.equalTo(@4);
         make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
-        make.leading.equalTo(self.m_sbxq_Btn.mas_leading);
+        make.leading.equalTo(self.m_shjg_Btn.mas_leading);
         
     }];
     
@@ -554,15 +564,15 @@
          subscribeNext:^(NSDictionary *retDict) {
              
              
-              [ self update_ggxxViewByYretDict:retDict];
+             [ self update_ggxxViewByYretDict:retDict];
              
-//             if ([retDict[@"ret"] isEqualToString:@"0"]) {
-//                 [Dialog toast:self withMessage:@"获取公共信息失败!"];
-//             }else
-//             {
-//                 @strongify(self)
-//                 [ self update_ggxxViewByYretDict:retDict];
-//             }
+             //             if ([retDict[@"ret"] isEqualToString:@"0"]) {
+             //                 [Dialog toast:self withMessage:@"获取公共信息失败!"];
+             //             }else
+             //             {
+             //                 @strongify(self)
+             //                 [ self update_ggxxViewByYretDict:retDict];
+             //             }
              
              
              
@@ -645,16 +655,17 @@
         switch (_n_stept) {
             case 0:
             {
-                if (self.sbxq_Flag == NO&&self.yqid_Str == nil) {
+                if (self.shjg_Flag == NO) {
                     
                     [self.mainScrollView setContentOffset:CGPointZero animated:NO];
+                    
                 }
             }
                 break;
             case 1:
             {
-                
-                if (self.ggxx_Flag == NO&&[_m_ggxx_retDict[@"ret"]intValue] != 1) {
+                if (self.sbxq_Flag == NO&&self.yqid_Str == nil) {
+                    
                     if (offset.x < 0.0f) {
                         [self.mainScrollView setContentOffset:CGPointZero animated:NO];
                     }
@@ -662,13 +673,13 @@
                         [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*1,0} animated:NO];
                     }
                 }
-                
             }
                 break;
             case 2:
             {
                 
-                if (self.ysjl_Flag == NO&&[self.m_ysjl_retDict[@"ret"]intValue] != 1) {
+                if (self.ggxx_Flag == NO&&[_m_ggxx_retDict[@"ret"]intValue] != 1)
+                {
                     if (offset.x < 0.0f) {
                         [self.mainScrollView setContentOffset:CGPointZero animated:NO];
                     }
@@ -677,16 +688,30 @@
                     }
                 }
                 
-                
             }
                 break;
             case 3:
             {
+                
+                if (self.ysjl_Flag == NO&&[self.m_ysjl_retDict[@"ret"]intValue] != 1) {
+                    if (offset.x < 0.0f) {
+                        [self.mainScrollView setContentOffset:CGPointZero animated:NO];
+                    }
+                    else if (offset.x >= self.view.frame.size.width*3){
+                        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*3,0} animated:NO];
+                    }
+                }
+                
+                
+            }
+                break;
+            case 4:
+            {
                 if (offset.x < 0.0f) {
                     [self.mainScrollView setContentOffset:CGPointZero animated:NO];
                 }
-                else if (offset.x >= self.view.frame.size.width*3){
-                    [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*3,0} animated:NO];
+                else if (offset.x >= self.view.frame.size.width*4){
+                    [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*4,0} animated:NO];
                 }
             }
                 break;
@@ -700,6 +725,8 @@
         
     }];
     
+//    m_shjg_Btn
+    
     [[self rac_signalForSelector:@selector(scrollViewDidEndDecelerating:) fromProtocol:@protocol(UIScrollViewDelegate)] subscribeNext:^(RACTuple *x) {
         if (x.first == self.mainScrollView) {
             CGPoint offset = [x.first contentOffset];
@@ -711,30 +738,37 @@
                 make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
                 switch (currentPage) {
                     case 0:
-                        make.centerX.equalTo(self.m_sbxq_Btn.mas_centerX);
+                        make.centerX.equalTo(self.m_shjg_Btn.mas_centerX);
                         make.width.equalTo(@60);
                         
                         [self layout_SbxqInterface];
                         //
                         break;
                     case 1:
+                        make.centerX.equalTo(self.m_sbxq_Btn.mas_centerX);
+                        make.width.equalTo(@60);
+                        
+//                        [self layout_SbxqInterface];
+                        //
+                        break;
+                    case 2:
                         make.centerX.equalTo(self.m_ggxx_Btn.mas_centerX);
                         make.width.equalTo(@60);
-                        [self layout_GgxxInterface];
-                        break;
-                        
-                    case 2:
-                        make.centerX.equalTo(self.m_ysjl_Btn.mas_centerX);
-                        make.width.equalTo(@60);
-                        
-                        [self layout_YsjlInterface];
+//                        [self layout_GgxxInterface];
                         break;
                         
                     case 3:
+                        make.centerX.equalTo(self.m_ysjl_Btn.mas_centerX);
+                        make.width.equalTo(@60);
+                        
+//                        [self layout_YsjlInterface];
+                        break;
+                        
+                    case 4:
                         make.centerX.equalTo(self.m_zs_Btn.mas_centerX);
                         make.width.equalTo(@30);
                         
-                        [self layout_ZsInterface];
+//                        [self layout_ZsInterface];
                         break;
                         
                     default:
@@ -752,7 +786,7 @@
      *  设备详情
      *
      */
-    [RACObserve(self.m_sbxq_ScrollView, contentOffset) subscribeNext:^(NSValue *value) {
+    [RACObserve(self.m_shjg_scrollView, contentOffset) subscribeNext:^(NSValue *value) {
         
         @strongify(self);
         CGPoint offset = [value CGPointValue];
@@ -1305,7 +1339,7 @@
      *  隐藏信息
      */
     LoginedUser *user = [LoginedUser sharedInstance];
-//    self.m_Sbxq_saveDataDict[@"rwbh"] = [self.m_showDict GetLabelWithKey:@"RWBH"];
+    //    self.m_Sbxq_saveDataDict[@"rwbh"] = [self.m_showDict GetLabelWithKey:@"RWBH"];
     self.m_Sbxq_saveDataDict[@"xtbs"] = MBS_XTBS;
     self.m_Sbxq_saveDataDict[@"usercode"] = user.usercode;
     self.m_Sbxq_saveDataDict[@"yqid"] = [sbxqDict GetLabelWithKey:@"yqid"];
@@ -1623,7 +1657,7 @@
 -(void)loadNetData
 {
     
-   [self update_sbxqViewByYqidDict:_m_qjxxDict];
+    [self update_sbxqViewByYqidDict:_m_qjxxDict];
     
     
     
@@ -1719,6 +1753,9 @@
     }
     
     
+}
+
+- (IBAction)Shjg_HandleBntClick:(id)sender {
 }
 
 - (IBAction)Sbxq_CancleBtnClick:(id)sender {
