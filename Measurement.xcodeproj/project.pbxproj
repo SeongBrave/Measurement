@@ -20,12 +20,14 @@
 		C90F31151A729D2F00A7A06E /* jlmb_TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F31141A729D2F00A7A06E /* jlmb_TableViewCell.m */; };
 		C90F31191A729DDF00A7A06E /* TemplatesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F31181A729DDF00A7A06E /* TemplatesListViewController.m */; };
 		C90FF84D1AA9EB5000695B61 /* AuditNotPassPopVc.m in Sources */ = {isa = PBXBuildFile; fileRef = C90FF84C1AA9EB5000695B61 /* AuditNotPassPopVc.m */; };
+		C917F0FE1AADCFF300F5DC13 /* CheckTaskDidPopVc.m in Sources */ = {isa = PBXBuildFile; fileRef = C917F0FD1AADCFF300F5DC13 /* CheckTaskDidPopVc.m */; };
 		C92F29951A5D0D89001AB4C8 /* DropDownTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C92F29941A5D0D89001AB4C8 /* DropDownTextField.m */; };
 		C93AC00C1A7BECD400FB3EE1 /* hyr_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C93AC00B1A7BECD400FB3EE1 /* hyr_Model.m */; };
 		C93AC00F1A7BECDD00FB3EE1 /* pzr_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C93AC00E1A7BECDD00FB3EE1 /* pzr_Model.m */; };
 		C93E89621A7D204200F51667 /* jdzq_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C93E89611A7D204200F51667 /* jdzq_Model.m */; };
 		C9431FBD1A4DAF7B0017FED0 /* MyPlanViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */; };
 		C945BB0E1A6D6C3000C6E11E /* BlackBackGroundV.m in Sources */ = {isa = PBXBuildFile; fileRef = C945BB0D1A6D6C3000C6E11E /* BlackBackGroundV.m */; };
+		C951E9C91AADE084007A5990 /* hyjg_model.m in Sources */ = {isa = PBXBuildFile; fileRef = C951E9C81AADE084007A5990 /* hyjg_model.m */; };
 		C9651ECC1A43AD8F00B770BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651ECB1A43AD8F00B770BB /* main.m */; };
 		C9651ECF1A43AD8F00B770BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651ECE1A43AD8F00B770BB /* AppDelegate.m */; };
 		C9651ED51A43AD8F00B770BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9651ED31A43AD8F00B770BB /* Main.storyboard */; };
@@ -214,6 +216,8 @@
 		C90F31181A729DDF00A7A06E /* TemplatesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatesListViewController.m; sourceTree = "<group>"; };
 		C90FF84B1AA9EB5000695B61 /* AuditNotPassPopVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuditNotPassPopVc.h; sourceTree = "<group>"; };
 		C90FF84C1AA9EB5000695B61 /* AuditNotPassPopVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuditNotPassPopVc.m; sourceTree = "<group>"; };
+		C917F0FC1AADCFF300F5DC13 /* CheckTaskDidPopVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckTaskDidPopVc.h; sourceTree = "<group>"; };
+		C917F0FD1AADCFF300F5DC13 /* CheckTaskDidPopVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckTaskDidPopVc.m; sourceTree = "<group>"; };
 		C92F29931A5D0D89001AB4C8 /* DropDownTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownTextField.h; sourceTree = "<group>"; };
 		C92F29941A5D0D89001AB4C8 /* DropDownTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownTextField.m; sourceTree = "<group>"; };
 		C93AC00A1A7BECD400FB3EE1 /* hyr_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hyr_Model.h; sourceTree = "<group>"; };
@@ -226,6 +230,8 @@
 		C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlanViewCell.m; sourceTree = "<group>"; };
 		C945BB0C1A6D6C3000C6E11E /* BlackBackGroundV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackBackGroundV.h; sourceTree = "<group>"; };
 		C945BB0D1A6D6C3000C6E11E /* BlackBackGroundV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackBackGroundV.m; sourceTree = "<group>"; };
+		C951E9C71AADE084007A5990 /* hyjg_model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hyjg_model.h; sourceTree = "<group>"; };
+		C951E9C81AADE084007A5990 /* hyjg_model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hyjg_model.m; sourceTree = "<group>"; };
 		C9651EC61A43AD8F00B770BB /* Measurement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Measurement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9651ECA1A43AD8F00B770BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9651ECB1A43AD8F00B770BB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -706,6 +712,15 @@
 				C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */,
 			);
 			path = MyPlanViewCell;
+			sourceTree = "<group>";
+		};
+		C951E9C61AADE060007A5990 /* hyjg_model */ = {
+			isa = PBXGroup;
+			children = (
+				C951E9C71AADE084007A5990 /* hyjg_model.h */,
+				C951E9C81AADE084007A5990 /* hyjg_model.m */,
+			);
+			path = hyjg_model;
 			sourceTree = "<group>";
 		};
 		C9651EBD1A43AD8F00B770BB = {
@@ -1213,6 +1228,8 @@
 			children = (
 				C970943E1A62D09A00141DC5 /* CheckTaskViewController.h */,
 				C970943F1A62D09A00141DC5 /* CheckTaskViewController.m */,
+				C917F0FC1AADCFF300F5DC13 /* CheckTaskDidPopVc.h */,
+				C917F0FD1AADCFF300F5DC13 /* CheckTaskDidPopVc.m */,
 			);
 			path = 06CheckTaskView;
 			sourceTree = "<group>";
@@ -1834,6 +1851,7 @@
 		C9FFC1591A6E7B4600AA6BE7 /* 06CheckTaskModel */ = {
 			isa = PBXGroup;
 			children = (
+				C951E9C61AADE060007A5990 /* hyjg_model */,
 			);
 			path = 06CheckTaskModel;
 			sourceTree = "<group>";
@@ -2101,6 +2119,7 @@
 				C9D23C3B1AA73076001EA654 /* Jcrwcx_Model.m in Sources */,
 				C9FFC14F1A6E7A6A00AA6BE7 /* ResponsibleDepModel.m in Sources */,
 				C9431FBD1A4DAF7B0017FED0 /* MyPlanViewCell.m in Sources */,
+				C917F0FE1AADCFF300F5DC13 /* CheckTaskDidPopVc.m in Sources */,
 				C98CBFB81A9D9B0C006DC733 /* MenuModel.m in Sources */,
 				C9903BFF1A46E9FE0006FD99 /* DockItem.m in Sources */,
 				C9BFAA151A487BF400C887B4 /* SettingCell.m in Sources */,
@@ -2141,6 +2160,7 @@
 				C9791A9E1A7148C500DC5643 /* Jsyj_TableViewCell.m in Sources */,
 				C9651FD21A43B26000B770BB /* CustomButton.m in Sources */,
 				C9651FEB1A43B26000B770BB /* Localisator.m in Sources */,
+				C951E9C91AADE084007A5990 /* hyjg_model.m in Sources */,
 				C9E94DCC1A4A669100E8CC83 /* MJRefreshConst.m in Sources */,
 				C9EB13541A83B72E00DE9B1D /* YSJL_TemplatesListViewController.m in Sources */,
 				C990B7E61A79335B00DF81C8 /* Yqmc_Auto_Model.m in Sources */,

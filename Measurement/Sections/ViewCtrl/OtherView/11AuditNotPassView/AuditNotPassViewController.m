@@ -188,7 +188,7 @@
     
     LoginedUser *usr = [LoginedUser sharedInstance];
     
-    self.m_netFunctionStr = @"queryDetectionTask.do";
+    self.m_netFunctionStr = @"queryAuditDidNotPass.do";
     //pxfs
     [self.m_netParamDict setObject:usr.usercode forKey:@"usercode"];
     [self.m_netParamDict setObject:[NSString stringWithFormat:@"%d",pageNo] forKey:@"pageNo"];

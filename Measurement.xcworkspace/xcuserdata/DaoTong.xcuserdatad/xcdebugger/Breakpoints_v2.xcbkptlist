@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Measurement/Sections/ViewCtrl/OtherView/05DetectionTaskQueryView/DetectionTaskQueryDidNotHYPopViewController.m"
-            timestampString = "447338754.920487"
+            timestampString = "447338995.477129"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1449"
-            endingLineNumber = "1449"
+            startingLineNumber = "1529"
+            endingLineNumber = "1529"
             landmarkName = "-update_ggxxViewByYretDict:"
             landmarkType = "5">
          </BreakpointContent>
@@ -182,16 +182,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Measurement/Sections/ViewCtrl/OtherView/05DetectionTaskQueryView/DetectionTaskQueryDidNotHYPopViewController.m"
-            timestampString = "447338995.477129"
+            filePath = "Measurement/Sections/ViewCtrl/MenuView/LoginViewController.m"
+            timestampString = "447597580.964055"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1529"
-            endingLineNumber = "1529"
-            landmarkName = "-update_ggxxViewByYretDict:"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "-loginBtnClick:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

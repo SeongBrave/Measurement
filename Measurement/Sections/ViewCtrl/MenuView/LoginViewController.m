@@ -227,6 +227,7 @@
          
      }error:^(NSError *error){
          
+         debug_object(error);
          
          
      }];

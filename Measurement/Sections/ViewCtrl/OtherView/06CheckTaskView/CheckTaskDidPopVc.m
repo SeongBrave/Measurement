@@ -1,27 +1,21 @@
 //
-//  DetectionTaskQueryDidHYPopViewController.m
+//  CheckTaskDidPopVc.m
 //  Measurement
 //
-//  Created by DTSoft on 15/1/20.
+//  Created by DTSoft on 15/3/9.
 //  Copyright (c) 2015年 成勇. All rights reserved.
 //
 
-
-#define SELECTEDCOLOR  UIColorFromRGB(185, 17, 57)
-#define DEFAULTCOLOR  UIColorFromRGB(206, 206, 206)
-
-#define SELECTEDFONTCOLOR  UIColorFromRGB(0, 0, 0)
-#define DEFAULTFONTCOLOR  UIColorFromRGB(154, 154, 154)
-
-#import "DetectionTaskQueryDidHYPopViewController.h"
+#import "CheckTaskDidPopVc.h"
 #import "FullScreenPreviewVC.h"
 #import "WebViewJavascriptBridge.h"
 #import "SBJson4Parser.h"
 #import "ZS_TemplatesListViewController.h"
 #import "YSJL_TemplatesListViewController.h"
+#import "DropDownTextField.h"
+#import "hyjg_model.h"
 
-
-@interface DetectionTaskQueryDidHYPopViewController ()<UITextFieldDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate>
+@interface CheckTaskDidPopVc ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,UITextFieldDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate>
 
 @property(nonatomic , strong)MBProgressHUD *m_hub;
 @property(nonatomic , strong)RTSpinKitView *m_spinner;
@@ -78,67 +72,9 @@
 
 
 /**
- *  流转跟踪
- */
-@property (weak, nonatomic) IBOutlet UILabel *m_wtdj_sj_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_wtdj_usr_LB;
-@property (weak, nonatomic) IBOutlet UIImageView *m_wtdj_state_ImgV;
-@property (weak, nonatomic) IBOutlet UIView *m_wtdj_state_V;
-
-@property (weak, nonatomic) IBOutlet UILabel *m_lydj_sj_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_lydj_usr_LB;
-@property (weak, nonatomic) IBOutlet UIImageView *m_lydj_state_ImgV;
-@property (weak, nonatomic) IBOutlet UIView *m_lydj_state_V;
-
-@property (weak, nonatomic) IBOutlet UILabel *m_rwlq_sj_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_rwlq_usr_LB;
-@property (weak, nonatomic) IBOutlet UIImageView *m_rwlq_state_ImgV;
-@property (weak, nonatomic) IBOutlet UIView *m_rwlq_state_V;
-
-@property (weak, nonatomic) IBOutlet UILabel *m_jd_sj_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_jd_usr_LB;
-@property (weak, nonatomic) IBOutlet UIImageView *m_jd_state_ImgV;
-@property (weak, nonatomic) IBOutlet UIView *m_jd_state_V;
-
-
-@property (weak, nonatomic) IBOutlet UILabel *m_hy_sj_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_hy_usr_LB;
-@property (weak, nonatomic) IBOutlet UIImageView *m_hy_state_ImgV;
-@property (weak, nonatomic) IBOutlet UIView *m_hy_state_V;
-
-
-@property (weak, nonatomic) IBOutlet UILabel *m_pz_sj_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_pz_usr_LB;
-@property (weak, nonatomic) IBOutlet UIImageView *m_pz_state_ImgV;
-@property (weak, nonatomic) IBOutlet UIView *m_pz_state_V;
-
-@property (weak, nonatomic) IBOutlet UILabel *m_fy_sj_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_fy_usr_LB;
-@property (weak, nonatomic) IBOutlet UIImageView *m_fy_state_ImgV;
-@property (weak, nonatomic) IBOutlet UIView *m_fy_state_V;
-
-
-@property (weak, nonatomic) IBOutlet UILabel *m_dy_sj_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_dy_usr_LB;
-@property (weak, nonatomic) IBOutlet UIImageView *m_dy_state_ImgV;
-@property (weak, nonatomic) IBOutlet UIView *m_dy_state_V;
-
-
-@property (weak, nonatomic) IBOutlet UILabel *m_fz_sj_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_fz_usr_LB;
-@property (weak, nonatomic) IBOutlet UIImageView *m_fz_state_ImgV;
-@property (weak, nonatomic) IBOutlet UIView *m_fz_state_V;
-
-@property (weak, nonatomic) IBOutlet UILabel *m_fyg_sj_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_fyg_usr_LB;
-@property (weak, nonatomic) IBOutlet UIImageView *m_fyg_state_ImgV;
-
-
-
-
-/**
  *  原始记录
  */
+@property (weak, nonatomic) IBOutlet UIButton *m_hy_hyItem_Btn;
 @property (weak, nonatomic) IBOutlet UIButton *m_ysjl_Btn;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *m_ysjl_ScrollView;
@@ -165,17 +101,52 @@
 
 @property(nonatomic , strong)NSDictionary *m_zs_retDict;
 
+/**
+ *  核验
+ */
+@property (weak, nonatomic) IBOutlet UIScrollView *m_hy_scrollView;
 
+@property (weak, nonatomic) IBOutlet UILabel *m_hy_hyr_LB;
+@property (weak, nonatomic) IBOutlet UILabel *m_hy_hysj_LB;
+
+@property (weak, nonatomic) IBOutlet DropDownTextField *m_hy_hyjg_DTF;
+@property(nonatomic , strong)NSArray *m_hyjgTFArr;
+
+@property (weak, nonatomic) IBOutlet UITextView *m_bz_Tv;
+@property (weak, nonatomic) IBOutlet UIButton *m_hy_qx_Btn;
+@property (weak, nonatomic) IBOutlet UIButton *m_hy_tj_Btn;
+
+@property (strong, nonatomic) NSMutableDictionary  *m_hy_saveDict;
 @end
 
-@implementation DetectionTaskQueryDidHYPopViewController
+@implementation CheckTaskDidPopVc
 
 #pragma mark - 系统方法
 
+-(NSMutableDictionary *)m_hy_saveDict
+{
+    if ( _m_hy_saveDict == nil) {
+         _m_hy_saveDict = [[NSMutableDictionary alloc]init];
+        [self reset_m_hy_saveDict];
+        
+    }
+    
+    return _m_hy_saveDict;
+}
 
+-(void)reset_m_hy_saveDict
+{
+    LoginedUser *usr = [LoginedUser sharedInstance];
+    
+    //TODO:界面显示信息
+    _m_hy_saveDict[@"usercode"] = usr.usercode;
+    _m_hy_saveDict[@"yqid"] = @"";
+    _m_hy_saveDict[@"hyjg"] = @"";
+    _m_hy_saveDict[@"hybz"] = @"";
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
- 
     
 }
 
@@ -196,12 +167,12 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-//    if ([segue.identifier isEqualToString:@"JDRQ_DatePicker"] )
-//    {
-//        
-//        DatePickerViewController *datePickerVC = (DatePickerViewController*)[segue destinationViewController];
-//
-//    }
+    //    if ([segue.identifier isEqualToString:@"JDRQ_DatePicker"] )
+    //    {
+    //
+    //        DatePickerViewController *datePickerVC = (DatePickerViewController*)[segue destinationViewController];
+    //
+    //    }
     
     
 }
@@ -230,6 +201,29 @@
     self.m_ysjl_WebView.delegate = self;
     self.m_zs_WebView.delegate = self;
     
+    self.m_hy_hyjg_DTF.dropDownDataSource = self;
+    self.m_hy_hyjg_DTF.dropDownDelegate = self;
+    
+    self.m_hy_hyjg_DTF.required = YES;
+    
+    
+    hyjg_model *model1 = [[hyjg_model alloc]init];
+    
+    model1.m_showTitle = @"未核验";
+    model1.m_code = @"0";
+    
+    hyjg_model *model2 = [[hyjg_model alloc]init];
+    
+    model2.m_showTitle = @"核验通过";
+    model2.m_code = @"1";
+    
+    hyjg_model *model3 = [[hyjg_model alloc]init];
+    
+    model3.m_showTitle = @"核验未通过";
+    model3.m_code = @"2";
+    
+    self.m_hyjgTFArr = @[model1,model2,model3];
+    
     
     self.lineImgV = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"float-tab-bg_line"]];
     
@@ -255,6 +249,9 @@
         
     }];
     
+    
+    self.m_bz_Tv.layer.borderWidth = 2.0;
+    self.m_bz_Tv.layer.borderColor = UIColorFromRGB(217, 217, 217).CGColor;
 }
 /**
  *  添加rac检测
@@ -272,8 +269,8 @@
         if (offset.x < 0.0f) {
             [self.mainScrollView setContentOffset:CGPointZero animated:NO];
         }
-        else if (offset.x >= self.view.frame.size.width*2){
-            [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*2,0} animated:NO];
+        else if (offset.x >= self.view.frame.size.width*3){
+            [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*3,0} animated:NO];
         }
         
     }];
@@ -301,6 +298,10 @@
                         
                     case 2:
                         make.centerX.equalTo(self.m_zs_Btn.mas_centerX);
+                        make.width.equalTo(@30);
+                        break;
+                    case 3:
+                        make.centerX.equalTo(self.m_hy_hyItem_Btn.mas_centerX);
                         make.width.equalTo(@30);
                         break;
                         
@@ -332,7 +333,7 @@
         
     }];
     
- 
+    
     
     [[self.m_sbxq_Btn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id next){
         
@@ -355,7 +356,7 @@
     }];
     
     
-
+    
     [[self.m_ysjl_Btn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id next){
         
         UIButton *button = (UIButton *)next;
@@ -377,6 +378,27 @@
     }];
     
     [[self.m_zs_Btn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id next){
+        
+        @strongify(self)
+        UIButton *button = (UIButton *)next;
+        [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(button.mas_centerX);
+            make.width.equalTo(@30);
+            make.height.equalTo(@4);
+            make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
+        }];
+        [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+            @strongify(self)
+            [self.m_menuBarView layoutIfNeeded];
+            
+        }completion:NULL];
+        //        [self PopZS_TemplatesListViewControllerWithZSretDict:nil];
+        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*2,0} animated:YES];
+        
+    }];
+    
+    
+    [[self.m_hy_hyItem_Btn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id next){
         
         @strongify(self)
         UIButton *button = (UIButton *)next;
@@ -417,224 +439,71 @@
     
 }
 
--(void)changeLabelStateWithDict:(NSDictionary *) dict
-{
-    /**
-     *  "FZFY": null,
-     "FZFZ": null,
-     "LYDJ": null,
-     "RWLQ": "1,领取人:张健(医化),2014-07-08 13:51:32,2014-07-08 13:52:28",
-     "SFDY": null,
-     "SFHY": "1,魏宇林(通过),2014-07-08 00:00:00,2014-07-08 00:00:00",
-     "SFJD": "1,张健(医化)(已检),2014-07-08 00:00:00",
-     "SFPZ": "1,张健(医化)(通过),2014-07-08 00:00:00,2014-07-08 00:00:00",
-     "SFSY": null,
-     "wtdbh": "1407082031",
-     "WTDJ": "张健(医化),2014-07-08 13:51:31",
-     "yqid": "5FC074F103524B31972DBEB39DA13AC0",
-     "zsbh": "YL95146002"
-     */
-    
-    NSDictionary *rwdj = dict[@"rwdj"];
-    NSDictionary *sfjd = dict[@"sfjd"];
-    NSDictionary *sfhy = dict[@"sfhy"];
-    NSDictionary *sfpz = dict[@"sfpz"];
-    NSDictionary *sfdy = dict[@"sfdy"];
-    NSDictionary *sffz = dict[@"sffz"];
-    
-    
-    /**
-     *  任务登记
-     */
-    if ([rwdj[@"ret"] intValue] ==1) {
-        
-        self.m_wtdj_usr_LB.textColor = SELECTEDFONTCOLOR;
-        self.m_wtdj_sj_LB.textColor = SELECTEDFONTCOLOR;
-        self.m_wtdj_state_V.backgroundColor = SELECTEDCOLOR;
-        
-        self.m_wtdj_usr_LB.text = rwdj[@"user"];
-        self.m_wtdj_sj_LB.text = rwdj[@"time"];
-        [self.m_wtdj_state_ImgV setImage:[UIImage imageNamed:@"marquee-complete"]];
-      
-    }else
-    {
-        self.m_wtdj_usr_LB.textColor = DEFAULTFONTCOLOR;
-        self.m_wtdj_sj_LB.textColor = DEFAULTFONTCOLOR;
-        self.m_wtdj_state_V.backgroundColor = DEFAULTCOLOR;
-        
-        self.m_wtdj_usr_LB.text = @"/";
-        self.m_wtdj_sj_LB.text = @"/";
-        [self.m_wtdj_state_ImgV setImage:[UIImage imageNamed:@"marquee-unfinished"]];
-    }
-    
-    /**
-     *  是否批准
-     */
-    if([sfjd[@"ret"] intValue] ==1){
-        self.m_lydj_usr_LB.textColor = SELECTEDFONTCOLOR;
-        self.m_lydj_sj_LB.textColor = SELECTEDFONTCOLOR;
-        self.m_lydj_state_V.backgroundColor = SELECTEDCOLOR;
-        
-        self.m_lydj_usr_LB.text = sfjd[@"user"];
-        self.m_lydj_sj_LB.text = sfjd[@"time"];
-        [self.m_lydj_state_ImgV setImage:[UIImage imageNamed:@"marquee-complete"]];
-        
-    }else
-    {
-        self.m_lydj_usr_LB.textColor = DEFAULTFONTCOLOR;
-        self.m_lydj_sj_LB.textColor = DEFAULTFONTCOLOR;
-        self.m_lydj_state_V.backgroundColor = DEFAULTCOLOR;
-        
-        self.m_lydj_usr_LB.text = @"/";
-        self.m_lydj_sj_LB.text = @"/";
-        [self.m_lydj_state_ImgV setImage:[UIImage imageNamed:@"marquee-unfinished"]];
-    }
-    
-    /**
-     *  是否核验
-     */
-    if([sfhy[@"ret"] intValue] ==1){
-        self.m_rwlq_usr_LB.textColor = SELECTEDFONTCOLOR;
-        self.m_rwlq_sj_LB.textColor = SELECTEDFONTCOLOR;
-        self.m_rwlq_state_V.backgroundColor = SELECTEDCOLOR;
-        
-        self.m_rwlq_usr_LB.text = sfhy[@"user"];
-        self.m_rwlq_sj_LB.text = sfhy[@"time"];
-        [self.m_rwlq_state_ImgV setImage:[UIImage imageNamed:@"marquee-complete"]];
-        
-    }else
-    {
-        self.m_rwlq_usr_LB.textColor = DEFAULTFONTCOLOR;
-        self.m_rwlq_sj_LB.textColor = DEFAULTFONTCOLOR;
-        self.m_rwlq_state_V.backgroundColor = DEFAULTCOLOR;
-        
-        self.m_rwlq_usr_LB.text = @"/";
-        self.m_rwlq_sj_LB.text = @"/";
-        [self.m_rwlq_state_ImgV setImage:[UIImage imageNamed:@"marquee-unfinished"]];
-    }
-    
-    /**
-     *  是否批准
-     */
-    if([sfpz[@"ret"] intValue] ==1){
-        self.m_jd_usr_LB.textColor = SELECTEDFONTCOLOR;
-        self.m_jd_sj_LB.textColor = SELECTEDFONTCOLOR;
-        self.m_jd_state_V.backgroundColor = SELECTEDCOLOR;
-        
-        self.m_jd_usr_LB.text = sfpz[@"user"];
-        self.m_jd_sj_LB.text = sfpz[@"time"];
-        [self.m_jd_state_ImgV setImage:[UIImage imageNamed:@"marquee-complete"]];
-        
-    }else
-    {
-        self.m_jd_usr_LB.textColor = DEFAULTFONTCOLOR;
-        self.m_jd_sj_LB.textColor = DEFAULTFONTCOLOR;
-        self.m_jd_state_V.backgroundColor = DEFAULTCOLOR;
-        
-        self.m_jd_usr_LB.text = @"/";
-        self.m_jd_sj_LB.text = @"/";
-        [self.m_jd_state_ImgV setImage:[UIImage imageNamed:@"marquee-unfinished"]];
-    }
-    
-    
-    /**
-     *  是否打印
-     */
-    if([sfdy[@"ret"] intValue] ==1){
-        self.m_hy_usr_LB.textColor = SELECTEDFONTCOLOR;
-        self.m_hy_sj_LB.textColor = SELECTEDFONTCOLOR;
-        self.m_hy_state_V.backgroundColor = SELECTEDCOLOR;
-        
-        self.m_hy_usr_LB.text = sfdy[@"user"];
-        self.m_hy_sj_LB.text = sfdy[@"time"];
-        [self.m_hy_state_ImgV setImage:[UIImage imageNamed:@"marquee-complete"]];
-        
-    }else
-    {
-        self.m_hy_usr_LB.textColor = DEFAULTFONTCOLOR;
-        self.m_hy_sj_LB.textColor = DEFAULTFONTCOLOR;
-        self.m_hy_state_V.backgroundColor = DEFAULTCOLOR;
-        
-        self.m_hy_usr_LB.text = @"/";
-        self.m_hy_sj_LB.text = @"/";
-        [self.m_hy_state_ImgV setImage:[UIImage imageNamed:@"marquee-unfinished"]];
-    }
-    
-    /**
-     *  是否发证
-     */
-    if([sffz[@"ret"] intValue] ==1){
-        self.m_pz_usr_LB.textColor = SELECTEDFONTCOLOR;
-        self.m_pz_sj_LB.textColor = SELECTEDFONTCOLOR;
-        self.m_pz_state_V.backgroundColor = SELECTEDCOLOR;
-        
-        self.m_pz_usr_LB.text = sffz[@"user"];
-        self.m_pz_sj_LB.text = sffz[@"time"];
-        [self.m_pz_state_ImgV setImage:[UIImage imageNamed:@"marquee-complete"]];
-        
-    }else
-    {
-        self.m_pz_usr_LB.textColor = DEFAULTFONTCOLOR;
-        self.m_pz_sj_LB.textColor = DEFAULTFONTCOLOR;
-        self.m_pz_state_V.backgroundColor = DEFAULTCOLOR;
-        
-        self.m_pz_usr_LB.text = @"/";
-        self.m_pz_sj_LB.text = @"/";
-        [self.m_pz_state_ImgV setImage:[UIImage imageNamed:@"marquee-unfinished"]];
-    }
-    
-//    if([sfjd[@"ret"] intValue] ==1){
-    
-
-    
-    
-    
-    
-    
-    
-    
-}
 /**
  *  更新设备详情界面
  *
  */
--(void)update_ggxxViewByDict:(NSDictionary *) dict
+-(void)update_sbxxViewByDict:(NSDictionary *) dict
 {
 
-    self.m_txm_LB.text = [dict[@"txm"] GetNotNullStr];
-    self.m_zsh_LB.text = [dict[@"zsbh"] GetNotNullStr];
-    self.m_ssks_LB.text = [dict[@"ks"] GetNotNullStr];
-    self.m_yqmc_LB.text = [dict[@"yqmc"] GetNotNullStr];
-    self.m_ccbh_LB.text = [dict[@"ccbh"] GetNotNullStr];
-    self.m_jclx_LB.text = [dict[@"jclx"] GetNotNullStr];
-    self.m_sl_LB.text = [dict[@"sl"] GetNotNullStr];
+    
+    self.m_hy_saveDict[@"yqid"]  = [dict GetLabelWithKey:@"YQID"];
+    
+    
+    LoginedUser *usr = [LoginedUser sharedInstance];
+    
+    self.m_hy_hyr_LB.text = usr.username;
+    
+    
+    // 将NSDate格式装换成NSString类型
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    
+    // 设置日历显示格式
+    
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    // 把日历时间传给字符串
+    
+    NSString *strDate = [dateFormatter stringFromDate:[NSDate new]];
+    
+    self.m_hy_hysj_LB.text = strDate;
+    
+    
+    self.m_txm_LB.text = [dict GetLabelWithKey:@"TXM"];
+    self.m_zsh_LB.text = [dict GetLabelWithKey:@"ZSBH"];
+    self.m_ssks_LB.text = [dict GetLabelWithKey:@"ks"];
+    self.m_yqmc_LB.text = [dict GetLabelWithKey:@"YQMC"];
+    self.m_ccbh_LB.text = [dict GetLabelWithKey:@"CCBH"];
+    self.m_jclx_LB.text = [dict GetLabelWithKey:@"JCLX"];
+    self.m_sl_LB.text = [dict GetLabelWithKey:@"sl"];
     
     
     self.m_bj_LB.text = [dict GetLabelWithKey:@"bzsf"];
     self.m_jltx_LB.text = [dict GetLabelWithKey:@"jltx"];
     self.m_clfw_LB.text = [dict GetLabelWithKey:@"jcfw"];
-    self.m_ggxh_LB.text = [dict GetLabelWithKey:@"ggxh"];
+    self.m_ggxh_LB.text = [dict GetLabelWithKey:@"GGXH"];
     self.m_sccj_LB.text = [dict GetLabelWithKey:@"sccj"];
     self.m_wg_LB.text = [dict GetLabelWithKey:@"wg"];
     self.m_pj_LB.text =   [dict GetLabelWithKey:@"pj"];
     self.m_tsyq_LB.text = [dict GetLabelWithKey:@"tsyq"];
     
-    self.m_bz_LB.text = [dict GetLabelWithKey:@"bz"];
-
+    self.m_bz_LB.text = [dict GetLabelWithKey:@"BZ"];
+    
     [self loadwebView];
     
 }
 
 -(void)loadwebView
 {
-    //设备详情    
-//    http://IPaddress:port/lims/web/pages/detectionTask/record-autoc.jsp
+    //设备详情
+    //    http://IPaddress:port/lims/web/pages/detectionTask/record-autoc.jsp
     
-    [self load_ysjl_WebViewWithjljspmc:self.m_jcrwcx_Model.yqid];
+    [self load_ysjl_WebViewWithjljspmc:@""];
     //证书
-//    http://IPaddress:port/lims/web/pages/detectionTask/certificate-autoc.jsp
+    //    http://IPaddress:port/lims/web/pages/detectionTask/certificate-autoc.jsp
     
-    [self load_zs_WebViewWithjljspmc:self.m_jcrwcx_Model.zsbh];
+    [self load_zs_WebViewWithjljspmc:@""];
 }
 
 //layoutMainCustomView
@@ -667,67 +536,8 @@
  */
 -(void)loadNetData
 {
+    [self update_sbxxViewByDict:self.m_showDict];
     
-    /**
-     *  设备信息-流转跟踪
-     *  yqid
-     */
-    //findLiuzhuangz.do
-    
-        @weakify(self)
-    
-    [[BaseNetWork getInstance] hideDialog];
-    [[[[[BaseNetWork getInstance] rac_postPath:@"findLiuzhuangz.do" parameters:@{@"yqid":[self.m_jcrwcx_Model.yqid isNotNull]?self.m_jcrwcx_Model.yqid:@"yqid"}]map:^(id responseData)
-       {
-           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-           
-           return dict;
-       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-     subscribeNext:^(NSDictionary *retDict) {
-         
-         @strongify(self)
-         if ([retDict[@"ret"] intValue] == 0)
-         {
-             
-             [self.m_showDialog WarningNotificationWithMessage:@"获取数据失败!"];
-             
-         }else
-         {
-             [self changeLabelStateWithDict:retDict[@"yqlzgz"]];
-         }
-         
-     }error:^(NSError *error){
-         
-     }];
-
-    
-    [[BaseNetWork getInstance] hideDialog];
-    [[[[[BaseNetWork getInstance] rac_postPath:@"findWtdxxxxByYqid.do" parameters:@{@"yqid":[self.m_jcrwcx_Model.yqid isNotNull]?self.m_jcrwcx_Model.yqid:@"yqid"}]map:^(id responseData)
-       {
-           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-           
-           return dict;
-       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-     subscribeNext:^(NSDictionary *retDict) {
-         
-         @strongify(self)
-         if ([retDict[@"ret"] intValue] == 0)
-         {
-             
-             [self.m_showDialog WarningNotificationWithMessage:@"获取数据失败!"];
-             
-         }else
-         {
-             [self update_ggxxViewByDict:retDict[@"qjxx"]];
-         }
-         
-     }error:^(NSError *error){
-         
-     }];
-    
-    
-//    [self update_ggxxViewByYretJcrwcx_Model:self.m_jcrwcx_Model];
-
 }
 - (IBAction)BackToVC:(id)sender {
     
@@ -1040,6 +850,46 @@
     
     
 }
+- (IBAction)hy_qx_BtnClick:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)hy_tj_BtnClick:(id)sender {
+
+    self.m_hy_saveDict[@"hybz"] = self.m_bz_Tv.text;
+    
+//    bchyjg.do
+    //    @weakify(self)
+    [[[[[BaseNetWork getInstance] rac_postPath:@"bchyjg.do" parameters:self.m_hy_saveDict]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+         
+         self.m_ysjl_retDict = retDict;
+         
+         if ([retDict[@"ret"] intValue] == 0)
+         {
+             
+             [Dialog toastError:@"提交失败!"];
+             
+         }else
+         {
+             [Dialog toastSuccess:@"提交成功！"];
+         }
+         
+     }error:^(NSError *error){
+   
+         
+     }];
+
+    
+    
+}
+
 
 - (void)tapClick:(UITapGestureRecognizer *)gestureRecognizer
 {
@@ -1084,36 +934,36 @@
 //-(void)ZS_TemplatesListVC:(ZS_TemplatesListViewController *) templatestVC didSelectedOKByObj:(id ) data
 //{
 //    zsmb_Model *model = (zsmb_Model*)data;
-//    
+//
 //    debug_object(self.yqid_Str);
 //    @weakify(self)
 //    [[[[[BaseNetWork getInstance] rac_postPath:@"sczs.do" parameters:@{@"zsmbid":model.m_id,@"yqid":self.yqid_Str}]map:^(id responseData)
 //       {
 //           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-//           
+//
 //           return dict;
 //       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
 //     subscribeNext:^(NSDictionary *retDict) {
 //         @strongify(self)
 //         if ([retDict[@"ret"] intValue] == 1) {
-//             
-//             
-//             
+//
+//
+//
 //             [self load_zs_WebViewWithjljspmc:retDict[@"zsbh"]];
-//             
+//
 //         }
-//         
-//         
-//         
+//
+//
+//
 //     }error:^(NSError *error){
-//         
-//         
+//
+//
 //     }];
-//    
-//    
-//    
-//    
-//    
+//
+//
+//
+//
+//
 //}
 //
 //#pragma mark -YSJL_TemplatesListViewController
@@ -1128,25 +978,25 @@
 //    [[[[[BaseNetWork getInstance] rac_postPath:@"saveJlmb.do" parameters:@{@"dzjlmbID":model.m_id,@"yqid":self.yqid_Str}]map:^(id responseData)
 //       {
 //           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-//           
+//
 //           return dict;
 //       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
 //     subscribeNext:^(NSDictionary *retDict) {
 //         @strongify(self)
 //         if ([retDict[@"ret"] intValue] ==1) {
 //             //然后再去 为显示记录模板 而获取 显示记录模板的url地址
-//             
-//             
+//
+//
 //             [self load_ysjl_WebViewWithjljspmc:model.jljspmc];
-//             
-//             
-//             
+//
+//
+//
 //         }else
 //         {
 //             [Dialog toast:self withMessage:@"原始记录模板 保存失败!"];
 //         }
-//         
-//         
+//
+//
 //     }error:^(NSError *error){
 //         //          @strongify(self)
 //         ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
@@ -1156,10 +1006,10 @@
 //         ////
 //         ////          [self failedGetDataWithResponseData:arr];
 //         //          //          [self.m_collectionView reloadData];
-//         
-//         
+//
+//
 //     }];
-//    
+//
 //}
 //
 
@@ -1201,5 +1051,49 @@
 {
     
 }
+
+
+#pragma  mark - DropDownTextFieldDataSource
+-(NSArray *)dropDownTextFieldDataSourceTextField:(DropDownTextField *)textField;
+
+{
+    
+    if (textField == _m_hy_hyjg_DTF) {
+        
+        return _m_hyjgTFArr;
+        
+    }
+    
+    return nil;
+}
+
+
+#pragma mark - DropDownTextFieldDelegate
+
+-(void)dropDownTextField:(DropDownTextField *)textField didSelectedWithData:(id<DropDownTextFieldShowCellTextLabel>) data forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (textField == _m_hy_hyjg_DTF) {
+        
+        hyjg_model *model = self.m_hyjgTFArr[indexPath.row];
+        
+        self.m_hy_saveDict[@"hyjg"] = model.m_code;
+        
+    }
+    
+}
+
+#pragma  mark UITextFieldDelegate
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if (textField == _m_hy_hyjg_DTF) {
+        return NO;
+        
+    }else
+    {
+        return YES;
+    }
+    
+}
+
 
 @end

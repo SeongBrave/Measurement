@@ -10,6 +10,7 @@
  *  核验任务
  */
 #import "CommonLogicViewController.h"
+#import "Jcrwcx_Model.h"
 
 @interface CheckTaskViewController : CommonLogicViewController
 
