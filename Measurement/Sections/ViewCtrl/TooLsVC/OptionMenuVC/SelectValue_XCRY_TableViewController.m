@@ -191,6 +191,12 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"selectValue_XCRY_TableViewCell" forIndexPath:indexPath];
 
+    
+    if ([self.m_selectedItem isEqualToString:self.m_dataSourceArr[indexPath.row][@"usercode"]]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        
+        lastIndexPath = indexPath;
+    }
     cell.textLabel.font  = [UIFont systemFontOfSize:18];
     cell.textLabel.textColor = UIColorFromRGB(76, 93, 111);
     

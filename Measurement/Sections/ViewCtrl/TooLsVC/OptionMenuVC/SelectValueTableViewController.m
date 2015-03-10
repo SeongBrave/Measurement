@@ -154,6 +154,11 @@
     label.font = [UIFont systemFontOfSize:18];
     label.textColor = UIColorFromRGB(76, 93, 111);
 
+    if ([self.m_selectedItem isEqualToString:self.m_dataSourceArr[indexPath.row][@"data"]]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+
+        lastIndexPath = indexPath;
+    }
     
     label.text =self.m_dataSourceArr[indexPath.row][@"text"];
     return cell;

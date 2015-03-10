@@ -1,5 +1,5 @@
 //
-//  CheckTaskDidPopVc.h
+//  ApprovalTaskDidPopVc.h
 //  Measurement
 //
 //  Created by DTSoft on 15/3/9.
@@ -7,13 +7,12 @@
 //
 
 /**
- *  核验任务弹出视图
+ *  批准任务弹出视图
  *
  */
 #import "BaseViewController.h"
 
-@interface CheckTaskDidPopVc : BaseViewController
-
+@interface ApprovalTaskDidPopVc : BaseViewController
 
 @property(nonatomic , assign)DataSourceType m_dataSourceType;
 
@@ -37,8 +36,5 @@
  *  用于保存公共信息最后确定时传的参数
  */
 @property(nonatomic ,strong)NSMutableDictionary *m_Ggxx_saveDataDict;
-
-
-
 
 @end

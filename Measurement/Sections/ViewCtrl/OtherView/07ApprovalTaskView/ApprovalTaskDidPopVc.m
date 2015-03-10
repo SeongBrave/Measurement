@@ -1,12 +1,12 @@
 //
-//  CheckTaskDidPopVc.m
+//  ApprovalTaskDidPopVc.m
 //  Measurement
 //
 //  Created by DTSoft on 15/3/9.
 //  Copyright (c) 2015年 成勇. All rights reserved.
 //
 
-#import "CheckTaskDidPopVc.h"
+#import "ApprovalTaskDidPopVc.h"
 #import "FullScreenPreviewVC.h"
 #import "WebViewJavascriptBridge.h"
 #import "SBJson4Parser.h"
@@ -14,8 +14,7 @@
 #import "YSJL_TemplatesListViewController.h"
 #import "DropDownTextField.h"
 #import "hyjg_model.h"
-
-@interface CheckTaskDidPopVc ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,UITextFieldDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate>
+@interface ApprovalTaskDidPopVc ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,UITextFieldDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate>
 
 @property(nonatomic , strong)MBProgressHUD *m_hub;
 @property(nonatomic , strong)RTSpinKitView *m_spinner;
@@ -117,16 +116,18 @@
 @property (weak, nonatomic) IBOutlet UIButton *m_hy_tj_Btn;
 
 @property (strong, nonatomic) NSMutableDictionary  *m_hy_saveDict;
+
+
 @end
 
-@implementation CheckTaskDidPopVc
+@implementation ApprovalTaskDidPopVc
 
 #pragma mark - 系统方法
 
 -(NSMutableDictionary *)m_hy_saveDict
 {
     if ( _m_hy_saveDict == nil) {
-         _m_hy_saveDict = [[NSMutableDictionary alloc]init];
+        _m_hy_saveDict = [[NSMutableDictionary alloc]init];
         [self reset_m_hy_saveDict];
         
     }
@@ -203,27 +204,27 @@
     
     self.m_hy_hyjg_DTF.dropDownDataSource = self;
     self.m_hy_hyjg_DTF.dropDownDelegate = self;
-    self.m_hy_hyjg_DTF.delegate = self;
-    
+     self.m_hy_hyjg_DTF.delegate = self;
     self.m_hy_hyjg_DTF.required = YES;
     
     
     hyjg_model *model1 = [[hyjg_model alloc]init];
     
-    model1.m_showTitle = @"未核验";
+    model1.m_showTitle = @"未批准";
     model1.m_code = @"0";
     
     hyjg_model *model2 = [[hyjg_model alloc]init];
     
-    model2.m_showTitle = @"核验通过";
+    model2.m_showTitle = @"批准通过";
     model2.m_code = @"1";
     
     hyjg_model *model3 = [[hyjg_model alloc]init];
     
-    model3.m_showTitle = @"核验未通过";
+    model3.m_showTitle = @"批准未通过";
     model3.m_code = @"2";
     
     self.m_hyjgTFArr = @[model1,model2,model3];
+   
     
     
     self.lineImgV = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"float-tab-bg_line"]];
@@ -446,7 +447,7 @@
  */
 -(void)update_sbxxViewByDict:(NSDictionary *) dict
 {
-
+    
     
     self.m_hy_saveDict[@"yqid"]  = [dict GetLabelWithKey:@"YQID"];
     
@@ -868,7 +869,7 @@
         
         //    bchyjg.do
         //    @weakify(self)
-        [[[[[BaseNetWork getInstance] rac_postPath:@"bchyjg.do" parameters:self.m_hy_saveDict]map:^(id responseData)
+        [[[[[BaseNetWork getInstance] rac_postPath:@"bcpzjg.do" parameters:self.m_hy_saveDict]map:^(id responseData)
            {
                NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
                
@@ -881,19 +882,21 @@
              if ([retDict[@"ret"] intValue] == 0)
              {
                  
-                 [Dialog toastError:@"核验失败!"];
+                 [Dialog toastError:@"批准失败!"];
                  
              }else
              {
-                 [Dialog toastSuccess:@"核验成功！"];
+                 [Dialog toastSuccess:@"批准成功！"];
              }
              
          }error:^(NSError *error){
              
              
          }];
-    }
+        
 
+        
+    }
 }
 
 

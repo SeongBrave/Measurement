@@ -25,7 +25,7 @@
 
 
 @property(nonatomic , assign)id<DidSelectedValue_XCKS_Delegate> selectedDelegate;
-
+@property(nonatomic , strong)NSString *m_selectedItem;
 
 @property(nonatomic , strong)NSArray *m_dataSourceArr;
 

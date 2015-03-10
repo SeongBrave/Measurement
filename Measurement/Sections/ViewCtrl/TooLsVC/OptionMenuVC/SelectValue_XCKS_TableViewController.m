@@ -194,6 +194,11 @@
     if (cell == nil) {
         
     }
+    if ([self.m_selectedItem isEqualToString:self.m_dataSourceArr[indexPath.row][@"comcode"]]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        
+        lastIndexPath = indexPath;
+    }
 
     cell.textLabel.font  = [UIFont systemFontOfSize:18];
     cell.textLabel.textColor = UIColorFromRGB(76, 93, 111);

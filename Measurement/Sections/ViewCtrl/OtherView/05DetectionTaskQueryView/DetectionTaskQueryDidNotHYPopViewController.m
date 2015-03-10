@@ -30,6 +30,8 @@
 #import "YSJL_HqsjVC.h"
 #import "DemoTextField.h"
 #import "UIPopoverListView.h"
+#import "jcrwcx_Jlbzkhzsh_Model.h"
+#import "jcrwcx_Jsyj_Model.h"
 
 
 @interface DetectionTaskQueryDidNotHYPopViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate,DidSelectedValue_XCRY_Delegate,UIPopoverControllerDelegate,UIPopoverListViewDataSource,UIPopoverListViewDelegate>
@@ -1546,18 +1548,23 @@
     
     
     
+    NSArray *jlbzkhzshArr = retDict[@"gcList"];
+    NSArray *bzqsbArr = retDict[@"bzqList"];
     
+    NSArray *jsyjArr = retDict[@"jsyjList"];
     
-    NSArray *jlbzkhzshArr = retDict[@"jlbzkhzsLists"];
-    NSArray *bzqsbArr = retDict[@"bzqsbLists"];
+    NSString *jlbzkhzshStr = retDict[@"jlbzkhzsIds"];
+    NSString *bzqsbStr = retDict[@"syzshs"];
     
-    NSArray *jsyjArr = retDict[@"jsyjLists"];
+    NSString *jsyjStr = retDict[@"jsyjID"];
+    
+    NSString *syzshsStr = retDict[@"syzshs"];
     
     self.m_jlbzkhzsh_Arr = [jlbzkhzshArr
                             linq_select:^id(NSDictionary *dict)
                             {
                                 
-                                Jlbzkhzsh_Model *model = [MTLJSONAdapter modelOfClass:[Jlbzkhzsh_Model class] fromJSONDictionary:dict error:nil];
+                                jcrwcx_Jlbzkhzsh_Model *model = [MTLJSONAdapter modelOfClass:[jcrwcx_Jlbzkhzsh_Model class] fromJSONDictionary:dict error:nil];
                                 model.isSelected = YES;
                                 
                                 return model;
@@ -1576,7 +1583,7 @@
                        linq_select:^id(NSDictionary *dict)
                        {
                            
-                           Jsyj_Model *model = [MTLJSONAdapter modelOfClass:[Jsyj_Model class] fromJSONDictionary:dict error:nil];
+                           jcrwcx_Jsyj_Model *model = [MTLJSONAdapter modelOfClass:[jcrwcx_Jsyj_Model class] fromJSONDictionary:dict error:nil];
                            model.isSelected = YES;
                            
                            return model;
@@ -2333,11 +2340,11 @@
 {
     
     //01. 第一步先找出选中的数据
-    NSArray *jlbzkhzshArr = [self.m_jlbzkhzsh_Arr linq_where:^BOOL(Jlbzkhzsh_Model *model) {
+    NSArray *jlbzkhzshArr = [self.m_jlbzkhzsh_Arr linq_where:^BOOL(jcrwcx_Jlbzkhzsh_Model *model) {
         return model.isSelected;
     }];
     //02. 第二步筛选出 计量标准考核证书ID
-    NSArray *jlbzkhzshIDArr = [jlbzkhzshArr linq_select:^id(Jlbzkhzsh_Model *model){
+    NSArray *jlbzkhzshIDArr = [jlbzkhzshArr linq_select:^id(jcrwcx_Jlbzkhzsh_Model *model){
         return model.m_id;
     }];
     
@@ -2404,11 +2411,11 @@
 {
     
     //01. 第一步先找出选中的数据
-    NSArray *bzqsbArr = [self.m_jsyj_Arr linq_where:^BOOL(Jsyj_Model *model) {
+    NSArray *bzqsbArr = [self.m_jsyj_Arr linq_where:^BOOL(jcrwcx_Jsyj_Model *model) {
         return model.isSelected;
     }];
     //02. 第二步筛选出  技术依据ID
-    NSArray *jlbzkhzshIDArr = [bzqsbArr linq_select:^id(Jsyj_Model *model){
+    NSArray *jlbzkhzshIDArr = [bzqsbArr linq_select:^id(jcrwcx_Jsyj_Model *model){
         return model.m_id;
     }];
     
@@ -2704,7 +2711,7 @@
             cellIdentifier = @"Jlbzkhzsh_TableViewCell";
             Jlbzkhzsh_TableViewCell *cell = (Jlbzkhzsh_TableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
             
-            Jlbzkhzsh_Model *model = _m_jlbzkhzsh_Arr[indexPath.row -1];
+            jcrwcx_Jlbzkhzsh_Model *model = _m_jlbzkhzsh_Arr[indexPath.row -1];
             [cell configureCellWithItem:model];
             
             return cell;
@@ -2747,7 +2754,7 @@
             cellIdentifier = @"Jsyj_TableViewCell";
             Jsyj_TableViewCell *cell = (Jsyj_TableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
             
-            Jsyj_Model *model = _m_jsyj_Arr[indexPath.row-1];
+            jcrwcx_Jsyj_Model *model = _m_jsyj_Arr[indexPath.row-1];
             [cell configureCellWithItem:model];
             
             return cell;
@@ -2763,7 +2770,7 @@
         
         if (tableView == _m_jlbzkhzsh_TableView)
         {
-            Jlbzkhzsh_Model *model = _m_jlbzkhzsh_Arr[indexPath.row-1];
+            jcrwcx_Jlbzkhzsh_Model *model = _m_jlbzkhzsh_Arr[indexPath.row-1];
             model.isSelected = !model.isSelected;
             
         }else if (tableView == _m_bzqsb_TableView)
@@ -2772,7 +2779,7 @@
             model.isSelected = !model.isSelected;
         }else if (tableView == _m_jsyj_TableView)
         {
-            Jsyj_Model *model = _m_jsyj_Arr[indexPath.row-1];
+            jcrwcx_Jsyj_Model *model = _m_jsyj_Arr[indexPath.row-1];
             
             model.isSelected = !model.isSelected;
         }
@@ -3122,7 +3129,7 @@
                                  linq_select:^id(NSDictionary *dict)
                                  {
                                      
-                                     Jlbzkhzsh_Model *model = [MTLJSONAdapter modelOfClass:[Jlbzkhzsh_Model class] fromJSONDictionary:dict error:nil];
+                                     jcrwcx_Jlbzkhzsh_Model *model = [MTLJSONAdapter modelOfClass:[jcrwcx_Jlbzkhzsh_Model class] fromJSONDictionary:dict error:nil];
                                      model.isSelected = YES;
                                      
                                      return model;
@@ -3141,7 +3148,7 @@
                             linq_select:^id(NSDictionary *dict)
                             {
                                 
-                                Jsyj_Model *model = [MTLJSONAdapter modelOfClass:[Jsyj_Model class] fromJSONDictionary:dict error:nil];
+                                jcrwcx_Jsyj_Model *model = [MTLJSONAdapter modelOfClass:[jcrwcx_Jsyj_Model class] fromJSONDictionary:dict error:nil];
                                 model.isSelected = YES;
                                 
                                 return model;

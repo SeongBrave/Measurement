@@ -46,4 +46,6 @@ typedef enum
  *  显示的数据格式为:@{@"text":@"显示的数据",@"data":@"保存的值"}
  */
 @property(nonatomic , strong)NSArray *m_dataSourceArr;
+
+@property(nonatomic , strong)NSString *m_selectedItem;
 @end

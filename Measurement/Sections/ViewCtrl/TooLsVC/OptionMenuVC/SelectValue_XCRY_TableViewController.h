@@ -36,6 +36,9 @@
 @property(nonatomic , strong)NSString *m_comCode;
 
 @property(nonatomic , assign)id<DidSelectedValue_XCRY_Delegate> selectedDelegate;
+
+@property(nonatomic , strong)NSString *m_selectedItem;
+
 /**
  *  显示的数据格式为:@{@"text":@"显示的数据",@"data":@"保存的值"}
  */

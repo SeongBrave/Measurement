@@ -15,6 +15,7 @@
 #import "AddPlanDetailsPopVC.h"
 #import "backgroundV.h"
 #import "DropDownListView.h"
+#import "ApprovalTaskDidPopVc.h"
 
 @interface ApprovalTaskViewController ()<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, SwipeCompanyCollectionViewCellDelegate,UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,PopViewDelegate,DropDownChooseDelegate,DropDownChooseDataSource>
 {
@@ -184,7 +185,7 @@
     
     LoginedUser *usr = [LoginedUser sharedInstance];
     
-    self.m_netFunctionStr = @"findXcrw.do";
+    self.m_netFunctionStr = @"findPzrw.do";
     //pxfs
     [self.m_netParamDict setObject:usr.usercode forKey:@"userCode"];
     [self.m_netParamDict setObject:[NSString stringWithFormat:@"%d",pageNo] forKey:@"pageNo"];
@@ -443,9 +444,8 @@
     if (indexPath.row  < self.m_DataSourceArr.count) {
         
         
-        FactoryTaskDetailViewPopVC *popVc = (FactoryTaskDetailViewPopVC*)[self.storyboard instantiateViewControllerWithIdentifier:@"FactoryTaskDetailViewPopVC"];
+        ApprovalTaskDidPopVc *popVc = (ApprovalTaskDidPopVc*)[self.storyboard instantiateViewControllerWithIdentifier:@"ApprovalTaskDidPopVc"];
         
-        popVc.m_popDelegate = self;
         popVc.m_showDict = self.m_DataSourceArr[indexPath.row];
         popVc.modalPresentationStyle = UIModalPresentationFormSheet;
         popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;

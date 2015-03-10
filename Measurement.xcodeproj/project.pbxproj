@@ -28,6 +28,7 @@
 		C9431FBD1A4DAF7B0017FED0 /* MyPlanViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9431FBC1A4DAF7B0017FED0 /* MyPlanViewCell.m */; };
 		C945BB0E1A6D6C3000C6E11E /* BlackBackGroundV.m in Sources */ = {isa = PBXBuildFile; fileRef = C945BB0D1A6D6C3000C6E11E /* BlackBackGroundV.m */; };
 		C951E9C91AADE084007A5990 /* hyjg_model.m in Sources */ = {isa = PBXBuildFile; fileRef = C951E9C81AADE084007A5990 /* hyjg_model.m */; };
+		C951E9CC1AADFA50007A5990 /* ApprovalTaskDidPopVc.m in Sources */ = {isa = PBXBuildFile; fileRef = C951E9CB1AADFA50007A5990 /* ApprovalTaskDidPopVc.m */; };
 		C9651ECC1A43AD8F00B770BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651ECB1A43AD8F00B770BB /* main.m */; };
 		C9651ECF1A43AD8F00B770BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9651ECE1A43AD8F00B770BB /* AppDelegate.m */; };
 		C9651ED51A43AD8F00B770BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9651ED31A43AD8F00B770BB /* Main.storyboard */; };
@@ -113,6 +114,8 @@
 		C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AE087E1A450FE200DA39BF /* LoginViewController.m */; };
 		C9B3A2AE1A4D9C7100CE276B /* CommonLogicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B3A2AD1A4D9C7100CE276B /* CommonLogicViewController.m */; };
 		C9B625F21A4E8E1C00AE9251 /* Other.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B625F01A4E8E1C00AE9251 /* Other.storyboard */; };
+		C9BE823D1AAF28C300C4901C /* jcrwcx_Jlbzkhzsh_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE823C1AAF28C300C4901C /* jcrwcx_Jlbzkhzsh_Model.m */; };
+		C9BE82401AAF2EC800C4901C /* jcrwcx_Jsyj_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE823F1AAF2EC800C4901C /* jcrwcx_Jsyj_Model.m */; };
 		C9BFA9F81A487BB000C887B4 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9E91A487BB000C887B4 /* HomeViewController.m */; };
 		C9BFA9FD1A487BB000C887B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA9F31A487BB000C887B4 /* ViewController.m */; };
 		C9BFAA0F1A487BF400C887B4 /* Dock.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFAA011A487BF400C887B4 /* Dock.m */; };
@@ -232,6 +235,8 @@
 		C945BB0D1A6D6C3000C6E11E /* BlackBackGroundV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackBackGroundV.m; sourceTree = "<group>"; };
 		C951E9C71AADE084007A5990 /* hyjg_model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hyjg_model.h; sourceTree = "<group>"; };
 		C951E9C81AADE084007A5990 /* hyjg_model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hyjg_model.m; sourceTree = "<group>"; };
+		C951E9CA1AADFA50007A5990 /* ApprovalTaskDidPopVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApprovalTaskDidPopVc.h; sourceTree = "<group>"; };
+		C951E9CB1AADFA50007A5990 /* ApprovalTaskDidPopVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApprovalTaskDidPopVc.m; sourceTree = "<group>"; };
 		C9651EC61A43AD8F00B770BB /* Measurement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Measurement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9651ECA1A43AD8F00B770BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9651ECB1A43AD8F00B770BB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -405,6 +410,10 @@
 		C9B3A2AC1A4D9C7100CE276B /* CommonLogicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLogicViewController.h; sourceTree = "<group>"; };
 		C9B3A2AD1A4D9C7100CE276B /* CommonLogicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonLogicViewController.m; sourceTree = "<group>"; };
 		C9B625F11A4E8E1C00AE9251 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Other.storyboard; sourceTree = "<group>"; };
+		C9BE823B1AAF28C300C4901C /* jcrwcx_Jlbzkhzsh_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jcrwcx_Jlbzkhzsh_Model.h; sourceTree = "<group>"; };
+		C9BE823C1AAF28C300C4901C /* jcrwcx_Jlbzkhzsh_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jcrwcx_Jlbzkhzsh_Model.m; sourceTree = "<group>"; };
+		C9BE823E1AAF2EC800C4901C /* jcrwcx_Jsyj_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jcrwcx_Jsyj_Model.h; sourceTree = "<group>"; };
+		C9BE823F1AAF2EC800C4901C /* jcrwcx_Jsyj_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jcrwcx_Jsyj_Model.m; sourceTree = "<group>"; };
 		C9BFA9E81A487BB000C887B4 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		C9BFA9E91A487BB000C887B4 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		C9BFA9F21A487BB000C887B4 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -1239,6 +1248,8 @@
 			children = (
 				C97094411A62D09A00141DC5 /* ApprovalTaskViewController.h */,
 				C97094421A62D09A00141DC5 /* ApprovalTaskViewController.m */,
+				C951E9CA1AADFA50007A5990 /* ApprovalTaskDidPopVc.h */,
+				C951E9CB1AADFA50007A5990 /* ApprovalTaskDidPopVc.m */,
 			);
 			path = 07ApprovalTaskView;
 			sourceTree = "<group>";
@@ -1844,6 +1855,10 @@
 			isa = PBXGroup;
 			children = (
 				C9D23C381AA73040001EA654 /* Jcrwcx_Model */,
+				C9BE823B1AAF28C300C4901C /* jcrwcx_Jlbzkhzsh_Model.h */,
+				C9BE823C1AAF28C300C4901C /* jcrwcx_Jlbzkhzsh_Model.m */,
+				C9BE823E1AAF2EC800C4901C /* jcrwcx_Jsyj_Model.h */,
+				C9BE823F1AAF2EC800C4901C /* jcrwcx_Jsyj_Model.m */,
 			);
 			path = 05DetectionTaskQueryModel;
 			sourceTree = "<group>";
@@ -2119,9 +2134,11 @@
 				C9D23C3B1AA73076001EA654 /* Jcrwcx_Model.m in Sources */,
 				C9FFC14F1A6E7A6A00AA6BE7 /* ResponsibleDepModel.m in Sources */,
 				C9431FBD1A4DAF7B0017FED0 /* MyPlanViewCell.m in Sources */,
+				C9BE823D1AAF28C300C4901C /* jcrwcx_Jlbzkhzsh_Model.m in Sources */,
 				C917F0FE1AADCFF300F5DC13 /* CheckTaskDidPopVc.m in Sources */,
 				C98CBFB81A9D9B0C006DC733 /* MenuModel.m in Sources */,
 				C9903BFF1A46E9FE0006FD99 /* DockItem.m in Sources */,
+				C9BE82401AAF2EC800C4901C /* jcrwcx_Jsyj_Model.m in Sources */,
 				C9BFAA151A487BF400C887B4 /* SettingCell.m in Sources */,
 				C9FFC1501A6E7A6A00AA6BE7 /* ks_Model.m in Sources */,
 				C9FFC1531A6E7A6A00AA6BE7 /* jcjd_Detail_Model.m in Sources */,
@@ -2139,6 +2156,7 @@
 				C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */,
 				C9E184CA1A90C75E005690BD /* DetectionTaskQueryDidHYPopViewController.m in Sources */,
 				C9F3DFD71A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m in Sources */,
+				C951E9CC1AADFA50007A5990 /* ApprovalTaskDidPopVc.m in Sources */,
 				C990B7EE1A7942E700DF81C8 /* dmxx_Model.m in Sources */,
 				C9C662811AA0D8CC004EE4E4 /* DemoTextField.m in Sources */,
 				C9651FD51A43B26000B770BB /* StepperModel.m in Sources */,
@@ -2365,7 +2383,7 @@
 					"$(PROJECT_DIR)/Measurement/Library/ToolsLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7c5f624e-2fc7-4fa4-a31e-1392e7e480c8";
+				PROVISIONING_PROFILE = "74f48403-6deb-464a-980d-60011fd8970b";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s";

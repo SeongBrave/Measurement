@@ -100,6 +100,13 @@
              *  显示的数据格式为:@{@"text":@"显示的数据",@"data":@"保存的值"}
              */
             selectedValueTVC.m_selectValueTVCType = selectValueFinishState;
+            
+            debug_object(self.m_relValue[@"rwwcqk"]);
+            
+            NSString *rwwcqkStr = self.m_relValue[@"rwwcqk"];
+//            self.m_relValue
+            ///如果没有值则说明显示全部
+            selectedValueTVC.m_selectedItem = rwwcqkStr.length>0?rwwcqkStr:@"";
             selectedValueTVC.m_dataSourceArr =@[@{@"text":@"全部",@"data":@""},@{@"text":@"已完成",@"data":@"1"},@{@"text":@"未完成",@"data":@"0"}];
             //排序字段
         }else if (indexPath.section == 1 &&indexPath.row == 0) {
@@ -107,15 +114,18 @@
             /**
              *  显示的数据格式为:@{@"text":@"显示的数据",@"data":@"保存的值"}
              */
+             NSString *pxzdStr = self.m_relValue[@"pxzd"];
             selectedValueTVC.m_dataSourceArr =@[@{@"text":@"创建时间",@"data":@"CJSJ"},@{@"text":@"下厂时间",@"data":@"XCSJQ"}];
              selectedValueTVC.m_selectValueTVCType = selectValueSortingfield;
-            
+            selectedValueTVC.m_selectedItem = pxzdStr.length>0?pxzdStr:@"CJSJ";
             
             //排序
         }else if (indexPath.section == 1 &&indexPath.row == 1) {
             
+             NSString *pxfsStr = self.m_relValue[@"pxfs"];
             //getKsryjhn.do
             selectedValueTVC.m_dataSourceArr =@[@{@"text":@"升序",@"data":@"sx"},@{@"text":@"降序",@"data":@"jx"}];
+            selectedValueTVC.m_selectedItem = pxfsStr.length>0?pxfsStr:@"jx";
             selectedValueTVC.m_selectValueTVCType = selectValueSortingWay;
             
         }
@@ -126,6 +136,10 @@
     {
         SelectValue_XCKS_TableViewController *selectedValueTVC = (SelectValue_XCKS_TableViewController*)[segue destinationViewController];
         
+//         [self.m_relValue setObject:relDict[@"comcode"] forKey:@"xcksbh"];
+        
+        NSString *xcksbh = self.m_relValue[@"xcksbh"];
+        selectedValueTVC.m_selectedItem = xcksbh.length>0?xcksbh:@"";
         selectedValueTVC.selectedDelegate = self;
         
         
@@ -134,12 +148,17 @@
     {
         SelectValue_XCRY_TableViewController *selectedValueTVC = (SelectValue_XCRY_TableViewController*)[segue destinationViewController];
         selectedValueTVC.selectedDelegate = self;
+        
+        NSString *xcrybhStr = self.m_relValue[@"xcrybh"];
         if ([self.m_relValue[@"xcksbh"] isNotNull]) {
             selectedValueTVC.m_comCode = self.m_relValue[@"xcksbh"];
+            selectedValueTVC.m_selectedItem = xcrybhStr;
         }else
         {
             LoginedUser *usr = [LoginedUser sharedInstance];
             selectedValueTVC.m_comCode = usr.comcode;
+            
+            selectedValueTVC.m_selectedItem = usr.comcode;
         }
       
 //        self.m_relValue
@@ -151,6 +170,7 @@
         /**
          *  必须给了属性然后再viewwillappear中设置给datepicker才行，否则设置不成功
          */
+        
         pickerVC.m_date = self.fromDateBtn.m_info[@"data"];
         pickerVC.m_clickBtn = self.fromDateBtn;
         
@@ -180,15 +200,15 @@
 -(void)updateTableViewWithData:(NSDictionary *) dict
 {
     
-    self.m_companyTF.text = [dict GetLabelWithKey:@"wtdwmc"];
+    self.m_companyTF.text = [dict GetLabelWithKey:@"wtdwmc"].length >0 ?[dict GetLabelWithKey:@"wtdwmc"]:@"全部";
     
-    self.m_finishStateLabel.text = [dict GetLabelWithKey:@"rwwcqk"];
+    self.m_finishStateLabel.text = [dict GetLabelWithKey:@"rwwcqk"].length>0?[dict GetLabelWithKey:@"rwwcqk"]:@"全部";
     
-    self.m_factoryDepartmentLabel.text =[dict GetLabelWithKey:@"xcksbh"];
+    self.m_factoryDepartmentLabel.text =[dict GetLabelWithKey:@"xcksbh"].length>0?[dict GetLabelWithKey:@"xcksbh"]:@"全部";
    
     self.m_factoryCommissionerLabel.text =[dict GetLabelWithKey:@"xcrybh"];;
-    self.m_sortingFieldLabel.text =[dict GetLabelWithKey:@"pxzd"];
-    self.m_sortingWayLabel.text = [dict GetLabelWithKey:@"pxfs"];
+    self.m_sortingFieldLabel.text =[dict GetLabelWithKey:@"pxzd"].length>0?[dict GetLabelWithKey:@"pxzd"]:@"创建时间";
+    self.m_sortingWayLabel.text = [dict GetLabelWithKey:@"pxfs"].length>0?[dict GetLabelWithKey:@"pxfs"]:@"降序";
     
                                     
                                     
@@ -213,14 +233,53 @@
     // 设置日历显示格式
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     
-    // 把日历时间传给字符串
-    
-    NSString *strDate = [dateFormatter stringFromDate:[NSDate new]];
+  
     
     
-    [self.fromDateBtn setTitle:strDate forState:UIControlStateNormal];
-   
-     [self.toDateBtn setTitle:strDate forState:UIControlStateNormal];
+    
+    NSString *xcsjqStr = self.m_relValue[@"xcsjq"];
+    
+    NSDateFormatter *format=[[NSDateFormatter alloc] init];
+    [format setDateFormat:@"yyyy-MM-dd"];
+    NSDate *fromdate=[format dateFromString:xcsjqStr];
+    NSTimeZone *fromzone = [NSTimeZone systemTimeZone];
+    NSInteger frominterval = [fromzone secondsFromGMTForDate: fromdate];
+    NSDate *fromDate = [fromdate  dateByAddingTimeInterval: frominterval];
+    
+
+    NSString *xcsjzStr = self.m_relValue[@"xcsjz"];
+     NSDate *todate=[format dateFromString:xcsjzStr];
+     NSInteger tointerval = [fromzone secondsFromGMTForDate: todate];
+     NSDate *toDate = [fromdate  dateByAddingTimeInterval: frominterval];
+
+    
+    if (xcsjqStr.length>0) {
+        
+        [self.fromDateBtn setTitle:xcsjqStr forState:UIControlStateNormal];
+    }else
+    {
+        // 把日历时间传给字符串
+        
+        NSString *strDate = [dateFormatter stringFromDate:[NSDate new]];
+        [self.fromDateBtn setTitle:strDate forState:UIControlStateNormal];
+        
+    }
+    
+    
+    if (xcsjzStr.length>0) {
+        
+        [self.toDateBtn setTitle:xcsjzStr forState:UIControlStateNormal];
+    }else
+    {
+        // 把日历时间传给字符串
+        
+        NSString *strDate = [dateFormatter stringFromDate:[NSDate new]];
+        [self.toDateBtn setTitle:strDate forState:UIControlStateNormal];
+        
+    }
+    
+    
+
     
     [self.fromDateBtn.m_info setObject:[[NSDate new] sameTimeOfDate] forKey:@"data"];
     [self.toDateBtn.m_info setObject:[NSDate new] forKey:@"data"];
