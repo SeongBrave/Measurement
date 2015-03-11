@@ -15,6 +15,9 @@
 #import "ProgramOverviewDidHYPopViewController.h"
 
 @interface ProgramOverviewViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,PopViewDelegate,UIPopoverControllerDelegate>
+{
+    OptionMenuTableViewController *OptionMenuTVC;
+}
 
 
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *m_flowLayout;
@@ -50,9 +53,12 @@
     {
         UINavigationController *nav = (UINavigationController*)[segue destinationViewController];
         
-        OptionMenuTableViewController *OptionMenuTVC = (OptionMenuTableViewController*)[nav topViewController];
+        OptionMenuTVC = (OptionMenuTableViewController*)[nav topViewController];
         OptionMenuTVC.m_optionMenuDelegate = self;
         
+        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:self.m_netParamDict];
+        
+         OptionMenuTVC.m_relValue = dict;
     }
     
     

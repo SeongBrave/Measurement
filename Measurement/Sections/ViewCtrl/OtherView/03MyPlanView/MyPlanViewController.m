@@ -58,6 +58,9 @@
     
         OptionMenuTableViewController *OptionMenuTVC = (OptionMenuTableViewController*)[nav topViewController];
         OptionMenuTVC.m_optionMenuDelegate = self;
+        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:self.m_netParamDict];
+        
+        OptionMenuTVC.m_relValue = dict;
     
     }
     

@@ -70,6 +70,8 @@
 {
     [super viewWillAppear:animated];
     
+    [self updateTableViewWithData:_m_relValue];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -200,18 +202,241 @@
 -(void)updateTableViewWithData:(NSDictionary *) dict
 {
     
-    self.m_companyTF.text = [dict GetLabelWithKey:@"wtdwmc"].length >0 ?[dict GetLabelWithKey:@"wtdwmc"]:@"全部";
+    self.m_companyTF.text = [dict GetLabelWithKey:@"wtdwmc"];
     
-    self.m_finishStateLabel.text = [dict GetLabelWithKey:@"rwwcqk"].length>0?[dict GetLabelWithKey:@"rwwcqk"]:@"全部";
+    NSString *rwwcqkStr = [dict GetLabelWithKey:@"rwwcqk"];
     
-    self.m_factoryDepartmentLabel.text =[dict GetLabelWithKey:@"xcksbh"].length>0?[dict GetLabelWithKey:@"xcksbh"]:@"全部";
-   
-    self.m_factoryCommissionerLabel.text =[dict GetLabelWithKey:@"xcrybh"];;
-    self.m_sortingFieldLabel.text =[dict GetLabelWithKey:@"pxzd"].length>0?[dict GetLabelWithKey:@"pxzd"]:@"创建时间";
-    self.m_sortingWayLabel.text = [dict GetLabelWithKey:@"pxfs"].length>0?[dict GetLabelWithKey:@"pxfs"]:@"降序";
+    if (rwwcqkStr.length >0) {
+        int code = [rwwcqkStr intValue];
+        
+        switch (code) {
+            case 0:
+            {
+                self.m_finishStateLabel.text = @"未完成";
+            }
+                break;
+            case 1:
+            {
+                self.m_finishStateLabel.text = @"已完成";
+            }
+                break;
+            default:
+                break;
+        }
+        
+    }else
+    {
+        self.m_finishStateLabel.text = @"全部";
+    }
+
+    
+    NSString *pxfsStr = [dict GetLabelWithKey:@"pxfs"];
+    
+    if (pxfsStr.length >0) {
+        int code = [pxfsStr intValue];
+        
+        switch (code) {
+            case 0:
+            {
+                self.m_sortingWayLabel.text = @"降序";
+            }
+                break;
+            case 1:
+            {
+                self.m_sortingWayLabel.text = @"升序";
+            }
+                break;
+            default:
+                break;
+        }
+        
+    }else
+    {
+        self.m_sortingWayLabel.text = @"降序";
+    }
+    
+    
+    NSString *pxzdStr = [dict GetLabelWithKey:@"pxzd"];
+    
+    if (pxzdStr.length >0) {
+        int code = [pxzdStr intValue];
+        
+        switch (code) {
+            case 0:
+            {
+                self.m_sortingFieldLabel.text = @"创建时间";
+            }
+                break;
+            case 1:
+            {
+                self.m_sortingFieldLabel.text = @"下厂时间";
+            }
+                break;
+            default:
+                break;
+        }
+        
+    }else
+    {
+        self.m_sortingFieldLabel.text = @"创建时间";
+    }
+    
+    
+    
+    NSString *xcksbhStr = [dict GetLabelWithKey:@"xcksbh"];
+    
+    if (xcksbhStr.length >0) {
+       
+        [self search_xcks_Byxcksbh:xcksbhStr];
+        
+    }else
+    {
+        self.m_factoryDepartmentLabel.text = @"全部";
+    }
+    
+    
+    
+    NSString *xcrybhStr = [dict GetLabelWithKey:@"xcrybh"];
+    
+    if (xcrybhStr.length >0) {
+        
+        [self search_xcry_Byxcrybh:xcrybhStr andxcksbh:xcksbhStr];
+        
+    }else
+    {
+        self.m_factoryCommissionerLabel.text = @"全部";
+    }
+    
+    
+    
+    // 将NSDate格式装换成NSString类型
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    // 设置日历显示格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    
+    
+    
+    
+    NSString *xcsjqStr = dict[@"xcsjq"];
+    
+    NSDateFormatter *format=[[NSDateFormatter alloc] init];
+    [format setDateFormat:@"yyyy-MM-dd"];
+    NSDate *fromdate=[format dateFromString:xcsjqStr];
+    NSTimeZone *fromzone = [NSTimeZone systemTimeZone];
+    NSInteger frominterval = [fromzone secondsFromGMTForDate: fromdate];
+    NSDate *fromDate = [fromdate  dateByAddingTimeInterval: frominterval];
+    
+    
+    NSString *xcsjzStr = dict[@"xcsjz"];
+    NSDate *todate=[format dateFromString:xcsjzStr];
+    NSInteger tointerval = [fromzone secondsFromGMTForDate: todate];
+    NSDate *toDate = [fromdate  dateByAddingTimeInterval: tointerval];
+    
+    
+    if (xcsjqStr.length>0) {
+        
+        [self.fromDateBtn setTitle:xcsjqStr forState:UIControlStateNormal];
+        
+        [self.fromDateBtn.m_info setObject:fromDate forKey:@"data"];
+        
+        
+    }else
+    {
+        // 把日历时间传给字符串
+        
+        NSString *strDate = [dateFormatter stringFromDate:[NSDate new]];
+        [self.fromDateBtn setTitle:strDate forState:UIControlStateNormal];
+        [self.fromDateBtn.m_info setObject:[[NSDate new] sameTimeOfDate] forKey:@"data"];
+    }
+    
+    
+    if (xcsjzStr.length>0) {
+        
+        [self.toDateBtn setTitle:xcsjzStr forState:UIControlStateNormal];
+        [self.toDateBtn.m_info setObject:toDate forKey:@"data"];
+    }else
+    {
+        // 把日历时间传给字符串
+        
+        NSString *strDate = [dateFormatter stringFromDate:[NSDate new]];
+        [self.toDateBtn setTitle:strDate forState:UIControlStateNormal];
+        [self.toDateBtn.m_info setObject:[NSDate new] forKey:@"data"];
+        
+    }
     
                                     
                                     
+}
+
+-(void)search_xcks_Byxcksbh:(NSString *) xcksbh
+{
+    /**
+     *  设置加载时显示提示
+     */
+    [[BaseNetWork getInstance] hideDialog];
+    @weakify(self)
+    [[[[BaseNetWork getInstance] rac_postPath:@"getKs.do" parameters:nil]map:^(id responseData)
+      {
+          NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+          
+          return [dict valueForKeyPath:@"ks"];
+          
+      }]subscribeNext:^(NSArray *arr)
+     {
+         @strongify(self)
+         for(NSDictionary *dict in arr)
+         {
+             if([dict[@"comcode"] isEqualToString:xcksbh])
+             {
+                 
+                 self.m_factoryDepartmentLabel.text = dict[@"comcname"];
+             }
+         }
+
+         
+     }error:^(NSError *error){
+         
+         //          [self.m_collectionView reloadData];
+         
+         
+     }];
+}
+
+
+-(void)search_xcry_Byxcrybh:(NSString *) xcrybh andxcksbh:(NSString *) xcksbh
+{
+    /**
+     *  设置加载时显示提示
+     */
+    [[BaseNetWork getInstance] hideDialog];
+    @weakify(self)
+    [[[[BaseNetWork getInstance] rac_postPath:@"getKsry.do" parameters:@{@"comCode":xcksbh}]map:^(id responseData)
+      {
+          NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+          
+          return [dict valueForKeyPath:@"ksry"];
+          
+      }]subscribeNext:^(NSArray *arr)
+     {
+         @strongify(self)
+         for(NSDictionary *dict in arr)
+         {
+             if([dict[@"comcode"] isEqualToString:xcrybh])
+             {
+
+                 self.m_factoryCommissionerLabel.text = dict[@"comcname"];
+             }
+         }
+         
+         
+     }error:^(NSError *error){
+         
+         //          [self.m_collectionView reloadData];
+         
+         
+     }];
 }
 //TODO: 添加视图
 -(void)layoutMainCustomView
@@ -227,63 +452,63 @@
 
     
     
-    // 将NSDate格式装换成NSString类型
+//    // 将NSDate格式装换成NSString类型
+//    
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+//    // 设置日历显示格式
+//    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+//    
+//  
+//    
+//    
+//    
+//    NSString *xcsjqStr = self.m_relValue[@"xcsjq"];
+//    
+//    NSDateFormatter *format=[[NSDateFormatter alloc] init];
+//    [format setDateFormat:@"yyyy-MM-dd"];
+//    NSDate *fromdate=[format dateFromString:xcsjqStr];
+//    NSTimeZone *fromzone = [NSTimeZone systemTimeZone];
+//    NSInteger frominterval = [fromzone secondsFromGMTForDate: fromdate];
+//    NSDate *fromDate = [fromdate  dateByAddingTimeInterval: frominterval];
+//    
+//
+//    NSString *xcsjzStr = self.m_relValue[@"xcsjz"];
+//     NSDate *todate=[format dateFromString:xcsjzStr];
+//     NSInteger tointerval = [fromzone secondsFromGMTForDate: todate];
+//     NSDate *toDate = [fromdate  dateByAddingTimeInterval: tointerval];
+//
+//    
+//    if (xcsjqStr.length>0) {
+//        
+//        [self.fromDateBtn setTitle:xcsjqStr forState:UIControlStateNormal];
+//        
+//        [self.fromDateBtn.m_info setObject:fromDate forKey:@"data"];
+//
+//        
+//    }else
+//    {
+//        // 把日历时间传给字符串
+//        
+//        NSString *strDate = [dateFormatter stringFromDate:[NSDate new]];
+//        [self.fromDateBtn setTitle:strDate forState:UIControlStateNormal];
+//        [self.fromDateBtn.m_info setObject:[[NSDate new] sameTimeOfDate] forKey:@"data"];
+//    }
+//    
+//    
+//    if (xcsjzStr.length>0) {
+//        
+//        [self.toDateBtn setTitle:xcsjzStr forState:UIControlStateNormal];
+//        [self.toDateBtn.m_info setObject:toDate forKey:@"data"];
+//    }else
+//    {
+//        // 把日历时间传给字符串
+//        
+//        NSString *strDate = [dateFormatter stringFromDate:[NSDate new]];
+//        [self.toDateBtn setTitle:strDate forState:UIControlStateNormal];
+//        [self.toDateBtn.m_info setObject:[NSDate new] forKey:@"data"];
+//        
+//    }
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    // 设置日历显示格式
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    
-  
-    
-    
-    
-    NSString *xcsjqStr = self.m_relValue[@"xcsjq"];
-    
-    NSDateFormatter *format=[[NSDateFormatter alloc] init];
-    [format setDateFormat:@"yyyy-MM-dd"];
-    NSDate *fromdate=[format dateFromString:xcsjqStr];
-    NSTimeZone *fromzone = [NSTimeZone systemTimeZone];
-    NSInteger frominterval = [fromzone secondsFromGMTForDate: fromdate];
-    NSDate *fromDate = [fromdate  dateByAddingTimeInterval: frominterval];
-    
-
-    NSString *xcsjzStr = self.m_relValue[@"xcsjz"];
-     NSDate *todate=[format dateFromString:xcsjzStr];
-     NSInteger tointerval = [fromzone secondsFromGMTForDate: todate];
-     NSDate *toDate = [fromdate  dateByAddingTimeInterval: frominterval];
-
-    
-    if (xcsjqStr.length>0) {
-        
-        [self.fromDateBtn setTitle:xcsjqStr forState:UIControlStateNormal];
-    }else
-    {
-        // 把日历时间传给字符串
-        
-        NSString *strDate = [dateFormatter stringFromDate:[NSDate new]];
-        [self.fromDateBtn setTitle:strDate forState:UIControlStateNormal];
-        
-    }
-    
-    
-    if (xcsjzStr.length>0) {
-        
-        [self.toDateBtn setTitle:xcsjzStr forState:UIControlStateNormal];
-    }else
-    {
-        // 把日历时间传给字符串
-        
-        NSString *strDate = [dateFormatter stringFromDate:[NSDate new]];
-        [self.toDateBtn setTitle:strDate forState:UIControlStateNormal];
-        
-    }
-    
-    
-
-    
-    [self.fromDateBtn.m_info setObject:[[NSDate new] sameTimeOfDate] forKey:@"data"];
-    [self.toDateBtn.m_info setObject:[NSDate new] forKey:@"data"];
-
 }
 
 -(NSMutableDictionary *)m_relValue

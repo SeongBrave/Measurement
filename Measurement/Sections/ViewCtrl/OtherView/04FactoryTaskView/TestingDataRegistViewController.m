@@ -1892,6 +1892,10 @@
                               标准器设备--标准设备编号(多 标准器设备--溯源证书号(多个 技术依据ID(多个按","分隔)
     */
     
+    debug_object(self.m_Ggxx_saveDataDict);
+    
+    
+    
     if (![self validateInputInView:self.m_ggxx_ScrollView]){
         [self.m_showDialog WarningNotificationWithMessage:@"请补全信息!"];
         
