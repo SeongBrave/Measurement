@@ -175,7 +175,7 @@
         
         pickerVC.m_date = self.fromDateBtn.m_info[@"data"];
         pickerVC.m_clickBtn = self.fromDateBtn;
-        
+        pickerVC.datePickerMode = UIDatePickerModeDate;
         pickerVC.dateDelegate = self;
          self.fromDatePickerVC = pickerVC;
         
@@ -183,6 +183,7 @@
     {
         DatePickerViewController *pickerVC = (DatePickerViewController*)[segue destinationViewController];
          pickerVC.m_clickBtn = self.toDateBtn;
+         pickerVC.datePickerMode = UIDatePickerModeDate;
         pickerVC.dateDelegate = self;
         /**
          *  必须给了属性然后再viewwillappear中设置给datepicker才行，否则设置不成功
