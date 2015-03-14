@@ -208,10 +208,7 @@
     self.m_hy_hyjg_DTF.required = YES;
     
     
-    hyjg_model *model1 = [[hyjg_model alloc]init];
-    
-    model1.m_showTitle = @"未核验";
-    model1.m_code = @"0";
+
     
     hyjg_model *model2 = [[hyjg_model alloc]init];
     
@@ -221,9 +218,9 @@
     hyjg_model *model3 = [[hyjg_model alloc]init];
     
     model3.m_showTitle = @"核验未通过";
-    model3.m_code = @"2";
+    model3.m_code = @"0";
     
-    self.m_hyjgTFArr = @[model1,model2,model3];
+    self.m_hyjgTFArr = @[model2,model3];
     
     
     self.lineImgV = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"float-tab-bg_line"]];
