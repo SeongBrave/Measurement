@@ -1171,7 +1171,7 @@
                 
                 //            return [[model.jcjdDetailArr count]+1];
                 
-                [cell configureCellWithItem:model.jcjdDetailArr[indexPath.row-2]];
+                [cell configureCellWithItem:model.jcjdDetailArr[indexPath.row-2] andIndex:indexPath.row -1];
                 
                 return cell;
                 

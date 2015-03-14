@@ -14,13 +14,14 @@
 - (void)configureCellWithItem:( jcjd_Detail_Model* )product
 {
     
-      self.m_txmLabel.text = [NSString stringWithFormat:@"%@",product.txm];
-    self.m_jltxLabel.text = [NSString stringWithFormat:@"%@",product.jltx];
-    self.m_jcfwLabel.text = [NSString stringWithFormat:@"%@",product.jcfw];
-    self.m_ggxhLabel.text = [NSString stringWithFormat:@"%@",product.ggxh];
-    self.m_sccjLabel.text = [NSString stringWithFormat:@"%@",product.sccj];
-    self.m_lbLabel.text = [NSString stringWithFormat:@"%@",product.jclx];
-    self.m_priceLabel.text = [NSString stringWithFormat:@"%@",product.bzsf];
+      self.m_txmLabel.text = [product.txm GetNotNullStr];
+    self.m_yqmc_LB.text = [product.yqmc GetNotNullStr];
+    self.m_jltxLabel.text = [product.jltx GetNotNullStr];
+    self.m_jcfwLabel.text = [product.jcfw GetNotNullStr];
+    self.m_ggxhLabel.text = [product.ggxh GetNotNullStr];
+    self.m_sccjLabel.text = [product.sccj GetNotNullStr];
+    self.m_lbLabel.text = [product.jclx GetNotNullStr];
+    self.m_priceLabel.text = [product.bzsf GetNotNullStr];
 }
 
 - (void)configureCellWithItem:(id )item andIndex:(NSUInteger)index
@@ -28,13 +29,14 @@
     
     jcjd_Detail_Model* product =(jcjd_Detail_Model*)item;
     
-    self.m_txmLabel.text = [NSString stringWithFormat:@"%@",product.txm];
-    self.m_jltxLabel.text = [NSString stringWithFormat:@"%@",product.jltx];
-    self.m_jcfwLabel.text = [NSString stringWithFormat:@"%@",product.jcfw];
-    self.m_ggxhLabel.text = [NSString stringWithFormat:@"%@",product.ggxh];
-    self.m_sccjLabel.text = [NSString stringWithFormat:@"%@",product.sccj];
-    self.m_lbLabel.text = [NSString stringWithFormat:@"%@",product.jclx];
-    self.m_priceLabel.text = [NSString stringWithFormat:@"%@",product.bzsf];
+    self.m_txmLabel.text = [product.txm GetNotNullStr];
+    self.m_yqmc_LB.text = [product.yqmc GetNotNullStr];
+    self.m_jltxLabel.text = [product.jltx GetNotNullStr];
+    self.m_jcfwLabel.text = [product.jcfw GetNotNullStr];
+    self.m_ggxhLabel.text = [product.ggxh GetNotNullStr];
+    self.m_sccjLabel.text = [product.sccj GetNotNullStr];
+    self.m_lbLabel.text = [product.jclx GetNotNullStr];
+    self.m_priceLabel.text = [product.bzsf GetNotNullStr];
     
     self.m_indexLB.text = [NSString stringWithFormat:@"%@",[@(index) stringValue]];
 }

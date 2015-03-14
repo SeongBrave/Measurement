@@ -22,7 +22,8 @@
              @"jltx" : @"jltx",
              @"sccj" : @"sccj",
              @"txm" : @"txm",
-             @"zsbh" : @"zsbh"
+             @"zsbh" : @"zsbh",
+             @"yqmc":@"yqmc"
              };
 }
 

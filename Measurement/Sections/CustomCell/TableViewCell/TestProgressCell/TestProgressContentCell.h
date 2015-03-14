@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *m_indexLB;
 
 @property (weak, nonatomic) IBOutlet UILabel *m_txmLabel;
+@property (weak, nonatomic) IBOutlet UILabel *m_yqmc_LB;
 
 @property (weak, nonatomic) IBOutlet UILabel *m_jltxLabel;
 @property (weak, nonatomic) IBOutlet UILabel *m_jcfwLabel;

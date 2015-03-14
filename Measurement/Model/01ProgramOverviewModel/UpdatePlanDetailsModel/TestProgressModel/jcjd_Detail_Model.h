@@ -17,6 +17,11 @@
 @property (nonatomic, copy) NSString *bzsf;
 
 /**
+ *  仪器名称
+ */
+@property(nonatomic , copy)NSString *yqmc;
+
+/**
  * 规格型号
  */
 @property (nonatomic, copy) NSString *ggxh;
