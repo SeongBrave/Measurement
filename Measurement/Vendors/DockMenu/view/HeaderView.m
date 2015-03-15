@@ -8,6 +8,7 @@
 
 #import "HeaderView.h"
 #import "VendorMacro.h"
+#import "LoginedUser.h"
 
 @implementation HeaderView
 
@@ -18,9 +19,13 @@
     if (self) {
         
         
+        
+        LoginedUser *loginer = [LoginedUser sharedInstance];
+        
+        
         self.m_usrNameLabel = [[UILabel alloc]init];
 
-        self.m_usrNameLabel.text = @"核验员Aris";
+        self.m_usrNameLabel.text = loginer.username;
         self.m_usrNameLabel.textAlignment = NSTextAlignmentCenter;
         self.m_usrNameLabel.textColor = UIColorFromRGB(255,255,255);
         self.m_usrNameLabel.font = [UIFont systemFontOfSize:12];

@@ -14,4 +14,7 @@
 
 @interface SystemSettingsViewController : CommonLogicViewController
 
+
+@property(nonatomic , strong)UIViewController *m_superVc;
+
 @end

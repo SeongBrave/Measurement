@@ -140,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="80d-7d-H4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4278" y="-2275"/>
+            <point key="canvasLocation" x="-6089" y="-1554"/>
         </scene>
         <!--计划总揽-->
         <scene sceneID="Ps9-hg-lLv">
@@ -1625,7 +1625,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ald-M1-XDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1410" y="-6040"/>
+            <point key="canvasLocation" x="-1394" y="-5871"/>
         </scene>
         <!--Option Menu Table View Controller-->
         <scene sceneID="FqP-Si-8ol">
@@ -6790,7 +6790,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXa-Jj-DgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1627" y="-9628"/>
+            <point key="canvasLocation" x="2139" y="-9524"/>
         </scene>
         <!--Full Screen PreviewVC-->
         <scene sceneID="XbH-hE-Fn6">
@@ -6864,7 +6864,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0T5-ag-VvP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2266" y="-8720"/>
+            <point key="canvasLocation" x="2422" y="-8459"/>
         </scene>
         <!--Factory Task Detail View PopVC-->
         <scene sceneID="vnf-5h-oqj">
@@ -10733,6 +10733,17 @@
                                     <constraint firstAttribute="trailing" secondItem="Zo0-gO-FUm" secondAttribute="trailing" id="ybb-EJ-GKv"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8K-Nw-hYF">
+                                <rect key="frame" x="327" y="273" width="227" height="47"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="退出登录">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="exitBtnClick:" destination="YfG-pN-5Ig" eventType="touchUpInside" id="xlo-lP-yco"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -10747,7 +10758,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pn5-yz-Phs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="988" y="-9644"/>
+            <point key="canvasLocation" x="1123" y="-9619"/>
         </scene>
         <!--提交核验-->
         <scene sceneID="Azt-pp-GIX">
@@ -11576,7 +11587,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8w8-e1-rbX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2096" y="-9394"/>
+            <point key="canvasLocation" x="3248" y="-9266"/>
         </scene>
         <!--计划总揽弹出视图-->
         <scene sceneID="X5u-u5-IU8">
@@ -18635,6 +18646,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Hix-bq-jua"/>
-        <segue reference="JYb-eY-jM0"/>
+        <segue reference="D1q-FG-v94"/>
     </inferredMetricsTieBreakers>
 </document>

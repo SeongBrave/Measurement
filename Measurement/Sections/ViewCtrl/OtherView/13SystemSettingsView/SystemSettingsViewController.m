@@ -29,6 +29,19 @@
         
     }];
 }
+- (IBAction)exitBtnClick:(id)sender {
+    
+   
+    [self dismissViewControllerAnimated:NO completion:^(void){
+        
+      
+        [self.m_superVc dismissViewControllerAnimated:NO completion:nil];
+    }];
+    
+    
+    
+}
+
 
 /*
 #pragma mark - Navigation

@@ -607,7 +607,10 @@
     
     if (!self.ggxx_Flag) {
         NSDictionary *dict = @{@"xmbh":self.m_Sbxq_saveDataDict[@"xmbh"],@"jclxbh":self.m_Sbxq_saveDataDict[@"jclxbh"]};
-        [self PopYSJL_TemplatesListViewControllerWithZSretDict:dict];
+//        [self PopYSJL_TemplatesListViewControllerWithZSretDict:dict];
+        
+        
+        [self load_ysjl_WebViewWithjljspmc:nil];
     }
     
     self.ggxx_Flag = YES;
@@ -1098,43 +1101,43 @@
      }];
     
     
-    /**
-     *  获取器具用途
-     */
-    [[BaseNetWork getInstance] hideDialog];
-    [[[[[BaseNetWork getInstance] rac_postPath:@"findDmxx.do" parameters:@{@"zdbm":@"qjyt"}]map:^(id responseData)
-       {
-           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-           
-           return dict[@"dmxxList"];
-       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-     subscribeNext:^(NSArray *arr) {
-         @strongify(self)
-         
-         self.m_qjytTFArr = [arr linq_select:^id(NSDictionary *dict){
-             
-             dmxx_Model *dmxxModel = [MTLJSONAdapter modelOfClass:[dmxx_Model class] fromJSONDictionary:dict error:nil];
-             
-             
-             return dmxxModel;
-         }];
-         
-         
-         
-         
-     }error:^(NSError *error){
-         //          @strongify(self)
-         ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
-         ////          self.m_DataSourceArr = arr;
-         ////          [_header endRefreshing];
-         ////          [_footer endRefreshing];
-         ////
-         ////          [self failedGetDataWithResponseData:arr];
-         //          //          [self.m_collectionView reloadData];
-         
-         
-     }];
-    
+//    /**
+//     *  获取器具用途
+//     */
+//    [[BaseNetWork getInstance] hideDialog];
+//    [[[[[BaseNetWork getInstance] rac_postPath:@"findDmxx.do" parameters:@{@"zdbm":@"qjyt"}]map:^(id responseData)
+//       {
+//           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+//           
+//           return dict[@"dmxxList"];
+//       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+//     subscribeNext:^(NSArray *arr) {
+//         @strongify(self)
+//         
+//         self.m_qjytTFArr = [arr linq_select:^id(NSDictionary *dict){
+//             
+//             dmxx_Model *dmxxModel = [MTLJSONAdapter modelOfClass:[dmxx_Model class] fromJSONDictionary:dict error:nil];
+//             
+//             
+//             return dmxxModel;
+//         }];
+//         
+//         
+//         
+//         
+//     }error:^(NSError *error){
+//         //          @strongify(self)
+//         ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
+//         ////          self.m_DataSourceArr = arr;
+//         ////          [_header endRefreshing];
+//         ////          [_footer endRefreshing];
+//         ////
+//         ////          [self failedGetDataWithResponseData:arr];
+//         //          //          [self.m_collectionView reloadData];
+//         
+//         
+//     }];
+//    
     
     
     
@@ -1450,19 +1453,47 @@
     
     //TODO:测试需要的
     //    [self test_GgxxV];
+    
+    
+    
     /**
-     *  检定日期
+     * 01 器具用途
+     */
+    NSDictionary *yqxx_Dict =retDict[@"yqxx"];
+    
+    NSArray *qjytList = retDict[@"qjytList"];
+    
+    self.m_qjyt_DTF.text = [yqxx_Dict GetLabelWithKey:@"qjytbh"];
+    
+    self.m_qjytTFArr = [qjytList linq_select:^id(NSDictionary *dict){
+        
+        dmxx_Model *dmxxModel = [MTLJSONAdapter modelOfClass:[dmxx_Model class] fromJSONDictionary:dict error:nil];
+        
+        if ([[yqxx_Dict GetLabelWithKey:@"qjytbh"] isEqualToString:dmxxModel.dmbm]) {
+            
+            self.m_qjyt_DTF.text = dmxxModel.dmxxmc;
+        }
+        
+        
+        return dmxxModel;
+    }];
+    
+    
+    /**
+     02 检定日期
      */
     // 设置日历显示格式
-    
-    
+
     // 把日历时间传给字符串
-    
-    
     // 2012-05-17 11:23:23
+    
+    NSDictionary *zsxx_Dict = retDict[@"zsxx"];
+    
+    
+    
     NSDateFormatter *format=[[NSDateFormatter alloc] init];
     [format setDateFormat:@"yyyy-MM-dd"];
-    NSDate *fromdate=[format dateFromString:[retDict GetLabelWithKey:@"wtrq"]];
+    NSDate *fromdate=[format dateFromString:[retDict GetLabelWithKey:@"jdsj"]];
     NSTimeZone *fromzone = [NSTimeZone systemTimeZone];
     NSInteger frominterval = [fromzone secondsFromGMTForDate: fromdate];
     NSDate *fromDate = [fromdate  dateByAddingTimeInterval: frominterval];
@@ -1472,27 +1503,13 @@
     NSString *strDate = [format stringFromDate:fromDate];
     [self.m_jdrq_Btn setTitle:strDate forState:UIControlStateNormal];
     
+    
+    
     /**
-     *  注:默认检定人,不可修改
+     *  03 检定周期
      */
-    NSDictionary *hyrDict = retDict[@"hyrmap"];
-    
-    
-    if ([hyrDict allKeys].count >0) {
-        
-        self.m_jdy_TF.text =[hyrDict GetLabelWithKey:[hyrDict allKeys][0]];
-        self.m_jdrybh_Str = [hyrDict allKeys][0];
-        
-    }else
-    {
-        self.m_jdy_TF.text = @"";
-    }
-    
-    self.m_jdy_Dict = hyrDict;
     
     NSString *jdzqStr = [retDict[@"yqxx"] GetLabelWithKey:@"jdzqbh"];
-    
-    
     NSArray *jdzqArr = retDict[@"jdzqList"];
     
     self.m_Ggxx_saveDataDict[@"jdzqbh"] = [jdzqStr GetNotNullStr];
@@ -1514,6 +1531,52 @@
             self.m_jdzq_DTF.m_bm = model.dmbm;
         }
     }
+
+    /**
+     *  04检定地点
+     */
+    self.m_jddd_TF.text = zsxx_Dict[@"jddd"];
+    
+    
+    /**
+     *  05环境温度
+     */
+    self.m_hjwd_TF.text = zsxx_Dict[@"hjwd"];
+    
+    
+    /**
+     *  06相对湿度
+     */
+    self.m_xdsd_TF.text = zsxx_Dict[@"hjsd"];
+    
+    /**
+     *  07其它
+     */
+    self.m_qt_TF.text = zsxx_Dict[@"qt"];
+    
+    
+    /**
+     *  08 检定员
+     */
+    NSString *jdyStr = zsxx_Dict[@"jdr"];
+    
+    
+    NSDictionary *jdrmap_Dict = retDict[@"jdrmap"];
+    self.m_jdy_TF.text = jdrmap_Dict[jdyStr];
+    self.m_Ggxx_saveDataDict[@"jdrbh"] = jdyStr;
+    
+    /**
+     *  09核验员
+     */
+     NSString *hyrStr = zsxx_Dict[@"hyr"];
+    NSDictionary *hyrDict = retDict[@"hyrmap"];
+   self.m_hyy_DTF.text = jdrmap_Dict[hyrStr];
+    self.m_hyy_DTF.m_bm = hyrStr;
+    
+    self.m_Ggxx_saveDataDict[@"hyrbh"] = hyrStr;
+    
+    self.m_jdy_Dict = hyrDict;
+    
     
     /**
      *  hyrmap 注:核验人
@@ -1534,38 +1597,83 @@
     
     
     /**
-     *  hyrmap 注:批准人
+     *  10 hyrmap 注:批准人
      */
+    NSString *pzrStr = zsxx_Dict[@"pzr"];
+    
     NSArray *pzrArr = retDict[@"pzrList"];
     
     self.m_pzrTFArr = [pzrArr linq_select:^id(NSDictionary *dict){
         
         pzr_Model *pzrModel = [MTLJSONAdapter modelOfClass:[pzr_Model class] fromJSONDictionary:dict error:nil];
         
+        if ([pzrModel.usercode isEqualToString:pzrStr]) {
+            self.m_pzr_DTF.text = pzrModel.username;
+            
+            self.m_Ggxx_saveDataDict[@"pzrbh"] = pzrStr;
+        }
+        
         return pzrModel;
     }];
     
-    
-    
+    /**
+     *  11 接收状态
+     */
+    self.m_jszt_TF.text = zsxx_Dict[@"jszt"];
     
     NSArray *jlbzkhzshArr = retDict[@"gcList"];
     NSArray *bzqsbArr = retDict[@"bzqList"];
     
     NSArray *jsyjArr = retDict[@"jsyjList"];
     
+    
+    
+    /**
+     *  计量标准考核证书id
+     */
     NSString *jlbzkhzshStr = retDict[@"jlbzkhzsIds"];
-    NSString *bzqsbStr = retDict[@"syzshs"];
+    NSArray *jlbzkhzs_Arr = [jlbzkhzshStr componentsSeparatedByString:@","];
     
-    NSString *jsyjStr = retDict[@"jsyjID"];
+    /**
+     *  标准器设备- 标准设备编号
+     */
+    NSString *bzqsbStr = retDict[@"bzsbbhs"];
+    NSArray *bzqsb_Arr = [bzqsbStr componentsSeparatedByString:@","];
+
     
+    /**
+     * 标准器设备-
+     */
     NSString *syzshsStr = retDict[@"syzshs"];
+    NSArray *syzshs_Arr = [syzshsStr componentsSeparatedByString:@","];
+    
+    /**
+     *  技术依据id
+     */
+    NSString *jsyjStr = retDict[@"jsyjID"];
+    NSArray *jsyj_Arr = [jsyjStr componentsSeparatedByString:@","];
+
     
     self.m_jlbzkhzsh_Arr = [jlbzkhzshArr
                             linq_select:^id(NSDictionary *dict)
                             {
                                 
                                 jcrwcx_Jlbzkhzsh_Model *model = [MTLJSONAdapter modelOfClass:[jcrwcx_Jlbzkhzsh_Model class] fromJSONDictionary:dict error:nil];
-                                model.isSelected = YES;
+                                /**
+                                 *  设置选中状态
+                                 */
+                                for(NSString *str in jlbzkhzs_Arr)
+                                {
+                                    if([str isEqualToString:model.m_id])
+                                    {
+                                        model.isSelected = YES;
+                                    }else
+                                    {
+                                        model.isSelected = NO;
+                                    }
+                                }
+                                
+                                
                                 
                                 return model;
                             }];
@@ -1575,7 +1683,25 @@
                         {
                             
                             Bzqsb_Model *model = [MTLJSONAdapter modelOfClass:[Bzqsb_Model class] fromJSONDictionary:dict error:nil];
-                            model.isSelected = YES;
+                            /**
+                             *  设置选中状态
+                             */
+                            for (int i=0; i<bzqsb_Arr.count; i++) {
+                               NSString * bzqsb_sbbhStr = bzqsb_Arr[i];
+                               NSString * bzqsb_syzsStr = syzshs_Arr[i];
+                                
+                                if([bzqsb_sbbhStr isEqualToString:model.bzsbbh ]&&[bzqsb_syzsStr isEqualToString:model.syzsh ])
+                                {
+                                    model.isSelected = YES;
+                                }else
+                                {
+                                    model.isSelected = NO;
+                                }
+                                
+                            }
+                            
+                            
+                            
                             return model;
                         }];
     
@@ -1584,7 +1710,19 @@
                        {
                            
                            jcrwcx_Jsyj_Model *model = [MTLJSONAdapter modelOfClass:[jcrwcx_Jsyj_Model class] fromJSONDictionary:dict error:nil];
-                           model.isSelected = YES;
+                           /**
+                            *  设置选中状态
+                            */
+                           for(NSString *str in jsyj_Arr)
+                           {
+                               if([str isEqualToString:model.m_id])
+                               {
+                                   model.isSelected = YES;
+                               }else
+                               {
+                                   model.isSelected = NO;
+                               }
+                           }
                            
                            return model;
                        }];
@@ -2894,7 +3032,7 @@
         
         dmxx_Model *model = _m_jdzqTFArr[indexPath.row];
         
-        self.m_Sbxq_saveDataDict[@"jdzqbh"] =model.dmbm;
+        self.m_Ggxx_saveDataDict[@"jdzqbh"] =model.dmbm;
         
         self.is_ggxx_Edited = @1;
         
@@ -2924,7 +3062,6 @@
     {
         pzr_Model *model = _m_pzrTFArr[indexPath.row];
         self.m_Ggxx_saveDataDict[@"pzrbh"] = model.usercode;
-        
         
     }
     
@@ -3180,7 +3317,7 @@
 {
     //175.17.22.241:8080
     
-    NSString *webysjlStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/record-addc.jsp?yqid=%@&jljspmc=%@",WEBURL,self.yqid_Str,jljspmc];
+    NSString *webysjlStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/record-editc.jsp?yqid=%@",WEBURL,self.yqid_Str];
     
     //    self.m_ysjl_WebView.scrollView.scrollEnabled = NO;
     [self.m_ysjl_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webysjlStr]]];

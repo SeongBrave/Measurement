@@ -9,6 +9,8 @@
 #import "HomeViewController.h"
 #import "Dock.h"
 #import "DockItem.h"
+#import "SystemSettingsViewController.h"
+
 @interface HomeViewController ()
 {
     Dock *_dock;
@@ -139,9 +141,11 @@
         // 模型形式展示控制器
         if (item.modal) {
             
+            SystemSettingsViewController *systemSetVc = (SystemSettingsViewController *) nav;
+            systemSetVc.m_superVc = self;
+            systemSetVc.modalPresentationStyle = UIModalPresentationFormSheet;
             
-            nav.modalPresentationStyle = UIModalPresentationFormSheet;
-            [self presentViewController:nav animated:YES completion:nil];
+            [self presentViewController:systemSetVc animated:YES completion:nil];
             
             
             return;
