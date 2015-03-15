@@ -311,25 +311,26 @@
      */
     self.districtTF.dropDownDelegate = self;
     self.districtTF.dropDownDataSource = self;
+    self.districtTF.delegate = self;
     
     /**
      *  行业类别
      */
     self.IndustryCategoriesTF.dropDownDelegate = self;
     self.IndustryCategoriesTF.dropDownDataSource = self;
-    
+    self.IndustryCategoriesTF.delegate = self;
     /**
      *  业务负责人
      */
     self.headOFTF.dropDownDelegate = self;
     self.headOFTF.dropDownDataSource = self;
-    
+    self.headOFTF.delegate = self;
     /**
      *  业务负责科室
      */
     self.responsibleDepTF.dropDownDelegate = self;
     self.responsibleDepTF.dropDownDataSource = self;
-    
+    self.responsibleDepTF.delegate = self;
  
     [self.forensicsDateBtn.m_info setObject:[NSDate date] forKey:@"date"];
     [self.fromDatePickerBtn.m_info setObject:[NSDate date] forKey:@"date"];
@@ -716,21 +717,21 @@
     //当前登录用户的usercode
     [self.m_saveDataDict setObject:[usr.usercode GetNotNullStr]forKey:@"usercode"];
     //委托单位编号
-    [self.m_saveDataDict setObject:[_nameOFEntityTF.m_bm GetNotNullStr] forKey:@"WTDWBH"];
+    [self.m_saveDataDict setObject:[_nameOFEntityTF.m_bm GetNotNullStr].length>0?[_nameOFEntityTF.m_bm GetNotNullStr]:@"" forKey:@"WTDWBH"];
     //委托单位名称
-    [self.m_saveDataDict setObject:[_nameOFEntityTF.text GetNotNullStr] forKey:@"WTDWMC"];
+    [self.m_saveDataDict setObject:[_nameOFEntityTF.text GetNotNullStr].length>0?[_nameOFEntityTF.text GetNotNullStr]:@""forKey:@"WTDWMC"];
     //单位地址
-    [self.m_saveDataDict setObject:[_addrOFEntity.text GetNotNullStr] forKey:@"DWDZ"];
+    [self.m_saveDataDict setObject:[_addrOFEntity.text GetNotNullStr].length>0?[_addrOFEntity.text GetNotNullStr]:@"" forKey:@"DWDZ"];
     //联系人
-    [self.m_saveDataDict setObject:[_contactTF.text GetNotNullStr] forKey:@"LXRXM"];
+    [self.m_saveDataDict setObject:[_contactTF.text GetNotNullStr].length>0?[_contactTF.text GetNotNullStr]:@"" forKey:@"LXRXM"];
     //联系电话
-    [self.m_saveDataDict setObject:[_ContactTELTF.text GetNotNullStr] forKey:@"LXDH"];
+    [self.m_saveDataDict setObject:[_ContactTELTF.text GetNotNullStr].length>0?[_ContactTELTF.text GetNotNullStr]:@"" forKey:@"LXDH"];
     
   
 
 
     //邮编
-    [self.m_saveDataDict setObject:[_zipCodeTF.text GetNotNullStr] forKey:@"YB"];
+    [self.m_saveDataDict setObject:[_zipCodeTF.text GetNotNullStr].length>0?[_zipCodeTF.text GetNotNullStr]:@"" forKey:@"YB"];
     
     // 将NSDate格式装换成NSString类型
     
@@ -1019,12 +1020,26 @@
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
-           return [dict valueForKeyPath:@"wtdwjbxx"];
+           return dict;
        }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-     subscribeNext:^(NSArray *arr) {
+     subscribeNext:^(NSDictionary *retDict) {
         
         @strongify(self)
-         [self updateWTDWWithData:arr];
+         
+         
+         if ([retDict[@"ret"] intValue] == 0) {
+             
+             [Dialog ErrorNotificationWithMessage:@"加载数据失败!" ParentView:self.view];
+             
+         }else
+         {
+             
+             NSArray *arr =  [retDict valueForKeyPath:@"wtdwjbxx"];
+         
+              [self updateWTDWWithData:arr];
+             
+         }
+        
          
      }error:^(NSError *error){
          //          @strongify(self)
@@ -1223,23 +1238,75 @@
     
     if (myTextField == self.districtTF) {
         
+        debug_object(@"所在区");
      return NO;
         
     }else if (myTextField == self.IndustryCategoriesTF) {
-        
+       debug_object(@"行业类别");
     return NO;
         
     }else if (myTextField == self.responsibleDepTF)
     {
-        
+        debug_object(@"业务负责科室");
     return NO;
         
         
         
     }else if (textField == self.headOFTF) {
-        
+        debug_object(@"业务负责人");
         return NO;
     }
     return YES;
 }
+
+//#pragma  mark UITextFieldDelegate
+//-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+//{
+//    if (textField == _m_jclx_DTF) {
+//        return NO;
+//        
+//    }else if(textField == _m_dw_DTF) {
+//        
+//        return NO;
+//        
+//    }else if(textField == _m_qjyt_DTF) {
+//        
+//        return NO;
+//        
+//    }else if(textField == _m_jdzq_DTF)
+//    {
+//        return NO;
+//    }
+//    else if(textField == _m_hyy_DTF)
+//    {
+//        return NO;
+//    }else if(textField == _m_pzr_DTF)
+//    {
+//        return NO;
+//        
+//    }
+//    
+//    
+//    if (textField == _m_txm_TF ||textField == _m_jlfw_TF ||textField == _m_clfw_TF ||textField == _m_ggxh_TF||textField == _m_sccj_TF ||textField == _m_sl_TF ||textField == _m_bj_TF||textField == _m_wg_TF||textField == _m_fj_TF) {
+//        
+//        /**
+//         *  1为显示 保存
+//         */
+//        self.is_sbxq_Edited = @1;
+//        
+//    }
+//    
+//    if (textField == _m_jddd_TF || textField == _m_hjwd_TF || textField == _m_xdsd_TF || textField == _m_qt_TF || textField == _m_jszt_TF) {
+//        
+//        /**
+//         *  1为显示 保存
+//         */
+//        self.is_ggxx_Edited = @1;
+//        
+//    }
+//    
+//    
+//    return YES;
+//}
+
 @end
