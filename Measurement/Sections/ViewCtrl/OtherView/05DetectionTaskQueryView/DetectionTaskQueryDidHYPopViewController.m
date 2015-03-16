@@ -601,13 +601,13 @@
 -(void)update_ggxxViewByDict:(NSDictionary *) dict
 {
 
-    self.m_txm_LB.text = [dict[@"txm"] GetNotNullStr];
-    self.m_zsh_LB.text = [dict[@"zsbh"] GetNotNullStr];
-    self.m_ssks_LB.text = [dict[@"ks"] GetNotNullStr];
-    self.m_yqmc_LB.text = [dict[@"yqmc"] GetNotNullStr];
-    self.m_ccbh_LB.text = [dict[@"ccbh"] GetNotNullStr];
-    self.m_jclx_LB.text = [dict[@"jclx"] GetNotNullStr];
-    self.m_sl_LB.text = [dict[@"sl"] GetNotNullStr];
+    self.m_txm_LB.text = [dict GetLabelWithKey:@"txm"];
+    self.m_zsh_LB.text = [dict GetLabelWithKey:@"zsbh"];
+    self.m_ssks_LB.text = [dict GetLabelWithKey:@"ks"];
+    self.m_yqmc_LB.text = [dict GetLabelWithKey:@"yqmc"];
+    self.m_ccbh_LB.text = [dict GetLabelWithKey:@"ccbh"];
+    self.m_jclx_LB.text = [dict GetLabelWithKey:@"jclx"];
+    self.m_sl_LB.text = [dict GetLabelWithKey:@"sl"];
     
     
     self.m_bj_LB.text = [dict GetLabelWithKey:@"bzsf"];

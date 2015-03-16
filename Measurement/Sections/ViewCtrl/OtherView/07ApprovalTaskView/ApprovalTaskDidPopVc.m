@@ -456,9 +456,9 @@
     self.m_hy_hysj_LB.text = strDate;
     
     
-    self.m_wtdw_LB.text = [model.wtdw GetNotNullStr];
+    self.m_wtdw_LB.text = [model.wtdbh GetNotNullStr];
     
-    self.m_dwmc_LB.text = [model.dwdz GetNotNullStr];
+    self.m_dwmc_LB.text = [model.wtdw GetNotNullStr];
     
     self.m_txm_LB.text = [model.txm GetNotNullStr];
     

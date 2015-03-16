@@ -48,12 +48,13 @@
                    [DockItem itemWithIcon:@"tab-nav-jcrwcx-defauit" title:@"监测任务查询" className:@"DetectionTaskQueryViewController" modal:NO andSelectedIcon:@"tab-nav-jcrwcx-selected"],
                    [DockItem itemWithIcon:@"tab-nav-shwtg-defauit" title:@"审核未通过" className:@"AuditNotPassViewController" modal:NO andSelectedIcon:@"tab-nav-shwtg-selected"],
                    [DockItem itemWithIcon:@"tab-nav-hyrw-defauit" title:@"核验任务" className:@"CheckTaskViewController" modal:NO andSelectedIcon:@"tab-nav-hyrw-selected"],
-                   [DockItem itemWithIcon:@"tab-nav-pzrw-defauit" title:@"批准任务" className:@"ApprovalTaskViewController" modal:NO andSelectedIcon:@"tab-nav-pzrw-selected"],
+                   [DockItem itemWithIcon:@"tab-nav-pzrw-defauit" title:@"批准任务" className:@"ApprovalTaskViewController" modal:NO andSelectedIcon:@"tab-nav-pzrw-selected"],/*
                    [DockItem itemWithIcon:@"tab-nav-zsdb-defauit" title:@"证书担保" className:@"CertificateGuaranteeViewController" modal:NO andSelectedIcon:@"tab-nav-zsdb-selected"],
                    [DockItem itemWithIcon:@"tab-nav-bjgl-defauit" title:@"报价管理" className:@"BidManagementViewController" modal:NO andSelectedIcon:@"tab-nav-bjgl-selected"],
                     [DockItem itemWithIcon:@"tab-nav-sjrw-defauit" title:@"送检任务" className:@"InspectionTasksViewController" modal:NO andSelectedIcon:@"tab-nav-sjrw-selected"],
                    [DockItem itemWithIcon:@"tab-nav-sfgl-defauit" title:@"收费管理" className:@"ChargeManagementViewController" modal:NO andSelectedIcon:@"tab-nav-sfgl-selected"],
-                   [DockItem itemWithIcon:@"tab-nav-xtsz-defauit" title:@"系统设置" className:@"SystemSettingsViewController" modal:YES andSelectedIcon:@"tab-nav-xtsz-selected"],
+                   [DockItem itemWithIcon:@"tab-nav-xtsz-defauit" title:@"系统设置" className:@"SystemSettingsViewController" modal:YES andSelectedIcon:@"tab-nav-xtsz-selected"],*/
+                   [DockItem itemWithIcon:@"tab-nav-xtsz-defauit" title:@"系统设置" className:@"SystemSettingsViewController" modal:YES andSelectedIcon:@"tab-nav-xtsz-selected"]
                    ];
     
 }

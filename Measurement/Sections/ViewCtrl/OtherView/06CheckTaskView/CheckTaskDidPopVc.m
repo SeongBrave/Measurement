@@ -201,6 +201,11 @@
     
 
     
+    hyjg_model *model1 = [[hyjg_model alloc]init];
+    
+    model1.m_showTitle = @"未核验";
+    model1.m_code = @"0";
+    
     hyjg_model *model2 = [[hyjg_model alloc]init];
     
     model2.m_showTitle = @"核验通过";
@@ -209,9 +214,9 @@
     hyjg_model *model3 = [[hyjg_model alloc]init];
     
     model3.m_showTitle = @"核验未通过";
-    model3.m_code = @"0";
+    model3.m_code = @"2";
     
-    self.m_hyjgTFArr = @[model2,model3];
+    self.m_hyjgTFArr = @[model1,model2,model3];
     
     
     self.lineImgV = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"float-tab-bg_line"]];
@@ -460,9 +465,9 @@
     
     
     
-    self.m_wtdw_LB.text = [model.wtdw GetNotNullStr];
+    self.m_wtdw_LB.text = [model.wtdbh GetNotNullStr];
     
-    self.m_dwmc_LB.text = [model.dwdz GetNotNullStr];
+    self.m_dwmc_LB.text = [model.wtdw GetNotNullStr];
     
     self.m_txm_LB.text = [model.txm GetNotNullStr];
     

@@ -18016,7 +18016,7 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="委托单位" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBl-YZ-9la">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="委托单号" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBl-YZ-9la">
                                                         <rect key="frame" x="69" y="57" width="68" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -18495,7 +18495,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PYZ-a0-KQO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1867" y="-10541"/>
+            <point key="canvasLocation" x="2297" y="-10502"/>
         </scene>
         <!--批准任务弹出视图-->
         <scene sceneID="jJS-Ie-thV">
@@ -18641,7 +18641,7 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="委托单位" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roa-2E-Ejm">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="委托单号" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roa-2E-Ejm">
                                                         <rect key="frame" x="69" y="57" width="68" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -18681,12 +18681,6 @@
                                                         <rect key="frame" x="69" y="144" width="68" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21234223893479340" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40s-sE-cyc">
-                                                        <rect key="frame" x="157" y="144" width="162" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="规格型号" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUo-TT-qR4">
@@ -18743,6 +18737,12 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35345346564657" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5x-TU-t8c">
+                                                        <rect key="frame" x="157" y="289" width="134" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="记录类别" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ux1-hF-EO1">
                                                         <rect key="frame" x="69" y="318" width="68" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -18779,8 +18779,8 @@
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35345346564657" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5x-TU-t8c">
-                                                        <rect key="frame" x="157" y="289" width="134" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21234223893479340" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40s-sE-cyc">
+                                                        <rect key="frame" x="157" y="144" width="162" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -19103,7 +19103,6 @@
                         <outlet property="m_sbxq_Btn" destination="4xV-gy-Ijx" id="7g5-8b-0fS"/>
                         <outlet property="m_sbxq_ScrollView" destination="Lgp-HC-CHT" id="6ry-O9-zf4"/>
                         <outlet property="m_scbh_LB" destination="fVQ-CU-CEI" id="fjh-me-WaX"/>
-                        <outlet property="m_sccj_LB" destination="Pdb-hJ-EUo" id="wdN-iC-ZrE"/>
                         <outlet property="m_txm_LB" destination="x4E-ai-LrJ" id="mFz-Zg-Sjg"/>
                         <outlet property="m_wtdw_LB" destination="q8u-Xf-lF7" id="Q9r-LI-nl9"/>
                         <outlet property="m_yqmc_LB" destination="40s-sE-cyc" id="hdZ-NF-qKl"/>
@@ -19120,7 +19119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yt3-Cn-dAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1710" y="-10450"/>
+            <point key="canvasLocation" x="2122" y="-10200"/>
         </scene>
     </scenes>
     <resources>
@@ -19148,7 +19147,7 @@
         <image name="right-button-qx" width="140" height="52"/>
         <image name="right-button-scsb" width="180" height="52"/>
         <image name="right-button-syb" width="140" height="52"/>
-        <image name="right-button-tj" width="798" height="114"/>
+        <image name="right-button-tj" width="140" height="52"/>
         <image name="right-button-tjhy" width="140" height="52"/>
         <image name="right-button-tjsb" width="180" height="52"/>
         <image name="right-button-xjh" width="140" height="52"/>
