@@ -11,7 +11,7 @@
  *
  */
 #import "BaseViewController.h"
-
+#import "Jcrwcx_Model.h"
 @interface ApprovalTaskDidPopVc : BaseViewController
 
 @property(nonatomic , assign)DataSourceType m_dataSourceType;
@@ -21,6 +21,8 @@
  */
 @property(nonatomic , strong)NSDictionary *m_showDict;
 
+
+@property(nonatomic , strong)Jcrwcx_Model *jcrwcxModel;
 
 /**
  *  用于显示设备详情界面的数据

@@ -15,7 +15,7 @@
 #import "AutoCompleteTextField.h"
 #import "Yqmc_Auto_Model.h"
 #import "Yqjbxx_Model.h"
-#import "dmxx_Model.h"
+#import "Qjyt_dmxx_Model.h"
 #import "DatePickerViewController.h"
 #import "pzr_Model.h"
 #import "hyr_Model.h"
@@ -1035,7 +1035,7 @@
              NSArray *arr = retDict[@"dmxxList"] ;
              self.m_dwTFArr = [arr linq_select:^id(NSDictionary *dict){
                  
-                 dmxx_Model *dmxxModel = [MTLJSONAdapter modelOfClass:[dmxx_Model class] fromJSONDictionary:dict error:nil];
+                 Qjyt_dmxx_Model *dmxxModel = [MTLJSONAdapter modelOfClass:[Qjyt_dmxx_Model class] fromJSONDictionary:dict error:nil];
                  
                  
                  return dmxxModel;
@@ -1078,7 +1078,7 @@
          
          self.m_jclxTFArr = [arr linq_select:^id(NSDictionary *dict){
              
-             dmxx_Model *dmxxModel = [MTLJSONAdapter modelOfClass:[dmxx_Model class] fromJSONDictionary:dict error:nil];
+             Qjyt_dmxx_Model *dmxxModel = [MTLJSONAdapter modelOfClass:[Qjyt_dmxx_Model class] fromJSONDictionary:dict error:nil];
              
              
              return dmxxModel;
@@ -1116,7 +1116,7 @@
 //         
 //         self.m_qjytTFArr = [arr linq_select:^id(NSDictionary *dict){
 //             
-//             dmxx_Model *dmxxModel = [MTLJSONAdapter modelOfClass:[dmxx_Model class] fromJSONDictionary:dict error:nil];
+//             Qjyt_dmxx_Model *dmxxModel = [MTLJSONAdapter modelOfClass:[Qjyt_dmxx_Model class] fromJSONDictionary:dict error:nil];
 //             
 //             
 //             return dmxxModel;
@@ -1467,7 +1467,7 @@
     
     self.m_qjytTFArr = [qjytList linq_select:^id(NSDictionary *dict){
         
-        dmxx_Model *dmxxModel = [MTLJSONAdapter modelOfClass:[dmxx_Model class] fromJSONDictionary:dict error:nil];
+        Qjyt_dmxx_Model *dmxxModel = [MTLJSONAdapter modelOfClass:[Qjyt_dmxx_Model class] fromJSONDictionary:dict error:nil];
         
         if ([[yqxx_Dict GetLabelWithKey:@"qjytbh"] isEqualToString:dmxxModel.dmbm]) {
             
@@ -1492,8 +1492,10 @@
     
     
     NSDateFormatter *format=[[NSDateFormatter alloc] init];
-    [format setDateFormat:@"yyyy-MM-dd"];
+    [format setDateFormat:@"yyyy-MM-dd HH:mm"];
     NSDate *fromdate=[format dateFromString:[retDict GetLabelWithKey:@"jdsj"]];
+    
+    
     NSTimeZone *fromzone = [NSTimeZone systemTimeZone];
     NSInteger frominterval = [fromzone secondsFromGMTForDate: fromdate];
     NSDate *fromDate = [fromdate  dateByAddingTimeInterval: frominterval];
@@ -2996,7 +2998,7 @@
 -(void)dropDownTextField:(DropDownTextField *)textField didSelectedWithData:(id<DropDownTextFieldShowCellTextLabel>) data forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (textField == _m_jclx_DTF) {
-        dmxx_Model *model = _m_jclxTFArr[indexPath.row];
+        Qjyt_dmxx_Model *model = _m_jclxTFArr[indexPath.row];
         
         self.m_Sbxq_saveDataDict[@"jclxbh"] =model.dmbm;
         
@@ -3007,7 +3009,7 @@
         
     }else if(textField == _m_dw_DTF) {
         
-        dmxx_Model *model = _m_dwTFArr[indexPath.row];
+        Qjyt_dmxx_Model *model = _m_dwTFArr[indexPath.row];
         
         self.m_Sbxq_saveDataDict[@"by2"] =model.dmbm;
         
@@ -3030,7 +3032,7 @@
     }else if(textField == _m_jdzq_DTF)
     {
         
-        dmxx_Model *model = _m_jdzqTFArr[indexPath.row];
+        Qjyt_dmxx_Model *model = _m_jdzqTFArr[indexPath.row];
         
         self.m_Ggxx_saveDataDict[@"jdzqbh"] =model.dmbm;
         

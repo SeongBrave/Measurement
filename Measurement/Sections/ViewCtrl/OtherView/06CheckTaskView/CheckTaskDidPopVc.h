@@ -11,6 +11,7 @@
  *
  */
 #import "BaseViewController.h"
+#import "Jcrwcx_Model.h"
 
 @interface CheckTaskDidPopVc : BaseViewController
 
@@ -21,7 +22,7 @@
  *  用于保存上一级界面传递过来的数据
  */
 @property(nonatomic , strong)NSDictionary *m_showDict;
-
+@property(nonatomic , strong)Jcrwcx_Model *jcrwcxModel;
 
 /**
  *  用于显示设备详情界面的数据

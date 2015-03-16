@@ -15,6 +15,7 @@
 #import "DropDownTextField.h"
 #import "hyjg_model.h"
 
+
 @interface CheckTaskDidPopVc ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,UITextFieldDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate>
 
 @property(nonatomic , strong)MBProgressHUD *m_hub;
@@ -44,31 +45,21 @@
  */
 @property(nonatomic ,strong) NSDictionary *m_jcsj_Dict;
 
-@property (weak, nonatomic) IBOutlet UILabel *m_txm_LB;
 
+@property (weak, nonatomic) IBOutlet UILabel *m_wtdw_LB;
+
+@property (weak, nonatomic) IBOutlet UILabel *m_dwmc_LB;
+@property (weak, nonatomic) IBOutlet UILabel *m_txm_LB;
+@property (weak, nonatomic) IBOutlet UILabel *m_yqmc_LB;
+@property (weak, nonatomic) IBOutlet UILabel *ggxh_LB;
+@property (weak, nonatomic) IBOutlet UILabel *m_scbh_LB;
+@property (weak, nonatomic) IBOutlet UILabel *m_lb_LB;
+@property (weak, nonatomic) IBOutlet UILabel *m_jcjg_LB;
+@property (weak, nonatomic) IBOutlet UILabel *m_jlh_LB;
+@property (weak, nonatomic) IBOutlet UILabel *m_jllb_LB;
 @property (weak, nonatomic) IBOutlet UILabel *m_zsh_LB;
 
-@property (weak, nonatomic) IBOutlet UILabel *m_ssks_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_yqmc_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_ccbh_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_jclx_LB;
-
-@property (weak, nonatomic) IBOutlet UILabel *m_sl_LB;
-
-@property (weak, nonatomic) IBOutlet UILabel *m_bj_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_jltx_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_clfw_LB;
-
-
-@property (weak, nonatomic) IBOutlet UILabel *m_ggxh_LB;
-
-@property (weak, nonatomic) IBOutlet UILabel *m_sccj_LB;
-
-@property (weak, nonatomic) IBOutlet UILabel *m_wg_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_pj_LB;
-
-@property (weak, nonatomic) IBOutlet UILabel *m_tsyq_LB;
-@property (weak, nonatomic) IBOutlet UILabel *m_bz_LB;
+@property (weak, nonatomic) IBOutlet UILabel *m_zslb_LB;
 
 
 /**
@@ -441,11 +432,11 @@
  *  更新设备详情界面
  *
  */
--(void)update_sbxxViewByDict:(NSDictionary *) dict
+-(void)update_sbxxViewByDict:(Jcrwcx_Model *) model
 {
 
     
-    self.m_hy_saveDict[@"yqid"]  = [dict GetLabelWithKey:@"YQID"];
+    self.m_hy_saveDict[@"yqid"]  = [model.yqid GetNotNullStr];
     
     
     LoginedUser *usr = [LoginedUser sharedInstance];
@@ -468,25 +459,28 @@
     self.m_hy_hysj_LB.text = strDate;
     
     
-    self.m_txm_LB.text = [dict GetLabelWithKey:@"TXM"];
-    self.m_zsh_LB.text = [dict GetLabelWithKey:@"ZSBH"];
-    self.m_ssks_LB.text = [dict GetLabelWithKey:@"ks"];
-    self.m_yqmc_LB.text = [dict GetLabelWithKey:@"YQMC"];
-    self.m_ccbh_LB.text = [dict GetLabelWithKey:@"CCBH"];
-    self.m_jclx_LB.text = [dict GetLabelWithKey:@"JCLX"];
-    self.m_sl_LB.text = [dict GetLabelWithKey:@"sl"];
+    
+    self.m_wtdw_LB.text = [model.wtdw GetNotNullStr];
+    
+    self.m_dwmc_LB.text = [model.dwdz GetNotNullStr];
+    
+    self.m_txm_LB.text = [model.txm GetNotNullStr];
+    
+    self.m_yqmc_LB.text = [model.yqmc GetNotNullStr];
+    
+    self.ggxh_LB.text = [model.ggxh GetNotNullStr];
+    
+    self.m_scbh_LB.text = [model.ccbh GetNotNullStr];
     
     
-    self.m_bj_LB.text = [dict GetLabelWithKey:@"bzsf"];
-    self.m_jltx_LB.text = [dict GetLabelWithKey:@"jltx"];
-    self.m_clfw_LB.text = [dict GetLabelWithKey:@"jcfw"];
-    self.m_ggxh_LB.text = [dict GetLabelWithKey:@"GGXH"];
-    self.m_sccj_LB.text = [dict GetLabelWithKey:@"sccj"];
-    self.m_wg_LB.text = [dict GetLabelWithKey:@"wg"];
-    self.m_pj_LB.text =   [dict GetLabelWithKey:@"pj"];
-    self.m_tsyq_LB.text = [dict GetLabelWithKey:@"tsyq"];
+    self.m_lb_LB.text = [model.jclx GetNotNullStr];
+    self.m_jcjg_LB.text = [model.jdjg GetNotNullStr];
     
-    self.m_bz_LB.text = [dict GetLabelWithKey:@"BZ"];
+    self.m_jlh_LB.text = [model.jllx GetNotNullStr];
+    
+    self.m_zsh_LB.text = [model.zsbh GetNotNullStr];
+    
+    self.m_zslb_LB.text = [model.by1 GetNotNullStr];
     
     [self loadwebView];
     
@@ -497,11 +491,11 @@
     //设备详情
     //    http://IPaddress:port/lims/web/pages/detectionTask/record-autoc.jsp
     
-    [self load_ysjl_WebViewWithjljspmc:@""];
+    [self load_ysjl_WebViewWithjljspmc:self.jcrwcxModel.yqid];
     //证书
     //    http://IPaddress:port/lims/web/pages/detectionTask/certificate-autoc.jsp
     
-    [self load_zs_WebViewWithjljspmc:@""];
+    [self load_zs_WebViewWithjljspmc:self.jcrwcxModel.zsbh];
 }
 
 //layoutMainCustomView
@@ -534,7 +528,7 @@
  */
 -(void)loadNetData
 {
-    [self update_sbxxViewByDict:self.m_showDict];
+    [self update_sbxxViewByDict:self.jcrwcxModel];
     
 }
 - (IBAction)BackToVC:(id)sender {
@@ -920,12 +914,12 @@
 }
 
 
--(void)load_zs_WebViewWithjljspmc:(NSString *) jljspmc
+-(void)load_zs_WebViewWithjljspmc:(NSString *) zsbh
 {
     
-    debug_object(jljspmc);
+    debug_object(zsbh);
     
-    NSString *webzsStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/certificate-autoc.jsp?zsbh=%@",WEBURL,jljspmc];
+    NSString *webzsStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/certificate-autoc.jsp?zsbh=%@",WEBURL,zsbh];
     
     self.m_zs_retDict = @{@"UrlStr":webzsStr};
     [self.m_zs_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webzsStr]]];

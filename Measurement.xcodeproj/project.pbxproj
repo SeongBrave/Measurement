@@ -113,6 +113,7 @@
 		C9A95B5C1A6181680017BE2B /* SignatureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A95B5B1A6181680017BE2B /* SignatureCell.m */; };
 		C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AE087E1A450FE200DA39BF /* LoginViewController.m */; };
 		C9B3A2AE1A4D9C7100CE276B /* CommonLogicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B3A2AD1A4D9C7100CE276B /* CommonLogicViewController.m */; };
+		C9B5299A1AB705740041D6D4 /* Qjyt_dmxx_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B529991AB705740041D6D4 /* Qjyt_dmxx_Model.m */; };
 		C9B625F21A4E8E1C00AE9251 /* Other.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B625F01A4E8E1C00AE9251 /* Other.storyboard */; };
 		C9BE823D1AAF28C300C4901C /* jcrwcx_Jlbzkhzsh_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE823C1AAF28C300C4901C /* jcrwcx_Jlbzkhzsh_Model.m */; };
 		C9BE82401AAF2EC800C4901C /* jcrwcx_Jsyj_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE823F1AAF2EC800C4901C /* jcrwcx_Jsyj_Model.m */; };
@@ -409,6 +410,8 @@
 		C9AE087E1A450FE200DA39BF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		C9B3A2AC1A4D9C7100CE276B /* CommonLogicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonLogicViewController.h; sourceTree = "<group>"; };
 		C9B3A2AD1A4D9C7100CE276B /* CommonLogicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonLogicViewController.m; sourceTree = "<group>"; };
+		C9B529981AB705740041D6D4 /* Qjyt_dmxx_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Qjyt_dmxx_Model.h; sourceTree = "<group>"; };
+		C9B529991AB705740041D6D4 /* Qjyt_dmxx_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Qjyt_dmxx_Model.m; sourceTree = "<group>"; };
 		C9B625F11A4E8E1C00AE9251 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Other.storyboard; sourceTree = "<group>"; };
 		C9BE823B1AAF28C300C4901C /* jcrwcx_Jlbzkhzsh_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jcrwcx_Jlbzkhzsh_Model.h; sourceTree = "<group>"; };
 		C9BE823C1AAF28C300C4901C /* jcrwcx_Jlbzkhzsh_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jcrwcx_Jlbzkhzsh_Model.m; sourceTree = "<group>"; };
@@ -1436,6 +1439,8 @@
 			children = (
 				C990B7EC1A7942E700DF81C8 /* dmxx_Model.h */,
 				C990B7ED1A7942E700DF81C8 /* dmxx_Model.m */,
+				C9B529981AB705740041D6D4 /* Qjyt_dmxx_Model.h */,
+				C9B529991AB705740041D6D4 /* Qjyt_dmxx_Model.m */,
 			);
 			path = dmxx_Model;
 			sourceTree = "<group>";
@@ -2117,6 +2122,7 @@
 				C9E184BF1A907C67005690BD /* AuditNotPassViewController.m in Sources */,
 				C9791A9B1A7148B400DC5643 /* Bzqsb_TableViewCell.m in Sources */,
 				C970946C1A62D2DA00141DC5 /* autoTableViewData.m in Sources */,
+				C9B5299A1AB705740041D6D4 /* Qjyt_dmxx_Model.m in Sources */,
 				C903B0C81A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m in Sources */,
 				C945BB0E1A6D6C3000C6E11E /* BlackBackGroundV.m in Sources */,
 				C97202D11A996587008273AE /* ProgramOverviewDidHYPopViewController.m in Sources */,

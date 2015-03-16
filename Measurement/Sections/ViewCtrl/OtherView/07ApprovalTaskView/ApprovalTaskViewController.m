@@ -16,8 +16,10 @@
 #import "backgroundV.h"
 #import "DropDownListView.h"
 #import "ApprovalTaskDidPopVc.h"
+#import "JcrwcxCell.h"
+#import "Jcrwcx_Model.h"
 
-@interface ApprovalTaskViewController ()<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, SwipeCompanyCollectionViewCellDelegate,UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,PopViewDelegate,DropDownChooseDelegate,DropDownChooseDataSource>
+@interface ApprovalTaskViewController ()<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, SwipeJcrwcxCellDelegate,UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,PopViewDelegate,DropDownChooseDelegate,DropDownChooseDataSource>
 {
     NSArray *chooseArray ;
 }
@@ -217,8 +219,17 @@
 -(void)successGetDataWithResponseData:(id)responseData
 {
     
-    [self.m_collectionView reloadData];
-    //      [self.tableView reloadData];
+    
+    NSArray *arr = responseData;
+    
+    self.m_DataSourceArr = [[NSMutableArray alloc ]initWithArray:[arr linq_select:^id(NSDictionary *dict){
+        
+        Jcrwcx_Model *sblbmodel = [MTLJSONAdapter modelOfClass:[Jcrwcx_Model class] fromJSONDictionary:dict error:nil];
+        
+        
+        return sblbmodel;
+    }]];
+     [self.m_collectionView reloadData];
 }
 
 /**
@@ -435,8 +446,8 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIdentifier = @"CompanyCollectionViewCell";
-    CompanyCollectionViewCell *cell = (CompanyCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    static NSString *cellIdentifier = @"JcrwcxCell";
+    JcrwcxCell *cell = (JcrwcxCell*)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.m_delegate = self;
     [cell configureCellWithItem:self.m_DataSourceArr[indexPath.row]];
     return cell;
@@ -449,7 +460,7 @@
         
         ApprovalTaskDidPopVc *popVc = (ApprovalTaskDidPopVc*)[self.storyboard instantiateViewControllerWithIdentifier:@"ApprovalTaskDidPopVc"];
         
-        popVc.m_showDict = self.m_DataSourceArr[indexPath.row];
+        popVc.jcrwcxModel = self.m_DataSourceArr[indexPath.row];
         popVc.modalPresentationStyle = UIModalPresentationFormSheet;
         popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         //        @weakify(self)
@@ -466,17 +477,17 @@
 
 #pragma mark - SwipeForOptionsCellDelegate Methods
 
-- (void)cell:(CompanyCollectionViewCell *)cell didShowMenu:(BOOL)isShowingMenu
+- (void)cell:(JcrwcxCell *)cell didShowMenu:(BOOL)isShowingMenu
 {
     if (isShowingMenu) {
         self.lastIndex = [self.m_collectionView indexPathForCell:cell];
     }
 }
 
-- (void)cellDidEndScrolling:(CompanyCollectionViewCell *)cell
+- (void)cellDidEndScrolling:(JcrwcxCell *)cell
 {
     if (_lastIndex && _lastIndex.row != [self.m_collectionView indexPathForCell:cell].row) {
-        cell = (CompanyCollectionViewCell *)[self.m_collectionView cellForItemAtIndexPath:_lastIndex];
+        cell = (JcrwcxCell *)[self.m_collectionView cellForItemAtIndexPath:_lastIndex];
         [cell hideUtilityButtonsAnimated:YES];
     }
     
@@ -492,7 +503,7 @@
  *
  *  @param cell
  */
-- (void)cellDetectionPress:(CompanyCollectionViewCell *)cell
+- (void)cellDetectionPress:(JcrwcxCell *)cell
 {
     
     
@@ -528,7 +539,7 @@
  *
  *  @param cell
  */
-- (void)cellRejectedPress:(CompanyCollectionViewCell *)cell
+- (void)cellRejectedPress:(JcrwcxCell *)cell
 {
     //TODO:要单独显示个驳回界面，然后再调用下面代码
     NSIndexPath *indexPath = [self.m_collectionView indexPathForCell:cell];
@@ -559,7 +570,7 @@
  *
  *  @param cell
  */
-- (void)cellMarkCompletedPress:(CompanyCollectionViewCell *)cell
+- (void)cellMarkCompletedPress:(JcrwcxCell *)cell
 {
     //TODO:要单独显示个驳回界面，然后再调用下面代码
     NSIndexPath *indexPath = [self.m_collectionView indexPathForCell:cell];
