@@ -191,15 +191,16 @@
     
     self.m_ysjl_WebView.delegate = self;
     self.m_zs_WebView.delegate = self;
+    self.m_hy_hyjg_DTF.required = YES;
     
     self.m_hy_hyjg_DTF.dropDownDataSource = self;
     self.m_hy_hyjg_DTF.dropDownDelegate = self;
     self.m_hy_hyjg_DTF.delegate = self;
     
-    self.m_hy_hyjg_DTF.required = YES;
-    
-    
+//    self.m_hy_hyjg_DTF.dropDownTableView.layer.borderWidth = 2.0;
+//    self.m_hy_hyjg_DTF.dropDownTableView.layer.borderColor = UIColorFromRGB(185, 185, 185).CGColor;
 
+    
     
     hyjg_model *model1 = [[hyjg_model alloc]init];
     

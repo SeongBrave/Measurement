@@ -545,7 +545,7 @@
     if (!self.sbxq_Flag) {
         LoginedUser *loginUsr = [LoginedUser sharedInstance];
         @weakify(self)
-        [[BaseNetWork getInstance] showDialogWithVC:self];
+        [[BaseNetWork getInstance] hideDialog];
         NSDictionary *dict =@{@"usercode":loginUsr.usercode,@"yqid":self.yqid_Str};
         [[[[[BaseNetWork getInstance] rac_postPath:@"initEditDetectionData.do" parameters:dict]map:^(id responseData)
            {
@@ -1773,10 +1773,15 @@
    [self update_sbxqViewByYqidDict:_m_qjxxDict];
     
     
+    [self layout_SbxqInterface];
+    
+    [self layout_GgxxInterface];
     
     
+     [self layout_YsjlInterface];
     
     
+      [self layout_ZsInterface];
     
 }
 - (IBAction)BackToVC:(id)sender {

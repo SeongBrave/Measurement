@@ -92,7 +92,7 @@ static CGFloat BUTTONWIDTH = 70.0f;
     self.m_inFactoryTimeL.text = [model.jclx GetNotNullStr];
     self.m_headManNameL.text = [model.jdjg GetNotNullStr];
     
-    self.m_inFactoryMansL.text = [model.zsbh GetNotNullStr];
+    self.m_inFactoryMansL.text = [model.jllx GetNotNullStr];
     
     self.m_noteL.text = [model.zsbh GetNotNullStr];
  

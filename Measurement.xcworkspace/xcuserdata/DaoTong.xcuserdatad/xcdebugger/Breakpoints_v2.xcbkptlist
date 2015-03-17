@@ -329,12 +329,12 @@
                   symbolName = "__39-[UpdatePlanDetailsPopVC loadInitDutyc]_block_invoke_2"
                   moduleName = "Measurement"
                   urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/UpdatePlanDetailsPopVC.m"
-                  timestampString = "448213514.553279"
+                  timestampString = "448294552.974923"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "724"
                   endingLineNumber = "724"
-                  offsetFromSymbolStart = "768">
+                  offsetFromSymbolStart = "644">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -343,46 +343,14 @@
                   symbolName = "__39-[UpdatePlanDetailsPopVC loadInitDutyc]_block_invoke_7"
                   moduleName = "Measurement"
                   urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/UpdatePlanDetailsPopVC.m"
-                  timestampString = "448213514.553533"
+                  timestampString = "448294552.975391"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "726"
-                  endingLineNumber = "726"
-                  offsetFromSymbolStart = "30">
+                  startingLineNumber = "724"
+                  endingLineNumber = "724"
+                  offsetFromSymbolStart = "57">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Measurement/Sections/ViewCtrl/OtherView/05DetectionTaskQueryView/DetectionTaskQueryDidNotHYPopViewController.m"
-            timestampString = "448202332.319767"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3321"
-            endingLineNumber = "3321"
-            landmarkName = "-load_ysjl_WebViewWithjljspmc:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Measurement/Sections/ViewCtrl/OtherView/05DetectionTaskQueryView/DetectionTaskQueryDidNotHYPopViewController.m"
-            timestampString = "448202332.319767"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3323"
-            endingLineNumber = "3323"
-            landmarkName = "-load_ysjl_WebViewWithjljspmc:"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -407,12 +375,12 @@
                   symbolName = "__39-[UpdatePlanDetailsPopVC loadInitDutyc]_block_invoke_3490"
                   moduleName = "Measurement"
                   urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/UpdatePlanDetailsPopVC.m"
-                  timestampString = "448213514.577164"
+                  timestampString = "448294552.975776"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "802"
                   endingLineNumber = "802"
-                  offsetFromSymbolStart = "86">
+                  offsetFromSymbolStart = "101">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -421,12 +389,12 @@
                   symbolName = "__39-[UpdatePlanDetailsPopVC loadInitDutyc]_block_invoke_4491"
                   moduleName = "Measurement"
                   urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/UpdatePlanDetailsPopVC.m"
-                  timestampString = "448213514.577391"
+                  timestampString = "448294552.976125"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "804"
-                  endingLineNumber = "804"
-                  offsetFromSymbolStart = "30">
+                  startingLineNumber = "802"
+                  endingLineNumber = "802"
+                  offsetFromSymbolStart = "56">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -445,36 +413,6 @@
             endingLineNumber = "781"
             landmarkName = "-loadInitDutyc"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[UpdatePlanDetailsPopVC loadInitDutyc]"
-                  moduleName = "Measurement"
-                  urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/UpdatePlanDetailsPopVC.m"
-                  timestampString = "448213514.578532"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "785"
-                  endingLineNumber = "785"
-                  offsetFromSymbolStart = "664">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__39-[UpdatePlanDetailsPopVC loadInitDutyc]_block_invoke_2485"
-                  moduleName = "Measurement"
-                  urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/UpdatePlanDetailsPopVC.m"
-                  timestampString = "448213514.578847"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "787"
-                  endingLineNumber = "787"
-                  offsetFromSymbolStart = "30">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
