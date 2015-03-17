@@ -15,6 +15,7 @@
 {
     self.m_txmLabel.text =  [product.txm GetNotNullStr];
     self.m_jltxLabel.text = [product.jcfw GetNotNullStr];
+    self.m_yqmc_LB.text = [product.sccj GetNotNullStr];
     self.m_jcfwLabel.text = [product.jcfw GetNotNullStr];
     self.m_ggxhLabel.text = [product.ggxh GetNotNullStr];
     self.m_sccjLabel.text =[product.sccj GetNotNullStr];

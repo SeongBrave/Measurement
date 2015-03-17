@@ -16,7 +16,21 @@
     
     self.m_showTitleLabel.text = [NSString stringWithFormat:@"%@",product.showStr];
     
-    self.m_stateImgV.image = [UIImage imageNamed:@"right-card-title-ywc"];
+    if ([product.wczt isNotNull] ) {
+        
+        if ([product.wczt intValue]==0) {
+            
+            self.m_stateImgV.image = [UIImage imageNamed:@"right-card-title-wwc"];
+        }else
+        {
+            self.m_stateImgV.image = [UIImage imageNamed:@"right-card-title-ywc"];
+            
+        }
+        
+    }else
+    {
+        self.m_stateImgV.image = [UIImage imageNamed:@"right-card-title-wwc1"];
+    }
     
 }
 

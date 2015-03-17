@@ -1187,7 +1187,7 @@
             ProgressOverviewCell *cell = (ProgressOverviewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
             
             [cell changeArrowWithUp:([self.selectIndex isEqual:indexPath]?YES:NO)];
-            [cell configureCellWithItem:self.m_jcjd_ModelArr[indexPath.row]];
+            [cell configureCellWithItem:self.m_jcjd_ModelArr[indexPath.section]];
             
             return cell;
         }
