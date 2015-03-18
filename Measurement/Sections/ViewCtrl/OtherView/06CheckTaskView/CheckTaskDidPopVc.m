@@ -882,9 +882,16 @@
                  
              }else
              {
-                 [Dialog toastSuccess:@"核验成功！"];
+                 [self dismissViewControllerAnimated:YES completion:^(void){
+                     [Dialog toastSuccess:@"核验成功！"];
+                     [self.m_superView  loadNetData];
+                     
+                 }];
              }
              
+             
+             
+//             m_superView
          }error:^(NSError *error){
              
              

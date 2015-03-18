@@ -1477,18 +1477,34 @@
      */
     NSDictionary *hyrDict = retDict[@"hyrmap"];
     
+//    
+//    if ([hyrDict allKeys].count >0) {
+//        
+//      self.m_jdy_TF.text =[hyrDict GetLabelWithKey:[hyrDict allKeys][0]];
+//        self.m_jdrybh_Str = [hyrDict allKeys][0];
+//        
+//    }else
+//    {
+//        self.m_jdy_TF.text = @"";
+//    }
     
-    if ([hyrDict allKeys].count >0) {
+    
+    NSDictionary *jdrDict = retDict[@"jdrmap"];
+    if ([jdrDict allKeys].count >0) {
         
-      self.m_jdy_TF.text =[hyrDict GetLabelWithKey:[hyrDict allKeys][0]];
-        self.m_jdrybh_Str = [hyrDict allKeys][0];
+        self.m_jdy_TF.text =[jdrDict GetLabelWithKey:[jdrDict allKeys][0]];
+        self.m_jdrybh_Str = [jdrDict allKeys][0];
         
     }else
     {
         self.m_jdy_TF.text = @"";
     }
     
-     self.m_jdy_Dict = hyrDict;
+    
+    
+    
+
+    self.m_jdy_Dict = jdrDict;
     
     NSString *jdzqStr = [retDict[@"yqxx"] GetLabelWithKey:@"jdzqbh"];
     

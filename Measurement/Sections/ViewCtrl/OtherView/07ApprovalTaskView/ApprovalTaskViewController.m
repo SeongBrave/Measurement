@@ -59,6 +59,8 @@
 {
     [super viewDidAppear:animated];
     
+//     [self loadNetData];
+    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -459,7 +461,7 @@
         
         
         ApprovalTaskDidPopVc *popVc = (ApprovalTaskDidPopVc*)[self.storyboard instantiateViewControllerWithIdentifier:@"ApprovalTaskDidPopVc"];
-        
+        popVc.m_superView = self;
         popVc.jcrwcxModel = self.m_DataSourceArr[indexPath.row];
         popVc.modalPresentationStyle = UIModalPresentationFormSheet;
         popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;

@@ -12,6 +12,7 @@
  */
 #import "BaseViewController.h"
 #import "Jcrwcx_Model.h"
+#import "CheckTaskViewController.h"
 
 @interface CheckTaskDidPopVc : BaseViewController
 
@@ -40,6 +41,6 @@
 @property(nonatomic ,strong)NSMutableDictionary *m_Ggxx_saveDataDict;
 
 
-
+@property(nonatomic , strong)CheckTaskViewController *m_superView;
 
 @end

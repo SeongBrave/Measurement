@@ -131,8 +131,8 @@
     //TODO:界面显示信息
     _m_hy_saveDict[@"usercode"] = usr.usercode;
     _m_hy_saveDict[@"yqid"] = @"";
-    _m_hy_saveDict[@"hyjg"] = @"";
-    _m_hy_saveDict[@"hybz"] = @"";
+    _m_hy_saveDict[@"pzjg"] = @"";
+    _m_hy_saveDict[@"pzbz"] = @"";
     
 }
 - (void)viewDidLoad {
@@ -851,7 +851,7 @@
         
     }else
     {
-        self.m_hy_saveDict[@"hybz"] = self.m_bz_Tv.text;
+        self.m_hy_saveDict[@"pzbz"] = self.m_bz_Tv.text;
         
         //    bchyjg.do
         //    @weakify(self)
@@ -872,7 +872,13 @@
                  
              }else
              {
-                 [Dialog toastSuccess:@"批准成功！"];
+                 
+                 [self dismissViewControllerAnimated:YES completion:^(void){
+                     [Dialog toastSuccess:@"批准成功！"];
+                     [self.m_superView  loadNetData];
+                     
+                 }];
+                 
              }
              
          }error:^(NSError *error){
@@ -1071,7 +1077,7 @@
         
         hyjg_model *model = self.m_hyjgTFArr[indexPath.row];
         
-        self.m_hy_saveDict[@"hyjg"] = model.m_code;
+        self.m_hy_saveDict[@"pzjg"] = model.m_code;
         
     }
     
