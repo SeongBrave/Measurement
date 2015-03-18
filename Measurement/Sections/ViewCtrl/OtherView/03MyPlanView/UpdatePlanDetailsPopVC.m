@@ -651,125 +651,133 @@
 -(void)loadInitDutyc
 {
     
+    
     [[BaseNetWork getInstance]hideDialog];
     @weakify(self)
-    [[[[[BaseNetWork getInstance] rac_postPath:@"initDutyc.do" parameters:nil]map:^(id responseData)
+    [[[[[BaseNetWork getInstance] rac_postPath:@"initEditDutyc.do" parameters:@{@"rwbh":self.m_showDict[@"RWBH"]}]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
-           return [dict valueForKeyPath:@"ret"];
+           return dict;
        }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
      subscribeNext:^(NSDictionary  *retDict) {
          
          @strongify(self)
-         
-         /**
-          *  所在区
-          */
-         NSArray *district_Arr = retDict[@"szdq"];
-         self.districtArr = [district_Arr linq_select:^id(NSDictionary *dict){
+         if ([retDict[@"ret"] intValue] == 1) {
              
-             DistrictModel *districtModel = [[DistrictModel alloc]init];
-             districtModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
-             
-             return districtModel;
-         }];
-         
-         /**
-          *  行业类别
-          */
-         NSArray *industryCategories_Arr = retDict[@"hylb"];
-         self.industryCategoriesArr = [industryCategories_Arr linq_select:^id(NSDictionary *dict){
-             
-             IndustryCategoriesModel *industryCategoriesModel = [[IndustryCategoriesModel alloc]init];
-             industryCategoriesModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
-             
-             return industryCategoriesModel;
-         }];
-         
-         /**
-          *  业务负责科室
-          */
-         NSArray *responsibleDep_Arr = retDict[@"ksry"];
-         self.responsibleDepArr = [responsibleDep_Arr linq_select:^id(NSDictionary *dict){
-             
-             ResponsibleDepModel *responsibleDepModel = [[ResponsibleDepModel alloc]init];
-             responsibleDepModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
-             
-             return responsibleDepModel;
-         }];
-         
-         
-         //TODO: 需要修改这块
-         /**
-          *  业务负责科室
-          */
-         NSArray *headOF_Arr = retDict[@"ry"];
-         self.headOFArr = [headOF_Arr linq_select:^id(NSDictionary *dict){
-             
-             
-             ResponsibleDepModel *responsibleDepModel = [[ResponsibleDepModel alloc]init];
-             responsibleDepModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
-             
-             return responsibleDepModel;
-         }];
-         
-         /**
-          *  科室人员
-          *
-          *  @param
-          *
-          *  @return
-          */
-         self.m_ks_mansArr = [responsibleDep_Arr linq_select:^id(NSDictionary *dict){
-             
-             ks_Model *model = [MTLJSONAdapter modelOfClass:[ks_Model class] fromJSONDictionary:dict error:nil];
-             model.isSelected = NO;
-             model.isCheckBox = YES;
-             
-             NSArray *myarr = dict[@"ry"];
-             model.ryArr =[myarr linq_select:^id(NSDictionary *dict){
+             NSDictionary *dict = retDict[@"data"];
+             /**
+              *  所在区
+              */
+             NSArray *district_Arr = dict[@"szdq"];
+             self.districtArr = [district_Arr linq_select:^id(NSDictionary *dict){
                  
-                 ry_Model *ryModel = [MTLJSONAdapter modelOfClass:[ry_Model class] fromJSONDictionary:dict error:nil];
-                 ryModel.isSelected = NO;
-                 ryModel.isCheckBox = YES;
+                 DistrictModel *districtModel = [[DistrictModel alloc]init];
+                 districtModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
                  
-                 
-                 return ryModel;
-             }];
-             return model;
-         }];
-         
-         
-         /**
-          *  科室负责人
-          *
-          *  @param
-          *
-          *  @return
-          */
-         self.m_ks_headArr = [responsibleDep_Arr linq_select:^id(NSDictionary *dict){
-             
-             ks_Model *model = [MTLJSONAdapter modelOfClass:[ks_Model class] fromJSONDictionary:dict error:nil];
-             model.isSelected = NO;
-             model.isCheckBox = NO;
-             NSArray *myarr = dict[@"ry"];
-             model.ryArr =[myarr linq_select:^id(NSDictionary *dict){
-                 
-                 ry_Model *ryModel = [MTLJSONAdapter modelOfClass:[ry_Model class] fromJSONDictionary:dict error:nil];
-                 ryModel.isSelected = NO;
-                 ryModel.isCheckBox = NO;
-                 
-                 
-                 return ryModel;
+                 return districtModel;
              }];
              
-             return model;
+             /**
+              *  行业类别
+              */
+             NSArray *industryCategories_Arr = dict[@"hylb"];
+             self.industryCategoriesArr = [industryCategories_Arr linq_select:^id(NSDictionary *dict){
+                 
+                 IndustryCategoriesModel *industryCategoriesModel = [[IndustryCategoriesModel alloc]init];
+                 industryCategoriesModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
+                 
+                 return industryCategoriesModel;
+             }];
              
-         }];
+             /**
+              *  业务负责科室
+              */
+             NSArray *responsibleDep_Arr = dict[@"ksry"];
+             self.responsibleDepArr = [responsibleDep_Arr linq_select:^id(NSDictionary *dict){
+                 
+                 ResponsibleDepModel *responsibleDepModel = [[ResponsibleDepModel alloc]init];
+                 responsibleDepModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
+                 
+                 return responsibleDepModel;
+             }];
+             
+             
+             //TODO: 需要修改这块
+             /**
+              *  业务负责科室
+              */
+             NSArray *headOF_Arr = dict[@"ry"];
+             self.headOFArr = [headOF_Arr linq_select:^id(NSDictionary *dict){
+                 
+                 
+                 ResponsibleDepModel *responsibleDepModel = [[ResponsibleDepModel alloc]init];
+                 responsibleDepModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
+                 
+                 return responsibleDepModel;
+             }];
+             
+             /**
+              *  科室人员
+              *
+              *  @param
+              *
+              *  @return
+              */
+             self.m_ks_mansArr = [responsibleDep_Arr linq_select:^id(NSDictionary *dict){
+                 
+                 ks_Model *model = [MTLJSONAdapter modelOfClass:[ks_Model class] fromJSONDictionary:dict error:nil];
+                 model.isSelected = NO;
+                 model.isCheckBox = YES;
+                 
+                 NSArray *myarr = dict[@"ry"];
+                 model.ryArr =[myarr linq_select:^id(NSDictionary *dict){
+                     
+                     ry_Model *ryModel = [MTLJSONAdapter modelOfClass:[ry_Model class] fromJSONDictionary:dict error:nil];
+                     ryModel.isSelected = NO;
+                     ryModel.isCheckBox = YES;
+                     
+                     
+                     return ryModel;
+                 }];
+                 return model;
+             }];
+             
+             
+             /**
+              *  科室负责人
+              *
+              *  @param
+              *
+              *  @return
+              */
+             self.m_ks_headArr = [responsibleDep_Arr linq_select:^id(NSDictionary *dict){
+                 
+                 ks_Model *model = [MTLJSONAdapter modelOfClass:[ks_Model class] fromJSONDictionary:dict error:nil];
+                 model.isSelected = NO;
+                 model.isCheckBox = NO;
+                 NSArray *myarr = dict[@"ry"];
+                 model.ryArr =[myarr linq_select:^id(NSDictionary *dict){
+                     
+                     ry_Model *ryModel = [MTLJSONAdapter modelOfClass:[ry_Model class] fromJSONDictionary:dict error:nil];
+                     ryModel.isSelected = NO;
+                     ryModel.isCheckBox = NO;
+                     
+                     
+                     return ryModel;
+                 }];
+                 
+                 return model;
+                 
+             }];
+             
+             [self.headTableView reloadData];
+             [self.mansTableView reloadData];
+         }else
+         {
+             [Dialog toastError:@"加载数据失败!"];
+         }
          
-         [self.headTableView reloadData];
-         [self.mansTableView reloadData];
          
          
          

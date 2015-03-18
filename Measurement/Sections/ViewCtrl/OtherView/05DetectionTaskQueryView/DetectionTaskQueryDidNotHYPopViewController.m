@@ -605,14 +605,7 @@
 {
     self.n_stept = 2;
     
-    if (!self.ggxx_Flag) {
-        NSDictionary *dict = @{@"xmbh":self.m_Sbxq_saveDataDict[@"xmbh"],@"jclxbh":self.m_Sbxq_saveDataDict[@"jclxbh"]};
-//        [self PopYSJL_TemplatesListViewControllerWithZSretDict:dict];
-        
-        
-        [self load_ysjl_WebViewWithjljspmc:nil];
-    }
-    
+    [self load_ysjl_WebViewWithjljspmc:self.m_qjxxDict[@"yqid"]];
     self.ggxx_Flag = YES;
     
     
@@ -624,9 +617,11 @@
 {
     self.n_stept = 3;
     
-    if (!self.ysjl_Flag) {
-        [self PopZS_TemplatesListViewControllerWithZSretDict:self.m_ysjl_retDict];
-    }
+//    if (!self.ysjl_Flag) {
+//        [self PopZS_TemplatesListViewControllerWithZSretDict:self.m_ysjl_retDict];
+//    }
+    
+    [self load_zs_WebViewWithjljspmc:self.m_qjxxDict[@"zsbh"]];
     self.ysjl_Flag = YES;
     
     
@@ -719,27 +714,27 @@
                         make.centerX.equalTo(self.m_sbxq_Btn.mas_centerX);
                         make.width.equalTo(@60);
                         
-                        [self layout_SbxqInterface];
+//                        [self layout_SbxqInterface];
                         //
                         break;
                     case 1:
                         make.centerX.equalTo(self.m_ggxx_Btn.mas_centerX);
                         make.width.equalTo(@60);
-                        [self layout_GgxxInterface];
+//                        [self layout_GgxxInterface];
                         break;
                         
                     case 2:
                         make.centerX.equalTo(self.m_ysjl_Btn.mas_centerX);
                         make.width.equalTo(@60);
                         
-                        [self layout_YsjlInterface];
+//                        [self layout_YsjlInterface];
                         break;
                         
                     case 3:
                         make.centerX.equalTo(self.m_zs_Btn.mas_centerX);
                         make.width.equalTo(@30);
                         
-                        [self layout_ZsInterface];
+//                        [self layout_ZsInterface];
                         break;
                         
                     default:
@@ -1572,7 +1567,7 @@
      */
      NSString *hyrStr = zsxx_Dict[@"hyr"];
     NSDictionary *hyrDict = retDict[@"hyrmap"];
-   self.m_hyy_DTF.text = jdrmap_Dict[hyrStr];
+   self.m_hyy_DTF.text = hyrDict[hyrStr];
     self.m_hyy_DTF.m_bm = hyrStr;
     
     self.m_Ggxx_saveDataDict[@"hyrbh"] = hyrStr;
@@ -2362,12 +2357,12 @@
 }
 - (IBAction)Ysjl_RefreshBtnClick:(id)sender {
     
-    [self load_ysjl_WebViewWithjljspmc:_m_ysjl_saveUrl_Str];
+    [self load_ysjl_WebViewWithjljspmc:self.m_jcrwcx_Model.yqid];
 }
 
 - (IBAction)Zs_RefreshBtnClick:(id)sender {
     
-    [self load_zs_WebViewWithjljspmc:_m_zs_saveUrl_Str];
+    [self load_zs_WebViewWithjljspmc:self.m_jcrwcx_Model.zsbh];
     
     
 }
@@ -3324,7 +3319,7 @@
 {
     //175.17.22.241:8080
     
-    NSString *webysjlStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/record-editc.jsp?yqid=%@",WEBURL,self.yqid_Str];
+    NSString *webysjlStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/record-editc.jsp?yqid=%@",WEBURL,self.m_qjxxDict[@"yqid"]];
     
     //    self.m_ysjl_WebView.scrollView.scrollEnabled = NO;
     [self.m_ysjl_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webysjlStr]]];
@@ -3337,7 +3332,7 @@
     
     debug_object(jljspmc);
     
-    NSString *webzsStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/certificate-autoc.jsp?zsbh=%@",WEBURL,jljspmc];
+    NSString *webzsStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/certificate-autoc.jsp?zsbh=%@",WEBURL,self.m_qjxxDict[@"zsbh"]];
     
     self.m_zs_retDict = @{@"UrlStr":webzsStr};
     [self.m_zs_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webzsStr]]];
