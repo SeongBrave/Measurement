@@ -182,8 +182,8 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共86条计划" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QB3-Pb-wgR">
-                                <rect key="frame" x="60" y="68" width="62" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每页显示9条记录" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QB3-Pb-wgR">
+                                <rect key="frame" x="60" y="68" width="91" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="mMB-eP-rjd"/>
                                 </constraints>
@@ -493,7 +493,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HVA-xX-OGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1524" y="-1713"/>
+            <point key="canvasLocation" x="-1303" y="-1713"/>
         </scene>
         <!--我创建的计划-->
         <scene sceneID="WMs-kX-IV6">
@@ -539,8 +539,8 @@
                                     <action selector="CreatePlanClick:" destination="Q84-99-bzW" eventType="touchUpInside" id="xQP-Ec-DDa"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共86条计划" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21Q-eJ-yW7">
-                                <rect key="frame" x="40" y="70" width="62" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每页显示9条记录" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21Q-eJ-yW7">
+                                <rect key="frame" x="40" y="70" width="91" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="qko-16-l1q"/>
                                 </constraints>
@@ -955,7 +955,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o0D-9L-cB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2700" y="-3550"/>
+            <point key="canvasLocation" x="-2460" y="-3605"/>
         </scene>
         <!--Add Plan Details PopVC-->
         <scene sceneID="Byy-ox-N4E">
@@ -4315,8 +4315,8 @@
                                     <action selector="CreatePlanClick:" destination="ccm-mG-8Rg" eventType="touchUpInside" id="oio-co-jAi"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共86条计划" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udm-rD-DGz">
-                                <rect key="frame" x="40" y="68" width="62" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每页显示9条记录" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udm-rD-DGz">
+                                <rect key="frame" x="40" y="68" width="91" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="vQb-9a-8gW"/>
                                 </constraints>
@@ -4695,7 +4695,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7jn-db-C0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4100" y="-3180"/>
+            <point key="canvasLocation" x="-3863" y="-3179"/>
         </scene>
         <!--下厂任务-->
         <scene sceneID="sa5-i0-JEP">
@@ -4741,8 +4741,8 @@
                                     <action selector="CreatePlanClick:" destination="Bti-xT-zkV" eventType="touchUpInside" id="0hn-xN-4yQ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共86条计划" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Unv-P2-0VS">
-                                <rect key="frame" x="40" y="70" width="62" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每页显示9条记录" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Unv-P2-0VS">
+                                <rect key="frame" x="40" y="70" width="91" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="rjt-DP-B28"/>
                                 </constraints>
@@ -5155,7 +5155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rOt-Ah-c8d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4024" y="-4795"/>
+            <point key="canvasLocation" x="-3765" y="-4798"/>
         </scene>
         <!--Testing Data Regist View Controller-->
         <scene sceneID="60b-3D-GMu">
@@ -6829,7 +6829,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXa-Jj-DgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2747" y="-9551"/>
+            <point key="canvasLocation" x="2939" y="-9662"/>
         </scene>
         <!--Full Screen PreviewVC-->
         <scene sceneID="XbH-hE-Fn6">
@@ -8428,8 +8428,8 @@
                                     <action selector="CreatePlanClick:" destination="uZq-qh-rSg" eventType="touchUpInside" id="ssv-2C-VO4"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共86条计划" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAh-ES-pYk">
-                                <rect key="frame" x="40" y="70" width="62" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每页显示9条记录" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAh-ES-pYk">
+                                <rect key="frame" x="40" y="70" width="91" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="cIi-9O-7z1"/>
                                 </constraints>
@@ -8564,7 +8564,7 @@
                                                                         <constraint firstAttribute="height" constant="1" id="U2c-Zv-JYI"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rg-4e-4VO">
+                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rg-4e-4VO">
                                                                     <rect key="frame" x="8" y="5" width="22" height="14"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                     <color key="textColor" red="0.29803921570000003" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -9163,7 +9163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5l-z0-FW6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3067" y="-4038"/>
+            <point key="canvasLocation" x="-2714" y="-4034"/>
         </scene>
         <!--批准任务-->
         <scene sceneID="49f-2E-OSz">
@@ -9209,8 +9209,8 @@
                                     <action selector="CreatePlanClick:" destination="0he-j6-aA0" eventType="touchUpInside" id="Sjt-8E-e43"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共86条计划" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="26l-Lg-Pbh">
-                                <rect key="frame" x="40" y="70" width="62" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每页显示9条记录" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="26l-Lg-Pbh">
+                                <rect key="frame" x="40" y="70" width="91" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="thI-eY-P4y"/>
                                 </constraints>
@@ -9345,7 +9345,7 @@
                                                                         <constraint firstAttribute="height" constant="1" id="LoA-Ek-uje"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aKB-pe-qIg">
+                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aKB-pe-qIg">
                                                                     <rect key="frame" x="8" y="5" width="22" height="14"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                     <color key="textColor" red="0.29803921570000003" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -9944,7 +9944,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fAK-eo-udq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3295" y="-4254"/>
+            <point key="canvasLocation" x="-2922" y="-4259"/>
         </scene>
         <!--审核未通-->
         <scene sceneID="1ln-GV-8Bn">
@@ -9990,8 +9990,8 @@
                                     <action selector="CreatePlanClick:" destination="mdB-gf-2MY" eventType="touchUpInside" id="MK8-8U-1MI"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共86条计划" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCj-M3-Wga">
-                                <rect key="frame" x="40" y="70" width="62" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每页显示9条记录" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCj-M3-Wga">
+                                <rect key="frame" x="40" y="70" width="91" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="rTA-Gt-kdg"/>
                                 </constraints>
@@ -10126,7 +10126,7 @@
                                                                         <constraint firstAttribute="height" constant="1" id="bug-Mv-gyY"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkF-Zt-OpM">
+                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkF-Zt-OpM">
                                                                     <rect key="frame" x="8" y="5" width="22" height="14"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                     <color key="textColor" red="0.29803921570000003" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -10404,7 +10404,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vh0-jZ-hha" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2292" y="-2611"/>
+            <point key="canvasLocation" x="-1906" y="-2614"/>
         </scene>
         <!--检测任务查询-->
         <scene sceneID="64o-Rg-dpQ">
@@ -10450,8 +10450,8 @@
                                     <action selector="CreatePlanClick:" destination="lgH-My-gkA" eventType="touchUpInside" id="lPY-ec-kIK"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共86条计划" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rA5-C8-Ary">
-                                <rect key="frame" x="40" y="70" width="62" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每页显示9条记录" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rA5-C8-Ary">
+                                <rect key="frame" x="40" y="70" width="91" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="a3j-Zi-Pdd"/>
                                 </constraints>
@@ -10586,7 +10586,7 @@
                                                                         <constraint firstAttribute="height" constant="1" id="xF5-bf-NuW"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="216-Yf-7s7">
+                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="216-Yf-7s7">
                                                                     <rect key="frame" x="8" y="5" width="22" height="14"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                     <color key="textColor" red="0.29803921570000003" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -10864,7 +10864,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z3K-MY-Uuq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3437" y="-4509"/>
+            <point key="canvasLocation" x="-3059" y="-4520"/>
         </scene>
         <!--报价管理-->
         <scene sceneID="NAd-I9-Zpv">
@@ -10885,7 +10885,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfi-Fd-HrD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="439" y="-9551"/>
+            <point key="canvasLocation" x="637" y="-9619"/>
         </scene>
         <!--收费管理-->
         <scene sceneID="YN8-L3-Xjm">
@@ -10952,8 +10952,8 @@
                                     <action selector="CreatePlanClick:" destination="tbx-vH-m2Y" eventType="touchUpInside" id="KYu-VJ-jNp"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共86条计划" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aE-wd-AKK">
-                                <rect key="frame" x="40" y="70" width="62" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每页显示9条记录" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aE-wd-AKK">
+                                <rect key="frame" x="40" y="70" width="91" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="UxU-RV-h1w"/>
                                 </constraints>
@@ -11366,7 +11366,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="waf-rS-MVL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2460" y="-5208"/>
+            <point key="canvasLocation" x="-2218" y="-5226"/>
         </scene>
         <!--系统设置-->
         <scene sceneID="Lph-Rx-H7N">
@@ -12268,7 +12268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8w8-e1-rbX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3248" y="-9266"/>
+            <point key="canvasLocation" x="3747" y="-9171"/>
         </scene>
         <!--计划总揽弹出视图-->
         <scene sceneID="X5u-u5-IU8">
@@ -15492,48 +15492,48 @@
                                                     </constraints>
                                                 </view>
                                                 <prototypes>
-                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Jlbzkhzsh_TableViewCellTitle" id="yFg-nZ-F7i">
-                                                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yFg-nZ-F7i" id="MIC-kL-wHg">
+                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Jlbzkhzsh_TableViewCellTitle" id="UPo-RL-zQr">
+                                                        <rect key="frame" x="0.0" y="294" width="768" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UPo-RL-zQr" id="zcb-xC-TIb">
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备编号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qks-Gv-njg">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标准序号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CF8-C8-HaP">
                                                                     <rect key="frame" x="70" y="11" width="68" height="21"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                     <color key="textColor" red="0.29803921570000003" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkbox-defauit" translatesAutoresizingMaskIntoConstraints="NO" id="TiO-Rf-wta">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkbox-defauit" translatesAutoresizingMaskIntoConstraints="NO" id="18U-X7-ceu">
                                                                     <rect key="frame" x="33" y="13" width="17" height="17"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="17" id="56m-2x-WU4"/>
-                                                                        <constraint firstAttribute="width" constant="17" id="73T-pF-sBQ"/>
+                                                                        <constraint firstAttribute="width" constant="17" id="3nd-NE-eVc"/>
+                                                                        <constraint firstAttribute="height" constant="17" id="cnL-UU-c3e"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备名称" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9V-Nh-npx">
-                                                                    <rect key="frame" x="350" y="11" width="68" height="21"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="计量标准考核证书号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMB-VB-txR">
+                                                                    <rect key="frame" x="308" y="11" width="153" height="21"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                     <color key="textColor" red="0.29803921570000003" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有效期至" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKX-po-7Ay">
-                                                                    <rect key="frame" x="672" y="11" width="68" height="21"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="社会公用计量标准考核证书号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeI-kE-e93">
+                                                                    <rect key="frame" x="519" y="11" width="221" height="21"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                     <color key="textColor" red="0.29803921570000003" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="Qks-Gv-njg" firstAttribute="centerY" secondItem="F9V-Nh-npx" secondAttribute="centerY" id="CY6-Vv-hFN"/>
-                                                                <constraint firstItem="TiO-Rf-wta" firstAttribute="leading" secondItem="MIC-kL-wHg" secondAttribute="leadingMargin" constant="25" id="FbL-W6-hnZ"/>
-                                                                <constraint firstAttribute="centerY" secondItem="TiO-Rf-wta" secondAttribute="centerY" id="VG5-F5-yzG"/>
-                                                                <constraint firstAttribute="centerX" secondItem="F9V-Nh-npx" secondAttribute="centerX" id="W2a-ih-J3O"/>
-                                                                <constraint firstItem="cKX-po-7Ay" firstAttribute="centerY" secondItem="F9V-Nh-npx" secondAttribute="centerY" id="cY9-e0-2Gh"/>
-                                                                <constraint firstAttribute="trailingMargin" secondItem="cKX-po-7Ay" secondAttribute="trailing" constant="20" id="gtU-jI-S0r"/>
-                                                                <constraint firstAttribute="centerY" secondItem="F9V-Nh-npx" secondAttribute="centerY" id="wRw-5z-dBm"/>
-                                                                <constraint firstItem="Qks-Gv-njg" firstAttribute="leading" secondItem="TiO-Rf-wta" secondAttribute="trailing" constant="20" id="xkM-1c-p49"/>
-                                                                <constraint firstItem="Qks-Gv-njg" firstAttribute="centerY" secondItem="TiO-Rf-wta" secondAttribute="centerY" id="zgZ-te-fiI"/>
+                                                                <constraint firstAttribute="centerY" secondItem="18U-X7-ceu" secondAttribute="centerY" id="0Yo-kD-W2J"/>
+                                                                <constraint firstAttribute="centerY" secondItem="QMB-VB-txR" secondAttribute="centerY" id="4tH-PF-O3W"/>
+                                                                <constraint firstItem="CF8-C8-HaP" firstAttribute="leading" secondItem="18U-X7-ceu" secondAttribute="trailing" constant="20" id="655-0J-g88"/>
+                                                                <constraint firstItem="18U-X7-ceu" firstAttribute="leading" secondItem="zcb-xC-TIb" secondAttribute="leadingMargin" constant="25" id="BQi-bA-Hro"/>
+                                                                <constraint firstAttribute="centerX" secondItem="QMB-VB-txR" secondAttribute="centerX" id="Dgb-rq-QbN"/>
+                                                                <constraint firstItem="MeI-kE-e93" firstAttribute="centerY" secondItem="QMB-VB-txR" secondAttribute="centerY" id="XeG-G3-Sx6"/>
+                                                                <constraint firstAttribute="trailingMargin" secondItem="MeI-kE-e93" secondAttribute="trailing" constant="20" id="eFy-d7-UsQ"/>
+                                                                <constraint firstItem="CF8-C8-HaP" firstAttribute="centerY" secondItem="QMB-VB-txR" secondAttribute="centerY" id="qFl-rY-YIP"/>
+                                                                <constraint firstItem="CF8-C8-HaP" firstAttribute="centerY" secondItem="18U-X7-ceu" secondAttribute="centerY" id="ybm-X0-4bx"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
@@ -17232,48 +17232,48 @@
                                                     </constraints>
                                                 </view>
                                                 <prototypes>
-                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Jlbzkhzsh_TableViewCellTitle" id="DDb-cw-uyt">
-                                                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DDb-cw-uyt" id="TDF-Nw-3cy">
+                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Jlbzkhzsh_TableViewCellTitle" id="vZQ-aP-sVG">
+                                                        <rect key="frame" x="0.0" y="294" width="768" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vZQ-aP-sVG" id="IkZ-Ej-agZ">
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备编号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGD-z2-KZT">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标准序号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHm-3c-RzJ">
                                                                     <rect key="frame" x="70" y="11" width="68" height="21"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                     <color key="textColor" red="0.29803921570000003" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkbox-defauit" translatesAutoresizingMaskIntoConstraints="NO" id="YYI-Wu-Mis">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkbox-defauit" translatesAutoresizingMaskIntoConstraints="NO" id="OqR-bB-lhT">
                                                                     <rect key="frame" x="33" y="13" width="17" height="17"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="17" id="3U7-5o-dQU"/>
-                                                                        <constraint firstAttribute="height" constant="17" id="Cge-Ho-CdM"/>
+                                                                        <constraint firstAttribute="width" constant="17" id="Voj-8p-EOo"/>
+                                                                        <constraint firstAttribute="height" constant="17" id="zoJ-KT-9VZ"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备名称" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8R-w0-Di2">
-                                                                    <rect key="frame" x="350" y="11" width="68" height="21"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="计量标准考核证书号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZK-N3-smL">
+                                                                    <rect key="frame" x="308" y="11" width="153" height="21"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                     <color key="textColor" red="0.29803921570000003" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有效期至" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yG7-cW-U6J">
-                                                                    <rect key="frame" x="672" y="11" width="68" height="21"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="社会公用计量标准考核证书号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkj-GH-Bxc">
+                                                                    <rect key="frame" x="519" y="11" width="221" height="21"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                     <color key="textColor" red="0.29803921570000003" green="0.36470588240000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="centerY" secondItem="YYI-Wu-Mis" secondAttribute="centerY" id="52u-U6-FYt"/>
-                                                                <constraint firstAttribute="centerX" secondItem="r8R-w0-Di2" secondAttribute="centerX" id="5cV-7Z-PXB"/>
-                                                                <constraint firstItem="xGD-z2-KZT" firstAttribute="leading" secondItem="YYI-Wu-Mis" secondAttribute="trailing" constant="20" id="Cpf-rp-beY"/>
-                                                                <constraint firstItem="YYI-Wu-Mis" firstAttribute="leading" secondItem="TDF-Nw-3cy" secondAttribute="leadingMargin" constant="25" id="DMt-x9-Kxf"/>
-                                                                <constraint firstItem="yG7-cW-U6J" firstAttribute="centerY" secondItem="r8R-w0-Di2" secondAttribute="centerY" id="P5H-1g-chK"/>
-                                                                <constraint firstAttribute="centerY" secondItem="r8R-w0-Di2" secondAttribute="centerY" id="QC7-Gk-U8A"/>
-                                                                <constraint firstAttribute="trailingMargin" secondItem="yG7-cW-U6J" secondAttribute="trailing" constant="20" id="bZx-jn-OAq"/>
-                                                                <constraint firstItem="xGD-z2-KZT" firstAttribute="centerY" secondItem="YYI-Wu-Mis" secondAttribute="centerY" id="emE-a2-aPd"/>
-                                                                <constraint firstItem="xGD-z2-KZT" firstAttribute="centerY" secondItem="r8R-w0-Di2" secondAttribute="centerY" id="o2G-qX-23z"/>
+                                                                <constraint firstItem="LHm-3c-RzJ" firstAttribute="leading" secondItem="OqR-bB-lhT" secondAttribute="trailing" constant="20" id="2II-Jc-Go2"/>
+                                                                <constraint firstItem="LHm-3c-RzJ" firstAttribute="centerY" secondItem="OqR-bB-lhT" secondAttribute="centerY" id="4mn-Ip-CUx"/>
+                                                                <constraint firstItem="Rkj-GH-Bxc" firstAttribute="centerY" secondItem="BZK-N3-smL" secondAttribute="centerY" id="TNw-A6-ouR"/>
+                                                                <constraint firstItem="OqR-bB-lhT" firstAttribute="leading" secondItem="IkZ-Ej-agZ" secondAttribute="leadingMargin" constant="25" id="ZoT-Pc-9Xv"/>
+                                                                <constraint firstAttribute="centerY" secondItem="OqR-bB-lhT" secondAttribute="centerY" id="c6f-Jk-zch"/>
+                                                                <constraint firstAttribute="centerY" secondItem="BZK-N3-smL" secondAttribute="centerY" id="cMp-ED-erg"/>
+                                                                <constraint firstAttribute="centerX" secondItem="BZK-N3-smL" secondAttribute="centerX" id="d4c-nX-7jf"/>
+                                                                <constraint firstAttribute="trailingMargin" secondItem="Rkj-GH-Bxc" secondAttribute="trailing" constant="20" id="kRE-uN-NeK"/>
+                                                                <constraint firstItem="LHm-3c-RzJ" firstAttribute="centerY" secondItem="BZK-N3-smL" secondAttribute="centerY" id="rYu-9R-fpR"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
@@ -19171,7 +19171,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="5oE-WW-5Cc"/>
+        <segue reference="Hix-bq-jua"/>
         <segue reference="D1q-FG-v94"/>
     </inferredMetricsTieBreakers>
 </document>
