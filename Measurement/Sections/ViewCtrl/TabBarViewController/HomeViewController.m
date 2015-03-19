@@ -100,6 +100,14 @@
     [self layoutMainCustomView];
     [self AddNavgationBarItem];
     
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(DidHasGetUpdateStatusData:) name:@"TCDL" object:nil];
+    
+}
+
+-(void)DidHasGetUpdateStatusData:(NSNotification *) _notification
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 -(void)AddNavgationBarItem
 {

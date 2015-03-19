@@ -282,8 +282,43 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+    
+    if ([segue.identifier isEqualToString:@"toDatePicker"] )
+    {
+        
+        DatePickerViewController *datePickerVC = (DatePickerViewController*)[segue destinationViewController];
+        datePickerVC.m_date = [NSDate new];
+        datePickerVC.dateDelegate = self;
+        datePickerVC.datePickerMode = UIDatePickerModeDateAndTime;
+        datePickerVC.m_clickBtn = self.toDatePickerBtn;
+        
+    }
+    if ([segue.identifier isEqualToString:@"fromDatePicker"] )
+    {
+        
+        DatePickerViewController *datePickerVC = (DatePickerViewController*)[segue destinationViewController];
+        datePickerVC.m_date = [NSDate new];
+        datePickerVC.datePickerMode = UIDatePickerModeDateAndTime;
+        datePickerVC.dateDelegate = self;
+        datePickerVC.m_clickBtn = self.fromDatePickerBtn;
+        
+        
+    }
+    
+    if ([segue.identifier isEqualToString:@"forensicsDatePicker"] )
+    {
+        
+        DatePickerViewController *datePickerVC = (DatePickerViewController*)[segue destinationViewController];
+        datePickerVC.m_date = [NSDate new];
+        datePickerVC.datePickerMode = UIDatePickerModeDateAndTime;
+        datePickerVC.dateDelegate = self;
+        datePickerVC.m_clickBtn = self.forensicsDateBtn;
+        
+    }
+    
+
+    
 }
 
 #pragma mark - 自定义方法

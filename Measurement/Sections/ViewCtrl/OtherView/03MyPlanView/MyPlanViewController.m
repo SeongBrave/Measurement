@@ -255,6 +255,7 @@
     
     AddPlanDetailsPopVC *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"AddPlanDetailsPopVC"];;
     popVc.m_popDelegate = self;
+    popVc.m_superView = self;
     popVc.modalPresentationStyle = UIModalPresentationFormSheet;
     popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     

@@ -31,11 +31,15 @@
 }
 - (IBAction)exitBtnClick:(id)sender {
     
+ 
+
+     
    
     [self dismissViewControllerAnimated:NO completion:^(void){
         
-      
-        [self.m_superVc dismissViewControllerAnimated:NO completion:nil];
+        
+//        NSNotification *notification = [NSNotification notificationWithName:@"TCDL" object:nil];
+//        [[NSNotificationCenter defaultCenter] postNotification:notification];
     }];
     
     

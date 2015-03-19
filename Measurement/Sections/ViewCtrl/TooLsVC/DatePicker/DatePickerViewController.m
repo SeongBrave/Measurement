@@ -29,7 +29,19 @@
 {
     [super viewWillAppear:animated];
     
-    [self.m_datePicker setDate:_m_date animated:NO];
+    
+    NSDate *date = self.m_clickBtn.m_info[@"date"];
+    if (date)
+    {
+        
+        [self.m_datePicker setDate:date animated:NO];
+    }else
+    {
+        
+        [self.m_datePicker setDate:_m_date animated:NO];
+    }
+    
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated

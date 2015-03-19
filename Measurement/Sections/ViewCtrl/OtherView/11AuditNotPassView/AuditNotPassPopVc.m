@@ -30,6 +30,9 @@
 #import "YSJL_HqsjVC.h"
 #import "DemoTextField.h"
 #import "UIPopoverListView.h"
+#import "jcrwcx_Jsyj_Model.h"
+#import "Qjyt_dmxx_Model.h"
+#import "jcrwcx_Jlbzkhzsh_Model.h"
 
 
 @interface AuditNotPassPopVc ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate,DidSelectedValue_XCRY_Delegate,UIPopoverControllerDelegate,UIPopoverListViewDataSource,UIPopoverListViewDelegate>
@@ -435,16 +438,17 @@
     [self.m_jdzq_DTF setRequired:YES];
     [self.m_hyy_DTF setRequired:YES];
     
+    
     /**
      *  初始化标志状态
      */
     //初始化状态为 设备详情
     self.n_stept = 0;
-    self.sbxq_Flag = YES;
-    self.shjg_Flag = YES;
-    self.ggxx_Flag = YES;
-    self.ysjl_Flag = YES;
-    self.zs_Flag = YES;
+    self.sbxq_Flag = NO;
+     self.shjg_Flag = NO;
+    self.ggxx_Flag = NO;
+    self.ysjl_Flag = NO;
+    self.zs_Flag = NO;
     self.yqid_Str = nil;
     
     /**
@@ -553,7 +557,7 @@
     if (!self.sbxq_Flag) {
         LoginedUser *loginUsr = [LoginedUser sharedInstance];
         @weakify(self)
-        [[BaseNetWork getInstance] showDialogWithVC:self];
+        [[BaseNetWork getInstance] hideDialog];
         NSDictionary *dict =@{@"usercode":loginUsr.usercode,@"yqid":self.yqid_Str};
         [[[[[BaseNetWork getInstance] rac_postPath:@"initEditDetectionData.do" parameters:dict]map:^(id responseData)
            {
@@ -566,15 +570,6 @@
              
              [ self update_ggxxViewByYretDict:retDict];
              
-             //             if ([retDict[@"ret"] isEqualToString:@"0"]) {
-             //                 [Dialog toast:self withMessage:@"获取公共信息失败!"];
-             //             }else
-             //             {
-             //                 @strongify(self)
-             //                 [ self update_ggxxViewByYretDict:retDict];
-             //             }
-             
-             
              
          }error:^(NSError *error){
              
@@ -584,27 +579,6 @@
     }
     
     self.sbxq_Flag = YES;
-    //    @weakify(self);
-    //    [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
-    //
-    //        make.centerX.equalTo(self.m_ggxx_Btn.mas_centerX);
-    //        make.width.equalTo(@60);
-    //        make.height.equalTo(@4);
-    //        make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
-    //    }];
-    //    [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
-    //        @strongify(self)
-    //        [self.m_menuBarView layoutIfNeeded];
-    //
-    //    }completion:NULL];
-    //
-    //
-    //    [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width,0} animated:YES];
-    
-    
-    
-    
-    
 }
 /**
  *  初始化原始记录界面
@@ -613,11 +587,7 @@
 {
     self.n_stept = 2;
     
-    if (!self.ggxx_Flag) {
-        NSDictionary *dict = @{@"xmbh":self.m_Sbxq_saveDataDict[@"xmbh"],@"jclxbh":self.m_Sbxq_saveDataDict[@"jclxbh"]};
-        [self PopYSJL_TemplatesListViewControllerWithZSretDict:dict];
-    }
-    
+    [self load_ysjl_WebViewWithjljspmc:self.m_qjxxDict[@"yqid"]];
     self.ggxx_Flag = YES;
     
     
@@ -629,9 +599,7 @@
 {
     self.n_stept = 3;
     
-    if (!self.ysjl_Flag) {
-        [self PopZS_TemplatesListViewControllerWithZSretDict:self.m_ysjl_retDict];
-    }
+   [self load_zs_WebViewWithjljspmc:self.m_qjxxDict[@"zsbh"]];
     self.ysjl_Flag = YES;
     
     
@@ -741,7 +709,7 @@
                         make.centerX.equalTo(self.m_shjg_Btn.mas_centerX);
                         make.width.equalTo(@60);
                         
-                        [self layout_SbxqInterface];
+                       // [self layout_SbxqInterface];
                         //
                         break;
                     case 1:
@@ -1482,19 +1450,49 @@
     
     //TODO:测试需要的
     //    [self test_GgxxV];
+    
+    
+    
     /**
-     *  检定日期
+     * 01 器具用途
+     */
+    NSDictionary *yqxx_Dict =retDict[@"yqxx"];
+    
+    NSArray *qjytList = retDict[@"qjytList"];
+    
+    self.m_qjyt_DTF.text = [yqxx_Dict GetLabelWithKey:@"qjytbh"];
+    
+    self.m_qjytTFArr = [qjytList linq_select:^id(NSDictionary *dict){
+        
+        Qjyt_dmxx_Model *dmxxModel = [MTLJSONAdapter modelOfClass:[Qjyt_dmxx_Model class] fromJSONDictionary:dict error:nil];
+        
+        if ([[yqxx_Dict GetLabelWithKey:@"qjytbh"] isEqualToString:dmxxModel.dmbm]) {
+            
+            self.m_qjyt_DTF.text = dmxxModel.dmxxmc;
+        }
+        
+        
+        return dmxxModel;
+    }];
+    
+    
+    /**
+     02 检定日期
      */
     // 设置日历显示格式
     
-    
     // 把日历时间传给字符串
-    
-    
     // 2012-05-17 11:23:23
+    
+    NSDictionary *zsxx_Dict = retDict[@"zsxx"];
+    
+    
+    
     NSDateFormatter *format=[[NSDateFormatter alloc] init];
-    [format setDateFormat:@"yyyy-MM-dd"];
-    NSDate *fromdate=[format dateFromString:[retDict GetLabelWithKey:@"wtrq"]];
+    [format setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSDate *fromdate=[format dateFromString:[retDict GetLabelWithKey:@"jdsj"]];
+    
+    
     NSTimeZone *fromzone = [NSTimeZone systemTimeZone];
     NSInteger frominterval = [fromzone secondsFromGMTForDate: fromdate];
     NSDate *fromDate = [fromdate  dateByAddingTimeInterval: frominterval];
@@ -1504,27 +1502,13 @@
     NSString *strDate = [format stringFromDate:fromDate];
     [self.m_jdrq_Btn setTitle:strDate forState:UIControlStateNormal];
     
+    
+    
     /**
-     *  注:默认检定人,不可修改
+     *  03 检定周期
      */
-    NSDictionary *hyrDict = retDict[@"hyrmap"];
-    
-    
-    if ([hyrDict allKeys].count >0) {
-        
-        self.m_jdy_TF.text =[hyrDict GetLabelWithKey:[hyrDict allKeys][0]];
-        self.m_jdrybh_Str = [hyrDict allKeys][0];
-        
-    }else
-    {
-        self.m_jdy_TF.text = @"";
-    }
-    
-    self.m_jdy_Dict = hyrDict;
     
     NSString *jdzqStr = [retDict[@"yqxx"] GetLabelWithKey:@"jdzqbh"];
-    
-    
     NSArray *jdzqArr = retDict[@"jdzqList"];
     
     self.m_Ggxx_saveDataDict[@"jdzqbh"] = [jdzqStr GetNotNullStr];
@@ -1548,6 +1532,52 @@
     }
     
     /**
+     *  04检定地点
+     */
+    self.m_jddd_TF.text = zsxx_Dict[@"jddd"];
+    
+    
+    /**
+     *  05环境温度
+     */
+    self.m_hjwd_TF.text = zsxx_Dict[@"hjwd"];
+    
+    
+    /**
+     *  06相对湿度
+     */
+    self.m_xdsd_TF.text = zsxx_Dict[@"hjsd"];
+    
+    /**
+     *  07其它
+     */
+    self.m_qt_TF.text = zsxx_Dict[@"qt"];
+    
+    
+    /**
+     *  08 检定员
+     */
+    NSString *jdyStr = zsxx_Dict[@"jdr"];
+    
+    
+    NSDictionary *jdrmap_Dict = retDict[@"jdrmap"];
+    self.m_jdy_TF.text = jdrmap_Dict[jdyStr];
+    self.m_Ggxx_saveDataDict[@"jdrbh"] = jdyStr;
+    
+    /**
+     *  09核验员
+     */
+    NSString *hyrStr = zsxx_Dict[@"hyr"];
+    NSDictionary *hyrDict = retDict[@"hyrmap"];
+    self.m_hyy_DTF.text = hyrDict[hyrStr];
+    self.m_hyy_DTF.m_bm = hyrStr;
+    
+    self.m_Ggxx_saveDataDict[@"hyrbh"] = hyrStr;
+    
+    self.m_jdy_Dict = hyrDict;
+    
+    
+    /**
      *  hyrmap 注:核验人
      */
     // NSDictionary *hyrDict = retDict[@"hyrmap"];
@@ -1566,33 +1596,83 @@
     
     
     /**
-     *  hyrmap 注:批准人
+     *  10 hyrmap 注:批准人
      */
+    NSString *pzrStr = zsxx_Dict[@"pzr"];
+    
     NSArray *pzrArr = retDict[@"pzrList"];
     
     self.m_pzrTFArr = [pzrArr linq_select:^id(NSDictionary *dict){
         
         pzr_Model *pzrModel = [MTLJSONAdapter modelOfClass:[pzr_Model class] fromJSONDictionary:dict error:nil];
         
+        if ([pzrModel.usercode isEqualToString:pzrStr]) {
+            self.m_pzr_DTF.text = pzrModel.username;
+            
+            self.m_Ggxx_saveDataDict[@"pzrbh"] = pzrStr;
+        }
+        
         return pzrModel;
     }];
     
+    /**
+     *  11 接收状态
+     */
+    self.m_jszt_TF.text = zsxx_Dict[@"jszt"];
+    
+    NSArray *jlbzkhzshArr = retDict[@"gcList"];
+    NSArray *bzqsbArr = retDict[@"bzqList"];
+    
+    NSArray *jsyjArr = retDict[@"jsyjList"];
     
     
     
+    /**
+     *  计量标准考核证书id
+     */
+    NSString *jlbzkhzshStr = retDict[@"jlbzkhzsIds"];
+    NSArray *jlbzkhzs_Arr = [jlbzkhzshStr componentsSeparatedByString:@","];
+    
+    /**
+     *  标准器设备- 标准设备编号
+     */
+    NSString *bzqsbStr = retDict[@"bzsbbhs"];
+    NSArray *bzqsb_Arr = [bzqsbStr componentsSeparatedByString:@","];
     
     
-    NSArray *jlbzkhzshArr = retDict[@"jlbzkhzsLists"];
-    NSArray *bzqsbArr = retDict[@"bzqsbLists"];
+    /**
+     * 标准器设备-
+     */
+    NSString *syzshsStr = retDict[@"syzshs"];
+    NSArray *syzshs_Arr = [syzshsStr componentsSeparatedByString:@","];
     
-    NSArray *jsyjArr = retDict[@"jsyjLists"];
+    /**
+     *  技术依据id
+     */
+    NSString *jsyjStr = retDict[@"jsyjID"];
+    NSArray *jsyj_Arr = [jsyjStr componentsSeparatedByString:@","];
+    
     
     self.m_jlbzkhzsh_Arr = [jlbzkhzshArr
                             linq_select:^id(NSDictionary *dict)
                             {
                                 
-                                Jlbzkhzsh_Model *model = [MTLJSONAdapter modelOfClass:[Jlbzkhzsh_Model class] fromJSONDictionary:dict error:nil];
-                                model.isSelected = YES;
+                                jcrwcx_Jlbzkhzsh_Model *model = [MTLJSONAdapter modelOfClass:[jcrwcx_Jlbzkhzsh_Model class] fromJSONDictionary:dict error:nil];
+                                /**
+                                 *  设置选中状态
+                                 */
+                                for(NSString *str in jlbzkhzs_Arr)
+                                {
+                                    if([str isEqualToString:model.m_id])
+                                    {
+                                        model.isSelected = YES;
+                                    }else
+                                    {
+                                        model.isSelected = NO;
+                                    }
+                                }
+                                
+                                
                                 
                                 return model;
                             }];
@@ -1602,7 +1682,25 @@
                         {
                             
                             Bzqsb_Model *model = [MTLJSONAdapter modelOfClass:[Bzqsb_Model class] fromJSONDictionary:dict error:nil];
-                            model.isSelected = YES;
+                            /**
+                             *  设置选中状态
+                             */
+                            for (int i=0; i<bzqsb_Arr.count; i++) {
+                                NSString * bzqsb_sbbhStr = bzqsb_Arr[i];
+                                NSString * bzqsb_syzsStr = syzshs_Arr[i];
+                                
+                                if([bzqsb_sbbhStr isEqualToString:model.bzsbbh ]&&[bzqsb_syzsStr isEqualToString:model.syzsh ])
+                                {
+                                    model.isSelected = YES;
+                                }else
+                                {
+                                    model.isSelected = NO;
+                                }
+                                
+                            }
+                            
+                            
+                            
                             return model;
                         }];
     
@@ -1610,8 +1708,20 @@
                        linq_select:^id(NSDictionary *dict)
                        {
                            
-                           Jsyj_Model *model = [MTLJSONAdapter modelOfClass:[Jsyj_Model class] fromJSONDictionary:dict error:nil];
-                           model.isSelected = YES;
+                           jcrwcx_Jsyj_Model *model = [MTLJSONAdapter modelOfClass:[jcrwcx_Jsyj_Model class] fromJSONDictionary:dict error:nil];
+                           /**
+                            *  设置选中状态
+                            */
+                           for(NSString *str in jsyj_Arr)
+                           {
+                               if([str isEqualToString:model.m_id])
+                               {
+                                   model.isSelected = YES;
+                               }else
+                               {
+                                   model.isSelected = NO;
+                               }
+                           }
                            
                            return model;
                        }];
@@ -1623,6 +1733,7 @@
     [self.m_jlbzkhzsh_TableView reloadData];
     [self.m_bzqsb_TableView reloadData];
     [self.m_jsyj_TableView reloadData];
+
     
 }
 
@@ -1661,6 +1772,15 @@
     
     
     
+    [self layout_SbxqInterface];
+    
+    [self layout_GgxxInterface];
+    
+    
+    [self layout_YsjlInterface];
+    
+    
+    [self layout_ZsInterface];
     
     
     
@@ -2247,12 +2367,12 @@
 }
 - (IBAction)Ysjl_RefreshBtnClick:(id)sender {
     
-    [self load_ysjl_WebViewWithjljspmc:_m_ysjl_saveUrl_Str];
+    [self load_ysjl_WebViewWithjljspmc:self.m_jcrwcx_Model.yqid];
 }
 
 - (IBAction)Zs_RefreshBtnClick:(id)sender {
     
-    [self load_zs_WebViewWithjljspmc:_m_zs_saveUrl_Str];
+    [self load_zs_WebViewWithjljspmc:self.m_jcrwcx_Model.zsbh];
     
     
 }
@@ -3210,7 +3330,7 @@
 {
     //175.17.22.241:8080
     
-    NSString *webysjlStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/record-addc.jsp?yqid=%@&jljspmc=%@",WEBURL,self.yqid_Str,jljspmc];
+    NSString *webysjlStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/record-editc.jsp?yqid=%@",WEBURL,self.m_qjxxDict[@"yqid"]];
     
     //    self.m_ysjl_WebView.scrollView.scrollEnabled = NO;
     [self.m_ysjl_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webysjlStr]]];
@@ -3223,7 +3343,7 @@
     
     debug_object(jljspmc);
     
-    NSString *webzsStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/certificate-autoc.jsp?zsbh=%@",WEBURL,jljspmc];
+    NSString *webzsStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/certificate-autoc.jsp?zsbh=%@",WEBURL,self.m_qjxxDict[@"zsbh"]];
     
     self.m_zs_retDict = @{@"UrlStr":webzsStr};
     [self.m_zs_WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webzsStr]]];

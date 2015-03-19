@@ -246,6 +246,7 @@
 {
     AddPlanDetailsPopVC *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"AddPlanDetailsPopVC"];;
     popVc.m_popDelegate = self;
+    
     self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
     self.m_popVC.delegate = self;
     
@@ -458,7 +459,7 @@
         
         
         CheckTaskDidPopVc *popVc = (CheckTaskDidPopVc*)[self.storyboard instantiateViewControllerWithIdentifier:@"CheckTaskDidPopVc"];
-        
+         popVc.m_superView = self;
         popVc.jcrwcxModel = self.m_DataSourceArr[indexPath.row];
         popVc.modalPresentationStyle = UIModalPresentationFormSheet;
         popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;

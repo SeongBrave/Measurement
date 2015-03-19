@@ -472,7 +472,7 @@
     self.m_lb_LB.text = [model.jclx GetNotNullStr];
     self.m_jcjg_LB.text = [model.jdjg GetNotNullStr];
     
-    self.m_jlh_LB.text = [model.jllx GetNotNullStr];
+    self.m_jlh_LB.text = [model.ysjlh GetNotNullStr];
     
     self.m_zsh_LB.text = [model.zsbh GetNotNullStr];
     

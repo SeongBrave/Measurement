@@ -30,6 +30,7 @@
 @interface AddPlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,PlanDetailsHead_DepCellDelegate,PlanDetailsMans_DepCellDelegate,DepManVCDelegate,DepMansVCDelegate>
 
 
+
 /**
  *  用于保存最后确定时传的参数
  */
@@ -247,6 +248,7 @@
         DatePickerViewController *datePickerVC = (DatePickerViewController*)[segue destinationViewController];
         datePickerVC.m_date = [NSDate new];
         datePickerVC.dateDelegate = self;
+        datePickerVC.datePickerMode = UIDatePickerModeDateAndTime;
         datePickerVC.m_clickBtn = self.toDatePickerBtn;
         
     }
@@ -255,6 +257,7 @@
         
         DatePickerViewController *datePickerVC = (DatePickerViewController*)[segue destinationViewController];
         datePickerVC.m_date = [NSDate new];
+        datePickerVC.datePickerMode = UIDatePickerModeDateAndTime;
         datePickerVC.dateDelegate = self;
         datePickerVC.m_clickBtn = self.fromDatePickerBtn;
 
@@ -263,9 +266,10 @@
     
     if ([segue.identifier isEqualToString:@"forensicsDatePicker"] )
     {
-        
+
         DatePickerViewController *datePickerVC = (DatePickerViewController*)[segue destinationViewController];
         datePickerVC.m_date = [NSDate new];
+        datePickerVC.datePickerMode = UIDatePickerModeDateAndTime;
         datePickerVC.dateDelegate = self;
         datePickerVC.m_clickBtn = self.forensicsDateBtn;
         
@@ -335,6 +339,31 @@
     [self.forensicsDateBtn.m_info setObject:[NSDate date] forKey:@"date"];
     [self.fromDatePickerBtn.m_info setObject:[NSDate date] forKey:@"date"];
     [self.toDatePickerBtn.m_info setObject:[NSDate date] forKey:@"date"];
+    
+    
+    
+    // 将NSDate格式装换成NSString类型
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    
+    // 设置日历显示格式
+    
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    
+    // 把日历时间传给字符串
+    
+    NSString *strDate = [dateFormatter stringFromDate:[NSDate new]];
+
+    
+
+    /**
+     *  初始化时间显示为当前时间
+     */
+    [self.forensicsDateBtn setTitle:strDate forState:UIControlStateNormal];
+    
+    [self.fromDatePickerBtn setTitle:strDate forState:UIControlStateNormal];
+    
+    [self.toDatePickerBtn setTitle:strDate forState:UIControlStateNormal];
     
     /**
      *  ios7以后需要专门设置下分割线要不然不是从每行的开始绘制的
@@ -659,6 +688,9 @@
              [Dialog toast:self withMessage:@"保存成功!"];
              
              [self dismissViewControllerAnimated:YES completion:^(void){
+                 
+                 
+                 [self.m_superView loadNetData];
                  
              }];
          }else

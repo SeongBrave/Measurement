@@ -558,15 +558,6 @@
              
               [ self update_ggxxViewByYretDict:retDict];
              
-//             if ([retDict[@"ret"] isEqualToString:@"0"]) {
-//                 [Dialog toast:self withMessage:@"获取公共信息失败!"];
-//             }else
-//             {
-//                 @strongify(self)
-//                 [ self update_ggxxViewByYretDict:retDict];
-//             }
-             
-             
              
          }error:^(NSError *error){
              
@@ -576,27 +567,6 @@
     }
     
     self.sbxq_Flag = YES;
-    //    @weakify(self);
-    //    [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
-    //
-    //        make.centerX.equalTo(self.m_ggxx_Btn.mas_centerX);
-    //        make.width.equalTo(@60);
-    //        make.height.equalTo(@4);
-    //        make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
-    //    }];
-    //    [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
-    //        @strongify(self)
-    //        [self.m_menuBarView layoutIfNeeded];
-    //
-    //    }completion:NULL];
-    //
-    //
-    //    [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width,0} animated:YES];
-    
-    
-    
-    
-    
 }
 /**
  *  初始化原始记录界面
