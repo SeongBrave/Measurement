@@ -1384,19 +1384,28 @@
     
     self.is_ysjl_Edited = @1;
     
-    _m_Sbxq_saveDataDict[@"jdzqbh"] = sbxqDict.by5;
-    _m_Sbxq_saveDataDict[@"ksbh"] =sbxqDict.ssksbh;
-    _m_Sbxq_saveDataDict[@"ks"] =sbxqDict.ssks;
-     _m_Sbxq_saveDataDict[@"by2"] =[sbxqDict.dwbh GetNotNullStr];
-    _m_Sbxq_saveDataDict[@"xmbh"] =[sbxqDict.xmbh GetNotNullStr];
+//    _m_Sbxq_saveDataDict[@"jdzqbh"] = sbxqDict.by5.length>0?sbxqDict.by5:@"";
+//    _m_Sbxq_saveDataDict[@"ksbh"] =sbxqDict.ssksbh.length>0?sbxqDict.ssksbh:@"";
+//    _m_Sbxq_saveDataDict[@"ks"] =sbxqDict.ssks.length>0?sbxqDict.ssks:@"";
+
     
-    _m_Sbxq_saveDataDict[@"jclxbh"] = [sbxqDict.jclxbh GetNotNullStr];
-    _m_Sbxq_saveDataDict[@"sfsq"] = [sbxqDict.sfsq GetNotNullStr];
-    _m_Sbxq_saveDataDict[@"bzsf"] = [sbxqDict.bj GetNotNullStr];
+    if (sbxqDict.by5 == nil) {
+        
+    }
+    
+    self.m_Sbxq_saveDataDict[@"jdzqbh"] = [sbxqDict.by5 GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"ksbh"] =[sbxqDict.ssksbh GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"ks"] =[sbxqDict.ssks GetNotNullStr];
+     self.m_Sbxq_saveDataDict[@"by2"] =[sbxqDict.dwbh GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"xmbh"] =[sbxqDict.xmbh GetNotNullStr];
+    
+    self.m_Sbxq_saveDataDict[@"jclxbh"] = [sbxqDict.jclxbh GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"sfsq"] = [sbxqDict.sfsq GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"bzsf"] = [sbxqDict.bj GetNotNullStr];
     /**
      *  一定要注意
      */
-     _m_Sbxq_saveDataDict[@"bzsfbh"] = [sbxqDict.sfbzid GetNotNullStr];
+    self.m_Sbxq_saveDataDict[@"bzsfbh"] = [sbxqDict.sfbzid GetNotNullStr];
     
     
     self.m_yqmc_TF.text =  [sbxqDict.jlqjmc GetNotNullStr];
