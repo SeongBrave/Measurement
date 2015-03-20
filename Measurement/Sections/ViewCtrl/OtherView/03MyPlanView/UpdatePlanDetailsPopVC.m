@@ -33,11 +33,14 @@
 #import "TGRImageZoomAnimationController.h"
 #import "AppDelegate.h"
 #import "UIButton+WebCache.h"
-
+#import "Wcjdjh_ksry_Model.h"
+#import "Wcjdjh_Xcks_Model.h"
+#import "Wcjdjh_Xcks_Cell.h"
+#import "Wcjdjh_Ksry_Vc.h"
 
 #define MaxOffset  100
 
-@interface UpdatePlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate, UIScrollViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,PlanDetailsHead_DepCellDelegate,PlanDetailsMans_DepCellDelegate,DepManVCDelegate,DepMansVCDelegate,SignatureViewDelegate,UIViewControllerTransitioningDelegate>
+@interface UpdatePlanDetailsPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,Wcjdjh_Ksry_VcDelegate, UIScrollViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,PlanDetailsHead_DepCellDelegate,Wcjdjh_Xcks_CellDelegate,DepManVCDelegate,DepMansVCDelegate,SignatureViewDelegate,UIViewControllerTransitioningDelegate>
 
 
 @property (assign)BOOL isOpen;
@@ -264,7 +267,7 @@
 {
     [super viewWillAppear:animated];
     
-    [self updateViewDataWithShowDict:_m_showDict];
+//    [self updateViewDataWithShowDict:_m_showDict];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -352,6 +355,36 @@
     
     self.addrOFEntity.text = [showDict GetLabelWithKey:@"DWDZ"];
     
+    NSLog(@"%@",showDict[@"DWDZ"]);
+    
+    debug_object(showDict[@"BY7"]);
+    
+    
+    if (showDict[@"DWDZ"] == nil) {
+        
+        debug_object(@"为nil");
+    }
+    
+    
+    if (showDict[@"DWDZ"]) {
+        
+        debug_object(@"不为nil");
+    }
+    
+    
+    
+    if (showDict[@"BY7"] == nil) {
+        
+        debug_object(@"为nil");
+    }
+    
+    
+    if (showDict[@"BY7"]) {
+        
+        debug_object(@"不为nil");
+    }
+    
+    
     self.contactTF.text =[showDict GetLabelWithKey:@"LXDH"];
     
     
@@ -382,6 +415,158 @@
 //    CJSJ
     
     
+    
+}
+
+
+-(void)update_Sbxq_ViewByDict:(NSDictionary *) retDict
+{
+    
+    NSDictionary * wdjhDict = retDict[@"wdjh"];
+    self.nameOFEntityTF.text =  [wdjhDict GetLabelWithKey:@"wtdwmc"];
+    
+    self.addrOFEntity.text = [wdjhDict GetLabelWithKey:@"szdq"];
+    
+    
+    self.contactTF.text =[wdjhDict GetLabelWithKey:@"lxrxm"];
+    
+    
+    self.ContactTELTF.text =[wdjhDict GetLabelWithKey:@"lxrid"];
+    
+    self.districtTF.text =[wdjhDict GetLabelWithKey:@"szdq"];
+    
+    
+    self.IndustryCategoriesTF.text =[wdjhDict GetLabelWithKey:@"hylbmc"];
+    
+    self.zipCodeTF.text =[wdjhDict GetLabelWithKey:@"yb"];
+    
+    
+    self.responsibleDepTF.text = [wdjhDict GetLabelWithKey:@"ywfzks"];
+    self.headOFTF.text =[wdjhDict GetLabelWithKey:@"ywfzr"];
+    
+    [self.forensicsDateBtn setTitle:@"" forState:UIControlStateNormal];
+    
+    self.specialReqTF.text = [wdjhDict GetLabelWithKey:@"cjsj"];
+    
+    self.noteTF.text = [wdjhDict GetLabelWithKey:@"bz"];
+    
+    [self.fromDatePickerBtn setTitle:[wdjhDict GetLabelWithKey:@"qzrq"]forState:UIControlStateNormal];
+    
+    [self.toDatePickerBtn setTitle:[wdjhDict GetLabelWithKey:@"xcsjz"] forState:UIControlStateNormal];
+    
+//    Wcjdjh_Xcks_Model
+    
+
+    NSArray *xcksryArr = retDict[@"xcksry"];
+    
+    
+    /**
+     *  科室人员
+     *
+     *  @param
+     *
+     *  @return
+     */
+    self.m_ks_mansArr = [xcksryArr linq_select:^id(NSDictionary *dict){
+        
+        Wcjdjh_Xcks_Model *model = [MTLJSONAdapter modelOfClass:[Wcjdjh_Xcks_Model class] fromJSONDictionary:dict error:nil];
+
+        
+        NSArray *myarr = dict[@"ry"];
+        model.m_ksryArr =[myarr linq_select:^id(NSDictionary *dict){
+            
+            Wcjdjh_ksry_Model *ryModel = [MTLJSONAdapter modelOfClass:[Wcjdjh_ksry_Model class] fromJSONDictionary:dict error:nil];
+            
+            return ryModel;
+        }];
+        return model;
+    }];
+
+    
+    
+    
+    /**
+     *  所在区
+     */
+    NSArray *district_Arr = retDict[@"szdq"];
+    self.districtArr = [district_Arr linq_select:^id(NSDictionary *dict){
+        
+        DistrictModel *districtModel = [[DistrictModel alloc]init];
+        districtModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
+        
+        return districtModel;
+    }];
+    
+    /**
+     *  行业类别
+     */
+    NSArray *industryCategories_Arr = retDict[@"hylb"];
+    self.industryCategoriesArr = [industryCategories_Arr linq_select:^id(NSDictionary *dict){
+        
+        IndustryCategoriesModel *industryCategoriesModel = [[IndustryCategoriesModel alloc]init];
+        industryCategoriesModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
+        
+        return industryCategoriesModel;
+    }];
+    
+    /**
+     *  业务负责科室
+     */
+    NSArray *responsibleDep_Arr = retDict[@"ksry"];
+    self.responsibleDepArr = [responsibleDep_Arr linq_select:^id(NSDictionary *dict){
+        
+        ResponsibleDepModel *responsibleDepModel = [[ResponsibleDepModel alloc]init];
+        responsibleDepModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
+        
+        return responsibleDepModel;
+    }];
+    
+    
+    //TODO: 需要修改这块
+    /**
+     *  业务负责科室
+     */
+    NSArray *headOF_Arr = retDict[@"ry"];
+    self.headOFArr = [headOF_Arr linq_select:^id(NSDictionary *dict){
+        
+        
+        ResponsibleDepModel *responsibleDepModel = [[ResponsibleDepModel alloc]init];
+        responsibleDepModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
+        
+        return responsibleDepModel;
+    }];
+    
+    
+    
+    /**
+     *  科室负责人
+     *
+     *  @param
+     *
+     *  @return
+     */
+    self.m_ks_headArr = [responsibleDep_Arr linq_select:^id(NSDictionary *dict){
+        
+        ks_Model *model = [MTLJSONAdapter modelOfClass:[ks_Model class] fromJSONDictionary:dict error:nil];
+        model.isSelected = NO;
+        model.isCheckBox = NO;
+        NSArray *myarr = dict[@"ry"];
+        model.ryArr =[myarr linq_select:^id(NSDictionary *dict){
+            
+            ry_Model *ryModel = [MTLJSONAdapter modelOfClass:[ry_Model class] fromJSONDictionary:dict error:nil];
+            ryModel.isSelected = NO;
+            ryModel.isCheckBox = NO;
+            
+            
+            return ryModel;
+        }];
+        
+        return model;
+        
+    }];
+    
+    [self.headTableView reloadData];
+    [self.mansTableView reloadData];
     
 }
 //TODO: 添加视图
@@ -421,25 +606,56 @@
      */
     self.districtTF.dropDownDelegate = self;
     self.districtTF.dropDownDataSource = self;
+    self.districtTF.delegate = self;
     
     /**
      *  行业类别
      */
     self.IndustryCategoriesTF.dropDownDelegate = self;
     self.IndustryCategoriesTF.dropDownDataSource = self;
-    
+    self.IndustryCategoriesTF.delegate = self;
     /**
      *  业务负责人
      */
     self.headOFTF.dropDownDelegate = self;
     self.headOFTF.dropDownDataSource = self;
-    
+    self.headOFTF.delegate = self;
     /**
      *  业务负责科室
      */
     self.responsibleDepTF.dropDownDelegate = self;
     self.responsibleDepTF.dropDownDataSource = self;
+    self.responsibleDepTF.delegate = self;
     
+    
+    
+    [self.forensicsDateBtn.m_info setObject:[NSDate date] forKey:@"date"];
+    [self.fromDatePickerBtn.m_info setObject:[NSDate date] forKey:@"date"];
+    [self.toDatePickerBtn.m_info setObject:[NSDate date] forKey:@"date"];
+    
+    
+    // 将NSDate格式装换成NSString类型
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    
+    // 设置日历显示格式
+    
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    
+    // 把日历时间传给字符串
+    
+    NSString *strDate = [dateFormatter stringFromDate:[NSDate new]];
+    
+    
+    
+    /**
+     *  初始化时间显示为当前时间
+     */
+    [self.forensicsDateBtn setTitle:strDate forState:UIControlStateNormal];
+    
+    [self.fromDatePickerBtn setTitle:strDate forState:UIControlStateNormal];
+    
+    [self.toDatePickerBtn setTitle:strDate forState:UIControlStateNormal];
     
     /**
      *  设置tableview不可点击
@@ -700,114 +916,10 @@
          @strongify(self)
          if ([retDict[@"ret"] intValue] == 1) {
              
-             NSDictionary *dict = retDict[@"data"];
-             /**
-              *  所在区
-              */
-             NSArray *district_Arr = dict[@"szdq"];
-             self.districtArr = [district_Arr linq_select:^id(NSDictionary *dict){
-                 
-                 DistrictModel *districtModel = [[DistrictModel alloc]init];
-                 districtModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
-                 
-                 return districtModel;
-             }];
              
-             /**
-              *  行业类别
-              */
-             NSArray *industryCategories_Arr = dict[@"hylb"];
-             self.industryCategoriesArr = [industryCategories_Arr linq_select:^id(NSDictionary *dict){
-                 
-                 IndustryCategoriesModel *industryCategoriesModel = [[IndustryCategoriesModel alloc]init];
-                 industryCategoriesModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
-                 
-                 return industryCategoriesModel;
-             }];
-             
-             /**
-              *  业务负责科室
-              */
-             NSArray *responsibleDep_Arr = dict[@"ksry"];
-             self.responsibleDepArr = [responsibleDep_Arr linq_select:^id(NSDictionary *dict){
-                 
-                 ResponsibleDepModel *responsibleDepModel = [[ResponsibleDepModel alloc]init];
-                 responsibleDepModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
-                 
-                 return responsibleDepModel;
-             }];
-             
-             
-             //TODO: 需要修改这块
-             /**
-              *  业务负责科室
-              */
-             NSArray *headOF_Arr = dict[@"ry"];
-             self.headOFArr = [headOF_Arr linq_select:^id(NSDictionary *dict){
-                 
-                 
-                 ResponsibleDepModel *responsibleDepModel = [[ResponsibleDepModel alloc]init];
-                 responsibleDepModel.m_data = [NSDictionary dictionaryWithDictionary:dict];
-                 
-                 return responsibleDepModel;
-             }];
-             
-             /**
-              *  科室人员
-              *
-              *  @param
-              *
-              *  @return
-              */
-             self.m_ks_mansArr = [responsibleDep_Arr linq_select:^id(NSDictionary *dict){
-                 
-                 ks_Model *model = [MTLJSONAdapter modelOfClass:[ks_Model class] fromJSONDictionary:dict error:nil];
-                 model.isSelected = NO;
-                 model.isCheckBox = YES;
-                 
-                 NSArray *myarr = dict[@"ry"];
-                 model.ryArr =[myarr linq_select:^id(NSDictionary *dict){
-                     
-                     ry_Model *ryModel = [MTLJSONAdapter modelOfClass:[ry_Model class] fromJSONDictionary:dict error:nil];
-                     ryModel.isSelected = NO;
-                     ryModel.isCheckBox = YES;
-                     
-                     
-                     return ryModel;
-                 }];
-                 return model;
-             }];
-             
-             
-             /**
-              *  科室负责人
-              *
-              *  @param
-              *
-              *  @return
-              */
-             self.m_ks_headArr = [responsibleDep_Arr linq_select:^id(NSDictionary *dict){
-                 
-                 ks_Model *model = [MTLJSONAdapter modelOfClass:[ks_Model class] fromJSONDictionary:dict error:nil];
-                 model.isSelected = NO;
-                 model.isCheckBox = NO;
-                 NSArray *myarr = dict[@"ry"];
-                 model.ryArr =[myarr linq_select:^id(NSDictionary *dict){
-                     
-                     ry_Model *ryModel = [MTLJSONAdapter modelOfClass:[ry_Model class] fromJSONDictionary:dict error:nil];
-                     ryModel.isSelected = NO;
-                     ryModel.isCheckBox = NO;
-                     
-                     
-                     return ryModel;
-                 }];
-                 
-                 return model;
-                 
-             }];
-             
-             [self.headTableView reloadData];
-             [self.mansTableView reloadData];
+            [self update_Sbxq_ViewByDict:retDict[@"data"]];
+
+            
          }else
          {
              [Dialog toastError:@"加载数据失败!"];
@@ -1177,10 +1289,10 @@
         return cell;
     }else if(tableView == self.mansTableView )
     {
-        cellIdentifier = @"PlanDetailsMans_DepCell";
-        PlanDetailsMans_DepCell *cell = (PlanDetailsMans_DepCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        cellIdentifier = @"Wcjdjh_Xcks_Cell";
+        Wcjdjh_Xcks_Cell *cell = (Wcjdjh_Xcks_Cell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
         
-        cell.m_mans_DepDelegate = self;
+        cell.m_Xcks_CellDelegate = self;
         
         [cell configureCellWithItem:self.m_ks_mansArr[indexPath.row]];
         
@@ -1306,9 +1418,14 @@
         
     }else if(tableView == self.mansTableView)
     {
-        ks_Model *model = self.m_ks_mansArr[indexPath.row];
+        Wcjdjh_Xcks_Model *model = self.m_ks_mansArr[indexPath.row];
         
-        model.isSelected = !model.isSelected;
+        if ([model.state intValue] == 1) {
+            model.state = @0;
+        }else
+        {
+             model.state = @1;
+        }
         
     }else if (tableView == self.testProgressTableView)
     {
@@ -1592,6 +1709,34 @@
      */
     self.m_mans_depManVC.ksModel = ksModel;
 }
+
+#pragma mark -  Wcjdjh_Xcks_CellDelegate
+
+-(void)Wcjdjh_Xcks_Cell:(Wcjdjh_Xcks_Cell*) depCell didSelectedWithks_Model:(Wcjdjh_Xcks_Model *) ksModel
+{
+//    Wcjdjh_Ksry_Vc
+   
+    Wcjdjh_Ksry_Vc *depManVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Wcjdjh_Ksry_Vc"];
+    
+    depManVC.m_delegate = self;
+    depManVC.modalPresentationStyle = UIModalPresentationFormSheet;
+    depManVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    depManVC.m_dataSourceArr = ksModel.m_ksryArr;
+    
+    [self presentViewController:depManVC animated:YES completion:nil];
+    //    depManVC.view.superview.bounds = CGRectMake(0, 0, 529, 279);
+    depManVC.view.superview.frame = CGRectMake(100, 400, 529, 279);//it's important to do this after presentModalViewController
+    depManVC.view.superview.center = self.view.center;
+    
+    
+    /**
+     *  将要修改的model赋值给vc然后再vc中修改
+     */
+    depManVC.m_model = ksModel;
+    
+    
+}
+
 
 
 #pragma mark - DepManVCDelegate

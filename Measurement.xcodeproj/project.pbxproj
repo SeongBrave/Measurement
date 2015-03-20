@@ -103,6 +103,12 @@
 		C99407A21AA36992004DC8D0 /* jg_hud_success.png in Resources */ = {isa = PBXBuildFile; fileRef = C994079B1AA36992004DC8D0 /* jg_hud_success.png */; };
 		C99407A31AA36992004DC8D0 /* jg_hud_success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C994079C1AA36992004DC8D0 /* jg_hud_success@2x.png */; };
 		C99407A41AA36992004DC8D0 /* libDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C994079E1AA36992004DC8D0 /* libDialog.a */; };
+		C9969BB61ABC734300780E9D /* Wcjdjh_Xcks_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9969BB51ABC734300780E9D /* Wcjdjh_Xcks_Model.m */; };
+		C9969BB91ABC734D00780E9D /* Wcjdjh_ksry_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9969BB81ABC734D00780E9D /* Wcjdjh_ksry_Model.m */; };
+		C9969BBC1ABC79AD00780E9D /* Wcjdjh_Xcks_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9969BBB1ABC79AD00780E9D /* Wcjdjh_Xcks_Cell.m */; };
+		C9969BBF1ABC79C500780E9D /* Wcjdjh_ksry_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9969BBE1ABC79C500780E9D /* Wcjdjh_ksry_Cell.m */; };
+		C9969BC21ABC7B6800780E9D /* Wcjdjh_Xcks_Vc.m in Sources */ = {isa = PBXBuildFile; fileRef = C9969BC11ABC7B6800780E9D /* Wcjdjh_Xcks_Vc.m */; };
+		C9969BC51ABC7B8700780E9D /* Wcjdjh_Ksry_Vc.m in Sources */ = {isa = PBXBuildFile; fileRef = C9969BC41ABC7B8700780E9D /* Wcjdjh_Ksry_Vc.m */; };
 		C99F47C11A4B0BAF007C68AB /* CompanyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F47C01A4B0BAF007C68AB /* CompanyCollectionViewCell.m */; };
 		C99FD92A1A4C4F2F000AB1A6 /* ProgramOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C99FD9291A4C4F2F000AB1A6 /* ProgramOverviewCell.m */; };
 		C9A4350C1A9C254100F85046 /* xmbh_Auto_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A4350B1A9C254100F85046 /* xmbh_Auto_Model.m */; };
@@ -390,6 +396,18 @@
 		C994079D1AA36992004DC8D0 /* JFMinimalNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMinimalNotification.h; sourceTree = "<group>"; };
 		C994079E1AA36992004DC8D0 /* libDialog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDialog.a; sourceTree = "<group>"; };
 		C994079F1AA36992004DC8D0 /* RTSpinKitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTSpinKitView.h; sourceTree = "<group>"; };
+		C9969BB41ABC734300780E9D /* Wcjdjh_Xcks_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wcjdjh_Xcks_Model.h; sourceTree = "<group>"; };
+		C9969BB51ABC734300780E9D /* Wcjdjh_Xcks_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wcjdjh_Xcks_Model.m; sourceTree = "<group>"; };
+		C9969BB71ABC734D00780E9D /* Wcjdjh_ksry_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wcjdjh_ksry_Model.h; sourceTree = "<group>"; };
+		C9969BB81ABC734D00780E9D /* Wcjdjh_ksry_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wcjdjh_ksry_Model.m; sourceTree = "<group>"; };
+		C9969BBA1ABC79AD00780E9D /* Wcjdjh_Xcks_Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wcjdjh_Xcks_Cell.h; sourceTree = "<group>"; };
+		C9969BBB1ABC79AD00780E9D /* Wcjdjh_Xcks_Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wcjdjh_Xcks_Cell.m; sourceTree = "<group>"; };
+		C9969BBD1ABC79C500780E9D /* Wcjdjh_ksry_Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wcjdjh_ksry_Cell.h; sourceTree = "<group>"; };
+		C9969BBE1ABC79C500780E9D /* Wcjdjh_ksry_Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wcjdjh_ksry_Cell.m; sourceTree = "<group>"; };
+		C9969BC01ABC7B6800780E9D /* Wcjdjh_Xcks_Vc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wcjdjh_Xcks_Vc.h; sourceTree = "<group>"; };
+		C9969BC11ABC7B6800780E9D /* Wcjdjh_Xcks_Vc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wcjdjh_Xcks_Vc.m; sourceTree = "<group>"; };
+		C9969BC31ABC7B8700780E9D /* Wcjdjh_Ksry_Vc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wcjdjh_Ksry_Vc.h; sourceTree = "<group>"; };
+		C9969BC41ABC7B8700780E9D /* Wcjdjh_Ksry_Vc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wcjdjh_Ksry_Vc.m; sourceTree = "<group>"; };
 		C99F47BF1A4B0BAF007C68AB /* CompanyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyCollectionViewCell.h; sourceTree = "<group>"; };
 		C99F47C01A4B0BAF007C68AB /* CompanyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyCollectionViewCell.m; sourceTree = "<group>"; };
 		C99FD9281A4C4F2F000AB1A6 /* ProgramOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramOverviewCell.h; sourceTree = "<group>"; };
@@ -1318,6 +1336,10 @@
 				C970946F1A62D36A00141DC5 /* DepMansViewController.m */,
 				C97094701A62D36A00141DC5 /* DepManViewController.h */,
 				C97094711A62D36A00141DC5 /* DepManViewController.m */,
+				C9969BC01ABC7B6800780E9D /* Wcjdjh_Xcks_Vc.h */,
+				C9969BC11ABC7B6800780E9D /* Wcjdjh_Xcks_Vc.m */,
+				C9969BC31ABC7B8700780E9D /* Wcjdjh_Ksry_Vc.h */,
+				C9969BC41ABC7B8700780E9D /* Wcjdjh_Ksry_Vc.m */,
 			);
 			path = DepMansVC;
 			sourceTree = "<group>";
@@ -1466,6 +1488,24 @@
 				C994079C1AA36992004DC8D0 /* jg_hud_success@2x.png */,
 			);
 			path = DialogResource;
+			sourceTree = "<group>";
+		};
+		C9969BB21ABC732A00780E9D /* Wcjdjh_Xcks_Model */ = {
+			isa = PBXGroup;
+			children = (
+				C9969BB41ABC734300780E9D /* Wcjdjh_Xcks_Model.h */,
+				C9969BB51ABC734300780E9D /* Wcjdjh_Xcks_Model.m */,
+			);
+			path = Wcjdjh_Xcks_Model;
+			sourceTree = "<group>";
+		};
+		C9969BB31ABC732A00780E9D /* Wcjdjh_ksry_Model */ = {
+			isa = PBXGroup;
+			children = (
+				C9969BB71ABC734D00780E9D /* Wcjdjh_ksry_Model.h */,
+				C9969BB81ABC734D00780E9D /* Wcjdjh_ksry_Model.m */,
+			);
+			path = Wcjdjh_ksry_Model;
 			sourceTree = "<group>";
 		};
 		C99FD9271A4C4F0A000AB1A6 /* ProgramOverviewCell */ = {
@@ -1729,6 +1769,10 @@
 				C903B0C71A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m */,
 				C903B0CF1A5EBF910038AA1B /* DepMans_Cell.h */,
 				C903B0D01A5EBF910038AA1B /* DepMans_Cell.m */,
+				C9969BBA1ABC79AD00780E9D /* Wcjdjh_Xcks_Cell.h */,
+				C9969BBB1ABC79AD00780E9D /* Wcjdjh_Xcks_Cell.m */,
+				C9969BBD1ABC79C500780E9D /* Wcjdjh_ksry_Cell.h */,
+				C9969BBE1ABC79C500780E9D /* Wcjdjh_ksry_Cell.m */,
 			);
 			path = PlanDetailsCell;
 			sourceTree = "<group>";
@@ -1843,6 +1887,8 @@
 		C9FFC1561A6E7B4600AA6BE7 /* 03MyPlanModel */ = {
 			isa = PBXGroup;
 			children = (
+				C9969BB21ABC732A00780E9D /* Wcjdjh_Xcks_Model */,
+				C9969BB31ABC732A00780E9D /* Wcjdjh_ksry_Model */,
 			);
 			path = 03MyPlanModel;
 			sourceTree = "<group>";
@@ -2138,6 +2184,7 @@
 				C9651FC31A43B25F00B770BB /* BaseNetWork.m in Sources */,
 				C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */,
 				C9D23C3B1AA73076001EA654 /* Jcrwcx_Model.m in Sources */,
+				C9969BBF1ABC79C500780E9D /* Wcjdjh_ksry_Cell.m in Sources */,
 				C9FFC14F1A6E7A6A00AA6BE7 /* ResponsibleDepModel.m in Sources */,
 				C9431FBD1A4DAF7B0017FED0 /* MyPlanViewCell.m in Sources */,
 				C9BE823D1AAF28C300C4901C /* jcrwcx_Jlbzkhzsh_Model.m in Sources */,
@@ -2169,6 +2216,7 @@
 				C99FD92A1A4C4F2F000AB1A6 /* ProgramOverviewCell.m in Sources */,
 				C97094551A62D09B00141DC5 /* ProgramOverviewViewController.m in Sources */,
 				C9651FE41A43B26000B770BB /* BaseTableViewController.m in Sources */,
+				C9969BC21ABC7B6800780E9D /* Wcjdjh_Xcks_Vc.m in Sources */,
 				C9651FD11A43B26000B770BB /* CYTextFieldAutoFillInputView.m in Sources */,
 				C9FFC1511A6E7A6A00AA6BE7 /* ry_Model.m in Sources */,
 				C9FFC16B1A6E956000AA6BE7 /* TestingDataRegistViewController.m in Sources */,
@@ -2181,6 +2229,7 @@
 				C97094661A62D09B00141DC5 /* InspectionTasksViewController.m in Sources */,
 				C90F31111A729BB600A7A06E /* jlmb_Model.m in Sources */,
 				C9651FD81A43B26000B770BB /* CustomBodyTempView.m in Sources */,
+				C9969BB91ABC734D00780E9D /* Wcjdjh_ksry_Model.m in Sources */,
 				C9791A9E1A7148C500DC5643 /* Jsyj_TableViewCell.m in Sources */,
 				C9651FD21A43B26000B770BB /* CustomButton.m in Sources */,
 				C9651FEB1A43B26000B770BB /* Localisator.m in Sources */,
@@ -2197,6 +2246,7 @@
 				C9651FF71A43BE3100B770BB /* YTKKeyValueStore.m in Sources */,
 				C97093ED1A62CBD200141DC5 /* SignatureViewController.m in Sources */,
 				C97093E91A62CBD200141DC5 /* OptionMenuTableViewController.m in Sources */,
+				C9969BB61ABC734300780E9D /* Wcjdjh_Xcks_Model.m in Sources */,
 				C9EB135A1A83BADC00DE9B1D /* zsmb_Model.m in Sources */,
 				C9651FEF1A43B26000B770BB /* DropDownListView.m in Sources */,
 				C97094621A62D09B00141DC5 /* CertificateGuaranteeViewController.m in Sources */,
@@ -2224,11 +2274,13 @@
 				C97094721A62D36A00141DC5 /* DepMansViewController.m in Sources */,
 				C90947FE1AA2028C007B5FB7 /* MHTextField.m in Sources */,
 				C9651FD31A43B26000B770BB /* FlagButton.m in Sources */,
+				C9969BC51ABC7B8700780E9D /* Wcjdjh_Ksry_Vc.m in Sources */,
 				C9651FDB1A43B26000B770BB /* CYRadioButton.m in Sources */,
 				C970945D1A62D09B00141DC5 /* UpdatePlanDetailsPopVC.m in Sources */,
 				C97203091A9A37CB008273AE /* PlanningDepartmentDidHYPopViewController.m in Sources */,
 				C97093EA1A62CBD200141DC5 /* SelectValue_XCKS_TableViewController.m in Sources */,
 				C9D23C3F1AA73C31001EA654 /* JcrwcxCell.m in Sources */,
+				C9969BBC1ABC79AD00780E9D /* Wcjdjh_Xcks_Cell.m in Sources */,
 				C97094571A62D09B00141DC5 /* AddPlanDetailsPopVC.m in Sources */,
 				C90948021AA20F32007B5FB7 /* UIPopoverListView.m in Sources */,
 				C9903C1E1A470BDB0006FD99 /* UIImage+Fit.m in Sources */,
