@@ -423,6 +423,10 @@
 {
     
     NSDictionary * wdjhDict = retDict[@"wdjh"];
+    
+    
+  
+    
     self.nameOFEntityTF.text =  [wdjhDict GetLabelWithKey:@"wtdwmc"];
     
     self.addrOFEntity.text = [wdjhDict GetLabelWithKey:@"szdq"];
@@ -539,6 +543,17 @@
     
     
     /**
+     *  下厂科室负责人编号
+     */
+    NSString *xcfzrbhStr = wdjhDict[@"xcfzrbh"];
+    
+    /**
+     *  下厂科室编号
+     *
+     */
+     NSString *xcksStr = wdjhDict[@"by3"];
+    
+    /**
      *  科室负责人
      *
      *  @param
@@ -548,18 +563,55 @@
     self.m_ks_headArr = [responsibleDep_Arr linq_select:^id(NSDictionary *dict){
         
         ks_Model *model = [MTLJSONAdapter modelOfClass:[ks_Model class] fromJSONDictionary:dict error:nil];
-        model.isSelected = NO;
+        
+        /**
+         *  选中的下厂科室编号
+         */
+        if ([model.comcode isEqualToString:xcksStr]) {
+            
+            model.isSelected = YES;
+            
+            NSArray *myarr = dict[@"ry"];
+            model.ryArr =[myarr linq_select:^id(NSDictionary *dict){
+                
+                ry_Model *ryModel = [MTLJSONAdapter modelOfClass:[ry_Model class] fromJSONDictionary:dict error:nil];
+                if ([ryModel.usercode isEqualToString:xcfzrbhStr]) {
+                    
+                    ryModel.isSelected = YES;
+                    
+                    model.selected_ryModel = ryModel;
+                }else
+                {
+                    ryModel.isSelected = NO;
+                }
+                ryModel.isCheckBox = NO;
+                
+                
+                return ryModel;
+            }];
+
+        }else
+        {
+            model.isSelected = NO;
+            
+            NSArray *myarr = dict[@"ry"];
+            model.ryArr =[myarr linq_select:^id(NSDictionary *dict){
+                
+                
+                ry_Model *ryModel = [MTLJSONAdapter modelOfClass:[ry_Model class] fromJSONDictionary:dict error:nil];
+                ryModel.isCheckBox = NO;
+                ryModel.isSelected = NO;
+                
+                return ryModel;
+                
+                
+              
+            }];
+
+            
+        }
+        
         model.isCheckBox = NO;
-        NSArray *myarr = dict[@"ry"];
-        model.ryArr =[myarr linq_select:^id(NSDictionary *dict){
-            
-            ry_Model *ryModel = [MTLJSONAdapter modelOfClass:[ry_Model class] fromJSONDictionary:dict error:nil];
-            ryModel.isSelected = NO;
-            ryModel.isCheckBox = NO;
-            
-            
-            return ryModel;
-        }];
         
         return model;
         

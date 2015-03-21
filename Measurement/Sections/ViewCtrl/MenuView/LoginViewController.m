@@ -108,6 +108,33 @@
     [self layoutMainCustomView];
 //    [self AddNavgationBarItem];
     
+    
+    //获取设备信息
+    UIDevice *device = [UIDevice currentDevice];
+    
+    //获取版本号
+    NSString *version = [[FileHelpers getMyAppVersionInfo] objectForKey:@"version"];
+    
+    //获取ip地址
+//    NSString *adviceIP = [GetAdeviceIP getIPAddress:YES];
+    
+//    findBbgx.do
+    NSDictionary *dict =@{@"bbh":@"1.02",@"sbbh":@"11111100001"};
+    
+    [[[BaseNetWork getInstance] rac_postPath:@"findBbgx.do" parameters:dict]
+     subscribeNext:^(id responseData){
+         
+         NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+         
+         debug_object(dict);
+         
+     }error:^(NSError *error){
+         
+         debug_object(error);
+         
+     }];
+    
+    
 }
 -(void)AddNavgationBarItem
 {
