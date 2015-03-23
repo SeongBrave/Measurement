@@ -2890,27 +2890,13 @@
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qH3-B1-SqS" userLabel="Scroll View计划详情">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="632"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pfu-Yu-7NR" customClass="AutoCompleteTextField">
-                                                <rect key="frame" x="179" y="32" width="529" height="26"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="26" id="mHv-pC-dsc"/>
-                                                    <constraint firstAttribute="width" constant="529" id="qAb-ji-PxE"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <outlet property="autoCompleteDataSource" destination="5eI-G9-cJH" id="2qZ-pa-PBJ"/>
-                                                    <outlet property="autoCompleteDelegate" destination="5eI-G9-cJH" id="wDE-NQ-eJl"/>
-                                                    <outlet property="delegate" destination="5eI-G9-cJH" id="DLl-DU-XgK"/>
-                                                </connections>
-                                            </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="单位地址" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKU-jy-2oX">
                                                 <rect key="frame" x="78" y="77" width="60" height="18"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nwn-Q8-QeL">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nwn-Q8-QeL" customClass="DemoTextField">
                                                 <rect key="frame" x="179" y="73" width="529" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="26" id="bJp-Jw-zeT"/>
@@ -2927,7 +2913,7 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0VX-Rh-esZ">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0VX-Rh-esZ" customClass="DemoTextField">
                                                 <rect key="frame" x="179" y="114" width="160" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="160" id="Bn6-a7-qOz"/>
@@ -2938,12 +2924,12 @@
                                                     <outlet property="delegate" destination="5eI-G9-cJH" id="B9F-u9-p44"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y0t-Hj-1OD">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y0t-Hj-1OD" customClass="DemoTextField">
                                                 <rect key="frame" x="179" y="155" width="160" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <connections>
-                                                    <outlet property="delegate" destination="5eI-G9-cJH" id="c2Z-2L-Ba1"/>
+                                                    <outlet property="delegate" destination="5eI-G9-cJH" id="Gq9-oU-gbI"/>
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系电话" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mql-FO-7B2">
@@ -2980,7 +2966,7 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4u1-NW-5BL">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4u1-NW-5BL" customClass="DemoTextField">
                                                 <rect key="frame" x="179" y="278" width="160" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -3022,7 +3008,7 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tc6-oX-R5e">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tc6-oX-R5e" customClass="DemoTextField">
                                                 <rect key="frame" x="179" y="442" width="529" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -3327,6 +3313,20 @@
                                                     <constraint firstItem="HVG-OH-ZKE" firstAttribute="leading" secondItem="GQ5-2X-20b" secondAttribute="leading" constant="1" id="nXD-9H-tVQ"/>
                                                 </constraints>
                                             </view>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pfu-Yu-7NR" customClass="AutoCompleteTextField">
+                                                <rect key="frame" x="179" y="32" width="529" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="26" id="mHv-pC-dsc"/>
+                                                    <constraint firstAttribute="width" constant="529" id="qAb-ji-PxE"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="autoCompleteDataSource" destination="5eI-G9-cJH" id="2qZ-pa-PBJ"/>
+                                                    <outlet property="autoCompleteDelegate" destination="5eI-G9-cJH" id="wDE-NQ-eJl"/>
+                                                    <outlet property="delegate" destination="5eI-G9-cJH" id="DLl-DU-XgK"/>
+                                                </connections>
+                                            </textField>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="OWS-r1-jdT" firstAttribute="height" secondItem="Pig-Rc-2H9" secondAttribute="height" id="1f5-jg-Fb1"/>
@@ -4107,26 +4107,28 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="768" height="748"/>
                     <connections>
-                        <outlet property="ContactTELTF" destination="y0t-Hj-1OD" id="KyD-Oi-6bs"/>
-                        <outlet property="IndustryCategoriesTF" destination="Pig-Rc-2H9" id="A3B-jD-1CG"/>
                         <outlet property="SignatureTableView" destination="jR0-ZV-pTG" id="MTv-4r-kNe"/>
-                        <outlet property="addrOFEntity" destination="Nwn-Q8-QeL" id="zae-Qg-8DV"/>
-                        <outlet property="contactTF" destination="0VX-Rh-esZ" id="9nc-GJ-ATk"/>
-                        <outlet property="districtTF" destination="OWS-r1-jdT" id="B2a-fS-4z8"/>
                         <outlet property="forensicsDateBtn" destination="HVG-OH-ZKE" id="PAG-Yn-xCr"/>
                         <outlet property="forensicsDateView" destination="GQ5-2X-20b" id="Nib-kr-6dw"/>
                         <outlet property="fromDatePickerBtn" destination="DJG-EG-hfY" id="tAY-CO-PFL"/>
                         <outlet property="fromDateView" destination="88e-nU-MRk" id="dd9-Et-jcm"/>
-                        <outlet property="headOFTF" destination="LvP-3I-Grz" id="IQJ-0u-kRb"/>
                         <outlet property="headTableView" destination="Hhb-Zh-7n9" id="kq2-vG-LBB"/>
+                        <outlet property="m_dwdz_TF" destination="Nwn-Q8-QeL" id="iOl-G2-UEw"/>
+                        <outlet property="m_dwmc_ATF" destination="pfu-Yu-7NR" id="tmk-Kd-2Pv"/>
+                        <outlet property="m_hylb_DTF" destination="Pig-Rc-2H9" id="GPV-IS-xYq"/>
+                        <outlet property="m_lxdh_TF" destination="y0t-Hj-1OD" id="g5u-Hr-I1O"/>
+                        <outlet property="m_lxr_TF" destination="0VX-Rh-esZ" id="BRg-wq-CbJ"/>
+                        <outlet property="m_szdq_DTF" destination="OWS-r1-jdT" id="L8n-qI-ELt"/>
+                        <outlet property="m_tsyq_TF" destination="Tc6-oX-R5e" id="sbu-xp-R7a"/>
+                        <outlet property="m_yb_TF" destination="4u1-NW-5BL" id="bKg-P9-17X"/>
+                        <outlet property="m_ywfzks_DTF" destination="qyP-ar-anT" id="coE-UH-CED"/>
+                        <outlet property="m_ywfzr_DTF" destination="LvP-3I-Grz" id="pYs-bI-Kjb"/>
                         <outlet property="mainScrollView" destination="kwu-QG-RmY" id="buP-XE-X6I"/>
                         <outlet property="mansTableView" destination="yGr-9w-Byw" id="fR8-3T-8J5"/>
                         <outlet property="menuBarView" destination="Qm5-re-Wg0" id="8NI-JI-Sj6"/>
-                        <outlet property="nameOFEntityTF" destination="pfu-Yu-7NR" id="6K7-tR-adr"/>
                         <outlet property="noteTF" destination="umf-4q-8X2" id="jrE-Y2-SZV"/>
                         <outlet property="planBtn" destination="kKV-hP-m8Y" id="gGB-Wh-kxO"/>
                         <outlet property="planDetailsScrollView" destination="qH3-B1-SqS" id="Bvg-MY-yun"/>
-                        <outlet property="responsibleDepTF" destination="qyP-ar-anT" id="zIG-Kc-Y2F"/>
                         <outlet property="signatureBtn" destination="mnn-d6-CIL" id="ETg-CM-qJv"/>
                         <outlet property="signatureImgBtn" destination="Erc-eV-uLt" id="lCy-3q-1Vi"/>
                         <outlet property="signatureScrollView" destination="THg-iy-4zf" id="P0v-6h-8SM"/>
@@ -4134,18 +4136,16 @@
                         <outlet property="signature_lxdh_Label" destination="BVd-Mt-NZ9" id="OUG-rU-uCt"/>
                         <outlet property="signature_lxrxm_Label" destination="AwY-15-Tqf" id="BrR-dJ-0hd"/>
                         <outlet property="signature_wtdwmc_Label" destination="cIn-JK-tLn" id="ehr-T0-Hfx"/>
-                        <outlet property="specialReqTF" destination="Tc6-oX-R5e" id="LC7-m3-mb9"/>
                         <outlet property="testProgressBtn" destination="mpc-Qu-wcY" id="Up3-Bp-q1i"/>
                         <outlet property="testProgressScrollView" destination="cab-Q2-9C2" id="3Ex-nf-LhA"/>
                         <outlet property="testProgressTableView" destination="AEA-Ji-ZVG" id="ImA-FD-Vaj"/>
                         <outlet property="toDatePickerBtn" destination="7OC-bQ-Vt9" id="YJ8-ar-uid"/>
                         <outlet property="toDateView" destination="o9Y-tz-vF5" id="MSI-sH-xLU"/>
-                        <outlet property="zipCodeTF" destination="4u1-NW-5BL" id="TxZ-3P-Mxx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Zk-SB-SGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1050" y="-7931"/>
+            <point key="canvasLocation" x="1556" y="-8007"/>
         </scene>
         <!--客户签名-->
         <scene sceneID="UQP-EQ-Dqf">
@@ -6829,7 +6829,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXa-Jj-DgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2939" y="-9662"/>
+            <point key="canvasLocation" x="3075" y="-9660"/>
         </scene>
         <!--Full Screen PreviewVC-->
         <scene sceneID="XbH-hE-Fn6">

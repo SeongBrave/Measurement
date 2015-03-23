@@ -86,7 +86,7 @@ static CGFloat BUTTONWIDTH = 70.0f;
     self.m_dateL.text =[product GetLabelWithKey:@"今天"];
     self.m_companyNameL.text = [product GetLabelWithKey:@"WTDWMC"];
     self.m_companyAddrL.text = [product GetLabelWithKey:@"DWDZ"];
-    self.m_contactNameL.text =  [product GetLabelWithKey:@"CJR"];
+    self.m_contactNameL.text =  [product GetLabelWithKey:@"LXRXM"];
     self.m_contactTelL.text = [product GetLabelWithKey:@"LXDH"];
     NSString *str = [product GetLabelWithKey:@"XCSJQ"];
     NSRange range;

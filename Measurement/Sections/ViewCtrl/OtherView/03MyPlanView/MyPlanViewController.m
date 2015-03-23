@@ -13,6 +13,7 @@
 #import "AddPlanDetailsPopVC.h"
 #import "backgroundV.h"
 #import "DropDownListView.h"
+#import "ProgramOverviewDidHYPopViewController.h"
 
 @interface MyPlanViewController ()<UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,SwipeMyPlanViewCellDelegate,PopViewDelegate,DropDownChooseDelegate,DropDownChooseDataSource>
 {
@@ -300,38 +301,44 @@
 {
     
     if (indexPath.row  < self.m_DataSourceArr.count) {
-        
-//        UpdatePlanDetailsPopVC *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"UpdatePlanDetailsPopVC"];;
-//        popVc.m_popDelegate = self;
-//        popVc.m_showDict = self.m_DataSourceArr[indexPath.row];
-//        
-//        debug_object(popVc.m_showDict);
-//        self.m_popVC = [[UIPopoverController alloc] initWithContentViewController:popVc];
-//        self.m_popVC.delegate = self;
-//        
-//        //TODO:popoverLayoutMargins是指你的popover相对于整个window上下左右的margin
-//        self.m_popVC.popoverLayoutMargins = UIEdgeInsetsMake(20,0,0,0);
-//        
-//        self.m_popVC.popoverBackgroundViewClass = [backgroundV class];
-//        // 设定展示区域的大小
-//        // 从这个按钮点击的位置弹出，并且popVC的指向为这个按钮的中心。
-//        //    曾有段时间纠结于这个popVC的指向， 真是麻烦得很
-//        [self.m_popVC presentPopoverFromRect:collectionView.bounds
-//                                      inView:collectionView
-//                    permittedArrowDirections:0
-//                                    animated:YES];
-        
-        UpdatePlanDetailsPopVC *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"UpdatePlanDetailsPopVC"];;
-        popVc.m_showDict = self.m_DataSourceArr[indexPath.row];
-        popVc.modalPresentationStyle = UIModalPresentationFormSheet;
-        popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        
-        [self presentViewController:popVc animated:YES completion:nil];
-        
+
+
+        [self popProgramOverviewVcByIndexPath:indexPath];
         
     }
 }
-
+/**
+ *  弹出预览界面
+ *
+ *  @param indexPath
+ */
+-(void)popProgramOverviewVcByIndexPath:(NSIndexPath *)indexPath
+{
+    ProgramOverviewDidHYPopViewController *popVc = (ProgramOverviewDidHYPopViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProgramOverviewDidHYPopViewController"];
+    
+    //        popVc.m_popDelegate = self;
+    popVc.m_showDict = self.m_DataSourceArr[indexPath.row];
+    popVc.modalPresentationStyle = UIModalPresentationFormSheet;
+    popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    //        @weakify(self)
+    [self presentViewController:popVc animated:YES completion:^(void){
+        
+    }];
+}
+/**
+ *  弹出编辑界面
+ *
+ *  @param indexPath
+ */
+-(void)popUpdatePlanDetailVcByIndexPath:(NSIndexPath *)indexPath
+{
+    UpdatePlanDetailsPopVC *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"UpdatePlanDetailsPopVC"];;
+    popVc.m_showDict = self.m_DataSourceArr[indexPath.row];
+    popVc.modalPresentationStyle = UIModalPresentationFormSheet;
+    popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    
+    [self presentViewController:popVc animated:YES completion:nil];
+}
 /**
  *  删除
  *
@@ -371,7 +378,9 @@
  */
 - (void)editorPress:(MyPlanViewCell *)cell
 {
-     [Dialog toast:@"editorPress"];
+     NSIndexPath *indexPath = [self.m_collectionView indexPathForCell:cell];
+    
+    [self popUpdatePlanDetailVcByIndexPath:indexPath];
 }
 
 /**

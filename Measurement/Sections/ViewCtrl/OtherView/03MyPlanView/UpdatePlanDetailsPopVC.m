@@ -132,46 +132,55 @@
 /**
  *  单位名称
  */
-@property (weak, nonatomic) IBOutlet AutoCompleteTextField *nameOFEntityTF;
+@property (weak, nonatomic) IBOutlet AutoCompleteTextField *m_dwmc_ATF;
 
 /**
  *  单位地址
  */
-@property (weak, nonatomic) IBOutlet UITextField *addrOFEntity;
+@property (weak, nonatomic) IBOutlet DemoTextField *m_dwdz_TF;
+
+
 /**
  *  联系人
  */
-@property (weak, nonatomic) IBOutlet UITextField *contactTF;
+@property (weak, nonatomic) IBOutlet DemoTextField *m_lxr_TF;
+
 
 /**
  *  联系电话
  */
-@property (weak, nonatomic) IBOutlet UITextField *ContactTELTF;
+
+@property (weak, nonatomic) IBOutlet DemoTextField *m_lxdh_TF;
+
 
 /**
  *  所在区
  */
-@property (weak, nonatomic) IBOutlet DropDownTextField *districtTF;
+@property (weak, nonatomic) IBOutlet DropDownTextField *m_szdq_DTF;
 
 /**
  *  行业类别
  */
-@property (weak, nonatomic) IBOutlet DropDownTextField *IndustryCategoriesTF;
+@property (weak, nonatomic) IBOutlet DropDownTextField *m_hylb_DTF;
+
 
 /**
  *  邮编
  */
-@property (weak, nonatomic) IBOutlet UITextField *zipCodeTF;
+@property (weak, nonatomic) IBOutlet DemoTextField *m_yb_TF;
 
 /**
  *  业务负责科室
  */
-@property (weak, nonatomic) IBOutlet DropDownTextField *responsibleDepTF;
+@property (weak, nonatomic) IBOutlet DropDownTextField *m_ywfzks_DTF;
+
+
 
 /**
  *  业务负责人
  */
-@property (weak, nonatomic) IBOutlet DropDownTextField *headOFTF;
+
+@property (weak, nonatomic) IBOutlet DropDownTextField *m_ywfzr_DTF;
 
 /**
  *  取证日期
@@ -183,7 +192,8 @@
 /**
  *  特殊要求
  */
-@property (weak, nonatomic) IBOutlet UITextField *specialReqTF;
+
+@property (weak, nonatomic) IBOutlet DemoTextField *m_tsyq_TF;
 
 /**
  *  备注
@@ -351,9 +361,9 @@
 -(void)updateViewDataWithShowDict:(NSDictionary *)showDict
 {
     
-    self.nameOFEntityTF.text =  [showDict GetLabelWithKey:@"WTDWMC"];
+    self.m_dwmc_ATF.text =  [showDict GetLabelWithKey:@"WTDWMC"];
     
-    self.addrOFEntity.text = [showDict GetLabelWithKey:@"DWDZ"];
+    self.m_dwdz_TF.text = [showDict GetLabelWithKey:@"DWDZ"];
     
     NSLog(@"%@",showDict[@"DWDZ"]);
     
@@ -385,25 +395,25 @@
     }
     
     
-    self.contactTF.text =[showDict GetLabelWithKey:@"LXDH"];
+    self.m_lxr_TF.text =[showDict GetLabelWithKey:@"LXDH"];
     
     
-    self.ContactTELTF.text =[showDict GetLabelWithKey:@"LXDH"];
+    self.m_lxdh_TF.text =[showDict GetLabelWithKey:@"LXDH"];
     
-    self.districtTF.text =[showDict GetLabelWithKey:@"SZDQ"];
-    
-    
-    self.IndustryCategoriesTF.text =[showDict GetLabelWithKey:@"HYLBMC"];
-    
-    self.zipCodeTF.text =[showDict GetLabelWithKey:@"YB"];
+    self.m_szdq_DTF.text =[showDict GetLabelWithKey:@"SZDQ"];
     
     
-    self.responsibleDepTF.text = [showDict GetLabelWithKey:@"YWFZKS"];
-    self.headOFTF.text =[showDict GetLabelWithKey:@"YWFZR"];
+    self.m_hylb_DTF.text =[showDict GetLabelWithKey:@"HYLBMC"];
+    
+    self.m_yb_TF.text =[showDict GetLabelWithKey:@"YB"];
+    
+    
+    self.m_ywfzks_DTF.text = [showDict GetLabelWithKey:@"YWFZKS"];
+    self.m_ywfzr_DTF.text =[showDict GetLabelWithKey:@"YWFZR"];
     
     [self.forensicsDateBtn setTitle:@"" forState:UIControlStateNormal];
     
-    self.specialReqTF.text = [showDict GetLabelWithKey:@"tsyq"];
+    self.m_tsyq_TF.text = [showDict GetLabelWithKey:@"tsyq"];
     
     self.noteTF.text = [showDict GetLabelWithKey:@"BZ"];
  
@@ -427,30 +437,30 @@
     
   
     
-    self.nameOFEntityTF.text =  [wdjhDict GetLabelWithKey:@"wtdwmc"];
+    self.m_dwmc_ATF.text =  [wdjhDict GetLabelWithKey:@"wtdwmc"];
     
-    self.addrOFEntity.text = [wdjhDict GetLabelWithKey:@"szdq"];
-    
-    
-    self.contactTF.text =[wdjhDict GetLabelWithKey:@"lxrxm"];
+    self.m_dwdz_TF.text = [wdjhDict GetLabelWithKey:@"dwdz"];
     
     
-    self.ContactTELTF.text =[wdjhDict GetLabelWithKey:@"lxrid"];
-    
-    self.districtTF.text =[wdjhDict GetLabelWithKey:@"szdq"];
+    self.m_lxr_TF.text =[wdjhDict GetLabelWithKey:@"lxrxm"];
     
     
-    self.IndustryCategoriesTF.text =[wdjhDict GetLabelWithKey:@"hylbmc"];
+    self.m_lxdh_TF.text =[wdjhDict GetLabelWithKey:@"lxdh"];
     
-    self.zipCodeTF.text =[wdjhDict GetLabelWithKey:@"yb"];
+    self.m_szdq_DTF.text =[wdjhDict GetLabelWithKey:@"szdq"];
     
     
-    self.responsibleDepTF.text = [wdjhDict GetLabelWithKey:@"ywfzks"];
-    self.headOFTF.text =[wdjhDict GetLabelWithKey:@"ywfzr"];
+    self.m_hylb_DTF.text =[wdjhDict GetLabelWithKey:@"hylbmc"];
+    
+    self.m_yb_TF.text =[wdjhDict GetLabelWithKey:@"yb"];
+    
+    
+    self.m_ywfzks_DTF.text = [wdjhDict GetLabelWithKey:@"ywfzks"];
+    self.m_ywfzr_DTF.text =[wdjhDict GetLabelWithKey:@"ywfzr"];
     
     [self.forensicsDateBtn setTitle:@"" forState:UIControlStateNormal];
     
-    self.specialReqTF.text = [wdjhDict GetLabelWithKey:@"cjsj"];
+    self.m_tsyq_TF.text = [wdjhDict GetLabelWithKey:@"cjsj"];
     
     self.noteTF.text = [wdjhDict GetLabelWithKey:@"bz"];
     
@@ -651,33 +661,43 @@
     self.fromDateView.layer.borderWidth = 2.0;
     self.fromDateView.layer.borderColor = UIColorFromRGB(217, 217, 217).CGColor;
     
-    
+
     
     /**
      *  所在区
      */
-    self.districtTF.dropDownDelegate = self;
-    self.districtTF.dropDownDataSource = self;
-    self.districtTF.delegate = self;
+    self.m_szdq_DTF.dropDownDelegate = self;
+    self.m_szdq_DTF.dropDownDataSource = self;
+    self.m_szdq_DTF.delegate = self;
     
     /**
      *  行业类别
      */
-    self.IndustryCategoriesTF.dropDownDelegate = self;
-    self.IndustryCategoriesTF.dropDownDataSource = self;
-    self.IndustryCategoriesTF.delegate = self;
+    self.m_hylb_DTF.dropDownDelegate = self;
+    self.m_hylb_DTF.dropDownDataSource = self;
+    self.m_hylb_DTF.delegate = self;
     /**
      *  业务负责人
      */
-    self.headOFTF.dropDownDelegate = self;
-    self.headOFTF.dropDownDataSource = self;
-    self.headOFTF.delegate = self;
+    self.m_ywfzr_DTF.dropDownDelegate = self;
+    self.m_ywfzr_DTF.dropDownDataSource = self;
+    self.m_ywfzr_DTF.delegate = self;
     /**
      *  业务负责科室
      */
-    self.responsibleDepTF.dropDownDelegate = self;
-    self.responsibleDepTF.dropDownDataSource = self;
-    self.responsibleDepTF.delegate = self;
+    self.m_ywfzks_DTF.dropDownDelegate = self;
+    self.m_ywfzks_DTF.dropDownDataSource = self;
+    self.m_ywfzks_DTF.delegate = self;
+    
+    
+    [self.m_dwmc_ATF setRequired:YES];
+    [self.m_dwdz_TF setRequired:YES];
+    [self.m_lxr_TF setRequired:YES];
+    [self.m_lxdh_TF setRequired:YES];
+    [self.m_szdq_DTF setRequired:YES];
+    [self.m_hylb_DTF setRequired:YES];
+    [self.m_ywfzks_DTF setRequired:YES];
+    [self.m_ywfzr_DTF setRequired:YES];
     
     
     
@@ -754,6 +774,44 @@
     
 }
 
+
+- (BOOL)validateInputInView:(UIView*)view
+{
+    
+    if (view == self.planDetailsScrollView) {
+        
+        if (![self.m_dwmc_ATF validate]) {
+            [self.m_dwmc_ATF becomeFirstResponder];
+            return NO;
+        }else if (![self.m_dwdz_TF validate]) {
+            [self.m_dwdz_TF becomeFirstResponder];
+            return NO;
+        }else if (![self.m_lxr_TF validate]) {
+            [self.m_lxr_TF becomeFirstResponder];
+            return NO;
+        }else  if (![self.m_lxdh_TF validate]) {
+            [self.m_lxdh_TF becomeFirstResponder];
+            return NO;
+        }else  if (![self.m_szdq_DTF validate]) {
+            [self.m_szdq_DTF verifyshowDropDownTableView];
+            return NO;
+        }else  if (![self.m_hylb_DTF validate]) {
+            [self.m_hylb_DTF verifyshowDropDownTableView];
+            return NO;
+        }else  if (![self.m_ywfzks_DTF validate]) {
+            [self.m_ywfzks_DTF verifyshowDropDownTableView];
+            return NO;
+        }else  if (![self.m_ywfzr_DTF validate]) {
+            [self.m_ywfzr_DTF verifyshowDropDownTableView];
+            return NO;
+        }else
+            return YES;
+    }else
+    {
+        return YES;
+    }
+    
+}
 
 /**
  *  添加rac检测
@@ -1124,22 +1182,22 @@
         if ([dict0 objectForKey:@"WTDWDZ"])
         {
          
-             self.addrOFEntity.text = [dict0 GetLabelWithKey:@"SZDQ"];
+             self.m_dwdz_TF.text = [dict0 GetLabelWithKey:@"SZDQ"];
             
             
-            self.addrOFEntity.text =[dict0 GetLabelWithKey:@"WTDWDZ"];
-            self.zipCodeTF.text = [dict0 GetLabelWithKey:@"WTDWYB"] ;
-            self.contactTF.text = [dict1 GetLabelWithKey:@"LXR"] ;
-            self.ContactTELTF.text = [dict1 GetLabelWithKey:@"LXR"];
+            self.m_dwdz_TF.text =[dict0 GetLabelWithKey:@"WTDWDZ"];
+            self.m_yb_TF.text = [dict0 GetLabelWithKey:@"WTDWYB"] ;
+            self.m_lxr_TF.text = [dict1 GetLabelWithKey:@"LXR"] ;
+            self.m_lxdh_TF.text = [dict1 GetLabelWithKey:@"LXR"];
             
             dqbhStr =  [dict0 GetLabelWithKey:@"SZDQ"];
             
         }else //否则说明arr[0] 是 联系人信息
         {
-            self.addrOFEntity.text = [dict1 GetLabelWithKey:@"WTDWDZ"];
-            self.zipCodeTF.text = [dict1 GetLabelWithKey:@"WTDWYB"];
-            self.contactTF.text = [dict0 GetLabelWithKey:@"LXR"];
-            self.ContactTELTF.text = [dict0 GetLabelWithKey:@"LXDH"];
+            self.m_dwdz_TF.text = [dict1 GetLabelWithKey:@"WTDWDZ"];
+            self.m_yb_TF.text = [dict1 GetLabelWithKey:@"WTDWYB"];
+            self.m_lxr_TF.text = [dict0 GetLabelWithKey:@"LXR"];
+            self.m_lxdh_TF.text = [dict0 GetLabelWithKey:@"LXDH"];
             
             dqbhStr = [dict1 GetLabelWithKey:@"SZDQ"];
         }
@@ -1158,7 +1216,7 @@
          subscribeNext:^(NSArray *arr) {
              
              @strongify(self)
-             self.districtTF.text = arr[0][@"dqmc"];
+             self.m_szdq_DTF.text = arr[0][@"dqmc"];
              
          }error:^(NSError *error){
              //          @strongify(self)
@@ -1196,40 +1254,49 @@
 - (IBAction)okClick:(id)sender {
     
     
-    NSString *rwbhStr = self.m_showDict[@"RWBH"];
-    
-    NSString *strdwmc = self.nameOFEntityTF.text;
-    
-    LoginedUser *usr = [LoginedUser sharedInstance];
-    
-    
-    @weakify(self)
-    [[BaseNetWork getInstance] showDialogWithVC:self];
-    NSDictionary *dict =@{@"rwbh":rwbhStr,@"wtdwmc":strdwmc,@"usercode":usr.usercode};
-    [[[[[BaseNetWork getInstance] rac_postPath:@"editDutyToDwmc.do" parameters:dict]map:^(id responseData)
-       {
-           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-           
-           return [dict valueForKeyPath:@"ret"];
-       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-     subscribeNext:^(NSString *isOK) {
-         
-         @strongify(self)
-         
-         if ([isOK integerValue] == 1) {
-             [Dialog toast:self withMessage:@"修改成功"];
-         }else
-         {
-             [Dialog toast:self withMessage:@"修改失败!"];
-         }
-         
-     }error:^(NSError *error){
-         
-         debug_object(error);
-         
-         
-     }];
-
+    if (![self validateInputInView:self.planDetailsScrollView]){
+        [self.m_showDialog WarningNotificationWithMessage:@"请补全信息!"];
+        
+    }else
+    {
+        
+        NSString *rwbhStr = self.m_showDict[@"RWBH"];
+        
+        NSString *strdwmc = self.m_dwmc_ATF.text;
+        
+        LoginedUser *usr = [LoginedUser sharedInstance];
+        
+        
+        @weakify(self)
+        [[BaseNetWork getInstance] showDialogWithVC:self];
+        NSDictionary *dict =@{@"rwbh":rwbhStr,@"wtdwmc":strdwmc,@"usercode":usr.usercode};
+        [[[[[BaseNetWork getInstance] rac_postPath:@"editDutyToDwmc.do" parameters:dict]map:^(id responseData)
+           {
+               NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+               
+               return [dict valueForKeyPath:@"ret"];
+           }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+         subscribeNext:^(NSString *isOK) {
+             
+             @strongify(self)
+             
+             if ([isOK integerValue] == 1) {
+                 [Dialog toast:self withMessage:@"修改成功"];
+             }else
+             {
+                 [Dialog toast:self withMessage:@"修改失败!"];
+             }
+             
+         }error:^(NSError *error){
+             
+             debug_object(error);
+             
+             
+         }];
+        
+        
+    }
+   
     
     
     
@@ -1668,13 +1735,13 @@
 
 {
     
-    if (textField == self.districtTF) {
+    if (textField == self.m_szdq_DTF) {
         return self.districtArr;
-    }else if (textField == self.IndustryCategoriesTF) {
+    }else if (textField == self.m_hylb_DTF) {
         return self.industryCategoriesArr;
-    }else if (textField == self.responsibleDepTF) {
+    }else if (textField == self.m_ywfzks_DTF) {
         return self.responsibleDepArr;
-    }else if (textField == self.headOFTF) {
+    }else if (textField == self.m_ywfzr_DTF) {
         return self.headOFArr;
     }
     return nil;
@@ -1684,13 +1751,13 @@
 -(void)dropDownTextField:(DropDownTextField *)textField didSelectedWithData:(id<DropDownTextFieldShowCellTextLabel>) data forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if (textField == self.districtTF) {
+    if (textField == self.m_szdq_DTF) {
         
         
-    }else if (textField == self.IndustryCategoriesTF) {
+    }else if (textField == self.m_hylb_DTF) {
         
         
-    }else if (textField == self.responsibleDepTF)
+    }else if (textField == self.m_ywfzks_DTF)
     {
         //在选择完 业务负责科室 后需要更新业务负责人得数据
         ResponsibleDepModel *respModel = ( ResponsibleDepModel *)data;
@@ -1709,7 +1776,7 @@
         
         
         
-    }else if (textField == self.headOFTF) {
+    }else if (textField == self.m_ywfzr_DTF) {
         
     }
     debug_object([data getShowCellForTextLabel]);
@@ -1890,22 +1957,22 @@
     
     DropDownTextField *myTextField = (DropDownTextField *)textField;
     
-    if (myTextField == self.districtTF) {
+    if (myTextField == self.m_szdq_DTF) {
         
         return NO;
         
-    }else if (myTextField == self.IndustryCategoriesTF) {
+    }else if (myTextField == self.m_hylb_DTF) {
         
         return NO;
         
-    }else if (myTextField == self.responsibleDepTF)
+    }else if (myTextField == self.m_ywfzks_DTF)
     {
         
         return NO;
         
         
         
-    }else if (textField == self.headOFTF) {
+    }else if (textField == self.m_ywfzr_DTF) {
         
         return NO;
     }
