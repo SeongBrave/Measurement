@@ -237,6 +237,11 @@
  */
 
 /**
+ *  用于保存最后确定时传的参数
+ */
+@property(nonatomic ,strong)NSMutableDictionary *m_saveDataDict;
+
+/**
  *  单位名称
  */
 @property (weak, nonatomic) IBOutlet UILabel *signature_wtdwmc_Label;
@@ -260,6 +265,49 @@
 @end
 @implementation UpdatePlanDetailsPopVC
 
+
+-(NSMutableDictionary *)m_saveDataDict
+{
+    if (_m_saveDataDict == nil) {
+        _m_saveDataDict = [[NSMutableDictionary alloc]init];
+        [self resetSaveDict];
+        
+    }
+    
+    return _m_saveDataDict;
+}
+
+-(void)resetSaveDict
+{
+    _m_saveDataDict[@"BZ"] = @"";
+    _m_saveDataDict[@"DWDZ"] = @"";
+    _m_saveDataDict[@"HYLBID"] = @"";
+    _m_saveDataDict[@"HYLBMC"] = @"";
+    _m_saveDataDict[@"KHTSYQ"] = @"";
+    _m_saveDataDict[@"LXDH"] = @"";
+    _m_saveDataDict[@"LXRXM"] = @"";
+    _m_saveDataDict[@"QZRQ"] = @"";
+    _m_saveDataDict[@"RWWCQK"] = @"";
+    _m_saveDataDict[@"SZDQ"] = @"";
+    _m_saveDataDict[@"SZDQBH"] = @"";
+    _m_saveDataDict[@"WTDWBH"] = @"";
+    _m_saveDataDict[@"WTDWMC"] = @"";
+    _m_saveDataDict[@"XCFZR"] = @"";
+    _m_saveDataDict[@"XCFZRBH"] = @"";
+    _m_saveDataDict[@"XCSJQ"] = @"";
+    _m_saveDataDict[@"XCSJZ"] = @"";
+    _m_saveDataDict[@"YB"] = @"";
+    _m_saveDataDict[@"YWFZKS"] = @"";
+    _m_saveDataDict[@"YWFZKSBH"] = @"";
+    _m_saveDataDict[@"YWFZR"] = @"";
+    _m_saveDataDict[@"YWFZRBH"] = @"";
+    _m_saveDataDict[@"usercode"] = @"";
+    _m_saveDataDict[@"xcksbhs"] = @"";
+    _m_saveDataDict[@"xcrybhs"] = @"";
+    _m_saveDataDict[@"RWWCQK"] = @"";
+    _m_saveDataDict[@"id"] = @"";
+    
+}
 
 
 #pragma mark - 系统方法
@@ -435,7 +483,11 @@
     NSDictionary * wdjhDict = retDict[@"wdjh"];
     
     
-  
+//
+    
+    self.m_saveDataDict[@"RWWCQK"] = [wdjhDict GetLabelWithKey:@"rwwcqk"];
+    self.m_saveDataDict[@"id"] =   [wdjhDict GetLabelWithKey:@"rwbh"];
+    
     
     self.m_dwmc_ATF.text =  [wdjhDict GetLabelWithKey:@"wtdwmc"];
     
@@ -1181,19 +1233,17 @@
         NSDictionary *dict1 = [NSDictionary dictionaryWithDictionary:arr[1][0]];
         if ([dict0 objectForKey:@"WTDWDZ"])
         {
-         
-             self.m_dwdz_TF.text = [dict0 GetLabelWithKey:@"SZDQ"];
-            
-            
             self.m_dwdz_TF.text =[dict0 GetLabelWithKey:@"WTDWDZ"];
             self.m_yb_TF.text = [dict0 GetLabelWithKey:@"WTDWYB"] ;
             self.m_lxr_TF.text = [dict1 GetLabelWithKey:@"LXR"] ;
             self.m_lxdh_TF.text = [dict1 GetLabelWithKey:@"LXR"];
+            self.m_dwmc_ATF.m_bm = [dict0 GetLabelWithKey:@"WTDWBM"];
             
             dqbhStr =  [dict0 GetLabelWithKey:@"SZDQ"];
             
         }else //否则说明arr[0] 是 联系人信息
         {
+            self.m_dwmc_ATF.m_bm = [dict1 GetLabelWithKey:@"WTDWBM"];
             self.m_dwdz_TF.text = [dict1 GetLabelWithKey:@"WTDWDZ"];
             self.m_yb_TF.text = [dict1 GetLabelWithKey:@"WTDWYB"];
             self.m_lxr_TF.text = [dict0 GetLabelWithKey:@"LXR"];
@@ -1260,17 +1310,11 @@
     }else
     {
         
-        NSString *rwbhStr = self.m_showDict[@"RWBH"];
-        
-        NSString *strdwmc = self.m_dwmc_ATF.text;
-        
-        LoginedUser *usr = [LoginedUser sharedInstance];
-        
+        [self save_Data];
         
         @weakify(self)
         [[BaseNetWork getInstance] showDialogWithVC:self];
-        NSDictionary *dict =@{@"rwbh":rwbhStr,@"wtdwmc":strdwmc,@"usercode":usr.usercode};
-        [[[[[BaseNetWork getInstance] rac_postPath:@"editDutyToDwmc.do" parameters:dict]map:^(id responseData)
+        [[[[[BaseNetWork getInstance] rac_postPath:@"editDutyToDwmc.do" parameters:self.m_saveDataDict]map:^(id responseData)
            {
                NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
                
@@ -1299,6 +1343,138 @@
    
     
     
+    
+}
+
+
+/**
+ *  usercode
+ WTDWBH VARCHAR2(10 CHAR) Y WTDWMCVARCHAR2(60 CHAR) Y DWDZ VARCHAR2(60 CHAR) Y
+ LXRXM VARCHAR2(10 CHAR) Y LXDH VARCHAR2(15 CHAR) Y YWFZKSBH VARCHAR2(8 CHAR) YWFZKSVARCHAR2(10 CHAR) Y YWFZRBH VARCHAR2(14 CHAR)
+ YWFZR VARCHAR2(10 CHAR) Y HYLBIDVARCHAR2(32 CHAR) Y
+ Y Y
+ 当前用户编号
+ 委托单位编号
+ 委托单位名称
+ 单位地址
+ 联系人 联系电话
+ 业务负责科室编号
+ 业务负责科室
+ 业务负责人编号
+ 业务负责人 行业类别id
+ 已完成
+ Y 行业类别名称 Y 所在地区编号 Y 所在地区
+ 邮编
+ XCSJZ DATE Y 下场时间至
+ RWWCQKVARCHAR2(1) Y 0 任务完成情况 0 未完成 1 是
+ HYLBMCVARCHAR2(60 CHAR) SZDQBHVARCHAR2(32 CHAR) SZDQ VARCHAR2(20 CHAR)
+ YB VARCHAR2(10 CHAR) Y
+ QZRQ DATE Y 取证日期 KHTSYQVARCHAR2(60 CHAR) Y 客户特殊要求 BZ VARCHAR2(500 CHAR) Y 备注
+ XCSJQ DATE Y 下场时间起
+ XCFZR VARCHAR2(10 CHAR) Y XCFZRBH VARCHAR2(10 CHAR) Y xcksbhs 下厂科室组
+ xcrybhs 下厂人员组
+ 下场负责人
+ 下场负责人编号
+ */
+-(void)save_Data
+{
+    
+    LoginedUser *usr = [LoginedUser sharedInstance];
+    
+    //当前登录用户的usercode
+    [self.m_saveDataDict setObject:[usr.usercode GetNotNullStr]forKey:@"usercode"];
+    //委托单位编号
+    [self.m_saveDataDict setObject:[_m_dwmc_ATF.m_bm GetNotNullStr].length>0?[_m_dwmc_ATF.m_bm GetNotNullStr]:@"" forKey:@"WTDWBH"];
+    //委托单位名称
+    [self.m_saveDataDict setObject:[_m_dwmc_ATF.text GetNotNullStr].length>0?[_m_dwmc_ATF.text GetNotNullStr]:@""forKey:@"WTDWMC"];
+    //单位地址
+    [self.m_saveDataDict setObject:[_m_dwdz_TF.text GetNotNullStr].length>0?[_m_dwdz_TF.text GetNotNullStr]:@"" forKey:@"DWDZ"];
+    //联系人
+    [self.m_saveDataDict setObject:[_m_lxr_TF.text GetNotNullStr].length>0?[_m_lxr_TF.text GetNotNullStr]:@"" forKey:@"LXRXM"];
+    //联系电话
+    [self.m_saveDataDict setObject:[_m_lxdh_TF.text GetNotNullStr].length>0?[_m_lxdh_TF.text GetNotNullStr]:@"" forKey:@"LXDH"];
+    
+    
+    
+    
+    //邮编
+    [self.m_saveDataDict setObject:[_m_yb_TF.text GetNotNullStr].length>0?[_m_yb_TF.text GetNotNullStr]:@"" forKey:@"YB"];
+    
+    // 将NSDate格式装换成NSString类型
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    // 设置日历显示格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    // 把日历时间传给字符串
+    NSString *strQzrq = [dateFormatter stringFromDate:self.forensicsDateBtn.m_info[@"date"]];
+    
+    //取证日期 forensicsDateBtn
+    [self.m_saveDataDict setObject:[strQzrq GetNotNullStr] forKey:@"QZRQ"];
+    //客户特殊要求
+    [self.m_saveDataDict setObject:[_m_tsyq_TF.text GetNotNullStr] forKey:@"KHTSYQ"];
+    //备注
+    [self.m_saveDataDict setObject:[_noteTF.text GetNotNullStr] forKey:@"BZ"];
+    
+    
+    NSString *strXcsjq = [dateFormatter stringFromDate:self.fromDatePickerBtn.m_info[@"date"]];
+    //下场时间起
+    [self.m_saveDataDict setObject:[strXcsjq GetNotNullStr]forKey:@"XCSJQ"];
+    
+    NSString *strXcsjz = [dateFormatter stringFromDate:self.toDatePickerBtn.m_info[@"date"]];
+    //下场时间至
+    [self.m_saveDataDict setObject:[strXcsjz GetNotNullStr] forKey:@"XCSJZ"];
+    
+    
+    //TODO:需要确认 任务完成情况从哪来的
+    //任务完成情况 0 未完成 1 是已完成
+//    [self.m_saveDataDict setObject:@"0" forKey:@"RWWCQK"];
+    
+    //self.m_ks_headArr
+    
+    
+    //TODO:效率太低有待优化
+    NSString *xcfzrStr = nil;
+    NSString *xcfzrbhStr = nil;
+    for(ks_Model *ksModel in self.m_ks_headArr)
+    {
+        if (ksModel.isSelected) {
+            
+            for( ry_Model *rymodel in ksModel.selected_RYArr)
+            {
+                xcfzrStr =  rymodel.username;
+                xcfzrbhStr =  rymodel.usercode;
+            }
+        }
+        
+    }
+    //下场负责人
+    [self.m_saveDataDict setObject:[xcfzrStr GetNotNullStr] forKey:@"XCFZR"];
+    //下场负责人编号
+    [self.m_saveDataDict setObject:[xcfzrbhStr GetNotNullStr] forKey:@"XCFZRBH"];
+    
+    
+    
+    NSMutableArray *xcksArr = [[NSMutableArray alloc]init];
+    NSMutableArray *xcryArr = [[NSMutableArray alloc]init];
+    
+    for(ks_Model *ksModel in self.m_ks_mansArr)
+    {
+        if (ksModel.isSelected) {
+            
+            [xcksArr addObject:ksModel.comcode];
+            
+            for( ry_Model *rymodel in ksModel.selected_RYArr)
+            {
+                [xcryArr addObject:rymodel.usercode];
+            }
+        }
+        
+    }
+    
+    //下厂科室组
+    [self.m_saveDataDict setObject:[xcksArr componentsJoinedByString:@","] forKey:@"xcksbhs"];
+    //下厂人员组
+    [self.m_saveDataDict setObject:[xcryArr componentsJoinedByString:@","] forKey:@"xcrybhs"];
     
 }
 
@@ -1898,6 +2074,9 @@
     
     
 
+    debug_object(@"sadfasdasdfasdfasdfasdfasfas");
+    
+    
     
     if ([_m_showDict[@"BY1"] isEqualToString:@"0"]) {
         

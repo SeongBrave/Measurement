@@ -233,7 +233,7 @@
                   symbolName = "-[ApprovalTaskDidPopVc hy_tj_BtnClick:]"
                   moduleName = "Measurement"
                   urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/07ApprovalTaskView/ApprovalTaskDidPopVc.m"
-                  timestampString = "448731038.26116"
+                  timestampString = "448824203.104036"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "858"
@@ -247,7 +247,7 @@
                   symbolName = "__39-[ApprovalTaskDidPopVc hy_tj_BtnClick:]_block_invoke"
                   moduleName = "Measurement"
                   urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/07ApprovalTaskView/ApprovalTaskDidPopVc.m"
-                  timestampString = "448731038.261316"
+                  timestampString = "448824203.104175"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "860"
@@ -311,7 +311,7 @@
                   symbolName = "-[CheckTaskDidPopVc hy_tj_BtnClick:]"
                   moduleName = "Measurement"
                   urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/06CheckTaskView/CheckTaskDidPopVc.m"
-                  timestampString = "448731038.263379"
+                  timestampString = "448824203.106196"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "868"
@@ -325,7 +325,7 @@
                   symbolName = "__36-[CheckTaskDidPopVc hy_tj_BtnClick:]_block_invoke"
                   moduleName = "Measurement"
                   urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/06CheckTaskView/CheckTaskDidPopVc.m"
-                  timestampString = "448731038.263517"
+                  timestampString = "448824203.106342"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "870"
@@ -412,6 +412,102 @@
             startingLineNumber = "3098"
             endingLineNumber = "3098"
             landmarkName = "-autoCompleteTextField:didSelectAutoCompleteString:withAutoCompleteObject:forRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/AddPlanDetailsPopVC.m"
+            timestampString = "448813030.902774"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "536"
+            endingLineNumber = "536"
+            landmarkName = "-validateInputInView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/UpdatePlanDetailsPopVC.m"
+            timestampString = "448822259.718477"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1320"
+            endingLineNumber = "1320"
+            landmarkName = "-okClick:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/UpdatePlanDetailsPopVC.m"
+            timestampString = "448822261.930454"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1315"
+            endingLineNumber = "1315"
+            landmarkName = "-okClick:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/UpdatePlanDetailsPopVC.m"
+            timestampString = "448822276.42956"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1478"
+            endingLineNumber = "1478"
+            landmarkName = "-save_Data"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/UpdatePlanDetailsPopVC.m"
+            timestampString = "448824003.495674"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2086"
+            endingLineNumber = "2086"
+            landmarkName = "-SignatureClick:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/UpdatePlanDetailsPopVC.m"
+            timestampString = "448824003.495674"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2077"
+            endingLineNumber = "2077"
+            landmarkName = "-SignatureClick:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

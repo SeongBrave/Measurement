@@ -1198,6 +1198,7 @@
         
         SignatureViewController *signatureVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SignatureViewController"];
         
+        signatureVC.m_rwbh_Str = _m_showDict[@"RWBH"];
         
         signatureVC.m_delegate = self;
         signatureVC.modalPresentationStyle = UIModalPresentationFormSheet;
