@@ -185,31 +185,39 @@
 
 -(void)resetSaveDict
 {
-    _m_saveDataDict[@"BZ"] = @"";
-    _m_saveDataDict[@"DWDZ"] = @"";
-    _m_saveDataDict[@"HYLBID"] = @"";
-    _m_saveDataDict[@"HYLBMC"] = @"";
-    _m_saveDataDict[@"KHTSYQ"] = @"";
-    _m_saveDataDict[@"LXDH"] = @"";
-    _m_saveDataDict[@"LXRXM"] = @"";
-    _m_saveDataDict[@"QZRQ"] = @"";
-    _m_saveDataDict[@"RWWCQK"] = @"";
-    _m_saveDataDict[@"SZDQ"] = @"";
-    _m_saveDataDict[@"SZDQBH"] = @"";
-    _m_saveDataDict[@"WTDWBH"] = @"";
-    _m_saveDataDict[@"WTDWMC"] = @"";
-    _m_saveDataDict[@"XCFZR"] = @"";
-    _m_saveDataDict[@"XCFZRBH"] = @"";
-    _m_saveDataDict[@"XCSJQ"] = @"";
-     _m_saveDataDict[@"XCSJZ"] = @"";
-     _m_saveDataDict[@"YB"] = @"";
-     _m_saveDataDict[@"YWFZKS"] = @"";
-    _m_saveDataDict[@"YWFZKSBH"] = @"";
-    _m_saveDataDict[@"YWFZR"] = @"";
-    _m_saveDataDict[@"YWFZRBH"] = @"";
-    _m_saveDataDict[@"usercode"] = @"";
-    _m_saveDataDict[@"xcksbhs"] = @"";
-    _m_saveDataDict[@"xcrybhs"] = @"";
+    
+    self.m_saveDataDict[@"WTDWBH"] = @"";
+     self.m_saveDataDict[@"WTDWMC"] = @"";
+    self.m_saveDataDict[@"DWDZ"] = @"";
+    
+    
+    
+    self.m_saveDataDict[@"LXRXM"] = @"";
+     self.m_saveDataDict[@"LXDH"] = @"";
+    self.m_saveDataDict[@"YWFZKSBH"] = @"";
+    self.m_saveDataDict[@"YWFZKS"] = @"";
+    self.m_saveDataDict[@"YWFZRBH"] = @"";
+    
+    
+    self.m_saveDataDict[@"YWFZR"] = @"";
+    self.m_saveDataDict[@"HYLBID"] = @"";
+    self.m_saveDataDict[@"HYLBMC"] = @"";
+    self.m_saveDataDict[@"SZDQBH"] = @"";
+    self.m_saveDataDict[@"SZDQ"] = @"";
+    self.m_saveDataDict[@"YB"] = @"";
+     self.m_saveDataDict[@"QZRQ"] = @"";
+    self.m_saveDataDict[@"KHTSYQ"] = @"";
+   self.m_saveDataDict[@"BZ"] = @"";
+    self.m_saveDataDict[@"XCSJQ"] = @"";
+    self.m_saveDataDict[@"XCSJZ"] = @"";
+    
+    self.m_saveDataDict[@"RWWCQK"] = @"";
+    self.m_saveDataDict[@"XCFZR"] = @"";
+    self.m_saveDataDict[@"XCFZRBH"] = @"";
+    
+    self.m_saveDataDict[@"usercode"] = @"";
+    self.m_saveDataDict[@"xcksbhs"] = @"";
+    self.m_saveDataDict[@"xcrybhs"] = @"";
     
 }
 #pragma mark - 系统方法
@@ -682,6 +690,10 @@
              @strongify(self)
              self.m_szdq_DTF.text = arr[0][@"dqmc"];
              
+             self.m_saveDataDict[@"SZDQBH"] = arr[0][@"dqbh"];
+              self.m_saveDataDict[@"SZDQ"] = arr[0][@"dqmc"];
+             
+             
          }error:^(NSError *error){
              //          @strongify(self)
              ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
@@ -723,7 +735,7 @@
     }else
     {
     
-        [self saveData];
+        [self save_Data];
         
         [[BaseNetWork getInstance] showDialogWithVC:self];
         [[[[[BaseNetWork getInstance] rac_postPath:@"saveDutyc.do" parameters:self.m_saveDataDict]map:^(id responseData)
@@ -795,17 +807,14 @@
  下场负责人
  下场负责人编号
  */
--(void)saveData
+-(void)save_Data
 {
     
     LoginedUser *usr = [LoginedUser sharedInstance];
 
     //当前登录用户的usercode
     [self.m_saveDataDict setObject:[usr.usercode GetNotNullStr]forKey:@"usercode"];
-    //委托单位编号
-    [self.m_saveDataDict setObject:[_m_dwmc_ATF.m_bm GetNotNullStr].length>0?[_m_dwmc_ATF.m_bm GetNotNullStr]:@"" forKey:@"WTDWBH"];
-    //委托单位名称
-    [self.m_saveDataDict setObject:[_m_dwmc_ATF.text GetNotNullStr].length>0?[_m_dwmc_ATF.text GetNotNullStr]:@""forKey:@"WTDWMC"];
+
     //单位地址
     [self.m_saveDataDict setObject:[_m_dwdz_TF.text GetNotNullStr].length>0?[_m_dwdz_TF.text GetNotNullStr]:@"" forKey:@"DWDZ"];
     //联系人
@@ -1099,6 +1108,11 @@
     
     autoTableViewData *data = ( autoTableViewData *)selectedObject;
     
+    
+    self.m_saveDataDict[@"WTDWBH"] = data.m_dict[@"WTDWBM"];
+    self.m_saveDataDict[@"WTDWMC"] = data.m_dict[@"WTDWMC"];
+    
+    
     @weakify(self)
     [[BaseNetWork getInstance] showDialog];
     NSDictionary *dict =@{@"wtdwbm":data.m_dict[@"WTDWBM"]};
@@ -1195,10 +1209,10 @@
         DistrictModel *districtModel = self.districtArr[indexPath.row];
         
         NSDictionary *dict = districtModel.m_data;
-           //所在地区编号
-        [self.m_saveDataDict setObject:[dict GetLabelWithKey:@"dqbh"] forKey:@"SZDQBH"];
-          //所在地区
-        [self.m_saveDataDict setObject:[dict GetLabelWithKey:@"dqmc"] forKey:@"SZDQ"];
+
+        
+        self.m_saveDataDict[@"SZDQBH"] = [dict GetLabelWithKey:@"dqbh"];
+        self.m_saveDataDict[@"SZDQ"] = [dict GetLabelWithKey:@"dqmc"];
         
         
     }else if (textField == self.m_hylb_DTF) {
@@ -1207,10 +1221,13 @@
         
         NSDictionary *dict = districtModel.m_data;
        
+       
         //行业类别id
-        [self.m_saveDataDict setObject:[dict GetLabelWithKey:@"ID"] forKey:@"HYLBID"];
-        //行业类别名称
-        [self.m_saveDataDict setObject:[dict GetLabelWithKey:@"DMXXMC"] forKey:@"HYLBMC"];
+        self.m_saveDataDict[@"HYLBID"] = [dict GetLabelWithKey:@"ID"];
+         //行业类别名称
+        self.m_saveDataDict[@"HYLBMC"] = [dict GetLabelWithKey:@"DMXXMC"];
+        
+        
         
     }else if (textField == self.m_ywfzks_DTF)
     {

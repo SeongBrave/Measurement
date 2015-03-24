@@ -13,7 +13,7 @@
 #import "AddPlanDetailsPopVC.h"
 #import "backgroundV.h"
 #import "DropDownListView.h"
-#import "ProgramOverviewDidHYPopViewController.h"
+#import "MyPlanOverviewVc.h"
 
 @interface MyPlanViewController ()<UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,SwipeMyPlanViewCellDelegate,PopViewDelegate,DropDownChooseDelegate,DropDownChooseDataSource>
 {
@@ -314,7 +314,7 @@
  */
 -(void)popProgramOverviewVcByIndexPath:(NSIndexPath *)indexPath
 {
-    ProgramOverviewDidHYPopViewController *popVc = (ProgramOverviewDidHYPopViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProgramOverviewDidHYPopViewController"];
+    MyPlanOverviewVc *popVc = (MyPlanOverviewVc*)[self.storyboard instantiateViewControllerWithIdentifier:@"MyPlanOverviewVc"];
     
     //        popVc.m_popDelegate = self;
     popVc.m_showDict = self.m_DataSourceArr[indexPath.row];

@@ -109,6 +109,7 @@
 		C9969BBF1ABC79C500780E9D /* Wcjdjh_ksry_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9969BBE1ABC79C500780E9D /* Wcjdjh_ksry_Cell.m */; };
 		C9969BC21ABC7B6800780E9D /* Wcjdjh_Xcks_Vc.m in Sources */ = {isa = PBXBuildFile; fileRef = C9969BC11ABC7B6800780E9D /* Wcjdjh_Xcks_Vc.m */; };
 		C9969BC51ABC7B8700780E9D /* Wcjdjh_Ksry_Vc.m in Sources */ = {isa = PBXBuildFile; fileRef = C9969BC41ABC7B8700780E9D /* Wcjdjh_Ksry_Vc.m */; };
+		C99728C01AC19C5F0029E8AA /* MyPlanOverviewVc.m in Sources */ = {isa = PBXBuildFile; fileRef = C99728BF1AC19C5F0029E8AA /* MyPlanOverviewVc.m */; };
 		C99F47C11A4B0BAF007C68AB /* CompanyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F47C01A4B0BAF007C68AB /* CompanyCollectionViewCell.m */; };
 		C99FD92A1A4C4F2F000AB1A6 /* ProgramOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C99FD9291A4C4F2F000AB1A6 /* ProgramOverviewCell.m */; };
 		C9A4350C1A9C254100F85046 /* xmbh_Auto_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A4350B1A9C254100F85046 /* xmbh_Auto_Model.m */; };
@@ -408,6 +409,8 @@
 		C9969BC11ABC7B6800780E9D /* Wcjdjh_Xcks_Vc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wcjdjh_Xcks_Vc.m; sourceTree = "<group>"; };
 		C9969BC31ABC7B8700780E9D /* Wcjdjh_Ksry_Vc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wcjdjh_Ksry_Vc.h; sourceTree = "<group>"; };
 		C9969BC41ABC7B8700780E9D /* Wcjdjh_Ksry_Vc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wcjdjh_Ksry_Vc.m; sourceTree = "<group>"; };
+		C99728BE1AC19C5F0029E8AA /* MyPlanOverviewVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlanOverviewVc.h; sourceTree = "<group>"; };
+		C99728BF1AC19C5F0029E8AA /* MyPlanOverviewVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPlanOverviewVc.m; sourceTree = "<group>"; };
 		C99F47BF1A4B0BAF007C68AB /* CompanyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyCollectionViewCell.h; sourceTree = "<group>"; };
 		C99F47C01A4B0BAF007C68AB /* CompanyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyCollectionViewCell.m; sourceTree = "<group>"; };
 		C99FD9281A4C4F2F000AB1A6 /* ProgramOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramOverviewCell.h; sourceTree = "<group>"; };
@@ -1223,6 +1226,8 @@
 				C970942A1A62D09A00141DC5 /* AddPlanDetailsPopVC.m */,
 				C97094351A62D09A00141DC5 /* UpdatePlanDetailsPopVC.h */,
 				C97094361A62D09A00141DC5 /* UpdatePlanDetailsPopVC.m */,
+				C99728BE1AC19C5F0029E8AA /* MyPlanOverviewVc.h */,
+				C99728BF1AC19C5F0029E8AA /* MyPlanOverviewVc.m */,
 			);
 			path = 03MyPlanView;
 			sourceTree = "<group>";
@@ -2181,6 +2186,7 @@
 				C93AC00F1A7BECDD00FB3EE1 /* pzr_Model.m in Sources */,
 				C9E94DCD1A4A669100E8CC83 /* MJRefreshFooterView.m in Sources */,
 				C9E6B2D11A88FE7500432DE8 /* wlqsb_Model.m in Sources */,
+				C99728C01AC19C5F0029E8AA /* MyPlanOverviewVc.m in Sources */,
 				C9651FC31A43B25F00B770BB /* BaseNetWork.m in Sources */,
 				C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */,
 				C9D23C3B1AA73076001EA654 /* Jcrwcx_Model.m in Sources */,
