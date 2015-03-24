@@ -1223,7 +1223,7 @@
        
        
         //行业类别id
-        self.m_saveDataDict[@"HYLBID"] = [dict GetLabelWithKey:@"ID"];
+        self.m_saveDataDict[@"HYLBID"] = [dict GetLabelWithKey:@"DMBM"];
          //行业类别名称
         self.m_saveDataDict[@"HYLBMC"] = [dict GetLabelWithKey:@"DMXXMC"];
         

@@ -504,6 +504,8 @@
     //当前登录用户的usercode
     
     self.m_saveDataDict[@"id"] = [wdjhDict GetLabelWithKey:@"rwbh"];
+    
+    
     self.m_saveDataDict[@"usercode"] = usr.usercode;
     self.m_saveDataDict[@"DWDZ"] = [wdjhDict GetLabelWithKey:@"dwdz"];
     self.m_saveDataDict[@"LXRXM"] = [wdjhDict GetLabelWithKey:@"lxrxm"];
@@ -594,7 +596,6 @@
         
         Wcjdjh_Xcks_Model *model = [MTLJSONAdapter modelOfClass:[Wcjdjh_Xcks_Model class] fromJSONDictionary:dict error:nil];
 
-        
         NSArray *myarr = dict[@"ry"];
         model.m_ksryArr =[myarr linq_select:^id(NSDictionary *dict){
             
@@ -2024,7 +2025,7 @@
         
         
         //行业类别id
-        self.m_saveDataDict[@"HYLBID"] = [dict GetLabelWithKey:@"ID"];
+        self.m_saveDataDict[@"HYLBID"] = [dict GetLabelWithKey:@"DMBM"];
         //行业类别名称
         self.m_saveDataDict[@"HYLBMC"] = [dict GetLabelWithKey:@"DMXXMC"];
         

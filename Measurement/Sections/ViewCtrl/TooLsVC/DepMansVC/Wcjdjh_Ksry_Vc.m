@@ -133,15 +133,15 @@
     }
     
     
-    if ([model.state intValue] == 1) {
-        
-        [self.m_didSelectedArr addObject:model];
-    }else
-    {
-        [self.m_didSelectedArr removeObject:model];
-    }
-    
-     self.m_model.m_ksryArr = _m_didSelectedArr;
+//    if ([model.state intValue] == 1) {
+//        
+//        [self.m_didSelectedArr addObject:model];
+//    }else
+//    {
+//        [self.m_didSelectedArr removeObject:model];
+//    }
+//    
+//     self.m_model.m_ksryArr = _m_didSelectedArr;
     
     if ([self.m_delegate respondsToSelector:@selector(Wcjdjh_Xcks_Vc:didSelectedArr:)]) {
         
