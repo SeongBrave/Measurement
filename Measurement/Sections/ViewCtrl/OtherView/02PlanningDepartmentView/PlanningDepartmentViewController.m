@@ -58,6 +58,12 @@
     
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([segue.identifier isEqualToString:@"ToOptionMenuVC"] )
@@ -179,8 +185,7 @@
  */
 -(void)setCollectionToRefreshDelegate
 {
-    _header.scrollView = self.m_collectionView;
-    _footer.scrollView = self.m_collectionView;
+    self.m_superCollectionView = self.m_collectionView;
 }
 
 /**
@@ -195,7 +200,7 @@
     //pxfs
     [self.m_netParamDict setObject:usr.usercode forKey:@"userCode"];
     [self.m_netParamDict setObject:[NSString stringWithFormat:@"%d",pageNo] forKey:@"pageNo"];
-    [self.m_netParamDict setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"pageSize"];
+    [self.m_netParamDict setObject:[NSString stringWithFormat:@"%d", self.pageSize] forKey:@"pageSize"];
     
     /**
      *  排序字段

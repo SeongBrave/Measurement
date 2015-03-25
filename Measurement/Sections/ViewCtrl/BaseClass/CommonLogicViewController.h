@@ -9,10 +9,8 @@
 #import "BaseViewController.h"
 #import "MJRefresh.h"
 
-@interface CommonLogicViewController : BaseViewController<MJRefreshBaseViewDelegate>
+@interface CommonLogicViewController : BaseViewController
 {
-    MJRefreshHeaderView *_header;
-    MJRefreshFooterView *_footer;
     
     /**
      *  当前页码
@@ -21,9 +19,12 @@
     /**
      *  每页显示数
      */
-    int pageSize;
     
 }
+
+@property(nonatomic , assign) __block int pageSize;
+
+@property (nonatomic, retain) UICollectionView *m_superCollectionView;
 
 @property(nonatomic , strong)UIPopoverController *m_popVC;
 

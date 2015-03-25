@@ -7,7 +7,7 @@
 //
 
 #import "CommonLogicViewController.h"
-
+#import "MJRefresh.h"
 
 @interface CommonLogicViewController ()
 {
@@ -71,25 +71,35 @@
     
     [self layoutMainCustomView];
     
-    // 3.集成刷新控件
-    // 3.1.下拉刷新
-    MJRefreshHeaderView *header = [MJRefreshHeaderView header];
-    
-    header.delegate = self;
-    // 自动刷新
-    [header beginRefreshing];
-    _header = header;
-    
-    // 3.2.上拉加载更多
-    MJRefreshFooterView *footer = [MJRefreshFooterView footer];
-    
-    footer.delegate = self;
-    _footer = footer;
-    
     [self setCollectionToRefreshDelegate];
     
+    
+    @weakify(self)
+    // 下拉刷新
+    [self.m_superCollectionView addLegendHeaderWithRefreshingBlock:^{
+        // 增加5条假数据
+        @strongify(self)
+         self.pageSize=9;
+        [self loadNetData];
+    }];
+    [self.m_superCollectionView.header beginRefreshing];
+    
+    // 上拉刷新
+    [self.m_superCollectionView addLegendFooterWithRefreshingBlock:^{
+        // 增加5条假数据
+        @strongify(self)
+       self.pageSize+=9;
+        
+        [self loadNetData];
+    }];
+    
+    
+    // 默认先隐藏footer
+    self.m_superCollectionView.footer.hidden = NO;
+    
+    
     pageNo = 1;
-    pageSize = 9;
+    self.pageSize = 9;
     
 }
 
@@ -152,22 +162,23 @@
           [self.m_store createTableWithName:self.m_tableName];
           [self.m_store putObject:arr withId:@"page.result" intoTable:self.m_tableName];
             self.m_DataSourceArr = [[NSMutableArray alloc]initWithArray:arr];
-          [_header endRefreshing];
-          [_footer endRefreshing];
+   
           
           [self successGetDataWithResponseData:arr];
-          //          [self.m_collectionView reloadData];
+          [self.m_superCollectionView.header endRefreshing];
+          [self.m_superCollectionView.footer endRefreshing];
+          //          [self.m_superCollectionView reloadData];
           
           
       }error:^(NSError *error){
           @strongify(self)
           NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
           self.m_DataSourceArr = [[NSMutableArray alloc]initWithArray:arr];
-          [_header endRefreshing];
-          [_footer endRefreshing];
-          
+      
+          [self.m_superCollectionView.header endRefreshing];
+          [self.m_superCollectionView.footer endRefreshing];
           [self failedGetDataWithResponseData:arr];
-          //          [self.m_collectionView reloadData];
+          //          [self.m_superCollectionView reloadData];
           
           
       }];
@@ -179,33 +190,33 @@
 
 #pragma mark - MJRefreshBaseViewDelegate
 
-// 开始进入刷新状态就会调用
-- (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView
-{
-    //下拉加载更多
-    if(refreshView == _footer)
-    {
-        pageSize+=9;
-        [self loadNetData];
-        
-    }else if(refreshView == _header) //刷新
-    {
-        pageSize = 9;
-        [self loadNetData];
-        
-    }
-    
-    
-}
-// 刷新完毕就会调用
-- (void)refreshViewEndRefreshing:(MJRefreshBaseView *)refreshView
-{
-    [refreshView endRefreshing];
-}
-// 刷新状态变更就会调用
-- (void)refreshView:(MJRefreshBaseView *)refreshView stateChange:(MJRefreshState)state
-{
-    
-}
+//// 开始进入刷新状态就会调用
+//- (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView
+//{
+//    //下拉加载更多
+//    if(refreshView == _footer)
+//    {
+//        pageSize+=9;
+//        [self loadNetData];
+//        
+//    }else if(refreshView == _header) //刷新
+//    {
+//        pageSize = 9;
+//        [self loadNetData];
+//        
+//    }
+//    
+//    
+//}
+//// 刷新完毕就会调用
+//- (void)refreshViewEndRefreshing:(MJRefreshBaseView *)refreshView
+//{
+//    [refreshView endRefreshing];
+//}
+//// 刷新状态变更就会调用
+//- (void)refreshView:(MJRefreshBaseView *)refreshView stateChange:(MJRefreshState)state
+//{
+//    
+//}
 
 @end

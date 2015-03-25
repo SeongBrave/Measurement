@@ -112,6 +112,10 @@
     //获取设备信息
     UIDevice *device = [UIDevice currentDevice];
     
+    NSUUID* identifier = device.identifierForVendor;
+    
+//    66B88D8C-6AE8-45E6-9E2E-4AF5016B4C91
+    
     //获取版本号
     NSString *version = [[FileHelpers getMyAppVersionInfo] objectForKey:@"version"];
     
@@ -119,7 +123,7 @@
 //    NSString *adviceIP = [GetAdeviceIP getIPAddress:YES];
     
 //    findBbgx.do
-    NSDictionary *dict =@{@"bbh":@"1.02",@"sbbh":@"11111100001"};
+    NSDictionary *dict =@{@"bbh":version,@"sbbh":identifier.UUIDString};
     
     [[[BaseNetWork getInstance] rac_postPath:@"findBbgx.do" parameters:dict]
      subscribeNext:^(id responseData){
@@ -210,7 +214,8 @@
          @strongify(self)
          NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
          //登录成功过
-         if ([dict[@"ret"] integerValue] == 1) {
+         if ([dict[@"ret"] integerValue] == 1)
+         {
              
              /**
               *  登陆成功了就给LoginedUser 初始化
@@ -250,7 +255,7 @@
              [Dialog toast:dict[@"message"]];
          }
          
-         [self performSegueWithIdentifier:@"ToLoginSuccess" sender:nil];
+         
          
      }error:^(NSError *error){
          

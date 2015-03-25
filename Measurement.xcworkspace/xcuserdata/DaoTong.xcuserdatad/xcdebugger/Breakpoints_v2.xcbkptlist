@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Measurement/Sections/ViewCtrl/OtherView/04FactoryTaskView/FactoryTaskViewController.m"
-            timestampString = "447779462.788233"
+            timestampString = "448989407.080149"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "410"
-            endingLineNumber = "410"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
             landmarkName = "@implementation FactoryTaskViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/MyPlanViewController.m"
-            timestampString = "448726000.505814"
+            timestampString = "448989407.080149"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "352"
-            endingLineNumber = "352"
+            startingLineNumber = "351"
+            endingLineNumber = "351"
             landmarkName = "-deletePress:"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Measurement/Sections/ViewCtrl/OtherView/04FactoryTaskView/FactoryTaskViewController.m"
-            timestampString = "447779462.788233"
+            timestampString = "448989407.080149"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "535"
-            endingLineNumber = "535"
+            startingLineNumber = "534"
+            endingLineNumber = "534"
             landmarkName = "-cellRejectedPress:"
             landmarkType = "5">
          </BreakpointContent>
@@ -233,7 +233,7 @@
                   symbolName = "-[ApprovalTaskDidPopVc hy_tj_BtnClick:]"
                   moduleName = "Measurement"
                   urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/07ApprovalTaskView/ApprovalTaskDidPopVc.m"
-                  timestampString = "448909988.268929"
+                  timestampString = "448989884.455275"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "858"
@@ -247,7 +247,7 @@
                   symbolName = "__39-[ApprovalTaskDidPopVc hy_tj_BtnClick:]_block_invoke"
                   moduleName = "Measurement"
                   urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/07ApprovalTaskView/ApprovalTaskDidPopVc.m"
-                  timestampString = "448909988.26908"
+                  timestampString = "448989884.45551"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "860"
@@ -311,7 +311,7 @@
                   symbolName = "-[CheckTaskDidPopVc hy_tj_BtnClick:]"
                   moduleName = "Measurement"
                   urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/06CheckTaskView/CheckTaskDidPopVc.m"
-                  timestampString = "448909988.270785"
+                  timestampString = "448989884.457394"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "868"
@@ -325,7 +325,7 @@
                   symbolName = "__36-[CheckTaskDidPopVc hy_tj_BtnClick:]_block_invoke"
                   moduleName = "Measurement"
                   urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/06CheckTaskView/CheckTaskDidPopVc.m"
-                  timestampString = "448909988.270925"
+                  timestampString = "448989884.457537"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "870"
@@ -422,11 +422,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/UpdatePlanDetailsPopVC.m"
-            timestampString = "448909600.073777"
+            timestampString = "448982403.168491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2202"
-            endingLineNumber = "2202"
+            startingLineNumber = "2244"
+            endingLineNumber = "2244"
             landmarkName = "-SignatureClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -438,11 +438,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/UpdatePlanDetailsPopVC.m"
-            timestampString = "448909600.073777"
+            timestampString = "448982403.168491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2193"
-            endingLineNumber = "2193"
+            startingLineNumber = "2235"
+            endingLineNumber = "2235"
             landmarkName = "-SignatureClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -454,11 +454,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/UpdatePlanDetailsPopVC.m"
-            timestampString = "448909600.073777"
+            timestampString = "448982403.168491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1926"
-            endingLineNumber = "1926"
+            startingLineNumber = "1968"
+            endingLineNumber = "1968"
             landmarkName = "-autoCompleteTextField:didSelectAutoCompleteString:withAutoCompleteObject:forRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -470,11 +470,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/UpdatePlanDetailsPopVC.m"
-            timestampString = "448909600.073777"
+            timestampString = "448982403.168491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1417"
-            endingLineNumber = "1417"
+            startingLineNumber = "1459"
+            endingLineNumber = "1459"
             landmarkName = "-okClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -486,11 +486,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/AddPlanDetailsPopVC.m"
-            timestampString = "448907880.396929"
+            timestampString = "448989407.080149"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1224"
-            endingLineNumber = "1224"
+            startingLineNumber = "1223"
+            endingLineNumber = "1223"
             landmarkName = "-dropDownTextField:didSelectedWithData:forRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -502,44 +502,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/UpdatePlanDetailsPopVC.m"
-            timestampString = "448909600.073777"
+            timestampString = "448982403.168491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1529"
-            endingLineNumber = "1529"
+            startingLineNumber = "1571"
+            endingLineNumber = "1571"
             landmarkName = "-save_Data"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/UpdatePlanDetailsPopVC.m"
-            timestampString = "448909988.215706"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "507"
-            endingLineNumber = "507"
-            landmarkName = "-update_Sbxq_ViewByDict:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Measurement/Sections/ViewCtrl/OtherView/03MyPlanView/UpdatePlanDetailsPopVC.m"
-            timestampString = "448909702.276838"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1149"
-            endingLineNumber = "1149"
-            landmarkName = "-loadInitDutyc"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

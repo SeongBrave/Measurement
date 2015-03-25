@@ -491,6 +491,28 @@
     
 }
 
+/**
+ *  为 CustomButton 设置时间
+ *
+ *  @param custombtn
+ *  @param dateStr   时间
+ */
+-(void)setCustomButton:(CustomButton *) custombtn byDateStr:(NSString *) dateStr
+{
+    
+    // 2012-05-17 11:23:23
+    NSDateFormatter *format=[[NSDateFormatter alloc] init];
+    [format setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSDate *fromdate=[format dateFromString:dateStr];
+//    NSTimeZone *fromzone = [NSTimeZone systemTimeZone];
+//    NSInteger frominterval = [fromzone secondsFromGMTForDate: fromdate];
+//    NSDate *fromDate = [fromdate  dateByAddingTimeInterval: frominterval];
+
+    
+    [custombtn.m_info setObject:fromdate ==nil?[NSDate new]:fromdate forKey:@"date"];
+    NSString *strDate = [format stringFromDate:fromdate];
+    [custombtn setTitle:strDate forState:UIControlStateNormal];
+}
 
 -(void)update_Sbxq_ViewByDict:(NSDictionary *) retDict
 {
@@ -566,18 +588,38 @@
     self.m_ywfzks_DTF.text = [wdjhDict GetLabelWithKey:@"ywfzks"];
     self.m_ywfzr_DTF.text =[wdjhDict GetLabelWithKey:@"ywfzr"];
     
-    NSString *qzrqStr = [wdjhDict GetLabelWithKey:@"qzrq"];
     
+    [self setCustomButton:self.forensicsDateBtn byDateStr:[wdjhDict GetLabelWithKey:@"qzrq"]];
     
-    [self.forensicsDateBtn setTitle:qzrqStr forState:UIControlStateNormal];
+//    // 2012-05-17 11:23:23
+//    NSDateFormatter *format=[[NSDateFormatter alloc] init];
+//    [format setDateFormat:@"yyyy-MM-dd HH:mm"];
+//    NSDate *fromdate=[format dateFromString:[wdjhDict GetLabelWithKey:@"qzrq"]];
+//    NSTimeZone *fromzone = [NSTimeZone systemTimeZone];
+//    NSInteger frominterval = [fromzone secondsFromGMTForDate: fromdate];
+//    NSDate *fromDate = [fromdate  dateByAddingTimeInterval: frominterval];
+//    
+//    
+//    [self.forensicsDateBtn.m_info setObject:fromDate ==nil?[NSDate new]:fromDate forKey:@"date"];
+//    NSString *strDate = [format stringFromDate:fromDate];
+//    [self.forensicsDateBtn setTitle:strDate forState:UIControlStateNormal];
+//    
+//    NSString *qzrqStr = [wdjhDict GetLabelWithKey:@"qzrq"];
+//    
+//    
+//    [self.forensicsDateBtn setTitle:qzrqStr forState:UIControlStateNormal];
     
-    self.m_tsyq_TF.text = [wdjhDict GetLabelWithKey:@"cjsj"];
+    self.m_tsyq_TF.text = [wdjhDict GetLabelWithKey:@"tsyq"];
     
     self.noteTF.text = [wdjhDict GetLabelWithKey:@"bz"];
     
-    [self.fromDatePickerBtn setTitle:[wdjhDict GetLabelWithKey:@"qzrq"]forState:UIControlStateNormal];
+//    [self.fromDatePickerBtn setTitle:[wdjhDict GetLabelWithKey:@"qzrq"]forState:UIControlStateNormal];
     
-    [self.toDatePickerBtn setTitle:[wdjhDict GetLabelWithKey:@"xcsjz"] forState:UIControlStateNormal];
+     [self setCustomButton:self.fromDatePickerBtn byDateStr:[wdjhDict GetLabelWithKey:@"xcsjq"]];
+    
+     [self setCustomButton:self.toDatePickerBtn byDateStr:[wdjhDict GetLabelWithKey:@"xcsjz"]];
+    
+//    [self.toDatePickerBtn setTitle:[wdjhDict GetLabelWithKey:@"xcsjz"] forState:UIControlStateNormal];
     
 //    Wcjdjh_Xcks_Model
     
@@ -1470,7 +1512,7 @@
     //联系电话
     [self.m_saveDataDict setObject:[_m_lxdh_TF.text GetNotNullStr].length>0?[_m_lxdh_TF.text GetNotNullStr]:@"" forKey:@"LXDH"];
     
-    
+    self.m_saveDataDict[@"WTDWMC"] = [self.m_dwmc_ATF.text GetNotNullStr].length>0 ?[self.m_dwmc_ATF.text GetNotNullStr]:@"";
     
     
     //邮编

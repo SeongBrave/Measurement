@@ -656,7 +656,6 @@
             self.m_yb_TF.text = [dict0 GetLabelWithKey:@"WTDWYB"];
             self.m_lxr_TF.text = [dict1 GetLabelWithKey:@"LXR"];
             self.m_lxdh_TF.text = [dict1 GetLabelWithKey:@"LXDH"];
-            self.m_dwmc_ATF.m_bm = [dict0 GetLabelWithKey:@"WTDWBM"];
             
             dqbhStr = [dict0 GetLabelWithKey:@"SZDQ"];
 
@@ -665,7 +664,6 @@
             /**
              *  需要给单位名称保存编码
              */
-            self.m_dwmc_ATF.m_bm = [dict1 GetLabelWithKey:@"WTDWBM"];
             self.m_dwdz_TF.text =[dict1 GetLabelWithKey:@"WTDWDZ"];
             self.m_yb_TF.text = [dict1 GetLabelWithKey:@"WTDWYB"];
             self.m_lxr_TF.text = [dict0 GetLabelWithKey:@"LXR"];
@@ -823,7 +821,8 @@
     [self.m_saveDataDict setObject:[_m_lxdh_TF.text GetNotNullStr].length>0?[_m_lxdh_TF.text GetNotNullStr]:@"" forKey:@"LXDH"];
     
   
-
+    self.m_saveDataDict[@"WTDWMC"] = [self.m_dwmc_ATF.text GetNotNullStr].length>0 ?[self.m_dwmc_ATF.text GetNotNullStr]:@"";
+    
 
     //邮编
     [self.m_saveDataDict setObject:[_m_yb_TF.text GetNotNullStr].length>0?[_m_yb_TF.text GetNotNullStr]:@"" forKey:@"YB"];

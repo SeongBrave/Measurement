@@ -77,7 +77,7 @@
 // This library does not follow semantic-versioning,
 // so we were not able to define version macros.
 // Please contact the author.
-// Version: 3.2.1.1.
+// Version: 3.2.1.2.
 
 // JGProgressHUD
 #define COCOAPODS_POD_AVAILABLE_JGProgressHUD
@@ -95,7 +95,13 @@
 #define COCOAPODS_POD_AVAILABLE_MBProgressHUD
 #define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
 #define COCOAPODS_VERSION_MINOR_MBProgressHUD 9
-#define COCOAPODS_VERSION_PATCH_MBProgressHUD 0
+#define COCOAPODS_VERSION_PATCH_MBProgressHUD 1
+
+// MJRefresh
+#define COCOAPODS_POD_AVAILABLE_MJRefresh
+#define COCOAPODS_VERSION_MAJOR_MJRefresh 1
+#define COCOAPODS_VERSION_MINOR_MJRefresh 4
+#define COCOAPODS_VERSION_PATCH_MJRefresh 1
 
 // MMPlaceHolder
 #define COCOAPODS_POD_AVAILABLE_MMPlaceHolder
@@ -167,13 +173,13 @@
 #define COCOAPODS_POD_AVAILABLE_SDWebImage
 #define COCOAPODS_VERSION_MAJOR_SDWebImage 3
 #define COCOAPODS_VERSION_MINOR_SDWebImage 7
-#define COCOAPODS_VERSION_PATCH_SDWebImage 1
+#define COCOAPODS_VERSION_PATCH_SDWebImage 2
 
 // SDWebImage/Core
 #define COCOAPODS_POD_AVAILABLE_SDWebImage_Core
 #define COCOAPODS_VERSION_MAJOR_SDWebImage_Core 3
 #define COCOAPODS_VERSION_MINOR_SDWebImage_Core 7
-#define COCOAPODS_VERSION_PATCH_SDWebImage_Core 1
+#define COCOAPODS_VERSION_PATCH_SDWebImage_Core 2
 
 // SWTableViewCell
 #define COCOAPODS_POD_AVAILABLE_SWTableViewCell

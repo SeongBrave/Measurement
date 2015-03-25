@@ -38,8 +38,8 @@
     [self dismissViewControllerAnimated:NO completion:^(void){
         
         
-//        NSNotification *notification = [NSNotification notificationWithName:@"TCDL" object:nil];
-//        [[NSNotificationCenter defaultCenter] postNotification:notification];
+        NSNotification *notification = [NSNotification notificationWithName:@"TCDL" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
     }];
     
     

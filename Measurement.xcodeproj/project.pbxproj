@@ -147,11 +147,6 @@
 		C9E6B2D51A8901DB00432DE8 /* Sblb_TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E6B2D41A8901DB00432DE8 /* Sblb_TableViewCell.m */; };
 		C9E6B2D81A89020000432DE8 /* Wlqsb_TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E6B2D71A89020000432DE8 /* Wlqsb_TableViewCell.m */; };
 		C9E935AB1A66C72B00F174DA /* FactoryTaskDetailViewPopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E935AA1A66C72B00F174DA /* FactoryTaskDetailViewPopVC.m */; };
-		C9E94DCA1A4A669100E8CC83 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9E94DC01A4A669100E8CC83 /* MJRefresh.bundle */; };
-		C9E94DCB1A4A669100E8CC83 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E94DC31A4A669100E8CC83 /* MJRefreshBaseView.m */; };
-		C9E94DCC1A4A669100E8CC83 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E94DC51A4A669100E8CC83 /* MJRefreshConst.m */; };
-		C9E94DCD1A4A669100E8CC83 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E94DC71A4A669100E8CC83 /* MJRefreshFooterView.m */; };
-		C9E94DCE1A4A669100E8CC83 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E94DC91A4A669100E8CC83 /* MJRefreshHeaderView.m */; };
 		C9EB13511A83B6C600DE9B1D /* ZS_TemplatesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EB13501A83B6C600DE9B1D /* ZS_TemplatesListViewController.m */; };
 		C9EB13541A83B72E00DE9B1D /* YSJL_TemplatesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EB13531A83B72E00DE9B1D /* YSJL_TemplatesListViewController.m */; };
 		C9EB13571A83BA9100DE9B1D /* zsmb_TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EB13561A83BA9100DE9B1D /* zsmb_TableViewCell.m */; };
@@ -486,16 +481,6 @@
 		C9E6B2D71A89020000432DE8 /* Wlqsb_TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wlqsb_TableViewCell.m; sourceTree = "<group>"; };
 		C9E935A91A66C72B00F174DA /* FactoryTaskDetailViewPopVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryTaskDetailViewPopVC.h; sourceTree = "<group>"; };
 		C9E935AA1A66C72B00F174DA /* FactoryTaskDetailViewPopVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryTaskDetailViewPopVC.m; sourceTree = "<group>"; };
-		C9E94DC01A4A669100E8CC83 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
-		C9E94DC11A4A669100E8CC83 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
-		C9E94DC21A4A669100E8CC83 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
-		C9E94DC31A4A669100E8CC83 /* MJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBaseView.m; sourceTree = "<group>"; };
-		C9E94DC41A4A669100E8CC83 /* MJRefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshConst.h; sourceTree = "<group>"; };
-		C9E94DC51A4A669100E8CC83 /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
-		C9E94DC61A4A669100E8CC83 /* MJRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooterView.h; sourceTree = "<group>"; };
-		C9E94DC71A4A669100E8CC83 /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
-		C9E94DC81A4A669100E8CC83 /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
-		C9E94DC91A4A669100E8CC83 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
 		C9EB134F1A83B6C600DE9B1D /* ZS_TemplatesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZS_TemplatesListViewController.h; sourceTree = "<group>"; };
 		C9EB13501A83B6C600DE9B1D /* ZS_TemplatesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZS_TemplatesListViewController.m; sourceTree = "<group>"; };
 		C9EB13521A83B72E00DE9B1D /* YSJL_TemplatesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSJL_TemplatesListViewController.h; sourceTree = "<group>"; };
@@ -876,7 +861,6 @@
 			children = (
 				C90947FF1AA20F32007B5FB7 /* UIPopoverListView */,
 				C90947FB1AA2028C007B5FB7 /* MHTextField */,
-				C9E94DBF1A4A669100E8CC83 /* MJRefresh */,
 				C9651FF41A43BE3100B770BB /* YTKKeyValueStore */,
 			);
 			path = extern;
@@ -1715,23 +1699,6 @@
 			path = Sblb_TableViewCell;
 			sourceTree = "<group>";
 		};
-		C9E94DBF1A4A669100E8CC83 /* MJRefresh */ = {
-			isa = PBXGroup;
-			children = (
-				C9E94DC01A4A669100E8CC83 /* MJRefresh.bundle */,
-				C9E94DC11A4A669100E8CC83 /* MJRefresh.h */,
-				C9E94DC21A4A669100E8CC83 /* MJRefreshBaseView.h */,
-				C9E94DC31A4A669100E8CC83 /* MJRefreshBaseView.m */,
-				C9E94DC41A4A669100E8CC83 /* MJRefreshConst.h */,
-				C9E94DC51A4A669100E8CC83 /* MJRefreshConst.m */,
-				C9E94DC61A4A669100E8CC83 /* MJRefreshFooterView.h */,
-				C9E94DC71A4A669100E8CC83 /* MJRefreshFooterView.m */,
-				C9E94DC81A4A669100E8CC83 /* MJRefreshHeaderView.h */,
-				C9E94DC91A4A669100E8CC83 /* MJRefreshHeaderView.m */,
-			);
-			path = MJRefresh;
-			sourceTree = "<group>";
-		};
 		C9F3DFA81A5D647700D34A19 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -2093,7 +2060,6 @@
 				C9E6B2951A8885DF00432DE8 /* Settings.bundle in Resources */,
 				C9651ED51A43AD8F00B770BB /* Main.storyboard in Resources */,
 				C9651EF11A43AFBB00B770BB /* 计量Ipad项目版本说明.xlsx in Resources */,
-				C9E94DCA1A4A669100E8CC83 /* MJRefresh.bundle in Resources */,
 				C9651EDA1A43AD9000B770BB /* LaunchScreen.xib in Resources */,
 				C99407A21AA36992004DC8D0 /* jg_hud_success.png in Resources */,
 				C9B625F21A4E8E1C00AE9251 /* Other.storyboard in Resources */,
@@ -2165,7 +2131,6 @@
 				C903B0D11A5EBF910038AA1B /* DepMans_Cell.m in Sources */,
 				C9E6B2CE1A88FE5800432DE8 /* sblb_Model.m in Sources */,
 				C90F31191A729DDF00A7A06E /* TemplatesListViewController.m in Sources */,
-				C9E94DCB1A4A669100E8CC83 /* MJRefreshBaseView.m in Sources */,
 				C9FFC14D1A6E7A6A00AA6BE7 /* HeadOFModel.m in Sources */,
 				C9651ECF1A43AD8F00B770BB /* AppDelegate.m in Sources */,
 				C9B3A2AE1A4D9C7100CE276B /* CommonLogicViewController.m in Sources */,
@@ -2184,7 +2149,6 @@
 				C97094641A62D09B00141DC5 /* ChargeManagementViewController.m in Sources */,
 				C93AC00C1A7BECD400FB3EE1 /* hyr_Model.m in Sources */,
 				C93AC00F1A7BECDD00FB3EE1 /* pzr_Model.m in Sources */,
-				C9E94DCD1A4A669100E8CC83 /* MJRefreshFooterView.m in Sources */,
 				C9E6B2D11A88FE7500432DE8 /* wlqsb_Model.m in Sources */,
 				C99728C01AC19C5F0029E8AA /* MyPlanOverviewVc.m in Sources */,
 				C9651FC31A43B25F00B770BB /* BaseNetWork.m in Sources */,
@@ -2240,7 +2204,6 @@
 				C9651FD21A43B26000B770BB /* CustomButton.m in Sources */,
 				C9651FEB1A43B26000B770BB /* Localisator.m in Sources */,
 				C951E9C91AADE084007A5990 /* hyjg_model.m in Sources */,
-				C9E94DCC1A4A669100E8CC83 /* MJRefreshConst.m in Sources */,
 				C9EB13541A83B72E00DE9B1D /* YSJL_TemplatesListViewController.m in Sources */,
 				C990B7E61A79335B00DF81C8 /* Yqmc_Auto_Model.m in Sources */,
 				C970945C1A62D09B00141DC5 /* MyPlanViewController.m in Sources */,
@@ -2270,7 +2233,6 @@
 				C97094631A62D09B00141DC5 /* BidManagementViewController.m in Sources */,
 				C9651FD71A43B26000B770BB /* MyGestureRecognizerView.m in Sources */,
 				C9651FCF1A43B26000B770BB /* CommonTextField.m in Sources */,
-				C9E94DCE1A4A669100E8CC83 /* MJRefreshHeaderView.m in Sources */,
 				C9E6B2D51A8901DB00432DE8 /* Sblb_TableViewCell.m in Sources */,
 				C90EA2861A6BF68D0038450A /* BottomTabBarView.m in Sources */,
 				C9A4350C1A9C254100F85046 /* xmbh_Auto_Model.m in Sources */,
