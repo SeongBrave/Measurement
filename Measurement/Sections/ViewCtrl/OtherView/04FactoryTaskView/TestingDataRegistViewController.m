@@ -1456,6 +1456,8 @@
 -(void)update_ggxxViewByYretDict:(NSDictionary *) retDict
 {
     
+    NSString *qjytbhStr = retDict[@"yqxx"][@"qjytbh"];
+    self.m_Ggxx_saveDataDict[@"qjytbh"] =qjytbhStr.length >0?qjytbhStr:@"";
 
     //TODO:测试需要的
 //    [self test_GgxxV];
@@ -2952,7 +2954,7 @@
         
         jdzq_Model *model = _m_qjytTFArr[indexPath.row];
         
-        self.m_Sbxq_saveDataDict[@"qjytbh"] =model.dmbm;
+        self.m_Ggxx_saveDataDict[@"qjytbh"] =model.dmbm;
         
     
         self.is_ggxx_Edited = @1;
