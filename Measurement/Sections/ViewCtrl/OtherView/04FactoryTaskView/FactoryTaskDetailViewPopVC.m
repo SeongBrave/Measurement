@@ -844,6 +844,8 @@
 {
     TestingDataRegistViewController *popVc = (TestingDataRegistViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"TestingDataRegistViewController"];
     
+    popVc.m_superView = self;
+    
     popVc.m_qjxxDict = qjxxDict;
     popVc.m_dataSourceType = dataSourceType;
     popVc.m_showDict = self.m_showDict;

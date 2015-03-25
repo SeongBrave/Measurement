@@ -26,6 +26,10 @@
 
 
 /**
+ *  获取  的数据
+ */
+-(void)loadNetData;
+/**
  *  用于更新界面数据
  *
  *  @param showDict

@@ -1707,7 +1707,7 @@
     
     [self dismissViewControllerAnimated:YES completion:^(void){
        
-        
+        [self.m_superView  loadNetData];
     }];
 }
 
@@ -1797,7 +1797,7 @@
     
     [self dismissViewControllerAnimated:YES completion:^(void){
         
-        
+        [self.m_superView  loadNetData];
     }];
 
 }
@@ -2239,7 +2239,7 @@
     
     [self dismissViewControllerAnimated:YES completion:^(void){
         
-        
+        [self.m_superView  loadNetData];
     }];
 
 }
@@ -2327,7 +2327,7 @@
                  [Dialog toast:self withMessage:@"核验成功!"];
                  
                  [self dismissViewControllerAnimated:YES completion:^(void){
-                     
+                     [self.m_superView  loadNetData];
                  }];
              }
              
@@ -2391,7 +2391,7 @@
 - (void)tapClick:(UITapGestureRecognizer *)gestureRecognizer
 {
     [self.m_fullScreenVc dismissViewControllerAnimated:YES completion:^(void){
-        
+        [self.m_superView  loadNetData];
     }];
 }
 

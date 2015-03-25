@@ -33,5 +33,6 @@
 #import "NSDate+Common.h"
 #import "NSDictionary+GetJsonStr.h"
 #import "NSString+NotNullStr.h"
+#import "MJRefresh.h"
 
 #endif

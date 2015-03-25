@@ -10,7 +10,7 @@
  *  检测数据登记
  */
 #import "BaseViewController.h"
-
+#import "FactoryTaskDetailViewPopVC.h"
 
 @interface TestingDataRegistViewController : BaseViewController
 
@@ -38,6 +38,8 @@
  */
 @property(nonatomic ,strong)NSMutableDictionary *m_Ggxx_saveDataDict;
 
+
+@property(nonatomic , strong)FactoryTaskDetailViewPopVC *m_superView;
 /**
  *  显示DropDownTableView
  */

@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Measurement/Sections/ViewCtrl/OtherView/04FactoryTaskView/FactoryTaskDetailViewPopVC.m"
-            timestampString = "446831648.585498"
+            timestampString = "448993671.933733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1448"
-            endingLineNumber = "1448"
+            startingLineNumber = "1450"
+            endingLineNumber = "1450"
             landmarkName = "-swipeableTableViewCell:didTriggerRightUtilityButtonWithIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -233,7 +233,7 @@
                   symbolName = "-[ApprovalTaskDidPopVc hy_tj_BtnClick:]"
                   moduleName = "Measurement"
                   urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/07ApprovalTaskView/ApprovalTaskDidPopVc.m"
-                  timestampString = "448989884.455275"
+                  timestampString = "448993672.014843"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "858"
@@ -247,7 +247,7 @@
                   symbolName = "__39-[ApprovalTaskDidPopVc hy_tj_BtnClick:]_block_invoke"
                   moduleName = "Measurement"
                   urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/07ApprovalTaskView/ApprovalTaskDidPopVc.m"
-                  timestampString = "448989884.45551"
+                  timestampString = "448993672.014992"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "860"
@@ -279,22 +279,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Measurement/Sections/ViewCtrl/OtherView/04FactoryTaskView/TestingDataRegistViewController.m"
-            timestampString = "448478584.932698"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1484"
-            endingLineNumber = "1484"
-            landmarkName = "-update_ggxxViewByYretDict:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Measurement/Sections/ViewCtrl/OtherView/06CheckTaskView/CheckTaskDidPopVc.m"
             timestampString = "448391544.60165"
             startingColumnNumber = "9223372036854775807"
@@ -311,7 +295,7 @@
                   symbolName = "-[CheckTaskDidPopVc hy_tj_BtnClick:]"
                   moduleName = "Measurement"
                   urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/06CheckTaskView/CheckTaskDidPopVc.m"
-                  timestampString = "448989884.457394"
+                  timestampString = "448993672.01646"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "868"
@@ -325,7 +309,7 @@
                   symbolName = "__36-[CheckTaskDidPopVc hy_tj_BtnClick:]_block_invoke"
                   moduleName = "Measurement"
                   urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/06CheckTaskView/CheckTaskDidPopVc.m"
-                  timestampString = "448989884.457537"
+                  timestampString = "448993672.016612"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "870"
@@ -508,6 +492,22 @@
             startingLineNumber = "1571"
             endingLineNumber = "1571"
             landmarkName = "-save_Data"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Measurement/Sections/ViewCtrl/OtherView/04FactoryTaskView/TestingDataRegistViewController.m"
+            timestampString = "448993162.28489"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1485"
+            endingLineNumber = "1485"
+            landmarkName = "-update_ggxxViewByYretDict:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
