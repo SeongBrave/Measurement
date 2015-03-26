@@ -205,7 +205,7 @@
     hyjg_model *model3 = [[hyjg_model alloc]init];
     
     model3.m_showTitle = @"批准未通过";
-    model3.m_code = @"0";
+    model3.m_code = @"2";
     
     self.m_hyjgTFArr = @[model2,model3];
    

@@ -1248,7 +1248,13 @@
      *  报价 标准收费编号
      */
     self.m_Sbxq_saveDataDict[@"bzsfbh"] = [sbxqDict GetLabelWithKey:@"bzsfbh"];
-    self.m_Sbxq_saveDataDict[@"jdzqbh"] = [sbxqDict GetLabelWithKey:@"jdzqbh"];
+    
+    
+    if ([sbxqDict GetLabelWithKey:@"jdzqbh"] != nil) {
+        
+         self.m_Sbxq_saveDataDict[@"jdzqbh"] = [sbxqDict GetLabelWithKey:@"jdzqbh"];
+    }
+   
     
     /**
      *  数量单位编号
@@ -1378,15 +1384,21 @@
 //    _m_Sbxq_saveDataDict[@"jdzqbh"] = sbxqDict.by5.length>0?sbxqDict.by5:@"";
 //    _m_Sbxq_saveDataDict[@"ksbh"] =sbxqDict.ssksbh.length>0?sbxqDict.ssksbh:@"";
 //    _m_Sbxq_saveDataDict[@"ks"] =sbxqDict.ssks.length>0?sbxqDict.ssks:@"";
-
     
-    if (sbxqDict.by5 == nil) {
-        
+    
+    if (sbxqDict.by5 != nil) {
+         self.m_Sbxq_saveDataDict[@"jdzqbh"] = [sbxqDict.by5 GetNotNullStr];
     }
     
-    self.m_Sbxq_saveDataDict[@"jdzqbh"] = [sbxqDict.by5 GetNotNullStr];
-    self.m_Sbxq_saveDataDict[@"ksbh"] =[sbxqDict.ssksbh GetNotNullStr];
-    self.m_Sbxq_saveDataDict[@"ks"] =[sbxqDict.ssks GetNotNullStr];
+    if ([sbxqDict.ssksbh GetNotNullStr] != nil) {
+         self.m_Sbxq_saveDataDict[@"ksbh"] =[sbxqDict.ssksbh GetNotNullStr];
+    }
+   
+    if ([sbxqDict.ssks GetNotNullStr] != nil) {
+        self.m_Sbxq_saveDataDict[@"ks"] =[sbxqDict.ssks GetNotNullStr];
+    }
+   
+    
      self.m_Sbxq_saveDataDict[@"by2"] =[sbxqDict.dwbh GetNotNullStr];
     self.m_Sbxq_saveDataDict[@"xmbh"] =[sbxqDict.xmbh GetNotNullStr];
     
