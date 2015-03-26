@@ -1609,7 +1609,7 @@
 
     
     /**
-     * 标准器设备-
+     * 标准器设备- 溯源证书号
      */
     NSString *syzshsStr = retDict[@"syzshs"];
     NSArray *syzshs_Arr = [syzshsStr componentsSeparatedByString:@","];
@@ -1650,19 +1650,19 @@
                         {
                             
                             Bzqsb_Model *model = [MTLJSONAdapter modelOfClass:[Bzqsb_Model class] fromJSONDictionary:dict error:nil];
+                            
+                             model.isSelected = NO;
                             /**
                              *  设置选中状态
                              */
-                            for (int i=0; i<bzqsb_Arr.count; i++) {
+                            for (int i=0; i<bzqsb_Arr.count; i++)
+                            {
                                NSString * bzqsb_sbbhStr = bzqsb_Arr[i];
                                NSString * bzqsb_syzsStr = syzshs_Arr[i];
                                 
                                 if([bzqsb_sbbhStr isEqualToString:model.bzsbbh ]&&[bzqsb_syzsStr isEqualToString:model.syzsh ])
                                 {
                                     model.isSelected = YES;
-                                }else
-                                {
-                                    model.isSelected = NO;
                                 }
                                 
                             }

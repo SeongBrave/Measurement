@@ -21,7 +21,7 @@
     self.m_jlmbbh_LB.text = [zsmbModel.zsmbbh GetNotNullStr];
     self.m_jlmbmc_LB.text = [zsmbModel.zsmbmc GetNotNullStr];
     self.m_syfw_LB.text = [zsmbModel.zssyfw GetNotNullStr];
-    self.m_lx_LB.text = [zsmbModel.zsmbbh GetNotNullStr];
+    self.m_lx_LB.text = [zsmbModel.zsmblx GetNotNullStr];
     self.m_cjr_LB.text = [zsmbModel.cjr GetNotNullStr];
     self.m_cjsj_LB.text = [zsmbModel.cjsj GetNotNullStr];
     

@@ -1333,16 +1333,7 @@
     
     
     
-//    /**
-//     *  条形码与仪器id的区别字段
-//     */
-//    if (_m_dataSourceType == TxmDataSourceType) {
-//        self.m_Sbxq_saveDataDict[@"ks"] = [_m_qjxxDict GetLabelWithKey:@"by3"];
-//        
-//    }else if(_m_dataSourceType == YqidDataSourceType)
-//    {
-//        self.m_Sbxq_saveDataDict[@"ks"] = [_m_qjxxDict GetLabelWithKey:@"ks"];
-//    }
+    
     self.m_Sbxq_saveDataDict[@"ks"] = [sbxqDict GetLabelWithKey:@"ks"];
     
     self.m_Sbxq_saveDataDict[@"ksbh"] = [sbxqDict GetLabelWithKey:@"ksbh"];
@@ -1456,8 +1447,8 @@
 -(void)update_ggxxViewByYretDict:(NSDictionary *) retDict
 {
     
-    NSString *qjytbhStr = retDict[@"yqxx"][@"qjytbh"];
-    self.m_Ggxx_saveDataDict[@"qjytbh"] =qjytbhStr.length >0?qjytbhStr:@"";
+//    NSString *qjytbhStr = retDict[@"yqxx"][@"qjytbh"];
+//    self.m_Ggxx_saveDataDict[@"qjytbh"] =qjytbhStr.length >0?qjytbhStr:@"";
 
     //TODO:测试需要的
 //    [self test_GgxxV];

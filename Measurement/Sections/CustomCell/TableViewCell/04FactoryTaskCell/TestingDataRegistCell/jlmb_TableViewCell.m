@@ -20,7 +20,7 @@
         self.m_jlmbbh_LB.text = [jlmbModel.jlmbbh GetNotNullStr];
         self.m_jlmbmc_LB.text = [jlmbModel.jlmbmc GetNotNullStr];
         self.m_syfw_LB.text = [jlmbModel.jlsyfw GetNotNullStr];
-        self.m_lx_LB.text = [jlmbModel.jlmbbh GetNotNullStr];
+        self.m_lx_LB.text = [jlmbModel.jlmblx GetNotNullStr];
         self.m_cjr_LB.text = [jlmbModel.cjr GetNotNullStr];
         self.m_cjsj_LB.text = [jlmbModel.cjsj GetNotNullStr];
 
