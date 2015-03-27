@@ -350,24 +350,52 @@
      NSIndexPath *indexPath = [self.m_collectionView indexPathForCell:cell];
 
     
-    [self.m_DataSourceArr removeObjectAtIndex:indexPath.row];
-//    /**
-//     *  第一种办法 删除cell
-//     */
-//    [self.m_collectionView deleteItemsAtIndexPaths:@[indexPath]];
     
-    /**
-     *   第二种办法 删除cell
-     */
-    [self.m_collectionView performBatchUpdates:^{
-        [self.m_collectionView deleteItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
-        
-    } completion:nil];
-//    [self.photoImages removeObjectAtIndex:row];
-//    NSArray *deleteItems = @[indexPath];
-//    [self.m_collectionView moveItemAtIndexPath:indexPath toIndexPath];
-//    
-//    - (void)moveItemAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath;
+     NSDictionary *dict = self.m_DataSourceArr[indexPath.row];
+    
+    
+    
+    [[BaseNetWork getInstance] showDialogWithVC:self];
+    [[[[[BaseNetWork getInstance] rac_postPath:@"deleteDutyc.do" parameters:@{@"rwbh":dict[@"RWBH"]}]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+         
+         if ([retDict[@"ret"] integerValue] == 1) {
+             [Dialog toastSuccess:retDict[@"message"]];
+             [self.m_DataSourceArr removeObjectAtIndex:indexPath.row];
+             
+             /**
+              *   第二种办法 删除cell
+              */
+             [self.m_collectionView performBatchUpdates:^{
+                 [self.m_collectionView deleteItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
+                 
+             } completion:nil];
+
+             
+            
+         }else
+         {
+             [Dialog toastError:retDict[@"message"] ];
+         }
+         
+         
+     }error:^(NSError *error){
+         
+         
+         [Dialog toast:self withMessage:error.helpAnchor];
+         debug_object(error);
+         
+         
+     }];
+    
+
+    
+
 }
 
 /**
