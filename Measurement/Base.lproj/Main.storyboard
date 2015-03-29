@@ -3653,6 +3653,7 @@
                                                                 </tableViewCellContentView>
                                                                 <connections>
                                                                     <outlet property="m_ggxhLabel" destination="aq7-v7-EDx" id="vgI-Zz-Tuf"/>
+                                                                    <outlet property="m_indexLB" destination="x3k-Cv-B6r" id="rB4-JV-VsY"/>
                                                                     <outlet property="m_jcfwLabel" destination="e2r-43-ejT" id="HNu-eW-mJG"/>
                                                                     <outlet property="m_jltxLabel" destination="M0I-7P-MbI" id="ska-rs-tMl"/>
                                                                     <outlet property="m_lbLabel" destination="6op-RG-9T9" id="diE-eb-LSS"/>
@@ -4095,7 +4096,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Zk-SB-SGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1556" y="-8007"/>
+            <point key="canvasLocation" x="1815" y="-7976"/>
         </scene>
         <!--客户签名-->
         <scene sceneID="UQP-EQ-Dqf">
@@ -12857,6 +12858,7 @@
                                                                 </tableViewCellContentView>
                                                                 <connections>
                                                                     <outlet property="m_ggxhLabel" destination="RGN-pj-xMp" id="zW5-Wg-3Xc"/>
+                                                                    <outlet property="m_indexLB" destination="1U7-wf-ruN" id="lmv-m1-reg"/>
                                                                     <outlet property="m_jcfwLabel" destination="dkM-3v-MbW" id="ozJ-md-oMu"/>
                                                                     <outlet property="m_jltxLabel" destination="G9Z-YT-LeX" id="MF8-aq-EkX"/>
                                                                     <outlet property="m_lbLabel" destination="unG-cA-Zcy" id="smX-oU-8u3"/>
@@ -12955,10 +12957,10 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Miy-Ch-k61">
-                                                                    <rect key="frame" x="79" y="20" width="60" height="20"/>
+                                                                    <rect key="frame" x="651" y="23" width="34" height="13"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="60" id="5oJ-ly-OqO"/>
-                                                                        <constraint firstAttribute="height" constant="20" id="Kw8-oq-qfK"/>
+                                                                        <constraint firstAttribute="width" constant="34" id="5oJ-ly-OqO"/>
+                                                                        <constraint firstAttribute="height" constant="13" id="Kw8-oq-qfK"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="general-arrow-up" translatesAutoresizingMaskIntoConstraints="NO" id="c4y-3A-NRj">
@@ -12970,10 +12972,10 @@
                                                                 </imageView>
                                                             </subviews>
                                                             <constraints>
+                                                                <constraint firstItem="c4y-3A-NRj" firstAttribute="leading" secondItem="Miy-Ch-k61" secondAttribute="trailing" constant="40" id="AX0-8C-ONq"/>
                                                                 <constraint firstAttribute="centerY" secondItem="c4y-3A-NRj" secondAttribute="centerY" id="JSL-If-PiN"/>
                                                                 <constraint firstAttribute="trailingMargin" secondItem="c4y-3A-NRj" secondAttribute="trailing" constant="7" id="PZm-Je-S4G"/>
                                                                 <constraint firstItem="HZM-Ma-kxd" firstAttribute="leading" secondItem="Eev-Nn-aPK" secondAttribute="leadingMargin" constant="22" id="gJw-gQ-92e"/>
-                                                                <constraint firstItem="Miy-Ch-k61" firstAttribute="leading" secondItem="HZM-Ma-kxd" secondAttribute="trailing" constant="5" id="lzx-4t-OcA"/>
                                                                 <constraint firstAttribute="centerY" secondItem="HZM-Ma-kxd" secondAttribute="centerY" id="rrE-7k-qK5"/>
                                                                 <constraint firstItem="Miy-Ch-k61" firstAttribute="centerY" secondItem="HZM-Ma-kxd" secondAttribute="centerY" id="uY4-9m-gkT"/>
                                                             </constraints>
@@ -13294,7 +13296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W2Q-98-UkN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-354" y="-9697"/>
+            <point key="canvasLocation" x="-1239" y="-9635"/>
         </scene>
         <!--计划总揽弹出视图-->
         <scene sceneID="xXy-TS-G8a">
@@ -13983,6 +13985,7 @@
                                                                 </tableViewCellContentView>
                                                                 <connections>
                                                                     <outlet property="m_ggxhLabel" destination="yj5-3T-7GD" id="e94-ZR-pkF"/>
+                                                                    <outlet property="m_indexLB" destination="vf2-gj-9Zt" id="iUe-HL-iLh"/>
                                                                     <outlet property="m_jcfwLabel" destination="vub-Og-GQa" id="mAu-tY-8Sx"/>
                                                                     <outlet property="m_jltxLabel" destination="fvQ-hn-9I0" id="hpv-w7-a9K"/>
                                                                     <outlet property="m_lbLabel" destination="G4G-1E-w8N" id="P7V-X9-ulK"/>
@@ -14081,10 +14084,10 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZeA-Hw-xFc">
-                                                                    <rect key="frame" x="79" y="20" width="60" height="20"/>
+                                                                    <rect key="frame" x="651" y="23" width="34" height="13"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="60" id="cNa-38-ac3"/>
-                                                                        <constraint firstAttribute="height" constant="20" id="rdS-SU-aAf"/>
+                                                                        <constraint firstAttribute="width" constant="34" id="cNa-38-ac3"/>
+                                                                        <constraint firstAttribute="height" constant="13" id="rdS-SU-aAf"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="general-arrow-up" translatesAutoresizingMaskIntoConstraints="NO" id="bPT-u9-cCS">
@@ -14098,9 +14101,9 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="trailingMargin" secondItem="bPT-u9-cCS" secondAttribute="trailing" constant="7" id="4Zd-cf-kL5"/>
                                                                 <constraint firstAttribute="centerY" secondItem="bPT-u9-cCS" secondAttribute="centerY" id="9nP-FO-4CG"/>
-                                                                <constraint firstItem="ZeA-Hw-xFc" firstAttribute="leading" secondItem="muy-ip-Btl" secondAttribute="trailing" constant="5" id="Gdl-Ex-fXp"/>
                                                                 <constraint firstItem="muy-ip-Btl" firstAttribute="leading" secondItem="WvD-kT-Tz9" secondAttribute="leadingMargin" constant="22" id="RhP-K0-KTh"/>
                                                                 <constraint firstItem="ZeA-Hw-xFc" firstAttribute="centerY" secondItem="muy-ip-Btl" secondAttribute="centerY" id="gRC-QI-Tsa"/>
+                                                                <constraint firstItem="bPT-u9-cCS" firstAttribute="leading" secondItem="ZeA-Hw-xFc" secondAttribute="trailing" constant="40" id="jQ7-Ia-1ro"/>
                                                                 <constraint firstAttribute="centerY" secondItem="muy-ip-Btl" secondAttribute="centerY" id="neA-0h-POx"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
@@ -14420,7 +14423,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FZn-Tx-D1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1962" y="-9509"/>
+            <point key="canvasLocation" x="-2575" y="-9559"/>
         </scene>
         <!--检测任务查询（未提交）-->
         <scene sceneID="DQ9-uC-CMM">
@@ -19825,6 +19828,7 @@
                                                                 </tableViewCellContentView>
                                                                 <connections>
                                                                     <outlet property="m_ggxhLabel" destination="Rni-q9-1P8" id="Kqu-0h-uI4"/>
+                                                                    <outlet property="m_indexLB" destination="1jK-AT-3o2" id="ttP-4N-QtY"/>
                                                                     <outlet property="m_jcfwLabel" destination="OVA-TK-zlI" id="vrO-Mq-wcK"/>
                                                                     <outlet property="m_jltxLabel" destination="eha-x3-fxp" id="27B-90-NhB"/>
                                                                     <outlet property="m_lbLabel" destination="gGQ-gq-QI0" id="EWe-XN-r0F"/>
@@ -19923,10 +19927,10 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Oa-UL-xQc">
-                                                                    <rect key="frame" x="79" y="20" width="60" height="20"/>
+                                                                    <rect key="frame" x="651" y="23" width="34" height="13"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="60" id="Chl-OS-tdy"/>
-                                                                        <constraint firstAttribute="height" constant="20" id="E6e-T5-xuJ"/>
+                                                                        <constraint firstAttribute="width" constant="34" id="Chl-OS-tdy"/>
+                                                                        <constraint firstAttribute="height" constant="13" id="E6e-T5-xuJ"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="general-arrow-up" translatesAutoresizingMaskIntoConstraints="NO" id="aWA-Qq-kvq">
@@ -19942,8 +19946,8 @@
                                                                 <constraint firstItem="7cC-1Y-D2f" firstAttribute="leading" secondItem="9sy-gc-IMW" secondAttribute="leadingMargin" constant="22" id="KYh-rE-cj9"/>
                                                                 <constraint firstItem="2Oa-UL-xQc" firstAttribute="centerY" secondItem="7cC-1Y-D2f" secondAttribute="centerY" id="Ke9-tz-KGi"/>
                                                                 <constraint firstAttribute="centerY" secondItem="7cC-1Y-D2f" secondAttribute="centerY" id="MOY-PS-6NF"/>
+                                                                <constraint firstItem="aWA-Qq-kvq" firstAttribute="leading" secondItem="2Oa-UL-xQc" secondAttribute="trailing" constant="40" id="a1E-vT-U0l"/>
                                                                 <constraint firstAttribute="trailingMargin" secondItem="aWA-Qq-kvq" secondAttribute="trailing" constant="7" id="byK-y9-WQj"/>
-                                                                <constraint firstItem="2Oa-UL-xQc" firstAttribute="leading" secondItem="7cC-1Y-D2f" secondAttribute="trailing" constant="5" id="qhU-Mj-ao7"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
@@ -20262,7 +20266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ufH-j3-wlm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-334" y="-9938"/>
+            <point key="canvasLocation" x="146" y="-9925"/>
         </scene>
     </scenes>
     <resources>
@@ -20318,6 +20322,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="9GO-Xy-ofg"/>
-        <segue reference="D1q-FG-v94"/>
+        <segue reference="iqu-WL-ERX"/>
     </inferredMetricsTieBreakers>
 </document>

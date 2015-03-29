@@ -24,8 +24,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *m_lbLabel;
 @property (weak, nonatomic) IBOutlet UILabel *m_priceLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *m_indexLB;
 
 - (void)configureCellWithItem:( wtdbh_Model* )product;
 
-
+- (void)configureCellWithItem:(id )item andIndex:(NSUInteger)index;
 @end

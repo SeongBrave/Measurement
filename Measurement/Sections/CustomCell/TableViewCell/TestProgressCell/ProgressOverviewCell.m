@@ -29,7 +29,7 @@
         
     }else
     {
-        self.m_stateImgV.image = [UIImage imageNamed:@"right-card-title-wwc1"];
+        self.m_stateImgV.image = [UIImage imageNamed:@"right-card-title-wwc"];
     }
     
 }

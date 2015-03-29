@@ -1008,8 +1008,9 @@
             
             wtdbh_Model *wtdbhModel = [MTLJSONAdapter modelOfClass:[wtdbh_Model class] fromJSONDictionary:myDict error:nil];
             
+            [cell configureCellWithItem:wtdbhModel andIndex:indexPath.row];
             
-            [cell configureCellWithItem:wtdbhModel];
+//            [cell configureCellWithItem:wtdbhModel];
             
             return cell;
             
