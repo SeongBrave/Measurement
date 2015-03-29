@@ -2349,7 +2349,7 @@
         
         LoginedUser *usr = [LoginedUser sharedInstance];
         
-        //    @weakify(self)
+        @weakify(self)
         [[[[[BaseNetWork getInstance] rac_postPath:@"tjhy.do" parameters:@{@"usercode":usr.usercode,@"yqid":self.yqid_Str}]map:^(id responseData)
            {
                NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
@@ -2368,7 +2368,8 @@
                  [Dialog toast:self withMessage:@"核验成功!"];
                  
                  [self dismissViewControllerAnimated:YES completion:^(void){
-                     
+                     @strongify(self)
+                     [self.m_superView  loadNetData];
                  }];
              }
              
@@ -3470,8 +3471,13 @@
 - (void)popoverListView:(UIPopoverListView *)popoverListView
      didSelectIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%s : %d", __func__, indexPath.row);
-    // your code here
+    if(indexPath.row == 0){
+        
+        
+//        cell.textLabel.text = @"获取同名数据";
+    }else if (indexPath.row == 1){
+//        cell.textLabel.text = @"获取历史数据";
+    }
 }
 
 - (CGFloat)popoverListView:(UIPopoverListView *)popoverListView

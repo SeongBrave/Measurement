@@ -11,7 +11,7 @@
  */
 #import "BaseViewController.h"
 #import "Jcrwcx_Model.h"
-
+#import "DetectionTaskQueryViewController.h"
 
 
 @interface DetectionTaskQueryDidNotHYPopViewController : BaseViewController
@@ -20,6 +20,8 @@
 
 @property(nonatomic , assign)DataSourceType m_dataSourceType;
 
+
+@property(nonatomic , strong)DetectionTaskQueryViewController *m_superView;
 /**
  *  用于保存上一级界面传递过来的数据
  */

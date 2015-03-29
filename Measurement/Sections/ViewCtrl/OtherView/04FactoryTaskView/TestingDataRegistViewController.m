@@ -1475,7 +1475,7 @@
    
     // 2012-05-17 11:23:23
     NSDateFormatter *format=[[NSDateFormatter alloc] init];
-    [format setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [format setDateFormat:@"yyyy-MM-dd"];
     NSDate *fromdate=[format dateFromString:[retDict GetLabelWithKey:@"wtrq"]];
     NSTimeZone *fromzone = [NSTimeZone systemTimeZone];
     NSInteger frominterval = [fromzone secondsFromGMTForDate: fromdate];

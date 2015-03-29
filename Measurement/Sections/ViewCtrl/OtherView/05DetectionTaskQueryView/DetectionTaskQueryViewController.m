@@ -488,7 +488,7 @@
                      
                    //  retDict[@"qjxx"];
                      DetectionTaskQueryDidNotHYPopViewController *popVc = (DetectionTaskQueryDidNotHYPopViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"DetectionTaskQueryDidNotHYPopViewController"];
-                     
+                     popVc.m_superView = self;
                      popVc.m_qjxxDict = retDict[@"qjxx"];
                      popVc.modalPresentationStyle = UIModalPresentationFormSheet;
                      popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;

@@ -861,12 +861,17 @@
     //备注
     [self.m_saveDataDict setObject:[_noteTF.text GetNotNullStr] forKey:@"BZ"];
     
+    NSDateFormatter *xcsj_dateFormatter = [[NSDateFormatter alloc]init];
+    // 设置日历显示格式
+    [xcsj_dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     
-    NSString *strXcsjq = [dateFormatter stringFromDate:self.fromDatePickerBtn.m_info[@"date"]];
+    
+    
+    NSString *strXcsjq = [xcsj_dateFormatter stringFromDate:self.fromDatePickerBtn.m_info[@"date"]];
     //下场时间起
     [self.m_saveDataDict setObject:[strXcsjq GetNotNullStr]forKey:@"XCSJQ"];
     
-     NSString *strXcsjz = [dateFormatter stringFromDate:self.toDatePickerBtn.m_info[@"date"]];
+     NSString *strXcsjz = [xcsj_dateFormatter stringFromDate:self.toDatePickerBtn.m_info[@"date"]];
     //下场时间至
     [self.m_saveDataDict setObject:[strXcsjz GetNotNullStr] forKey:@"XCSJZ"];
     
