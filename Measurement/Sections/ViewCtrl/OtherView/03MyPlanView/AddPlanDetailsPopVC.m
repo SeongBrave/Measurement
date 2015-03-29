@@ -730,10 +730,9 @@
     if (![self validateInputInView:self.view]){
         [self.m_showDialog WarningNotificationWithMessage:@"请补全信息!"];
         
-    }else
+    }else if([self save_Data])
     {
-    
-        [self save_Data];
+
         
         [[BaseNetWork getInstance] showDialogWithVC:self];
         [[[[[BaseNetWork getInstance] rac_postPath:@"saveDutyc.do" parameters:self.m_saveDataDict]map:^(id responseData)
@@ -805,7 +804,7 @@
  下场负责人
  下场负责人编号
  */
--(void)save_Data
+-(BOOL)save_Data
 {
     
     LoginedUser *usr = [LoginedUser sharedInstance];
@@ -874,34 +873,48 @@
         }
         
     }
-    //下场负责人
-    [self.m_saveDataDict setObject:[xcfzrStr GetNotNullStr] forKey:@"XCFZR"];
-    //下场负责人编号
-    [self.m_saveDataDict setObject:[xcfzrbhStr GetNotNullStr] forKey:@"XCFZRBH"];
+    if (!(xcfzrStr!=nil &&xcfzrbhStr !=nil)) {
+        
+        [self.m_showDialog WarningNotificationWithMessage:@"请选择下厂负责人!"];
+        return NO;
+    }else
+    {
+        //下场负责人
+        [self.m_saveDataDict setObject:[xcfzrStr GetNotNullStr] forKey:@"XCFZR"];
+        //下场负责人编号
+        [self.m_saveDataDict setObject:[xcfzrbhStr GetNotNullStr] forKey:@"XCFZRBH"];
+        
+        
+        
+        NSMutableArray *xcksArr = [[NSMutableArray alloc]init];
+        NSMutableArray *xcryArr = [[NSMutableArray alloc]init];
+        
+        for(ks_Model *ksModel in self.m_ks_mansArr)
+        {
+            if (ksModel.isSelected) {
+                
+                [xcksArr addObject:ksModel.comcode];
+                
+                for( ry_Model *rymodel in ksModel.selected_RYArr)
+                {
+                    [xcryArr addObject:rymodel.usercode];
+                }
+            }
+            
+        }
+        
+        //下厂科室组
+        [self.m_saveDataDict setObject:[xcksArr componentsJoinedByString:@","] forKey:@"xcksbhs"];
+        //下厂人员组
+        [self.m_saveDataDict setObject:[xcryArr componentsJoinedByString:@","] forKey:@"xcrybhs"];
+
+        
+        return YES;
+    }
+    
     
     
    
-    NSMutableArray *xcksArr = [[NSMutableArray alloc]init];
-     NSMutableArray *xcryArr = [[NSMutableArray alloc]init];
-    
-    for(ks_Model *ksModel in self.m_ks_mansArr)
-    {
-        if (ksModel.isSelected) {
-            
-            [xcksArr addObject:ksModel.comcode];
-            
-            for( ry_Model *rymodel in ksModel.selected_RYArr)
-            {
-               [xcryArr addObject:rymodel.usercode];
-            }
-        }
-        
-    }
-    
-    //下厂科室组
-    [self.m_saveDataDict setObject:[xcksArr componentsJoinedByString:@","] forKey:@"xcksbhs"];
-    //下厂人员组
-    [self.m_saveDataDict setObject:[xcryArr componentsJoinedByString:@","] forKey:@"xcrybhs"];
     
 }
 

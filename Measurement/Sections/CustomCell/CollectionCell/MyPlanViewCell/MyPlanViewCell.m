@@ -223,8 +223,8 @@ static CGFloat BUTTONWIDTH = 70.0f;
 
 - (IBAction)markCompletedPress:(id)sender {
     
-    if (_delegate && [self.delegate respondsToSelector:@selector(deletePress:)]) {
-        [self.delegate deletePress:self];
+    if (_delegate && [self.delegate respondsToSelector:@selector(markCompletedPress:)]) {
+        [self.delegate markCompletedPress:self];
     }
 }
 

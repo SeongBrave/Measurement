@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "PopViewDelegate.h"
+#import "MyPlanViewController.h"
 
 @interface UpdatePlanDetailsPopVC : BaseViewController
 
@@ -19,6 +20,7 @@
 @property(nonatomic , strong)NSDictionary *m_showDict;
 
 
+@property(nonatomic , strong)MyPlanViewController *m_superView;
 /**
  *  用于更新界面数据
  *

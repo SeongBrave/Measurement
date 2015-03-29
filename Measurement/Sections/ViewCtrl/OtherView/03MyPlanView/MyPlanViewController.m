@@ -314,7 +314,7 @@
 -(void)popProgramOverviewVcByIndexPath:(NSIndexPath *)indexPath
 {
     MyPlanOverviewVc *popVc = (MyPlanOverviewVc*)[self.storyboard instantiateViewControllerWithIdentifier:@"MyPlanOverviewVc"];
-    
+     popVc.m_superView = self;
     //        popVc.m_popDelegate = self;
     popVc.m_showDict = self.m_DataSourceArr[indexPath.row];
     popVc.modalPresentationStyle = UIModalPresentationFormSheet;
@@ -333,6 +333,7 @@
 {
     UpdatePlanDetailsPopVC *popVc = [self.storyboard instantiateViewControllerWithIdentifier:@"UpdatePlanDetailsPopVC"];;
     popVc.m_showDict = self.m_DataSourceArr[indexPath.row];
+    popVc.m_superView = self;
     popVc.modalPresentationStyle = UIModalPresentationFormSheet;
     popVc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     
@@ -417,7 +418,47 @@
  */
 - (void)markCompletedPress:(MyPlanViewCell *)cell
 {
-     [Dialog toast:@"markCompletedPress"];
+    NSIndexPath *indexPath = [self.m_collectionView indexPathForCell:cell];
+    
+    
+    
+    NSDictionary *dict = self.m_DataSourceArr[indexPath.row];
+    
+    
+    
+    [[BaseNetWork getInstance] showDialogWithVC:self];
+    [[[[[BaseNetWork getInstance] rac_postPath:@"editRwwcqk.do" parameters:@{@"id":dict[@"ID"]}]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+         
+         if ([retDict[@"ret"] integerValue] == 1) {
+             [Dialog toastSuccess:retDict[@"message"]];
+             [self loadNetData];
+             
+             
+         }else
+         {
+             [Dialog toastError:retDict[@"message"] ];
+         }
+         
+         
+     }error:^(NSError *error){
+         
+         
+         [Dialog toast:self withMessage:error.helpAnchor];
+         debug_object(error);
+         
+         
+     }];
+    
+
+    
+    
+//    editRwwcqk.do
 }
 
 

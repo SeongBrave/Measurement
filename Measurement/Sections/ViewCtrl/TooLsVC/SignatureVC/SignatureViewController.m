@@ -36,11 +36,7 @@
     
     
     UIImage *signatureImage = self.signatureView.signatureImage;
-    
-    if ([self.m_delegate respondsToSelector:@selector(SignatureVC:saveUpWithImage:)]) {
-        [self.m_delegate SignatureVC:self saveUpWithImage:signatureImage];
-        
-    }
+   
     
     NSData *_data = UIImageJPEGRepresentation(self.signatureView.signatureImage, 1.0f);
     
@@ -64,6 +60,13 @@
 //             [Dialog toast:self withMessage:@"上传成功!"];
              
              [Dialog toastCenter:@"上传成功!"];
+             
+             
+             if ([self.m_delegate respondsToSelector:@selector(SignatureVC:saveUpWithImage:)]) {
+                 [self.m_delegate SignatureVC:self saveUpWithImage:signatureImage];
+                 
+             }
+             
          }else
          {
              [Dialog toastCenter:retDict[@"message"]];

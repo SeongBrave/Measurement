@@ -1033,8 +1033,8 @@
                                     <constraint firstItem="HLg-6m-6pF" firstAttribute="leading" secondItem="pPN-0w-lOs" secondAttribute="leading" constant="26" id="lJf-Rt-O0p"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tjr-fv-I2O">
-                                <rect key="frame" x="0.0" y="116" width="768" height="623"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjr-fv-I2O">
+                                <rect key="frame" x="0.0" y="116" width="768" height="632"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4AZ-ms-VFQ" customClass="AutoCompleteTextField">
                                         <rect key="frame" x="179" y="32" width="529" height="26"/>
@@ -1200,7 +1200,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="默认选中人为计划创建人" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W13-sK-JjX">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="默认选中人为计划创建人" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W13-sK-JjX">
                                         <rect key="frame" x="171" y="648" width="165" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="highlightedColor"/>
@@ -20322,6 +20322,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="9GO-Xy-ofg"/>
-        <segue reference="iqu-WL-ERX"/>
+        <segue reference="JYb-eY-jM0"/>
     </inferredMetricsTieBreakers>
 </document>

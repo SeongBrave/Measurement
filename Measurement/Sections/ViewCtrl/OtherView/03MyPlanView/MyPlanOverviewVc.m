@@ -1234,7 +1234,7 @@
     }];
     
     [self.signatureImgBtn setBackgroundImage:img forState:UIControlStateNormal];
-    
+    [self.m_superView loadNetData];
     
     
 }
