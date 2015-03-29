@@ -659,6 +659,26 @@
             
             dqbhStr = [dict0 GetLabelWithKey:@"SZDQ"];
 
+            NSString *hylbbm = [dict0 GetLabelWithKey:@"HYLBBM"];
+            
+            for( DistrictModel *districtModel in  self.industryCategoriesArr)
+            {
+                if ([districtModel.m_data[@"DMBM"] isEqualToString:hylbbm]) {
+                    
+                    
+                    self.m_hylb_DTF.text = [districtModel.m_data GetLabelWithKey:@"DMXXMC"];
+                    self.m_hylb_DTF.m_bm = [districtModel.m_data GetLabelWithKey:@"DMBM"];
+                    
+                    //行业类别id
+                    self.m_saveDataDict[@"HYLBID"] = [districtModel.m_data GetLabelWithKey:@"DMBM"];
+                    //行业类别名称
+                    self.m_saveDataDict[@"HYLBMC"] = [districtModel.m_data GetLabelWithKey:@"DMXXMC"];
+                }
+                
+            }
+           
+            
+            
         }else //否则说明arr[0] 是 联系人信息
         {
             /**
