@@ -196,7 +196,7 @@
     
     LoginedUser *usr = [LoginedUser sharedInstance];
     
-    self.m_netFunctionStr = @"loadcDuty.do";
+    self.m_netFunctionStr = @"findKsjh.do";
     //pxfs
     [self.m_netParamDict setObject:usr.usercode forKey:@"userCode"];
     [self.m_netParamDict setObject:[NSString stringWithFormat:@"%d",pageNo] forKey:@"pageNo"];

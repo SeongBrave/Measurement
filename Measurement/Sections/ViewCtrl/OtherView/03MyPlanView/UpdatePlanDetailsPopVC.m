@@ -755,7 +755,8 @@
             model.isSelected = YES;
             
             NSArray *myarr = dict[@"ry"];
-            model.ryArr =[myarr linq_select:^id(NSDictionary *dict){
+            model.ryArr =[myarr linq_select:^id(NSDictionary *dict)
+            {
                 
                 ry_Model *ryModel = [MTLJSONAdapter modelOfClass:[ry_Model class] fromJSONDictionary:dict error:nil];
                 if ([ryModel.usercode isEqualToString:xcfzrbhStr]) {

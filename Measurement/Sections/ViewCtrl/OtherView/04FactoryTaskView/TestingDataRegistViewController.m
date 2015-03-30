@@ -1475,15 +1475,15 @@
    
     // 2012-05-17 11:23:23
     NSDateFormatter *format=[[NSDateFormatter alloc] init];
-    [format setDateFormat:@"yyyy-MM-dd"];
-    NSDate *fromdate=[format dateFromString:[retDict GetLabelWithKey:@"wtrq"]];
-    NSTimeZone *fromzone = [NSTimeZone systemTimeZone];
-    NSInteger frominterval = [fromzone secondsFromGMTForDate: fromdate];
-    NSDate *fromDate = [fromdate  dateByAddingTimeInterval: frominterval];
+    [format setDateFormat:@"yyyy-MM-dd HH:mm"];
+    
+    NSString *wtrqStr =[retDict GetLabelWithKey:@"wtrq"] ;
+    NSDate *fromdate=[format dateFromString:wtrqStr];
+
  
     
-    [self.m_jdrq_Btn.m_info setObject:fromDate ==nil?[NSDate new]:fromDate forKey:@"date"];
-     NSString *strDate = [format stringFromDate:fromDate];
+    [self.m_jdrq_Btn.m_info setObject:fromdate ==nil?[NSDate new]:fromdate forKey:@"date"];
+     NSString *strDate = [format stringFromDate:fromdate ==nil?[NSDate new]:fromdate ];
     [self.m_jdrq_Btn setTitle:strDate forState:UIControlStateNormal];
     
     /**
