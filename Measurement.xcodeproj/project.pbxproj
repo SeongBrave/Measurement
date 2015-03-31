@@ -20,6 +20,9 @@
 		C90F31151A729D2F00A7A06E /* jlmb_TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F31141A729D2F00A7A06E /* jlmb_TableViewCell.m */; };
 		C90F31191A729DDF00A7A06E /* TemplatesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F31181A729DDF00A7A06E /* TemplatesListViewController.m */; };
 		C90FF84D1AA9EB5000695B61 /* AuditNotPassPopVc.m in Sources */ = {isa = PBXBuildFile; fileRef = C90FF84C1AA9EB5000695B61 /* AuditNotPassPopVc.m */; };
+		C911ED7B1ACADD6100F6B106 /* rwfp_model.m in Sources */ = {isa = PBXBuildFile; fileRef = C911ED7A1ACADD6100F6B106 /* rwfp_model.m */; };
+		C911ED801ACADE6500F6B106 /* rwfp_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = C911ED7F1ACADE6500F6B106 /* rwfp_Cell.m */; };
+		C911ED831ACADF3E00F6B106 /* Rwfp_PopVc.m in Sources */ = {isa = PBXBuildFile; fileRef = C911ED821ACADF3E00F6B106 /* Rwfp_PopVc.m */; };
 		C917F0FE1AADCFF300F5DC13 /* CheckTaskDidPopVc.m in Sources */ = {isa = PBXBuildFile; fileRef = C917F0FD1AADCFF300F5DC13 /* CheckTaskDidPopVc.m */; };
 		C92F29951A5D0D89001AB4C8 /* DropDownTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C92F29941A5D0D89001AB4C8 /* DropDownTextField.m */; };
 		C93AC00C1A7BECD400FB3EE1 /* hyr_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C93AC00B1A7BECD400FB3EE1 /* hyr_Model.m */; };
@@ -222,6 +225,12 @@
 		C90F31181A729DDF00A7A06E /* TemplatesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatesListViewController.m; sourceTree = "<group>"; };
 		C90FF84B1AA9EB5000695B61 /* AuditNotPassPopVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuditNotPassPopVc.h; sourceTree = "<group>"; };
 		C90FF84C1AA9EB5000695B61 /* AuditNotPassPopVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuditNotPassPopVc.m; sourceTree = "<group>"; };
+		C911ED791ACADD6100F6B106 /* rwfp_model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rwfp_model.h; sourceTree = "<group>"; };
+		C911ED7A1ACADD6100F6B106 /* rwfp_model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rwfp_model.m; sourceTree = "<group>"; };
+		C911ED7E1ACADE6500F6B106 /* rwfp_Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rwfp_Cell.h; sourceTree = "<group>"; };
+		C911ED7F1ACADE6500F6B106 /* rwfp_Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rwfp_Cell.m; sourceTree = "<group>"; };
+		C911ED811ACADF3E00F6B106 /* Rwfp_PopVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rwfp_PopVc.h; sourceTree = "<group>"; };
+		C911ED821ACADF3E00F6B106 /* Rwfp_PopVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rwfp_PopVc.m; sourceTree = "<group>"; };
 		C917F0FC1AADCFF300F5DC13 /* CheckTaskDidPopVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckTaskDidPopVc.h; sourceTree = "<group>"; };
 		C917F0FD1AADCFF300F5DC13 /* CheckTaskDidPopVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckTaskDidPopVc.m; sourceTree = "<group>"; };
 		C92F29931A5D0D89001AB4C8 /* DropDownTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownTextField.h; sourceTree = "<group>"; };
@@ -670,6 +679,32 @@
 				C9EB13531A83B72E00DE9B1D /* YSJL_TemplatesListViewController.m */,
 			);
 			path = TemplatesListVC;
+			sourceTree = "<group>";
+		};
+		C911ED781ACADD4100F6B106 /* rwfp_model */ = {
+			isa = PBXGroup;
+			children = (
+				C911ED791ACADD6100F6B106 /* rwfp_model.h */,
+				C911ED7A1ACADD6100F6B106 /* rwfp_model.m */,
+			);
+			path = rwfp_model;
+			sourceTree = "<group>";
+		};
+		C911ED7C1ACADE4F00F6B106 /* 02PlanningDepCell */ = {
+			isa = PBXGroup;
+			children = (
+				C911ED7D1ACADE4F00F6B106 /* rwfp_Cell */,
+			);
+			path = 02PlanningDepCell;
+			sourceTree = "<group>";
+		};
+		C911ED7D1ACADE4F00F6B106 /* rwfp_Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C911ED7E1ACADE6500F6B106 /* rwfp_Cell.h */,
+				C911ED7F1ACADE6500F6B106 /* rwfp_Cell.m */,
+			);
+			path = rwfp_Cell;
 			sourceTree = "<group>";
 		};
 		C91ACE141A4FA01D0037757A /* TooLsVC */ = {
@@ -1197,6 +1232,8 @@
 				C97094271A62D09A00141DC5 /* PlanningDepartmentViewController.m */,
 				C97203071A9A37CB008273AE /* PlanningDepartmentDidHYPopViewController.h */,
 				C97203081A9A37CB008273AE /* PlanningDepartmentDidHYPopViewController.m */,
+				C911ED811ACADF3E00F6B106 /* Rwfp_PopVc.h */,
+				C911ED821ACADF3E00F6B106 /* Rwfp_PopVc.m */,
 			);
 			path = 02PlanningDepartmentView;
 			sourceTree = "<group>";
@@ -1567,6 +1604,7 @@
 		C9A8B6041A490682008E94B7 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				C911ED7C1ACADE4F00F6B106 /* 02PlanningDepCell */,
 				C9FFC1651A6E7E6C00AA6BE7 /* 04FactoryTaskCell */,
 				C9A95B591A61815E0017BE2B /* SignatureCell */,
 				C9A95B461A613C250017BE2B /* TestProgressCell */,
@@ -1852,6 +1890,7 @@
 		C9FFC1551A6E7B4600AA6BE7 /* 02PlanningDepartmentModel */ = {
 			isa = PBXGroup;
 			children = (
+				C911ED781ACADD4100F6B106 /* rwfp_model */,
 			);
 			path = 02PlanningDepartmentModel;
 			sourceTree = "<group>";
@@ -2138,6 +2177,7 @@
 				C9E184BF1A907C67005690BD /* AuditNotPassViewController.m in Sources */,
 				C9791A9B1A7148B400DC5643 /* Bzqsb_TableViewCell.m in Sources */,
 				C970946C1A62D2DA00141DC5 /* autoTableViewData.m in Sources */,
+				C911ED801ACADE6500F6B106 /* rwfp_Cell.m in Sources */,
 				C9B5299A1AB705740041D6D4 /* Qjyt_dmxx_Model.m in Sources */,
 				C903B0C81A5EB1C00038AA1B /* PlanDetailsMans_DepCell.m in Sources */,
 				C945BB0E1A6D6C3000C6E11E /* BlackBackGroundV.m in Sources */,
@@ -2153,6 +2193,7 @@
 				C99728C01AC19C5F0029E8AA /* MyPlanOverviewVc.m in Sources */,
 				C9651FC31A43B25F00B770BB /* BaseNetWork.m in Sources */,
 				C9A8B60B1A490728008E94B7 /* CommonLogicCell.m in Sources */,
+				C911ED831ACADF3E00F6B106 /* Rwfp_PopVc.m in Sources */,
 				C9D23C3B1AA73076001EA654 /* Jcrwcx_Model.m in Sources */,
 				C9969BBF1ABC79C500780E9D /* Wcjdjh_ksry_Cell.m in Sources */,
 				C9FFC14F1A6E7A6A00AA6BE7 /* ResponsibleDepModel.m in Sources */,
@@ -2161,6 +2202,7 @@
 				C917F0FE1AADCFF300F5DC13 /* CheckTaskDidPopVc.m in Sources */,
 				C98CBFB81A9D9B0C006DC733 /* MenuModel.m in Sources */,
 				C9903BFF1A46E9FE0006FD99 /* DockItem.m in Sources */,
+				C911ED7B1ACADD6100F6B106 /* rwfp_model.m in Sources */,
 				C9BE82401AAF2EC800C4901C /* jcrwcx_Jsyj_Model.m in Sources */,
 				C9BFAA151A487BF400C887B4 /* SettingCell.m in Sources */,
 				C9FFC1501A6E7A6A00AA6BE7 /* ks_Model.m in Sources */,

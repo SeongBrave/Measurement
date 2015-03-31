@@ -15,10 +15,10 @@
 #import "DropDownListView.h"
 #import "PlanningDepartmentDidHYPopViewController.h"
 #import "DepManViewController.h"
-#import "DepMansViewController.h"
-#import "ry_Model.h"
+#import "Rwfp_PopVc.h"
+#import "rwfp_model.h"
 
-@interface PlanningDepartmentViewController ()<UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,SwipeMyPlanViewCellDelegate,PopViewDelegate,DropDownChooseDelegate,DropDownChooseDataSource,DepMansVCDelegate>
+@interface PlanningDepartmentViewController ()<UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,SwipeMyPlanViewCellDelegate,PopViewDelegate,DropDownChooseDelegate,DropDownChooseDataSource,Rwfp_PopVcDelegate>
 {
     NSArray *chooseArray ;
 }
@@ -131,42 +131,42 @@
     [super layoutMainCustomView];
     
     
-    LoginedUser *usr = [LoginedUser sharedInstance];
-    
-    
-    
-    /**
-     *  设置加载时显示提示
-     */
-    [[BaseNetWork getInstance] hideDialog];
-    @weakify(self)
-    [[[[BaseNetWork getInstance] rac_postPath:@"getKsry.do" parameters:@{@"comCode":usr.comcode}]map:^(id responseData)
-      {
-          NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-          
-          return [dict valueForKeyPath:@"ksry"];
-          
-      }]subscribeNext:^(NSArray *arr)
-     {
-         
-         //comcname
-         @strongify(self)
-         self.m_ksry_Arr =[arr linq_select:^id(NSDictionary *dict){
-             
-             ry_Model *ryModel = [MTLJSONAdapter modelOfClass:[ry_Model class] fromJSONDictionary:dict error:nil];
-             ryModel.isSelected = NO;
-             ryModel.isCheckBox = YES;
-             
-             
-             return ryModel;
-         }];
-  
-     }error:^(NSError *error){
-         
-         //          [self.m_collectionView reloadData];
-         
-         
-     }];
+//    LoginedUser *usr = [LoginedUser sharedInstance];
+//    
+//    
+//    
+//    /**
+//     *  设置加载时显示提示
+//     */
+//    [[BaseNetWork getInstance] hideDialog];
+//    @weakify(self)
+//    [[[[BaseNetWork getInstance] rac_postPath:@"getKsry.do" parameters:@{@"comCode":usr.comcode}]map:^(id responseData)
+//      {
+//          NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+//          
+//          return [dict valueForKeyPath:@"ksry"];
+//          
+//      }]subscribeNext:^(NSArray *arr)
+//     {
+//         
+//         //comcname
+//         @strongify(self)
+//         self.m_ksry_Arr =[arr linq_select:^id(NSDictionary *dict){
+//             
+//             ry_Model *ryModel = [MTLJSONAdapter modelOfClass:[ry_Model class] fromJSONDictionary:dict error:nil];
+//             ryModel.isSelected = NO;
+//             ryModel.isCheckBox = YES;
+//             
+//             
+//             return ryModel;
+//         }];
+//  
+//     }error:^(NSError *error){
+//         
+//         //          [self.m_collectionView reloadData];
+//         
+//         
+//     }];
 }
 
 /**
@@ -210,6 +210,66 @@
      *  排序方式
      */
     [self.m_netParamDict setObject:@"jx" forKey:@"pxfs"];
+    
+}
+-(void)Get_findDutyRwfpByRwbh:(NSString *) rwbhStr
+{
+    
+//    findDutyRwfp.do
+    
+    LoginedUser *usr = [LoginedUser sharedInstance];
+    @weakify(self)
+    /**
+     *  获取任务分配
+     */
+    [[BaseNetWork getInstance] showDialogWithVC:self];
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findDutyRwfp.do" parameters:@{@"rwbh":rwbhStr,@"userCode":usr.usercode}]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+         
+         
+         if ([retDict[@"ret"]intValue] == 1) {
+             
+             NSArray *ksryArr = retDict[@"ksry"];
+             
+             //comcname
+             @strongify(self)
+             self.m_ksry_Arr =[ksryArr linq_select:^id(NSDictionary *dict){
+                 
+                 rwfp_model *ryModel = [MTLJSONAdapter modelOfClass:[rwfp_model class] fromJSONDictionary:dict error:nil];
+                 
+                 return ryModel;
+             }];
+             
+             
+             Rwfp_PopVc *depManVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Rwfp_PopVc"];
+             
+             depManVC.m_delegate = self;
+             depManVC.m_shaowDict = @{@"rwbh":rwbhStr};
+             depManVC.modalPresentationStyle = UIModalPresentationFormSheet;
+             depManVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+             depManVC.m_dataSourceArr = self.m_ksry_Arr;
+             [self presentViewController:depManVC animated:YES completion:nil];
+             //    depManVC.view.superview.bounds = CGRectMake(0, 0, 529, 279);
+             depManVC.view.superview.frame = CGRectMake(100, 200, 529, 279);//it's important to do this after presentModalViewController
+             depManVC.view.superview.center = self.view.center;
+         }else
+         {
+             [Dialog toastError:@"没有数据!"];
+         }
+       
+
+         
+         
+     }error:^(NSError *error){
+         
+         
+     }];
+
     
 }
 - (IBAction)CreatePlanClick:(id)sender {
@@ -369,29 +429,17 @@
  */
 - (void)deletePress:(MyPlanViewCell *)cell
 {
-
     
-    if (_m_ksry_Arr.count >0) {
-        
-        DepMansViewController *depManVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DepMansViewController"];
-        
-        depManVC.m_delegate = self;
-        depManVC.modalPresentationStyle = UIModalPresentationFormSheet;
-        depManVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        depManVC.m_dataSourceArr = self.m_ksry_Arr;
-        [self presentViewController:depManVC animated:YES completion:nil];
-        //    depManVC.view.superview.bounds = CGRectMake(0, 0, 529, 279);
-        depManVC.view.superview.frame = CGRectMake(100, 200, 529, 279);//it's important to do this after presentModalViewController
-        depManVC.view.superview.center = self.view.center;
-        
-//        self.m_mans_depManVC = depManVC;
-        
-        /**
-         *  将要修改的model赋值给vc然后再vc中修改
-         */
-//        self.m_mans_depManVC.ksModel = ksModel;
-        
-    }
+    
+    NSIndexPath *indexPath = [self.m_collectionView indexPathForCell:cell];
+    
+    
+    
+    NSDictionary *dict = self.m_DataSourceArr[indexPath.row];
+    
+    [self Get_findDutyRwfpByRwbh:dict[@"RWBH"]];
+
+
     
     
     
@@ -505,8 +553,9 @@
     return 0;
 }
 
-#pragma  mark - DepMansVCDelegate
--(void)DepMansVC:(DepMansViewController *)depManVC didSelectedArr:(NSArray *) selectedArr
+#pragma  mark - Rwfp_PopVcDelegate
+
+-(void)Rwfp_PopVc:(Rwfp_PopVc *)depManVC didSelectedArr:(NSArray *) selectedArr
 {
     
 }
