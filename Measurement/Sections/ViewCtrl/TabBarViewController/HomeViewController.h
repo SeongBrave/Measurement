@@ -10,4 +10,7 @@
 
 @interface HomeViewController : BaseViewController
 
+
+@property(nonatomic  , strong)NSArray *m_dockListArr;
+
 @end

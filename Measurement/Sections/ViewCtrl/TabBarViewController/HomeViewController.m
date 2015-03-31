@@ -66,15 +66,17 @@
 -(void)layoutMainCustomView
 {
     
+    
     _allChilds = [NSMutableDictionary dictionary];
     __unsafe_unretained HomeViewController *home = self;
     
     // 1.添加dock
-    _dock = [[Dock alloc] initWithDockView];
+    _dock = [[Dock alloc] initWithDockViewByMenuList:[self getDockList]];
     _dock.dockItemClickBlock = ^(DockItem *item) {
         // 根据切换控制器
         [home selectChildWithItem:item];
     };
+    
     
     [self.view addSubview:_dock];
     
@@ -90,9 +92,32 @@
     }];
     
     // 4.默认选中全部状态
-    [home selectChildWithItem:[DockItem itemWithIcon:@"tab-nav-jhzl-selected" className:@"ProgramOverviewViewController"]];
+    [home selectChildWithItem: [DockItem itemWithIcon:@"tab-nav-jhzl-defauit" title:@"计划总览" className:@"ProgramOverviewViewController" modal:NO andSelectedIcon:@"tab-nav-jhzl-selected"isSelected:NO]];
     
     
+}
+
+-(NSArray *)getDockList
+{
+    NSArray *dockArr =@[
+                        
+                        [DockItem itemWithIcon:@"tab-nav-jhzl-defauit" title:@"计划总览" className:@"ProgramOverviewViewController" modal:NO andSelectedIcon:@"tab-nav-jhzl-selected"isSelected:NO],
+                        [DockItem itemWithIcon:@"tab-nav-ksjh-defauit" title:@"科室计划" className:@"PlanningDepartmentViewController" modal:NO andSelectedIcon:@"tab-nav-ksjh-selected"isSelected:NO],
+                        [DockItem itemWithIcon:@"tab-nav-wcjdjh-defauit" title:@"我创建的计划" className:@"MyPlanViewController" modal:NO andSelectedIcon:@"tab-nav-wcjdjh-selected"isSelected:NO],
+                        [DockItem itemWithIcon:@"tab-nav-xcrw-defauit" title:@"下厂任务" className:@"FactoryTaskViewController" modal:NO andSelectedIcon:@"tab-nav-xcrw-selected"isSelected:NO],
+                        [DockItem itemWithIcon:@"tab-nav-jcrwcx-defauit" title:@"监测任务查询" className:@"DetectionTaskQueryViewController" modal:NO andSelectedIcon:@"tab-nav-jcrwcx-selected"isSelected:NO],
+                        [DockItem itemWithIcon:@"tab-nav-shwtg-defauit" title:@"审核未通过" className:@"AuditNotPassViewController" modal:NO andSelectedIcon:@"tab-nav-shwtg-selected"isSelected:NO],
+                        [DockItem itemWithIcon:@"tab-nav-hyrw-defauit" title:@"核验任务" className:@"CheckTaskViewController" modal:NO andSelectedIcon:@"tab-nav-hyrw-selected"isSelected:NO],
+                        [DockItem itemWithIcon:@"tab-nav-pzrw-defauit" title:@"批准任务" className:@"ApprovalTaskViewController" modal:NO andSelectedIcon:@"tab-nav-pzrw-selected"isSelected:NO],/*
+                                                                                                                                                                                 [DockItem itemWithIcon:@"tab-nav-zsdb-defauit" title:@"证书担保" className:@"CertificateGuaranteeViewController" modal:NO andSelectedIcon:@"tab-nav-zsdb-selected"],
+                                                                                                                                                                                 [DockItem itemWithIcon:@"tab-nav-bjgl-defauit" title:@"报价管理" className:@"BidManagementViewController" modal:NO andSelectedIcon:@"tab-nav-bjgl-selected"],
+                                                                                                                                                                                 [DockItem itemWithIcon:@"tab-nav-sjrw-defauit" title:@"送检任务" className:@"InspectionTasksViewController" modal:NO andSelectedIcon:@"tab-nav-sjrw-selected"],
+                                                                                                                                                                                 [DockItem itemWithIcon:@"tab-nav-sfgl-defauit" title:@"收费管理" className:@"ChargeManagementViewController" modal:NO andSelectedIcon:@"tab-nav-sfgl-selected"],
+                                                                                                                                                                                 [DockItem itemWithIcon:@"tab-nav-xtsz-defauit" title:@"系统设置" className:@"SystemSettingsViewController" modal:YES andSelectedIcon:@"tab-nav-xtsz-selected"],*/
+                        [DockItem itemWithIcon:@"tab-nav-xtsz-defauit" title:@"系统设置" className:@"SystemSettingsViewController" modal:YES andSelectedIcon:@"tab-nav-xtsz-selected"isSelected:NO]
+                        ];
+    
+    return dockArr;
 }
 
 -(void)SetUpData

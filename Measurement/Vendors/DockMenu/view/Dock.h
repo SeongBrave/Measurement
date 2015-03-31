@@ -15,6 +15,6 @@
 @property (nonatomic, copy) void (^dockItemClickBlock)(DockItem *item);
 
 
--(id)initWithDockView;
+-(id)initWithDockViewByMenuList:(NSArray *) listArr;
 
 @end

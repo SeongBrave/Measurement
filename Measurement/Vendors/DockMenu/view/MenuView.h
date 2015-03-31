@@ -7,15 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MenuItemView.h"
+
 @class DockItem;
 
 @interface MenuView : UIView
+{
+    MenuItemView *_currentItemView;
+}
 
 @property (nonatomic, copy) void (^menuItemClickBlock)(DockItem *item);
 
 
 
--(id)initWithMenuView;
+-(id)initWithMenuViewByMenuList:(NSArray *) listArr;
 
 // 取消选中全部
 - (void)unselectAll;

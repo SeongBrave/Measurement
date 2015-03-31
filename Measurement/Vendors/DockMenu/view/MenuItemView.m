@@ -43,6 +43,7 @@
     [self setImage:[UIImage imageNamed:dockItem.icon] forState:UIControlStateNormal];
     [self setImage:[UIImage imageNamed:dockItem.selectedIcon] forState:UIControlStateSelected];
     
+    [self setSelected: dockItem.isSelected];
 }
 
 @end

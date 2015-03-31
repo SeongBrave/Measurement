@@ -3156,7 +3156,7 @@
     
     // 设置日历显示格式
     
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     
     // 把日历时间传给字符串
     
