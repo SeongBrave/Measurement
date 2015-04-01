@@ -139,6 +139,7 @@
 		C9D23C3F1AA73C31001EA654 /* JcrwcxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D23C3E1AA73C31001EA654 /* JcrwcxCell.m */; };
 		C9D6B9F61A5AE648006D27EF /* AutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F01A5AE648006D27EF /* AutoCompleteTextField.m */; };
 		C9D6B9F71A5AE648006D27EF /* NSString+Levenshtein.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */; };
+		C9D803E41ACC2AB2003BBA3B /* DepartmentTaskVc.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D803E31ACC2AB2003BBA3B /* DepartmentTaskVc.m */; };
 		C9E184BF1A907C67005690BD /* AuditNotPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E184BB1A907C67005690BD /* AuditNotPassViewController.m */; };
 		C9E184C71A90AADF005690BD /* SystemSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E184C61A90AADF005690BD /* SystemSettingsViewController.m */; };
 		C9E184CA1A90C75E005690BD /* DetectionTaskQueryDidHYPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E184C91A90C75E005690BD /* DetectionTaskQueryDidHYPopViewController.m */; };
@@ -469,6 +470,8 @@
 		C9D6B9F31A5AE648006D27EF /* AutoCompletionObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoCompletionObject.h; sourceTree = "<group>"; };
 		C9D6B9F41A5AE648006D27EF /* NSString+Levenshtein.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Levenshtein.h"; sourceTree = "<group>"; };
 		C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Levenshtein.m"; sourceTree = "<group>"; };
+		C9D803E21ACC2AB2003BBA3B /* DepartmentTaskVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartmentTaskVc.h; sourceTree = "<group>"; };
+		C9D803E31ACC2AB2003BBA3B /* DepartmentTaskVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartmentTaskVc.m; sourceTree = "<group>"; };
 		C9E184BA1A907C67005690BD /* AuditNotPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuditNotPassViewController.h; sourceTree = "<group>"; };
 		C9E184BB1A907C67005690BD /* AuditNotPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuditNotPassViewController.m; sourceTree = "<group>"; };
 		C9E184C51A90AADF005690BD /* SystemSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSettingsViewController.h; sourceTree = "<group>"; };
@@ -1228,6 +1231,7 @@
 		C97094251A62D09A00141DC5 /* 02PlanningDepartmentView */ = {
 			isa = PBXGroup;
 			children = (
+				C9D803E11ACC2A83003BBA3B /* DepartmentTaskVc */,
 				C97094261A62D09A00141DC5 /* PlanningDepartmentViewController.h */,
 				C97094271A62D09A00141DC5 /* PlanningDepartmentViewController.m */,
 				C97203071A9A37CB008273AE /* PlanningDepartmentDidHYPopViewController.h */,
@@ -1684,6 +1688,15 @@
 				C9D6B9F51A5AE648006D27EF /* NSString+Levenshtein.m */,
 			);
 			path = AutoCompleteTextField;
+			sourceTree = "<group>";
+		};
+		C9D803E11ACC2A83003BBA3B /* DepartmentTaskVc */ = {
+			isa = PBXGroup;
+			children = (
+				C9D803E21ACC2AB2003BBA3B /* DepartmentTaskVc.h */,
+				C9D803E31ACC2AB2003BBA3B /* DepartmentTaskVc.m */,
+			);
+			path = DepartmentTaskVc;
 			sourceTree = "<group>";
 		};
 		C9E184B91A907C67005690BD /* 11AuditNotPassView */ = {
@@ -2256,6 +2269,7 @@
 				C9651FEC1A43B26000B770BB /* CustomTabBarViewController.m in Sources */,
 				C9651FF71A43BE3100B770BB /* YTKKeyValueStore.m in Sources */,
 				C97093ED1A62CBD200141DC5 /* SignatureViewController.m in Sources */,
+				C9D803E41ACC2AB2003BBA3B /* DepartmentTaskVc.m in Sources */,
 				C97093E91A62CBD200141DC5 /* OptionMenuTableViewController.m in Sources */,
 				C9969BB61ABC734300780E9D /* Wcjdjh_Xcks_Model.m in Sources */,
 				C9EB135A1A83BADC00DE9B1D /* zsmb_Model.m in Sources */,

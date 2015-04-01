@@ -7,7 +7,7 @@
 //
 
 /**
- *  科室计划
+ *  科室任务分配
  */
 #import "CommonLogicViewController.h"
 #import "PopViewDelegate.h"

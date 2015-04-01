@@ -246,10 +246,13 @@
                  
                  if ([yqmcModel.taskid isEqualToString:@"CIF041001"]) {
                      
-                     return  [DockItem itemWithIcon:@"tab-nav-jhzl-defauit" title:@"计划总览" className:@"ProgramOverviewViewController" modal:NO andSelectedIcon:@"tab-nav-jhzl-selected"isSelected:NO];
+                     return  [DockItem itemWithIcon:@"tab-nav-jhzl-defauit" title:@"科室任务分配" className:@"ProgramOverviewViewController" modal:NO andSelectedIcon:@"tab-nav-jhzl-selected"isSelected:NO];
                  }else if ([yqmcModel.taskid isEqualToString:@"CIF041002"]) {
                      
                      return  [DockItem itemWithIcon:@"tab-nav-ksjh-defauit" title:@"科室计划" className:@"PlanningDepartmentViewController" modal:NO andSelectedIcon:@"tab-nav-ksjh-selected"isSelected:NO];
+                 }else  if ([yqmcModel.taskid isEqualToString:@"CIF041003"]) {
+                     
+                     return  [DockItem itemWithIcon:@"tab-nav-ksjh-defauit" title:@"科室计划" className:@"DepartmentTaskVc" modal:NO andSelectedIcon:@"tab-nav-ksjh-selected"isSelected:NO];
                  }else if ([yqmcModel.taskid isEqualToString:@"CIF041004"]) {
                      
                      return  [DockItem itemWithIcon:@"tab-nav-wcjdjh-defauit" title:@"我创建的计划" className:@"MyPlanViewController" modal:NO andSelectedIcon:@"tab-nav-wcjdjh-selected"isSelected:NO];
