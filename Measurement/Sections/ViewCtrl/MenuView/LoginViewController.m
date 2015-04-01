@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "HomeViewController.h"
 #import "MenuModel.h"
+#import "DockItem.h"
 
 @interface LoginViewController ()
 {
@@ -240,10 +241,49 @@
              NSArray *ls =dict[@"ls"];
              loginedUser.menuList = [ls linq_select:^id(NSDictionary *dict){
                  
+        
                  MenuModel *yqmcModel = [MTLJSONAdapter modelOfClass:[MenuModel class] fromJSONDictionary:dict error:nil];
                  
+                 if ([yqmcModel.taskid isEqualToString:@"CIF041001"]) {
+                     
+                     return  [DockItem itemWithIcon:@"tab-nav-jhzl-defauit" title:@"计划总览" className:@"ProgramOverviewViewController" modal:NO andSelectedIcon:@"tab-nav-jhzl-selected"isSelected:NO];
+                 }else if ([yqmcModel.taskid isEqualToString:@"CIF041002"]) {
+                     
+                     return  [DockItem itemWithIcon:@"tab-nav-ksjh-defauit" title:@"科室计划" className:@"PlanningDepartmentViewController" modal:NO andSelectedIcon:@"tab-nav-ksjh-selected"isSelected:NO];
+                 }else if ([yqmcModel.taskid isEqualToString:@"CIF041004"]) {
+                     
+                     return  [DockItem itemWithIcon:@"tab-nav-wcjdjh-defauit" title:@"我创建的计划" className:@"MyPlanViewController" modal:NO andSelectedIcon:@"tab-nav-wcjdjh-selected"isSelected:NO];
+                 }else if ([yqmcModel.taskid isEqualToString:@"CIF041005"]) {
+                     
+                     return  [DockItem itemWithIcon:@"tab-nav-xcrw-defauit" title:@"下厂任务" className:@"FactoryTaskViewController" modal:NO andSelectedIcon:@"tab-nav-xcrw-selected"isSelected:NO];
+                 }else if ([yqmcModel.taskid isEqualToString:@"CIF041006"]) {
+                     
+                     return  [DockItem itemWithIcon:@"tab-nav-jcrwcx-defauit" title:@"监测任务查询" className:@"DetectionTaskQueryViewController" modal:NO andSelectedIcon:@"tab-nav-jcrwcx-selected"isSelected:NO];
+                 }else if ([yqmcModel.taskid isEqualToString:@"CIF041007"]) {
+                     
+                     return  [DockItem itemWithIcon:@"tab-nav-shwtg-defauit" title:@"审核未通过" className:@"AuditNotPassViewController" modal:NO andSelectedIcon:@"tab-nav-shwtg-selected"isSelected:NO];
+                 }else if ([yqmcModel.taskid isEqualToString:@"CIF041008"]) {
+                     
+                     return  [DockItem itemWithIcon:@"tab-nav-hyrw-defauit" title:@"核验任务" className:@"CheckTaskViewController" modal:NO andSelectedIcon:@"tab-nav-hyrw-selected"isSelected:NO];
+                 }else if ([yqmcModel.taskid isEqualToString:@"CIF041009"]) {
+                     
+                     return  [DockItem itemWithIcon:@"tab-nav-pzrw-defauit" title:@"批准任务" className:@"ApprovalTaskViewController" modal:NO andSelectedIcon:@"tab-nav-pzrw-selected"isSelected:NO];
+                 }else if ([yqmcModel.taskid isEqualToString:@"CIF041010"]) {
+                     
+                     return  [DockItem itemWithIcon:@"tab-nav-xtsz-defauit" title:@"系统设置" className:@"SystemSettingsViewController" modal:YES andSelectedIcon:@"tab-nav-xtsz-selected"isSelected:NO];
+                 }
+                 return nil;
+             }];
+             
+             loginedUser.menuList = [loginedUser.menuList linq_where:^BOOL( id value)
+             {
+                 if (value !=[NSNull null]) {
+                     return YES;
+                 }else
+                 {
+                     return NO;
+                 }
                  
-                 return yqmcModel;
              }];
 
              /**
