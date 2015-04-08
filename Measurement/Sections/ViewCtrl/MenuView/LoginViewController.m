@@ -11,12 +11,13 @@
 #import "MenuModel.h"
 #import "DockItem.h"
 
-@interface LoginViewController ()
+@interface LoginViewController ()<UIAlertViewDelegate>
 {
     BOOL isAutoLogin;
     BOOL isRememberPwd;
 }
 
+@property(nonatomic , strong)NSDictionary *updateDict;
 @end
 
 @implementation LoginViewController
@@ -25,7 +26,6 @@
 #pragma mark - 系统方法
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self SetUpData];
     // Do any additional setup after loading the view.
 }
 
@@ -119,6 +119,7 @@
 
 -(void)SetUpData
 {
+    [super SetUpData];
     [self layoutMainCustomView];
 //    [self AddNavgationBarItem];
     
@@ -144,7 +145,18 @@
          
          NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
          
-         debug_object(dict);
+         if(dict[@"ret"])
+         {
+             
+             NSDictionary * bbxxDict = dict[@"bbxx"];
+             if (![bbxxDict[@"bbh"]isEqualToString:bbxxDict[@"bbhx"]]) {
+                 UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"提示" message:bbxxDict[@"message"] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"更新", nil];
+                 
+                 [alert show];
+                 
+                 self.updateDict = bbxxDict;
+             }
+         }
          
      }error:^(NSError *error){
          
@@ -246,13 +258,13 @@
                  
                  if ([yqmcModel.taskid isEqualToString:@"CIF041001"]) {
                      
-                     return  [DockItem itemWithIcon:@"tab-nav-jhzl-defauit" title:@"科室任务分配" className:@"ProgramOverviewViewController" modal:NO andSelectedIcon:@"tab-nav-jhzl-selected"isSelected:NO];
+                     return  [DockItem itemWithIcon:@"tab-nav-jhzl-defauit" title:@"计划总揽" className:@"ProgramOverviewViewController" modal:NO andSelectedIcon:@"tab-nav-jhzl-selected"isSelected:NO];
                  }else if ([yqmcModel.taskid isEqualToString:@"CIF041002"]) {
                      
-                     return  [DockItem itemWithIcon:@"tab-nav-ksjh-defauit" title:@"科室计划" className:@"PlanningDepartmentViewController" modal:NO andSelectedIcon:@"tab-nav-ksjh-selected"isSelected:NO];
+                     return  [DockItem itemWithIcon:@"tab-nav-ksrwfp-defauit" title:@"科室任务分配" className:@"PlanningDepartmentViewController" modal:NO andSelectedIcon:@"tab-nav-ksrwfp-selected"isSelected:NO];
                  }else  if ([yqmcModel.taskid isEqualToString:@"CIF041003"]) {
                      
-                     return  [DockItem itemWithIcon:@"tab-nav-ksjh-defauit" title:@"科室计划" className:@"DepartmentTaskVc" modal:NO andSelectedIcon:@"tab-nav-ksjh-selected"isSelected:NO];
+                     return  [DockItem itemWithIcon:@"tab-nav-ksrw-defauit" title:@"科室任务" className:@"DepartmentTaskVc" modal:NO andSelectedIcon:@"tab-nav-ksrw-selected"isSelected:NO];
                  }else if ([yqmcModel.taskid isEqualToString:@"CIF041004"]) {
                      
                      return  [DockItem itemWithIcon:@"tab-nav-wcjdjh-defauit" title:@"我创建的计划" className:@"MyPlanViewController" modal:NO andSelectedIcon:@"tab-nav-wcjdjh-selected"isSelected:NO];
@@ -381,6 +393,17 @@
 #pragma mark - 代理协议方法*
 
 
+#pragma  mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    if (buttonIndex == 1) {
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.updateDict[@"url"]]];
+        
+    }
+    
+}
 
 
 @end
