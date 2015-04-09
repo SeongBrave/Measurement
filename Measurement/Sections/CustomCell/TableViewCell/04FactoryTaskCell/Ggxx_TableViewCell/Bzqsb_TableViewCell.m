@@ -21,7 +21,7 @@
     self.m_sbbh_LB.text = [item.bzsbbh GetNotNullStr];
     self.m_sbmc_LB.text = [item.sbmc GetNotNullStr];
     
-    self.m_zsbh_LB.text = [item.bzsbbh GetNotNullStr];
+    self.m_zsbh_LB.text = [item.syzsh GetNotNullStr];
     self.m_clfw_LB.text = [item.clfw GetNotNullStr];
     
     self.m_jddj_LB.text = [item.jltx GetNotNullStr];

@@ -207,7 +207,7 @@
          *  获取任务分配
          */
         [[BaseNetWork getInstance] showDialogWithVC:self];
-        [[[[[BaseNetWork getInstance] rac_postPath:@"findDutyRwfpqr.do" parameters:@{@"rwbh":self.m_shaowDict[@"rwbh"],@"userCode":usr.usercode,@"xcrybhs":rwbhStr}]map:^(id responseData)
+        [[[[[BaseNetWork getInstance] rac_postPath:@"findDutyRwfpqr1.do" parameters:@{@"rwbh":self.m_shaowDict[@"rwbh"],@"userCode":usr.usercode,@"xcrybhs":rwbhStr}]map:^(id responseData)
            {
                NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
                

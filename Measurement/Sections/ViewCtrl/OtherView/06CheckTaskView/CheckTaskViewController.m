@@ -9,7 +9,7 @@
 #import "CheckTaskViewController.h"
 #import "FactoryTaskCell.h"
 #import <UIColor+HexString.h>
-#import "OptionMenuTableViewController.h"
+#import "Jcrwcx_OptionMenuTVc.h"
 #import "FactoryTaskDetailViewPopVC.h"
 #import "AddPlanDetailsPopVC.h"
 #import "backgroundV.h"
@@ -18,7 +18,7 @@
 #import "JcrwcxCell.h"
 #import "Jcrwcx_Model.h"
 
-@interface CheckTaskViewController ()<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, SwipeJcrwcxCellDelegate,UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,PopViewDelegate,DropDownChooseDelegate,DropDownChooseDataSource>
+@interface CheckTaskViewController ()<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, SwipeJcrwcxCellDelegate,UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuTVcDelegate,PopViewDelegate,DropDownChooseDelegate,DropDownChooseDataSource>
 {
     NSArray *chooseArray ;
 }
@@ -62,11 +62,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([segue.identifier isEqualToString:@"ToOptionMenuVC"] )
+    if ([segue.identifier isEqualToString:@"ToJcrwcx_OptionMenuTVc"] )
     {
         UINavigationController *nav = (UINavigationController*)[segue destinationViewController];
         
-        OptionMenuTableViewController *OptionMenuTVC = (OptionMenuTableViewController*)[nav topViewController];
+        Jcrwcx_OptionMenuTVc *OptionMenuTVC = (Jcrwcx_OptionMenuTVc*)[nav topViewController];
         OptionMenuTVC.m_optionMenuDelegate = self;
         NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:self.m_netParamDict];
         
@@ -265,7 +265,7 @@
 }
 #pragma mark -  DidOptionMenuDelegate
 
--(void)OptionMenu:(OptionMenuTableViewController*) selectValueTVC DidsaveValue:(id)saveValue{
+-(void)OptionMenuTVc:(Jcrwcx_OptionMenuTVc*) selectValueTVC DidsaveValue:(id)saveValue{
     
     debug_object(self.m_netParamDict);
     NSDictionary *dict = (NSDictionary *)saveValue;

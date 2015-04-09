@@ -157,6 +157,7 @@
 		C9EB135A1A83BADC00DE9B1D /* zsmb_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EB13591A83BADC00DE9B1D /* zsmb_Model.m */; };
 		C9F3DFD41A5D9CD100D34A19 /* FactoryTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DFD21A5D9CD100D34A19 /* FactoryTaskCell.m */; };
 		C9F3DFD71A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DFD61A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m */; };
+		C9F40C061AD6C83A00277A42 /* Jcrwcx_OptionMenuTVc.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F40C051AD6C83A00277A42 /* Jcrwcx_OptionMenuTVc.m */; };
 		C9F51E621A582E70009F84D1 /* backgroundV.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F51E611A582E70009F84D1 /* backgroundV.m */; };
 		C9FFC14C1A6E7A6A00AA6BE7 /* DistrictModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FFC1371A6E7A6A00AA6BE7 /* DistrictModel.m */; };
 		C9FFC14D1A6E7A6A00AA6BE7 /* HeadOFModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FFC1391A6E7A6A00AA6BE7 /* HeadOFModel.m */; };
@@ -505,6 +506,8 @@
 		C9F3DFD21A5D9CD100D34A19 /* FactoryTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryTaskCell.m; sourceTree = "<group>"; };
 		C9F3DFD51A5D9DFD00D34A19 /* PlanDetailsHead_Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanDetailsHead_Cell.h; sourceTree = "<group>"; };
 		C9F3DFD61A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanDetailsHead_Cell.m; sourceTree = "<group>"; };
+		C9F40C041AD6C83A00277A42 /* Jcrwcx_OptionMenuTVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jcrwcx_OptionMenuTVc.h; sourceTree = "<group>"; };
+		C9F40C051AD6C83A00277A42 /* Jcrwcx_OptionMenuTVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jcrwcx_OptionMenuTVc.m; sourceTree = "<group>"; };
 		C9F51E601A582E70009F84D1 /* backgroundV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backgroundV.h; sourceTree = "<group>"; };
 		C9F51E611A582E70009F84D1 /* backgroundV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = backgroundV.m; sourceTree = "<group>"; };
 		C9F51E641A582FE7009F84D1 /* PopViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopViewDelegate.h; sourceTree = "<group>"; };
@@ -1189,6 +1192,7 @@
 		C97093DD1A62CBD200141DC5 /* OptionMenuVC */ = {
 			isa = PBXGroup;
 			children = (
+				C9F40C031AD6C81800277A42 /* Jcrwcx_OptionMenuTVc */,
 				C97093DE1A62CBD200141DC5 /* OptionMenuTableViewController.h */,
 				C97093DF1A62CBD200141DC5 /* OptionMenuTableViewController.m */,
 				C97093E01A62CBD200141DC5 /* SelectValue_XCKS_TableViewController.h */,
@@ -1800,6 +1804,15 @@
 			path = PlanDetailsCell;
 			sourceTree = "<group>";
 		};
+		C9F40C031AD6C81800277A42 /* Jcrwcx_OptionMenuTVc */ = {
+			isa = PBXGroup;
+			children = (
+				C9F40C041AD6C83A00277A42 /* Jcrwcx_OptionMenuTVc.h */,
+				C9F40C051AD6C83A00277A42 /* Jcrwcx_OptionMenuTVc.m */,
+			);
+			path = Jcrwcx_OptionMenuTVc;
+			sourceTree = "<group>";
+		};
 		C9F51E5E1A582E5F009F84D1 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2231,6 +2244,7 @@
 				C9E184C71A90AADF005690BD /* SystemSettingsViewController.m in Sources */,
 				C97094601A62D09B00141DC5 /* CheckTaskViewController.m in Sources */,
 				C9AE087F1A450FE200DA39BF /* LoginViewController.m in Sources */,
+				C9F40C061AD6C83A00277A42 /* Jcrwcx_OptionMenuTVc.m in Sources */,
 				C9E226D71A52FF6E004A9A69 /* DatePickerViewController.m in Sources */,
 				C9E184CA1A90C75E005690BD /* DetectionTaskQueryDidHYPopViewController.m in Sources */,
 				C9F3DFD71A5D9DFD00D34A19 /* PlanDetailsHead_Cell.m in Sources */,

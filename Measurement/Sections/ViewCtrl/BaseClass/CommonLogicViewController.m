@@ -12,6 +12,8 @@
 @interface CommonLogicViewController ()
 {
 
+    
+    BOOL isFirst;
 }
 @end
 
@@ -21,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    isFirst = YES;
     // Do any additional setup after loading the view.
 }
 
@@ -36,6 +39,8 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+   [self.m_superCollectionView.header beginRefreshing];
+    
 }
 
 // TODO: 使用autolayout 布局界面
@@ -101,7 +106,7 @@
     // 设置正在刷新状态的动画图片
     [self.m_superCollectionView.gifHeader setImages:refreshingImages forState:MJRefreshHeaderStateRefreshing];
     
-    [self.m_superCollectionView.header beginRefreshing];
+    
     
     // 上拉刷新
     [self.m_superCollectionView addLegendFooterWithRefreshingBlock:^{
@@ -161,6 +166,8 @@
 }
 -(void)loadNetData
 {
+    
+    isFirst = NO;
     [self setBaseNetWorkParameters];
     
     debug_object(self.m_netParamDict);
