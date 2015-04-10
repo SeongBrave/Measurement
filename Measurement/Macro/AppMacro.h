@@ -15,6 +15,8 @@
 //登录界面标题
 #define  LoginView_mainView_Title  @"床边护理工作站"
 
+#define ISDEBUG   YES
+
 #define WEBURLKEY @"WebUrlKey"
 
 #define WEBCLASSNAME @"Transfusion.asmx"

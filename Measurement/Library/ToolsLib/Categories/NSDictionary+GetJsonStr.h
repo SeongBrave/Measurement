@@ -12,13 +12,6 @@
 
 - (NSString*)GetJsonStrForDict;
 
-/**
- *  经常会将字典中得某个值赋值给label 这里处理改字符串为空或者nil或者NSNULL等
- *
- *  @param key
- *
- *  @return
- */
 -(NSString *)GetLabelWithKey:(NSString *) key;
 
 @end

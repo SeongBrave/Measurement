@@ -10,12 +10,6 @@
 
 @interface NSMutableArray (AddDictToArr)
 
-/**
- *  字典扩充，自动把obj与key加入字典
- *
- *  @param _obj 值
- *  @param _key key
- */
 -(void)AddDictToArrWithObj:(id)_obj andKey:(NSString*) _key;
 
 @end

@@ -26,7 +26,7 @@ PODS:
   - FMDB/standard (2.5):
     - FMDB/common
   - HexColors (2.2.1)
-  - IQKeyboardManager (3.2.1.2)
+  - IQKeyboardManager (3.2.2)
   - JGProgressHUD (1.2.3)
   - LinqToObjectiveC (2.0.0)
   - Mantle (1.5.4):
@@ -36,6 +36,7 @@ PODS:
   - MBProgressHUD (0.9.1)
   - MJRefresh (1.4.1)
   - MMPlaceHolder (1.6)
+  - PinYin4Objc (1.1.1)
   - PPSSignatureView (0.1.2)
   - RBStoryboardLink (0.1.4)
   - ReactiveCocoa (2.3.1):
@@ -67,6 +68,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - MJRefresh (~> 1.4.1)
   - MMPlaceHolder
+  - PinYin4Objc
   - PPSSignatureView
   - RBStoryboardLink
   - ReactiveCocoa (~> 2.3.1)
@@ -82,7 +84,7 @@ SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   FMDB: 0efa188cf0dd1ce82c27a478cd5f5fa245308677
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
-  IQKeyboardManager: 4adcd7cc9c17440a7cb74755f6f6c8389919c6bf
+  IQKeyboardManager: 99df8006864663a4126a77b9a2f7ea70077eff31
   JGProgressHUD: 733523c80f69b6dfc41b88a0f33883a89a8b4c3b
   LinqToObjectiveC: db2ceec81d45192ffe971bbd8e73ef0de614723c
   Mantle: d5fbaf30fbc58031223af13812c060e15934a1fe
@@ -90,6 +92,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: f3747dcbd45a9e855a6b0674550651e0b7ed250c
   MJRefresh: 6a0fd4c81a957803bd99bbbf55a956d1d6f41263
   MMPlaceHolder: 8fe70118604dfd117155ff3f6e8492965e338443
+  PinYin4Objc: b095ffd2a20e8e591abe7af262dfc8892549e09e
   PPSSignatureView: 961f6168b88c0334007f1d49a17e3ebb2f1462a9
   RBStoryboardLink: 3bc5f6a73a18506e2f980bd0ace79d6847b18aa6
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462

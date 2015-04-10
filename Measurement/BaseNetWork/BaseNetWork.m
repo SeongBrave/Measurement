@@ -7,6 +7,7 @@
 //
 
 #import "BaseNetWork.h"
+#import "PasteboardHelper.h"
 
 static BaseNetWork *instance =nil;
 
@@ -150,6 +151,11 @@ static BaseNetWork *instance =nil;
     if (![path hasPrefix:@"http://"]) {
         
         path = [NSString stringWithFormat:@"%@%@",defaultWebServiceUrl,path];
+    }
+    
+    if (ISDEBUG) {
+        
+        [PasteboardHelper SetPasteboardByDict:parameters];
     }
     
     @weakify(self)

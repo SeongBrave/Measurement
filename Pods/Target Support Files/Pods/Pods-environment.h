@@ -74,10 +74,9 @@
 
 // IQKeyboardManager
 #define COCOAPODS_POD_AVAILABLE_IQKeyboardManager
-// This library does not follow semantic-versioning,
-// so we were not able to define version macros.
-// Please contact the author.
-// Version: 3.2.1.2.
+#define COCOAPODS_VERSION_MAJOR_IQKeyboardManager 3
+#define COCOAPODS_VERSION_MINOR_IQKeyboardManager 2
+#define COCOAPODS_VERSION_PATCH_IQKeyboardManager 2
 
 // JGProgressHUD
 #define COCOAPODS_POD_AVAILABLE_JGProgressHUD
@@ -132,6 +131,12 @@
 #define COCOAPODS_VERSION_MAJOR_PPSSignatureView 0
 #define COCOAPODS_VERSION_MINOR_PPSSignatureView 1
 #define COCOAPODS_VERSION_PATCH_PPSSignatureView 2
+
+// PinYin4Objc
+#define COCOAPODS_POD_AVAILABLE_PinYin4Objc
+#define COCOAPODS_VERSION_MAJOR_PinYin4Objc 1
+#define COCOAPODS_VERSION_MINOR_PinYin4Objc 1
+#define COCOAPODS_VERSION_PATCH_PinYin4Objc 1
 
 // RBStoryboardLink
 #define COCOAPODS_POD_AVAILABLE_RBStoryboardLink

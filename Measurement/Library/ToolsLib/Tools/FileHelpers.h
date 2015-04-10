@@ -68,6 +68,13 @@
 +(id)GetDataFromNSUserDefaultsWithKey:(NSString*) _key;
 
 /**
+ *  删除某一key对应的值
+ *
+ *  @param key
+ */
++(void)removeNSUserDefaultsDataByKey:(NSString *) key;
+
+/**
  *  读取服务器地址配置信息
  *
  *  @return 服务器地址配置信息字典
