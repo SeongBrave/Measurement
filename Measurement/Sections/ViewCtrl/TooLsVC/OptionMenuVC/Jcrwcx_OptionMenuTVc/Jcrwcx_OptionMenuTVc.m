@@ -158,11 +158,11 @@
     
     self.m_companyTF.text = [dict GetLabelWithKey:@"wtdwmc"];
     
-    self.m_yqmc_TF.text = [dict GetLabelWithKey:@"YQMC"];
+    self.m_yqmc_TF.text = [dict GetLabelWithKey:@"yqmc"];
     
-    self.m_txm_TF.text = [dict GetLabelWithKey:@"TXM"];
+    self.m_txm_TF.text = [dict GetLabelWithKey:@"txm"];
     
-    self.m_zsbh_TF.text = [dict GetLabelWithKey:@"ZSBH"];
+    self.m_zsbh_TF.text = [dict GetLabelWithKey:@"zsbh"];
     
     
     
@@ -232,7 +232,7 @@
     
     
     
-    NSString *xcsjqStr = dict[@"CJSJSTART"];
+    NSString *xcsjqStr = dict[@"cjsjStart"];
     
     NSDateFormatter *format=[[NSDateFormatter alloc] init];
     [format setDateFormat:@"yyyy-MM-dd"];
@@ -242,7 +242,7 @@
     NSDate *fromDate = [fromdate  dateByAddingTimeInterval: frominterval];
     
     
-    NSString *xcsjzStr = dict[@"CJSJEND"];
+    NSString *xcsjzStr = dict[@"cjsjEnd"];
     NSDate *todate=[format dateFromString:xcsjzStr];
     NSInteger tointerval = [fromzone secondsFromGMTForDate: todate];
     NSDate *toDate = [fromdate  dateByAddingTimeInterval: tointerval];
@@ -335,7 +335,7 @@
      {
          @strongify(self)
          
-         [self.m_relValue setObject:wtdwmcStr forKey:@"YQMC"];
+         [self.m_relValue setObject:wtdwmcStr forKey:@"yqmc"];
          
      }];
     
@@ -344,7 +344,7 @@
      {
          @strongify(self)
          
-         [self.m_relValue setObject:wtdwmcStr forKey:@"TXM"];
+         [self.m_relValue setObject:wtdwmcStr forKey:@"txm"];
          
      }];
     
@@ -353,7 +353,7 @@
      {
          @strongify(self)
          
-         [self.m_relValue setObject:wtdwmcStr forKey:@"ZSBH"];
+         [self.m_relValue setObject:wtdwmcStr forKey:@"zsbh"];
          
      }];
     
@@ -571,11 +571,11 @@
     
     if (datePickerVC == _toDatePickerVC) {
         
-        [self.m_relValue setObject:strDate forKey:@"CJSJSTART"];
+        [self.m_relValue setObject:strDate forKey:@"cjsjStart"];
         
     }else if (datePickerVC == _fromDatePickerVC)
     {
-        [self.m_relValue setObject:strDate forKey:@"CJSJEND"];
+        [self.m_relValue setObject:strDate forKey:@"cjsjEnd"];
     }
     
 }
