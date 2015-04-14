@@ -5172,45 +5172,45 @@
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="t7w-dp-eAa">
-                                        <rect key="frame" x="101" y="13" width="24" height="22"/>
+                                        <rect key="frame" x="101" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="ue7-xF-1IB"/>
-                                            <constraint firstAttribute="height" constant="22" id="xdA-YF-gIF"/>
+                                            <constraint firstAttribute="width" constant="14" id="ue7-xF-1IB"/>
+                                            <constraint firstAttribute="height" constant="17" id="xdA-YF-gIF"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="bTQ-bf-oKp">
-                                        <rect key="frame" x="205" y="13" width="24" height="22"/>
+                                        <rect key="frame" x="195" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="dWs-7c-0G5"/>
-                                            <constraint firstAttribute="width" constant="24" id="z5t-oz-EVP"/>
+                                            <constraint firstAttribute="height" constant="17" id="dWs-7c-0G5"/>
+                                            <constraint firstAttribute="width" constant="14" id="z5t-oz-EVP"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="taf-nA-Gi0">
-                                        <rect key="frame" x="135" y="9" width="60" height="30"/>
+                                        <rect key="frame" x="125" y="9" width="60" height="30"/>
                                         <state key="normal" title="公共信息">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ari-MY-xFk">
-                                        <rect key="frame" x="239" y="9" width="60" height="30"/>
+                                        <rect key="frame" x="219" y="9" width="60" height="30"/>
                                         <state key="normal" title="原始记录">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOv-DS-Ms8">
-                                        <rect key="frame" x="343" y="9" width="30" height="30"/>
+                                        <rect key="frame" x="313" y="9" width="30" height="30"/>
                                         <state key="normal" title="证书">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="JcV-7a-yv8">
-                                        <rect key="frame" x="309" y="13" width="24" height="22"/>
+                                        <rect key="frame" x="289" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="GOx-3c-uBi"/>
-                                            <constraint firstAttribute="height" constant="22" id="mTt-az-T9x"/>
+                                            <constraint firstAttribute="width" constant="14" id="GOx-3c-uBi"/>
+                                            <constraint firstAttribute="height" constant="17" id="mTt-az-T9x"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -6734,7 +6734,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXa-Jj-DgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3110" y="-9825"/>
+            <point key="canvasLocation" x="3314" y="-9796"/>
         </scene>
         <!--Full Screen PreviewVC-->
         <scene sceneID="XbH-hE-Fn6">
@@ -6874,31 +6874,31 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJR-Os-nOt">
-                                        <rect key="frame" x="135" y="9" width="90" height="30"/>
+                                        <rect key="frame" x="125" y="9" width="90" height="30"/>
                                         <state key="normal" title="我的设备列表">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PbA-hd-Qxy">
-                                        <rect key="frame" x="270" y="9" width="75" height="30"/>
+                                        <rect key="frame" x="249" y="9" width="75" height="30"/>
                                         <state key="normal" title="未领取设备">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="omu-4p-pUK">
-                                        <rect key="frame" x="235" y="13" width="25" height="22"/>
+                                        <rect key="frame" x="225" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="Goa-0j-vp7"/>
-                                            <constraint firstAttribute="width" constant="25" id="LaG-aW-8uZ"/>
+                                            <constraint firstAttribute="height" constant="17" id="Goa-0j-vp7"/>
+                                            <constraint firstAttribute="width" constant="14" id="LaG-aW-8uZ"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Q2Z-m9-fsL">
-                                        <rect key="frame" x="101" y="13" width="24" height="22"/>
+                                        <rect key="frame" x="101" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="A5y-2b-B8G"/>
-                                            <constraint firstAttribute="width" constant="24" id="Omz-8J-3GO"/>
+                                            <constraint firstAttribute="height" constant="17" id="A5y-2b-B8G"/>
+                                            <constraint firstAttribute="width" constant="14" id="Omz-8J-3GO"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -11360,31 +11360,31 @@
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="ftU-SD-Vyn">
-                                        <rect key="frame" x="101" y="13" width="24" height="22"/>
+                                        <rect key="frame" x="101" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="0VN-5Y-bdB"/>
-                                            <constraint firstAttribute="height" constant="22" id="3D9-TF-VT0"/>
+                                            <constraint firstAttribute="width" constant="14" id="0VN-5Y-bdB"/>
+                                            <constraint firstAttribute="height" constant="17" id="3D9-TF-VT0"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fR-3h-VTh">
-                                        <rect key="frame" x="135" y="9" width="60" height="30"/>
+                                        <rect key="frame" x="125" y="9" width="60" height="30"/>
                                         <state key="normal" title="原始记录">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m97-rG-Ggy">
-                                        <rect key="frame" x="239" y="9" width="30" height="30"/>
+                                        <rect key="frame" x="219" y="9" width="30" height="30"/>
                                         <state key="normal" title="证书">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="NAj-fb-1ce">
-                                        <rect key="frame" x="205" y="13" width="24" height="22"/>
+                                        <rect key="frame" x="195" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="78w-Hf-6HD"/>
-                                            <constraint firstAttribute="height" constant="22" id="NLS-20-g7e"/>
+                                            <constraint firstAttribute="width" constant="14" id="78w-Hf-6HD"/>
+                                            <constraint firstAttribute="height" constant="17" id="NLS-20-g7e"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -12123,7 +12123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8w8-e1-rbX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3962" y="-9199"/>
+            <point key="canvasLocation" x="3495" y="-9310"/>
         </scene>
         <!--计划总揽弹出视图-->
         <scene sceneID="X5u-u5-IU8">
@@ -14443,45 +14443,45 @@
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="KEW-YT-MVl">
-                                        <rect key="frame" x="101" y="13" width="24" height="22"/>
+                                        <rect key="frame" x="101" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="Vwj-Yo-UXo"/>
-                                            <constraint firstAttribute="height" constant="22" id="zlR-g8-em8"/>
+                                            <constraint firstAttribute="width" constant="14" id="Vwj-Yo-UXo"/>
+                                            <constraint firstAttribute="height" constant="17" id="zlR-g8-em8"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="QIf-fw-AJg">
-                                        <rect key="frame" x="205" y="13" width="24" height="22"/>
+                                        <rect key="frame" x="195" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="Q5g-ty-1Pr"/>
-                                            <constraint firstAttribute="height" constant="22" id="wMe-w5-4kC"/>
+                                            <constraint firstAttribute="width" constant="14" id="Q5g-ty-1Pr"/>
+                                            <constraint firstAttribute="height" constant="17" id="wMe-w5-4kC"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdv-Ov-YVW">
-                                        <rect key="frame" x="135" y="9" width="60" height="30"/>
+                                        <rect key="frame" x="125" y="9" width="60" height="30"/>
                                         <state key="normal" title="公共信息">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y68-DU-6sZ">
-                                        <rect key="frame" x="239" y="9" width="60" height="30"/>
+                                        <rect key="frame" x="219" y="9" width="60" height="30"/>
                                         <state key="normal" title="原始记录">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNP-Zi-5Yj">
-                                        <rect key="frame" x="343" y="9" width="30" height="30"/>
+                                        <rect key="frame" x="313" y="9" width="30" height="30"/>
                                         <state key="normal" title="证书">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Zpm-Id-5He">
-                                        <rect key="frame" x="309" y="13" width="24" height="22"/>
+                                        <rect key="frame" x="289" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="Wf2-FW-Iae"/>
-                                            <constraint firstAttribute="height" constant="22" id="f6a-gk-jp1"/>
+                                            <constraint firstAttribute="width" constant="14" id="Wf2-FW-Iae"/>
+                                            <constraint firstAttribute="height" constant="17" id="f6a-gk-jp1"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -16105,52 +16105,52 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jw4-8Y-GsX">
-                                        <rect key="frame" x="135" y="9" width="60" height="30"/>
+                                        <rect key="frame" x="125" y="9" width="60" height="30"/>
                                         <state key="normal" title="设备详情">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Pyj-L4-WMw">
-                                        <rect key="frame" x="205" y="13" width="24" height="22"/>
+                                        <rect key="frame" x="195" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="fhL-Gd-zfm"/>
-                                            <constraint firstAttribute="height" constant="22" id="jiE-W5-qGl"/>
+                                            <constraint firstAttribute="width" constant="14" id="fhL-Gd-zfm"/>
+                                            <constraint firstAttribute="height" constant="17" id="jiE-W5-qGl"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="P68-5j-xBx">
-                                        <rect key="frame" x="309" y="13" width="24" height="22"/>
+                                        <rect key="frame" x="289" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="4iz-Un-YDi"/>
-                                            <constraint firstAttribute="width" constant="24" id="e5l-VN-Hdz"/>
+                                            <constraint firstAttribute="height" constant="17" id="4iz-Un-YDi"/>
+                                            <constraint firstAttribute="width" constant="14" id="e5l-VN-Hdz"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4q4-4v-Ffn">
-                                        <rect key="frame" x="239" y="9" width="60" height="30"/>
+                                        <rect key="frame" x="219" y="9" width="60" height="30"/>
                                         <state key="normal" title="公共信息">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fnk-gZ-BWH">
-                                        <rect key="frame" x="343" y="9" width="60" height="30"/>
+                                        <rect key="frame" x="313" y="9" width="60" height="30"/>
                                         <state key="normal" title="原始记录">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3J-zY-mna">
-                                        <rect key="frame" x="447" y="9" width="30" height="30"/>
+                                        <rect key="frame" x="407" y="9" width="30" height="30"/>
                                         <state key="normal" title="证书">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="6AH-Lw-kNz">
-                                        <rect key="frame" x="413" y="13" width="24" height="22"/>
+                                        <rect key="frame" x="383" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="2WN-kI-dwI"/>
-                                            <constraint firstAttribute="width" constant="24" id="h1D-eh-rsc"/>
+                                            <constraint firstAttribute="height" constant="17" id="2WN-kI-dwI"/>
+                                            <constraint firstAttribute="width" constant="14" id="h1D-eh-rsc"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cz-M0-K8t">
@@ -16161,10 +16161,10 @@
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Aop-Xt-WSy">
-                                        <rect key="frame" x="103" y="13" width="24" height="22"/>
+                                        <rect key="frame" x="103" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="pj3-dR-KKK"/>
-                                            <constraint firstAttribute="width" constant="24" id="rgF-r3-kBB"/>
+                                            <constraint firstAttribute="height" constant="17" id="pj3-dR-KKK"/>
+                                            <constraint firstAttribute="width" constant="14" id="rgF-r3-kBB"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -17792,7 +17792,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q8L-gp-Rj5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3998" y="-10488"/>
+            <point key="canvasLocation" x="3797" y="-10644"/>
         </scene>
         <!--提交核验弹出视图-->
         <scene sceneID="avT-Qt-gWR">
@@ -17858,45 +17858,45 @@
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="z6p-ep-BBM">
-                                        <rect key="frame" x="101" y="13" width="24" height="22"/>
+                                        <rect key="frame" x="101" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="P9j-vM-V1j"/>
-                                            <constraint firstAttribute="width" constant="24" id="UrB-G0-Np5"/>
+                                            <constraint firstAttribute="height" constant="17" id="P9j-vM-V1j"/>
+                                            <constraint firstAttribute="width" constant="14" id="UrB-G0-Np5"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fw9-jj-MJ2">
-                                        <rect key="frame" x="135" y="9" width="60" height="30"/>
+                                        <rect key="frame" x="125" y="9" width="60" height="30"/>
                                         <state key="normal" title="原始记录">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbL-2l-2fE">
-                                        <rect key="frame" x="239" y="9" width="30" height="30"/>
+                                        <rect key="frame" x="219" y="9" width="30" height="30"/>
                                         <state key="normal" title="证书">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="b9M-El-XLj">
-                                        <rect key="frame" x="205" y="13" width="24" height="22"/>
+                                        <rect key="frame" x="195" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="kEA-RL-oNx"/>
-                                            <constraint firstAttribute="width" constant="24" id="u1A-za-dre"/>
+                                            <constraint firstAttribute="height" constant="17" id="kEA-RL-oNx"/>
+                                            <constraint firstAttribute="width" constant="14" id="u1A-za-dre"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Hg-WI-8Fq">
-                                        <rect key="frame" x="313" y="9" width="30" height="30"/>
+                                        <rect key="frame" x="283" y="9" width="30" height="30"/>
                                         <state key="normal" title="核验">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="ZhN-UT-uTy">
-                                        <rect key="frame" x="279" y="13" width="24" height="22"/>
+                                        <rect key="frame" x="259" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="jlz-Os-Tg1"/>
-                                            <constraint firstAttribute="width" constant="24" id="rLQ-g9-Qc4"/>
+                                            <constraint firstAttribute="height" constant="17" id="jlz-Os-Tg1"/>
+                                            <constraint firstAttribute="width" constant="14" id="rLQ-g9-Qc4"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -18383,7 +18383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PYZ-a0-KQO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1478" y="-10637"/>
+            <point key="canvasLocation" x="1695" y="-10644"/>
         </scene>
         <!--批准任务弹出视图-->
         <scene sceneID="jJS-Ie-thV">
@@ -18449,45 +18449,45 @@
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="rnB-s3-baN">
-                                        <rect key="frame" x="101" y="13" width="24" height="22"/>
+                                        <rect key="frame" x="101" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="CfK-Sw-1YN"/>
-                                            <constraint firstAttribute="width" constant="24" id="wYD-JT-sOW"/>
+                                            <constraint firstAttribute="height" constant="17" id="CfK-Sw-1YN"/>
+                                            <constraint firstAttribute="width" constant="14" id="wYD-JT-sOW"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWa-xE-Srm">
-                                        <rect key="frame" x="135" y="9" width="60" height="30"/>
+                                        <rect key="frame" x="125" y="9" width="60" height="30"/>
                                         <state key="normal" title="原始记录">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ce3-wl-lWt">
-                                        <rect key="frame" x="239" y="9" width="30" height="30"/>
+                                        <rect key="frame" x="219" y="9" width="30" height="30"/>
                                         <state key="normal" title="证书">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="LGt-cB-8QK">
-                                        <rect key="frame" x="205" y="13" width="24" height="22"/>
+                                        <rect key="frame" x="195" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="UPv-zc-l25"/>
-                                            <constraint firstAttribute="height" constant="22" id="xrs-EQ-AsF"/>
+                                            <constraint firstAttribute="width" constant="14" id="UPv-zc-l25"/>
+                                            <constraint firstAttribute="height" constant="17" id="xrs-EQ-AsF"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5K-7N-ZGu">
-                                        <rect key="frame" x="313" y="9" width="30" height="30"/>
+                                        <rect key="frame" x="283" y="9" width="30" height="30"/>
                                         <state key="normal" title="批准">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="float-tab-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="SlF-jr-ec3">
-                                        <rect key="frame" x="279" y="13" width="24" height="22"/>
+                                        <rect key="frame" x="259" y="16" width="14" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="6kf-vo-6Di"/>
-                                            <constraint firstAttribute="width" constant="24" id="mRj-8s-ZaA"/>
+                                            <constraint firstAttribute="height" constant="17" id="6kf-vo-6Di"/>
+                                            <constraint firstAttribute="width" constant="14" id="mRj-8s-ZaA"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -18973,7 +18973,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yt3-Cn-dAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2528" y="-10261"/>
+            <point key="canvasLocation" x="2721" y="-10267"/>
         </scene>
         <!--Wcjdjh Ksry Vc-->
         <scene sceneID="faJ-0B-Jmd">
@@ -19093,7 +19093,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="74L-Xd-hNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="704.5" y="-6213.5"/>
+            <point key="canvasLocation" x="965.5" y="-6339.5"/>
         </scene>
         <!--我创建的计划弹出预览界面-->
         <scene sceneID="2Kw-yV-U9c">
@@ -21232,9 +21232,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pWE-RO-CVu"/>
         <segue reference="rip-6Y-Iex"/>
         <segue reference="ed9-IN-fwM"/>
-        <segue reference="5q5-Zy-e31"/>
+        <segue reference="D1q-FG-v94"/>
+        <segue reference="pWE-RO-CVu"/>
     </inferredMetricsTieBreakers>
 </document>

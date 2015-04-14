@@ -3435,6 +3435,22 @@
 - (void)popoverListView:(UIPopoverListView *)popoverListView
      didSelectIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == 0) {
+        
+        [self.m_ysjl_javascriptBridge callHandler:@"hqtmsj" data:nil responseCallback:^(id response)
+         {
+
+             
+         }];
+    }else
+    {
+        [self.m_ysjl_javascriptBridge callHandler:@"hqlssj" data:nil responseCallback:^(id response)
+         {
+
+         }];
+    }
+    
+    
     NSLog(@"%s : %d", __func__, indexPath.row);
     // your code here
 }

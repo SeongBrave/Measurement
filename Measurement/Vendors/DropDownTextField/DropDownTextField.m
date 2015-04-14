@@ -77,9 +77,9 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
         
         make.centerY.equalTo(self.mas_centerY);
         
-        make.height.equalTo(@16);
+        make.height.equalTo(@8);
         
-        make.width.equalTo(@28);
+        make.width.equalTo(@14);
         
     }];
     self.leftBtn = btn;
