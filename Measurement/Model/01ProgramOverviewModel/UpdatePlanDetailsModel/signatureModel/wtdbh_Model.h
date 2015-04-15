@@ -26,6 +26,11 @@
 @property (nonatomic, copy) NSString *ggxh;
 
 /**
+ * 仪器名称
+ */
+@property (nonatomic, copy) NSString *yqmc;
+
+/**
  *  检测范围
  */
 @property (nonatomic, copy) NSString *jcfw;
