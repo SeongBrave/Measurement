@@ -256,34 +256,34 @@
         
                  MenuModel *yqmcModel = [MTLJSONAdapter modelOfClass:[MenuModel class] fromJSONDictionary:dict error:nil];
                  
-                 if ([yqmcModel.taskid isEqualToString:@"CIF040001"]) {
+                 if ([yqmcModel.des isEqualToString:@"jhzl"]) {
                      
                      return  [DockItem itemWithIcon:@"tab-nav-jhzl-defauit" title:@"计划总揽" className:@"ProgramOverviewViewController" modal:NO andSelectedIcon:@"tab-nav-jhzl-selected"isSelected:NO];
-                 }else if ([yqmcModel.taskid isEqualToString:@"CIF040002"]) {
+                 }else if ([yqmcModel.des isEqualToString:@"ksjhlq"]) {
                      
                      return  [DockItem itemWithIcon:@"tab-nav-ksrwfp-defauit" title:@"科室任务分配" className:@"PlanningDepartmentViewController" modal:NO andSelectedIcon:@"tab-nav-ksrwfp-selected"isSelected:NO];
-                 }else  if ([yqmcModel.taskid isEqualToString:@"CIF040003"]) {
+                 }else  if ([yqmcModel.des isEqualToString:@"ksjh"]) {
                      
                      return  [DockItem itemWithIcon:@"tab-nav-ksrw-defauit" title:@"科室任务" className:@"DepartmentTaskVc" modal:NO andSelectedIcon:@"tab-nav-ksrw-selected"isSelected:NO];
-                 }else if ([yqmcModel.taskid isEqualToString:@"CIF040004"]) {
+                 }else if ([yqmcModel.des isEqualToString:@"wcjdjh"]) {
                      
                      return  [DockItem itemWithIcon:@"tab-nav-wcjdjh-defauit" title:@"我创建的计划" className:@"MyPlanViewController" modal:NO andSelectedIcon:@"tab-nav-wcjdjh-selected"isSelected:NO];
-                 }else if ([yqmcModel.taskid isEqualToString:@"CIF040005"]) {
+                 }else if ([yqmcModel.des isEqualToString:@"xcrw"]) {
                      
                      return  [DockItem itemWithIcon:@"tab-nav-xcrw-defauit" title:@"下厂任务" className:@"FactoryTaskViewController" modal:NO andSelectedIcon:@"tab-nav-xcrw-selected"isSelected:NO];
-                 }else if ([yqmcModel.taskid isEqualToString:@"CIF040006"]) {
+                 }else if ([yqmcModel.des isEqualToString:@"jcrwcx"]) {
                      
                      return  [DockItem itemWithIcon:@"tab-nav-jcrwcx-defauit" title:@"监测任务查询" className:@"DetectionTaskQueryViewController" modal:NO andSelectedIcon:@"tab-nav-jcrwcx-selected"isSelected:NO];
-                 }else if ([yqmcModel.taskid isEqualToString:@"CIF040007"]) {
+                 }else if ([yqmcModel.des isEqualToString:@"shwtg"]) {
                      
                      return  [DockItem itemWithIcon:@"tab-nav-shwtg-defauit" title:@"审核未通过" className:@"AuditNotPassViewController" modal:NO andSelectedIcon:@"tab-nav-shwtg-selected"isSelected:NO];
-                 }else if ([yqmcModel.taskid isEqualToString:@"CIF040008"]) {
+                 }else if ([yqmcModel.des isEqualToString:@"hyrw"]) {
                      
                      return  [DockItem itemWithIcon:@"tab-nav-hyrw-defauit" title:@"核验任务" className:@"CheckTaskViewController" modal:NO andSelectedIcon:@"tab-nav-hyrw-selected"isSelected:NO];
-                 }else if ([yqmcModel.taskid isEqualToString:@"CIF040009"]) {
+                 }else if ([yqmcModel.des isEqualToString:@"pz1rw"]) {
                      
                      return  [DockItem itemWithIcon:@"tab-nav-pzrw-defauit" title:@"批准任务" className:@"ApprovalTaskViewController" modal:NO andSelectedIcon:@"tab-nav-pzrw-selected"isSelected:NO];
-                 }else if ([yqmcModel.taskid isEqualToString:@"CIF040010"]) {
+                 }else if ([yqmcModel.des isEqualToString:@"pzrw"]) {
                      
                      return  [DockItem itemWithIcon:@"tab-nav-xtsz-defauit" title:@"系统设置" className:@"SystemSettingsViewController" modal:YES andSelectedIcon:@"tab-nav-xtsz-selected"isSelected:NO];
                  }

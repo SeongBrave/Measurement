@@ -164,10 +164,12 @@
         if (item.modal) {
             
             SystemSettingsViewController *systemSetVc = (SystemSettingsViewController *) nav;
+            UINavigationController *myNav = [[UINavigationController alloc] initWithRootViewController:systemSetVc];
             systemSetVc.m_superVc = self;
-            systemSetVc.modalPresentationStyle = UIModalPresentationFormSheet;
             
-            [self presentViewController:systemSetVc animated:YES completion:nil];
+            myNav.modalPresentationStyle = UIModalPresentationFormSheet;
+            
+            [self presentViewController:myNav animated:YES completion:nil];
             
             
             return;

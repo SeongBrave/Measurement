@@ -10,9 +10,9 @@
 /**
  *  系统设置
  */
-#import "CommonLogicViewController.h"
+#import "BaseTableViewController.h"
 
-@interface SystemSettingsViewController : CommonLogicViewController
+@interface SystemSettingsViewController : BaseTableViewController
 
 
 @property(nonatomic , strong)UIViewController *m_superVc;

@@ -9,6 +9,7 @@
 #import "HeaderView.h"
 #import "VendorMacro.h"
 #import "LoginedUser.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation HeaderView
 
@@ -50,6 +51,12 @@
         self.m_imgV = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"left-head-images"]];
         self.m_imgV.backgroundColor = [UIColor clearColor];
         [self addSubview:_m_imgV];
+        
+    //  http://192.168.10.169:8080/mbs/convey/querypicture.do?usercode=1187
+        
+        NSURL *imgUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@querypicture.do?usercode=%@",defaultWebServiceUrl,loginer.usercode]];
+        [self.m_imgV sd_setImageWithURL:imgUrl placeholderImage:[UIImage imageNamed:@"left-head-images"]];
+//        self.m_imgV
 
          @weakify(self)
         /**
