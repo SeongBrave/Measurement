@@ -42,6 +42,11 @@
 {
     [super viewDidAppear:animated];
     
+    if ([[FileHelpers GetDataFromNSUserDefaultsWithKey:IS_AUTOUPDATEKEY] boolValue]) {
+        [self AutoUpdate];
+        
+    }
+    
 }
 
 // TODO: 使用autolayout 布局界面
@@ -122,6 +127,11 @@
     [super SetUpData];
     [self layoutMainCustomView];
 //    [self AddNavgationBarItem];
+}
+
+-(void)AutoUpdate
+{
+//    IS_AUTOUPDATEKEY
     
     
     //获取设备信息
@@ -129,15 +139,15 @@
     
     NSUUID* identifier = device.identifierForVendor;
     
-//    66B88D8C-6AE8-45E6-9E2E-4AF5016B4C91
+    //    66B88D8C-6AE8-45E6-9E2E-4AF5016B4C91
     
     //获取版本号
     NSString *version = [[FileHelpers getMyAppVersionInfo] objectForKey:@"version"];
     
     //获取ip地址
-//    NSString *adviceIP = [GetAdeviceIP getIPAddress:YES];
+    //    NSString *adviceIP = [GetAdeviceIP getIPAddress:YES];
     
-//    findBbgx.do
+    //    findBbgx.do
     NSDictionary *dict =@{@"bbh":version,@"sbbh":identifier.UUIDString};
     
     [[[BaseNetWork getInstance] rac_postPath:@"findBbgx.do" parameters:dict]
@@ -163,7 +173,6 @@
          debug_object(error);
          
      }];
-    
     
 }
 -(void)AddNavgationBarItem

@@ -25,6 +25,11 @@
 
 #define MBS_XTBS @"by"
 
+/**
+ 是否启用自动更新
+ */
+#define IS_AUTOUPDATEKEY @"AutoUpdateKey"
+
 #define WEBURL [NSString stringWithFormat:@"%@:%@",[[FileHelpers readPreferences][@"name_preference"] isEqualToString:@""]?@"192.168.10.169":[FileHelpers readPreferences][@"name_preference"] ,[[FileHelpers readPreferences][@"port_preference"]isEqualToString:@""]?@"8080":[FileHelpers readPreferences][@"port_preference"]]
 
 

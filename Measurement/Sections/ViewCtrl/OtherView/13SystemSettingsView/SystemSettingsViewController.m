@@ -8,8 +8,19 @@
 
 #import "SystemSettingsViewController.h"
 #import"MMPlaceHolder.h"
+#import "NSDictionary+GetNotNilValue.h"
 
 @interface SystemSettingsViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *m_lqsj_LB;
+
+@property (weak, nonatomic) IBOutlet UILabel *m_sbmc_LB;
+@property (weak, nonatomic) IBOutlet UILabel *m_lqr_LB;
+
+@property (weak, nonatomic) IBOutlet UILabel *m_lqks_LB;
+
+@property (weak, nonatomic) IBOutlet UISwitch *m_zdgx_SW;
+
 
 @end
 
@@ -21,6 +32,7 @@
     
     self.title = @"系统设置";
 
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,6 +44,17 @@
     [super viewWillAppear:animated];
 //    [self.view  showPlaceHolder];
     
+    /**
+     *  如果是自动更新则为选中状态否则未选中
+     */
+    if ([[FileHelpers GetDataFromNSUserDefaultsWithKey:IS_AUTOUPDATEKEY] boolValue]) {
+        
+        self.m_zdgx_SW.on = YES;
+    }else
+    {
+        self.m_zdgx_SW.on = NO;
+    }
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -41,6 +64,21 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+}
+
+- (IBAction)zdgx_Changed:(id)sender {
+    
+    UISwitch *myswitch = (UISwitch *) sender;
+    
+    if ([myswitch isOn]) {
+        
+        [FileHelpers SaveDataWithNSUserDefaultsForData:@1 andWithKey:IS_AUTOUPDATEKEY];
+        
+        
+    }else
+    {
+        [FileHelpers SaveDataWithNSUserDefaultsForData:@0 andWithKey:IS_AUTOUPDATEKEY];
+    }
 }
 
 #pragma mark - 自定义方法
@@ -123,7 +161,51 @@
  */
 -(void)loadNetData
 {
+    LoginedUser *usr = [LoginedUser sharedInstance];
     
+    //获取设备信息
+    UIDevice *device = [UIDevice currentDevice];
+    
+    NSUUID* identifier = device.identifierForVendor;
+    @weakify(self)
+    /**
+     *  获取检测进度数据
+     */
+    [[BaseNetWork getInstance] hideDialog];
+    [[[[[BaseNetWork getInstance] rac_postPath:@"initSysSet.do" parameters:@{@"usercode":usr.usercode,@"sbbh":identifier.UUIDString}]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary  *retDict) {
+         
+          @strongify(self)
+         if ([retDict[@"ret"] integerValue] == 1) {
+            
+             NSDictionary *xtxxDict = [retDict valueForKeyPath:@"xtxx.sbxx"];
+            
+             self.m_lqsj_LB.text = [xtxxDict GetNotNilValueByKey:@"lqsj"];
+             self.m_sbmc_LB.text = [xtxxDict GetNotNilValueByKey:@"sbmc"];
+             self.m_lqr_LB.text = [xtxxDict GetNotNilValueByKey:@"lqr"];
+             self.m_lqks_LB.text = [xtxxDict GetNotNilValueByKey:@"lqks"];
+             
+         }else
+         {
+             self.m_lqsj_LB.text = @"";
+             self.m_sbmc_LB.text = @"";
+             self.m_lqr_LB.text = @"";
+             self.m_lqks_LB.text = @"";
+         }
+  
+         
+         
+     }error:^(NSError *error){
+         
+         
+     }];
+    
+
     
 }
 
