@@ -65,15 +65,14 @@
     
     UILabel *menuViewTitle = [[UILabel alloc]init];
     menuViewTitle.textColor = UIColorFromRGB(202, 201, 196);
-    menuViewTitle.font = [UIFont systemFontOfSize:11];
-    menuViewTitle.text = @"长春计量检查院专门定制";
+    menuViewTitle.font = [UIFont systemFontOfSize:13];
+    menuViewTitle.text = LEFTMENUBARTITLE;
     
     [self addSubview:menuViewTitle];
     
     
     UILabel *menuViewTitle2 = [[UILabel alloc]init];
     
-    menuViewTitle2.text = @"©2014 Baidu";
     menuViewTitle2.textColor = UIColorFromRGB(202, 201, 196);
     menuViewTitle2.font = [UIFont systemFontOfSize:11];
     [self addSubview:menuViewTitle2];

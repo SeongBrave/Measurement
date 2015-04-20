@@ -289,10 +289,10 @@
                  }else if ([yqmcModel.des isEqualToString:@"hyrw"]) {
                      
                      return  [DockItem itemWithIcon:@"tab-nav-hyrw-defauit" title:@"核验任务" className:@"CheckTaskViewController" modal:NO andSelectedIcon:@"tab-nav-hyrw-selected"isSelected:NO];
-                 }else if ([yqmcModel.des isEqualToString:@"pz1rw"]) {
+                 }else if ([yqmcModel.des isEqualToString:@"pzrw"]) {
                      
                      return  [DockItem itemWithIcon:@"tab-nav-pzrw-defauit" title:@"批准任务" className:@"ApprovalTaskViewController" modal:NO andSelectedIcon:@"tab-nav-pzrw-selected"isSelected:NO];
-                 }else if ([yqmcModel.des isEqualToString:@"pzrw"]) {
+                 }else if ([yqmcModel.des isEqualToString:@"xtsz"]) {
                      
                      return  [DockItem itemWithIcon:@"tab-nav-xtsz-defauit" title:@"系统设置" className:@"SystemSettingsViewController" modal:YES andSelectedIcon:@"tab-nav-xtsz-selected"isSelected:NO];
                  }

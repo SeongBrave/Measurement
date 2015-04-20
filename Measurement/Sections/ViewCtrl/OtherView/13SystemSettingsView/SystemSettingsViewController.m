@@ -11,6 +11,7 @@
 #import "NSDictionary+GetNotNilValue.h"
 
 @interface SystemSettingsViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *m_bb_LB;
 
 @property (weak, nonatomic) IBOutlet UILabel *m_lqsj_LB;
 
@@ -21,6 +22,7 @@
 
 @property (weak, nonatomic) IBOutlet UISwitch *m_zdgx_SW;
 
+@property (weak, nonatomic) IBOutlet UIButton *m_jcgx_Btn;
 
 @end
 
@@ -126,6 +128,11 @@
 -(void)layoutMainCustomView
 {
     
+    //获取设备信息
+    //获取版本号
+    NSString *version = [[FileHelpers getMyAppVersionInfo] objectForKey:@"version"];
+    
+    self.m_bb_LB.text = version;
     //    隐藏多余行的分割线
     self.tableView.tableFooterView = [[UIView alloc] init];
     
@@ -152,10 +159,68 @@
 -(void)Add_RAC_Attention
 {
     
-    
+    [[self.m_jcgx_Btn
+      rac_signalForControlEvents:UIControlEventTouchUpInside]
+     subscribeNext:^(UIButton *jcgx){
+        
+         [self AutoUpdate];
+    }error:^(NSError *error){
+        
+    }];
     
 }
-
+-(void)AutoUpdate
+{
+    //    IS_AUTOUPDATEKEY
+    
+    
+    //获取设备信息
+    UIDevice *device = [UIDevice currentDevice];
+    
+    NSUUID* identifier = device.identifierForVendor;
+    
+    //    66B88D8C-6AE8-45E6-9E2E-4AF5016B4C91
+    
+    //获取版本号
+    NSString *version = [[FileHelpers getMyAppVersionInfo] objectForKey:@"version"];
+    
+    //获取ip地址
+    //    NSString *adviceIP = [GetAdeviceIP getIPAddress:YES];
+    
+    //    findBbgx.do
+    NSDictionary *dict =@{@"bbh":version,@"sbbh":identifier.UUIDString};
+    
+    [[[BaseNetWork getInstance] rac_postPath:@"findBbgx.do" parameters:dict]
+     subscribeNext:^(id responseData){
+         
+         NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+         
+         if(dict[@"ret"])
+         {
+             
+             NSDictionary * bbxxDict = dict[@"bbxx"];
+             if (![bbxxDict[@"bbh"]isEqualToString:bbxxDict[@"bbhx"]]) {
+                 
+                 UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:bbxxDict[@"message"] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"更新", nil];
+                 [[alertView rac_buttonClickedSignal] subscribeNext:^(NSNumber *indexNumber) {
+                     if ([indexNumber intValue] == 1) {
+                       
+                         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:bbxxDict[@"url"]]];
+                         
+                     }
+                 }];
+                 [alertView show];
+                 
+             }
+         }
+         
+     }error:^(NSError *error){
+         
+         debug_object(error);
+         
+     }];
+    
+}
 /**
  *  获取  的数据
  */

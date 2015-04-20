@@ -49,7 +49,7 @@ typedef enum
 //webservice配置 默认是这样的
 //#define defaultWebServiceUrl @"http://192.168.10.169:8080/mbs/convey/"
 
-
+#define LEFTMENUBARTITLE @"长春市计量院"
 
 //DaoTongHttpManager
 

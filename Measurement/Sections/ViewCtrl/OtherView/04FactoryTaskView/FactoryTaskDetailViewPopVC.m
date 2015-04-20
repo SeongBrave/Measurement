@@ -615,13 +615,12 @@
      }];
     
 
-    
-//    [self.m_showDict GetLabelWithKey:@"RWBH"]
+//    NSString *rwbh =    [self.m_showDict GetLabelWithKey:@"RWBH"];
     [[BaseNetWork getInstance] hideDialog];
     /**
      *  获取检测进度数据
      */
-    [[[[[BaseNetWork getInstance] rac_postPath:@"findShebei.do" parameters:@{@"rwbh":@"5dce769b2f9e46a3b3a2c194f46eb80b"}]map:^(id responseData)
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findShebei.do" parameters:@{@"rwbh": [self.m_showDict GetLabelWithKey:@"RWBH"]}]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
