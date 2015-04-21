@@ -1288,8 +1288,8 @@
 		C970944F1A62D09A00141DC5 /* 12InspectionTasksView */ = {
 			isa = PBXGroup;
 			children = (
-				C97094501A62D09A00141DC5 /* InspectionTasksViewController.h */,
 				C97094511A62D09A00141DC5 /* InspectionTasksViewController.m */,
+				C97094501A62D09A00141DC5 /* InspectionTasksViewController.h */,
 			);
 			path = 12InspectionTasksView;
 			sourceTree = "<group>";

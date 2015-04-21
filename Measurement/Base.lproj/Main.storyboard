@@ -11431,10 +11431,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGG-b2-j7f">
-                                                    <rect key="frame" x="28" y="146" width="968" height="45"/>
+                                                    <rect key="frame" x="408" y="146" width="208" height="45"/>
                                                     <color key="backgroundColor" red="0.90196078430000004" green="0.043137254899999998" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="H3F-Lo-g5h"/>
+                                                        <constraint firstAttribute="width" constant="208" id="mQz-C2-kd8"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <state key="normal" title="退出登陆">
@@ -11449,7 +11450,6 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="oGG-b2-j7f" secondAttribute="bottom" constant="20" id="O87-Rs-SLw"/>
                                                 <constraint firstAttribute="centerX" secondItem="oGG-b2-j7f" secondAttribute="centerX" id="gOm-cq-qZZ"/>
-                                                <constraint firstItem="oGG-b2-j7f" firstAttribute="leading" secondItem="YRg-US-tSQ" secondAttribute="leadingMargin" constant="20" id="hcw-MO-jBu"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -14833,7 +14833,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="生成厂家" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdW-z8-jE8">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="生产厂家" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdW-z8-jE8">
                                                 <rect key="frame" x="76" y="234" width="60" height="18"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -16057,7 +16057,7 @@
                                                     <constraint firstAttribute="height" constant="26" id="0Hx-cN-EIu"/>
                                                     <constraint firstAttribute="width" constant="70" id="MiU-HJ-bjE"/>
                                                 </constraints>
-                                                <state key="normal" image="right-button-qc">
+                                                <state key="normal" image="right-button-qx">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -16193,7 +16193,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="Zs_CancleBtnClick:" destination="R6W-kg-aXJ" eventType="touchUpInside" id="6kF-Ru-lGx"/>
-                                                    <action selector="m_UpBtnClick:" destination="R6W-kg-aXJ" eventType="touchUpInside" id="wLR-0d-f1F"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -19037,7 +19036,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sZy-Tk-eAQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="768" height="632"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="核验人" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ros-WW-EqA">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="批准人" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ros-WW-EqA">
                                                         <rect key="frame" x="77" y="30" width="51" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -19049,7 +19048,7 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="核验时间" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfA-LI-4od">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="批准时间" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfA-LI-4od">
                                                         <rect key="frame" x="60" y="76" width="68" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -19061,7 +19060,7 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="核验结果" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OoM-Kr-8Qw">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="批准结果" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OoM-Kr-8Qw">
                                                         <rect key="frame" x="60" y="122" width="68" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -19230,7 +19229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yt3-Cn-dAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2721" y="-10267"/>
+            <point key="canvasLocation" x="2572" y="-10738"/>
         </scene>
         <!--Wcjdjh Ksry Vc-->
         <scene sceneID="faJ-0B-Jmd">

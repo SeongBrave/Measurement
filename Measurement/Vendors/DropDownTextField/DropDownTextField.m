@@ -12,7 +12,7 @@
 static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdentifier";
 
 
-@interface DropDownTextField ()
+@interface DropDownTextField ()<UIGestureRecognizerDelegate>
 
 @property (strong, readwrite) UITableView *dropDownTableView;
 @property (strong) NSArray *dropDowSuggestions;
@@ -61,6 +61,7 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
 - (void)initialize
 {
     
+    self.tableHeight = 140;
     /**
      添加右侧的btn
      */
@@ -69,6 +70,7 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
     [btn setImage:[UIImage imageNamed:@"general-arrow-up"] forState:UIControlStateSelected];
     [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:btn];
+    
     //uibutton视图的布局
     [btn mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -82,7 +84,26 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
         make.width.equalTo(@14);
         
     }];
+    
     self.leftBtn = btn;
+    
+    //TODO: 待优化解决！！！
+    UIButton *btn1 = [[UIButton alloc]init];
+    
+    [btn1 addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    btn1.backgroundColor = [UIColor clearColor];
+    [self addSubview:btn1];
+    
+    //uibutton视图的布局
+    [btn1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        
+        make.trailing.equalTo(self.mas_trailing).offset(-5); //设置中线视图
+        
+        make.center.equalTo(@0);
+        
+    }];
+    
     
     [self setDefaultValuesForVariables];
     
@@ -92,6 +113,10 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
     
     [self styleDropDowTableForBorderStyle:self.borderStyle];
     
+    
+    UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc]  initWithTarget:self action:@selector(btnClick:)];
+    pinchGesture.delegate = self;
+    [self addGestureRecognizer:pinchGesture];
     
 }
 
@@ -123,12 +148,12 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
                      belowSubview:self];
 #endif
     [self.dropDownTableView setUserInteractionEnabled:YES];
-   
+    
     [self.layer setShadowColor:[[UIColor blackColor] CGColor]];
     [self.layer setShadowOffset:CGSizeMake(0, 1)];
     [self.layer setShadowOpacity:0.35];
-  
-      [self.dropDownTableView.layer setCornerRadius:self.dropDownTableCornerRadius];
+    
+    [self.dropDownTableView.layer setCornerRadius:self.dropDownTableCornerRadius];
     [self.dropDownTableView setContentInset:self.dropDownContentInsets];
     [self.dropDownTableView setScrollIndicatorInsets:self.dropDownScrollIndicatorInsets];
     [self.dropDownTableView reloadData];
@@ -136,13 +161,14 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
 
 -(void)btnClick:(UIButton *) btn
 {
-    if (btn.selected) {
-         [self hideDropDownTableView];
+    
+    if ( self.leftBtn.selected) {
+        [self hideDropDownTableView];
     }else
     {
         [self showDropDownTableView];
     }
-
+    
     [self loadDropDownTableView];
 }
 
@@ -162,7 +188,7 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
         
         CGRect frame=self.dropDownTableView.frame;
         
-        frame.size.height=150;
+        frame.size.height=self.tableHeight;
         [self.dropDownTableView setFrame:frame];
         
     } completion:^(BOOL finished){
@@ -189,7 +215,7 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
         [self closeDropDowTableView];
         
     }];
- 
+    
 }
 
 
@@ -219,17 +245,17 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
 
 - (void)setRoundedRectStyleForDropDowTableView
 {
-
+    
     [self setDropDownTableCornerRadius:8.0];
     [self setDropDownTableOriginOffset:CGSizeMake(0, -18)];
-
+    
     [self setDropDownScrollIndicatorInsets:UIEdgeInsetsMake(18, 0, 0, 0)];
     [self setDropDownContentInsets:UIEdgeInsetsMake(18, 0, 0, 0)];
     
     if(self.backgroundColor == [UIColor clearColor]){
         [self setDropDownTableBackgroundColor:[UIColor colorWithRed:1.000 green:0.603 blue:0.492 alpha:1.000]];
     } else {
-//        [self setDropDownTableBackgroundColor:self.backgroundColor];
+        //        [self setDropDownTableBackgroundColor:self.backgroundColor];
     }
 }
 
@@ -339,13 +365,13 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
         [self unregisterAutoCompleteCellForReuseIdentifier:self.reuseIdentifier];
     }
     
-  
+    
     
     BOOL classSettingSupported = NO;
     classSettingSupported = [self.dropDownTableView respondsToSelector:@selector(registerClass:forCellReuseIdentifier:)];
     
     NSAssert(classSettingSupported, @"Unable to set class for cell for autocomplete table, in iOS 5.0 you can set a custom NIB for a reuse identifier to get similar functionality.");
-     [self.dropDownTableView registerClass:cellClass forCellReuseIdentifier:reuseIdentifier];
+    [self.dropDownTableView registerClass:cellClass forCellReuseIdentifier:reuseIdentifier];
     [self setReuseIdentifier:reuseIdentifier];
 }
 
@@ -364,7 +390,7 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
     [newTableView setDelegate:textField];
     [newTableView setDataSource:textField];
     [newTableView setScrollEnabled:YES];
-//    newTableView.backgroundColor = [UIColor redColor];
+    //    newTableView.backgroundColor = [UIColor redColor];
     [newTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     return newTableView;
@@ -390,8 +416,8 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    NSInteger numberOfRows = [self.autoCompleteSuggestions count];
-//    [self expandAutoCompleteTableViewForNumberOfRows:numberOfRows];
+    //    NSInteger numberOfRows = [self.autoCompleteSuggestions count];
+    //    [self expandAutoCompleteTableViewForNumberOfRows:numberOfRows];
     
     NSArray *arr =   [self.dropDownDataSource dropDownTextFieldDataSourceTextField:self];
     return arr.count;
@@ -412,18 +438,18 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
     }
     NSAssert(cell, @"Unable to create cell for autocomplete table");
     
-   
+    
     id <DropDownTextFieldShowCellTextLabel>  dropDownData = (id <DropDownTextFieldShowCellTextLabel>)[self.dropDownDataSource dropDownTextFieldDataSourceTextField:self][indexPath.row];
     
-      NSString *suggestedString =  [(id <DropDownTextFieldShowCellTextLabel>)dropDownData getShowCellForTextLabel];
+    NSString *suggestedString =  [(id <DropDownTextFieldShowCellTextLabel>)dropDownData getShowCellForTextLabel];
     
     if ([dropDownData respondsToSelector:@selector(getShowCellForTextLabel)]) {
-    
+        
     }
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@",suggestedString];
     
-
+    
     return cell;
 }
 
@@ -431,7 +457,7 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                                    reuseIdentifier:identifier];
-//    [cell setBackgroundColor:[UIColor clearColor]];
+    //    [cell setBackgroundColor:[UIColor clearColor]];
     [cell.textLabel setTextColor:self.textColor];
     [cell.textLabel setFont:self.font];
     return cell;
@@ -458,7 +484,7 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  
+    
     
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     NSString *dropDowString = selectedCell.textLabel.text;
@@ -466,7 +492,7 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
     
     id <DropDownTextFieldShowCellTextLabel>  dropDownData = (id <DropDownTextFieldShowCellTextLabel>)[self.dropDownDataSource dropDownTextFieldDataSourceTextField:self][indexPath.row];
     
-
+    
     if([self.dropDownDelegate respondsToSelector:
         @selector(dropDownTextField:didSelectedWithData:forRowAtIndexPath:)]){
         

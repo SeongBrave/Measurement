@@ -498,10 +498,10 @@
      {
          if ([retDict[@"ret"] intValue] ==1) {
              
-             [Dialog toast:self withMessage:@"领取成功!"];
+             [Dialog toastSuccess:@"领取成功!"];
          }else
          {
-             [Dialog toast:self withMessage:retDict[@"message"]];
+             [Dialog toastCenter:retDict[@"message"]];
          }
          
      }error:^(NSError *error){

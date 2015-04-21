@@ -47,7 +47,7 @@
 
 
 @property (nonatomic, weak) id<SwipeJcrwcxCellDelegate> m_delegate;
-
+@property(nonatomic , assign) BOOL isCanSwipe;
 - (void)configureCellWithItem:(id )product;
 
 - (void)hideUtilityButtonsAnimated:(BOOL)animated;

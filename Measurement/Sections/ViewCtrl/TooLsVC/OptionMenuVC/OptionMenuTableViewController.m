@@ -232,56 +232,22 @@
 
     
     NSString *pxfsStr = [dict GetLabelWithKey:@"pxfs"];
-    
-    if (pxfsStr.length >0) {
-        int code = [pxfsStr intValue];
-        
-        switch (code) {
-            case 0:
-            {
-                self.m_sortingWayLabel.text = @"降序";
-            }
-                break;
-            case 1:
-            {
-                self.m_sortingWayLabel.text = @"升序";
-            }
-                break;
-            default:
-                break;
-        }
-        
+    if ([pxfsStr isEqualToString:@"jx"]) {
+        self.m_sortingWayLabel.text = @"降序";
     }else
     {
-        self.m_sortingWayLabel.text = @"降序";
+        self.m_sortingWayLabel.text = @"升序";
     }
     
     
     NSString *pxzdStr = [dict GetLabelWithKey:@"pxzd"];
     
-    if (pxzdStr.length >0) {
-        int code = [pxzdStr intValue];
-        
-        switch (code) {
-            case 0:
-            {
-                self.m_sortingFieldLabel.text = @"创建时间";
-            }
-                break;
-            case 1:
-            {
-                self.m_sortingFieldLabel.text = @"下厂时间";
-            }
-                break;
-            default:
-                break;
-        }
-        
+    if ([pxzdStr isEqualToString:@"XCSJQ"]) {
+        self.m_sortingFieldLabel.text = @"下厂时间";
     }else
     {
         self.m_sortingFieldLabel.text = @"创建时间";
     }
-    
     
     
     NSString *xcksbhStr = [dict GetLabelWithKey:@"xcksbh"];

@@ -52,7 +52,10 @@
 
 @property(nonatomic , assign)id<DropDownTextFieldDataSource> dropDownDataSource;
 
-
+/**
+ *  用于表示下拉列表的高度
+ */
+@property(nonatomic , assign)NSInteger tableHeight;
 /**
  *  对应的编码
  */

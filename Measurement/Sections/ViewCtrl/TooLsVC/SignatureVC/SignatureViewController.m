@@ -40,54 +40,60 @@
     
     NSData *_data = UIImageJPEGRepresentation(self.signatureView.signatureImage, 1.0f);
     
-    NSString *_encodedImageStr = [_data base64Encoding];
-    
-    
-    
-    //    网络请求发送签名图片
-    
-    [[BaseNetWork getInstance] showDialogWithVC:self];
-    NSDictionary *dict =@{@"imgBase64":_encodedImageStr,@"rwbh":_m_rwbh_Str};
-    [[[[[BaseNetWork getInstance] rac_postPath:@"khqrqzToBase64.do" parameters:dict]map:^(id responseData)
-       {
-           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-           
-           return dict;
-       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-     subscribeNext:^(NSDictionary *retDict) {
-         
-         if ([retDict[@"ret"] intValue] == 1) {
-//             [Dialog toast:self withMessage:@"上传成功!"];
+    if (_data) {
+        
+        NSString *_encodedImageStr = [_data base64Encoding];
+        
+        
+        
+        //    网络请求发送签名图片
+        
+        [[BaseNetWork getInstance] showDialogWithVC:self];
+        NSDictionary *dict =@{@"imgBase64":_encodedImageStr,@"rwbh":_m_rwbh_Str};
+        [[[[[BaseNetWork getInstance] rac_postPath:@"khqrqzToBase64.do" parameters:dict]map:^(id responseData)
+           {
+               NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+               
+               return dict;
+           }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+         subscribeNext:^(NSDictionary *retDict) {
              
-             [Dialog toastCenter:@"上传成功!"];
-             
-             
-             if ([self.m_delegate respondsToSelector:@selector(SignatureVC:saveUpWithImage:)]) {
-                 [self.m_delegate SignatureVC:self saveUpWithImage:signatureImage];
+             if ([retDict[@"ret"] intValue] == 1) {
+                 //             [Dialog toast:self withMessage:@"上传成功!"];
                  
+                 [Dialog toastCenter:@"上传成功!"];
+                 
+                 
+                 if ([self.m_delegate respondsToSelector:@selector(SignatureVC:saveUpWithImage:)]) {
+                     [self.m_delegate SignatureVC:self saveUpWithImage:signatureImage];
+                     
+                 }
+                 
+             }else
+             {
+                 [Dialog toastCenter:retDict[@"message"]];
+                 //             [Dialog toast:self withMessage:retDict[@"message"]];
              }
              
-         }else
-         {
-             [Dialog toastCenter:retDict[@"message"]];
-//             [Dialog toast:self withMessage:retDict[@"message"]];
-         }
-         
-         
-         
-         
-     }error:^(NSError *error){
-         //          @strongify(self)
-         ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
-         ////          self.m_DataSourceArr = arr;
-         ////          [_header endRefreshing];
-         ////          [_footer endRefreshing];
-         ////
-         ////          [self failedGetDataWithResponseData:arr];
-         //          //          [self.m_collectionView reloadData];
-         
-         
-     }];
+             
+             
+             
+         }error:^(NSError *error){
+             //          @strongify(self)
+             ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
+             ////          self.m_DataSourceArr = arr;
+             ////          [_header endRefreshing];
+             ////          [_footer endRefreshing];
+             ////
+             ////          [self failedGetDataWithResponseData:arr];
+             //          //          [self.m_collectionView reloadData];
+             
+             
+         }];
+
+        
+    }
+    
     
 }
 

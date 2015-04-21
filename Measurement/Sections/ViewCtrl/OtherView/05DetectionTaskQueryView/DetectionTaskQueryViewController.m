@@ -447,6 +447,7 @@
     static NSString *cellIdentifier = @"JcrwcxCell";
     JcrwcxCell *cell = (JcrwcxCell*)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.m_delegate = self;
+    cell.isCanSwipe = NO;
     [cell configureCellWithItem:self.m_DataSourceArr[indexPath.row]];
     return cell;
 }

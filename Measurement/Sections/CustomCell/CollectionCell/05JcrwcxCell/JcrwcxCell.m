@@ -77,6 +77,10 @@ static CGFloat BUTTONWIDTH = 70.0f;
 
 - (void)configureCellWithItem:(id )product
 {
+    
+    self.scrollView.scrollEnabled = self.isCanSwipe;
+    
+    
     Jcrwcx_Model* model = (Jcrwcx_Model*) product;
     
     debug_object(product);
@@ -123,6 +127,10 @@ static CGFloat BUTTONWIDTH = 70.0f;
         view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collectionLabelLine"]];
     }
     
+    
+    
+    
+
 }
 
 

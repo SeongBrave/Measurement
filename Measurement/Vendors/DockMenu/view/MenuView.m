@@ -65,7 +65,8 @@
     
     UILabel *menuViewTitle = [[UILabel alloc]init];
     menuViewTitle.textColor = UIColorFromRGB(202, 201, 196);
-    menuViewTitle.font = [UIFont systemFontOfSize:13];
+    menuViewTitle.font = [UIFont systemFontOfSize:15];
+    menuViewTitle.textAlignment = NSTextAlignmentCenter;
     menuViewTitle.text = LEFTMENUBARTITLE;
     
     [self addSubview:menuViewTitle];
@@ -81,7 +82,7 @@
         
         
         make.bottom.equalTo(menuViewTitle2.mas_top).offset(-7);
-        make.leading.equalTo(@10);
+        make.centerX.equalTo(@0);
     }];
     
     [ menuViewTitle2 mas_makeConstraints:^(MASConstraintMaker *make) {

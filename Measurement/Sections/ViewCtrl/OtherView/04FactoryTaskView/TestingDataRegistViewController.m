@@ -486,6 +486,8 @@
     self.m_pzr_DTF.dropDownDataSource= self;
     self.m_pzr_DTF.delegate = self;
     
+    self.m_txm_TF.delegate = self;
+    
  
     self.m_ysjl_WebView.delegate = self;
     self.m_zs_WebView.delegate = self;
@@ -628,6 +630,7 @@
     
     
 }
+
 /**
  *  添加rac检测
  */
@@ -817,6 +820,19 @@
 ////        [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*3,0} animated:YES];
 //        
 //    }];
+    
+    [[self.m_txm_TF.rac_textSignal filter:^BOOL(NSString *value) {
+        return value.length == 9;
+    }]subscribeNext:^(NSString *txm){
+        
+        
+        [self loadJiliangqjByTxm:txm];
+        
+        
+    }error:^(NSError *error){
+        
+    }];
+    
     
     /**
      *  仪器名称模糊查询
@@ -1140,6 +1156,44 @@
     
 }
 
+/**
+ *  获取  的数据
+ */
+-(void)loadJiliangqjByTxm:(NSString *) txmStr
+{
+    @weakify(self)
+    [[BaseNetWork getInstance] showDialogWithVC:self];
+    NSDictionary *dict =@{@"txm":txmStr};
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findJiliangqjByTxm.do" parameters:dict]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+         
+         @strongify(self)
+         
+         if ([retDict[@"ret"] intValue] == 0) {
+             
+             
+         }else
+         {
+             
+             [self update_sbxqViewByTxmDict:retDict[@"qjxx"]];
+         }
+         
+         
+         
+     }error:^(NSError *error){
+         
+         
+         
+     }];
+    
+    
+    
+}
 -(void)updateLineConstraints:(UIButton *)button
 {
     
@@ -3054,6 +3108,22 @@
     return YES;
 }
 
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField
+//{
+//    if (textField == self.m_txm_TF ) {
+//        return YES;
+//    }else
+//    {
+//        return NO
+//    }
+//}
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (textField == self.m_txm_TF && textField.text.length >0) {
+         [self loadJiliangqjByTxm:textField.text];
+    }
+}
+//
 //-(void)scrollViewDidScroll:(UIScrollView *)scrollView
 //{
 //    if (scrollView.contentOffset.y &gt; 0 scrollView.contentOffset.y &lt; 0 ) scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, 0);

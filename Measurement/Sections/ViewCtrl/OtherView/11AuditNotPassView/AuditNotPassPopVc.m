@@ -2436,6 +2436,23 @@
 }
 
 - (IBAction)Zs_CancleBtnClick:(id)sender {
+    
+    @weakify(self)
+    [self.lineImgV mas_remakeConstraints:^(MASConstraintMaker *make) {
+        
+        make.height.equalTo(@4);
+        make.top.equalTo(self.m_menuBarView.mas_top).offset(2);
+        make.centerX.equalTo(self.m_ysjl_Btn.mas_centerX);
+        make.width.equalTo(@60);
+    }];
+    [self.mainScrollView setContentOffset:(CGPoint){self.view.frame.size.width*2,0} animated:YES];
+    
+    [UIView animateWithDuration:0.3 delay:0.0f options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
+        @strongify(self)
+        [self.m_menuBarView layoutIfNeeded];
+        
+    }completion:NULL];
+    
 }
 
 
