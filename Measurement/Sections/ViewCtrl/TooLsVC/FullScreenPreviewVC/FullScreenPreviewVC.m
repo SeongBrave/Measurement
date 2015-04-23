@@ -69,9 +69,9 @@
     self.m_webView.delegate = self;
      [self.m_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_m_urlStr]]];
     
-    NSString *webStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/certificate-autoc.jsp?zsbh=CD02146019",WEBURL];
-    
-    [self.m_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webStr]]];
+//    NSString *webStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/certificate-autoc.jsp?zsbh=CD02146019",WEBURL];
+//    
+//    [self.m_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webStr]]];
 }
 - (IBAction)BackToVC:(id)sender {
     

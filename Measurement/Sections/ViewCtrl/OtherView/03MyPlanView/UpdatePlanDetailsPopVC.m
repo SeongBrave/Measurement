@@ -1427,7 +1427,7 @@
 }
 - (IBAction)okClick:(id)sender {
     
-    
+     UIButton *okBtn = (UIButton *)sender;
     if (![self validateInputInView:self.planDetailsScrollView]){
         [self.m_showDialog WarningNotificationWithMessage:@"请补全信息!"];
         
@@ -1435,7 +1435,7 @@
     {
         
         [self save_Data];
-        
+        okBtn.enabled = NO;
         @weakify(self)
         [[BaseNetWork getInstance] showDialogWithVC:self];
         [[[[[BaseNetWork getInstance] rac_postPath:@"editDutyc.do" parameters:self.m_saveDataDict]map:^(id responseData)
@@ -1454,9 +1454,9 @@
              {
                  [Dialog toast:self withMessage:@"修改失败!"];
              }
-             
+             okBtn.enabled = YES;
          }error:^(NSError *error){
-             
+             okBtn.enabled = YES;
              debug_object(error);
              
              

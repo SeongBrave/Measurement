@@ -748,13 +748,15 @@
 }
 - (IBAction)okClick:(id)sender {
     
+    UIButton *okBtn = (UIButton *)sender;
+    
     if (![self validateInputInView:self.view]){
         [self.m_showDialog WarningNotificationWithMessage:@"请补全信息!"];
         
     }else if([self save_Data])
     {
 
-        
+        okBtn.enabled = NO;
         [[BaseNetWork getInstance] showDialogWithVC:self];
         [[[[[BaseNetWork getInstance] rac_postPath:@"saveDutyc.do" parameters:self.m_saveDataDict]map:^(id responseData)
            {
@@ -778,10 +780,10 @@
                  [Dialog toast:self withMessage:@"保存失败!"];
              }
              
-             
+             okBtn.enabled = YES;
          }error:^(NSError *error){
              
-             
+             okBtn.enabled = YES;
              [Dialog toast:self withMessage:error.helpAnchor];
              debug_object(error);
              

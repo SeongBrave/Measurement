@@ -61,7 +61,7 @@ static NSString *DropDownTextFieldCellIdentifier = @"_DropDownTextFieldCellIdent
 - (void)initialize
 {
     
-    self.tableHeight = 140;
+    self.tableHeight = 100;
     /**
      添加右侧的btn
      */

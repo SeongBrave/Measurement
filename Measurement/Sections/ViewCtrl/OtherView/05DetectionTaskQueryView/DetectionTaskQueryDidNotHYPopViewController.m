@@ -1794,7 +1794,7 @@
         UIButton *saveBtn = (UIButton *)sender;
         
         [self save_Sbxq_Data];
-        
+        saveBtn.enabled = NO;
         @weakify(self)
         [[BaseNetWork getInstance] hideDialog];
         [[[[[BaseNetWork getInstance] rac_postPath:@"editEquipment.do" parameters:_m_Sbxq_saveDataDict]map:^(id responseData)
@@ -1825,10 +1825,10 @@
              }
              
              
-             
+             saveBtn.enabled = YES;
          }error:^(NSError *error){
              
-             
+             saveBtn.enabled = YES;
              
          }];
         
@@ -1972,7 +1972,7 @@
         
         UIButton *saveBtn = (UIButton *)sender;
         [self save_ggxx_Data];
-        
+        saveBtn.enabled = NO;
         @weakify(self)
         [[BaseNetWork getInstance] hideDialog];
         [[[[[BaseNetWork getInstance] rac_postPath:@"saveDdrTojson.do" parameters:_m_Ggxx_saveDataDict]map:^(id responseData)
@@ -2003,11 +2003,11 @@
                  //                 [self.m_showDialog ErrorNotificationWithMessage:@"保存失败！"];
              }
              
-             
+              saveBtn.enabled = YES;
              
          }error:^(NSError *error){
              
-             
+             saveBtn.enabled = YES;
              
          }];
         
@@ -2109,8 +2109,10 @@
         
     }else
     {
+        UIButton *ysjlBtn = (UIButton *)sender;
         @weakify(self)
         id data = @{ @"name": @"杨智",@"title":@"成功了嘛？" };
+        ysjlBtn.enabled = NO;
         [self.m_ysjl_javascriptBridge callHandler:@"testJavascriptHandler" data:data responseCallback:^(id response)
          {
              @strongify(self)
@@ -2118,7 +2120,7 @@
              [self pasteWithDictStr:response];
              
              [saveBtn setImage:[UIImage imageNamed:@"right-button-ybc"] forState:UIControlStateNormal];
-             
+             ysjlBtn.enabled = YES;
              
          }];
     }

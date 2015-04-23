@@ -852,7 +852,8 @@
     }else
     {
         self.m_hy_saveDict[@"pzbz"] = self.m_bz_Tv.text;
-        
+         UIButton *hyBtn = (UIButton *)sender;
+        hyBtn.enabled = NO;
         //    bchyjg.do
         //    @weakify(self)
         [[[[[BaseNetWork getInstance] rac_postPath:@"bcpzjg.do" parameters:self.m_hy_saveDict]map:^(id responseData)
@@ -880,10 +881,10 @@
                  }];
                  
              }
-             
+             hyBtn.enabled = YES;
          }error:^(NSError *error){
              
-             
+             hyBtn.enabled = YES;
          }];
         
 

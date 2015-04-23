@@ -423,11 +423,12 @@
     [self.m_jddd_TF setRequired:YES];
     [self.m_hjwd_TF setRequired:YES];
     [self.m_xdsd_TF setRequired:YES];
-    [self.m_qt_TF setRequired:YES];
+//    [self.m_qt_TF setRequired:YES];
     [self.m_pzr_DTF setRequired:YES];
     [self.m_jdy_TF setRequired:YES];
     [self.m_jdzq_DTF setRequired:YES];
     [self.m_hyy_DTF setRequired:YES];
+    self.m_hyy_DTF .tableHeight = 100;
 
     /**
      *  初始化标志状态
@@ -833,6 +834,21 @@
         
     }];
     
+    /**
+     *  "txm"不能超过9位，9<=txm。
+     *
+     */
+    [[self.m_txm_TF.rac_textSignal filter:^BOOL(NSString *value) {
+        return value.length >= 9;
+    }]subscribeNext:^(NSString *txm){
+        
+        
+        self.m_txm_TF.text = [txm substringToIndex:9];
+        
+        
+    }error:^(NSError *error){
+        
+    }];
     
     /**
      *  仪器名称模糊查询
@@ -1978,9 +1994,9 @@
                               标准器设备--标准设备编号(多 标准器设备--溯源证书号(多个 技术依据ID(多个按","分隔)
     */
     
+    
+    
     debug_object(self.m_Ggxx_saveDataDict);
-    
-    
     
     if (![self validateInputInView:self.m_ggxx_ScrollView]){
         [self.m_showDialog WarningNotificationWithMessage:@"请补全信息!"];
@@ -1990,7 +2006,7 @@
     
         UIButton *saveBtn = (UIButton *)sender;
         [self save_ggxx_Data];
-        
+        saveBtn.enabled = NO;
         @weakify(self)
         [[BaseNetWork getInstance] hideDialog];
         [[[[[BaseNetWork getInstance] rac_postPath:@"saveDdrTojson.do" parameters:_m_Ggxx_saveDataDict]map:^(id responseData)
@@ -2021,11 +2037,11 @@
 //                 [self.m_showDialog ErrorNotificationWithMessage:@"保存失败！"];
              }
              
-             
+               saveBtn.enabled = YES;
              
          }error:^(NSError *error){
              
-             
+               saveBtn.enabled = YES;
              
          }];
 
@@ -2127,6 +2143,8 @@
         
     }else
     {
+        saveBtn.enabled= NO;
+        
         @weakify(self)
         id data = @{ @"name": @"杨智",@"title":@"成功了嘛？" };
         [self.m_ysjl_javascriptBridge callHandler:@"testJavascriptHandler" data:data responseCallback:^(id response)
@@ -2137,7 +2155,7 @@
              
              [saveBtn setImage:[UIImage imageNamed:@"right-button-ybc"] forState:UIControlStateNormal];
              
-             
+             saveBtn.enabled= YES;
          }];
     }
     
@@ -2365,8 +2383,9 @@
     
     if ([self.yqid_Str isNotNull]) {
         
+        UIButton *zzBtn = (UIButton *)sender;
         LoginedUser *usr = [LoginedUser sharedInstance];
-        
+        zzBtn.enabled = NO;
         //    @weakify(self)
         [[[[[BaseNetWork getInstance] rac_postPath:@"tjhy.do" parameters:@{@"usercode":usr.usercode,@"yqid":self.yqid_Str}]map:^(id responseData)
            {
@@ -2389,7 +2408,7 @@
                      [self.m_superView  loadNetData];
                  }];
              }
-             
+             zzBtn.enabled = YES;
          }error:^(NSError *error){
              //          @strongify(self)
              ////          NSArray *arr = [self.m_store getObjectById:@"page.result" fromTable:self.m_tableName];
@@ -2400,7 +2419,7 @@
              ////          [self failedGetDataWithResponseData:arr];
              //          //          [self.m_collectionView reloadData];
              
-             
+              zzBtn.enabled = YES;
          }];
 
         
@@ -2425,7 +2444,7 @@
     
     if ([self.m_zs_saveUrl_Str isNotNull]) {
         
-        NSString *webzsStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/certificate-autoc.jsp?zsbh=%@",WEBURL,self.m_zs_saveUrl_Str];
+         NSString *webzsStr = [NSString stringWithFormat:@"http://%@/lims/web/pages/detectionTask/certificate-autoc.jsp?zsbh=%@",WEBURL,self.m_zs_saveUrl_Str];
         FullScreenPreviewVC *tempLasteVC = [self.storyboard instantiateViewControllerWithIdentifier:@"FullScreenPreviewVC"];
         tempLasteVC.m_urlStr = webzsStr;
         tempLasteVC.modalPresentationStyle = UIModalPresentationFormSheet;
@@ -2714,9 +2733,6 @@
             return NO;
         }else  if (![self.m_xdsd_TF validate]) {
             [self.m_xdsd_TF becomeFirstResponder];
-            return NO;
-        }else  if (![self.m_qt_TF validate]) {
-            [self.m_qt_TF becomeFirstResponder];
             return NO;
         }else  if (![self.m_jdy_TF validate]) {
             [self.m_jdy_TF becomeFirstResponder];

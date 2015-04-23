@@ -37,12 +37,13 @@
 #import "TestingDataRegistViewController.h"
 #import "wlqsb_Model.h"
 #import "Wlqsb_TableViewCell.h"
+#import "Wlqsb_TableViewCellTitle.h"
 
 
 
 #define MaxOffset  100
 
-@interface FactoryTaskDetailViewPopVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate, UIScrollViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,PlanDetailsHead_DepCellDelegate,PlanDetailsMans_DepCellDelegate,DepManVCDelegate,DepMansVCDelegate,SignatureViewDelegate,IPadScanViewControllerDelegate,SWTableViewCellDelegate>
+@interface FactoryTaskDetailViewPopVC ()<Wlqsb_TableViewCell_FullSelecteDelegate, UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate, UIScrollViewDelegate,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,DatePickerDelegate,DropDownTextFieldDataSource,DropDownTextFieldDelegate,PlanDetailsHead_DepCellDelegate,PlanDetailsMans_DepCellDelegate,DepManVCDelegate,DepMansVCDelegate,SignatureViewDelegate,IPadScanViewControllerDelegate,SWTableViewCellDelegate>
 
 
 @property (assign)BOOL isOpen;
@@ -202,6 +203,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UILabel *toDatePickerLB;
+@property (weak, nonatomic) IBOutlet UIButton *m_Wlqsb_FullSelect_Btn;
 
 /**
  *  所在区
@@ -225,6 +227,10 @@
 
 
 @property (weak, nonatomic) IBOutlet UIView *menuBarView;
+
+@property (weak, nonatomic) IBOutlet UIButton *m_wlqsb_Lqsb_Btn;
+
+@property (weak, nonatomic) IBOutlet UIButton *m_wlqsb_Scsb_Btn;
 
 /**
  *  客户签字
@@ -546,6 +552,38 @@
     
     
     
+    
+    /**
+     *  未领取设备
+     *
+     *  @return
+     */
+    
+    [[self.m_wlqsb_Lqsb_Btn
+      rac_signalForControlEvents:UIControlEventTouchUpInside]
+     subscribeNext:^(UIButton *lqsbBtn){
+         
+         @strongify(self)
+         NSArray *lqsbYqid = [self.m_wlqsb_DataSourceArr linq_where:^BOOL (wlqsb_Model *model){
+             return model.isSelected;
+         }];
+         
+         [self lq_Wlqsb_RequestWithByYqids:[lqsbYqid linq_select:^id(wlqsb_Model *model){
+             return model.yqid;
+         }]];
+         
+         
+     }];
+    
+    
+    [[self.m_wlqsb_Scsb_Btn
+      rac_signalForControlEvents:UIControlEventTouchUpInside]
+     subscribeNext:^(UIButton *lqsbBtn){
+         
+     }];
+    
+    
+    
 }
 -(void)SetUpData
 {
@@ -641,7 +679,7 @@
              
              
              wlqsb_Model *sblbmodel = [MTLJSONAdapter modelOfClass:[wlqsb_Model class] fromJSONDictionary:dict error:nil];
-             
+             sblbmodel.isSelected = NO;
              
              return sblbmodel;
              
@@ -964,6 +1002,7 @@
             sblb_Model *model = [_m_Sblb_ModelArr objectAtIndex:indexPath.row -1];
             cell.rightUtilityButtons = [self rightButtons];
             cell.delegate = self;
+            cell.tag = 1002;
 
             [cell configureCellWithItem:model andIndex:indexPath.row];
             
@@ -1035,8 +1074,8 @@
         if (indexPath.row == 0) {
             
             cellIdentifier = @"Wlqsb_TableViewCellTitle";
-            UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-            
+            Wlqsb_TableViewCellTitle *cell = (Wlqsb_TableViewCellTitle*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            cell.m_delegate = self;
             return cell;
             
             
@@ -1047,7 +1086,8 @@
             Wlqsb_TableViewCell *cell = (Wlqsb_TableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
             
             wlqsb_Model *model = [_m_wlqsb_DataSourceArr objectAtIndex:indexPath.row -1];
-            cell.rightUtilityButtons = [self rightButtons];
+            cell.tag = 1001;
+            cell.rightUtilityButtons = [self wlqsb_rightButtons];
             cell.delegate = self;
             
             [cell configureCellWithItem:model andIndex:indexPath.row];
@@ -1102,7 +1142,23 @@
         }
         
     
+    }if(tableView == _m_wlqsb_TableView)
+    {
+        if (indexPath.row == 0) {
+            
+            
+            
+        }else
+        {
+            
+            
+            wlqsb_Model *model = [_m_wlqsb_DataSourceArr objectAtIndex:indexPath.row -1];
+            
+            model.isSelected = !model.isSelected;
+            
+        }
     }
+
     
 }
 
@@ -1240,6 +1296,95 @@
     
 }
 
+/**
+ *  未领取设备 删除
+ *
+ *  @param yqid <#yqid description#>
+ */
+-(void)delete_Wlqsb_RequestWithByYqid:(NSString *)yqid
+{
+    //delShebeiByYqid.do
+    
+    @weakify(self)
+    [[BaseNetWork getInstance] showDialogWithVC:self];
+    NSDictionary *dict =@{@"yqid":yqid};
+    [[[[[BaseNetWork getInstance] rac_postPath:@"delShebeiByYqid.do" parameters:dict]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+         
+         @strongify(self)
+         
+         if ([retDict[@"ret"] intValue] == 0) {
+             
+             [Dialog toastError:@"删除失败!"];
+             
+         }else
+         {
+             [Dialog toastSuccess:@"删除成功!"];
+             
+             [self loadNetData];
+         }
+         
+         
+         
+     }error:^(NSError *error){
+         
+         
+         
+     }];
+    
+}
+
+/**
+ *   未领取设备 领取
+ *
+ *  @param yqid
+ */
+-(void)lq_Wlqsb_RequestWithByYqids:(NSArray *)yqidArr
+{
+    //delShebeiByYqid.do
+    
+    LoginedUser *usr = [LoginedUser sharedInstance];
+    
+    NSString *yqid = [yqidArr componentsJoinedByString:@","];
+    @weakify(self)
+    [[BaseNetWork getInstance] showDialogWithVC:self];
+    NSDictionary *dict =@{@"yqid":yqid,@"xtbs":MBS_XTBS ,@"rwbh":[self.m_showDict GetLabelWithKey:@"RWBH"],@"usercode":usr.usercode};
+    [[[[[BaseNetWork getInstance] rac_postPath:@"delShebeiByYqid.do" parameters:dict]map:^(id responseData)
+       {
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+         
+         @strongify(self)
+         
+         if ([retDict[@"ret"] intValue] == 0) {
+             
+             [Dialog toastError:@"领取失败!"];
+             
+         }else
+         {
+             [Dialog toastSuccess:@"领取成功!"];
+             
+             [self loadNetData];
+         }
+         
+         
+         
+     }error:^(NSError *error){
+         
+         
+         
+     }];
+    
+}
+
 -(void)delete_Wdsblb_RequestWithByYqid:(NSString *)yqid
 {
     //delShebeiByYqid.do
@@ -1313,43 +1458,43 @@
      }];
 }
 
--(void)delete_Wlqsb_RequestWithByYqid:(NSString *)yqid
-{
-    //delShebeiByYqid.do
-    
-    @weakify(self)
-    [[BaseNetWork getInstance] showDialogWithVC:self];
-    NSDictionary *dict =@{@"yqid":yqid};
-    [[[[[BaseNetWork getInstance] rac_postPath:@"delShebeiByYqid.do" parameters:dict]map:^(id responseData)
-       {
-           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-           
-           return dict;
-       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-     subscribeNext:^(NSDictionary *retDict) {
-         
-         @strongify(self)
-         
-         if ([retDict[@"ret"] intValue] == 0) {
-             
-             [Dialog toastError:@"删除失败!"];
-             
-         }else
-         {
-             [Dialog toastSuccess:@"删除成功!"];
-             
-             [self loadNetData];
-         }
-         
-         
-         
-     }error:^(NSError *error){
-         
-         
-         
-     }];
-    
-}
+//-(void)delete_Wdsblb_RequestWithByYqid:(NSString *)yqid
+//{
+//    //delShebeiByYqid.do
+//    
+//    @weakify(self)
+//    [[BaseNetWork getInstance] showDialogWithVC:self];
+//    NSDictionary *dict =@{@"yqid":yqid};
+//    [[[[[BaseNetWork getInstance] rac_postPath:@"delShebeiByYqid.do" parameters:dict]map:^(id responseData)
+//       {
+//           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+//           
+//           return dict;
+//       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+//     subscribeNext:^(NSDictionary *retDict) {
+//         
+//         @strongify(self)
+//         
+//         if ([retDict[@"ret"] intValue] == 0) {
+//             
+//             [Dialog toastError:@"删除失败!"];
+//             
+//         }else
+//         {
+//             [Dialog toastSuccess:@"删除成功!"];
+//             
+//             [self loadNetData];
+//         }
+//         
+//         
+//         
+//     }error:^(NSError *error){
+//         
+//         
+//         
+//     }];
+//    
+//}
 
 -(void)reject_Wlqsb_RequestWithByYqid:(NSString *)yqid
 {
@@ -1387,41 +1532,32 @@
 }
 
 
+-(NSMutableArray *)wlqsb_rightButtons
+{
+    NSMutableArray *leftUtilityButtons = [[NSMutableArray alloc]init];
+    
+    [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor colorWithRed:0.592 green:0.580 blue:0.537 alpha:1.000] title:@"领取"];
+    [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor colorWithRed:0.592 green:0.580 blue:0.537 alpha:1.000] title:@"删除"];
+    
+    return leftUtilityButtons;
+    
+}
+
 -(NSMutableArray *)rightButtons
 {
     NSMutableArray *leftUtilityButtons = [[NSMutableArray alloc]init];
     
-    [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor colorWithRed:0.071 green:0.455 blue:0.550 alpha:1.000] title:@"驳回"];
-    [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor colorWithRed:0.750 green:0.336 blue:0.052 alpha:1.000] title:@"删除"];
+    [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor colorWithRed:0.592 green:0.580 blue:0.537 alpha:1.000] title:@"驳回"];
+    [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor colorWithRed:0.592 green:0.580 blue:0.537 alpha:1.000] title:@"删除"];
     
     return leftUtilityButtons;
     
 }
 
 // TODO: SWTableViewCellDelegate
-- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
-    switch (index) {
-        case 0:
-        {
-            
-            [Dialog toast:self withMessage:@"sadfsdaf"];
-        }
-            break;
-        case 1:
-        {
-          
-            [Dialog toast:self withMessage:@"asdf"];
-            
-        }
-            break;
-        case 2:
-            NSLog(@"cross button was pressed");
-            break;
-        case 3:
-            NSLog(@"list button was pressed");
-        default:
-            break;
-    }
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index
+{
+    
     
 }
 
@@ -1429,30 +1565,75 @@
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
 {
-    
-    switch (index) {
-        case 0:
-        {
-            
-          sblb_Model *model = [_m_Sblb_ModelArr objectAtIndex:index];
-            
-            [self reject_Wdsblb_RequestWithByYqid:model.yqid];
-            
-            [cell hideUtilityButtonsAnimated:YES];
-            break;
+    /**
+     *  未领取设备
+     */
+    if (cell.tag == 1001) {
+        
+        
+        switch (index) {
+            case 0:
+            {
+                /**
+                 * 领取
+                 */
+                wlqsb_Model *model = [_m_wlqsb_DataSourceArr objectAtIndex:index];
+                
+                [self lq_Wlqsb_RequestWithByYqids:@[model.yqid]];
+                [cell hideUtilityButtonsAnimated:YES];
+                break;
+            }
+            case 1:
+            {
+                
+                /**
+                 * 删除
+                 */
+               wlqsb_Model *model = [_m_wlqsb_DataSourceArr objectAtIndex:index];
+                
+                [self delete_Wlqsb_RequestWithByYqid:model.yqid];
+                
+                [cell hideUtilityButtonsAnimated:YES];
+                break;
+            }
+            default:
+                break;
         }
-        case 1:
-        {
-            sblb_Model *model = [_m_Sblb_ModelArr objectAtIndex:index];
-            
-            [self delete_Wdsblb_RequestWithByYqid:model.yqid];
-            
-            [cell hideUtilityButtonsAnimated:YES];
-            break;
+        
+    }else if(cell.tag == 1002) //Sblb_TableViewCell 设备领取
+    {
+        switch (index) {
+            case 0:
+            {
+                /**
+                 *  驳回
+                 */
+                sblb_Model *model = [_m_Sblb_ModelArr objectAtIndex:index];
+                
+                [self reject_Wdsblb_RequestWithByYqid:model.yqid];
+                
+                [cell hideUtilityButtonsAnimated:YES];
+                break;
+            }
+            case 1:
+            {
+                /**
+                 * 删除
+                 */
+                sblb_Model *model = [_m_Sblb_ModelArr objectAtIndex:index];
+                
+                [self delete_Wdsblb_RequestWithByYqid:model.yqid];
+                
+                [cell hideUtilityButtonsAnimated:YES];
+                break;
+            }
+            default:
+                break;
         }
-        default:
-            break;
+        
     }
+
+ 
     
 }
 
@@ -1479,6 +1660,33 @@
             break;
     }
     return YES;
+}
+
+#pragma mark - Wlqsb_TableViewCell_FullSelecteDelegate
+-(void)Wlqsb_TableViewCellTitle:(Wlqsb_TableViewCellTitle *) cell ByFullBtn:(UIButton *) selectedBtn
+{
+    selectedBtn.selected = !selectedBtn.selected;
+    if (selectedBtn.isSelected) {
+        
+        for(  wlqsb_Model *model in self.m_wlqsb_DataSourceArr)
+        {
+            model.isSelected = YES;
+        }
+        
+    }else
+    {
+        for(  wlqsb_Model *model in self.m_wlqsb_DataSourceArr)
+        {
+            model.isSelected = YES;
+        }
+    }
+    
+    
+//      wlqsb_Model *model = [_m_wlqsb_DataSourceArr objectAtIndex:indexPath.row -1];
+    
+    
+    
+    
 }
 
 @end

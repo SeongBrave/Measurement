@@ -56,6 +56,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *m_shjg_Btn;
 @property (weak, nonatomic) IBOutlet UIScrollView *m_shjg_scrollView;
 
+@property (weak, nonatomic) IBOutlet UILabel *m_shjg_cuxx_LB;
 
 /**
  *  表示是否已经编辑  @1 便是编辑过 显示保存 @0未编辑过 button显示 已保存
@@ -1785,6 +1786,48 @@
     
     
     
+    
+    @weakify(self)
+    [[BaseNetWork getInstance] hideDialog];
+    [[[[[BaseNetWork getInstance] rac_postPath:@"findZsshbxx.do" parameters:@{@"yqid":self.yqid_Str}]map:^(id responseData)
+       {
+           
+           
+           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+           return dict;
+       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+     subscribeNext:^(NSDictionary *retDict) {
+
+         if ([retDict[@"ret"] integerValue] == 1) {
+             
+             NSArray *arr = retDict[@"yqlzgz"];
+             
+             if (arr.count >0) {
+                 
+                 @strongify(self)
+                 NSDictionary *dict = arr[0];
+                 
+                 if ((dict[@"PZBZ"] != nil && ![dict[@"PZBZ"] isEqualToString:@"/"])&&(dict[@"HYSJ"] != nil && ![dict[@"HYSJ"] isEqualToString:@"/"])) {
+                     NSString *cwxxStr = [NSString stringWithFormat:@"%@,%@",dict[@"HYBZ"],dict[@"PZBZ"]];
+                     
+                     self.m_shjg_cuxx_LB.text = cwxxStr;
+                 }
+                 
+                 
+             }
+             
+             
+         }
+         
+         
+         
+     }error:^(NSError *error){
+
+     }];
+
+    
+    
+    
 }
 - (IBAction)BackToVC:(id)sender {
     
@@ -1829,7 +1872,7 @@
     {
         
         UIButton *saveBtn = (UIButton *)sender;
-        
+        saveBtn.enabled = NO;
         [self save_Sbxq_Data];
         
         @weakify(self)
@@ -1861,11 +1904,11 @@
                  //                  [self.m_showDialog ErrorNotificationWithMessage:@"保存失败！"];
              }
              
-             
+             saveBtn.enabled = YES;
              
          }error:^(NSError *error){
              
-             
+             saveBtn.enabled = YES;
              
          }];
         
@@ -2012,7 +2055,7 @@
         
         UIButton *saveBtn = (UIButton *)sender;
         [self save_ggxx_Data];
-        
+        saveBtn.enabled = NO;
         @weakify(self)
         [[BaseNetWork getInstance] hideDialog];
         [[[[[BaseNetWork getInstance] rac_postPath:@"saveDdrTojson.do" parameters:_m_Ggxx_saveDataDict]map:^(id responseData)
@@ -2043,10 +2086,10 @@
                  //                 [self.m_showDialog ErrorNotificationWithMessage:@"保存失败！"];
              }
              
-             
+             saveBtn.enabled = YES;
              
          }error:^(NSError *error){
-             
+             saveBtn.enabled = YES;
              
              
          }];
@@ -2134,6 +2177,7 @@
     
     
     UIButton *saveBtn = (UIButton *)sender;
+   
     //    [self.m_ysjl_javascriptBridge callHandler:@"hqlssj" data:self.yqid_Str responseCallback:^(id response)
     //     {
     //
@@ -2149,6 +2193,7 @@
         
     }else
     {
+         saveBtn.enabled = NO;
         @weakify(self)
         id data = @{ @"name": @"杨智",@"title":@"成功了嘛？" };
         [self.m_ysjl_javascriptBridge callHandler:@"testJavascriptHandler" data:data responseCallback:^(id response)
@@ -2159,7 +2204,7 @@
              
              [saveBtn setImage:[UIImage imageNamed:@"right-button-ybc"] forState:UIControlStateNormal];
              
-             
+             saveBtn.enabled = YES;
          }];
     }
     

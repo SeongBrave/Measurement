@@ -861,6 +861,8 @@
         
     }else
     {
+        UIButton *hyBtn = (UIButton *)sender;
+        hyBtn.enabled = NO;
         self.m_hy_saveDict[@"hybz"] = self.m_bz_Tv.text;
         
         //    bchyjg.do
@@ -890,11 +892,11 @@
              }
              
              
-             
+             hyBtn.enabled = YES;
 //             m_superView
          }error:^(NSError *error){
              
-             
+             hyBtn.enabled = YES;
          }];
     }
 

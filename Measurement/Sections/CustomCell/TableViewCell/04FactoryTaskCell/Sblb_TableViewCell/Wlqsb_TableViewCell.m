@@ -24,9 +24,40 @@
     self.m_priceLabel.text = [NSString stringWithFormat:@"%@",sblbModel.bzsf];
     self.m_dwmcLabel.text = [sblbModel.yqmc GetNotNullStr];
     
-//    self.m_zsStateLabel.text 
-    
     self.numberLabel.text = [NSString stringWithFormat:@"00%@",[@(index) stringValue]];
+    
+    
+    
+    if (sblbModel.isSelected) {
+        
+        [self.m_State_ImgV setImage:[UIImage imageNamed:@"checkbox-selected"]];
+    }else
+    {
+        [self.m_State_ImgV setImage:[UIImage imageNamed:@"checkbox-defauit"]];
+    }
+    
+    
+    /**
+     *  rac_prepareForReuseSignal 很关键 否则重用的时候会崩溃
+     *
+     */
+    RAC(self.m_State_ImgV,image) =
+    [[RACObserve(sblbModel,isSelected)
+      
+      takeUntil:self.rac_prepareForReuseSignal]
+     
+     map:^id(NSNumber *number)
+     {
+         if ([number boolValue]) {
+             return [UIImage imageNamed:@"checkbox-selected"];
+         }else
+         {
+             return [UIImage imageNamed:@"checkbox-defauit"];
+         }
+         
+     }];
+    
+    
     
 }
 

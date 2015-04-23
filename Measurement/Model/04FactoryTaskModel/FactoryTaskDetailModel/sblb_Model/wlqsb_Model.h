@@ -221,4 +221,8 @@
  */
 @property (nonatomic, copy) NSString *zsbh;
 
+/**
+ *  表示是否被选中
+ */
+@property(nonatomic , assign)BOOL isSelected;
 @end

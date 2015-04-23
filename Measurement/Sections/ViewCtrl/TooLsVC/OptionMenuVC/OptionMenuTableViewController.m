@@ -232,11 +232,14 @@
 
     
     NSString *pxfsStr = [dict GetLabelWithKey:@"pxfs"];
-    if ([pxfsStr isEqualToString:@"jx"]) {
-        self.m_sortingWayLabel.text = @"降序";
+    
+    
+    if ([pxfsStr isEqualToString:@"sx"]) {
+        self.m_sortingWayLabel.text = @"升序";
+       
     }else
     {
-        self.m_sortingWayLabel.text = @"升序";
+        self.m_sortingWayLabel.text = @"降序";
     }
     
     
@@ -697,7 +700,7 @@
     }
     
 
-    [self updateTableViewWithData:_m_relValue];
+    [self updateTableViewWithData:self.m_relValue];
     
 }
 
