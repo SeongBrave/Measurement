@@ -94,15 +94,8 @@
 }
 - (IBAction)exitBtnClick:(id)sender {
     
-    
-    
-    
-    
-    [self dismissViewControllerAnimated:NO completion:^(void){
+    [self dismissViewControllerAnimated:YES completion:^(void){
         
-        
-        NSNotification *notification = [NSNotification notificationWithName:@"TCDL" object:nil];
-        [[NSNotificationCenter defaultCenter] postNotification:notification];
     }];
     
     

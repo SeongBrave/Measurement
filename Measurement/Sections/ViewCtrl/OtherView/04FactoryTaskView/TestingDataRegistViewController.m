@@ -30,7 +30,11 @@
 #import "YSJL_HqsjVC.h"
 #import "DemoTextField.h"
 #import "UIPopoverListView.h"
-@interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate,DidSelectedValue_XCRY_Delegate,UIPopoverControllerDelegate,UIPopoverListViewDataSource,UIPopoverListViewDelegate>
+#import "Bzqsb_TableViewCellTitle.h"
+#import "Jlbzkhzsh_TableViewCellTitle.h"
+#import "Jsyj_TableViewCellTitle.h"
+
+@interface TestingDataRegistViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate,DidSelectedValue_XCRY_Delegate,UIPopoverControllerDelegate,UIPopoverListViewDataSource,UIPopoverListViewDelegate,Jsyj_TableViewCell_FullSelecteDelegate,Jlbzkhzsh_TableViewCell_FullSelecteDelegate,Bzqsb_TableViewCell_FullSelecteDelegate>
 
 
 /**
@@ -133,6 +137,8 @@
 /**
  *  公共信息
  */
+
+
 @property (weak, nonatomic) IBOutlet UIButton *ggxx_SaveBtn;
 
 @property(nonatomic , strong)NSDictionary *m_jdy_Dict;
@@ -1613,6 +1619,7 @@
             self.m_jdzq_DTF.m_bm = model.dmbm;
             
             self.m_Ggxx_saveDataDict[@"jdzqbh"] = [model.dmbm GetNotNullStr];
+            self.m_Sbxq_saveDataDict[@"jdzq"] = [model.dmxxmc GetNotNullStr];
 
         }
     }
@@ -2716,9 +2723,6 @@
         if (![self.m_qjyt_DTF validate]) {
             [self.m_qjyt_DTF verifyshowDropDownTableView];
             return NO;
-        }else if (![self.m_jdzq_DTF validate]) {
-            [self.m_jdzq_DTF becomeFirstResponder];
-            return NO;
         }else if (![self.m_jddd_TF validate]) {
             [self.m_jddd_TF becomeFirstResponder];
             return NO;
@@ -2846,8 +2850,8 @@
         if (indexPath.row ==0) {
             cellIdentifier = @"Jlbzkhzsh_TableViewCellTitle";
             
-             UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-            
+             Jlbzkhzsh_TableViewCellTitle *cell = (Jlbzkhzsh_TableViewCellTitle*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            cell.m_delegate = self;
             return cell;
             
         }else
@@ -2868,7 +2872,8 @@
         if (indexPath.row ==0) {
             cellIdentifier = @"Bzqsb_TableViewCellTitle";
             
-            UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            Bzqsb_TableViewCellTitle *cell = (Bzqsb_TableViewCellTitle*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            cell.m_delegate = self;
             
             return cell;
             
@@ -2889,7 +2894,8 @@
         if (indexPath.row ==0) {
             cellIdentifier = @"Jsyj_TableViewCellTitle";
             
-            UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            Jsyj_TableViewCellTitle *cell = (Jsyj_TableViewCellTitle*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            cell.m_delegate = self;
             
             return cell;
             
@@ -3038,7 +3044,7 @@
         
         dmxx_Model *model = _m_jdzqTFArr[indexPath.row];
         
-//        self.m_Sbxq_saveDataDict[@"jdzqbh"] =model.dmbm;
+        self.m_Sbxq_saveDataDict[@"jdzq"] =model.dmxxmc;
         self.m_Ggxx_saveDataDict[@"jdzqbh"] =model.dmbm;
         self.is_ggxx_Edited = @1;
         
@@ -3548,4 +3554,83 @@
 }
 
 
+#pragma mark - Jsyj_TableViewCell_FullSelecteDelegate <NSObject>
+
+-(void)Jsyj_TableViewCellTitleDidFullSelectedByCell:(Jsyj_TableViewCellTitle *) cell
+{
+    
+}
+
+-(void)Jsyj_TableViewCellTitle:(Jsyj_TableViewCellTitle *) cell ByFullBtn:(UIButton *) selectedBtn
+{
+    selectedBtn.selected = !selectedBtn.selected;
+    if (selectedBtn.selected) {
+        
+        for( Jsyj_Model *model in self.m_jsyj_Arr)
+        {
+            model.isSelected = YES;
+        }
+        
+    }else
+    {
+        for( Jsyj_Model *model in self.m_jsyj_Arr)
+        {
+            model.isSelected = NO;;
+        }
+    }
+}
+
+#pragma mark - Jlbzkhzsh_TableViewCell_FullSelecteDelegate <NSObject>
+
+-(void)Jlbzkhzsh_TableViewCellTitleDidFullSelectedByCell:(Jlbzkhzsh_TableViewCellTitle *) cell
+{
+    
+}
+
+-(void)Jlbzkhzsh_TableViewCellTitle:(Jlbzkhzsh_TableViewCellTitle *) cell ByFullBtn:(UIButton *) selectedBtn
+{
+    selectedBtn.selected = !selectedBtn.selected;
+    if (selectedBtn.selected) {
+        
+        for( Jlbzkhzsh_Model *model in self.m_jlbzkhzsh_Arr)
+        {
+            model.isSelected = YES;
+        }
+        
+    }else
+    {
+        for( Jlbzkhzsh_Model *model in self.m_jlbzkhzsh_Arr)
+        {
+            model.isSelected = NO;;
+        }
+    }
+}
+
+#pragma mark -  Bzqsb_TableViewCell_FullSelecteDelegate <NSObject>
+
+-(void)Bzqsb_TableViewCellTitleDidFullSelectedByCell:(Bzqsb_TableViewCellTitle *) cell
+{
+    
+}
+
+-(void)Bzqsb_TableViewCellTitle:(Bzqsb_TableViewCellTitle *) cell ByFullBtn:(UIButton *) selectedBtn
+{
+    selectedBtn.selected = !selectedBtn.selected;
+    if (selectedBtn.selected) {
+        
+        for( Bzqsb_Model *model in self.m_bzqsb_Arr)
+        {
+            model.isSelected = YES;
+        }
+        
+    }else
+    {
+        for( Bzqsb_Model *model in self.m_bzqsb_Arr)
+        {
+            model.isSelected = NO;;
+        }
+    }
+    
+    
+}
 @end
