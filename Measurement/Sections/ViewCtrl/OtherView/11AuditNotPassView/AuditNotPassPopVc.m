@@ -1807,12 +1807,21 @@
                  @strongify(self)
                  NSDictionary *dict = arr[0];
                  
-                 if ((dict[@"PZBZ"] != nil && ![dict[@"PZBZ"] isEqualToString:@"/"])&&(dict[@"HYSJ"] != nil && ![dict[@"HYSJ"] isEqualToString:@"/"])) {
-                     NSString *cwxxStr = [NSString stringWithFormat:@"%@,%@",dict[@"HYBZ"],dict[@"PZBZ"]];
-                     
-                     self.m_shjg_cuxx_LB.text = cwxxStr;
+                 NSMutableArray *retArr = [[NSMutableArray alloc]init];
+                 if ((dict[@"PZBZ"] != nil && ![dict[@"PZBZ"] isEqualToString:@"/"])) {
+                   
+                     [retArr addObject:[NSString stringWithFormat:@"%@,",dict[@"PZBZ"]]];
+
                  }
                  
+                 if ((dict[@"HYBZ"] != nil && ![dict[@"HYBZ"] isEqualToString:@"/"])) {
+                     
+                     [retArr addObject:[NSString stringWithFormat:@",%@",dict[@"HYBZ"]]];
+ 
+                     
+                 }
+                 
+                 self.m_shjg_cuxx_LB.text = [retArr componentsJoinedByString:@" "];
                  
              }
              

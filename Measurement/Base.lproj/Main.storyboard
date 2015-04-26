@@ -132,6 +132,7 @@
                     <connections>
                         <outlet property="indicator" destination="Wn7-BJ-3q5" id="khO-hO-tN8"/>
                         <outlet property="loginView" destination="KXK-sl-58H" id="YY2-Rm-Wat"/>
+                        <outlet property="m_logo_ImgV" destination="uwU-EX-WD3" id="jgo-hE-pUl"/>
                         <outlet property="m_remberPwdBtn" destination="qmn-hJ-KKJ" id="EW3-rA-xQj"/>
                         <outlet property="m_uNameTextField" destination="QcD-aE-xm2" id="vVL-Fc-5bY"/>
                         <outlet property="m_uPwdTextField" destination="uZ3-V5-6Uq" id="j4Z-pq-M6N"/>

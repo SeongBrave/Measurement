@@ -580,6 +580,17 @@
       rac_signalForControlEvents:UIControlEventTouchUpInside]
      subscribeNext:^(UIButton *lqsbBtn){
          
+         
+         @strongify(self)
+         NSArray *lqsbYqid = [self.m_wlqsb_DataSourceArr linq_where:^BOOL (wlqsb_Model *model){
+             return model.isSelected;
+         }];
+         
+         [self delete_Wlqsb_RequestWithByYqids:[lqsbYqid linq_select:^id(wlqsb_Model *model){
+             return model.yqid;
+         }]];
+         
+         
      }];
     
     
@@ -603,11 +614,19 @@
 -(void)loadNetData
 {
 
+    [self upload_findWdsblb];
+
+    [self upload_findShebei];
+
+}
+
+/**
+ *  获取未领取设备
+ */
+-(void)upload_findWdsblb
+{
+    
     LoginedUser *loginUsr = [LoginedUser sharedInstance];
-    
-    
-    //    NSDictionary *dict = @{@"rwbh":[self.m_showDict GetLabelWithKey:@"RWBH"],@"usercode":loginUsr.usercode};
-    
     
     /**
      *  我的设备列表
@@ -652,8 +671,16 @@
          
      }];
     
+}
 
-//    NSString *rwbh =    [self.m_showDict GetLabelWithKey:@"RWBH"];
+
+/**
+ *  获取领取设备
+ */
+-(void)upload_findShebei
+{
+    @weakify(self)
+    //    NSString *rwbh =    [self.m_showDict GetLabelWithKey:@"RWBH"];
     [[BaseNetWork getInstance] hideDialog];
     /**
      *  获取检测进度数据
@@ -694,7 +721,6 @@
          
          
      }];
-
 }
 -(void)updateLineConstraints:(UIButton *)button
 {
@@ -1299,16 +1325,16 @@
 /**
  *  未领取设备 删除
  *
- *  @param yqid <#yqid description#>
+ *  @param yqid delShebeiByYqids.do
  */
--(void)delete_Wlqsb_RequestWithByYqid:(NSString *)yqid
+-(void)delete_Wlqsb_RequestWithByYqids:(NSArray *)yqidArr
 {
     //delShebeiByYqid.do
-    
+     NSString *yqid = [yqidArr componentsJoinedByString:@","];
     @weakify(self)
     [[BaseNetWork getInstance] showDialogWithVC:self];
-    NSDictionary *dict =@{@"yqid":yqid};
-    [[[[[BaseNetWork getInstance] rac_postPath:@"delShebeiByYqid.do" parameters:dict]map:^(id responseData)
+    NSDictionary *dict =@{@"yqids":yqid};
+    [[[[[BaseNetWork getInstance] rac_postPath:@"delShebeiByYqids.do" parameters:dict]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
@@ -1353,8 +1379,8 @@
     NSString *yqid = [yqidArr componentsJoinedByString:@","];
     @weakify(self)
     [[BaseNetWork getInstance] showDialogWithVC:self];
-    NSDictionary *dict =@{@"yqid":yqid,@"xtbs":MBS_XTBS ,@"rwbh":[self.m_showDict GetLabelWithKey:@"RWBH"],@"usercode":usr.usercode};
-    [[[[[BaseNetWork getInstance] rac_postPath:@"delShebeiByYqid.do" parameters:dict]map:^(id responseData)
+    NSDictionary *dict =@{@"yqids":yqid,@"xtbs":MBS_XTBS ,@"rwbh":[self.m_showDict GetLabelWithKey:@"RWBH"],@"usercode":usr.usercode};
+    [[[[[BaseNetWork getInstance] rac_postPath:@"receiveEquipment.do" parameters:dict]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
@@ -1371,7 +1397,7 @@
          }else
          {
              [Dialog toastSuccess:@"领取成功!"];
-             
+             [self upload_findShebei];
              [self loadNetData];
          }
          
@@ -1392,7 +1418,7 @@
     @weakify(self)
     [[BaseNetWork getInstance] showDialogWithVC:self];
     NSDictionary *dict =@{@"yqid":yqid};
-    [[[[[BaseNetWork getInstance] rac_postPath:@"delShebeiByYqid.do" parameters:dict]map:^(id responseData)
+    [[[[[BaseNetWork getInstance] rac_postPath:@"xcrwsbsc.do" parameters:dict]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
@@ -1425,10 +1451,12 @@
 
 -(void)reject_Wdsblb_RequestWithByYqid:(NSString *)yqid
 {
+    LoginedUser *usr = [LoginedUser sharedInstance];
+    
     @weakify(self)
     [[BaseNetWork getInstance] showDialogWithVC:self];
-    NSDictionary *dict =@{@"yqid":yqid};
-    [[[[[BaseNetWork getInstance] rac_postPath:@"delShebeiByYqid.do" parameters:dict]map:^(id responseData)
+    NSDictionary *dict =@{@"yqid":yqid,@"usercode":usr.usercode};
+    [[[[[BaseNetWork getInstance] rac_postPath:@"bhdwlqsb.do" parameters:dict]map:^(id responseData)
        {
            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
            
@@ -1445,7 +1473,7 @@
          }else
          {
              [Dialog toastSuccess:@"驳回成功!"];
-             
+             [self upload_findWdsblb];
              [self loadNetData];
          }
          
@@ -1591,7 +1619,7 @@
                  */
                wlqsb_Model *model = [_m_wlqsb_DataSourceArr objectAtIndex:index];
                 
-                [self delete_Wlqsb_RequestWithByYqid:model.yqid];
+                [self delete_Wlqsb_RequestWithByYqids:@[model.yqid]];
                 
                 [cell hideUtilityButtonsAnimated:YES];
                 break;
@@ -1677,7 +1705,7 @@
     {
         for(  wlqsb_Model *model in self.m_wlqsb_DataSourceArr)
         {
-            model.isSelected = YES;
+            model.isSelected = NO;
         }
     }
     

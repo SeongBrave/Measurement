@@ -94,6 +94,7 @@
 		C9791AA51A71498000DC5643 /* Bzqsb_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9791AA41A71498000DC5643 /* Bzqsb_Model.m */; };
 		C9791AA81A71498F00DC5643 /* Jsyj_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = C9791AA71A71498F00DC5643 /* Jsyj_Model.m */; };
 		C97C77481A76A8780016C779 /* FullScreenPreviewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C97C77471A76A8780016C779 /* FullScreenPreviewVC.m */; };
+		C9887B111AECDC9D002F86C2 /* SvUDIDTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C9887B101AECDC9D002F86C2 /* SvUDIDTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C98CBFB81A9D9B0C006DC733 /* MenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C98CBFB71A9D9B0C006DC733 /* MenuModel.m */; };
 		C9903BFF1A46E9FE0006FD99 /* DockItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903BFE1A46E9FE0006FD99 /* DockItem.m */; };
 		C9903C021A46EA0C0006FD99 /* CellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9903C011A46EA0C0006FD99 /* CellItem.m */; };
@@ -369,6 +370,8 @@
 		C9791AA71A71498F00DC5643 /* Jsyj_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jsyj_Model.m; sourceTree = "<group>"; };
 		C97C77461A76A8780016C779 /* FullScreenPreviewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenPreviewVC.h; sourceTree = "<group>"; };
 		C97C77471A76A8780016C779 /* FullScreenPreviewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullScreenPreviewVC.m; sourceTree = "<group>"; };
+		C9887B0F1AECDC9D002F86C2 /* SvUDIDTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SvUDIDTools.h; sourceTree = "<group>"; };
+		C9887B101AECDC9D002F86C2 /* SvUDIDTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SvUDIDTools.m; sourceTree = "<group>"; };
 		C98CBFB61A9D9B0C006DC733 /* MenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuModel.h; sourceTree = "<group>"; };
 		C98CBFB71A9D9B0C006DC733 /* MenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuModel.m; sourceTree = "<group>"; };
 		C9903BFD1A46E9FE0006FD99 /* DockItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DockItem.h; sourceTree = "<group>"; };
@@ -861,6 +864,7 @@
 		C9651EFD1A43B25F00B770BB /* extern */ = {
 			isa = PBXGroup;
 			children = (
+				C9887B0E1AECDC9D002F86C2 /* SvUDIDTools */,
 				C90947FF1AA20F32007B5FB7 /* UIPopoverListView */,
 				C90947FB1AA2028C007B5FB7 /* MHTextField */,
 				C9651FF41A43BE3100B770BB /* YTKKeyValueStore */,
@@ -1381,6 +1385,15 @@
 				C97C77471A76A8780016C779 /* FullScreenPreviewVC.m */,
 			);
 			path = FullScreenPreviewVC;
+			sourceTree = "<group>";
+		};
+		C9887B0E1AECDC9D002F86C2 /* SvUDIDTools */ = {
+			isa = PBXGroup;
+			children = (
+				C9887B0F1AECDC9D002F86C2 /* SvUDIDTools.h */,
+				C9887B101AECDC9D002F86C2 /* SvUDIDTools.m */,
+			);
+			path = SvUDIDTools;
 			sourceTree = "<group>";
 		};
 		C98CBFB51A9D9ADE006DC733 /* MenuModel */ = {
@@ -2319,6 +2332,7 @@
 				C9651FF71A43BE3100B770BB /* YTKKeyValueStore.m in Sources */,
 				C97093ED1A62CBD200141DC5 /* SignatureViewController.m in Sources */,
 				C9D803E41ACC2AB2003BBA3B /* DepartmentTaskVc.m in Sources */,
+				C9887B111AECDC9D002F86C2 /* SvUDIDTools.m in Sources */,
 				C97093E91A62CBD200141DC5 /* OptionMenuTableViewController.m in Sources */,
 				C9969BB61ABC734300780E9D /* Wcjdjh_Xcks_Model.m in Sources */,
 				C9EB135A1A83BADC00DE9B1D /* zsmb_Model.m in Sources */,

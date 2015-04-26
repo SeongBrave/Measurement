@@ -10,12 +10,16 @@
 #import "HomeViewController.h"
 #import "MenuModel.h"
 #import "DockItem.h"
+#import "PasteboardHelper.h"
+#import "SvUDIDTools.h"
 
 @interface LoginViewController ()<UIAlertViewDelegate>
 {
     BOOL isAutoLogin;
     BOOL isRememberPwd;
 }
+
+@property (weak, nonatomic) IBOutlet UIImageView *m_logo_ImgV;
 
 @property(nonatomic , strong)NSDictionary *updateDict;
 @end
@@ -120,6 +124,87 @@
      */
     self.m_remberPwdBtn.selected = isRememberPwd;
     
+    
+    
+    self.m_logo_ImgV.userInteractionEnabled = YES;
+
+    UILongPressGestureRecognizer *longPressGR =
+    [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                  action:@selector(handleLongPress:)];
+//    longPressGR.allowableMovement=NO;
+    longPressGR.minimumPressDuration = 1.2;
+    
+    [self.m_logo_ImgV  addGestureRecognizer:longPressGR];
+    
+    
+}
+
+/**
+ *  长按复制粘贴
+ *
+ *  @param gestureRecognizer
+ */
+- (void)handleLongPress:(UISwipeGestureRecognizer *)gestureRecognizer
+{
+   
+    
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        
+        
+//        UIMenuItem *menuItemCopy = [[UIMenuItem alloc]
+//                                    initWithTitle:@"复制"
+//                                    action:@selector(copyword)];
+//        
+//        UIMenuController *menu = [UIMenuController sharedMenuController];
+//        
+//        [menu setMenuItems:[NSArray arrayWithObjects:menuItemCopy ,nil]];
+//        
+//        [menu setTargetRect:self.m_logo_ImgV.frame inView:self.m_logo_ImgV];
+//        
+//        [menu setMenuVisible:YES animated:YES];
+        
+        [self copyword];
+        
+    }
+    
+   
+    
+    
+    
+    
+//    UIMenuController* popMenu = [UIMenuController sharedMenuController];
+//    
+////    UIMenuController *popMenu = [[UIMenuController alloc]init];
+//    
+//    
+//    UIMenuItem *menuItemCopy = [[UIMenuItem alloc]
+//                                initWithTitle:@"复制"
+//                                action:@selector(copyword)];
+//    
+//    NSArray *mArray = [NSArray arrayWithObjects:
+//                       menuItemCopy,
+//                       //  menuItemHighLight,
+//                       menuItemCopy,
+//                       nil];
+//    [popMenu setMenuItems:mArray];
+//    
+////    CGAffineTransform transform =  CGAffineTransformMakeTranslation(0, self.bounds.size.height);
+////    transform = CGAffineTransformScale(transform, 1.0, -1.0);
+////    selectedRect = CGRectApplyAffineTransform(selectedRect, transform);
+//
+////    [popMenu setMenuVisible:YES animated:YES];
+//    [popMenu setArrowDirection:UIMenuControllerArrowDown];
+//    
+//    
+////    [popMenu setTargetRect:CGRectMake(162,195,0,0) inView:self.m_logo_ImgV];
+//    [popMenu setMenuVisible:YES animated:YES];
+}
+
+-(void)copyword
+{
+    [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
+    
+     [PasteboardHelper SetPasteboardByStr:[SvUDIDTools UDID]];
 }
 
 -(void)SetUpData
