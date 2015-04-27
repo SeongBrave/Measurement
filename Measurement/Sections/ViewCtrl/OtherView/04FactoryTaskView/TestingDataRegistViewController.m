@@ -1619,7 +1619,7 @@
             self.m_jdzq_DTF.m_bm = model.dmbm;
             
             self.m_Ggxx_saveDataDict[@"jdzqbh"] = [model.dmbm GetNotNullStr];
-            self.m_Sbxq_saveDataDict[@"jdzq"] = [model.dmxxmc GetNotNullStr];
+            self.m_Ggxx_saveDataDict[@"jdzq"] = [model.dmxxmc GetNotNullStr];
 
         }
     }
@@ -3044,7 +3044,7 @@
         
         dmxx_Model *model = _m_jdzqTFArr[indexPath.row];
         
-        self.m_Sbxq_saveDataDict[@"jdzq"] =model.dmxxmc;
+        self.m_Ggxx_saveDataDict[@"jdzq"] =model.dmxxmc;
         self.m_Ggxx_saveDataDict[@"jdzqbh"] =model.dmbm;
         self.is_ggxx_Edited = @1;
         

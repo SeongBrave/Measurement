@@ -206,7 +206,7 @@
         
         
         ProgramOverviewDidHYPopViewController *popVc = (ProgramOverviewDidHYPopViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ProgramOverviewDidHYPopViewController"];
-        
+        popVc.m_superView = self;
 //        popVc.m_popDelegate = self;
         popVc.m_showDict = self.m_DataSourceArr[indexPath.row];
         popVc.modalPresentationStyle = UIModalPresentationFormSheet;

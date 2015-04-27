@@ -1480,6 +1480,8 @@
     NSArray *jdzqArr = retDict[@"jdzqList"];
     
     self.m_Ggxx_saveDataDict[@"jdzqbh"] = [jdzqStr GetNotNullStr];
+     self.m_Ggxx_saveDataDict[@"jdzq"] = [retDict[@"yqxx"] GetLabelWithKey:@"jdzq"];
+    
     
     self.m_jdzqTFArr = [jdzqArr linq_select:^id(NSDictionary *dict){
         
@@ -1496,6 +1498,9 @@
             
             self.m_jdzq_DTF.text = model.dmxxmc;
             self.m_jdzq_DTF.m_bm = model.dmbm;
+            
+            self.m_Ggxx_saveDataDict[@"jdzqbh"] = [model.dmbm GetNotNullStr];
+            self.m_Ggxx_saveDataDict[@"jdzq"] = [model.dmxxmc GetNotNullStr];
         }
     }
 
@@ -3027,6 +3032,7 @@
         Qjyt_dmxx_Model *model = _m_jdzqTFArr[indexPath.row];
         
         self.m_Ggxx_saveDataDict[@"jdzqbh"] =model.dmbm;
+         self.m_Ggxx_saveDataDict[@"jdzq"] =model.dmxxmc;
         
         self.is_ggxx_Edited = @1;
         

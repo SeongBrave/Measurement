@@ -34,7 +34,7 @@
 #import "AppDelegate.h"
 #import "UIButton+WebCache.h"
 
-@interface ProgramOverviewDidHYPopViewController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface ProgramOverviewDidHYPopViewController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,SignatureViewDelegate>
 
 @property (assign)BOOL isOpen;
 @property (nonatomic,retain)NSIndexPath *selectIndex;
@@ -1224,6 +1224,8 @@
     
 }
 
+#pragma mark - SignatureViewDelegate
+
 -(void)SignatureVC:(SignatureViewController*) signatureVC saveUpWithImage:(UIImage *) img
 {
     
@@ -1233,7 +1235,7 @@
     
     [self.signatureImgBtn setBackgroundImage:img forState:UIControlStateNormal];
     
-    
+    [self.m_superView loadNetData];
     
 }
 
@@ -1252,6 +1254,10 @@
     }
     return nil;
 }
+
+
+
+
 
 //signatureImgBtn
 @end

@@ -2530,7 +2530,7 @@
 					"$(PROJECT_DIR)/Measurement/Library/Dialog/ToolsLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1c427c3a-a2b1-43c9-8696-3f1645a05fcc";
+				PROVISIONING_PROFILE = "6afc0e07-c264-4d66-9287-5ea6542dc023";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s";
@@ -2560,7 +2560,7 @@
 					"$(PROJECT_DIR)/Measurement/Library/Dialog/ToolsLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6049498f-2732-4389-b150-b3ac94c12b74";
+				PROVISIONING_PROFILE = "ba7deb2a-27d7-4f6e-9171-b148c6830f75";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALID_ARCHS = "armv7 armv7s";
 			};

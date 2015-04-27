@@ -1523,41 +1523,41 @@
 //     }];
 //    
 //}
-
--(void)reject_Wlqsb_RequestWithByYqid:(NSString *)yqid
-{
-    @weakify(self)
-    [[BaseNetWork getInstance] showDialogWithVC:self];
-    NSDictionary *dict =@{@"yqid":yqid};
-    [[[[[BaseNetWork getInstance] rac_postPath:@"delShebeiByYqid.do" parameters:dict]map:^(id responseData)
-       {
-           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
-           
-           return dict;
-       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
-     subscribeNext:^(NSDictionary *retDict) {
-         
-         @strongify(self)
-         
-         if ([retDict[@"ret"] intValue] == 0) {
-             
-             [Dialog toastError:@"删除失败!"];
-             
-         }else
-         {
-             [Dialog toastSuccess:@"删除成功!"];
-             
-             [self loadNetData];
-         }
-         
-         
-         
-     }error:^(NSError *error){
-         
-         
-         
-     }];
-}
+//
+//-(void)reject_Wlqsb_RequestWithByYqid:(NSString *)yqid
+//{
+//    @weakify(self)
+//    [[BaseNetWork getInstance] showDialogWithVC:self];
+//    NSDictionary *dict =@{@"yqid":yqid};
+//    [[[[[BaseNetWork getInstance] rac_postPath:@"delShebeiByYqid.do" parameters:dict]map:^(id responseData)
+//       {
+//           NSDictionary *dict = [NSDictionary dictionaryWithDictionary:responseData];
+//           
+//           return dict;
+//       }] deliverOn:[RACScheduler mainThreadScheduler]] //在主线程中更新ui
+//     subscribeNext:^(NSDictionary *retDict) {
+//         
+//         @strongify(self)
+//         
+//         if ([retDict[@"ret"] intValue] == 0) {
+//             
+//             [Dialog toastError:@"删除失败!"];
+//             
+//         }else
+//         {
+//             [Dialog toastSuccess:@"删除成功!"];
+//             
+//             [self loadNetData];
+//         }
+//         
+//         
+//         
+//     }error:^(NSError *error){
+//         
+//         
+//         
+//     }];
+//}
 
 
 -(NSMutableArray *)wlqsb_rightButtons

@@ -10,6 +10,7 @@
  *  计划总览 弹出框
  */
 #import "CommonLogicViewController.h"
+#import "ProgramOverviewViewController.h"
 
 @interface ProgramOverviewDidHYPopViewController : CommonLogicViewController
 
@@ -20,6 +21,7 @@
 @property(nonatomic , strong)NSDictionary *m_showDict;
 
 
+@property(nonatomic , strong) ProgramOverviewViewController *m_superView;
 /**
  *  用于更新界面数据
  *
