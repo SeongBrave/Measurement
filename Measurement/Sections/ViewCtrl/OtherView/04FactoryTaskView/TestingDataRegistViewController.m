@@ -3601,7 +3601,7 @@
     {
         for( Jlbzkhzsh_Model *model in self.m_jlbzkhzsh_Arr)
         {
-            model.isSelected = NO;;
+            model.isSelected = NO;
         }
     }
 }

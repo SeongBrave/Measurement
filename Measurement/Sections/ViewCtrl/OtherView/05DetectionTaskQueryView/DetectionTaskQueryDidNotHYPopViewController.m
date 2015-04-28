@@ -32,9 +32,13 @@
 #import "UIPopoverListView.h"
 #import "jcrwcx_Jlbzkhzsh_Model.h"
 #import "jcrwcx_Jsyj_Model.h"
+#import "Bzqsb_TableViewCellTitle.h"
+#import "Jlbzkhzsh_TableViewCellTitle.h"
+#import "Jsyj_TableViewCellTitle.h"
 
 
-@interface DetectionTaskQueryDidNotHYPopViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate,DidSelectedValue_XCRY_Delegate,UIPopoverControllerDelegate,UIPopoverListViewDataSource,UIPopoverListViewDelegate>
+
+@interface DetectionTaskQueryDidNotHYPopViewController ()<DropDownTextFieldDelegate,DropDownTextFieldDataSource,AutoCompleteTextFieldDataSource,AutoCompleteTextFieldDelegate,UITextFieldDelegate,DatePickerDelegate,ZS_TemplatesListVCDelegate,YSJL_TemplatesListVCDelegate,UIWebViewDelegate,DidSelectedValue_XCRY_Delegate,UIPopoverControllerDelegate,UIPopoverListViewDataSource,UIPopoverListViewDelegate,Bzqsb_TableViewCell_FullSelecteDelegate,Jlbzkhzsh_TableViewCell_FullSelecteDelegate,Jsyj_TableViewCell_FullSelecteDelegate>
 
 /**
  *  表示当前所在的位置（0：设备详情 1:公共信息 2:原始记录 3:证书）
@@ -2839,7 +2843,8 @@
         if (indexPath.row ==0) {
             cellIdentifier = @"Jlbzkhzsh_TableViewCellTitle";
             
-            UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            Jlbzkhzsh_TableViewCellTitle *cell = (Jlbzkhzsh_TableViewCellTitle*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            cell.m_delegate = self;
             
             return cell;
             
@@ -2861,7 +2866,8 @@
         if (indexPath.row ==0) {
             cellIdentifier = @"Bzqsb_TableViewCellTitle";
             
-            UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            Bzqsb_TableViewCellTitle *cell = (Bzqsb_TableViewCellTitle*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            cell.m_delegate = self;
             
             return cell;
             
@@ -2882,7 +2888,8 @@
         if (indexPath.row ==0) {
             cellIdentifier = @"Jsyj_TableViewCellTitle";
             
-            UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            Jsyj_TableViewCellTitle *cell = (Jsyj_TableViewCellTitle*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+            cell.m_delegate = self;
             
             return cell;
             
@@ -3513,5 +3520,83 @@
     return 45;
 }
 
+#pragma mark - Jsyj_TableViewCell_FullSelecteDelegate <NSObject>
+
+-(void)Jsyj_TableViewCellTitleDidFullSelectedByCell:(Jsyj_TableViewCellTitle *) cell
+{
+    
+}
+
+-(void)Jsyj_TableViewCellTitle:(Jsyj_TableViewCellTitle *) cell ByFullBtn:(UIButton *) selectedBtn
+{
+    selectedBtn.selected = !selectedBtn.selected;
+    if (selectedBtn.selected) {
+        
+        for( Jsyj_Model *model in self.m_jsyj_Arr)
+        {
+            model.isSelected = YES;
+        }
+        
+    }else
+    {
+        for( Jsyj_Model *model in self.m_jsyj_Arr)
+        {
+            model.isSelected = NO;;
+        }
+    }
+}
+
+#pragma mark - Jlbzkhzsh_TableViewCell_FullSelecteDelegate <NSObject>
+
+-(void)Jlbzkhzsh_TableViewCellTitleDidFullSelectedByCell:(Jlbzkhzsh_TableViewCellTitle *) cell
+{
+    
+}
+
+-(void)Jlbzkhzsh_TableViewCellTitle:(Jlbzkhzsh_TableViewCellTitle *) cell ByFullBtn:(UIButton *) selectedBtn
+{
+    selectedBtn.selected = !selectedBtn.selected;
+    if (selectedBtn.selected) {
+        
+        for( Jlbzkhzsh_Model *model in self.m_jlbzkhzsh_Arr)
+        {
+            model.isSelected = YES;
+        }
+        
+    }else
+    {
+        for( Jlbzkhzsh_Model *model in self.m_jlbzkhzsh_Arr)
+        {
+            model.isSelected = NO;
+        }
+    }
+}
+#pragma mark -  Bzqsb_TableViewCell_FullSelecteDelegate <NSObject>
+
+-(void)Bzqsb_TableViewCellTitleDidFullSelectedByCell:(Bzqsb_TableViewCellTitle *) cell
+{
+    
+  
+    
+}
+
+-(void)Bzqsb_TableViewCellTitle:(Bzqsb_TableViewCellTitle *) cell ByFullBtn:(UIButton *) selectedBtn
+{
+    
+    selectedBtn.selected = !selectedBtn.selected;
+    if (selectedBtn.isSelected) {
+        for(  Bzqsb_Model *model in _m_bzqsb_Arr )
+        {
+            model.isSelected = YES;
+        }
+    }else
+    {
+        for(  Bzqsb_Model *model in _m_bzqsb_Arr )
+        {
+            model.isSelected = NO;
+        }
+    }
+    
+}
 
 @end
