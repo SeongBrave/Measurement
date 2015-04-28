@@ -154,7 +154,7 @@
                   moduleName = "Measurement"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/06CheckTaskView/CheckTaskDidPopVc.m"
-                  timestampString = "451838738.222737"
+                  timestampString = "451922604.329309"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "870"
@@ -169,7 +169,7 @@
                   moduleName = "Measurement"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DaoTong/TheDataSource/mbs/SeongBrave-Measurement/Measurement/Sections/ViewCtrl/OtherView/06CheckTaskView/CheckTaskDidPopVc.m"
-                  timestampString = "451838738.222949"
+                  timestampString = "451922604.329482"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "872"
@@ -384,22 +384,6 @@
             startingLineNumber = "1380"
             endingLineNumber = "1380"
             landmarkName = "-lq_Wlqsb_RequestWithByYqids:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Measurement/Sections/ViewCtrl/OtherView/04FactoryTaskView/TestingDataRegistViewController.m"
-            timestampString = "451838591.891738"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2597"
-            endingLineNumber = "2597"
-            landmarkName = "-save_ggxx_Data"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

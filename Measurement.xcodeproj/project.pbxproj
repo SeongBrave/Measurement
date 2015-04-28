@@ -2135,7 +2135,7 @@
 				TargetAttributes = {
 					C9651EC51A43AD8F00B770BB = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = QMU84Y47YV;
+						DevelopmentTeam = 9B4B9JV3MJ;
 					};
 					C9651EDE1A43AD9000B770BB = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -2513,8 +2513,8 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: jia li (RS5JKD7E43)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jia li (RS5JKD7E43)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Guoxu Fu (YPW49R2NL7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Guoxu Fu (YPW49R2NL7)";
 				GCC_PREFIX_HEADER = Measurement/Measurement.pch;
 				INFOPLIST_FILE = Measurement/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2530,7 +2530,7 @@
 					"$(PROJECT_DIR)/Measurement/Library/Dialog/ToolsLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6afc0e07-c264-4d66-9287-5ea6542dc023";
+				PROVISIONING_PROFILE = "e6995d59-e044-4887-93c7-ab14a78a9c6e";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s";
@@ -2543,8 +2543,8 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Doctor Information Technology Co.,Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jilin Ketu Technology Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jilin Ketu Technology Co., Ltd.";
 				GCC_PREFIX_HEADER = Measurement/Measurement.pch;
 				INFOPLIST_FILE = Measurement/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -2560,7 +2560,7 @@
 					"$(PROJECT_DIR)/Measurement/Library/Dialog/ToolsLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ba7deb2a-27d7-4f6e-9171-b148c6830f75";
+				PROVISIONING_PROFILE = "b99a91b0-6caa-4931-8882-e5d31f75a6c6";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALID_ARCHS = "armv7 armv7s";
 			};
