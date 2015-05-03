@@ -10,7 +10,6 @@
 #import "FactoryTaskCell.h"
 #import <UIColor+HexString.h>
 #import "JcrwcxCell.h"
-#import "OptionMenuTableViewController.h"
 #import "FactoryTaskDetailViewPopVC.h"
 #import "AddPlanDetailsPopVC.h"
 #import "backgroundV.h"
@@ -18,8 +17,9 @@
 #import "AuditNotPassPopVc.h"
 #import "JcrwcxCell.h"
 #import "Jcrwcx_Model.h"
+#import "Jcrwcx_OptionMenuTVc.h"
 
-@interface AuditNotPassViewController ()<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, SwipeJcrwcxCellDelegate,UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,DidOptionMenuDelegate,PopViewDelegate,DropDownChooseDelegate,DropDownChooseDataSource>
+@interface AuditNotPassViewController ()<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, SwipeJcrwcxCellDelegate,UIPopoverControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,PopViewDelegate,DropDownChooseDelegate,DropDownChooseDataSource,DidOptionMenuTVcDelegate>
 {
     NSArray *chooseArray ;
 }
@@ -68,7 +68,7 @@
     {
         UINavigationController *nav = (UINavigationController*)[segue destinationViewController];
         
-        OptionMenuTableViewController *OptionMenuTVC = (OptionMenuTableViewController*)[nav topViewController];
+        Jcrwcx_OptionMenuTVc *OptionMenuTVC = (Jcrwcx_OptionMenuTVc*)[nav topViewController];
         OptionMenuTVC.m_optionMenuDelegate = self;
         NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:self.m_netParamDict];
         
@@ -262,9 +262,10 @@
                 permittedArrowDirections:0
                                 animated:YES];
 }
+
 #pragma mark -  DidOptionMenuDelegate
 
--(void)OptionMenu:(OptionMenuTableViewController*) selectValueTVC DidsaveValue:(id)saveValue{
+-(void)OptionMenuTVc:(Jcrwcx_OptionMenuTVc*) selectValueTVC DidsaveValue:(id)saveValue{
     
     debug_object(self.m_netParamDict);
     NSDictionary *dict = (NSDictionary *)saveValue;
@@ -276,8 +277,6 @@
     [self loadNetData];
     
 }
-
-
 
 
 ///**

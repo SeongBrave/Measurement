@@ -491,10 +491,14 @@
  */
 - (IBAction)queryClick:(id)sender {
     
-    
+    for(NSString *key in self.m_relValue.allKeys)
+    {
+        if ([self.m_relValue[key] isEqualToString:@""] || [self.m_relValue[key] length] == 0 ) {
+            [self.m_relValue removeObjectForKey:key];
+        }
+    }
     
     if ([self.m_optionMenuDelegate respondsToSelector:@selector(OptionMenuTVc:DidsaveValue:)]) {
-        
         
         [self.m_optionMenuDelegate OptionMenuTVc:self DidsaveValue:self.m_relValue];
     }

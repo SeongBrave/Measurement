@@ -132,8 +132,9 @@
 @property(nonatomic , strong)NSArray *m_wlqsb_DataSourceArr;
 
 
+@property (weak, nonatomic) IBOutlet UIButton *m_wlqsb_AllCountNum_LB;
 
-
+//共计台件数***
 
 
 /**
@@ -571,7 +572,7 @@
          [self lq_Wlqsb_RequestWithByYqids:[lqsbYqid linq_select:^id(wlqsb_Model *model){
              return model.yqid;
          }]];
-         
+         [self.m_wlqsb_AllCountNum_LB setTitle:[NSString stringWithFormat:@"共计台件数%d",lqsbYqid.count] forState:UIControlStateNormal];
          
      }];
     

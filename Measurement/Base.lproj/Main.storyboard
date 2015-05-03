@@ -7283,7 +7283,10 @@
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IwL-qs-773">
                                                                     <rect key="frame" x="25" y="25" width="92" height="30"/>
-                                                                    <state key="normal" title="共计太件数***">
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="92" id="G8i-0E-Wyi"/>
+                                                                    </constraints>
+                                                                    <state key="normal">
                                                                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
@@ -7955,6 +7958,7 @@
                         <outlet property="headOFLB" destination="0Iq-JU-euK" id="3yd-Ju-Ilf"/>
                         <outlet property="m_My_Sblb_TableView" destination="eaA-Ux-mZR" id="xkp-Qa-PHC"/>
                         <outlet property="m_detail_ksry_TableView" destination="2i4-6w-hbS" id="SnE-IG-VLu"/>
+                        <outlet property="m_wlqsb_AllCountNum_LB" destination="IwL-qs-773" id="jbE-ln-uU9"/>
                         <outlet property="m_wlqsb_Lqsb_Btn" destination="1aY-c2-syd" id="quS-U8-aW8"/>
                         <outlet property="m_wlqsb_Scsb_Btn" destination="gWj-xE-p5K" id="oCh-Cv-IHK"/>
                         <outlet property="m_wlqsb_TableView" destination="TF6-jN-IvI" id="qZZ-q2-y8K"/>
@@ -21455,7 +21459,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Cly-X7-jaK"/>
         <segue reference="ed9-IN-fwM"/>
-        <segue reference="5q5-Zy-e31"/>
         <segue reference="pWE-RO-CVu"/>
+        <segue reference="iqu-WL-ERX"/>
     </inferredMetricsTieBreakers>
 </document>
